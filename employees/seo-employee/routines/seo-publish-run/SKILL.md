@@ -1,6 +1,6 @@
 ---
 name: seo-publish-run
-description: Weekdays, browser only when the property has no publishing route but a screen. Takes the oldest ready draft, resolves its property, and publishes it by that property's own route: a post file plus a registry entry plus a sitemap update plus a build plus a push, or a publishing surface driven through the flow file it owns. It verifies the live URL by loading it, records the published line, and leaves the draft ready on any failure so tomorrow retries it. It publishes one article to one named property and does nothing else outward, ever.
+description: "Weekdays, browser only when the property has no publishing route but a screen. Takes the oldest ready draft, resolves its property, and publishes it by that property's own route: a post file plus a registry entry plus a sitemap update plus a build plus a push, or a publishing surface driven through the flow file it owns. It verifies the live URL by loading it, records the published line, and leaves the draft ready on any failure so tomorrow retries it. It publishes one article to one named property and does nothing else outward, ever."
 metadata:
   internal: true
 ---

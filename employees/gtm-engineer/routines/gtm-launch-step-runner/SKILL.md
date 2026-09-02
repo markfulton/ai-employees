@@ -1,6 +1,6 @@
 ---
 name: gtm-launch-step-runner
-description: Weekdays, browser only when the card needs one. Takes the next ready cards off the launch board and does the work each one names: stages copy into the dashboard, fills a directory or press form and leaves it open in its tab, verifies a setup, packages a handoff, or researches its own next targets. It ticks its own card the moment it has verified the file that closes it. It never submits, never sends, never spends, and never touches a credential.
+description: "Weekdays, browser only when the card needs one. Takes the next ready cards off the launch board and does the work each one names: stages copy into the dashboard, fills a directory or press form and leaves it open in its tab, verifies a setup, packages a handoff, or researches its own next targets. It ticks its own card the moment it has verified the file that closes it. It never submits, never sends, never spends, and never touches a credential."
 metadata:
   internal: true
 ---

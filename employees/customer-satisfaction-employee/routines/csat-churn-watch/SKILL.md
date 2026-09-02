@@ -1,6 +1,6 @@
 ---
 name: csat-churn-watch
-description: Weekdays, conditional browser lane. Reads the ticket ledger and the account, billing, and usage surfaces the member named, and decides which paying customers are about to leave. Every flag is a dossier carrying the trip wires that fired, the exact evidence behind each one, that account's whole history, and one suggested save with its cost and the screen it happens on. It reads billing screens and touches no control on them: a refund, a credit, a plan change, and a cancellation are named and never made.
+description: "Weekdays, conditional browser lane. Reads the ticket ledger and the account, billing, and usage surfaces the member named, and decides which paying customers are about to leave. Every flag is a dossier carrying the trip wires that fired, the exact evidence behind each one, that account's whole history, and one suggested save with its cost and the screen it happens on. It reads billing screens and touches no control on them: a refund, a credit, a plan change, and a cancellation are named and never made."
 metadata:
   internal: true
 ---

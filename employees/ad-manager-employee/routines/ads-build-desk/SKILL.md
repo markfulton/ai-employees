@@ -1,6 +1,6 @@
 ---
 name: ads-build-desk
-description: Weekdays. Works the next ready card on the board, one card per run, and assembles what it needs as a complete local file ready to paste: a campaign build sheet, a negative keyword file, a conversion action specification, an audience definition, or an upload packet. The whole step happens in a text editor. It opens no create flow, saves nothing in any account, and never types a budget figure anywhere except into a file.
+description: "Weekdays. Works the next ready card on the board, one card per run, and assembles what it needs as a complete local file ready to paste: a campaign build sheet, a negative keyword file, a conversion action specification, an audience definition, or an upload packet. The whole step happens in a text editor. It opens no create flow, saves nothing in any account, and never types a budget figure anywhere except into a file."
 metadata:
   internal: true
 ---

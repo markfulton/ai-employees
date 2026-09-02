@@ -1,6 +1,6 @@
 ---
 name: seo-draft-run
-description: Weekdays, browser only when a source refuses to be fetched. Works the single card the standup marked next: reads the shared publishing standard and the card's specification, pulls the live result set for the primary keyword, reads the pages currently ranking, writes the body, the metadata, the internal links and the outbound authority links, generates and compresses a hero, and leaves a complete draft folder with one ready line. It never opens a publishing surface, never touches a live property, and never touches a credential.
+description: "Weekdays, browser only when a source refuses to be fetched. Works the single card the standup marked next: reads the shared publishing standard and the card's specification, pulls the live result set for the primary keyword, reads the pages currently ranking, writes the body, the metadata, the internal links and the outbound authority links, generates and compresses a hero, and leaves a complete draft folder with one ready line. It never opens a publishing surface, never touches a live property, and never touches a credential."
 metadata:
   internal: true
 ---

@@ -1,6 +1,6 @@
 ---
 name: cos-fault-dossier
-description: Weekdays, file work only, no browser at all. Takes the single highest ranked open fault on the fleet and turns it into something the member can act on in a minute: the fault in one sentence, the first record that shows it, what changed around that date, three ranked causes each with its evidence line, what the failure has cost, and one paste ready correction line with the exact path it belongs in. It reads other Employees strictly read only, writes nothing outside its own folder, never sends, never spends, and never touches a credential.
+description: "Weekdays, file work only, no browser at all. Takes the single highest ranked open fault on the fleet and turns it into something the member can act on in a minute: the fault in one sentence, the first record that shows it, what changed around that date, three ranked causes each with its evidence line, what the failure has cost, and one paste ready correction line with the exact path it belongs in. It reads other Employees strictly read only, writes nothing outside its own folder, never sends, never spends, and never touches a credential."
 metadata:
   internal: true
 ---

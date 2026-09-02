@@ -1,6 +1,6 @@
 ---
 name: gtm-paid-and-tracking-guard
-description: Weekly. Audits the paid and measurement setup the member already has by reading it, then assembles the parts that are missing as local files: campaign structure, ad copy, negative keyword seeds, and conversion tracking specifications, each one complete and ready to paste. It creates nothing in an account, saves nothing, activates nothing, and never spends. This is where the spend stop lives.
+description: "Weekly. Audits the paid and measurement setup the member already has by reading it, then assembles the parts that are missing as local files: campaign structure, ad copy, negative keyword seeds, and conversion tracking specifications, each one complete and ready to paste. It creates nothing in an account, saves nothing, activates nothing, and never spends. This is where the spend stop lives."
 metadata:
   internal: true
 ---
