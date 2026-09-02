@@ -1,0 +1,44 @@
+{
+  "name": "ai-employees",
+  "version": "1.2.0",
+  "description": "Open source AI Employees. 8 scheduled business roles on Claude Code. You own the files. They never send or spend.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "ai-employees": "installer/cli.mjs"
+  },
+  "files": [
+    "installer/",
+    "employees/",
+    "skills/",
+    "docs/",
+    "README.md",
+    "LICENSE",
+    "TRADEMARKS.md"
+  ],
+  "scripts": {
+    "test": "node .github/scripts/selftests.mjs && node .github/scripts/no-dashes.mjs",
+    "hire": "node installer/cli.mjs hire"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markfulton/ai-employees.git"
+  },
+  "homepage": "https://github.com/markfulton/ai-employees#readme",
+  "bugs": {
+    "url": "https://github.com/markfulton/ai-employees/issues"
+  },
+  "keywords": [
+    "ai-employees",
+    "ai-agents",
+    "claude-code",
+    "scheduled-tasks",
+    "automation",
+    "small-business"
+  ],
+  "author": "Mark Fulton (https://www.reinventing.ai)",
+  "license": "MIT"
+}

@@ -1,0 +1,64 @@
+name: Something broke
+description: A routine did the wrong thing, stopped when it should not have, or a run record says failed and you cannot tell why.
+title: "[employee slug] [routine id]: one line"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. The fastest fix comes from the run record and the file the routine touched. If the problem is a way to make a routine send, spend, or handle a credential, please use Security, then Report a vulnerability instead of this form.
+  - type: dropdown
+    id: employee
+    attributes:
+      label: Employee
+      options:
+        - gtm-engineer
+        - seo-employee
+        - web-dev-employee
+        - social-media-employee
+        - ad-manager-employee
+        - sales-employee
+        - customer-satisfaction-employee
+        - chief-of-staff
+        - the installer or the hire skill
+        - the docs
+    validations:
+      required: true
+  - type: input
+    id: routine
+    attributes:
+      label: Routine id
+      description: The folder name under routines/, for example gtm-board-standup. Leave blank if it is not about one routine.
+  - type: input
+    id: version
+    attributes:
+      label: Kit version and harness
+      description: The VERSION file in the kit, and what ran it, for example 1.2.0 on Claude Desktop 1.1.5368 on Windows 11.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should have happened
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Paste the run record line from runlog.jsonl if there is one. It carries no personal data by design. Do not paste a brief, a queue file, or anything with a customer's name in it.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to see it again
+      description: The fire time, the page, or the file that triggers it.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you send
+      options:
+        - label: I ran the three self tests (copy-check, runlog, guard) and they pass
+        - label: There is no credential, token, customer name, or live URL with a token in this report
+          required: true

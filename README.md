@@ -1,0 +1,208 @@
+<div align="center">
+
+# AI Employees
+
+**Open source, scheduled, yours.**
+
+Eight AI employees that each run a whole business role on a schedule, on your own machine, on Claude Code. They never send and they never spend. You do.
+
+[![Claude Code](https://img.shields.io/badge/Claude_Code-tested-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
+[![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
+[![Windows](https://img.shields.io/badge/Windows-tested-2B2B2B?style=for-the-badge)](docs/HARNESSES.md)
+[![DCO](https://img.shields.io/badge/DCO-sign_off_required-30363D?style=for-the-badge)](CONTRIBUTING.md)
+[![npm](https://img.shields.io/badge/npm-ai--employees-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/ai-employees)
+
+**Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (325,000+ members)
+
+</div>
+
+<!-- assets/demo.gif and assets/org-chart.png go here. The spec is in assets/README.md. -->
+
+The GTM Engineer has run my club launch every weekday since August 27. The other seven are built to the same standard and I am running them on my own business from launch day, in public.
+
+Not chat assistants. Scheduled jobs that cover a whole role, run on your own machine, and brief you every morning. Every routine, every schedule, every install prompt is in this repo. Nothing is held back.
+
+## The eight
+
+| Employee | Role | What it owns | Routines | Cadence | Folder |
+|---|---|---|---|---|---|
+| GTM Engineer | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
+| SEO Employee | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
+| Web Dev Employee | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
+| Social Media Employee | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
+| Ad Manager Employee | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
+| Sales Employee | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
+| Customer Satisfaction Employee | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
+| Chief of Staff | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
+
+Fifty nine routines. Every one has an id that is its folder name, its YAML `name`, and the name of its scheduled job, always the same string.
+
+## Quick start
+
+Read [docs/PREREQUISITES.md](docs/PREREQUISITES.md) first. It is ten items, and the one that fails silently is the login.
+
+**Path A, the installer.** Copies one employee to a folder outside cloud sync, runs its self tests, and prints its install prompt with the path filled in.
+
+```
+npx ai-employees hire gtm-engineer --to D:\AgentOps\gtm-engineer
+```
+
+**Path B, a clone.** Copy `employees/gtm-engineer` to a folder outside OneDrive, Dropbox, Google Drive or iCloud, open a Claude Code session there, and paste `INSTALL-PROMPT.md`.
+
+Either way: you spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session. It researches your business from your own public pages instead of interviewing you, writes your strategy files, builds your dashboard, registers its own schedule, and stops exactly once to show you its first drafts. [docs/INSTALL.md](docs/INSTALL.md) is the long version, per operating system and per scheduler.
+
+Tested on Claude Code on Windows through the Desktop app scheduler and Task Scheduler. OpenClaw and Hermes have built in cron and their install notes are included, not yet tested by me. OpenCode, Grok Bot, Codex and Antigravity notes come from the club docs and are untested. macOS through launchd is expected to work and untested until a Mac tester runs the checklist.
+
+<details>
+<summary>OpenClaw (notes included, not yet tested by me)</summary>
+
+Reads the same `SKILL.md` format. Register each routine's schedule as an OpenClaw automation pointed at the kit's `routines/` folder: `openclaw automations create "<cron>" "Read <root>/routines/<id>/SKILL.md and follow it." --name <id> --session isolated`, one per routine, with the timezone flag. Probe its browser control first: the kit never signs in, so a clean browser means every read of your own accounts lands on a login wall. [docs/HARNESSES.md](docs/HARNESSES.md).
+</details>
+
+<details>
+<summary>Hermes (notes included, not yet tested by me)</summary>
+
+Point its built in cron at the kit's `routines/` folder and mirror the cadence in `SCHEDULE.md`, one job per routine, each handed that routine's `SKILL.md` as the prompt. Confirm it reads files and runs a shell command; then the file routines work and the browser question decides the rest.
+</details>
+
+<details>
+<summary>OpenCode (untested, notes from the club docs)</summary>
+
+Reads the Claude Code skill format directly. No scheduler of its own: mirror `SCHEDULE.md` into the operating system's scheduler with `opencode run "Read <root>/routines/<id>/SKILL.md and follow it."`, one job per routine. Add a browser automation server for the browser lane.
+</details>
+
+<details>
+<summary>Grok Bot (untested, notes from the club docs)</summary>
+
+Its bots already run routines on a schedule from their own cloud computer. Create one recurring task per routine and hand it that routine's `SKILL.md` as the run prompt. Whether it can reach your own signed in accounts is the thing to check first, because it runs somewhere else.
+</details>
+
+<details>
+<summary>Codex (untested, notes from the club docs)</summary>
+
+Drive the cadence with scheduled runs, one per routine, each `codex exec "Read <root>/routines/<id>/SKILL.md and follow it."`. Confirm the sandbox can write inside the kit folder and reach the network before you trust a run.
+</details>
+
+<details>
+<summary>Antigravity (untested, notes from the club docs)</summary>
+
+Schedule each routine with the `agy` job runner pointed at the routine folder rather than registered as a global pack: `agy -p "Read <root>/routines/<id>/SKILL.md and follow it."`. Settle whether it drives the browser profile you are signed in to or a clean one.
+</details>
+
+A free club account gets the guided Hire Your First AI Employee walkthrough with the launch replay, the session calendar, the preview lessons and employee updates: [club.reinventing.ai](https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees).
+
+## What an employee is
+
+A folder. Six documents and a `routines/` directory, and nothing runs anywhere else.
+
+```
+gtm-engineer/
+  CONTRACT.md          the spine: who writes which file, the guards, the two stops
+  ROLE.md              who this employee is and how it thinks
+  CAPABILITIES.md      capability to route, per harness, honest about what was confirmed
+  SCHEDULE.md          the only file that carries a cadence, a fire time, a window, or a budget
+  INSTALL-PROMPT.md    the one prompt you paste, once
+  routines/<id>/SKILL.md   one folder per routine
+  scripts/             guard.mjs, runlog.mjs, copy-check.mjs, each with a --selftest
+  run/                 one Windows launcher example per routine
+```
+
+**Windows, not fire times.** Every routine has a fire time you register and a window it checks. Outside the window it records a skip and exits. A period key (the local date, the ISO week, or the month) makes sure the work happens once however many times the job fires. That is what makes a late or duplicated fire harmless, on every scheduler.
+
+**Scheduled jobs, not skills.** A skill is invoked on demand. A routine is fired at a time, in a folder, inside a window. Point your scheduler at the kit's `routines/` folder and never copy them into a global skills directory; they carry `metadata: internal: true` so registries do not list them. The only on demand skill in this repo is [`hire`](skills/hire/SKILL.md).
+
+**No Sunday.** A Sunday belongs to the ISO week that just ended, so a weekly routine there would share a period key with the following week and one of the two runs would be lost with no error.
+
+**Glossary:** member: the person who owns this Employee. The kits say "the member" throughout; read it as you. The «guillemets» are placeholders the install fills in. [docs/HOW-EMPLOYEES-WORK.md](docs/HOW-EMPLOYEES-WORK.md) is the whole model, including the five laws every kit is built to.
+
+## Two rules, and what each routine does
+
+**They never send.** No email, DM, post, comment, connection request, form submit, or published page leaves without your hand on it. Drafts land in queue files and, if you turn it on, as unsent drafts in your own mailbox. Forms get filled and left open in their tab. On LinkedIn this is total: it reads your own signed in pages and never clicks, never types, never opens a composer.
+
+**They never spend.** No budget, bid, campaign state, activation, or purchase changes. Nothing is created or saved inside an account that can spend, in any state, including a draft. A campaign is assembled as a build sheet and left for you. And they never create an account, enter a password, complete a captcha, accept terms, or write a credential into any file.
+
+Two of the eight publish to properties you own, on your configuration and nowhere else: the SEO Employee publishes articles to your own blog, and the Social Media Employee hands drafted posts to the channel you connect, after a veto window in which the morning brief names what goes out today. Neither ever messages a person. Everything else is drafts.
+
+| Routine kind | Reads | Writes | Leaves for you | Never |
+|---|---|---|---|---|
+| The standup, every weekday | Every ledger, run record and tick since yesterday | The board and the thirty line brief | The brief, first thing | Uses a browser |
+| Sweeps (signals, prospects, inbox, site health, material, market) | Your own signed in pages and public pages | Dated, sourced ledger lines | Nothing to do; the drafts come from these | Types into a page, replies, marks anything read |
+| Drafting (outreach, replies, posts, articles, creative) | The ledgers, your strategy files, your proof inventory | Queue files, unsent mailbox drafts, article drafts, creative sets | The drafts, to edit and send | Sends, posts, submits, or uses a number not in your proof inventory |
+| Form filling (directories, press, listings) | The card and your strategy files | The queue entry with every field's value | The tab, filled, on the last step | Clicks Submit, Publish, Post, Send, Activate, Enable, or Create account |
+| Account reads (ads, billing, analytics, registrar, host) | Read screens in accounts you are signed in to | Metrics ledgers, drift findings, build sheets | Every change as a paste ready line with the screen named | Changes a setting, saves a draft in an account that can spend |
+| Weekly reviews and monthly refreshes | A week or a month of the kit's own ledgers | The scoreboard with a source beside every number, rewritten strategy where evidence disagrees | One kill and one scale, as cards | Estimates a number it did not measure |
+| The Chief of Staff | Every other employee's run log, read only | The fleet page, the fault dossier, the decision brief | Three moves, argued both ways | Writes into another employee's folder |
+
+Everything the employee decides on its own lands as one dated line in a changelog you can read in a minute. Everything it learns about your sites lands in a recipe file inside its own folder. When it gets something wrong, one dated line in that file's `## Corrections` section outranks the file from the next run on.
+
+## Example output
+
+From a fictional business, Northwind Roofing, on a baseline week. The real ones look like this with your cards in them. Every employee folder has an `examples/` directory with a brief, a run log and the ledgers the first run creates.
+
+```
+# 2026-03-05
+
+## Today
+- C-007 | Stage the storm season email for segment-1 | queue/2026-03-05-email.md
+- C-011 | Fill the local trades directory listing and leave the tab open | queue/2026-03-05-form.md
+- C-012 | Verify the quote request conversion event fires on the thank you page | paid/conversion-quote-request.md
+
+## Waiting on you
+- queue/2026-03-05-email.md: three drafts, none ticked
+- queue/2026-03-04-dm.md: two drafts, one ticked
+- C-009 | Submit the supplier co-marketing listing | filled in its tab, the submit is yours
+- Assumption: working hours weekdays, seven to five local, read from the contact page; correct it in strategy/offer.md
+- Strategy change: segment-3, property managers, gained a gathering place from the sweep, strategy/CHANGELOG.md
+
+## Blocked
+- gtm-signal-sweep, open since 2026-02-26: the review platform asked for a sign in, nothing entered
+- one more open blocker, listed in gtm-latest.md
+
+Guided version, updates and premium employees: club.reinventing.ai
+```
+
+[employees/gtm-engineer/examples/brief-latest.md](employees/gtm-engineer/examples/brief-latest.md), with the run log and the ledgers beside it.
+
+## What it costs
+
+- About $20 of API equivalent usage on a plain weekday per employee on Opus, about $27 on Monday and Friday, measured over 29 production runs of the GTM Engineer. About $8 a weekday on Sonnet by repricing the same tokens.
+- On a Max 20x plan one employee fits comfortably in my experience; on Pro it will hit the weekly limit; on an API key it costs what the table says and loses the browser lane.
+- A skipped fire used to cost about a dollar; the guard script now runs before any document is read so it costs cents. [docs/COST.md](docs/COST.md) has the per routine table, the dates, and what is still unmeasured.
+
+## Before first run
+
+- **Nothing to fill in.** The install researches your offer, your buyer and your positioning from your own public pages and confirms a short list with you. Three lines at the top of the install prompt: your folder, your home page, and an optional line for anything off limits.
+- **A browser signed in** to the accounts the employee should read, and your mailbox if you want drafts landing there. Log in yourself; it never will.
+- **Real customer words, if you have any.** Real quotes are the only social proof the routines are allowed to use. With none, they write copy with no social proof rather than inventing any.
+- **Your ceilings.** A paid ceiling of zero puts the guard into observation only. Which channels are off limits, and any claim that must never be made, one line each.
+- **A machine that is awake** at the fire times in `SCHEDULE.md`, or fire times moved to after it normally wakes.
+
+## Employee of the Week
+
+One employee at a time, with a real output from a real run on my own business. The series lives at [docs/EMPLOYEE-OF-THE-WEEK.md](docs/EMPLOYEE-OF-THE-WEEK.md). Community entries from Discussions go there too, with your name on them.
+
+## Contributing
+
+Routine requests, employee proposals, harness reports, translations, and corrections from real runs. Post what an employee did for your business in Discussions under Show and tell; good builds go into the README with your name on them. [CONTRIBUTING.md](CONTRIBUTING.md) has the rules: MIT in and out, a DCO sign off on every commit, no em or en dash anywhere, and the two stops are not negotiable.
+
+Issues are answered within a working day for the first month; after that, Discussions is where the community answers and I read every thread.
+
+## Go further
+
+The eight are free for good. The Agent Ops Masterclass, the premium software library with a resale license, the live sessions and, from October, premium employees live in the [Agent Ops Club](https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees). A free club account gets you the session calendar, the walkthrough lesson with the launch replay, the preview lessons and employee updates.
+
+## FAQ
+
+**Does it send anything?** No. Drafts, filled forms, build sheets. You press the button. **Windows or Mac?** Tested on Windows; macOS expected to work and untested until a Mac tester runs the checklist. **Can I run just one?** Yes; each is a self contained folder. **What if my machine is asleep?** The Desktop app and Task Scheduler run one late catch up, launchd folds missed fires into one, cron skips; the window makes any of that safe. **Can I sell installs to clients?** Yes, it is MIT; just do not call yours by the club's name. The rest is in [docs/FAQ.md](docs/FAQ.md).
+
+## License
+
+MIT. Copyright (c) 2026 Mark Fulton. [LICENSE](LICENSE).
+
+## Trademarks
+
+Names and logos are not licensed. "Reinventing.AI" and "Agent Ops Club" are claimed as marks; "AI Employees" and the role names are descriptive and free to use. Forks get their own name. [TRADEMARKS.md](TRADEMARKS.md).
+
+## Credits
+
+Built by Mark Fulton with Claude Code. Every contributor is in [CREDITS.md](CREDITS.md) and in the git history. Report a way to make an employee send or spend through [SECURITY.md](SECURITY.md), not a public issue.

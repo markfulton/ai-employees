@@ -1,0 +1,50 @@
+name: Routine request
+description: A routine one of the eight employees should have.
+title: "[employee slug]: routine idea in one line"
+labels: ["routine-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A routine is a scheduled job that owns named files and writes one run record. It never sends and never spends. Read docs/HOW-EMPLOYEES-WORK.md first; the best requests already fit that shape.
+  - type: dropdown
+    id: employee
+    attributes:
+      label: Which employee
+      options:
+        - gtm-engineer
+        - seo-employee
+        - web-dev-employee
+        - social-media-employee
+        - ad-manager-employee
+        - sales-employee
+        - customer-satisfaction-employee
+        - chief-of-staff
+    validations:
+      required: true
+  - type: input
+    id: cadence
+    attributes:
+      label: Cadence
+      description: Weekdays, one weekday, or monthly. Nothing runs on a Sunday.
+    validations:
+      required: true
+  - type: textarea
+    id: owns
+    attributes:
+      label: What it would own
+      description: The files it reads, the files it writes, and what the member opens the next morning.
+    validations:
+      required: true
+  - type: textarea
+    id: never
+    attributes:
+      label: What it must never do
+      description: Beyond the two stops. For example, a routine that reads billing screens must name a refund and never make one.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Why it earns a slot
+      description: What you do by hand today that this would replace, and roughly how often.

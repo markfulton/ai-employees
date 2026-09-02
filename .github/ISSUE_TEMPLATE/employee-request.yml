@@ -1,0 +1,48 @@
+name: Employee request
+description: A ninth role, proposed the way the eight are built.
+title: "Employee: role name"
+labels: ["employee-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        An employee is a whole business role as a folder of scheduled routines, with a morning brief, two stops, and a schedule with no Sunday. Read docs/HOW-EMPLOYEES-WORK.md before filling this in. Premium roles I am already building are listed in the README under Go further, so check there first.
+  - type: input
+    id: role
+    attributes:
+      label: Role
+      description: For example, Finance and Bookkeeping.
+    validations:
+      required: true
+  - type: textarea
+    id: replaces
+    attributes:
+      label: What it replaces
+      description: The hire, retainer, or agency line this would cover, in one line.
+    validations:
+      required: true
+  - type: textarea
+    id: routines
+    attributes:
+      label: The routines
+      description: Five to eight, each with a cadence and one line on what it owns. The weekday standup that writes the brief is one of them.
+    validations:
+      required: true
+  - type: textarea
+    id: stops
+    attributes:
+      label: Where the two stops fall in this role
+      description: What a send or a spend looks like here, and what the routine does instead (drafts, stages, leaves a tab open).
+    validations:
+      required: true
+  - type: textarea
+    id: surfaces
+    attributes:
+      label: The surfaces it reads
+      description: The screens, files, or accounts it would read through your own signed in browser. Read only.
+  - type: checkboxes
+    id: run
+    attributes:
+      label: Would you run it
+      options:
+        - label: I would run this on my own business and report what broke
