@@ -591,7 +591,9 @@ function check(text, dest, ctx) {
 
   /* Rule 7. Autolinker bait. */
   if (profile.autolink) {
-    const linkView = maskRanges(prose, rangesOf(prose, [/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z.]{2,}/g]));
+    // Email addresses and the anchor text of a markdown link are masked first: a dotted token inside
+    // [anchor](url) is a real link already, not bait for an autolinker.
+    const linkView = maskRanges(prose, rangesOf(prose, [/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z.]{2,}/g]).concat(rangesOf(text, [/\[[^\]\n]{1,200}\]\(/g])));
     // The middle group takes any number of labels, so a three label host is
     // caught. Without it the scan matched help.example, found example was not
     // a suffix it knew, and skipped past the .com entirely.
