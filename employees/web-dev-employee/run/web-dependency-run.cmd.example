@@ -1,0 +1,11 @@
+:: «WEB_ROOT»\run\web-dependency-run.cmd
+:: Copy this file to web-dependency-run.cmd (drop the .example), replace «WEB_ROOT» with your real folder, and check the
+:: path to claude.exe: this is where the native installer puts it (where.exe claude shows yours).
+:: Never point it at the Desktop app's bundled copy; Task Scheduler cannot see that path.
+:: Section 10 of CAPABILITIES.md: a scheduled run must never wait on a prompt. If this routine stalls
+:: or is refused a tool under acceptEdits, change it to bypassPermissions for this one file, knowing
+:: what that grants. The two stops live inside the routine, not in this flag.
+@echo off
+cd /d "«WEB_ROOT»"
+"%USERPROFILE%\.local\bin\claude.exe" -p "Read «WEB_ROOT»/routines/web-dependency-run/SKILL.md and follow it." --permission-mode acceptEdits --output-format json < nul > "«WEB_ROOT»\run\web-dependency-run.last.json"
+if errorlevel 1 node "«WEB_ROOT»\scripts\runlog.mjs" --failed-run web-dependency-run --exit-code %errorlevel%

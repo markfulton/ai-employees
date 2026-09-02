@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.cmd.example text eol=crlf
+*.png binary
+*.gif binary
+*.jpg binary
