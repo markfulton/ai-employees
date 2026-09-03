@@ -4,7 +4,7 @@
 
 **Open source, scheduled, yours.**
 
-Eight AI employees that each run a whole business role on a schedule, on your own machine, on Claude Code. They never send and they never spend. You do.
+Eight AI employees that each run a whole business role on a schedule, on your own machine, on the agent you already run. They never send and they never spend. You do.
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-ready-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
