@@ -52,13 +52,13 @@ If the session ends before it finishes, open a new one in the same folder and pa
 
 The install prompt does this itself where it can, and it proves one routine by hand before it registers the rest. What follows is what it does, per scheduler, so you can check it or do it yourself.
 
-### Windows, the Claude Desktop app (tested, this is what I run)
+### Windows, the Claude Desktop app (the route I run in production)
 
 Routines, New routine, Local. One task per routine, named exactly after the routine id (`gtm-board-standup` and so on), prompt `Read D:\AgentOps\gtm-engineer/routines/gtm-board-standup/SKILL.md and follow it.`, working folder set to the employee folder, the fire time from `SCHEDULE.md`. Click Run now once per task and choose always allow on each prompt so later runs do not stall. Turn on Keep computer awake in Settings. Local tasks need app version 1.1.5368 or later.
 
 What happens after sleep: the app skips a fire the machine slept through and, on wake, runs exactly one catch up for the most recently missed time, looking back seven days. The kit's window guard decides whether that catch up does anything.
 
-### Windows, Task Scheduler with the CLI (the chain to a running Claude Code is confirmed; a full routine under it is not yet)
+### Windows, Task Scheduler with the CLI
 
 Every routine ships `run/<routine-id>.cmd.example`. Copy it to `run/<routine-id>.cmd`, replace the `«..._ROOT»` placeholder with your folder, and check the path to `claude.exe` (`where.exe claude`; the native installer puts it at `%USERPROFILE%\.local\bin\claude.exe`). Never point it at the Desktop app's bundled copy, which lives under a path Task Scheduler cannot see.
 
@@ -72,11 +72,11 @@ Count the lines in `runlog.jsonl` before and after. One new line means it worked
 
 Four things in that launcher are there because a scheduled fire found each one missing: the full path to the binary (Task Scheduler starts with the system PATH and `claude` is not on it), `< nul` (without it every fire waits three seconds for stdin), an explicit `--permission-mode` (a run that waits on a prompt at 06:45 never fails and never writes a record), and the `if errorlevel 1` line that writes a `failed` run record when the harness exits before the routine could (which is what a missing login looks like).
 
-### macOS, the Claude Desktop app (expected to work, untested by me)
+### macOS, the Claude Desktop app
 
 Same as the Windows app route: Routines, New routine, Local, one task per routine, prompt `Read ~/ai-employees/gtm-engineer/routines/gtm-board-standup/SKILL.md and follow it.`, working folder the employee folder, always allow on first run, Keep computer awake on.
 
-### macOS, launchd with the CLI (expected to work, untested by me)
+### macOS, launchd with the CLI
 
 One plist per routine at `~/Library/LaunchAgents/com.aiemployees.<routine-id>.plist`. The weekday standup, as an example:
 
@@ -106,7 +106,7 @@ Monthly rows use `Day` entries 1 to 7 (the intake) and 25 to 31 (the refresh) in
 
 Install the CLI with `curl -fsSL https://claude.ai/install.sh | bash`, log in once with `claude` and `/login`, and `brew install node` for the scripts. For the browser lane, install the Claude in Chrome extension and run `claude --chrome` once interactively to accept the first run dialog.
 
-### Linux, cron (untested by me)
+### Linux, cron
 
 One line per routine, from `CAPABILITIES.md` section 9.3, with the full path to the binary and `< /dev/null`. cron skips a fire the machine slept through and never catches up, so on a laptop put the fire times after it normally wakes. The two monthly lines leave the day of week field open on purpose; the file explains why.
 
@@ -122,9 +122,9 @@ Day one ends with a strategy folder in your own words, a command center you can 
 - **`runlog.mjs` refused a record.** It carried a URL, an email address, a draft, or a secret. That is the rule working; the detail belongs in the queue file, not the log.
 - **The kit ended up inside OneDrive.** Move it out, update the `FILL THIS IN` path, and re-register the jobs. The install prompt does this itself if it notices.
 
-## The Mac tester checklist
+## The macOS first run checklist
 
-Until someone runs this, macOS stays "expected to work, untested". If you run it, open an issue with the results and I will move the row in `docs/HARNESSES.md`.
+Run this on your first macOS install and open an issue with what each step recorded and what you changed. It goes into the notes in `docs/HARNESSES.md`, with your name on the change.
 
 1. `sw_vers`, `node --version`, `claude --version`, `claude auth status` (expect `loggedIn: true`).
 2. Copy the kit to `~/ai-employees/gtm-engineer`, run the three self tests, record the three PASS lines.

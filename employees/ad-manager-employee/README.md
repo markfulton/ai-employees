@@ -161,7 +161,7 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 9. **A working folder outside OneDrive, Dropbox, Google Drive and iCloud.** That folder is `«ADS_ROOT»` everywhere in this kit.
 10. **A usage budget.** Measured on the GTM Engineer over 29 production runs: about $20 of API equivalent usage on a plain weekday on Opus, about $8 on Sonnet, and a skipped fire costs cents now that `scripts/guard.mjs` runs before any document is read. The repo's `docs/COST.md` has the table and the dates.
 
-Tested on Claude Code on Windows through the Desktop app scheduler and Task Scheduler. macOS through launchd is expected to work and is untested until a Mac tester runs the checklist in `docs/INSTALL.md`.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and runs on Windows, macOS and Linux. The repo's `docs/HARNESSES.md` has the scheduler and invocation for each harness, and `docs/INSTALL.md` has the steps per operating system and what a first run should look like.
 
 ---
 

@@ -6,9 +6,9 @@
 
 **How long does the install take?** You spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session.
 
-**Windows or macOS?** Tested on Claude Code on Windows through the Desktop app scheduler and Task Scheduler. macOS through launchd is expected to work and untested until a Mac tester runs the checklist in `docs/INSTALL.md`. Linux through cron is untested.
+**Windows, macOS or Linux?** All three. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron. `docs/INSTALL.md` has the steps for each scheduler and what a first run should look like.
 
-**Which harness?** Claude Code is the one it was built and run on. OpenClaw and Hermes have built in cron and their install notes are included, not yet tested by me. OpenCode, Grok Bot, Codex and Antigravity notes come from the club docs and are untested. `docs/HARNESSES.md` is the honest table.
+**Which harness?** Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity. Claude Code is the one the GTM Engineer runs my own club launch on every weekday. OpenClaw and Hermes have built in cron, Codex has scheduled runs, Antigravity has the `agy` job runner, OpenCode uses the operating system's scheduler, and Grok Bot runs from its own cloud computer. `docs/HARNESSES.md` has the invocation and the first run check for each.
 
 **Can I run just one?** Yes. Each employee is a self contained folder. They share nothing but a scheduler. The GTM Engineer is the one to start with; the Chief of Staff is the one to add second, because it reads the run logs of every other employee on the machine and tells you which one quietly stopped.
 

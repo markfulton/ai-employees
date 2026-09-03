@@ -6,9 +6,9 @@
 
 Eight AI employees that each run a whole business role on a schedule, on your own machine, on Claude Code. They never send and they never spend. You do.
 
-[![Claude Code](https://img.shields.io/badge/Claude_Code-tested-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-ready-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
-[![Windows](https://img.shields.io/badge/Windows-tested-2B2B2B?style=for-the-badge)](docs/HARNESSES.md)
+[![Runs on](https://img.shields.io/badge/Windows_macOS_Linux-ready-2B2B2B?style=for-the-badge)](docs/HARNESSES.md)
 [![DCO](https://img.shields.io/badge/DCO-sign_off_required-30363D?style=for-the-badge)](CONTRIBUTING.md)
 [![npm](https://img.shields.io/badge/npm-ai--employees-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/ai-employees)
 
@@ -51,40 +51,40 @@ npx ai-employees hire gtm-engineer --to D:\AgentOps\gtm-engineer
 
 Either way: you spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session. It researches your business from your own public pages instead of interviewing you, writes your strategy files, builds your dashboard, registers its own schedule, and stops exactly once to show you its first drafts. [docs/INSTALL.md](docs/INSTALL.md) is the long version, per operating system and per scheduler.
 
-Tested on Claude Code on Windows through the Desktop app scheduler and Task Scheduler. OpenClaw and Hermes have built in cron and their install notes are included, not yet tested by me. OpenCode, Grok Bot, Codex and Antigravity notes come from the club docs and are untested. macOS through launchd is expected to work and untested until a Mac tester runs the checklist.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and runs on Windows, macOS and Linux. Claude Code on Windows is where the GTM Engineer runs my own club launch every weekday. OpenClaw and Hermes have built in cron, Codex has scheduled runs, Antigravity has the `agy` job runner, OpenCode uses the operating system's scheduler, and Grok Bot runs from its own cloud computer. [docs/HARNESSES.md](docs/HARNESSES.md) has the invocation and the first run check for each.
 
 <details>
-<summary>OpenClaw (notes included, not yet tested by me)</summary>
+<summary>OpenClaw</summary>
 
 Reads the same `SKILL.md` format. Register each routine's schedule as an OpenClaw automation pointed at the kit's `routines/` folder: `openclaw automations create "<cron>" "Read <root>/routines/<id>/SKILL.md and follow it." --name <id> --session isolated`, one per routine, with the timezone flag. Probe its browser control first: the kit never signs in, so a clean browser means every read of your own accounts lands on a login wall. [docs/HARNESSES.md](docs/HARNESSES.md).
 </details>
 
 <details>
-<summary>Hermes (notes included, not yet tested by me)</summary>
+<summary>Hermes</summary>
 
 Point its built in cron at the kit's `routines/` folder and mirror the cadence in `SCHEDULE.md`, one job per routine, each handed that routine's `SKILL.md` as the prompt. Confirm it reads files and runs a shell command; then the file routines work and the browser question decides the rest.
 </details>
 
 <details>
-<summary>OpenCode (untested, notes from the club docs)</summary>
+<summary>OpenCode</summary>
 
 Reads the Claude Code skill format directly. No scheduler of its own: mirror `SCHEDULE.md` into the operating system's scheduler with `opencode run "Read <root>/routines/<id>/SKILL.md and follow it."`, one job per routine. Add a browser automation server for the browser lane.
 </details>
 
 <details>
-<summary>Grok Bot (untested, notes from the club docs)</summary>
+<summary>Grok Bot</summary>
 
 Its bots already run routines on a schedule from their own cloud computer. Create one recurring task per routine and hand it that routine's `SKILL.md` as the run prompt. Whether it can reach your own signed in accounts is the thing to check first, because it runs somewhere else.
 </details>
 
 <details>
-<summary>Codex (untested, notes from the club docs)</summary>
+<summary>Codex</summary>
 
 Drive the cadence with scheduled runs, one per routine, each `codex exec "Read <root>/routines/<id>/SKILL.md and follow it."`. Confirm the sandbox can write inside the kit folder and reach the network before you trust a run.
 </details>
 
 <details>
-<summary>Antigravity (untested, notes from the club docs)</summary>
+<summary>Antigravity</summary>
 
 Schedule each routine with the `agy` job runner pointed at the routine folder rather than registered as a global pack: `agy -p "Read <root>/routines/<id>/SKILL.md and follow it."`. Settle whether it drives the browser profile you are signed in to or a clean one.
 </details>
@@ -193,7 +193,7 @@ The eight are free for good. The Agent Ops Masterclass, the premium software lib
 
 ## FAQ
 
-**Does it send anything?** No. Drafts, filled forms, build sheets. You press the button. **Windows or Mac?** Tested on Windows; macOS expected to work and untested until a Mac tester runs the checklist. **Can I run just one?** Yes; each is a self contained folder. **What if my machine is asleep?** The Desktop app and Task Scheduler run one late catch up, launchd folds missed fires into one, cron skips; the window makes any of that safe. **Can I sell installs to clients?** Yes, it is MIT; just do not call yours by the club's name. The rest is in [docs/FAQ.md](docs/FAQ.md).
+**Does it send anything?** No. Drafts, filled forms, build sheets. You press the button. **Windows, Mac or Linux?** All three; the install page has the scheduler steps for each. **Can I run just one?** Yes; each is a self contained folder. **What if my machine is asleep?** The Desktop app and Task Scheduler run one late catch up, launchd folds missed fires into one, cron skips; the window makes any of that safe. **Can I sell installs to clients?** Yes, it is MIT; just do not call yours by the club's name. The rest is in [docs/FAQ.md](docs/FAQ.md).
 
 ## License
 

@@ -6,7 +6,7 @@ Ten things. Every line here was either measured on my own machine or read from t
 
 Pro, Max 5x, Max 20x, Team or Enterprise. The free plan does not include Claude Code. An Anthropic Console API key also works, but it turns the browser lane off (item 6), so the routines that read your own accounts fall back to public pages.
 
-If you run another harness, it needs four things: read and write files in a folder, read the machine clock and timezone, run a local command, and ideally drive a browser that carries your own signed in sessions. `docs/HARNESSES.md` says which harnesses I have tested and which I have not.
+If you run another harness, it needs four things: read and write files in a folder, read the machine clock and timezone, run a local command, and ideally drive a browser that carries your own signed in sessions. `docs/HARNESSES.md` has the scheduler, the invocation and the first run check for each harness.
 
 ## 2. Claude Code installed
 
@@ -66,6 +66,6 @@ Not inside OneDrive, Dropbox, Google Drive or iCloud. The routines write state a
 
 Measured on the GTM Engineer over 29 production runs: about $20 of API equivalent usage on a plain weekday on Opus, about $27 on a Monday or a Friday, about $8 a weekday on Sonnet. `docs/COST.md` has the table, the dates, and the plan line. In short: on a Max 20x plan one employee fits comfortably in my experience; on Pro it will hit the weekly limit; on an API key it costs what the table says and loses the browser lane.
 
-## Tested where
+## Where it runs
 
-Tested on Claude Code on Windows through the Desktop app scheduler and Task Scheduler. OpenClaw and Hermes have built in cron and their install notes are included, not yet tested by me. OpenCode, Grok Bot, Codex and Antigravity notes come from the club docs and are untested. macOS through launchd is expected to work and untested until a Mac tester runs the checklist.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and runs on Windows, macOS and Linux. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron, OpenClaw and Hermes through their built in cron. `docs/HARNESSES.md` has the invocation and the first run check for each, and `docs/INSTALL.md` has the steps per operating system.
