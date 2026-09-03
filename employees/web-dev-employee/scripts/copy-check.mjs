@@ -560,10 +560,18 @@ function check(text, dest, ctx) {
 
   /* Rule 7. Autolinker bait. */
   if (profile.autolink) {
-    // Email addresses and the anchor text of a markdown link are masked first: a dotted token inside
-    // [anchor](url) is a real link already, not bait for an autolinker.
-    const linkView = maskRanges(prose, rangesOf(prose, [/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z.]{2,}/g]).concat(rangesOf(text, [/\[[^\]\n]{1,200}\]\(/g])));
-    const re = /(^|[^\w@/\\.])([A-Za-z0-9][\w-]{1,})\.([A-Za-z]{2,24})(?![\w-])/g;
+    // Email addresses and the anchor text of a real markdown link are masked
+    // first: a dotted token inside [anchor](https://...) is a link already, not
+    // bait for an autolinker. Only an anchor whose href starts with http or
+    // https counts, so the same dotted token bare in prose still fails. The
+    // anchor scan runs on the raw text because the prose view has already
+    // blanked the "](" that opens every link target.
+    const linkView = maskRanges(prose, rangesOf(prose, [/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z.]{2,}/g])
+      .concat(rangesOf(text, [/\[[^\]\n]{1,200}\]\((?=https?:\/\/)/g])));
+    // The middle group takes any number of labels, so a three label host is
+    // caught. Without it the scan matched help.example, found example was not
+    // a suffix it knew, and skipped past the .com entirely.
+    const re = /(^|[^\w@/\\.])([A-Za-z0-9][\w-]{1,}(?:\.[A-Za-z0-9][\w-]*)*)\.([A-Za-z]{2,24})(?![\w-])/g;
     let m;
     while ((m = re.exec(linkView)) !== null) {
       const suffix = m[3].toLowerCase();
@@ -707,6 +715,8 @@ function selftest() {
     ["a bare domain in prose is fine here", "The host serves example.com from that project.", "report", ctx, []],
     ["the expiry line the platform guard has to write", "example.com expires 2026-04-02 and auto renew reads off", "report", ctx, []],
     ["a real link is fine", "Open [the screen](https://example.com/projects) to change it.", "report", ctx, []],
+    ["a dotted anchor with a real href is fine", "Open [club.example.com](https://club.example.com/projects) to change it.", "report", ctx, []],
+    ["the same dotted token bare in prose is fine here", "Open club.example.com to change it.", "report", ctx, []],
     ["a path in backticks is fine", "The ledger is `health/incidents.jsonl` and it appends.", "policy", ctx, []],
     ["a bare kit path is fine", "Write it to health/incidents.jsonl every run.", "plain", ctx, []],
     ["a filename is not a link", "Open changes/2026-03-05-fix-C-041.md and read the gate.", "plain", ctx, []],

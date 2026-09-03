@@ -667,10 +667,18 @@ function check(text, dest, ctx) {
 
   /* Rule 11. Autolinker bait. */
   if (profile.autolink) {
-    // Email addresses and the anchor text of a markdown link are masked first: a dotted token inside
-    // [anchor](url) is a real link already, not bait for an autolinker.
-    const linkView = maskRanges(prose, rangesOf(prose, [/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z.]{2,}/g]).concat(rangesOf(text, [/\[[^\]\n]{1,200}\]\(/g])));
-    const re = /(^|[^\w@/\\.])([A-Za-z0-9][\w-]{1,})\.([A-Za-z]{2,24})(?![\w-])/g;
+    // Email addresses and the anchor text of a real markdown link are masked
+    // first: a dotted token inside [anchor](https://...) is a link already, not
+    // bait for an autolinker. Only an anchor whose href starts with http or
+    // https counts, so the same dotted token bare in prose still fails. The
+    // anchor scan runs on the raw text because the prose view has already
+    // blanked the "](" that opens every link target.
+    const linkView = maskRanges(prose, rangesOf(prose, [/[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z.]{2,}/g])
+      .concat(rangesOf(text, [/\[[^\]\n]{1,200}\]\((?=https?:\/\/)/g])));
+    // The middle group takes any number of labels, so a three label host is
+    // caught. Without it the scan matched help.example, found example was not
+    // a suffix it knew, and skipped past the .com entirely.
+    const re = /(^|[^\w@/\\.])([A-Za-z0-9][\w-]{1,}(?:\.[A-Za-z0-9][\w-]*)*)\.([A-Za-z]{2,24})(?![\w-])/g;
     let m;
     while ((m = re.exec(linkView)) !== null) {
       const suffix = m[3].toLowerCase();
@@ -780,6 +788,8 @@ function selftest() {
     ["unresolved placeholder", "Shipped «feature name» this week.", "post", ctx, ["placeholder"]],
     ["a secret", "Set the key to sk_" + "live_51H8xQ2ePlaceholderValue here.", "plan", ctx, ["secret"]],
     ["a bare domain in prose", "Read more at example.com before you reply.", "plain", ctx, ["autolink"]],
+    ["a dotted anchor with a real href is fine", "Read more at [club.example.com](https://club.example.com/guide) before you reply.", "plain", ctx, []],
+    ["the same dotted token bare in prose still fails", "Read more at club.example.com before you reply.", "plain", ctx, ["autolink"]],
     ["a bare URL on its own line is fine", "The write up is here.\n\nhttps://www.example.com/post\n", "post", ctx, []],
     ["a path in backticks is fine", "The ledger is `posts/posts.jsonl` and it appends.", "plan", ctx, []],
     ["a bare kit path is fine", "Write it to posts/posts.jsonl every run.", "plain", ctx, []],
