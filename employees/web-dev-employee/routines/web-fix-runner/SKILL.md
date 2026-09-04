@@ -705,7 +705,7 @@ The rule from the head of that file that governs this run above all others: **ve
 - **`web-inventory-refresh`** owns the branch convention, the build and test commands, and the rule file path you read at Step 3. A command that is wrong is a `research` card for it, never an edit you make.
 - **`web-guardrail-review`** decides at the end of the month what you may change next month, from the outcomes of the changes you drafted. **It is not something to argue with inside a run.** A rung that felt too narrow all month is one line in your run records, and those run records are the evidence it reads.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 You never write into another Employee's folder and you never read one. A change to a member's site that another Employee would want to know about reaches them through `web-latest.md`, which `web-standup` writes.
 

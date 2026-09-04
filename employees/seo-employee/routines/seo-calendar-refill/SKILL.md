@@ -577,7 +577,7 @@ The definition to hold on to: **a second run appends no second block, and it als
 - **`seo-index-sweep`** never interacts with this routine.
 - **`seo-intake-and-map`** owns `strategy/topic-map.md`, `strategy/properties.md`, and `strategy/voice.md`. **You attach spokes to the pillars it wrote and you introduce at most one new one.** Retirements, restructures, and every property fact are cards for it with the evidence path.
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 Which are installed is recorded in `state/seo-intake-and-map.json` under `installed_employees[]`. Read it there.
 

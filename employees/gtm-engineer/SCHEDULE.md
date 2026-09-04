@@ -25,7 +25,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `gtm-intake-and-dashboard` | `first-weekday` | 13:00 | 12:45 | 17:00 | `YYYY-MM` | 45 min | light |
 | `gtm-icp-refresh` | `last-weekday` | 14:00 | 13:45 | 17:30 | `YYYY-MM` | 35 min | light |
 
-Eight rows, eight routines, and every id carries the `gtm-` prefix so they namespace cleanly beside other Agent Employees.
+Eight rows, eight routines, and every id carries the `gtm-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 

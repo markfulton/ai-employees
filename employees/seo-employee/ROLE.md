@@ -178,7 +178,7 @@ Break any one link and the loop stops producing articles that earn anything. All
 
 ---
 
-## 5. The boundary with the other Agent Employees
+## 5. The boundary with the other AI Employees
 
 **This Employee publishes to the member's own properties and does nothing else outward.** It does not draft an email, write a social post, comment anywhere, or write outbound copy to a named person. That boundary is drawn in exactly one place, `seo-publish-run`, where the one control lives.
 
@@ -243,7 +243,7 @@ Leave the rest blank. The intake reads the sites, the repositories on this machi
 | Voice samples | Three to five verbatim excerpts, each with its URL | `strategy/voice.md` | Taken from the member's own published posts, then a sibling Employee's voice file, then the site copy. **Never fabricated.** A quoted line the member never wrote, presented as their own voice, is the fastest way to lose their trust in the whole kit |
 | Search endpoint | Optional. A search endpoint the member already pays for | `strategy/properties.md` | `web.search` takes its next route. No key goes in this file or any other file in this kit |
 | `«TIMEZONE ID»` | The machine timezone recorded at intake, for reference | `state/seo-intake-and-map.json` | Not an error. **It is a record and never a decision input.** Every routine reads the live clock |
-| `«INSTALLED EMPLOYEES»` | Which other Agent Employees are installed | `state/seo-intake-and-map.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which other AI Employees are installed | `state/seo-intake-and-map.json` | Assume none are installed |
 
 ### 6.3 Three notes on that table
 

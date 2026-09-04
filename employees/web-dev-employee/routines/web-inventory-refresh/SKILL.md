@@ -141,7 +141,7 @@ The write happens before the work, not after it. **On the first run, write it th
 | `member_sections{}` | The heading names in `policy/budgets.md` the member has written under | **A member's own budget value is regenerated and lost** |
 | `recipes[]` | The flow files you own and last touched | Only a convenience, but the standup reads it |
 | `cards_filed[]` | `{subject, filed_on}` per opening or drift card | The opening card set is seeded a second time |
-| `installed_employees[]` | Which sibling Agent Employees the member has, captured at setup | The handoff section guesses |
+| `installed_employees[]` | Which sibling AI Employees the member has, captured at setup | The handoff section guesses |
 
 **Never process an item whose date is not the current period key. There is no backlog flushing in this kit, ever.**
 
@@ -659,7 +659,7 @@ The rule from the head of that file that governs this run above all others: **ve
 - **`web-weekly-report`** scores against the budgets you set and orders projects around the `priority` you recorded. It never edits either.
 - **`web-guardrail-review`** owns `policy/safe-fix-rules.md` from the moment you create it. **You write it once and never again**, and it appends to `inventory/CHANGELOG.md` beside you.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 `installed_employees[]` records which siblings the member has, captured at setup. Read it there, do not infer it from the filesystem mid run, and do not change it outside a setup run. **You never write into another Employee's folder and you never read one.**
 

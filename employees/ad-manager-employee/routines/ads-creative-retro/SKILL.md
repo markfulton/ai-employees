@@ -770,7 +770,7 @@ The rule from the head of that file that governs this run above all the others: 
 - **`ads-build-desk`** reads the doctrine indirectly, through the asset sets the studio writes. You never write a build sheet.
 - **`ads-account-intake`** creates `creative/doctrine.md` once, on its first run, and hands it to you permanently. It owns every file under `plan/`. **It runs on the first weekday and you run on the last, so its plan is a month old when you arrive and yours is fresh when it does.**
 
-### With the other Agent Employees
+### With the other AI Employees
 
 - **GTM Engineer** owns positioning research. Where its positioning and this kit's `plan/positioning.md` disagree, this kit's file is what you test angles against, because it is the file intake maintains.
 - **SEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. **An offer framing rule that fails because the landing page changed is not a reason to touch a content repo**, ever. File the card and let the boundary hold.

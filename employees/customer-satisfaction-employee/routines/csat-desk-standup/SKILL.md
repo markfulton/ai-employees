@@ -792,7 +792,7 @@ The board and the brief are rewritten whole every morning from the folded state,
 
 **None of the seven hands you anything through a file the map does not name.** There is no proposal file, no decision block, and no approval line anywhere in this kit. A monthly routine reaches you through `desk/inbox.jsonl`, `strategy/CHANGELOG.md`, and its run record. Those three, and nothing else.
 
-**To the member's other Agent Employees.** `csat-latest.md` and its `## For other employees` block is the whole handover surface, which is why that block carries paths, ids, and dates rather than prose. A sibling Employee that wants to know what customers are complaining about reads the theme ids and opens the ledger itself.
+**To the member's other AI Employees.** `csat-latest.md` and its `## For other employees` block is the whole handover surface, which is why that block carries paths, ids, and dates rather than prose. A sibling Employee that wants to know what customers are complaining about reads the theme ids and opens the ledger itself.
 
 ---
 

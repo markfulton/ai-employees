@@ -202,7 +202,7 @@ Break any one link and the loop stops producing numbers. All eight exist because
 
 ---
 
-## 5. The boundary with the other Agent Employees
+## 5. The boundary with the other AI Employees
 
 `strategy/` is this Employee's own folder and nothing outside this kit writes into it. What crosses the boundary is `csat-latest.md`, and it carries paths, theme ids, channel values, and dates. **No verbatim, no customer name, no account slug, and no dossier line leaves this folder, ever, for any purpose.**
 
@@ -271,7 +271,7 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 | `«MAILBOX NAME»`, `«HELPDESK NAME»`, `«BILLING SURFACE»` | Human readable account names only | `strategy/channels.md` | The names read on the site with the date read. An account that cannot be reached is a `blocked-login` on that phase and nothing more |
 | `«HELPDESK DRAFT MODE»` | `off` or `on` | `state/csat-reply-desk.json` as `helpdesk_draft_mode` | Absent means `off`, and `off` is not an error. Section 2.4 |
 | `«TIMEZONE ID»` | The machine timezone recorded at intake, for reference | `state/csat-desk-intake.json` | Not an error. Every routine reads the live clock regardless |
-| `«INSTALLED EMPLOYEES»` | Which other Agent Employees are installed | `state/csat-desk-intake.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which other AI Employees are installed | `state/csat-desk-intake.json` | Assume none are installed |
 | `«paste at send time»` | Sentinel marking where the member pastes a credential | Queue files | Meant to survive. Never resolved by any routine |
 | `«member: paste the detail»` | Sentinel marking a detail the agent could not source | Queue files | Meant to survive. Better than dropping the customer |
 

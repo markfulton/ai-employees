@@ -178,7 +178,7 @@ List paths under a folder.
 | Codex | Its glob, or a shell command | `expected` |
 | Antigravity | Its glob, or a shell command | `expected` |
 
-**Absent:** the routine enumerates from the known paths in the contract's file map and notes the degradation in its run record. This works, and it misses two things specifically: a queue file you renamed by hand, and a sibling Agent Employee's folder, which is how `sales-desk-setup` staggers its browser lane against a neighbour.
+**Absent:** the routine enumerates from the known paths in the contract's file map and notes the degradation in its run record. This works, and it misses two things specifically: a queue file you renamed by hand, and a sibling AI Employee's folder, which is how `sales-desk-setup` staggers its browser lane against a neighbour.
 
 ### `shell.run`
 Run a local command and read its output.
@@ -628,7 +628,7 @@ Every harness schedules differently and some do not schedule at all. The shape b
 
 **Register the fire time, not the window.** The window is enforced inside the routine and it is a catch up net, not a concurrency plan. Overlapping windows are deliberate. Overlapping fire times are not.
 
-**Name every job exactly after its routine id.** All seven ids carry the `sales-` prefix so they namespace cleanly next to other Agent Employees, and the monthly drift check can only match a registered job to a row when the names are identical.
+**Name every job exactly after its routine id.** All seven ids carry the `sales-` prefix so they namespace cleanly next to other AI Employees, and the monthly drift check can only match a registered job to a row when the names are identical.
 
 **Point every job at `«SALES_ROOT»/routines/` as the routine source.** Never at a copy of a routine folder somewhere else. Every routine ends with a `## Corrections` section you write into and the routine reads at the top of every run, and with two copies you write into one and it reads from the other.
 

@@ -670,7 +670,7 @@ Running twice in one day produces exactly one dossier per account, exactly one l
 
 **`csat-desk-intake`** owns `strategy/channels.md`, which names the billing and usage surfaces you read, and `strategy/policy-limits.md`, which every suggested save is measured against. Where either is thin, your dossiers get thinner and say so.
 
-**To the member's other Agent Employees.** Nothing here is handed to any of them. A list of customers who are about to leave is the most sensitive file this Employee produces, and it stays inside `«CSAT_ROOT»`. `csat-latest.md` carries the open flag **count** and no slug, no name, and no dossier line.
+**To the member's other AI Employees.** Nothing here is handed to any of them. A list of customers who are about to leave is the most sensitive file this Employee produces, and it stays inside `«CSAT_ROOT»`. `csat-latest.md` carries the open flag **count** and no slug, no name, and no dossier line.
 
 ---
 

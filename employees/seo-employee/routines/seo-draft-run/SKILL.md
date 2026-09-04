@@ -685,7 +685,7 @@ The definition to hold on to: **a second run produces no second draft, no second
 
 **None of the six hands you anything through a file the map does not name.** There is no proposal file, no decision block, and no approval line anywhere in this kit.
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 Which are installed is recorded in `state/seo-intake-and-map.json` under `installed_employees[]`. Read it there rather than inferring it from the filesystem mid run.
 

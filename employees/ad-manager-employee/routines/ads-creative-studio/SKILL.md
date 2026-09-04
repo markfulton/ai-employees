@@ -721,7 +721,7 @@ The rule from the head of that file that governs this run above all the others: 
 - **`ads-creative-retro`** is the routine your whole output exists to feed. It folds `creative/ledger.jsonl` against `metrics/daily.jsonl` and scores angle, format, hook, and offer framing rather than individual files, then rewrites `creative/doctrine.md`. **You read that doctrine and you never write it.**
 - **`ads-account-intake`** writes every file under `plan/` and creates `creative/doctrine.md` once. You read them and you write none of them.
 
-### With the other Agent Employees
+### With the other AI Employees
 
 - **GTM Engineer** owns positioning research and the campaign build sheets an account was created from. Where its positioning file and this kit's disagree, this kit's `plan/positioning.md` is what you produce from, because it is the file `ads-account-intake` maintains.
 - **SEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. You never write an article, never touch a blog repo, and never edit a content calendar, even when a set obviously needs a landing page it does not have. Note it in the run record and let the boundary hold.

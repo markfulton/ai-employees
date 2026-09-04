@@ -1,6 +1,6 @@
 ---
 name: cos-charter-and-fleet-audit
-description: Runs once by hand on the first day and once a month after that. On the first run it researches the business from its own public presence, writes the charter with a source and a date beside every conclusion, discovers the Agent Employees actually installed on this machine within a bounded search, writes the map every other routine in this kit reads, seeds the priorities and the watchlist once, builds the fleet dashboard, and registers this Employee's own seven jobs. On every monthly run it re-runs discovery and reconciles the map against what is really there. It never writes into another Employee's folder, never registers a job it does not own, never sends, never spends, and never touches a credential.
+description: Runs once by hand on the first day and once a month after that. On the first run it researches the business from its own public presence, writes the charter with a source and a date beside every conclusion, discovers the AI Employees actually installed on this machine within a bounded search, writes the map every other routine in this kit reads, seeds the priorities and the watchlist once, builds the fleet dashboard, and registers this Employee's own seven jobs. On every monthly run it re-runs discovery and reconciles the map against what is really there. It never writes into another Employee's folder, never registers a job it does not own, never sends, never spends, and never touches a credential.
 metadata:
   internal: true
 ---
@@ -27,7 +27,7 @@ Read `«COS_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 You stop for exactly two things: **sending or spending**, and **private keys or credentials**. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
-Everything else in this run is yours. You pick the working folder and move it if it is in the wrong place. You research the business rather than interrogating the member. You decide which folders are Agent Employees. You write the charter, seed the priorities and the watchlist, choose the dashboard tabs, build it, correct a stale schedule row, add a missing one, move a fire time that collides with another routine **in this kit**, register **this kit's** jobs, and repair your own flow files. You do not propose any of it, you do not wait for a yes, and there is nothing in this kit for you to wait on.
+Everything else in this run is yours. You pick the working folder and move it if it is in the wrong place. You research the business rather than interrogating the member. You decide which folders are AI Employees. You write the charter, seed the priorities and the watchlist, choose the dashboard tabs, build it, correct a stale schedule row, add a missing one, move a fire time that collides with another routine **in this kit**, register **this kit's** jobs, and repair your own flow files. You do not propose any of it, you do not wait for a yes, and there is nothing in this kit for you to wait on.
 
 Where something is genuinely ambiguous you make the most defensible call, write one line into `assumptions[]` in your state file, and move on. `cos-fleet-reconcile` surfaces every new assumption in the next morning's brief, so the member overturns any of them in one sentence. **That is the correction loop. There is no approval loop, no proposal file, and no decision block anywhere in this kit.**
 
@@ -35,7 +35,7 @@ Where something is genuinely ambiguous you make the most defensible call, write 
 
 ### The third rule, which is this Employee's own and is absolute
 
-**You never write a file anywhere outside `«COS_ROOT»`, on the first run or on any run after it.** You will open more folders than any other routine in this kit, and you will read the instructions, schedules, and logs of every Agent Employee on the machine. You write into none of them.
+**You never write a file anywhere outside `«COS_ROOT»`, on the first run or on any run after it.** You will open more folders than any other routine in this kit, and you will read the instructions, schedules, and logs of every AI Employee on the machine. You write into none of them.
 
 Two consequences that are easy to get wrong and that this routine is the one most likely to get wrong:
 
@@ -69,7 +69,7 @@ You open more folders than any other routine in this kit. You write into none of
 
 | What | What you take from it |
 |---|---|
-| A candidate folder inside the bounded search roots | Whether it carries a contract file, a schedule file, and a run log together. Those three together are what make a folder an Agent Employee, and nothing else does |
+| A candidate folder inside the bounded search roots | Whether it carries a contract file, a schedule file, and a run log together. Those three together are what make a folder an AI Employee, and nothing else does |
 | That Employee's schedule file | One row per routine: its id, the days it runs, its window, its period key format, its lane. **This is the authority on cadence and the map is not** |
 | That Employee's contract or role file | Its slug, its digest filename, and its weekly output filename, where it names them |
 | That Employee's run log | Whether anything has ever fired, and the date of its most recent record |
@@ -332,7 +332,7 @@ In this order, stopping at the first that resolves:
 
 1. A domain or URL in an existing charter file from Step A3.
 2. The launch folder and its parent: a package manifest name and homepage field, a README, a deploy configuration, a git remote, a site config, any marketing copy already on disk.
-3. **Another Agent Employee already installed on this machine.** A sibling kit's own charter or strategy folder usually names the business, its offer, and its buy URL, and it was written by a routine that researched it properly. **Read it, cite it as a source with its path and the date, and never write into it.**
+3. **Another AI Employee already installed on this machine.** A sibling kit's own charter or strategy folder usually names the business, its offer, and its buy URL, and it was written by a routine that researched it properly. **Read it, cite it as a source with its path and the date, and never write into it.**
 4. The member's workspace rule file, which often names the business and its products in its first paragraph.
 5. Ask, in one line, and keep working while you wait. If no answer arrives before the research phase cap, record `assumptions[]`: `no site found, charter written from local files only`, and carry on with what the folder gave you. **The run finishes either way.**
 
@@ -391,7 +391,7 @@ Offer these in one compact block. **State the working answer you already have ne
 | Anything they can defend in public: numbers, names, quotes, results | A claim is a promise the member has to stand behind. Nothing on a page can authorise them to make it | `## Member claims` stays empty. Every file the kit writes then carries no claims, which is honest and ships fine |
 | Working days and hours | It is their week | Monday to Friday, and the push suppression uses those hours. Recorded as an assumption |
 | What this business will not do | Personal, and often contractual | Nothing is excluded, and `cos-decision-brief` proposes from the whole space |
-| Which folders hold their Agent Employees | You can find folders, not their intent | The bounded search in Step A6 and nothing wider |
+| Which folders hold their AI Employees | You can find folders, not their intent | The bounded search in Step A6 and nothing wider |
 | Which live screens carry a business number | You can see a site, not their analytics | `## Live screens` stays empty and `cos-metrics-review` takes no browser lane. **That is a real answer, not a gap** |
 
 Three rules govern this step and they are what keep it from becoming an interview:
@@ -410,7 +410,7 @@ This is the step the whole kit rests on.
 
 **Enumerate the candidate roots the member named, plus a bounded search of the parent folder that holds them. Never the whole disk.**
 
-The bound is not politeness. A whole disk walk on a developer's machine takes longer than this routine's entire budget, returns hundreds of folders carrying a file called `CONTRACT.md`, and produces a map full of things that are not Agent Employees. Worse, it reads into folders nobody invited this Employee into.
+The bound is not politeness. A whole disk walk on a developer's machine takes longer than this routine's entire budget, returns hundreds of folders carrying a file called `CONTRACT.md`, and produces a map full of things that are not AI Employees. Worse, it reads into folders nobody invited this Employee into.
 
 The search set, in order:
 
@@ -421,22 +421,22 @@ The search set, in order:
 
 Record the resolved search set in `search_roots[]`. On every later run you search that same set plus any path the member has added, and **you never widen it on your own**. If the member installs an Employee somewhere else, they name it and it goes in the set. That is one line from them and it is the correct place for that decision.
 
-### A6.2 The test for an Agent Employee, and it is all three together
+### A6.2 The test for an AI Employee, and it is all three together
 
-**A folder is an Agent Employee only where it carries a contract file, a schedule file, and a run log together.**
+**A folder is an AI Employee only where it carries a contract file, a schedule file, and a run log together.**
 
 - A **contract file**: a root level markdown file that names a roster of routines and a file map. Usually `CONTRACT.md`.
 - A **schedule file**: a root level markdown file carrying a table with one row per routine and, at minimum, a days value and a window. Usually `SCHEDULE.md`.
 - A **run log**: a root level JSONL file whose lines are objects carrying `routine`, `period`, and `status`. Usually `runlog.jsonl`.
 
-All three, in the same folder. **Two of three is not an Agent Employee**, and the most common two of three is a repository with a `CONTRACT.md` about something else entirely.
+All three, in the same folder. **Two of three is not an AI Employee**, and the most common two of three is a repository with a `CONTRACT.md` about something else entirely.
 
 **A candidate that carries a contract file and a schedule file but no run log yet is an Employee that has never run.** Record it in the map with `first_run: none` and say so in one line, because that is a real and important finding: an Employee that was installed and never fired is invisible to every other check in this kit.
 
 Two more rules on the test:
 
 - **Read only, always.** You open these files to read. You never write one, never create a missing one, and never repair a malformed one. A folder whose schedule file will not parse goes in the map with what you could read and a note saying which file would not parse.
-- **This Employee's own root is in the map.** The Chief of Staff is an Agent Employee and `cos-fleet-reconcile` reconciles its own siblings the same way it reconciles everybody else's. Leaving it out means this kit is the one thing on the machine nobody is watching.
+- **This Employee's own root is in the map.** The Chief of Staff is an AI Employee and `cos-fleet-reconcile` reconciles its own siblings the same way it reconciles everybody else's. Leaving it out means this kit is the one thing on the machine nobody is watching.
 
 ### A6.3 Write `charter/fleet-map.md`
 
@@ -818,7 +818,7 @@ Two audiences and two shapes.
 A plain summary for the member, in this order, and nothing else:
 
 1. Where the kit lives, especially if you moved it out of a synced folder.
-2. **Which Agent Employees you found, by slug and root path, and how many routines each one carries.**
+2. **Which AI Employees you found, by slug and root path, and how many routines each one carries.**
 3. Which charter files exist now, and the one line each of what they say.
 4. **Every assumption you took, each with the one sentence that would overturn it.** This is the most useful part of the report and it goes near the top.
 5. The dashboard path and its tabs.
@@ -894,7 +894,7 @@ If any of the five does not hold, the run is a failure regardless of what else i
 | A login wall, checkpoint, or captcha on any page | Stop that page, change nothing, enter nothing, never retry it another way. Carry on with every page that is not behind it | `blocked-login` if browser work was all that was left, otherwise continues |
 | No search capability | Write the queries you would have run into the run record. Mark those findings `n/a (no search capability)` | continues |
 | No site found and no local files naming the business | Write the charter from what the session gave you and record the assumption | `partial` |
-| **No Agent Employee found in the bounded search** | Write the map with this Employee's own root alone, name it in the report, and ask the member in one line to name their Employee roots. **Never widen the search** | `partial` |
+| **No AI Employee found in the bounded search** | Write the map with this Employee's own root alone, name it in the report, and ask the member in one line to name their Employee roots. **Never widen the search** | `partial` |
 | A candidate folder fails the three part test | Not an Employee. No block, no report line | continues |
 | An Employee's schedule file will not parse | Keep the previous rows, mark the block, name the file. Never guess a cadence | continues |
 | A charter file fails the copy check twice | Take the failing line out, replace it with a statement of what is missing, name it | continues, named in `notes` |
@@ -964,7 +964,7 @@ Every one of these is a file handoff. Nothing is passed in a message, nothing is
 | `cos-decision-brief` | `charter/priorities.md`, `charter/constraints.md`, and `charter/business.md`. It refuses any move that requires a ceiling the constraints do not carry |
 | `cos-decision-review` | `charter/priorities.md`, seeded once. **It owns the file from the second month and you never write it again** |
 
-### To the Agent Employees this kit watches
+### To the AI Employees this kit watches
 
 **Nothing.** You read their contract, schedule, and run log to build the map, and you hand them nothing. No file, no row, no job, no note. **A change to one of them is a change the member makes, in that Employee's own files, with their own hand**, and every route this kit has for suggesting one ends in a dossier or a register row.
 

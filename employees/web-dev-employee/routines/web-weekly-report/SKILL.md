@@ -584,7 +584,7 @@ The rule from the head of that file that governs this run above all others: **ve
 - **`web-inventory-refresh`** owns the performance budgets you score against and the `priority` field you order around. A path with no budget and a `priority` that looks wrong are both `research` cards for it.
 - **`web-guardrail-review`** reads your four reports of the month at the end of it, along with `changes/changes.jsonl`, and it is the reason your merged and merged edited counts are reported as a split rather than a total. **A month with a missing report is a month where its evidence is thinner**, and it says so, which is one more reason the close out reserve is not negotiable.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 You never write into another Employee's folder and you never read one. Your report reaches them through `web-latest.md`, which `web-standup` writes.
 

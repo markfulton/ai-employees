@@ -144,7 +144,7 @@ Nothing here is a judgement call.
 All local, no browser yet, in this order. Every one of these files may carry a leading byte order mark. Strip code point U+FEFF from the head of the file before parsing anything, including the first line of every `.jsonl`.
 
 1. `CONTRACT.md`, including `## Corrections`.
-2. `ROLE.md`, for the boundary table with the other Agent Employees.
+2. `ROLE.md`, for the boundary table with the other AI Employees.
 3. `CAPABILITIES.md`, to know which route each capability takes on this harness.
 4. `state/sales-qualification-refresh.json`, your own memory.
 5. `strategy/qualification.md`, the tests you are about to judge and the file you are about to rewrite.
@@ -687,7 +687,7 @@ The browser mutex is not on this list. It prevents collision, not repetition, an
 
 **`sales-desk-setup`.** It created both your files on the first run and it owns every other file under `strategy/` except the changelog and the agent half of the proof inventory. It runs on the first weekday and you run on the last, so your work is always fresh when it arrives. **Every card you file is addressed to it.** It does not approve anything you did, because there is nothing to approve.
 
-### With the other Agent Employees
+### With the other AI Employees
 
 `strategy/` is a shared surface. **`strategy/buyer.md` is the entire handover surface for who this business sells to**, and sibling Employees read it. You are its writer and they are readers.
 

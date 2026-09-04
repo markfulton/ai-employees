@@ -632,7 +632,7 @@ Running twice in one week produces exactly one macro per theme, exactly one arti
 
 **`csat-desk-standup`** renders your card and names your file paths in the brief. It never opens a macro or an article to summarise it.
 
-**To the member's other Agent Employees.** A published help article is content, and where the member has a content or SEO Employee installed, the article draft is exactly the sort of page it would want to know about. **You hand it over through nothing at all.** Your files sit in `help/`, `csat-latest.md` names the theme ids, and any sibling reads them from there. You never write into a content calendar, never open a blog repo, and never request indexing.
+**To the member's other AI Employees.** A published help article is content, and where the member has a content or SEO Employee installed, the article draft is exactly the sort of page it would want to know about. **You hand it over through nothing at all.** Your files sit in `help/`, `csat-latest.md` names the theme ids, and any sibling reads them from there. You never write into a content calendar, never open a blog repo, and never request indexing.
 
 ---
 

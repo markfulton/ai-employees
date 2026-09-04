@@ -351,7 +351,7 @@ Offer these in one compact block. **State the working answer you already have ne
 | Which mailbox and helpdesk accounts exist, by name | You can see the pages, not their logins | The names you read on the site, marked with the date you read them |
 | Voice samples they are happy to sound like | Their own taste | Their own published support pages and any reply of theirs you found in public become the sample set, cited with URLs. That is genuinely their voice |
 | Whether the helpdesk offers a private draft, and what it is called | It is behind their login and the label differs per product | `helpdesk_draft_mode` stays off, which is the shipped default, and the queue files are the deliverable |
-| Which other Agent Employees are installed | It is their roster | None, and you write the handover lines anyway. They cost nothing |
+| Which other AI Employees are installed | It is their roster | None, and you write the handover lines anyway. They cost nothing |
 
 Three rules govern this step and they are what keep it from becoming an interview:
 
@@ -1070,7 +1070,7 @@ Every one of these is a file handoff. Nothing is passed in a message, nothing in
 | `csat-satisfaction-report` | The `review` and `marketplace` rows in `strategy/channels.md` with their rating scales, and `report/manual.md`, created empty and belonging to the member |
 | `csat-taxonomy-refresh` | `strategy/themes.md` on the first run only. **It owns the file from then on and you never write it again** |
 
-### To the other Agent Employees
+### To the other AI Employees
 
 They are readers of `strategy/`. Write these handover lines whether or not any of them is installed. They cost nothing and the member may install one next month.
 

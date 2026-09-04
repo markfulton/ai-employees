@@ -633,7 +633,7 @@ Running twice in one day produces exactly one queue entry per slot, exactly one 
 
 ### To sibling Employees
 
-Where the member has another Agent Employee installed, it reads `soc-latest.md`, which the standup compiles. You hand off through your run record and through nothing else. You never write into another Employee's folder and never accept material from one by any route other than `material/material.jsonl`.
+Where the member has another AI Employee installed, it reads `soc-latest.md`, which the standup compiles. You hand off through your run record and through nothing else. You never write into another Employee's folder and never accept material from one by any route other than `material/material.jsonl`.
 
 ---
 

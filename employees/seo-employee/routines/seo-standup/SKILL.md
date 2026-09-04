@@ -719,7 +719,7 @@ The board and the brief are rewritten whole every morning from the folded state,
 
 **None of the six hands you anything through a file the map does not name.** There is no proposal file, no decision block, and no approval line anywhere in this kit. A routine reaches you through `board/inbox.jsonl`, the four ledgers, `strategy/CHANGELOG.md`, and its run record. Those, and nothing else.
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 `seo-latest.md` is the handoff, and specifically its `## For other employees` block, which is why that block carries paths, ids, dates, and folded counts rather than prose. A sibling Employee that needs an article's body reads the property. A sibling Employee that needs to know what this one published reads that block.
 

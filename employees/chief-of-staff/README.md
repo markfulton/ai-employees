@@ -6,7 +6,7 @@
 
 This is not a chat window and not a service running somewhere else. It is seven jobs your agent runs at fixed times each week.
 
-Every weekday morning it walks every Agent Employee installed on your machine, reads each one's own run log, and writes you one short page: what ran, what stopped, what is waiting on you. Every weekday afternoon it takes the single worst fault on the fleet and turns it into a page you can act on in a minute. Once a week it reads the world, scores what your machine and your business actually produced, and argues three moves both ways. Once a month it grades its own advice.
+Every weekday morning it walks every AI Employee installed on your machine, reads each one's own run log, and writes you one short page: what ran, what stopped, what is waiting on you. Every weekday afternoon it takes the single worst fault on the fleet and turns it into a page you can act on in a minute. Once a week it reads the world, scores what your machine and your business actually produced, and argues three moves both ways. Once a month it grades its own advice.
 
 **It is read only toward everything.** It never sends, never spends, never deploys, never migrates, and never publishes. **And it never writes a single file into another Employee's folder.** That second rule is the one that makes the first one worth having, and the whole of it is below.
 
@@ -100,7 +100,7 @@ Not a file, not a folder, not a rename, not a move, not a delete. Not a `PAUSED`
 
 It will frequently be able to see the exact repair. It writes none of it.
 
-**Here is why that matters to you rather than to it.** Every Agent Employee in this club is built on one rule: one routine owns each file that gets rewritten, and named routines own each ledger that gets appended to. The moment a second Employee starts editing a first Employee's files, that rule breaks everywhere at once, silently. The first symptom you would see is a routine whose own corrections list contains a line it did not write and cannot reconcile with its own instructions, or a state file that disagrees with itself on a Monday morning three weeks later.
+**Here is why that matters to you rather than to it.** Every AI Employee in this club is built on one rule: one routine owns each file that gets rewritten, and named routines own each ledger that gets appended to. The moment a second Employee starts editing a first Employee's files, that rule breaks everywhere at once, silently. The first symptom you would see is a routine whose own corrections list contains a line it did not write and cannot reconcile with its own instructions, or a state file that disagrees with itself on a Monday morning three weeks later.
 
 So the shape is: **it writes the diagnosis, with the exact path of the section the line belongs in, and your hand is the last step.** That is two clicks. It is also the only arrangement in which every other Employee you own can keep its own corrections meaningful and its own self improvement honest.
 
@@ -223,7 +223,7 @@ Corrections go in the `## Corrections` section at the bottom of the routine, or 
 
 **Day one.** You extract the kit, point your harness at the routines, run the probe, and paste the install prompt.
 
-It reads the contract, then investigates: your site, your pricing page, your docs, your blog, your public listings. Then it searches the folders next to this one for Agent Employees, using a bounded search rather than walking your whole disk, and writes one block per Employee it found with every value read out of that Employee's own files rather than assumed. Then it writes the charter, seeds your priorities and your watchlist, builds the dashboard, and registers seven jobs.
+It reads the contract, then investigates: your site, your pricing page, your docs, your blog, your public listings. Then it searches the folders next to this one for AI Employees, using a bounded search rather than walking your whole disk, and writes one block per Employee it found with every value read out of that Employee's own files rather than assumed. Then it writes the charter, seeds your priorities and your watchlist, builds the dashboard, and registers seven jobs.
 
 It tells you what it concluded with a source beside each line, and asks only about the handful of things a crawl genuinely could not settle. It does not wait for those answers.
 
@@ -356,7 +356,7 @@ A missing browser does not get its own status, and no routine invents one. It ma
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 This is the only Employee in the club that reads the others, and the boundary is one sentence in each direction.
 

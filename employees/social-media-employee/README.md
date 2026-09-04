@@ -363,9 +363,9 @@ No routine ever writes a secret, a credential, a post body, a suggested reply, a
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
-`voice/` and `plan/` are this Employee's own folders and it is their only writer. Where you have another Agent Employee installed, it reads `soc-latest.md`, which the standup writes every morning.
+`voice/` and `plan/` are this Employee's own folders and it is their only writer. Where you have another AI Employee installed, it reads `soc-latest.md`, which the standup writes every morning.
 
 | Employee | They own | Social hands over | Social never |
 |---|---|---|---|

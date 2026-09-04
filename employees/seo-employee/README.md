@@ -336,7 +336,7 @@ No routine ever writes a secret, a credential, an article body, a headline, a ke
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 This Employee publishes to your own properties and does nothing else outward. That keeps its boundary with the others simple.
 

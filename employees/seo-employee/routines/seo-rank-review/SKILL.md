@@ -741,7 +741,7 @@ The rule from that file that governs this run more than any other is the second 
 
 **To `seo-publish-run`.** Nothing, directly. It publishes, you measure what it published, and the only thing you owe it is not touching an article it shipped.
 
-**To sibling Agent Employees.** `seo-standup` compiles the cross Employee handoff in `seo-latest.md` and names your scoreboard path there. You write into no other Employee's folder, read one only where `CAPABILITIES.md` names a route, and never take on work that belongs to one. In particular: you never email a report to anybody, never post a result anywhere, and never comment on any surface. A measurement that leaves this folder leaves it because a person carried it.
+**To sibling AI Employees.** `seo-standup` compiles the cross Employee handoff in `seo-latest.md` and names your scoreboard path there. You write into no other Employee's folder, read one only where `CAPABILITIES.md` names a route, and never take on work that belongs to one. In particular: you never email a report to anybody, never post a result anywhere, and never comment on any surface. A measurement that leaves this folder leaves it because a person carried it.
 
 ---
 

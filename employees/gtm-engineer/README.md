@@ -329,7 +329,7 @@ No routine ever writes a secret, a credential, a draft, or a person's name into 
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 `strategy/` is the shared folder and **the GTM Engineer is the only writer in it.** The SEO, Ad Manager, and Social Media Employees are readers. That is what stops four roles from each keeping their own quietly different idea of who your customer is. If the GTM Engineer is the only one you have installed, the folder works exactly the same way.
 

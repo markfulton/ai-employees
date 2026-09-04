@@ -178,7 +178,7 @@ Break any one link and the loop stops producing numbers. All eight exist because
 
 ---
 
-## 4. The boundary with the other Agent Employees
+## 4. The boundary with the other AI Employees
 
 `strategy/` is a shared surface. **The GTM Engineer is the only writer. SEO, Ad Manager, and Social are readers.** If only the GTM Engineer is installed, the folder works exactly the same way, because nothing here depends on another Employee existing.
 
@@ -252,7 +252,7 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 | `«SERP SOURCE»` | Optional. A search endpoint the member already pays for | `strategy/utm-taxonomy.md`, under `## SERP source` | `web.search` takes its next route. No key goes in this file or any other file in this kit |
 | `«MAILBOX DRAFT MODE»` | `off` or `on` | `state/gtm-outreach-queue.json` as `mailbox_draft_mode` | Absent means `off`, and `off` is not an error. Section 1.4 |
 | `«TIMEZONE ID»` | The machine timezone recorded at intake, for reference | `state/gtm-intake-and-dashboard.json` | Not an error. Every routine reads the live clock regardless |
-| `«INSTALLED EMPLOYEES»` | Which other Agent Employees are installed | `state/gtm-intake-and-dashboard.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which other AI Employees are installed | `state/gtm-intake-and-dashboard.json` | Assume none are installed |
 | `«paste at send time»` | Sentinel marking where the member pastes a credential | Queue files | Meant to survive. Never resolved by any routine |
 | `«member: paste the detail»` | Sentinel marking a personalisation the agent could not source | Queue files | Meant to survive. Better than dropping the person |
 

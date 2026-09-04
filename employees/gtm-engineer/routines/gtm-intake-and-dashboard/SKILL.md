@@ -339,7 +339,7 @@ Offer these in one compact block. State the working answer you already have next
 | Channels they will not use | Personal, and often contractual | Nothing is excluded, and the channel set comes from what the research showed works for the category |
 | Which accounts and profiles exist, by name | You can see the sites, not their logins | The names you found on the site, marked with the date you read them |
 | Voice samples they are happy to sound like | Their own taste | The copy already on their own site becomes the sample set, cited with URLs. That is genuinely their voice |
-| Which other Agent Employees are installed | It is their roster | None, and you write the handover sections anyway. They cost nothing |
+| Which other AI Employees are installed | It is their roster | None, and you write the handover sections anyway. They cost nothing |
 
 Three rules govern this step and they are what keep it from becoming an interview:
 
@@ -994,7 +994,7 @@ Every one of these is a file handoff. Nothing is passed in a message, nothing is
 | `gtm-scoreboard` | `strategy/utm-taxonomy.md`, for the sources it may read, and `scoreboard/manual.md`, created empty and belonging to the member |
 | `gtm-icp-refresh` | `strategy/icp.md` on the first run only. It owns the file from then on and you never write it again |
 
-### To the other Agent Employees
+### To the other AI Employees
 
 They are readers of `strategy/`. Write these sections whether or not any of them is installed. They cost nothing and the member may install one next month.
 

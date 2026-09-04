@@ -754,7 +754,7 @@ The browser mutex is not on this list. It prevents collision, not repetition, an
 - **`soc-material-sweep`** owns `material/material.jsonl` and its `Thin:` lines. Your pillar cut is only meaningful because its lines carry a pillar, and its thin pillars are the evidence behind a call to move one.
 - **`soc-intake-and-voice`** owns `voice/voice.md` and everything under `plan/` except the changelog. **You never write any of them.** Your route to a voice change or a plan change is one line in `plan/CHANGELOG.md` and one line in your run record, and it applies on that routine's own monthly run. It also carries `## Scorecard settings` across verbatim on its rewrite, which is what keeps the member's thresholds from being regenerated away.
 
-### With other Agent Employees, where the member has them installed
+### With other AI Employees, where the member has them installed
 
 Which of them are installed is recorded in `state/soc-intake-and-voice.json` under `installed_employees[]`. Read it there rather than inferring it from the filesystem mid run. Where one is installed, its figures appear on your page only where the member listed a source under `## Read screens`, and otherwise the cell reads `n/a (not tracked here)`. **You never open another Employee's folder, never read its ledgers, and never write into it.** If none is installed, nothing about this run changes.
 

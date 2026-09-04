@@ -696,7 +696,7 @@ The browser mutex is not on this list. It prevents collision, not repetition, an
 - **`gtm-intake-and-dashboard`** owns four strategy files, the `SCHEDULE.md` rows, and the dashboard. Every schedule finding and every positioning finding you have is a card for it. You never register, change, or remove a scheduled task, and you never edit a row.
 - **`gtm-icp-refresh`** owns `strategy/icp.md` from the second month and shares `## Agent sourced` with you. It reads your `scoreboard/scoreboard-*.md` files and your state at month end, so the segment level counts you record are the evidence its rewrite runs on. Keep a segment id in your table even when its count is zero: a segment that disappears from your page looks retired rather than untested.
 
-### With the other Agent Employees, where the member has them installed
+### With the other AI Employees, where the member has them installed
 
 `strategy/` is a shared surface and the GTM Engineer is its only writer. The other three read it. Which of them are installed is recorded in `state/gtm-intake-and-dashboard.json` under `installed_employees[]`. Read it there rather than inferring it from the filesystem mid run.
 

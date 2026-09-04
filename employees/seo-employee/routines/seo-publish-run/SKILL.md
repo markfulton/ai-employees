@@ -674,7 +674,7 @@ The definition to hold on to: **a second run produces no second article, and it 
 
 - **`seo-intake-and-map`** owns `strategy/properties.md` and therefore owns every route you resolve. A property fact you can prove wrong, a branch that changed, a URL pattern that no longer matches, is a card for it with the evidence path. **You never edit that file to make a publish work.**
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 Which are installed is recorded in `state/seo-intake-and-map.json` under `installed_employees[]`. Read it there.
 

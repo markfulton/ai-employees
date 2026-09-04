@@ -326,7 +326,7 @@ No routine ever writes a secret, a credential, a raw log line, a stack trace, a 
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 This Employee reads production and writes branches. It has no opinion about your market, your pipeline, or your content, and it never touches an advertising account, a blog repository, or a mailbox.
 

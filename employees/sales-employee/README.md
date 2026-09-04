@@ -346,7 +346,7 @@ If the standup ever opens by telling you that nothing has been produced since a 
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 `strategy/` is a shared folder. **The Sales Employee is the only writer of `strategy/buyer.md`, and that file is the entire handover surface for who this business sells to.** Sibling Employees read it. If the Sales Employee is the only one you have installed, the folder works exactly the same way, because nothing here depends on another Employee existing.
 

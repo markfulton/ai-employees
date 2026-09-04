@@ -24,7 +24,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `ads-account-intake` | `first-weekday` | 13:00 | 12:45 | 17:00 | `YYYY-MM` | 45 min | conditional |
 | `ads-creative-retro` | `last-weekday` | 14:00 | 13:45 | 17:30 | `YYYY-MM` | 35 min | light |
 
-Seven rows, seven routines, and every id carries the `ads-` prefix so they namespace cleanly beside other Agent Employees.
+Seven rows, seven routines, and every id carries the `ads-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 

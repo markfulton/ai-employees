@@ -7,7 +7,7 @@ Where any other file in this kit disagrees with this one, this one wins. Where t
 Four things are true of every rule below, and they are the reason the rules are written this way.
 
 1. **One writer per rewritten file. Named appenders per append-only ledger.** Nothing else.
-2. **No routine in this kit ever writes anything outside `«COS_ROOT»`.** This Employee reads every other Agent Employee on the machine, every morning, and writes into none of them. Section 2.0a.
+2. **No routine in this kit ever writes anything outside `«COS_ROOT»`.** This Employee reads every other AI Employee on the machine, every morning, and writes into none of them. Section 2.0a.
 3. **Capabilities are named. Tools are not.** No vendor tool name, no MCP selector, no extension name appears anywhere in a routine body. They appear in `CAPABILITIES.md`, once, as rows.
 4. **The Employee stops for exactly two things.** Section 7. Everything else it owns.
 
@@ -17,16 +17,16 @@ Four things are true of every rule below, and they are the reason the rules are 
 
 The id is the folder name is the YAML `name` key. All three are the same string, always, with no exception and no alias. A routine whose folder name and `name` key differ is broken and must be renamed before anything else is done to it.
 
-Every id carries the `cos-` prefix so the seven namespace cleanly alongside the other Agent Employees this one watches. **They are scheduled routines, not on-demand skills, and they never belong in a global skills directory:** registering them there loads all seven into every session the member opens and lets one be invoked outside its window, where it does nothing but record `skipped-out-of-window` and exit.
+Every id carries the `cos-` prefix so the seven namespace cleanly alongside the other AI Employees this one watches. **They are scheduled routines, not on-demand skills, and they never belong in a global skills directory:** registering them there loads all seven into every session the member opens and lets one be invoked outside its window, where it does nothing but record `skipped-out-of-window` and exit.
 
 | id | display name | cadence | shipped fire time | browser lane | its one job |
 |---|---|---|---|---|---|
-| `cos-fleet-reconcile` | Fleet reconcile | Weekdays | 07:15 | never | Walk every Agent Employee on the machine, read each one's own run log strictly read only, classify every routine as running, stopped loudly, stopped silently, or paused, age the faults, fold the decision register, and write the brief. |
+| `cos-fleet-reconcile` | Fleet reconcile | Weekdays | 07:15 | never | Walk every AI Employee on the machine, read each one's own run log strictly read only, classify every routine as running, stopped loudly, stopped silently, or paused, age the faults, fold the decision register, and write the brief. |
 | `cos-fault-dossier` | Fault dossier | Weekdays | 14:30 | never | Take the single highest ranked open fault and turn it into a page the member can act on in a minute: the first record that shows it, three ranked causes each with its evidence line, what it has cost, and one paste ready correction line. |
 | `cos-market-sweep` | Market sweep | Wednesdays | 10:00 | heavy | Work the surfaces on its own watchlist through one contiguous browser phase, capture one dated observation per real change with a verbatim quote and the exact URL, and refuse to report a change against a surface it has no baseline for. |
 | `cos-metrics-review` | Metrics review | Thursdays | 10:30 | conditional | Score the fleet and the business for the week with a source beside every single number, cite the Employee that owns a metric rather than recomputing it, and refuse a rate below the floor. |
 | `cos-decision-brief` | Decision brief | Fridays | 16:00 | never | Read everything the week produced, pick exactly three moves, argue both sides of each one with a citation in every clause, and argue against its own top recommendation last. |
-| `cos-charter-and-fleet-audit` | Charter and fleet audit | First weekday of the month | 12:00 | light | First run: research the business, write the charter, discover the Agent Employees installed on this machine, write the map every other routine reads, seed the priorities and the watchlist once, build the dashboard, register this kit's seven jobs. Monthly: re-run discovery and reconcile the map against what is really there. |
+| `cos-charter-and-fleet-audit` | Charter and fleet audit | First weekday of the month | 12:00 | light | First run: research the business, write the charter, discover the AI Employees installed on this machine, write the map every other routine reads, seed the priorities and the watchlist once, build the dashboard, register this kit's seven jobs. Monthly: re-run discovery and reconcile the map against what is really there. |
 | `cos-decision-review` | Decision review | Last weekday of the month | 13:00 | never | Fold the decision ledger, score this Employee's own judgement against the metric files that measured it, retire a move proposed three times and never accepted, and rewrite the priorities where the evidence disagrees with them. |
 
 **Two of the seven cannot be turned off, for different reasons.**
@@ -111,7 +111,7 @@ Any file that has no reader is cut. Any read of a file that nothing writes is th
 
 **No routine in this kit ever opens a write handle anywhere outside `«COS_ROOT»`.** Not a file, not a folder, not a rename, not a move, not a delete, not a touch of a modified time. Not a scheduled job belonging to another Employee. Not a `PAUSED` file, not a browser lock, not a `## Corrections` section, not a repaired schedule row, not an obvious one line fix sitting in plain view.
 
-This is not caution. It is the mechanism that keeps section 2.0 true across the whole machine. Every Agent Employee is built on one writer per rewritten file and named appenders per ledger. The moment a second Employee writes into a first Employee's folder, that law breaks everywhere at once, silently, and the first symptom is a state file that disagrees with itself on a Monday morning three weeks later, or a routine whose own `## Corrections` section carries a line it did not write and cannot reconcile with its own body.
+This is not caution. It is the mechanism that keeps section 2.0 true across the whole machine. Every AI Employee is built on one writer per rewritten file and named appenders per ledger. The moment a second Employee writes into a first Employee's folder, that law breaks everywhere at once, silently, and the first symptom is a state file that disagrees with itself on a Monday morning three weeks later, or a routine whose own `## Corrections` section carries a line it did not write and cannot reconcile with its own body.
 
 **So the dossier is the deliverable and the member's hand is the last step.** A fault this kit can see and diagnose becomes a page inside `dossiers/` carrying the exact absolute path of the section the correction belongs in. The member pastes it. That is the whole handoff and it is two clicks.
 
@@ -515,7 +515,7 @@ Every capability in this table degrades the same way when the harness has no bro
 
 **`web.fetch` is the route the monthly research crawl prefers**, because it needs no browser, takes no mutex, and costs no lane time. The audit falls back to the browser only where fetch returns nothing.
 
-**Three content capabilities that other Agent Employees carry are deliberately absent from this kit:** `image.compress`, `image.inject`, and `richtext.paste`. This Employee attaches nothing and writes into no editor. A capability with no caller is a capability nobody maintains.
+**Three content capabilities that other AI Employees carry are deliberately absent from this kit:** `image.compress`, `image.inject`, and `richtext.paste`. This Employee attaches nothing and writes into no editor. A capability with no caller is a capability nobody maintains.
 
 ### 3.4 Kit capabilities
 
@@ -535,7 +535,7 @@ Commands written to `schedule-commands.txt` are written expanded, because a file
 node "«COS_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [--json]
 ```
 
-`--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. **This kit calls three of the six:** `plain` for every page the member reads, `strategy` for a charter file and for `evidence/sourced.md`, and `dashboard` for a partial. The other three exist because one script serves every Agent Employee on the machine. `--json` returns a machine-readable verdict. `--selftest` takes no other flag and confirms the script runs. There is no `--profile`, no `--destination`, and no bare positional path. Any call site using one of those is stale.
+`--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. **This kit calls three of the six:** `plain` for every page the member reads, `strategy` for a charter file and for `evidence/sourced.md`, and `dashboard` for a partial. The other three exist because one script serves every AI Employee on the machine. `--json` returns a machine-readable verdict. `--selftest` takes no other flag and confirms the script runs. There is no `--profile`, no `--destination`, and no bare positional path. Any call site using one of those is stale.
 
 **What `copy.check` fails**, in the order it checks:
 
@@ -1018,7 +1018,7 @@ If a diagnosis seems to need one of those files, it is diagnosing the wrong thin
 
 **Employees that are not built like this one.** This kit reads files written by kits it did not ship with, and they will not all match. Every mismatch is handled the same way: take what you can prove, name what you cannot, and never translate a value into one you prefer. A status you do not recognise is counted as a record and named once, never mapped onto a status you know, because a guessed mapping turns a real failure into a clean morning. A schedule format you cannot parse makes that Employee's routines `unknown-schedule`, never a cadence you fell back on. **A mismatch is never a fault. A fault is a routine that stopped.**
 
-**The test for an Agent Employee, applied by `cos-charter-and-fleet-audit` during discovery, and it is all three together:** a root level contract file naming a roster and a file map, a root level schedule file with one row per routine, and a root level run log whose lines are objects carrying `routine`, `period`, and `status`. Two of three is not an Agent Employee, and the most common two of three is a repository with a `CONTRACT.md` about something else entirely. The search is bounded to the paths the member named, their parents one level down, and the parent of `«COS_ROOT»` one level down. **Never the whole disk**, and never widened by the Employee on its own.
+**The test for an AI Employee, applied by `cos-charter-and-fleet-audit` during discovery, and it is all three together:** a root level contract file naming a roster and a file map, a root level schedule file with one row per routine, and a root level run log whose lines are objects carrying `routine`, `period`, and `status`. Two of three is not an AI Employee, and the most common two of three is a repository with a `CONTRACT.md` about something else entirely. The search is bounded to the paths the member named, their parents one level down, and the parent of `«COS_ROOT»` one level down. **Never the whole disk**, and never widened by the Employee on its own.
 
 ---
 

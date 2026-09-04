@@ -23,7 +23,7 @@ Do these before you install anything else. The first three are pass or fail for 
 **1. Can it read and write files in `«COS_ROOT»`?**
 Ask it to write a file called `state/probe.txt` and read it back. If your harness sandboxes file access, `«COS_ROOT»` has to be inside the allowed set, and a sandbox usually fails quietly rather than loudly. Also confirm `«COS_ROOT»` is a local path that is not inside OneDrive, Dropbox, Google Drive, or iCloud. The routines write state and a run log mid run, and a sync client corrupts exactly the file that tells tomorrow's run what already happened.
 
-**2. Can it read files in your other Agent Employees' folders?**
+**2. Can it read files in your other AI Employees' folders?**
 This is the check that is unique to this kit, and it is the one people skip. This Employee's whole job is reading other folders. If your harness sandboxes file access to one directory, it can read `«COS_ROOT»` and nothing else, and the fleet map will hold exactly one root: its own. The brief still gets written. It just has nobody else to watch.
 
 Ask it to read one file inside another Employee's folder, by absolute path, and confirm it comes back. **Read access is what this needs. Write access outside `«COS_ROOT»` is never used and never wanted:** the kit refuses to write outside its own folder as a rule, and a harness that also refuses is a second lock on the same door.
@@ -554,7 +554,7 @@ One interface, used verbatim at every call site:
 node "«COS_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [--json]
 ```
 
-`--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. **This kit calls three of the six:** `plain` for every page you read, `strategy` for a charter file and for `evidence/sourced.md`, `dashboard` for a partial. The other three are there because one script serves every Agent Employee on the machine.
+`--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. **This kit calls three of the six:** `plain` for every page you read, `strategy` for a charter file and for `evidence/sourced.md`, `dashboard` for a partial. The other three are there because one script serves every AI Employee on the machine.
 
 `--selftest` takes no other flag and confirms the script runs, which is worth doing once on install so you find out on day one rather than at 07:15 on a Tuesday. There is no `--profile`, no `--destination`, and no bare positional path.
 
@@ -629,7 +629,7 @@ Every harness schedules differently and some do not schedule at all. The shape b
 
 **Register the fire time, not the window.** The window is enforced inside the routine and it is a catch up net, not a concurrency plan. Overlapping windows are deliberate. Overlapping fire times are not.
 
-**Name every job exactly after its routine id.** All seven ids carry the `cos-` prefix so they namespace cleanly next to the other Agent Employees this one watches, and the monthly drift check can only match a registered job to a row when the names are identical.
+**Name every job exactly after its routine id.** All seven ids carry the `cos-` prefix so they namespace cleanly next to the other AI Employees this one watches, and the monthly drift check can only match a registered job to a row when the names are identical.
 
 **Take the times from `SCHEDULE.md`, not from any example below.** `SCHEDULE.md` is the one place a cadence, a fire time, and a window live, and it wins over every other file in the kit including this one.
 

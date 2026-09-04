@@ -2,7 +2,7 @@
 
 This is the prompt you paste into your agent to set the role up. You do it once.
 
-**What will happen.** Your agent reads the contract, checks your machine, then investigates your business from your own public presence instead of interviewing you about it. It searches the folders next to this one for the Agent Employees you already have, writes the map every routine in this kit reads, writes your charter, seeds your priorities and your watchlist, builds a single page command center, registers seven scheduled jobs, and runs the morning routine once so you can see the first brief. Then it stops once and shows you what it found.
+**What will happen.** Your agent reads the contract, checks your machine, then investigates your business from your own public presence instead of interviewing you about it. It searches the folders next to this one for the AI Employees you already have, writes the map every routine in this kit reads, writes your charter, seeds your priorities and your watchlist, builds a single page command center, registers seven scheduled jobs, and runs the morning routine once so you can see the first brief. Then it stops once and shows you what it found.
 
 **What it stops for.** Once, on the fleet map and the claim lines behind your charter. Plus anything that needs a credential, which it names and never enters. That is the whole list. It does not ask permission to write a file, discover your Employees, choose your dashboard tabs, or register its own schedule.
 
@@ -28,7 +28,7 @@ You are being set up as my Chief of Staff Employee. Work through the phases belo
 
 1. `«COS_ROOT»` = **[the absolute path to the folder you extracted this kit into. It must NOT be inside OneDrive, Dropbox, Google Drive, or iCloud.]**
 2. `«HOME URL»` = **[optional. The home page of the business this Employee works for. One URL. If I leave this blank, find it yourself from the files on this machine.]**
-3. Where my other Agent Employees live = **[optional. One folder path per line. Leave this blank and search the folders next to this one.]**
+3. Where my other AI Employees live = **[optional. One folder path per line. Leave this blank and search the folders next to this one.]**
 
 ## Standing rules, for every phase
 
@@ -74,7 +74,7 @@ Do not stop here. Note what you found in four lines in your working notes and go
 
 This phase is a crawl, not a questionnaire. Almost everything you would have asked me is published on my own pages, or already written down by an Employee I installed before you.
 
-1. **Find the business without asking**, in this order, stopping at the first that resolves: `«HOME URL»` if I filled it in; a domain or URL in any file already under `charter/`; a package manifest, README, deploy configuration, git remote, or site config in this folder or its parent; **another Agent Employee already installed on this machine**, whose own charter or strategy folder usually names the business, its offer, and its buy URL, and was written by a routine that researched it properly; my own workspace rule file. Where you read a sibling Employee's file, cite it as a source with its path and the date, and **never write into it**.
+1. **Find the business without asking**, in this order, stopping at the first that resolves: `«HOME URL»` if I filled it in; a domain or URL in any file already under `charter/`; a package manifest, README, deploy configuration, git remote, or site config in this folder or its parent; **another AI Employee already installed on this machine**, whose own charter or strategy folder usually names the business, its offer, and its buy URL, and was written by a routine that researched it properly; my own workspace rule file. Where you read a sibling Employee's file, cite it as a source with its path and the date, and **never write into it**.
 2. **Prefer `web.fetch` for the whole crawl.** It needs no browser, takes no mutex, and costs no lane time. Fall back to a page read only where fetch returns nothing.
 3. Read whichever of these exist, in roughly this order, and stop at a quarter of your budget: home, pricing or plans, product or features, about, the buy or checkout page, the terms or refund or checkout footer, contact or support. Cap this at twenty five page reads and pace it like a person.
 4. **Every line you keep carries the URL you read it on and the date you read it. A line with no source does not get written.** Never carry a value forward as though you read it today, and never write the value you expected instead of the value you read.
@@ -87,13 +87,13 @@ This phase is a crawl, not a questionnaire. Almost everything you would have ask
 This is the phase the whole kit rests on. Get the map wrong and the morning brief raises a stopped routine against a cadence nobody runs, every day, until somebody notices.
 
 1. **The bounded search, and it is bounded on purpose.** The search set, in order: every path I named in the FILL THIS IN block, exactly as given; the parent folder of each named path, one level of children only; the parent folder of `«COS_ROOT»`, one level of children only; nothing else, ever. Record the resolved set in `search_roots[]`. **Never widen it on your own.** A whole disk walk takes longer than a routine's entire budget, returns hundreds of folders carrying a file called `CONTRACT.md`, and reads into folders nobody invited you into.
-2. **The test for an Agent Employee, and it is all three together:** a root level markdown file naming a roster of routines and a file map, a root level markdown file carrying a table with one row per routine and at minimum a days value and a window, and a root level JSONL file whose lines are objects carrying `routine`, `period`, and `status`. All three, in the same folder. **Two of three is not an Agent Employee**, and the most common two of three is a repository with a `CONTRACT.md` about something else entirely.
+2. **The test for an AI Employee, and it is all three together:** a root level markdown file naming a roster of routines and a file map, a root level markdown file carrying a table with one row per routine and at minimum a days value and a window, and a root level JSONL file whose lines are objects carrying `routine`, `period`, and `status`. All three, in the same folder. **Two of three is not an AI Employee**, and the most common two of three is a repository with a `CONTRACT.md` about something else entirely.
 3. **A folder that carries a contract and a schedule but no run log yet is an Employee that has never run.** Record it with `first_run: none` and say so in one line. An Employee installed and never fired is invisible to every other check in this kit, so that is a real finding rather than an edge case.
 4. **Read only, always.** You open these files to read them. Never write one, never create a missing one, never repair a malformed one. A folder whose schedule file will not parse goes in the map with what you could read and a note naming the file.
-5. **This Employee's own root goes in the map.** The Chief of Staff is an Agent Employee and it reconciles itself the same way it reconciles everybody else. Leaving it out makes this kit the one thing on the machine nobody is watching.
+5. **This Employee's own root goes in the map.** The Chief of Staff is an AI Employee and it reconciles itself the same way it reconciles everybody else. Leaving it out makes this kit the one thing on the machine nobody is watching.
 6. Write `charter/fleet-map.md`, one block per Employee, in the shape `cos-charter-and-fleet-audit` uses. Six things about that block each prevent a specific wrong brief, and all six are in that routine's Step A6.3. The two that matter most: **the root is absolute**, because a relative path resolves against whatever folder a run happened to start in; and **the routine rows come from that Employee's own schedule table, character for character where you can, and never from its contract's roster table.** A contract's table carries the cadence in words; the schedule row carries what the guard actually reads, and where the two disagree the schedule row wins.
 7. Run the judge on the file: `node "«COS_ROOT»/scripts/copy-check.mjs" --file "«COS_ROOT»/charter/fleet-map.md" --dest strategy --json`. **A fail is yours to fix, not mine to answer.** Most failures here are a dash inside a real path, which is genuinely part of the data: write the path inside backticks so the checker reads it as a reading rather than as prose, and confirm the value is unchanged.
-8. **If you find no Agent Employee at all**, write the map with this Employee's own root alone, name it in the report, and ask me in one line for my Employee root paths. **Never widen the search.**
+8. **If you find no AI Employee at all**, write the map with this Employee's own root alone, name it in the report, and ask me in one line for my Employee root paths. **Never widen the search.**
 
 ## PHASE 3. Write the charter and seed the two files you seed once
 
@@ -145,7 +145,7 @@ Run it by hand now, with me watching, exactly as it would run on a schedule exce
 
 **STOP. This is the only one.** Show me three things: the brief you just wrote, the fleet map, and the `## Sources read` block from `charter/business.md`. Ask me exactly two questions:
 
-1. Is that the complete list of my Agent Employees, and if not, where are the others.
+1. Is that the complete list of my AI Employees, and if not, where are the others.
 2. Which of these claim lines can I defend in public, word for word.
 
 Then, with my answers:
@@ -162,7 +162,7 @@ Then, with my answers:
 4. Delete `state/browser-lock.json` if you took it. Close any tab you opened.
 5. Then tell me, in plain language and in under fifteen lines:
    - Where the kit lives, especially if you moved it out of a synced folder.
-   - **Which Agent Employees you found, by slug and root path, and how many routines each one carries.**
+   - **Which AI Employees you found, by slug and root path, and how many routines each one carries.**
    - **Every assumption you took, each with the one sentence that would overturn it.** This is the most useful part of the report and it goes near the top.
    - What fires tomorrow morning, at what time, in my timezone, named by zone id.
    - Which file I open first, and roughly how long it takes to read.

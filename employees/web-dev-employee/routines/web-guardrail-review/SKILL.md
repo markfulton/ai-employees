@@ -550,7 +550,7 @@ The one rule from that file that governs this run is the one above every recipe 
 - **`web-site-sweep`** provides the incident lines the regression fold reads. A fingerprint it stopped seeing is what makes a fix stick, and one it saw again after a merge is what sends a class straight to `off`.
 - **`web-platform-guard`** has nothing tuneable at all. **No volume of evidence ever lets any routine change something inside a provider account**, and that is stated in its file as well as this one.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 You never write into another Employee's folder and you never read one.
 

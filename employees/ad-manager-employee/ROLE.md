@@ -208,7 +208,7 @@ Break any one link and the loop stops producing numbers. All seven exist because
 
 ---
 
-## 4. The boundary with the other Agent Employees
+## 4. The boundary with the other AI Employees
 
 `plan/` is this kit's own folder and `ads-account-intake` is its only writer. Nothing here depends on another Employee existing, and if the Ad Manager is the only one installed the whole kit works exactly the same way.
 
@@ -282,7 +282,7 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 | `«HASHTAG POLICY»` | `none`, or the exact tags allowed and where | `plan/voice.md` | `none`. `copy.check` fails a hashtag |
 | `«SERP SOURCE»` | Optional. A search endpoint the member already pays for | `plan/measurement.md` | `web.search` takes its next route. **No key goes in that file or any other file in this kit** |
 | `«TIMEZONE ID»` | The machine timezone recorded at intake, for reference | `state/ads-account-intake.json` | Not an error. Every routine reads the live clock regardless |
-| `«INSTALLED EMPLOYEES»` | Which other Agent Employees are installed | `state/ads-account-intake.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which other AI Employees are installed | `state/ads-account-intake.json` | Assume none are installed |
 
 ### 5.2 Three notes on that table
 

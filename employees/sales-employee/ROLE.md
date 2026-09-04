@@ -196,7 +196,7 @@ Break any one link and the loop stops producing numbers. All seven exist because
 
 ---
 
-## 5. The boundary with the other Agent Employees
+## 5. The boundary with the other AI Employees
 
 `strategy/` is a shared surface. **The Sales Employee is the only writer of `strategy/buyer.md`, and that file is the entire handover surface for who this business sells to.** Sibling Employees read it. If the Sales Employee is the only one installed, the folder works exactly the same way, because nothing here depends on another Employee existing.
 
@@ -265,7 +265,7 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 | `«SEARCH ENDPOINT NAME»` | Optional. A search endpoint the member already pays for | `strategy/accounts.md`, under `## Other accounts` | `web.search` takes its next route. **No key goes in this file or any other file in this kit** |
 | `«BANNED WORDS»`, `«BANNED OPENERS»`, `«BANNED CLOSERS»`, `«HASHTAG POLICY»` | The member's own lists | `strategy/voice.md` | The shipped defaults apply and the brief says so once. Hashtag policy defaults to `none` |
 | `«TIMEZONE ID»` | The machine timezone recorded at setup, for reference | `state/sales-desk-setup.json` | Not an error. Every routine reads the live clock regardless |
-| `«INSTALLED EMPLOYEES»` | Which other Agent Employees are installed | `state/sales-desk-setup.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which other AI Employees are installed | `state/sales-desk-setup.json` | Assume none are installed |
 | `«paste at send time»` | Sentinel marking where the member pastes a credential | Queue files only | Meant to survive. Never resolved by any routine |
 | `«member: paste the detail»` | Sentinel marking a personalisation the agent could not source | Queue files only | Meant to survive. Better than dropping the person |
 

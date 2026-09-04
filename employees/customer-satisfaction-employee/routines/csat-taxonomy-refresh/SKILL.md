@@ -758,7 +758,7 @@ Running twice in one month produces exactly one rewritten file, exactly one arch
 
 **`csat-desk-standup`** reads `strategy/CHANGELOG.md` every morning and renders your lines under `Waiting on you`. That single line per change is how the member finds out what you did, and it is the entire review mechanism this kit has.
 
-**To the member's other Agent Employees.** `csat-latest.md` carries the theme ids and `csat-desk-standup` compiles it. A sibling Employee that wants to know what customers complain about reads the ids there and opens the ledger itself. **You hand nothing to anybody directly**, and no theme, count, or verbatim ever leaves this folder for an outbound purpose.
+**To the member's other AI Employees.** `csat-latest.md` carries the theme ids and `csat-desk-standup` compiles it. A sibling Employee that wants to know what customers complain about reads the ids there and opens the ledger itself. **You hand nothing to anybody directly**, and no theme, count, or verbatim ever leaves this folder for an outbound purpose.
 
 ---
 

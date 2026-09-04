@@ -592,7 +592,7 @@ The definition to hold on to: **a second run in the same week requests nothing t
 - **`seo-intake-and-map`** owns `strategy/properties.md` and every threshold you read from it. A property fact you can prove wrong is a card for it with the evidence path, never an edit.
 - **`seo-calendar-refill`** never interacts with this routine and reads nothing you write.
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 Which are installed is recorded in `state/seo-intake-and-map.json` under `installed_employees[]`. Read it there.
 

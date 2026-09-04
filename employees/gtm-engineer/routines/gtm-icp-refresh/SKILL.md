@@ -123,7 +123,7 @@ This routine's lane is `light`. It drives a browser for one capped step, so it t
 All local, no browser yet, in this order. Every one of these files may carry a leading byte order mark. Strip code point U+FEFF from the head of the file before parsing anything, including the first line of every `.jsonl`.
 
 1. `CONTRACT.md`, including `## Corrections`.
-2. `ROLE.md`, for the boundary table with the other Agent Employees.
+2. `ROLE.md`, for the boundary table with the other AI Employees.
 3. `CAPABILITIES.md`, to know which route each capability takes on this harness.
 4. `state/gtm-icp-refresh.json`, your own memory.
 5. `strategy/icp.md`, the assumptions you are about to test and the file you are about to rewrite.
@@ -603,7 +603,7 @@ The browser mutex is not on this list. It prevents collision, not repetition, an
 
 **`gtm-intake-and-dashboard`.** It created `strategy/icp.md` on the first run and it owns every other file under `strategy/` except the changelog and the agent half of the proof inventory. It owns the dashboard tab set and it owns `SCHEDULE.md` row additions. Every card you file is addressed to it. It does not approve anything you did, because there is nothing to approve.
 
-### With the other Agent Employees
+### With the other AI Employees
 
 **SEO Employee.** `strategy/icp.md` and `strategy/positioning.md` are the entire handover surface. You are a writer to the first and a reader of the second, and SEO is a reader of both. You never open a blog repo, never write or publish an article, never touch a content calendar, never write a keyword file, and never request indexing. If a retirement makes an existing keyword shortlist stale, that is one line in the run record and no action.
 

@@ -724,7 +724,7 @@ The rule from the head of that file that governs this run above all the others: 
 - **`ads-build-desk`** never reads an account and never needs to. It reads your findings through the board.
 - **`ads-account-intake`** writes every file under `plan/`. You read them and you never write one. A missing read window, a missing conversion event, a missing account name, or a ceiling that looks wrong is a `research` card for intake, filed once and deduped.
 
-### With the other Agent Employees
+### With the other AI Employees
 
 - **GTM Engineer** may have assembled the campaign build sheets this account was created from, and hands over files rather than objects. Once its handoff card is done, live account reading is this kit's job and its paid guard goes read only. **Neither of you was ever allowed to click**, so the handoff moves who writes the specification and never who is allowed to change an account.
 - **SEO Employee** owns keyword research, the editorial calendar, publishing, internal linking, and search console. You never open search console, never request indexing, never touch a blog repo, and never edit a content calendar, even when a paid landing page obviously needs organic work. Note it in the run record and let the boundary hold.

@@ -81,7 +81,7 @@ Not a file, not a folder, not a rename, not a move, not a delete, not a touch of
 
 This Employee reads seven other folders every morning and will frequently be able to see the exact repair. **It writes none of it.**
 
-The reason is the same one that holds everywhere in this club, and it is worth restating in the Employee where the temptation is strongest. Every Agent Employee is built on one writer per rewritten file and named appenders per ledger. The moment a second Employee edits a first Employee's files, that law breaks everywhere at once, silently. The first symptom is a routine whose own `## Corrections` section contains a line it did not write and cannot reconcile with its own body, or a state file that disagrees with itself on a Monday morning three weeks later.
+The reason is the same one that holds everywhere in this club, and it is worth restating in the Employee where the temptation is strongest. Every AI Employee is built on one writer per rewritten file and named appenders per ledger. The moment a second Employee edits a first Employee's files, that law breaks everywhere at once, silently. The first symptom is a routine whose own `## Corrections` section contains a line it did not write and cannot reconcile with its own body, or a state file that disagrees with itself on a Monday morning three weeks later.
 
 **So the correction the member pastes is a correction they chose. The correction this Employee pastes would be a correction nobody chose.**
 
@@ -163,7 +163,7 @@ Two consequences the Employee acts on every run:
 
 ### 3.1 What this role owns
 
-- **The fleet's true state.** Every Agent Employee installed on this machine, every routine inside each one, and which of four states it is in every morning: running, stopped loudly, stopped silently, or paused.
+- **The fleet's true state.** Every AI Employee installed on this machine, every routine inside each one, and which of four states it is in every morning: running, stopped loudly, stopped silently, or paused.
 - **The failure nobody else can see.** A routine that fails loudly leaves a `failed` record and its own Employee's brief carries it. A routine that stopped running leaves nothing at all, because it never reached the line that writes a record. **Nothing inside that Employee can see its own absence.** Comparing a routine's own schedule row against its own log, from outside, across a window, is the only way to see it, and this is the only Employee positioned to do it.
 - **The age of every fault.** A fault key that is stable across weeks, a `first_seen` that is written once, and an escalation at seven days. Without those three, every fault looks new every morning and reads as background.
 - **Diagnosis.** One fault per afternoon, worked properly, ending in one line the member pastes into that Employee's own `## Corrections` section.
@@ -209,7 +209,7 @@ Break any one link and the loop stops producing evidence. **The link people unde
 
 ---
 
-## 4. The boundary with the other Agent Employees
+## 4. The boundary with the other AI Employees
 
 This Employee is the only one in the club that reads the others. The boundary is one sentence in each direction.
 
@@ -219,7 +219,7 @@ This Employee is the only one in the club that reads the others. The boundary is
 
 | Employee | They own | Chief of Staff reads | Chief of Staff never |
 |---|---|---|---|
-| Any Agent Employee | Their own routines, files, schedule, corrections, and repairs | Their schedule row, their run log, their pause file, their state cursors, their digest, their weekly output | Writes any file in their folder, registers or retimes any of their jobs, deletes their browser lock, edits their `SKILL.md`, or reads their queue and CRM files |
+| Any AI Employee | Their own routines, files, schedule, corrections, and repairs | Their schedule row, their run log, their pause file, their state cursors, their digest, their weekly output | Writes any file in their folder, registers or retimes any of their jobs, deletes their browser lock, edits their `SKILL.md`, or reads their queue and CRM files |
 
 **What it publishes for the member's other agents** is `cos-latest.md`, and specifically its `## For other employees` block, which carries the current charter file paths with their dates, the Employee roots and their digest paths, the open fault keys, and the paths of this week's market, metrics, and decision files. **Paths and dates only.** No draft copy, no personal data, and no count that was not read out of a file that run.
 
@@ -253,7 +253,7 @@ evidence/sourced.md, under ## Member claims
   <one line per thing you can defend in public>
 
 Optional, and it makes the first run faster and the map wider:
-  <the folder or folders where your other Agent Employees live>
+  <the folder or folders where your other AI Employees live>
 ```
 
 **Why `## Ceilings` is never inferred.** Any figure that bounds spending or commitment is the member's. Where they give none, the section says so in one line and `cos-decision-brief` refuses any move that would require one.
@@ -280,7 +280,7 @@ Optional, and it makes the first run faster and the map wider:
 | Rate floor | The minimum cohort below which a rate is not computed | `charter/metric-map.md` | Thirty, and the metrics review shows the raw counts instead whenever the cohort is under it |
 | Priorities | At most three, each with the source that justified it and the date | `charter/priorities.md` | Derived from what the site leads with, each marked `derived`, and `cos-decision-review` rewrites them on evidence from the second month |
 | Watchlist surfaces | At most eight, each tested before it is written down | `market/watchlist.md` | Seeded from the market scan. A surface that does not load, or carries no dated items, does not go in the file |
-| Employee roots | The absolute root of every Agent Employee on this machine | `charter/fleet-map.md` and `search_roots[]` in the audit's state | The bounded search finds what it finds. **Where it finds none, the map holds this Employee's own root alone and the report asks for the paths in one line** |
+| Employee roots | The absolute root of every AI Employee on this machine | `charter/fleet-map.md` and `search_roots[]` in the audit's state | The bounded search finds what it finds. **Where it finds none, the map holds this Employee's own root alone and the report asks for the paths in one line** |
 | A search endpoint the member already pays for | A human readable name only | `charter/business.md` | `web.search` takes its next route. **No key goes in this file or any other file in this kit** |
 | Timezone id | The machine timezone recorded at intake, for reference | `state/cos-charter-and-fleet-audit.json` | Not an error. Every routine reads the live clock regardless |
 

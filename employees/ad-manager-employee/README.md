@@ -331,7 +331,7 @@ No routine ever writes a secret, a credential, a creative string, an account fig
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 If this is the only Employee you have installed, everything works exactly the same way. Nothing here depends on another one existing.
 

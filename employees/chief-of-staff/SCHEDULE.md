@@ -24,7 +24,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `cos-charter-and-fleet-audit` | `first-weekday` | 12:00 | 11:45 | 17:00 | `YYYY-MM` | 45 min | light |
 | `cos-decision-review` | `last-weekday` | 13:00 | 12:45 | 17:30 | `YYYY-MM` | 30 min | never |
 
-Seven rows, seven routines, and every id carries the `cos-` prefix so they namespace cleanly beside the other Agent Employees this one watches.
+Seven rows, seven routines, and every id carries the `cos-` prefix so they namespace cleanly beside the other AI Employees this one watches.
 
 ### 1.1 The column meanings
 
@@ -64,7 +64,7 @@ There is no status meaning "this machine has no browser". A missing capability m
 
 | routine | display name | cadence | job, one line |
 |---|---|---|---|
-| `cos-fleet-reconcile` | Fleet reconcile | Weekdays | Walks every Agent Employee on this machine strictly read only, classifies every routine as running, stopped loudly, stopped silently, or paused, ages the faults, folds the decision register, and writes the brief |
+| `cos-fleet-reconcile` | Fleet reconcile | Weekdays | Walks every AI Employee on this machine strictly read only, classifies every routine as running, stopped loudly, stopped silently, or paused, ages the faults, folds the decision register, and writes the brief |
 | `cos-fault-dossier` | Fault dossier | Weekdays | Takes the top open fault and turns it into a page the member can act on in a minute, ending in one paste ready correction line with the exact path it belongs in |
 | `cos-market-sweep` | Market sweep | Wednesdays | Works its own watchlist through one contiguous browser phase and captures one dated observation per real change, with a verbatim quote and the exact URL |
 | `cos-metrics-review` | Metrics review | Thursdays | Scores the fleet and the business for the week with a source beside every number, citing the Employee that owns a metric rather than recomputing it |

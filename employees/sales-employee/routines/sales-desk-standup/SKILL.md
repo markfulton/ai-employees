@@ -768,7 +768,7 @@ The pipeline and the brief are rewritten whole every morning from the folded sta
 
 **None of the six hands you anything through a file the map does not name.** There is no proposal file, no decision block, and no approval line anywhere in this kit. A routine reaches you through `pipeline/inbox.jsonl`, `strategy/CHANGELOG.md`, `improvements/CHANGELOG.md`, its state file, and its run record. Those five, and nothing else.
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 `strategy/` is a shared surface. Sibling Employees read it, and the file they read for daily state is `sales-latest.md`, which you compile. That is why its `## For other employees` block carries paths, ids, and dates rather than prose.
 

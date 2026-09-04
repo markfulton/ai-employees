@@ -779,7 +779,7 @@ The rule from the head of that file that governs this run above all the others: 
 - **`ads-creative-retro`** shares `## Agent sourced` with you and owns `creative/doctrine.md`. **A creative level verdict that is really about an angle rather than a file belongs to it**, so file a `research` card owned by that routine rather than proposing an angle change yourself.
 - **`ads-account-intake`** owns every file under `plan/` and the `SCHEDULE.md` rows. Every plan finding and every schedule finding you have is a card for it. **You never register, change, or remove a scheduled task, and you never edit a row.**
 
-### With the other Agent Employees
+### With the other AI Employees
 
 - **GTM Engineer** owns positioning and the campaign build sheets an account was created from. Once its handoff card is done, paid operations belong to this kit and its paid guard goes read only. Before the handoff nothing changes for you either, because you never touched the account in the first place.
 - **SEO Employee** owns keyword research, the editorial calendar, publishing, internal linking, and search console. You never open search console, never request indexing, and never edit a content calendar. Organic figures appear on your page only where the member listed a source, and otherwise the cell reads `n/a (not tracked here)`.

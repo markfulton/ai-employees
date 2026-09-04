@@ -709,7 +709,7 @@ The browser mutex is not on this list. It prevents collision, not repetition, an
 - **`sales-desk-setup`** owns the offer, the voice, the message library, the accounts file, and the `SCHEDULE.md` rows. Every schedule finding and every offer finding you have is a card for it. You never register, change, or remove a scheduled task, and the only cells you ever edit are `window_start` and `window_end` on your own row.
 - **`sales-qualification-refresh`** owns `strategy/buyer.md` and `strategy/qualification.md` from the second month and shares `## Agent sourced` with you. **It reads your weekly files at month end**, so the per test and per segment counts you record are the evidence its rewrite runs on. Keep a test id and a segment id in your tables even when their counts are zero: a test that disappears from your page looks retired rather than untested.
 
-### With the other Agent Employees, where the member has them installed
+### With the other AI Employees, where the member has them installed
 
 `strategy/` is a shared surface. Which siblings are installed is recorded in `state/sales-desk-setup.json` under `installed_employees[]`. Read it there rather than inferring it from the filesystem mid run.
 

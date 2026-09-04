@@ -24,7 +24,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `soc-performance-review` | `fri` | 16:00 | 15:45 | 19:00 | `YYYY-Www` | 40 min | heavy |
 | `soc-intake-and-voice` | `first-weekday` | 13:00 | 12:45 | 17:00 | `YYYY-MM` | 45 min | light |
 
-Seven rows, seven routines, and every id carries the `soc-` prefix so they namespace cleanly beside other Agent Employees.
+Seven rows, seven routines, and every id carries the `soc-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 

@@ -597,7 +597,7 @@ Named, never re explained here, and never named as a tool. `recipes/BROWSER-RECI
 
 ### To sibling Employees
 
-Where the member has another Agent Employee installed, it reads `soc-latest.md`, which the standup compiles. You hand off to it through your ledger lines and your run record and through nothing else. You never write into another Employee's folder, never publish on behalf of one, and never accept a slot that arrived from one by any route other than `calendar/inbox.jsonl` folded by the standup.
+Where the member has another AI Employee installed, it reads `soc-latest.md`, which the standup compiles. You hand off to it through your ledger lines and your run record and through nothing else. You never write into another Employee's folder, never publish on behalf of one, and never accept a slot that arrived from one by any route other than `calendar/inbox.jsonl` folded by the standup.
 
 ---
 

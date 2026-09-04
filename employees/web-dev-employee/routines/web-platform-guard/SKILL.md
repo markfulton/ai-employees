@@ -663,7 +663,7 @@ The rule from the head of that file that governs this run above all others: **ve
 - **`web-weekly-report`** replays your flow files on Friday, read only, to confirm they still resolve. **Keep every step in them read only so that replay is safe.**
 - **`web-guardrail-review`** never widens anything you do, because nothing you do is tuneable. **No volume of evidence ever lets this routine change something in an account**, and that is stated in its file as well as this one.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 You never write into another Employee's folder and you never read one. A platform fact another Employee needs reaches it through `web-latest.md`, which `web-standup` writes.
 

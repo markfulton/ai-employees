@@ -352,7 +352,7 @@ If the standup ever opens by telling you that nothing has been produced since a 
 
 ---
 
-## Working alongside the other Agent Employees
+## Working alongside the other AI Employees
 
 `csat-latest.md` is the whole handover surface, and it carries paths, theme ids, channel values, and dates. **No quote, no customer name, no account slug, and no dossier line ever leaves this folder.**
 

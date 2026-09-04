@@ -25,7 +25,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `web-weekly-report` | `fri` | 15:30 | 15:15 | 18:00 | `YYYY-Www` | 35 min | light |
 | `web-guardrail-review` | `last-weekday` | 16:45 | 16:30 | 19:30 | `YYYY-MM` | 20 min | never |
 
-Eight rows, eight routines, and every id carries the `web-` prefix so they namespace cleanly beside other Agent Employees.
+Eight rows, eight routines, and every id carries the `web-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 

@@ -659,7 +659,7 @@ Every harness schedules differently and some do not schedule at all. The shape b
 
 **Register the fire time, not the window.** The window is enforced inside the routine and it is a catch up net, not a concurrency plan. Overlapping windows are deliberate. Overlapping fire times are not.
 
-**Name every job exactly after its routine id.** All eight ids carry the `csat-` prefix so they namespace cleanly next to other Agent Employees, and the monthly drift check can only match a registered job to a row when the names are identical.
+**Name every job exactly after its routine id.** All eight ids carry the `csat-` prefix so they namespace cleanly next to other AI Employees, and the monthly drift check can only match a registered job to a row when the names are identical.
 
 **Take the times from `SCHEDULE.md`, not from any example below.** `SCHEDULE.md` is the one place a cadence, a fire time, and a window live, and it wins over every other file in the kit including this one. The examples here carry the shipped defaults so the shape is readable. If your table says something different, your table is right.
 

@@ -726,7 +726,7 @@ That is the definition worth holding on to: **a second run changes nothing, and 
 
 ### To sibling Employees
 
-`voice/` and `plan/` are this Employee's own surfaces and it is their only writer. Where the member has another Agent Employee installed, your handoff to it is `soc-latest.md`, and specifically its `## For other employees` block, which is why that block carries paths and dates rather than prose. You never write into another Employee's folder, never read one, and never go looking for one. Which of them are installed is recorded in `state/soc-intake-and-voice.json` under `installed_employees[]`. Read it there. Do not infer it from the filesystem mid run, and do not change it.
+`voice/` and `plan/` are this Employee's own surfaces and it is their only writer. Where the member has another AI Employee installed, your handoff to it is `soc-latest.md`, and specifically its `## For other employees` block, which is why that block carries paths and dates rather than prose. You never write into another Employee's folder, never read one, and never go looking for one. Which of them are installed is recorded in `state/soc-intake-and-voice.json` under `installed_employees[]`. Read it there. Do not infer it from the filesystem mid run, and do not change it.
 
 ---
 

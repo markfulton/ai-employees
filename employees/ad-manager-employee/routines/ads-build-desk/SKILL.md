@@ -832,7 +832,7 @@ The rule from the head of that file that governs this run above all the others: 
 - **`ads-creative-retro`** owns `creative/doctrine.md`. Where a sheet's asset set disagrees with the doctrine, file a `research` card owned by that routine and write the sheet from `plan/positioning.md` as usual.
 - **`ads-account-intake`** writes every file under `plan/`. You read them and you never write one. A missing daily cap, a missing link convention, or a missing account name is a `research` card for intake, filed once and deduped.
 
-### With the other Agent Employees
+### With the other AI Employees
 
 - **GTM Engineer** may have written the original campaign build sheets under its own `paid/` folder, and hands over files rather than objects. **You never read that folder**, because it is outside this kit's root and its own routines maintain it. A value it holds reaches you through `plan/`, written by intake.
 - **SEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar, even when a landing page a sheet points at obviously needs organic work.

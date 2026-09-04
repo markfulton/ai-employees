@@ -691,7 +691,7 @@ The one rule from that file that governs this run is the one above every recipe 
 
 **None of the seven hands you anything through a file the map does not name.** There is no proposal file, no decision block, and no approval line anywhere in this kit. A routine reaches you through `board/inbox.jsonl`, `inventory/CHANGELOG.md`, `improvements/CHANGELOG.md`, and its run record. Those four, and nothing else.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 `web-latest.md` is your handoff, and specifically its `## For other employees` block, which is why that block carries paths, ids, counts, and dates rather than prose. You never write into another Employee's folder and you never read one.
 

@@ -88,7 +88,7 @@ For **each** line in `«PROPERTIES»`, in order:
 Then, once, across all properties:
 
 10. **Read my own articles for my voice.** Four or five in full. Sentence length, first or third person, whether I use numbers, whether I admit limits, how I open, how I close, whether I use contractions. Take three to five short verbatim excerpts with the URL each came from.
-11. **If a sibling Agent Employee is installed and `CAPABILITIES.md` names a route to read its files**, read its voice file and its audience research and build on them, copying its banned words, banned openers, banned closers, hashtag policy, and dash policy verbatim and recording where they came from. **One voice per business.** Two Employees writing in two voices is worse than either.
+11. **If a sibling AI Employee is installed and `CAPABILITIES.md` names a route to read its files**, read its voice file and its audience research and build on them, copying its banned words, banned openers, banned closers, hashtag policy, and dash policy verbatim and recording where they came from. **One voice per business.** Two Employees writing in two voices is worse than either.
 12. **Research my topics.** What is sold, to whom, at what price, and what it removes. What my existing articles already cover and what reads as my strongest ground. Where these buyers gather, what they search, and how they phrase the problem. Use `web.search` in batched calls, one call carrying several related queries rather than several calls carrying one each.
 13. **Report, then keep going.** Give me two things and do not wait for a reply to either.
     - Up to fifteen lines of what you established per property, each carrying its source.

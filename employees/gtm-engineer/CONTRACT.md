@@ -16,7 +16,7 @@ Three things are true of every rule below, and they are the reason the rules are
 
 The id is the folder name is the YAML `name` key. All three are the same string, always, with no exception and no alias. A routine whose folder name and `name` key differ is broken and must be renamed before anything else is done to it.
 
-Every id carries the `gtm-` prefix so the eight namespace cleanly alongside other Agent Employees in a shared scheduler. **They are scheduled routines, not on-demand skills, and they never belong in a global skills directory:** registering them there loads all eight into every session the member opens and lets one be invoked outside its window, where it does nothing but record `skipped-out-of-window` and exit.
+Every id carries the `gtm-` prefix so the eight namespace cleanly alongside other AI Employees in a shared scheduler. **They are scheduled routines, not on-demand skills, and they never belong in a global skills directory:** registering them there loads all eight into every session the member opens and lets one be invoked outside its window, where it does nothing but record `skipped-out-of-window` and exit.
 
 | id | display name | cadence | shipped fire time | browser lane | its one job |
 |---|---|---|---|---|---|

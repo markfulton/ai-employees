@@ -369,7 +369,7 @@ Offer these in one compact block. **State the working answer you already have ne
 | Working days and hours | It is their week, and it sets how many cards go in the brief and when a push is allowed | Monday to Friday and three cards a day, recorded as an assumption |
 | Which accounts and profiles exist, by name | You can see the account you were pointed at, not the ones you were not | The names you read at A4.6, marked with the date |
 | Voice samples they are happy to sound like | Their own taste | The copy already on their own site becomes the sample set, cited with URLs. That is genuinely their voice |
-| Which other Agent Employees are installed | It is their roster | None, and you write the handover sections anyway. They cost nothing |
+| Which other AI Employees are installed | It is their roster | None, and you write the handover sections anyway. They cost nothing |
 
 Three rules govern this step and they are what keep it from becoming an interview:
 
@@ -870,7 +870,7 @@ Every one of these is a file handoff. Nothing is passed in a message, nothing is
 | `ads-change-list` | `plan/offer.md` for the ceiling every rank 2 line is measured against, `plan/guardrails.md#Change list settings` for the member's thresholds, and `plan/account-map.md` for the screen every change line names |
 | `ads-creative-retro` | `creative/doctrine.md` on the first run only. **It owns the file from then on and you never write it again.** `plan/positioning.md#Angles` as the file its angles are tested against |
 
-### To the other Agent Employees
+### To the other AI Employees
 
 Write these sections whether or not any of them is installed. They cost nothing and the member may install one next month.
 

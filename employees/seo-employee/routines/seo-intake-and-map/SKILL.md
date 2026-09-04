@@ -862,7 +862,7 @@ The rule from that file that governs this run more than any other is the third o
 
 **To `seo-rank-review`.** It reads the read screen names, every threshold, and the pillar and cluster architecture, and it joins every URL to a cluster through your map. A URL that joins to nothing is reported as unmapped and comes back to you as a card.
 
-**To sibling Agent Employees.** `seo-standup` compiles the cross Employee handoff in `seo-latest.md`. You read a sibling Employee's voice file or audience research only where `CAPABILITIES.md` names a route, only to read, and you record where you took it from. You never write into another Employee's folder and never take on work that belongs to one.
+**To sibling AI Employees.** `seo-standup` compiles the cross Employee handoff in `seo-latest.md`. You read a sibling Employee's voice file or audience research only where `CAPABILITIES.md` names a route, only to read, and you record where you took it from. You never write into another Employee's folder and never take on work that belongs to one.
 
 ---
 

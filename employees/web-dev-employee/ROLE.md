@@ -192,7 +192,7 @@ Break any one link and the loop stops producing changes the member will merge. A
 
 ---
 
-## 4. The boundary with the other Agent Employees
+## 4. The boundary with the other AI Employees
 
 This Employee reads production and writes branches. It has no opinion about the member's market, their pipeline, or their content.
 
@@ -250,7 +250,7 @@ That is the whole of it. The Employee finds the repositories by looking, reads t
 | `«BRANCH PUSH CAP»` | Branches pushed per run | `policy/budgets.md` | 1 for the fix runner, 3 for the dependency run |
 | `«CONSECUTIVE CLEAN MERGES TO WIDEN»` | Months of clean merges before a fix class widens one rung | `policy/budgets.md`, under `## Guardrail review` | 3. **It lives in a file `web-guardrail-review` does not write**, so that routine cannot loosen its own trigger |
 | `«WORKING DAYS»`, `«WORKING HOURS»` | The member's real capacity, and the hours a push is allowed in | `policy/budgets.md` | Monday to Friday, three ready cards a day, and no push outside those hours |
-| `«INSTALLED EMPLOYEES»` | Which sibling Agent Employees the member has | `state/web-inventory-refresh.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which sibling AI Employees the member has | `state/web-inventory-refresh.json` | Assume none are installed |
 | `«TIMEZONE ID»` | The machine timezone recorded at setup, for reference | `state/web-inventory-refresh.json` | Not an error. Every routine reads the live clock regardless |
 
 ### 5.2 Three notes on that table

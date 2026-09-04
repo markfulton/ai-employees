@@ -209,9 +209,9 @@ Break any one link and the loop stops producing evidence. All seven exist becaus
 
 ---
 
-## 6. The boundary with the other Agent Employees
+## 6. The boundary with the other AI Employees
 
-`voice/` and `plan/` are this Employee's own surfaces and it is their only writer. Where the member has another Agent Employee installed, it reads `soc-latest.md`, which `soc-calendar-standup` compiles.
+`voice/` and `plan/` are this Employee's own surfaces and it is their only writer. Where the member has another AI Employee installed, it reads `soc-latest.md`, which `soc-calendar-standup` compiles.
 
 | Employee | They own | Social hands over | Social never |
 |---|---|---|---|
@@ -278,7 +278,7 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 | Dash policy | Ships as no em dash and no en dash anywhere | `voice/voice.md` | The shipped value. Enforced on code point, never by eye |
 | `## Samples` | Real posts, quoted, with permalinks and read dates | `voice/voice.md` | Intake fills it from the member's own published posts. Fewer than three and the file is thin, the report says so, and pasting three posts they like is the single highest value thing the member can do |
 | `«TIMEZONE ID»` | The machine timezone recorded at intake, for reference | `state/soc-intake-and-voice.json` | Not an error. **Every routine reads the live clock regardless** |
-| `«INSTALLED EMPLOYEES»` | Which other Agent Employees are installed | `state/soc-intake-and-voice.json` | Assume none are installed |
+| `«INSTALLED EMPLOYEES»` | Which other AI Employees are installed | `state/soc-intake-and-voice.json` | Assume none are installed |
 
 ### 7.3 Three notes on that table
 

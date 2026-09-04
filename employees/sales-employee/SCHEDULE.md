@@ -24,7 +24,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `sales-desk-setup` | `first-weekday` | 11:00 | 10:45 | 15:00 | `YYYY-MM` | 45 min | light |
 | `sales-qualification-refresh` | `last-weekday` | 11:30 | 11:15 | 15:30 | `YYYY-MM` | 30 min | light |
 
-Seven rows, seven routines, and every id carries the `sales-` prefix so they namespace cleanly beside other Agent Employees.
+Seven rows, seven routines, and every id carries the `sales-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 
@@ -212,7 +212,7 @@ One limit case, because no setting clears it: a prompt raised by the browser rat
 
 **A window.** Any routine that concludes its own `window_start` or `window_end` is wrong edits those two cells on its own row, records the old and the new value in `improvements/CHANGELOG.md`, and carries on. A window is local to one routine, so widening or narrowing it collides with nothing and needs nobody's permission.
 
-**A fire time.** Only `sales-desk-setup` moves one, and only for one reason: to clear a lane collision it detected. That includes a collision against a sibling Agent Employee's kit, detected by reading that kit's own `SCHEDULE.md`. It edits the row, records both the old time and the new time in one line in `strategy/CHANGELOG.md` with the evidence path, re-registers that job, and surfaces the change in the next morning brief. A routine that thinks its own fire time is wrong files a card owned by `sales-desk-setup` rather than moving it, because a fire time can only be reasoned about against every other row and every sibling kit's table, and one routine reads neither.
+**A fire time.** Only `sales-desk-setup` moves one, and only for one reason: to clear a lane collision it detected. That includes a collision against a sibling AI Employee's kit, detected by reading that kit's own `SCHEDULE.md`. It edits the row, records both the old time and the new time in one line in `strategy/CHANGELOG.md` with the evidence path, re-registers that job, and surfaces the change in the next morning brief. A routine that thinks its own fire time is wrong files a card owned by `sales-desk-setup` rather than moving it, because a fire time can only be reasoned about against every other row and every sibling kit's table, and one routine reads neither.
 
 **It moves this kit's row and never a sibling's.** A row in another kit belongs to that kit, and moving it would be exactly the two writers problem this whole rule exists to prevent.
 

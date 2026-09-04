@@ -514,7 +514,7 @@ Offer these in one compact block. **State the working answer you already have ne
 | Working days and hours | It is their week | Monday to Friday, recorded as an assumption |
 | Platforms they will not use | Personal, and sometimes contractual | Nothing is excluded, and the channel set is what the research found them already on |
 | Whether the voice file sounds like them | Their own taste, and it is the only question in this list worth their full attention | The file stands as built from their own samples. One line in the report points at it and says one added line changes everything the kit writes |
-| Which other Agent Employees are installed | It is their roster | None, and you write the handover sections anyway. They cost nothing |
+| Which other AI Employees are installed | It is their roster | None, and you write the handover sections anyway. They cost nothing |
 
 Three rules govern this step and they are what keep it from becoming an interview:
 
@@ -876,9 +876,9 @@ Every one of these is a file handoff. Nothing is passed in a message, nothing is
 | `soc-draft-queue` | `voice/voice.md`, which is the whole of what it sounds like. `voice/proof-inventory.md` as the copy gate. `plan/pillars.md`, `plan/audience.md`, and `plan/channels.md` for the platform mechanics |
 | `soc-performance-review` | `plan/channels.md` for the read screens and the scorecard settings, `plan/pillars.md` for the cut labels, and `scorecard/manual.md`, created empty and belonging to the member. It writes the drafting standards and **you never touch that file** |
 
-### To other Agent Employees
+### To other AI Employees
 
-`voice/` and `plan/` are this Employee's own surfaces and it is their only writer. Where the member has another Agent Employee installed, it reads `soc-latest.md`, which `soc-calendar-standup` compiles. **Write the handover sections whether or not any of them is installed.** They cost nothing and the member may install one next month. Where `installed_employees[]` in your own state file names one, say in the report which Employee reads which file. Where it names none, write the same sections and say nothing. **Read that list from your own state file. Do not infer it from the filesystem mid run, and do not change it. You never write into another Employee's folder, never register a job for one, and never accept a slot, a pillar, or a claim from one by any route.**
+`voice/` and `plan/` are this Employee's own surfaces and it is their only writer. Where the member has another AI Employee installed, it reads `soc-latest.md`, which `soc-calendar-standup` compiles. **Write the handover sections whether or not any of them is installed.** They cost nothing and the member may install one next month. Where `installed_employees[]` in your own state file names one, say in the report which Employee reads which file. Where it names none, write the same sections and say nothing. **Read that list from your own state file. Do not infer it from the filesystem mid run, and do not change it. You never write into another Employee's folder, never register a job for one, and never accept a slot, a pillar, or a claim from one by any route.**
 
 ---
 

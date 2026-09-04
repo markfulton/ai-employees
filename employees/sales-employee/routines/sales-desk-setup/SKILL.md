@@ -395,7 +395,7 @@ Offer these in one compact block. State the working answer you already have next
 | How many first touches a day they can actually send | It is their capacity, and it decides `daily_target` in two state files | The shipped defaults, recorded as an assumption |
 | Anyone or any company that is off limits | Personal, and often contractual | Nothing is excluded. The member adds a `no-outreach` tag to a row in `crm/contacts.csv` at any time |
 | Voice samples they are happy to sound like | Their own taste | The copy already on their own site becomes the sample set, cited with URLs. That is genuinely their voice |
-| Which other Agent Employees are installed | It is their roster, and you also detect it in Step A7 | What the detection found, and nothing else |
+| Which other AI Employees are installed | It is their roster, and you also detect it in Step A7 | What the detection found, and nothing else |
 
 Three rules govern this step and they are what keep it from becoming an interview:
 
@@ -502,13 +502,13 @@ Before appending, read `pipeline/inbox.jsonl` back and fold it on `title` plus `
 
 You register the jobs. You do not propose a table and wait for a yes. There is no sentence anywhere in this routine asking the member to approve a schedule.
 
-### A8.1 Detect which sibling Agent Employees are installed
+### A8.1 Detect which sibling AI Employees are installed
 
 Two Employees driving one browser on one machine **produces no error at all**. The symptom is two bad outputs and nothing anywhere to explain either: a navigation landing in the other Employee's tab, a form half filled with the wrong values, a click by reference hitting a detached node. The browser mutex in `state/browser-lock.json` protects the routines inside this kit from each other. **It does not reach across kits**, because each kit has its own root folder and its own lock file.
 
 So detect the neighbours and stagger against them:
 
-1. Look for sibling Agent Employee folders beside `«SALES_ROOT»` and under the member's own home directory: a folder holding a `CONTRACT.md`, a `SCHEDULE.md`, and a `routines/` directory. **Read only.**
+1. Look for sibling AI Employee folders beside `«SALES_ROOT»` and under the member's own home directory: a folder holding a `CONTRACT.md`, a `SCHEDULE.md`, and a `routines/` directory. **Read only.**
 2. For each one found, read its `SCHEDULE.md` table and take, per row, the routine id, the `fire` time, the `budget`, and the `browser` lane.
 3. Record what you found in `installed_employees[]` and `sibling_lanes{}` in your own state file, as `{"employee": "«folder name»", "rows": [{"routine": "...", "fire": "...", "budget": "...", "browser": "..."}]}`.
 
@@ -658,7 +658,7 @@ Check each of these. Where the check finds something, fix it and say what you fi
 | A routine folder has no row | Write the row per A8.4 and register the job |
 | A row has no folder | Name it. Register nothing. Remove nothing |
 | A routine has no run record at all in the last fourteen days | Check whether its job is registered. Re-register if it is not. If it is registered and still silent, name it with the date of its last record. **A routine that hangs waiting for a permission prompt looks exactly like this**, so name the `CAPABILITIES.md` section about run mode in the same line |
-| A new sibling Agent Employee has appeared since last month | Read its `SCHEDULE.md`, add it to `sibling_lanes{}`, and re-stagger **this kit's** browser capable fire times against it per A8.4. One changelog line per row moved, naming both times |
+| A new sibling AI Employee has appeared since last month | Read its `SCHEDULE.md`, add it to `sibling_lanes{}`, and re-stagger **this kit's** browser capable fire times against it per A8.4. One changelog line per row moved, naming both times |
 | A sibling Employee's fire time has moved into this kit's lane | Move this kit's row. **Never the sibling's** |
 | The same blocker appears in three or more run records | Diagnose it. Where it is a flow file another routine owns, put one line in the run record and let its owner fix it. Where it is a missing capability, name it with the one thing that would turn it on. Where it is a mailbox account mismatch, re-crawl or re-ask for the name |
 | `«SALES_ROOT»` now sits inside a synced folder because the member moved it | Move it back out, per A1.2, and name the new path in the first line of the report |
@@ -844,7 +844,7 @@ Named, never re-explained here, and never named as a tool. This routine's lane i
 - **`sales-pipeline-review`** files cards addressed to you when the offer, the voice, the message library, the accounts file, or a schedule row disagrees with the evidence. **You are the routine that closes those**, on your own next monthly pass, by changing the file and recording the line.
 - **`sales-qualification-refresh`** takes `strategy/buyer.md` and `strategy/qualification.md` over from the second month and rewrites both on the ledger evidence. It runs on the last weekday and you run on the first, so its work is always fresh when you arrive. **You read both and write neither after the first run**, and you never re-seed a segment or a test it retired.
 
-### With the other Agent Employees
+### With the other AI Employees
 
 `strategy/` is a shared surface. Which siblings are installed is recorded in `installed_employees[]` in your own state file, captured here and read by every other routine in this kit rather than re-detected mid run.
 

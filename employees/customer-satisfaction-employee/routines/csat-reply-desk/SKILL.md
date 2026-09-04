@@ -714,7 +714,7 @@ Running twice in one day produces exactly one queue file per channel, exactly on
 
 **`csat-taxonomy-refresh`** rewrites `strategy/themes.md` from the second month. You read the themes and the severity rules it maintains, and you never edit either. Where a severity grade looks wrong to you in a way that keeps recurring, say so in `notes`: that routine reads run records as evidence and a pattern you noticed is exactly what it is looking for.
 
-**To the member's other Agent Employees.** `csat-latest.md` is the handover surface and `csat-desk-standup` compiles it. Where something you drafted is really a marketing post rather than an answer to one person, it does not belong in either queue. Drop it and put one line in `notes`.
+**To the member's other AI Employees.** `csat-latest.md` is the handover surface and `csat-desk-standup` compiles it. Where something you drafted is really a marketing post rather than an answer to one person, it does not belong in either queue. Drop it and put one line in `notes`.
 
 ---
 

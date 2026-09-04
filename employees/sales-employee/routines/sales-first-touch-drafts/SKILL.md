@@ -629,7 +629,7 @@ Running twice in one day produces exactly one queue file, exactly one ledger lin
 
 **`sales-desk-setup`** owns `strategy/offer.md`, `strategy/voice.md`, `strategy/message-library.md`, `strategy/accounts.md`, the first `strategy/buyer.md` and `strategy/qualification.md`, and the seeded `crm/contacts.csv`. You read all of them and write none of them.
 
-### To sibling Agent Employees
+### To sibling AI Employees
 
 `strategy/` is a shared surface and the file siblings read for daily state is `sales-latest.md`, which `sales-desk-standup` compiles. You hand off to them through your run record and through nothing else. You never write an article, never post anything, never open an ad account, and never reply to anyone. Where something you have written is really a public post rather than a message to one person, it does not belong in this queue: drop it and put one line in `notes`.
 

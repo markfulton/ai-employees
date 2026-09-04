@@ -728,7 +728,7 @@ That last one is the definition worth holding on to: **a second run changes noth
 
 **None of the six hands you anything through a file the map does not name.** There is no proposal file, no decision block, and no approval line anywhere in this kit. A routine reaches you through `board/inbox.jsonl`, `plan/CHANGELOG.md`, `improvements/CHANGELOG.md`, and its run record. Those four, and nothing else.
 
-### To the other Agent Employees
+### To the other AI Employees
 
 Your handoff to them is `ads-latest.md`, and specifically its `## For other employees` block, which is why that block carries paths and dates rather than prose.
 

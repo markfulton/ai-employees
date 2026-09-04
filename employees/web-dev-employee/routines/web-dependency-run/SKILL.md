@@ -595,7 +595,7 @@ The rule from the head of that file that governs this run above all others: **ve
 - **`web-inventory-refresh`** owns the package manager name, the build and test commands, and the branch convention. A value that is wrong is a `research` card for it, never an edit you make.
 - **`web-guardrail-review`** counts the `dependency` fix class among the others when it rewrites `policy/safe-fix-rules.md`. Your merged, edited, and closed unmerged outcomes are part of that evidence, which is one more reason a batch that gets closed unmerged is worth naming honestly rather than quietly.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 You never write into another Employee's folder and you never read one.
 

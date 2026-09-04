@@ -805,7 +805,7 @@ Running twice in one week produces exactly one report, exactly two cards, and th
 
 **`csat-desk-intake`** owns `strategy/channels.md`, which names the listing screens you read, and `strategy/product.md`, which is what makes a product change name something that exists.
 
-**To the member's other Agent Employees.** `csat-latest.md` is the handover surface and `csat-desk-standup` compiles it. Where the member has a content or SEO Employee installed, the theme names and the help drafts are the sort of thing it would want, and it reads them from there. **You hand nothing to anybody directly**, and in particular the product change goes on the member's own board and not into a repo, a backlog tool, or an issue tracker.
+**To the member's other AI Employees.** `csat-latest.md` is the handover surface and `csat-desk-standup` compiles it. Where the member has a content or SEO Employee installed, the theme names and the help drafts are the sort of thing it would want, and it reads them from there. **You hand nothing to anybody directly**, and in particular the product change goes on the member's own board and not into a repo, a backlog tool, or an issue tracker.
 
 ---
 

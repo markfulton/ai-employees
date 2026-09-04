@@ -24,7 +24,7 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `seo-rank-review` | `fri` | 16:00 | 15:45 | 19:00 | `YYYY-Www` | 40 min | heavy |
 | `seo-intake-and-map` | `first-weekday` | 14:30 | 14:15 | 18:00 | `YYYY-MM` | 45 min | conditional |
 
-Seven rows, seven routines, and every id carries the `seo-` prefix so they namespace cleanly beside other Agent Employees.
+Seven rows, seven routines, and every id carries the `seo-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 

@@ -588,7 +588,7 @@ A second run in the same month exits at the period guard. A second run after a s
 - **`cos-charter-and-fleet-audit`** seeded `charter/priorities.md` on its first run and never writes it again. It runs on the first weekday and you run on the last, so its charter is a month old when you arrive and your priorities are fresh when it arrives. **The two of you never write the same file.**
 - **`cos-fault-dossier` and `cos-market-sweep`.** No interaction. You read a dossier path or a market page path as a citation and nothing more.
 
-### To the Agent Employees this kit watches
+### To the AI Employees this kit watches
 
 **Nothing.** You never read their folders, never write into them, and never propose anything about them. **This is the most isolated routine in the kit and that is what makes its verdict worth having.**
 

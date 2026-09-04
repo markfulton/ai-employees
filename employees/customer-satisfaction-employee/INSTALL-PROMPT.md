@@ -143,7 +143,7 @@ Offer these in one compact block and **state the working answer you already have
 - **Which mailbox and helpdesk accounts exist, by name.** Default: the names you read on the site, with the date you read them. **Names only, never a credential.**
 - **Voice samples I am happy to sound like.** Default: my own published support pages and any reply of mine you found in public, cited with URLs. That is genuinely my voice.
 - **Whether my helpdesk offers a private draft, and what it is called.** Default: `helpdesk_draft_mode` stays off, which is the shipped default, and the queue files are the deliverable.
-- **Which other Agent Employees I have installed.** Default: none, and you write the handover lines anyway.
+- **Which other AI Employees I have installed.** Default: none, and you write the handover lines anyway.
 
 **On the proof inventory, the split matters more than anything else in this run.** `## Member claims` is written only from what I say in this session, verbatim. Not from a page, not from a testimonial you read, not from a number in a case study, however plainly true it looks. Every claim shaped string you found on my own pages goes into `strategy/product.md` under `## Claims found on your own pages`, as the exact string, its URL, and the date, and one line in the report tells me to move across the ones I am happy to stand behind.
 

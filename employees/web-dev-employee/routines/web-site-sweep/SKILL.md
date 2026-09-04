@@ -678,7 +678,7 @@ The rule from the head of that file that governs this run above all others: **ve
 - **`web-inventory-refresh`** owns every path you sweep. A hostname you found that the inventory does not declare, or a declared path that no longer exists, is a `research` card for it, never an edit you make.
 - **`web-guardrail-review`** reads a month of change outcomes rather than your ledgers, but the fix class you put on a card is what its counts are grouped by. A class you invented pollutes a month of evidence.
 
-### With the member's other Agent Employees
+### With the member's other AI Employees
 
 `health/health-latest.md` is the file a sibling Employee reads to know whether the member's own properties are up. **Paths, counts, and dates only. No log line, no stack, and no personal data ever crosses that boundary.** You never write into another Employee's folder and you never read one.
 
