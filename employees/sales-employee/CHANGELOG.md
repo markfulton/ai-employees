@@ -2,6 +2,17 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.3.0, 2026-09-04
+
+Upgrades become possible, and the kit tells any harness what it is.
+
+- `employee.json`, new: a machine readable manifest carrying the version, the standard it implements, every routine with its schedule row, and the file classification that makes an upgrade safe. It splits the folder into kit files, which an upgrade may replace, member files, which it must never touch, and `SCHEDULE.md`, which both sides own.
+- `.installed.json`, new, written by `npx ai-employees hire`: a hash per kit file at install time. It is what lets a later upgrade tell a file you edited from a file we changed.
+- `npx ai-employees upgrade <employee>`, new. It reports before it writes, and nothing happens without `--apply`. A kit file you or your employee edited is never overwritten: the new version lands beside it as `.new` and the change is listed. Your state, ledgers, strategy, learned browser flows and improvements are not read or written.
+- `npx ai-employees contribute <employee>`, new: turns `improvements/CHANGELOG.md`, the repairs your employee made to its own instructions, into a field report you can open upstream. Read it before you send it, because it can name your own files and numbers and nothing is redacted.
+- `AGENTS.md`, new, at the repository root and in every kit. It follows the AGENTS.md convention stewarded by the Linux Foundation's Agentic AI Foundation, so a harness that has never seen these kits still knows to read `CONTRACT.md`, `ROLE.md` and `SCHEDULE.md` in that order.
+- The product name is now "AI Employees" throughout. "Agent Employees" is retired. The Agent Employee Standard keeps its name, because that is the proper noun for the specification.
+
 ## 1.2.0, 2026-09-03
 
 The cold install release. Everything a stranger needs to go from a fresh machine to a first run record, found by installing the GTM Engineer template on a machine that had never run it.

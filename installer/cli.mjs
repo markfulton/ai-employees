@@ -19,6 +19,7 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { upgrade as runUpgrade, contribute as runContribute, writeReceipt } from "./upgrade.mjs";
 
 const SELF = fileURLToPath(import.meta.url);
 const HERE = path.dirname(SELF);
@@ -52,6 +53,8 @@ function usage() {
     "",
     "  npx ai-employees hire <employee> [--to <folder>]   copy one employee into place and print its install prompt",
     "  npx ai-employees list                              the eight, one line each",
+    "  npx ai-employees upgrade <employee> [--to <folder>] [--apply]   report what a new version would change, then apply it",
+    "  npx ai-employees contribute <employee> [--to <folder>] [--since YYYY-MM-DD]  turn your employee's own field repairs into an issue",
     "",
     "The folder must be outside OneDrive, Dropbox, Google Drive and iCloud. Without --to it is ./employees/<slug>.",
     "Nothing is scheduled and nothing is sent. Prerequisites: https://github.com/" + REPO + "/blob/main/docs/PREREQUISITES.md",
@@ -166,6 +169,8 @@ async function hire(args) {
 
   const version = fs.existsSync(path.join(dst, "VERSION")) ? fs.readFileSync(path.join(dst, "VERSION"), "utf8").trim() : "unknown";
   out("  kit version " + version);
+  writeReceipt(dst, slug, version);
+  out("  wrote .installed.json so a later upgrade can tell your edits from ours");
   out("Self tests:");
   const ok = selftests(dst);
   out("Login: " + loginStatus());
@@ -189,12 +194,44 @@ async function hire(args) {
   out("Guided version, updates and premium employees: club.reinventing.ai (https://club.reinventing.ai/?utm_source=github&utm_medium=kit&utm_campaign=" + slug + ")");
 }
 
+
+async function resolveFreshKit(slug) {
+  const local = path.join(HERE, "..", "employees", slug);
+  if (fs.existsSync(path.join(local, "CONTRACT.md"))) return { dir: local, cleanup: null };
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ai-employees-up-"));
+  const dst = path.join(tmp, slug);
+  await fetchTarball(slug, dst);
+  return { dir: dst, cleanup: () => fs.rmSync(tmp, { recursive: true, force: true }) };
+}
+
+async function upgradeCmd(args) {
+  const slug = resolveSlug(args._[0]);
+  if (!slug) { out("Which employee? One of:"); list(); process.exit(2); }
+  const installed = path.resolve(args.to || path.join(process.cwd(), "employees", slug));
+  const fresh = await resolveFreshKit(slug);
+  try {
+    runUpgrade({ installed, fresh: fresh.dir, slug, apply: args.apply, out, fail });
+  } finally {
+    if (fresh.cleanup) fresh.cleanup();
+  }
+}
+
+function contributeCmd(args) {
+  const slug = resolveSlug(args._[0]);
+  if (!slug) { out("Which employee? One of:"); list(); process.exit(2); }
+  const installed = path.resolve(args.to || path.join(process.cwd(), "employees", slug));
+  runContribute({ installed, slug, since: args.since, out, fail });
+}
+
 function parse(argv) {
-  const args = { _: [], to: null, help: false };
+  const args = { _: [], to: null, help: false, apply: false, since: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--to") { args.to = argv[++i]; if (!args.to) fail("--to needs a folder", 2); continue; }
     if (a.startsWith("--to=")) { args.to = a.slice(5); continue; }
+    if (a === "--apply") { args.apply = true; continue; }
+    if (a === "--since") { args.since = argv[++i]; if (!args.since) fail("--since needs a date, YYYY-MM-DD", 2); continue; }
+    if (a.startsWith("--since=")) { args.since = a.slice(8); continue; }
     if (a === "--help" || a === "-h") { args.help = true; continue; }
     if (a === "--version" || a === "-v") { out(VERSION); process.exit(0); }
     if (a.startsWith("--")) fail("unknown option " + a, 2);
@@ -208,4 +245,6 @@ const cmd = args._.shift();
 if (args.help || !cmd) { usage(); process.exit(cmd ? 0 : 2); }
 if (cmd === "list") { list(); process.exit(0); }
 if (cmd === "hire") { await hire(args); process.exit(0); }
-fail("unknown command " + cmd + ". Try: npx ai-employees hire gtm-engineer", 2);
+if (cmd === "upgrade") { await upgradeCmd(args); process.exit(0); }
+if (cmd === "contribute") { contributeCmd(args); process.exit(0); }
+fail("unknown command " + cmd + ". Try one of: list, hire, upgrade, contribute", 2);

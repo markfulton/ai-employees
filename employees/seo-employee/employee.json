@@ -1,0 +1,142 @@
+{
+  "schema": "ai-employee/1",
+  "slug": "seo-employee",
+  "name": "SEO Employee",
+  "role": "Search and content",
+  "version": "1.3.0",
+  "standard": "1.1",
+  "repository": "https://github.com/markfulton/ai-employees",
+  "license": "MIT",
+  "requires": {
+    "node": ">=18",
+    "harness": [
+      "claude-code",
+      "openclaw",
+      "hermes",
+      "opencode",
+      "grok-bot",
+      "codex",
+      "antigravity"
+    ]
+  },
+  "routines": [
+    {
+      "id": "seo-calendar-refill",
+      "days": "wed",
+      "fire": "13:00",
+      "window_start": "12:45",
+      "window_end": "17:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "seo-draft-run",
+      "days": "mon-fri",
+      "fire": "08:00",
+      "window_start": "07:45",
+      "window_end": "12:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "40 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "seo-index-sweep",
+      "days": "tue",
+      "fire": "11:00",
+      "window_start": "10:45",
+      "window_end": "16:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "seo-intake-and-map",
+      "days": "first-weekday",
+      "fire": "14:30",
+      "window_start": "14:15",
+      "window_end": "18:00",
+      "period_key": "YYYY-MM",
+      "budget": "45 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "seo-publish-run",
+      "days": "mon-fri",
+      "fire": "09:15",
+      "window_start": "09:00",
+      "window_end": "13:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "30 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "seo-rank-review",
+      "days": "fri",
+      "fire": "16:00",
+      "window_start": "15:45",
+      "window_end": "19:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "seo-standup",
+      "days": "mon-fri",
+      "fire": "07:15",
+      "window_start": "07:00",
+      "window_end": "11:30",
+      "period_key": "YYYY-MM-DD",
+      "budget": "12 min",
+      "browser": "never"
+    }
+  ],
+  "files": {
+    "kit": [
+      "AGENTS.md",
+      "CAPABILITIES.md",
+      "CHANGELOG.md",
+      "CONTRACT.md",
+      "INSTALL-PROMPT.md",
+      "README.md",
+      "ROLE.md",
+      "VERSION",
+      ".gitignore",
+      "employee.json",
+      "recipes/BROWSER-RECIPES.md",
+      "routines/**",
+      "run/**",
+      "scripts/**",
+      "examples/**"
+    ],
+    "merge": [
+      "SCHEDULE.md"
+    ],
+    "member": [
+      "state/**",
+      "board/**",
+      "crm/**",
+      "queue/**",
+      "strategy/**",
+      "briefs/**",
+      "scoreboard/**",
+      "dashboard/**",
+      "improvements/**",
+      "archive/**",
+      "paid/**",
+      "fleet/**",
+      "drafts/**",
+      "calendar/**",
+      "run/*.log",
+      "recipes/*.json",
+      "runlog.jsonl",
+      "*-latest.md",
+      ".installed.json"
+    ]
+  },
+  "notes": {
+    "merge": "SCHEDULE.md carries the shape the kit ships and the days, windows and budgets the member owns. An upgrade reports a changed shape and never rewrites the row values.",
+    "member": "Everything under member is the business the employee has been running: its evidence, its ledgers, its learned browser flows and its own field repairs. An upgrade that overwrites any of it has destroyed work that exists nowhere else.",
+    "recipes": "recipes/BROWSER-RECIPES.md ships with the kit. Every recipes/*.json is learned on the member's own screens by the routine that owns it, so it is member data."
+  }
+}
