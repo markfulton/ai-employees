@@ -53,13 +53,13 @@ node scripts/runlog.mjs --selftest
 node scripts/guard.mjs --selftest
 ```
 
-Node must be 18 or newer and all three must print PASS. Then run `claude auth status` (or the harness's own login check). If nobody is logged in, say so in one plain sentence: nothing scheduled can run until the user opens a terminal, runs `claude`, and completes `/login` themselves. Do not try to log in for them.
+Node must be 18 or newer and all three must print PASS. Then run `claude auth status` (or the harness's own login check). If nobody is logged in, say so in one plain sentence: nothing scheduled can run until the user signs in to their harness themselves (on Claude Code: open a terminal, run `claude`, and complete `/login`). Do not try to log in for them.
 
 ## 5. Hand over the install prompt
 
 Read `<destination>/INSTALL-PROMPT.md`. Find its root placeholder (the guillemet token ending in `_ROOT»`, such as `«GTM_ROOT»`) and replace every occurrence with the absolute destination path. Print the result, and tell the user three things above it:
 
-- Copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` and paste it into a fresh Claude Code session opened in that folder.
+- Copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` and paste it into a fresh session opened in that folder, in the harness they use.
 - The `FILL THIS IN` block still needs their home page URL. The path line is already filled.
 - They spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session.
 

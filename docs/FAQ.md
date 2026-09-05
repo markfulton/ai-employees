@@ -16,9 +16,9 @@
 
 **Can I run it on a VPS or in the cloud?** The file routines, yes: anything that reads and writes files and runs a command. The browser routines need a browser that carries your own signed in sessions, which a headless server does not have, and an API key turns the browser lane off on Claude Code. Each kit's README has a section called "What you lose with no browser control" that says exactly what still works.
 
-**Do I need the Chrome extension?** Only for the routines that read your own accounts (saved searches, ad dashboards, your support inbox, your analytics). The morning brief, the drafting, and the Friday scoreboard arithmetic never need a browser.
+**Do I need the Chrome extension?** On Claude Code, only for the routines that read your own accounts (saved searches, ad dashboards, your support inbox, your analytics). The morning brief, the drafting, and the Friday scoreboard arithmetic never need a browser.
 
-**Does it need an API key?** No. Log in once with `claude` and `/login` on a plan that includes Claude Code. An API key works for the file routines but the browser lane switches off with it.
+**Does it need an API key?** No. On Claude Code, log in once with `claude` and `/login` on a plan that includes it; an API key works for the file routines but the browser lane switches off with it. On another harness, whatever account or key it already runs on is enough; the kits add no credential of their own.
 
 **Why does everything say "member"?** The kits call the person who owns the employee "the member", because they were written for club members first. Read it as you. It is not a claim that you have to join anything.
 
@@ -30,7 +30,7 @@
 
 **Can I run it for a client and charge for it?** Yes. The eight are MIT. Install them, adapt them, sell the work. Do not call your version Reinventing.AI or the Agent Ops Club; `TRADEMARKS.md` says what needs a rename.
 
-**Is any of my data sent anywhere?** Not by this repo. There is no telemetry in the kits, the installer, or the `hire` skill. What the agent reads during a run goes to your model provider the way any Claude Code session does. Everything the employee writes stays in its folder on your machine, and the `.gitignore` inside each kit keeps it out of any repo you push.
+**Is any of my data sent anywhere?** Not by this repo. There is no telemetry in the kits, the installer, or the `hire` skill. What the agent reads during a run goes to your model provider the way any session on your harness does. Everything the employee writes stays in its folder on your machine, and the `.gitignore` inside each kit keeps it out of any repo you push.
 
 **How do updates work?** Employees update one at a time. Everything under `strategy/`, `state/`, your ledgers, your learned `recipes/*.json`, and the `## Corrections` at the foot of every file are yours and are never overwritten. Everything else is safe to replace. Each kit's `CHANGELOG.md` has the procedure under "Updating without losing your work".
 

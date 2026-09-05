@@ -153,7 +153,7 @@ Two consequences the Employee acts on every run:
 
 **Name the route you took in the run record**, in one clause, whenever it was not the first choice. That single line is what tells the member on Friday why a deliverable was thinner than usual.
 
-A routine body that names a tool is a defect even on the machine where that tool works, because the same kit runs on seven harnesses and the member chose theirs before they bought this.
+A routine body that names a tool is a defect even on the machine where that tool works, because the same kit runs on eleven harnesses and the member chose theirs before they bought this.
 
 ---
 

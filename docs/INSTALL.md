@@ -24,7 +24,7 @@ git clone https://github.com/markfulton/ai-employees.git
 
 Then copy `employees/gtm-engineer` to a folder outside cloud sync. Do not run an employee from inside the clone if the clone sits in a synced folder.
 
-**Path C, inside Claude Code:** copy `skills/hire` into `~/.claude/skills/` and say "hire the GTM Engineer into D:\AgentOps". It does the same as Path A.
+**Path C, inside Claude Code, or any harness that reads its skill format:** copy `skills/hire` into `~/.claude/skills/` (or your harness's skills folder) and say "hire the GTM Engineer into D:\AgentOps". It does the same as Path A.
 
 ## Step 2. Check the machine
 
@@ -38,11 +38,11 @@ node scripts/guard.mjs --selftest
 claude auth status
 ```
 
-Four passes and `loggedIn: true`. If the last one says false, run `claude` and `/login` before anything else.
+Four passes and `loggedIn: true`. If the last one says false, run `claude` and `/login` before anything else. On another harness, swap the last line for its own login check; a signed in account is the requirement, not the command.
 
 ## Step 3. Paste the install prompt
 
-Open a Claude Code session in that folder (the Desktop app: open the folder, trust it; the CLI: `cd` into it and run `claude`). Open `INSTALL-PROMPT.md`, edit the block marked `FILL THIS IN` (your folder path and your home page URL; the third line is optional), copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===`, and paste it.
+Open a session in that folder in the harness you use. On Claude Code, the Desktop app: open the folder, trust it; the CLI: `cd` into it and run `claude`. On another harness, `docs/HARNESSES.md` has its command. Open `INSTALL-PROMPT.md`, edit the block marked `FILL THIS IN` (your folder path and your home page URL; the third line is optional), copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===`, and paste it.
 
 Then let it work. It reads the contract, checks the machine, researches your business from your own public pages instead of interviewing you, writes the strategy folder, seeds the board, builds the dashboard, registers its own schedule, and stops exactly once for you to read its first drafts. It asks about at most five things a crawl genuinely could not settle, and it does not wait for the answers.
 
@@ -110,13 +110,17 @@ Install the CLI with `curl -fsSL https://claude.ai/install.sh | bash`, log in on
 
 One line per routine, from `CAPABILITIES.md` section 9.3, with the full path to the binary and `< /dev/null`. cron skips a fire the machine slept through and never catches up, so on a laptop put the fire times after it normally wakes. The two monthly lines leave the day of week field open on purpose; the file explains why.
 
+### The other ten harnesses
+
+OpenClaw, Hermes, Cline and Qwen Code have a built in cron, Codex has scheduled runs, Antigravity has the `agy` job runner, DeepSeek schedules through a plugin, and Grok Bot runs recurring tasks from its own cloud computer: register one job per routine in that scheduler, with the kit folder as the working directory, the fire time from `SCHEDULE.md`, and the prompt `Read <root>/routines/<id>/SKILL.md and follow it.`. OpenCode and Pi have no scheduler of their own, so use the operating system's route above with their headless command in place of `claude -p`. `docs/HARNESSES.md` has the exact invocation and the first run check for each, and the same rule holds everywhere: run one routine by hand before you register the rest.
+
 ## What a first day looks like
 
 Day one ends with a strategy folder in your own words, a command center you can click through, a schedule that is registered and proven with one run by hand, and a first small batch of drafts you have corrected. The next weekday the standup writes `brief-latest.md` before you are up. It is capped at thirty lines and it never lists what passed.
 
 ## When something goes wrong
 
-- **No brief and no run record the next morning.** The schedule did not fire or the run stalled. Check `claude auth status`, check the machine was awake, and run the launcher by hand. A run that hangs on a permission prompt leaves nothing behind; `CAPABILITIES.md` section 10 is the fix.
+- **No brief and no run record the next morning.** The schedule did not fire or the run stalled. Check the login (`claude auth status` on Claude Code, your harness's own check elsewhere), check the machine was awake, and run the launcher by hand. A run that hangs on a permission prompt leaves nothing behind; `CAPABILITIES.md` section 10 is the fix.
 - **A `failed` record that names the launcher.** The harness exited before the routine wrote anything. Login first, binary path second.
 - **`skipped-out-of-window` on a day it should have run.** The fire arrived late, outside the window. Move the fire time or widen nothing: a wider window invites an overlap.
 - **`runlog.mjs` refused a record.** It carried a URL, an email address, a draft, or a secret. That is the rule working; the detail belongs in the queue file, not the log.

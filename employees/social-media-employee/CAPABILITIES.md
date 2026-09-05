@@ -8,7 +8,7 @@ That split is what makes the kit portable. It also means one thing for you as th
 
 **Who writes this file.** You do. No routine rewrites it. Every routine reads it at the top of every run, along with the `## Corrections` section at the bottom, which is where you write anything this file got wrong about your machine. A correction there outranks the tables above it.
 
-**What this file will not do.** It will not tell you a harness supports something I could not confirm. There are seven harnesses in these tables and I have run this kit on one of them. Everything else is marked for what it is. A row that says `unknown` is worth more to you than a row that says yes and is wrong at 05:45 on a Tuesday when nobody is awake to notice.
+**What this file will not do.** It will not tell you a harness supports something I could not confirm. There are eleven harnesses in section 2 and section 9, seven of them route by route in the capability tables, and I have run this kit on one of them. Everything else is marked for what it is. A row that says `unknown` is worth more to you than a row that says yes and is wrong at 05:45 on a Tuesday when nobody is awake to notice.
 
 ---
 
@@ -93,33 +93,47 @@ The one durable record is the run log. A capability that was missing shows up in
 
 ---
 
-## 2. The seven harnesses, honestly
+## 2. The eleven harnesses, honestly
 
 One row each. The browser column changes how much of the kit runs. The channel column changes whether the last step runs at all.
 
 | Harness | Files and shell | Browser control | Your signed in session | Channel route | Scheduler | Confidence overall |
 |---|---|---|---|---|---|---|
 | **Claude Code** | Built in | Chrome extension bridge | Yes, attaches to your Chrome | Depends entirely on what you connected. Probe | Desktop app: built in. CLI: none, use the operating system's | `confirmed` except the channel |
-| **OpenClaw** | Expected, core to it | Unconfirmed. Probe | Probe this specifically | Unknown. Probe | None I can confirm | `unknown` on browser and channel |
-| **Hermes** | Unknown | Unknown | Unknown | Unknown | Unknown | `unknown` throughout |
-| **OpenCode** | Expected, core to it | Add a browser automation server | Depends on that server's config | Unknown. Probe | None I can confirm | `expected` on files |
-| **GrokBot** | Unknown | Unknown | Unknown | Unknown | Unknown | `unknown` throughout |
-| **Codex** | Expected, core to it | Add a browser automation server | Depends on that server's config | Unknown. Probe | None I can confirm | `expected` on files |
-| **Antigravity** | Expected, core to it | Part of the product | Probe this specifically | Unknown. Probe | None I can confirm | `expected` on files |
+| **OpenClaw** | Expected, core to it | Unconfirmed. Probe | Probe this specifically | Unknown. Probe | Built in cron, `openclaw automations create` | `expected` on files, `unknown` on browser |
+| **Hermes** | Expected | Probe | Probe this specifically | Probe this | Built in cron | `expected` on files, `unknown` on browser |
+| **OpenCode** | Expected, core to it | Add a browser automation server | Depends on that server's config | Unknown. Probe | None of its own, use the operating system's | `expected` on files |
+| **Grok Bot** | Expected, on its own cloud computer | Its own browser, on that computer | Check first; it runs elsewhere | Probe this | Built in recurring tasks | `expected` on files, `unknown` on your sessions |
+| **Codex** | Expected, core to it | Add a browser automation server | Depends on that server's config | Unknown. Probe | Scheduled runs | `expected` on files |
+| **Antigravity** | Expected, core to it | Part of the product | Probe this specifically | Unknown. Probe | The `agy` job runner | `expected` on files |
+| **Pi** | Expected, core to it | Probe | Probe this specifically | Probe this | None of its own, use the operating system's | `expected` on files |
+| **Cline** | Expected, core to it | Probe | Probe this specifically | Probe this | Built in cron, `cline schedule create` | `expected` on files |
+| **Qwen Code** | Expected, core to it | Probe | Probe this specifically | Probe this | Built in scheduled tasks, or the operating system's | `expected` on files |
+| **DeepSeek** | Expected, core to it | Part of the product | Probe this specifically | Probe this | Its scheduling plugin | `expected` on files |
+
+The capability tables in sections 3 to 6 carry one row for each of the first seven. For Pi, Cline and Qwen Code, read the OpenCode row: a terminal agent with files and shell built in, and a browser automation server to add for the browser lane. For DeepSeek, read the Antigravity row: browser control is part of the product, and the profile it drives is the question. Whatever you find on one of those four, one line in `## Corrections` at the foot of this file is where it goes.
 
 **Claude Code.** Anthropic's CLI. This is the harness the kit was built on and the only one I can speak about from having watched it run. It reads and writes files, runs shell commands, searches and fetches the web, drives a Chrome you are already signed in to through a browser extension, and, in the Desktop app, schedules its own recurring jobs, which is where these routines belong. **Two shapes, and the difference decides how you register the schedule.** The Claude Desktop app has a local scheduler of its own, with a permission mode per task, and it is the route this kit has run on in production. The Claude Code CLI has no local scheduler: pair it with the operating system's scheduler in section 9, using the launchers in `run/`. Its scheduled tasks and its global skills are different directories, and these are scheduled tasks. The routines ship in its skill format, a `SKILL.md` with `name` and `description` frontmatter plus one `metadata` key that marks it internal, so a skills registry never offers a scheduled routine as an on demand skill, which is a plain enough format that any harness reading markdown instructions can run them. **The channel route is the one thing I cannot answer even here**, because it depends on which publishing channel you connected.
 
 **OpenClaw.** An agent harness that runs local sessions. Files and shell are the part I would expect to work without ceremony. I could not confirm how it drives a browser, so treat every browser row as unknown until your probe says otherwise. If it accepts MCP servers, adding a browser automation server gives the kit the whole browser table in one move, and that is the route I would try first.
 
-**Hermes.** I could not confirm this harness's tool set at all, so every row below says so. That is not a verdict on the product. It is a statement about what I was able to verify. Run the probe in 1.2 before you rely on any browser routine. If it reads files and runs a shell command, the file side of the kit works, and section 7 tells you exactly what that gets you.
+**Hermes.** An agent harness with a built in cron that delivers to any platform, so the scheduler is its own. Files and shell are the part to confirm first; once they hold, the file side of the kit works, and section 7 says exactly what that gets you. Browser control is the open question: run the probe in 1.2 before you rely on any browser routine.
 
 **OpenCode.** An open source terminal coding agent. Reading files, writing files, and running commands are core to what it is for, so the whole environment table should hold. It supports MCP servers, which is the route to browser control: add a browser automation server and the browser table becomes available under different names. I know of no built in scheduler, so use the operating system's, per section 9.
 
-**GrokBot.** Same honest position as Hermes. I could not confirm the tool set. Probe first.
+**Grok Bot.** Its bots already run routines on a schedule from their own cloud computer, so the scheduler is built in and the invocation is the routine file handed over as the run prompt. The thing to settle first is whether it can reach your own signed in accounts at all, because it runs somewhere else; if it cannot, section 7 says what the file side of the kit still produces.
 
-**Codex.** OpenAI's coding agent. Files and commands are core. The specific thing to check here is the sandbox: confirm it can write inside `«SOC_ROOT»` and confirm whether it can reach the network, because a sandbox that blocks outbound requests turns off `web.fetch` and `web.search` without announcing it, and a routine will report a page as unreachable when the page is fine. Browser control comes from adding a browser automation server. No scheduler I can confirm.
+**Codex.** OpenAI's coding agent. Files and commands are core. The specific thing to check here is the sandbox: confirm it can write inside `«SOC_ROOT»` and confirm whether it can reach the network, because a sandbox that blocks outbound requests turns off `web.fetch` and `web.search` without announcing it, and a routine will report a page as unreachable when the page is fine. Browser control comes from adding a browser automation server. Codex has scheduled runs; register one per routine.
 
-**Antigravity.** Google's agentic development environment, with a command line. Files and shell are core, and browser control is part of the product rather than an add on. The question to settle before you trust a browser routine on it is the one from 1.1: does it drive the browser profile you are signed in to, or a clean automated one. The kit never signs in, so that answer decides whether your own feeds, notifications, and analytics are readable or not.
+**Antigravity.** Google's agentic development environment, with a command line. Files and shell are core, and browser control is part of the product rather than an add on. The question to settle before you trust a browser routine on it is the one from 1.1: does it drive the browser profile you are signed in to, or a clean automated one. The kit never signs in, so that answer decides whether your own feeds, notifications, and analytics are readable or not. Schedule with the `agy` job runner, one job per routine, pointed at the routine folder.
+
+**Pi.** Reads skills folders directly and runs headless with a print flag. Files and shell are core. No scheduler of its own: mirror `SCHEDULE.md` into the operating system's scheduler per section 9, with «SOC_ROOT» as the working directory. Confirm the print flag against `pi --help`, then settle the browser question with the probe in 1.2.
+
+**Cline.** The Cline CLI ships its own cron, so each routine registers as one scheduled job with auto approve on, which section 10 asks for anyway. Files and shell are core. Check that a scheduled run starts in «SOC_ROOT», then probe the browser.
+
+**Qwen Code.** Reads the skill format and ships scheduled tasks. Files and shell are core; confirm it can write inside «SOC_ROOT» and reach the network. Probe the browser before you rely on a browser routine.
+
+**DeepSeek.** `dsh` runs a local server with a web interface and schedules through one of its plugins. Files and shell are core. The question is the one from 1.1: does it drive the browser profile you are signed in to, or a clean one.
 
 ---
 
@@ -136,7 +150,7 @@ Read the machine timezone id and the local wall clock time.
 | OpenClaw | Its own clock, or a shell command | `expected` |
 | Hermes | Unknown. A shell command is the fallback if it has one | `unknown` |
 | OpenCode | Its own clock, or a shell command | `expected` |
-| GrokBot | Unknown. A shell command is the fallback if it has one | `unknown` |
+| Grok Bot | Unknown. A shell command is the fallback if it has one | `unknown` |
 | Codex | Its own clock, or a shell command | `expected` |
 | Antigravity | Its own clock, or a shell command | `expected` |
 
@@ -153,7 +167,7 @@ Read a file as text.
 | OpenClaw | Its file read, or a shell command | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its file read, or a shell command | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Its file read. Confirm the sandbox includes `«SOC_ROOT»` | `expected` |
 | Antigravity | Its file read, or a shell command | `expected` |
 
@@ -168,7 +182,7 @@ Write a file. Anything a crash could truncate is written to a temp path and rena
 | OpenClaw | Its file write, or a shell command | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its file write, or a shell command | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Its file write. Confirm the sandbox allows writes, not just reads | `expected` |
 | Antigravity | Its file write, or a shell command | `expected` |
 
@@ -185,7 +199,7 @@ List paths under a folder.
 | OpenClaw | Its glob, or a shell command | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its glob, or a shell command | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Its glob, or a shell command | `expected` |
 | Antigravity | Its glob, or a shell command | `expected` |
 
@@ -200,7 +214,7 @@ Run a local command and read its output.
 | OpenClaw | Its shell | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its shell | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
@@ -227,7 +241,7 @@ Confirm browser control is attached to a browser holding your own logged in sess
 | OpenClaw | Its own browser control if it has one, otherwise a browser automation server | `unknown` |
 | Hermes | Unknown. Probe before relying on any browser routine | `unknown` |
 | OpenCode | A browser automation server added to the harness | `expected` |
-| GrokBot | Unknown. Probe before relying on any browser routine | `unknown` |
+| Grok Bot | Unknown. Probe before relying on any browser routine | `unknown` |
 | Codex | A browser automation server added to the harness | `expected` |
 | Antigravity | Its built in browser control. Confirm it drives your signed in profile | `expected` |
 
@@ -241,7 +255,7 @@ Confirm browser control is attached to a browser holding your own logged in sess
 | OpenClaw | Unknown |
 | Hermes | Unknown |
 | OpenCode | A browser automation server over a local protocol. A failed call is expected to mean a failed action, though a timeout still leaves the action's fate unknown |
-| GrokBot | Unknown |
+| Grok Bot | Unknown |
 | Codex | As OpenCode |
 | Antigravity | Unknown |
 
@@ -256,7 +270,7 @@ Create a tab for this run and close it at the end.
 | OpenClaw | Its browser control, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's page or context handling | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's page or context handling | `expected` |
 | Antigravity | Its browser control | `expected` |
 
@@ -271,7 +285,7 @@ Go to a URL.
 | OpenClaw | Its browser control, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's navigation | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's navigation | `expected` |
 | Antigravity | Its browser control | `expected` |
 
@@ -286,7 +300,7 @@ Read the page as a structured tree where each interactive element carries a stab
 | OpenClaw | Its page read, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's accessibility snapshot | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's accessibility snapshot | `expected` |
 | Antigravity | Its page read | `expected` |
 
@@ -300,7 +314,7 @@ Read the page as a structured tree where each interactive element carries a stab
 | OpenClaw | Unknown | Re-read after any view change and use what the fresh read returns |
 | Hermes | Unknown | Same |
 | OpenCode | The browser automation server's snapshot is expected to re-number on every read, with detached nodes absent | Take a fresh read after any view change. Highest numbered means nothing here and would pick an arbitrary element |
-| GrokBot | Unknown | Re-read after any view change |
+| Grok Bot | Unknown | Re-read after any view change |
 | Codex | As OpenCode | As OpenCode |
 | Antigravity | Unknown | Re-read after any view change |
 
@@ -315,7 +329,7 @@ Read the visible text.
 | OpenClaw | Its text extraction, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's text or content read | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's text or content read | `expected` |
 | Antigravity | Its text extraction | `expected` |
 
@@ -332,7 +346,7 @@ Capture the screen, or a region of it.
 | OpenClaw | Its screenshot, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's screenshot | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's screenshot | `expected` |
 | Antigravity | Its screenshot | `expected` |
 
@@ -351,7 +365,7 @@ Click one element by its reference from `page.read`.
 | OpenClaw | Its click, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's click on a snapshot reference | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's click on a snapshot reference | `expected` |
 | Antigravity | Its click | `expected` |
 
@@ -369,7 +383,7 @@ Click one element by its reference from `page.read`.
 | OpenClaw | Unknown. Assume the harness permission layer at minimum |
 | Hermes | Unknown. Same |
 | OpenCode | The harness permission layer. A browser automation server has no classifier of its own and does not refuse |
-| GrokBot | Unknown. Same |
+| Grok Bot | Unknown. Same |
 | Codex | The harness permission layer plus its sandbox, which can decline network access without saying so |
 | Antigravity | Unknown. Assume the harness permission layer |
 
@@ -384,7 +398,7 @@ Set a form field's value by reference.
 | OpenClaw | Its form input, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's fill or type | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's fill or type | `expected` |
 | Antigravity | Its form input | `expected` |
 
@@ -407,7 +421,7 @@ Evaluate a script in the page context and get a JSON result back.
 | OpenClaw | Its script evaluation, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's evaluate | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's evaluate | `expected` |
 | Antigravity | Its script evaluation | `expected` |
 
@@ -425,7 +439,7 @@ Evaluate a script in the page context and get a JSON result back.
 | OpenClaw | Unknown |
 | Hermes | Unknown |
 | OpenCode | The browser automation server's own default, commonly 30 seconds and usually configurable |
-| GrokBot | Unknown |
+| Grok Bot | Unknown |
 | Codex | As OpenCode |
 | Antigravity | Unknown |
 
@@ -440,7 +454,7 @@ Wait for a condition, polling rather than sleeping long.
 | OpenClaw | Its wait, if present, or polling | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's wait for selector or load state | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's wait for selector or load state | `expected` |
 | Antigravity | Its wait | `expected` |
 
@@ -465,7 +479,7 @@ Hand one post's body, its destination, its posting time, and any artwork to the 
 | OpenClaw | Hosted club scheduler when available, then a channel you connected | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Hosted club scheduler when available, then a channel you connected | `unknown` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Hosted club scheduler when available, then a channel you connected | `unknown` |
 | Antigravity | Hosted club scheduler when available, then a channel you connected | `unknown` |
 
@@ -489,7 +503,7 @@ Hand one post to the same channel for immediate delivery. **Used only for a slot
 | OpenClaw | Hosted club publisher when available, then a channel you connected | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Hosted club publisher when available, then a channel you connected | `unknown` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Hosted club publisher when available, then a channel you connected | `unknown` |
 | Antigravity | Hosted club publisher when available, then a channel you connected | `unknown` |
 
@@ -506,7 +520,7 @@ Resize and re encode an image below the injection ceiling while keeping it prese
 | OpenClaw | Hosted club compressor when available, then `shell.run` | `expected` |
 | Hermes | Hosted club compressor when available, then `shell.run` if it has one | `unknown` |
 | OpenCode | Hosted club compressor when available, then `shell.run` | `expected` |
-| GrokBot | Hosted club compressor when available, then `shell.run` if it has one | `unknown` |
+| Grok Bot | Hosted club compressor when available, then `shell.run` if it has one | `unknown` |
 | Codex | Hosted club compressor when available, then `shell.run` | `expected` |
 | Antigravity | Hosted club compressor when available, then `shell.run` | `expected` |
 
@@ -523,7 +537,7 @@ Put a compressed image into exactly one file input and dispatch a bubbling chang
 | OpenClaw | `page.script`, then `file.upload` | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The server's file chooser handling, then `page.script` | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The server's file chooser handling, then `page.script` | `expected` |
 | Antigravity | `page.script`, then `file.upload` | `expected` |
 
@@ -554,7 +568,7 @@ Hand a local file to a page's file input.
 | OpenClaw | Its file upload, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's set input files | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | The browser automation server's set input files | `expected` |
 | Antigravity | Its file upload | `expected` |
 
@@ -568,7 +582,7 @@ Hand a local file to a page's file input.
 | OpenClaw | Unknown. Try the absolute path first |
 | Hermes | Unknown. Try the absolute path first |
 | OpenCode | The browser automation server's set input files takes any readable absolute path. No copy needed |
-| GrokBot | Unknown. Try the absolute path first |
+| Grok Bot | Unknown. Try the absolute path first |
 | Codex | As OpenCode, subject to the sandbox's own view of which paths are readable |
 | Antigravity | Unknown. Try the absolute path first |
 
@@ -581,7 +595,7 @@ Get search results for a query.
 | OpenClaw | Your own search route, then its web search if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Your own search route, then a search server if you added one | `expected` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | Your own search route. Confirm the sandbox allows outbound requests | `expected` |
 | Antigravity | Your own search route, then its web search | `expected` |
 
@@ -600,7 +614,7 @@ Read a URL's text without opening a browser.
 | OpenClaw | Its fetch, then `shell.run` with a fetch command, then the browser | `expected` |
 | Hermes | Unknown. `shell.run` with a fetch command if it has a shell | `unknown` |
 | OpenCode | Its fetch, then `shell.run` with a fetch command, then the browser | `expected` |
-| GrokBot | Unknown. `shell.run` with a fetch command if it has a shell | `unknown` |
+| Grok Bot | Unknown. `shell.run` with a fetch command if it has a shell | `unknown` |
 | Codex | Its fetch or `shell.run`. Confirm the sandbox allows outbound requests | `expected` |
 | Antigravity | Its fetch, then the browser | `expected` |
 
@@ -623,7 +637,7 @@ Append exactly one validated run record to `runlog.jsonl`.
 | OpenClaw | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
 | Hermes | `shell.run` if present, then a direct append through `file.write` | `unknown` |
 | OpenCode | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
-| GrokBot | `shell.run` if present, then a direct append through `file.write` | `unknown` |
+| Grok Bot | `shell.run` if present, then a direct append through `file.write` | `unknown` |
 | Codex | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
 | Antigravity | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
 
@@ -653,7 +667,7 @@ The scripted judge for any text about to be written into a queue file, a plan fi
 | OpenClaw | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
 | Hermes | `shell.run` if present, then in agent | `unknown` |
 | OpenCode | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
-| GrokBot | `shell.run` if present, then in agent | `unknown` |
+| Grok Bot | `shell.run` if present, then in agent | `unknown` |
 | Codex | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
 | Antigravity | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
 
@@ -675,12 +689,16 @@ Register, inspect, or change a recurring job named after a routine id.
 | Harness | Route | Confidence |
 |---|---|---|
 | Claude Code | Its own scheduler | `confirmed` |
-| OpenClaw | None I can confirm. The operating system's scheduler through `shell.run` | `unknown` |
-| Hermes | None I can confirm. The operating system's scheduler through `shell.run` | `unknown` |
+| OpenClaw | Its built in cron, `openclaw automations create`, through `shell.run` | `expected` |
+| Hermes | Its built in cron | `expected` |
 | OpenCode | Not available in the harness. The operating system's scheduler | `expected` |
-| GrokBot | None I can confirm. The operating system's scheduler through `shell.run` | `unknown` |
-| Codex | Not available in the harness. The operating system's scheduler | `expected` |
-| Antigravity | None I can confirm. The operating system's scheduler through `shell.run` | `unknown` |
+| Grok Bot | Its recurring tasks, on its own cloud computer | `expected` |
+| Codex | Its scheduled runs | `expected` |
+| Antigravity | Its `agy` job runner, through `shell.run` | `expected` |
+| Pi | Not available in the harness. The operating system's scheduler | `expected` |
+| Cline | Its built in cron, `cline schedule create`, through `shell.run` | `expected` |
+| Qwen Code | Its built in scheduled tasks | `expected` |
+| DeepSeek | Its scheduling plugin | `expected` |
 
 **Absent all routes:** the intake run writes the exact commands to `«SOC_ROOT»/schedule-commands.txt` and names that file in the first paragraph of its report. You run them yourself, once, and the kit is scheduled.
 
@@ -695,7 +713,7 @@ Send one short notification to your own device.
 | OpenClaw | Its own notification route if it has one, then a hosted club notifier | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | A hosted club notifier, then none | `unknown` |
-| GrokBot | Unknown | `unknown` |
+| Grok Bot | Unknown | `unknown` |
 | Codex | A hosted club notifier, then none | `unknown` |
 | Antigravity | Unknown | `unknown` |
 
@@ -791,14 +809,18 @@ No two share a fire minute, including the one that never touches a browser. Host
 |---|---|---|
 | **Claude Desktop app** | Its own local scheduler. Ask it to register the table and it reads the routine, days, and fire columns directly, one local task per routine named after the routine id | `confirmed` |
 | **Claude Code CLI** | None of its own. Use the operating system's scheduler below, with the launchers in `run/` on Windows or a launchd plist on macOS | `confirmed` that Task Scheduler reaches a running Claude Code through `run/<id>.cmd`; a full routine under it is `expected` |
-| **OpenClaw** | None I can confirm. Use the operating system's scheduler below | `unknown` |
-| **Hermes** | Unknown. Use the operating system's scheduler below | `unknown` |
-| **OpenCode** | Not available in the harness. Use the operating system's scheduler below | `expected` |
-| **GrokBot** | Unknown. Use the operating system's scheduler below | `unknown` |
-| **Codex** | Not available in the harness. Use the operating system's scheduler below | `expected` |
-| **Antigravity** | None I can confirm. Use the operating system's scheduler below | `unknown` |
+| **OpenClaw** | Built in cron: `openclaw automations create "<cron>" "<message>" --name <id> --session isolated`, one per routine, with the timezone flag | `expected` |
+| **Hermes** | Built in cron, one job per routine, each handed that routine's `SKILL.md` as the prompt | `expected` |
+| **OpenCode** | None of its own. Use the operating system's scheduler below | `expected` |
+| **Grok Bot** | Its bots run on a schedule from their own cloud computer: one recurring task per routine | `expected` |
+| **Codex** | Scheduled runs, one per routine | `expected` |
+| **Antigravity** | The `agy` job runner, one job per routine, pointed at the routine folder | `expected` |
+| **Pi** | None of its own. Use the operating system's scheduler below | `expected` |
+| **Cline** | Built in cron: `cline schedule create "<prompt>" --cron "<cron>"`, one per routine, auto approve on | `expected` |
+| **Qwen Code** | Built in scheduled tasks, one per routine, or the operating system's scheduler below | `expected` |
+| **DeepSeek** | Its scheduling plugin, one run per routine | `expected` |
 
-Six of the seven columns above say "use the operating system." That is the honest state of it, and it is also fine. The operating system's scheduler is the more reliable of the two mechanisms on a laptop that sleeps, which is section 9.5.
+Three of the rows above, the Claude Code CLI, OpenCode and Pi, use the operating system's scheduler, and the rest bring their own. Either is fine. The operating system's scheduler is the more reliable of the two mechanisms on a laptop that sleeps, which is section 9.5.
 
 Throughout, `«RUN soc-engagement-sweep»` and its six siblings stand for the whole invocation that runs that one routine unattended. Section 9.2a says what it expands to. Section 10 applies to every line below without exception.
 
@@ -828,12 +850,16 @@ Two shapes cover every harness.
 |---|---|---|
 | **Claude Desktop app** | Its own scheduler holds the invocation and you never write this line by hand: one local task per routine, named after the routine id, prompt `Read «SOC_ROOT»/routines/<routine-id>/SKILL.md and follow it.`, working folder `«SOC_ROOT»`, permission mode set per task. Shape B | `confirmed` |
 | **Claude Code CLI** | `claude -p "<prompt>"` with the full path to the binary, an explicit `--permission-mode`, `< nul` on Windows or `< /dev/null` on POSIX so it never waits on stdin, and `--output-format json`. `run/<routine-id>.cmd.example` is that line written out, one per routine. Shape B | `expected`. The chain from Task Scheduler to a running Claude Code is confirmed; a full routine completing under it is not yet |
-| **OpenClaw** | Unknown. Ask it, or read its own help output, for the flag that runs one prompt and exits | `unknown` |
-| **Hermes** | Unknown. Same question | `unknown` |
+| **OpenClaw** | The automation holds the invocation: its message is the Shape B prompt, so there is no separate headless command to write. For a run by hand, use its own headless flag from its help output | `expected` |
+| **Hermes** | The cron job's prompt is the Shape B prompt. For a run by hand, use its own headless flag from its help output | `expected` |
 | **OpenCode** | `opencode run "<prompt>"` is its non interactive form. Confirm it against `opencode --help` on your version. Shape B | `expected` |
-| **GrokBot** | Unknown. Same question | `unknown` |
+| **Grok Bot** | The recurring task's run prompt is the Shape B prompt. It runs on its own cloud computer, not on this machine | `expected` |
 | **Codex** | `codex exec "<prompt>"` is its non interactive form. Confirm it against `codex --help` on your version. Shape B | `expected` |
 | **Antigravity** | `agy -p "<prompt>"`. The print flag is read off the CLI's own help text. That a routine then runs correctly through it is not verified | `expected` |
+| **Pi** | `pi -p "<prompt>"`. Confirm the print flag against `pi --help` on your version. Shape B | `expected` |
+| **Cline** | `cline schedule create "<prompt>" --cron "<cron>"` holds the invocation. For a run by hand, confirm the headless form against `cline --help`. Shape B | `expected` |
+| **Qwen Code** | `qwen -p "<prompt>"`. Confirm the print flag against `qwen --help` on your version. Shape B | `expected` |
+| **DeepSeek** | `dsh` runs a local server; confirm the headless prompt form against `dsh --help` on your version. Shape B | `expected` |
 
 Three things decide whether the line works, and all three are outside the command itself.
 

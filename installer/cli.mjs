@@ -138,7 +138,7 @@ function selftests(dst) {
 
 function loginStatus() {
   const r = spawnSync("claude", ["auth", "status"], { encoding: "utf8", shell: process.platform === "win32" });
-  if (r.error || r.status === null) return "unknown (claude is not on PATH here; the Desktop app has its own login)";
+  if (r.error || r.status === null) return "unknown (claude is not on PATH here; the Desktop app has its own login, and another harness has its own login check)";
   const text = (r.stdout || "") + (r.stderr || "");
   if (/loggedIn"?\s*:\s*true/i.test(text)) return "logged in";
   if (/loggedIn"?\s*:\s*false/i.test(text) || /not logged in/i.test(text)) return "NOT logged in";
@@ -182,7 +182,7 @@ async function hire(args) {
 
   out("");
   out("=".repeat(78));
-  out("Next: open a Claude Code session in " + dst + ", fill in your home page URL in the");
+  out("Next: open a session in " + dst + " in the harness you use (Claude Code or any of the other ten), fill in your home page URL in the");
   out("FILL THIS IN block below (the path is already filled), copy everything between");
   out("=== BEGIN PROMPT === and === END PROMPT ===, and paste it. You spend about ten minutes");
   out("answering questions. The employee's first run takes about an hour and may ask for a");

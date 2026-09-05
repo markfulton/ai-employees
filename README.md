@@ -1,7 +1,5 @@
 <div align="center">
 
-<a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees"><img src="https://club.reinventing.ai/img/employees/ai-employees-collage.webp" alt="The eight AI Employees at their desks: SEO, GTM Engineer, Web Dev, Social Media, Ad Manager, Sales, Customer Satisfaction and Chief of Staff" width="100%"></a>
-
 # AI Employees
 
 **Eight open source employees. Each one runs a whole business role on a schedule, on your own machine, on the agent you already use.**
@@ -10,13 +8,16 @@
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-ready-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
-[![Runs on](https://img.shields.io/badge/Windows_macOS_Linux-ready-2B2B2B?style=for-the-badge)](docs/HARNESSES.md)
+[![Harnesses](https://img.shields.io/badge/11_harnesses-ready-0B7FC7?style=for-the-badge)](docs/HARNESSES.md)
+[![Runs on](https://img.shields.io/badge/Windows_macOS_Linux-ready-2B2B2B?style=for-the-badge)](docs/INSTALL.md)
 [![DCO](https://img.shields.io/badge/DCO-sign_off_required-30363D?style=for-the-badge)](CONTRIBUTING.md)
 [![npm](https://img.shields.io/badge/npm-ai--employees-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/ai-employees)
 
 **Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (330,000+ members)
 
 </div>
+
+<a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees"><img src="assets/banner.png" alt="The eight AI Employees: GTM Engineer, SEO, Web Dev, Social Media, Ad Manager, Sales, Customer Satisfaction and Chief of Staff" width="100%"></a>
 
 The GTM Engineer has run my club launch every weekday since August 27. The other seven are built to the same standard and I am running them on my own business from launch day, in public.
 
@@ -35,16 +36,16 @@ Not chat assistants. Scheduled jobs that cover a whole role, run on your own mac
 
 ## The eight
 
-| | Employee | Role | What it owns | Routines | Cadence | Folder |
-|---|---|---|---|---|---|---|
-| <img src="https://club.reinventing.ai/img/employees/thumbs/gtm-engineer.webp" width="56" height="56" alt=""> | GTM Engineer | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="56" height="56" alt=""> | SEO Employee | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="56" height="56" alt=""> | Web Dev Employee | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="56" height="56" alt=""> | Social Media Employee | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="56" height="56" alt=""> | Ad Manager Employee | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/sales-employee.webp" width="56" height="56" alt=""> | Sales Employee | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="56" height="56" alt=""> | Customer Satisfaction Employee | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="56" height="56" alt=""> | Chief of Staff | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
+| Employee | Role | What it owns | Routines | Cadence | Folder |
+|---|---|---|---|---|---|
+| <img src="https://club.reinventing.ai/img/employees/thumbs/gtm-engineer.webp" width="72" height="72" alt=""><br>**GTM Engineer** | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="72" height="72" alt=""><br>**SEO Employee** | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="72" height="72" alt=""><br>**Web Dev Employee** | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="72" height="72" alt=""><br>**Social Media Employee** | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>**Ad Manager Employee** | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/sales-employee.webp" width="72" height="72" alt=""><br>**Sales Employee** | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>**Customer Satisfaction Employee** | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="72" height="72" alt=""><br>**Chief of Staff** | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
 
 Fifty nine routines. Every one has an id that is its folder name, its YAML `name`, and the name of its scheduled job, always the same string.
 
@@ -58,7 +59,7 @@ Read [docs/PREREQUISITES.md](docs/PREREQUISITES.md) first. It is ten items, and 
 npx ai-employees hire gtm-engineer --to D:\AgentOps\gtm-engineer
 ```
 
-**Path B, a clone.** Copy `employees/gtm-engineer` to a folder outside OneDrive, Dropbox, Google Drive or iCloud, open a Claude Code session there, and paste `INSTALL-PROMPT.md`.
+**Path B, a clone.** Copy `employees/gtm-engineer` to a folder outside OneDrive, Dropbox, Google Drive or iCloud, open a session there in the harness you use, and paste `INSTALL-PROMPT.md`.
 
 Either way: you spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session. It researches your business from your own public pages instead of interviewing you, writes your strategy files, builds your dashboard, registers its own schedule, and stops exactly once to show you its first drafts. [docs/INSTALL.md](docs/INSTALL.md) is the long version, per operating system and per scheduler.
 
