@@ -175,7 +175,7 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 7. **A scheduler.** The Desktop app's local scheduled tasks, or Windows Task Scheduler with the launchers in `run/`, or launchd on macOS, or cron on Linux. `CAPABILITIES.md` section 9 has the commands, and the repo's `docs/INSTALL.md` walks each one.
 8. **A machine that is awake at the fire times in `SCHEDULE.md`**, or fire times moved to after it normally wakes. A closed lid sleeps.
 9. **A working folder outside OneDrive, Dropbox, Google Drive and iCloud.** That folder is `«SALES_ROOT»` everywhere in this kit.
-10. **A usage budget.** Measured on the GTM Engineer over 29 production runs: about $20 of API equivalent usage on a plain weekday on Opus, about $8 on Sonnet, and a skipped fire costs cents now that `scripts/guard.mjs` runs before any document is read. The repo's `docs/COST.md` has the table and the dates.
+10. **A usage budget.** On a Claude Pro or Max plan an employee costs nothing beyond the plan; it spends a share of the plan's usage limits. Measured on the GTM Engineer over 27 scheduled runs, that share was about 6 percent of everything one Max 20x seat sent to Claude in ten days of heavy use. On an API key it is about $19 of Opus 5 usage at list price on a plain weekday, and an API key loses the browser lane. The repo's `docs/COST.md` has the table and the dates.
 
 Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. The repo's `docs/HARNESSES.md` has the scheduler and invocation for each harness, and `docs/INSTALL.md` has the steps per operating system and what a first run should look like.
 

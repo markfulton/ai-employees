@@ -2,7 +2,7 @@
 
 **Does it send anything?** No. No email, DM, post, comment, connection request, form submit, or published page leaves your machine, and nothing spends. Drafts land in queue files and, if you turn it on, as unsent drafts in your own mailbox. Forms get filled and left open in their tab. You press the button. That is the whole safety model and it is not configurable.
 
-**What does it cost to run?** Measured on the GTM Engineer: about $20 of API equivalent usage on a plain weekday on Opus, about $27 on Monday or Friday, about $8 a weekday on Sonnet by repricing the same tokens. On a Max 20x plan one employee fits comfortably in my experience; on Pro it will hit the weekly limit. `docs/COST.md` has the full table and the dates.
+**What does it cost to run?** On a Claude Pro or Max plan, nothing beyond the plan: the employee runs on your own seat and spends a share of its usage limits. Measured on the GTM Engineer, that share was about 6 percent of everything my Max 20x seat sent to Claude over ten days of heavy use, so one seat carries several employees alongside a working day. On an API key, for reference, it is about $19 of Opus 5 usage at list price on a plain weekday and about $27 on Monday or Friday, and an API key loses the browser lane. Every run so far was on `claude-opus-5`. `docs/COST.md` has the full table and the dates.
 
 **How long does the install take?** You spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session.
 
