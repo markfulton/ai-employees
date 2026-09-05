@@ -15,7 +15,13 @@ Two images live in this folder and are built from the same eight square thumbnai
 | `banner.png` | 1600 by 400. The eight, named, on the navy ground, beside the one line promise. | The README, under the heading block and above the intro. |
 | `social-preview.png` | 1280 by 640. The same eight under the repo name, with the GitHub URL. | The repository settings, under Social preview. GitHub does not read it from the tree, so upload it by hand after a change. |
 
-Both are rendered from a plain HTML page in headless Chrome at two times scale and downsampled, with Montserrat for the display line, Inter for text and JetBrains Mono for the eyebrow, which are the club's own three faces. No gradient text.
+Both are rendered from the pages in `src/` in headless Chrome at two times scale and downsampled, with Montserrat for the display line, Inter for text and JetBrains Mono for the eyebrow, which are the club's own three faces. No gradient text. To rebuild one:
+
+```
+chrome --headless=new --hide-scrollbars --force-device-scale-factor=2 --window-size=1600,400 --virtual-time-budget=8000 --default-background-color=00000000 --screenshot=banner@2x.png assets/src/banner.html
+```
+
+then downsample to 1600 by 400. The social preview is the same with `--window-size=1280,640`, no transparent background, and 1280 by 640 at the end.
 
 Still to make:
 
