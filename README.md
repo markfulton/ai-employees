@@ -32,7 +32,7 @@ Not chat assistants. Scheduled jobs that cover a whole role, run on your own mac
 - **A published standard and a safe upgrade path.** Every kit implements the [Agent Employee Standard](docs/STANDARD.md), ships an `employee.json` manifest, and upgrades with `npx ai-employees upgrade`, which reports first, never overwrites a file you edited, and never reads your ledgers, strategy or learned flows. `npx ai-employees contribute` turns the repairs a kit made to itself into a field report you can open upstream.
 - **You can direct any of them in chat.** Open an interactive session in the kit folder and it may do anything you may do by hand, on your word: tick a card you confirmed, stage a form now, retune a strategy file, correct a stale brief. It leaves the same trail a routine would, and the scheduled runs treat its work as yours.
 - **Windows, not fire times.** Every routine checks a window and a period key before it reads a single document, so a late fire, a duplicate fire or a machine that woke up an hour late is harmless on every scheduler.
-- **Two stops, enforced by a guard script, not by a prompt.** A send and a spend are the only two things that ever wait for your hand. `scripts/guard.mjs` runs in front of every routine and has a self test you can run before you trust it.
+- **Your harness's permission layer is the gate, and you set it.** Scheduled routines draft, fill, stage and brief by default; sending, publishing and spending happen where you configured them or on your word, and the permission mode you give each task is the scope it has. The kit is yours to widen: the guard script, the contract and every routine are plain files in your own folder. `scripts/guard.mjs` runs in front of every routine to check the window and the period key, with a self test you can run before you trust it.
 
 ## The eight
 
@@ -230,7 +230,7 @@ The eight are free for good. The Agent Ops Masterclass, the premium software lib
 
 ## FAQ
 
-**Does it send anything?** No. Drafts, filled forms, build sheets. You press the button. **Windows, Mac or Linux?** All three; the install page has the scheduler steps for each. **Can I run just one?** Yes; each is a self contained folder. **What if my machine is asleep?** The Desktop app and Task Scheduler run one late catch up, launchd folds missed fires into one, cron skips; the window makes any of that safe. **Can I sell installs to clients?** Yes, it is MIT; just do not call yours by the club's name. The rest is in [docs/FAQ.md](docs/FAQ.md).
+**Does it send anything?** By default, no: drafts, filled forms, build sheets, and you press the button. Where you configured a channel, authorized it in a session, or widened the task's permission, yes. **Windows, Mac or Linux?** All three; the install page has the scheduler steps for each. **Can I run just one?** Yes; each is a self contained folder. **What if my machine is asleep?** The Desktop app and Task Scheduler run one late catch up, launchd folds missed fires into one, cron skips; the window makes any of that safe. **Can I sell installs to clients?** Yes, it is MIT; just do not call yours by the club's name. The rest is in [docs/FAQ.md](docs/FAQ.md).
 
 ## License
 
