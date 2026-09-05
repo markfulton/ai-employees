@@ -220,7 +220,7 @@ One employee at a time, with a real output from a real run on my own business. T
 
 ## Contributing
 
-Routine requests, employee proposals, harness reports, translations, and corrections from real runs. Post what an employee did for your business in Discussions under Show and tell; good builds go into the README with your name on them. [CONTRIBUTING.md](CONTRIBUTING.md) has the rules: MIT in and out, a DCO sign off on every commit, no em or en dash anywhere, and the two stops are not negotiable.
+Routine requests, employee proposals, harness reports, translations, and corrections from real runs. Post what an employee did for your business in Discussions under Show and tell; good builds go into the README with your name on them. [CONTRIBUTING.md](CONTRIBUTING.md) has the rules: MIT in and out, a DCO sign off on every commit, no em or en dash anywhere, and the drafting defaults are not negotiable in a shipped routine.
 
 Issues are answered within a working day for the first month; after that, Discussions is where the community answers and I read every thread.
 
