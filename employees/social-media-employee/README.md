@@ -1,5 +1,8 @@
 # Social Media Employee
 
+<img src="https://club.reinventing.ai/img/employees/social-media-employee.webp" alt="Social Media Employee" width="100%">
+
+
 **Role:** the organic social account, run properly.
 **What it replaces:** the social media manager retainer, for the parts that repeat.
 **What it is:** seven scheduled routines that run on your own machine, on your own schedule, against one account.

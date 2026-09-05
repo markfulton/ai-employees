@@ -1,5 +1,8 @@
 # Ad Manager
 
+<img src="https://club.reinventing.ai/img/employees/ad-manager-employee.webp" alt="Ad Manager Employee" width="100%">
+
+
 **Role:** paid advertising, end to end, up to the spend button.
 **What it replaces:** the media buyer retainer, for the parts that repeat.
 **What it is:** seven scheduled routines that run on your own machine, on your own schedule, against your own ad accounts.

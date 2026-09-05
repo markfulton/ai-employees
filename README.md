@@ -1,10 +1,12 @@
 <div align="center">
 
+<a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees"><img src="https://club.reinventing.ai/img/employees/ai-employees-collage.webp" alt="The eight AI Employees at their desks: SEO, GTM Engineer, Web Dev, Social Media, Ad Manager, Sales, Customer Satisfaction and Chief of Staff" width="100%"></a>
+
 # AI Employees
 
-**Open source, scheduled, yours.**
+**Eight open source employees. Each one runs a whole business role on a schedule, on your own machine, on the agent you already use.**
 
-Eight AI employees that each run a whole business role on a schedule, on your own machine, on the agent you already run. They never send and they never spend. You do.
+59 scheduled routines. 11 harnesses. Windows, macOS and Linux. Running my own business every weekday since August 27, 2026. They never send and they never spend. You do.
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-ready-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
@@ -12,28 +14,37 @@ Eight AI employees that each run a whole business role on a schedule, on your ow
 [![DCO](https://img.shields.io/badge/DCO-sign_off_required-30363D?style=for-the-badge)](CONTRIBUTING.md)
 [![npm](https://img.shields.io/badge/npm-ai--employees-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/ai-employees)
 
-**Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (325,000+ members)
+**Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (330,000+ members)
 
 </div>
-
-<!-- assets/demo.gif and assets/org-chart.png go here. The spec is in assets/README.md. -->
 
 The GTM Engineer has run my club launch every weekday since August 27. The other seven are built to the same standard and I am running them on my own business from launch day, in public.
 
 Not chat assistants. Scheduled jobs that cover a whole role, run on your own machine, and brief you every morning. Every routine, every schedule, every install prompt is in this repo. Nothing is held back.
 
+## What sets them apart
+
+- **They improve their own routines.** Recursive self improvement is built into every kit. A moved selector, a changed confirmation string or a step that now needs a scroll is repaired in the run that hit it. A lesson that would otherwise repeat is written into the routine's own `SKILL.md`, surgically, with the full replaced text logged to `improvements/CHANGELOG.md` as the undo. The next morning's brief says what changed under "What changed about me". No invented approval gate: your harness already asks before anything writes to your disk, and that is the right place for it.
+- **One push to your phone, only when you are the blocker.** A session expired on a surface a routine needs, a credential is missing, the conversion event stopped firing while paid spend is live, or a browser lock is held by a run that died. Four cases and no fifth. One line under 200 characters with no draft text, no name and no credential fragment in it, because it lands on a lock screen. Never twice for the same blocker, never outside your working hours, never on a first run. Everything else stays in the brief. [The one push](docs/STANDARD.md#23-the-one-push).
+- **PC and browser use, trained by hand.** Every browser routine runs on `recipes/BROWSER-RECIPES.md`, a technique library written from real runs on my own machine rather than from documentation: click what the page actually rendered, verify by reading the page back, compress an image before it goes in, stage a filled form and leave the tab open on the last step. The per site flow files are learned on your machine the first time a routine needs one and repaired every time after. The browser lane locks per platform so two routines never crawl the same signed in account at once, and on LinkedIn it reads and never clicks.
+- **Capabilities, never tools.** Routine bodies say `page.read` and `notify.push`. One file per kit maps each capability to a concrete route on your harness. That is why one kit runs on Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek without a routine changing by one word.
+- **A published standard and a safe upgrade path.** Every kit implements the [Agent Employee Standard](docs/STANDARD.md), ships an `employee.json` manifest, and upgrades with `npx ai-employees upgrade`, which reports first, never overwrites a file you edited, and never reads your ledgers, strategy or learned flows. `npx ai-employees contribute` turns the repairs a kit made to itself into a field report you can open upstream.
+- **You can direct any of them in chat.** Open an interactive session in the kit folder and it may do anything you may do by hand, on your word: tick a card you confirmed, stage a form now, retune a strategy file, correct a stale brief. It leaves the same trail a routine would, and the scheduled runs treat its work as yours.
+- **Windows, not fire times.** Every routine checks a window and a period key before it reads a single document, so a late fire, a duplicate fire or a machine that woke up an hour late is harmless on every scheduler.
+- **Two stops, enforced by a guard script, not by a prompt.** A send and a spend are the only two things that ever wait for your hand. `scripts/guard.mjs` runs in front of every routine and has a self test you can run before you trust it.
+
 ## The eight
 
-| Employee | Role | What it owns | Routines | Cadence | Folder |
-|---|---|---|---|---|---|
-| GTM Engineer | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
-| SEO Employee | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
-| Web Dev Employee | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
-| Social Media Employee | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
-| Ad Manager Employee | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
-| Sales Employee | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
-| Customer Satisfaction Employee | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
-| Chief of Staff | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
+| | Employee | Role | What it owns | Routines | Cadence | Folder |
+|---|---|---|---|---|---|---|
+| <img src="https://club.reinventing.ai/img/employees/thumbs/gtm-engineer.webp" width="56" height="56" alt=""> | GTM Engineer | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="56" height="56" alt=""> | SEO Employee | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="56" height="56" alt=""> | Web Dev Employee | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="56" height="56" alt=""> | Social Media Employee | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="56" height="56" alt=""> | Ad Manager Employee | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/sales-employee.webp" width="56" height="56" alt=""> | Sales Employee | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="56" height="56" alt=""> | Customer Satisfaction Employee | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="56" height="56" alt=""> | Chief of Staff | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
 
 Fifty nine routines. Every one has an id that is its folder name, its YAML `name`, and the name of its scheduled job, always the same string.
 

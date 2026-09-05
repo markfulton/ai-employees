@@ -1,5 +1,8 @@
 # Web Dev Employee
 
+<img src="https://club.reinventing.ai/img/employees/web-dev-employee.webp" alt="Web Dev Employee" width="100%">
+
+
 **Role:** keeping the things you already shipped alive.
 **What it replaces:** the maintenance half of a contract developer, for the parts that repeat.
 **What it is:** eight scheduled routines that run on your own machine, on your own schedule, against the projects you already run.

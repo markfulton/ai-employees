@@ -1,5 +1,8 @@
 # Chief of Staff
 
+<img src="https://club.reinventing.ai/img/employees/chief-of-staff.webp" alt="Chief of Staff" width="100%">
+
+
 **Role:** the Employee that watches the other Employees.
 **What it replaces:** the operations lead you would hire to tell you what actually happened this week.
 **What it is:** seven scheduled routines that run on your own machine, in a working folder you own, reading and writing plain files you can open.

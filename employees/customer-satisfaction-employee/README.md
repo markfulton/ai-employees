@@ -1,5 +1,8 @@
 # Customer Satisfaction Employee
 
+<img src="https://club.reinventing.ai/img/employees/customer-satisfaction-employee.webp" alt="Customer Satisfaction Employee" width="100%">
+
+
 **Role:** the support desk.
 **What it replaces:** the part-time support hire, for the parts that repeat.
 **What it is:** eight scheduled routines that run on your own machine, on your own schedule, against your own accounts.

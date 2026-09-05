@@ -1,5 +1,8 @@
 # GTM Engineer
 
+<img src="https://club.reinventing.ai/img/employees/gtm-engineer.webp" alt="GTM Engineer" width="100%">
+
+
 **Role:** launch and demand.
 **What it replaces:** the fractional CMO retainer, for the parts that repeat.
 **What it is:** eight scheduled routines that run on your own machine, on your own schedule, against one offer.

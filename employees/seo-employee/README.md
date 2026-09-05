@@ -1,5 +1,8 @@
 # SEO Employee
 
+<img src="https://club.reinventing.ai/img/employees/seo-employee.webp" alt="SEO Employee" width="100%">
+
+
 **Role:** organic search, end to end.
 **What it replaces:** the content agency retainer, for the parts that repeat.
 **What it is:** seven scheduled routines that run on your own machine, on your own schedule, against your own properties.
