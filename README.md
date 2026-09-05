@@ -23,6 +23,22 @@ The GTM Engineer has run my club launch every weekday since August 27. The other
 
 Not chat assistants. Scheduled jobs that cover a whole role, run on your own machine, and brief you every morning. Every routine, every schedule, every install prompt is in this repo. Nothing is held back.
 
+<table>
+<tr><td align="center" width="900">
+
+<h2>Get the full guides and your custom install prompt</h2>
+
+<p><b>Every kit here ships its own INSTALL-PROMPT.md. Your club dashboard writes you one.</b></p>
+
+<p>Tick the roles you want, in the order you want them, and it composes one prompt for your agent: the fetch command for each kit, every kick off prompt in order, and the guardrails. Paste it once and your harness has everything it needs to install them. A guide per employee and the guided walkthrough lesson sit beside it.</p>
+
+<a href="https://club.reinventing.ai/members/hire?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt in the Agent Ops Club dashboard"></a>
+
+<p><sub><b>Free account, no card,</b> at club.reinventing.ai. The eight employees stay free for good.</sub></p>
+
+</td></tr>
+</table>
+
 ## What sets them apart
 
 - **They improve their own routines.** Recursive self improvement is built into every kit. A moved selector, a changed confirmation string or a step that now needs a scroll is repaired in the run that hit it. A lesson that would otherwise repeat is written into the routine's own `SKILL.md`, surgically, with the full replaced text logged to `improvements/CHANGELOG.md` as the undo. The next morning's brief says what changed under "What changed about me". No invented approval gate: your harness already asks before anything writes to your disk, and that is the right place for it.
