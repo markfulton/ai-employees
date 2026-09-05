@@ -4,7 +4,7 @@
 
 **Eight open source employees. Each one runs a whole business role on a schedule, on your own machine, on the agent you already use.**
 
-59 scheduled routines. 11 harnesses. Windows, macOS and Linux. Running my own business every weekday since August 27, 2026. They never send and they never spend. You do.
+59 scheduled routines. 11 harnesses. Windows, macOS and Linux. They drive your browser and your PC the way you do, and every run makes the next one better. Running my own business every weekday since August 27, 2026.
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-ready-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
