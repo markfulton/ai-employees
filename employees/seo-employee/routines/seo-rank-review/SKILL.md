@@ -21,15 +21,15 @@ That is why almost everything in this file is about proving a figure before beli
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-### Stop 1, sending or spending
+### Guardrail 1, sending or spending
 
 **Spending, with no exception of any kind.** You never change a budget, a bid, a plan, a subscription, or a billing setting. You never purchase, upgrade, or activate anything. You never create or save any object inside an account that can spend, in any state, including a draft. Analytics and search performance consoles sit inside account families that can spend, and the navigation between them is usually one control away, which is exactly why this is stated first.
 
-**Sending.** You never send an email, a message, a comment, a reply, a share, or a notification. You never post anywhere. You never publish an article, edit one, or make anything visible that was not already visible. You never contact a third party on the member's behalf. This routine reads. That is the whole of it.
+**Sending.** On a held channel you do not send an email, a message, a comment, a reply, a share, or a notification. You never post anywhere. You never publish an article, edit one, or make anything visible that was not already visible. You never contact a third party on the member's behalf. This routine reads. That is the whole of it.
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and an editor's own unpublished draft is exactly the deliverable a stopped publish leaves behind. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
@@ -54,7 +54,7 @@ Four things, and there is no fifth.
 
 **Restore what you changed.** An ad hoc filter you applied is cleared before you leave the screen. A dimension you swapped is swapped back. A sort you changed is put back. The member opens that screen on Monday and it has to look exactly as they left it, because a report that quietly changed shape is a report they stop trusting, and they will not know it was you.
 
-### Stop 2, private keys and credentials
+### Guardrail 2, private keys and credentials
 
 You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. **You never sign in and you never re-authenticate.** You inherit a session the member already opened. On a login wall, a checkpoint, a two factor prompt, or a captcha: follow `login-wall`, stop browser work on that screen immediately, change nothing, enter nothing, never retry a refused action a different way, and record `blocked-login` with the screen named so a member can read it cold.
 
@@ -78,7 +78,7 @@ When something is genuinely ambiguous, make the most defensible call, write one 
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Your one row. `days`, `window_start`, `window_end`, `key`, `budget`, `browser` |
 | `strategy/properties.md` | Every property, its read screen names, its post prefix, and every threshold below |
 | `strategy/topic-map.md` | The pillar and cluster architecture, so a URL joins to a cluster rather than to nothing |
@@ -329,7 +329,7 @@ Do this once per screen per property, before you read a single figure. **This is
 
 1. `read-a-page` on the screen. A single page application leaves stale DOM behind, and reading page text straight after a navigation returns the previous view confidently and with no error. Read verdicts off `page.capture`, not off `page.text`.
 2. Set the range through the screen's own date control, using `field.set` per `fill-a-field` where the control takes typed dates, and through its preset control where it does not and a preset exactly matches your span.
-3. **Where the only control that applies the range also persists it as a saved view, do not press it.** Record the window as `n/a (range control also saves a view)` for that screen, read whatever the default view gives you, label every figure from it with the range the screen is actually showing, and move on. That is Stop 1 and it does not bend for convenience.
+3. **Where the only control that applies the range also persists it as a saved view, do not press it.** Record the window as `n/a (range control also saves a view)` for that screen, read whatever the default view gives you, label every figure from it with the range the screen is actually showing, and move on. That is Guardrail 1 and it does not bend for convenience.
 4. Wait for the report to redraw. Poll for the condition per `page.wait` rather than sleeping for a number you guessed. Where a fixed delay is genuinely needed, take it from `human-pace`.
 
 ### 5b. Prove it, before you believe one figure
@@ -376,7 +376,7 @@ Per property, on the screen `strategy/properties.md` names for it.
 
 Per property, on the screen `strategy/properties.md` names for it. Same range procedure, same proof, same restoration.
 
-**What you read, per page path:** sessions or users by whichever the property's block names, and the referral sources where the property's block asks for them. That is the whole list. **You do not read revenue, conversions, goals, or anything that touches money**, and you never open a conversion definition, because that is a spending account surface and Stop 1 covers it without exception.
+**What you read, per page path:** sessions or users by whichever the property's block names, and the referral sources where the property's block asks for them. That is the whole list. **You do not read revenue, conversions, goals, or anything that touches money**, and you never open a conversion definition, because that is a spending account surface and Guardrail 1 covers it without exception.
 
 **Two things that make an analytics figure wrong in a way that looks right.**
 
@@ -685,7 +685,7 @@ None of these ends the run, and none belongs in the member's brief on its own.
 | Budget reached | Stop at the screen boundary, write both files from what you read, mark the rest `n/a (budget)`, record `partial` |
 | `«SEO_ROOT»` sits inside a synced folder | Carry the blocker, continue, rely on temp path plus rename plus read back on every write |
 
-**Two things stay outside repair**, because they are the two stops wearing different clothes: an account setting or a saved view this routine did not create, and anything on the far side of a control that commits. Those are named in the run record, never touched.
+**Two things stay outside repair**, because they are the two guardrails wearing different clothes: an account setting or a saved view this routine did not create, and anything on the far side of a control that commits. Those are named in the run record, never touched.
 
 ---
 
@@ -768,9 +768,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A band threshold that classified the same article three ways in three weeks, a screen that always needs its range set twice, a read order that wastes the budget, a card type nobody ever works, a phase that has produced nothing for six runs. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule that every figure carries its source, or the rate floor.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule that every figure carries its source, or the rate floor.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

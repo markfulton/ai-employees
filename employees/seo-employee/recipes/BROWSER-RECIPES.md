@@ -48,7 +48,7 @@ These are not steps. They are true during every step of every recipe, and a reci
 
 **4. Never retry a refused action a different way.** A transient error and a refusal are two different things and the recipe `retry` keeps them apart. Routing around a refusal is the single behaviour that turns a safe kit into an unsafe one, and in this kit the thing on the other side of a refusal is usually a live page.
 
-**5. The two stops apply inside the browser exactly as they do everywhere else.** Nothing is emailed, posted to a third party, commented, shared, cross posted, submitted, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement, including the three controls this kit does press and the conditions on each, and nothing in this file softens it.
+**5. The two guardrails apply inside the browser exactly as they do everywhere else.** On a held channel nothing is emailed, posted to a third party, commented, shared, cross posted, submitted, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement, including the three controls this kit does press and the conditions on each, and nothing in this file softens it.
 
 ---
 
@@ -488,7 +488,7 @@ A first run on the member's own account is the normal case, not a fault. Nobody 
 
 **Never write a target or an `expect_text` you did not verify on a real page this run.** Not one borrowed from a site that looked similar, not one the markup suggested but you never read back, not one carried forward from a previous run. This is the same rule as `repair-a-recipe` and it bites harder here, because a repair is checked against a file that once worked and a first learn is checked against nothing.
 
-**Learning stops exactly where the two stops do.** Drive a flow up to its last read-only step and no further. Apply the save test from `click-an-element` to everything on the way.
+**Learning stops exactly where the held guardrail does.** Drive a flow up to its last read-only step and no further. Apply the save test from `click-an-element` to everything on the way.
 
 **A flow file never records a control that commits anything as a step, and it never records anything past one.** Not a publish control, not a request control, not a sitemap submission. Those are decisions the routine makes each run against conditions it checks in words against the screen, and **a decision baked into a data file is a decision nobody re-checks.** What the flow file carries is the route to the screen, the field map, the file input, and the list of distribution controls to decline.
 

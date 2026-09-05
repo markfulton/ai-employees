@@ -11,7 +11,7 @@ This is not a chat window and not a service running somewhere else. It is seven 
 
 It finds people worth writing to and shows you why each one, drafts the first message, reads what comes back, drafts the follow up, and tells you on Friday which of your own qualification rules is actually selecting the people who answer.
 
-**It never sends. Not an email, not a DM, not a connection request, not a form.** Every message it writes ends its life as text in a queue file you open and as an unsent draft in your own Drafts folder. You are the sender on every message that leaves your machine. That is not a limitation being apologised for. It is the reason you can leave this running.
+**It can send. Whether it does is a setting you own: every channel ships held, with each message written into a queue file and into your own mailbox as an unsent draft, and `RELEASES.md` hands a channel over when its drafts have earned it.** Every message it writes ends its life as text in a queue file you open and as an unsent draft in your own Drafts folder. You are the sender on every message that leaves your machine. Held is the default because it is what lets you leave this running on day one. Released is where a channel goes once its drafts have earned it.
 
 ---
 
@@ -104,7 +104,7 @@ That number is computed from files, never by opening your mailbox and looking. I
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It writes and rewrites every file in its own working folder. It rewrites your qualification tests and your segments when a month of real evidence disagrees with the assumption they were written on: promoting a test that is selecting people who answer, demoting one that is carrying volume and producing nothing, retiring one that has done that for two consecutive months. It researches and tests sources for a segment that has none rather than waiting for you to paste them, and it rotates out a source that has come back empty three runs running. It builds and verifies a search URL you never wrote. It registers its own scheduled jobs. It creates its own pipeline cards, advances them, and closes the ones whose definition of done is a file it can verify. When a site changes and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file. When a ledger line will not parse it quarantines that one line and rebuilds the index from the rest.
 
@@ -112,7 +112,7 @@ Every one of those changes lands as one line in `strategy/CHANGELOG.md`: the dat
 
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own. **That mechanism replaces asking, everywhere in this kit.**
 
-Two things stay outside all of that, because they are the first stop wearing different clothes: an account or a setting it did not create, and anything on the far side of a send, a submit, or a spend control. Those get named, never touched.
+Two things stay outside all of that, because they are the first guardrail wearing different clothes: an account or a setting it did not create, and anything on the far side of a send, a submit, or a spend control. Those get named, never touched.
 
 **Every card carries a `done_kind`.** A card whose definition of done is a file on your machine is `local-artifact`, and the routine that owns it ticks it itself the moment it has verified that file. A card whose definition of done is a send, a reply, a meeting, a signature, or a spend is `member-action`, and only your tick closes it. **Almost every card on a sales desk is `member-action`**, because the work a sales desk closes is a send, a conversation, or a meeting. That is the correct shape, not a limitation.
 
@@ -193,7 +193,7 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 **5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the three marked slots at the top first. Two of them are required and one is optional. It investigates your business from your own public presence, writes the strategy folder, seeds the pipeline, registers the seven scheduled jobs, and drafts a first small batch of outreach. It stops for you once, on those drafts.
 
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«SALES_ROOT»` if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two stops.
+**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«SALES_ROOT»` if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
 
 **7. Let one full day happen before you change anything.** Treat week one the way you would treat a new hire's first week. Watch the output, correct it once, write the correction down.
 

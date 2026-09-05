@@ -24,7 +24,7 @@ Every kit ships `employee.json`. Its `files` block is the classification:
 |---|---|---|
 | `kit` | `CONTRACT.md`, `ROLE.md`, `routines/**`, `scripts/**` | Replaces it, but only if you have not edited it |
 | `merge` | `SCHEDULE.md` | Never rewritten. The new version lands as `SCHEDULE.md.new` |
-| `member` | `state/`, `board/`, `crm/`, `queue/`, `strategy/`, `scoreboard/`, `improvements/`, `runlog.jsonl`, `recipes/*.json` | Never read, never written |
+| `member` | `RELEASES.md`, `state/`, `board/`, `crm/`, `queue/`, `strategy/`, `scoreboard/`, `improvements/`, `runlog.jsonl`, `recipes/*.json` | Never read, never written |
 
 `recipes/BROWSER-RECIPES.md` ships with the kit. Every `recipes/*.json` beside it was learned by a routine on your screens, so it is yours.
 

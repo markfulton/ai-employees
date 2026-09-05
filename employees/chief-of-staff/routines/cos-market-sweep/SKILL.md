@@ -1,6 +1,6 @@
 ---
 name: cos-market-sweep
-description: Weekly, heavy browser lane, read only toward the world with no exception. Works the surfaces on its own watchlist through one contiguous browser phase, captures one dated observation per real change with a verbatim quote and the exact URL, refuses to report any change against a surface it has no baseline for, and writes one capped weekly page. It types nothing that changes anything, takes no action on LinkedIn ever, never sends, never spends, and never touches a credential.
+description: Weekly, heavy browser lane, read only toward the world with no exception. Works the surfaces on its own watchlist through one contiguous browser phase, captures one dated observation per real change with a verbatim quote and the exact URL, refuses to report any change against a surface it has no baseline for, and writes one capped weekly page. It types nothing that changes anything, takes no action on LinkedIn ever, sends only where you released the channel, spends only where you released it, and never touches a credential.
 metadata:
   internal: true
 ---
@@ -19,7 +19,7 @@ You are the only writer of `market/market-YYYY-Www.md` and, from the month after
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
 ### Read only toward the world, and what that actually means here
 
@@ -60,7 +60,7 @@ Read nothing that is not on this table. **Never invent a path.** A file this kit
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Your one row. `days`, `window_start`, `window_end`, `key`, `budget`, `browser` |
 | `market/watchlist.md` | Every surface block, plus the member's own additions and their `## Corrections` |
 | `charter/business.md` | What this business sells, so a change is relevant rather than merely a change |
@@ -524,8 +524,8 @@ The status vocabulary is the closed list in `CONTRACT.md` section 4.1, plus `ski
 | A surface returns zero items | Bump `consecutive_empty`. At six, retire it in place with the date and the reason | `ok` |
 | A surface has no baseline | Record the baseline, produce no change line, say so on the page | `ok` |
 | A surface 404s at its watchlist URL | Try the path a person would click before concluding the page is gone. If it is gone, mark the surface, name it on the page, and let next week decide whether to retire it | `ok` |
-| A consent banner blocks the read | Choose the most privacy preserving option, record that you did, and read. If the only option is to accept terms, that is Stop 2: skip the surface and name it | `ok` |
-| A surface asks to create an account to see anything | Skip it. That is Stop 2 and it does not bend. Name it on the page | `ok` |
+| A consent banner blocks the read | Choose the most privacy preserving option, record that you did, and read. If the only option is to accept terms, that is Guardrail 2: skip the surface and name it | `ok` |
+| A surface asks to create an account to see anything | Skip it. That is Guardrail 2 and it does not bend. Name it on the page | `ok` |
 | A quote carries a dash | Replace with a comma, add `quote normalised` to the line | `ok` |
 | An unexpected filter or sort is on a list you are reading | Clear it back to the view the flow expects, read, set it back, and note in one line that you cleared it | `ok` |
 | A cap is too tight for a surface that is genuinely producing | Raise it in `caps{}`, record one assumption, carry on | `ok` |
@@ -628,9 +628,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wait that was too short, a step order that mattered, a surface kind that needs its own extraction row, a cap that keeps stopping a producing surface, a normalisation rule that produced a false change. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, the read only rules, the baseline rule, the rule about writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, the read only rules, the baseline rule, the rule about writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, the rule against reporting a change with no baseline, or the rule against writing a number that is not in `evidence/sourced.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, the rule against reporting a change with no baseline, or the rule against writing a number that is not in `evidence/sourced.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`**, inside this kit or anywhere else on this machine.
 
@@ -652,4 +652,4 @@ If you believe something you read is urgent enough to justify a buzz, write that
 
 ## Corrections
 
-Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run, and the rules here override the guidance above, with four exceptions that nothing overrides: the two stops, the read only rules including LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, and the rule against reporting a change on a surface with no baseline.
+Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run, and the rules here override the guidance above, with four exceptions that nothing overrides: the two guardrails, the read only rules including LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, and the rule against reporting a change on a surface with no baseline.

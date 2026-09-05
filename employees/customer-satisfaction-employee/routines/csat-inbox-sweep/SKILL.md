@@ -1,6 +1,6 @@
 ---
 name: csat-inbox-sweep
-description: Weekdays, heavy browser lane. Reads every support channel named in strategy/channels.md, meaning the mailbox, the helpdesk queue, the review and rating listings, the marketplace pages, and the forums where the member's products are discussed, and captures every new or changed item as one dated, sourced, severity graded line on the ticket ledger. It replies to nothing, reacts to nothing, marks nothing read or resolved, and takes no action of any kind on LinkedIn. It never sends, never spends, and never touches a credential.
+description: Weekdays, heavy browser lane. Reads every support channel named in strategy/channels.md, meaning the mailbox, the helpdesk queue, the review and rating listings, the marketplace pages, and the forums where the member's products are discussed, and captures every new or changed item as one dated, sourced, severity graded line on the ticket ledger. It replies to nothing, reacts to nothing, marks nothing read or resolved, and takes no action of any kind on LinkedIn. It holds every outbound action unless you released the channel, and it never touches a credential.
 metadata:
   internal: true
 ---
@@ -19,13 +19,13 @@ You are the only appender of `new` and `stale` to `tickets/tickets.jsonl` and th
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things, and neither of them exists inside this routine. This routine has no outward surface at all. It navigates and it reads.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. Neither is reached inside this routine. This routine has no outward surface at all. It navigates and it reads.
 
-**Stop 1, sending or spending.** You never reply, comment, react, vote, rate, follow, subscribe, assign, tag, snooze, escalate, merge, close, resolve, or mark anything read. You never issue a refund, a credit, a plan change, or a cancellation, and you never open the screen where one is issued. There is no control on any page you visit that you are allowed to press to change the state of that page. **Marking a ticket read is a state change on somebody else's system and it is barred by name**, because a helpdesk that shows a ticket as read tells the customer, and sometimes the member's teammate, that a human has looked at it. Nobody has.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you never reply, comment, react, vote, rate, follow, subscribe, assign, tag, snooze, escalate, merge, close, resolve, or mark anything read. You never issue a refund, a credit, a plan change, or a cancellation, and you never open the screen where one is issued. There is no control on any page you visit that you are allowed to press to change the state of that page. **Marking a ticket read is a state change on somebody else's system and it is barred by name**, because a helpdesk that shows a ticket as read tells the customer, and sometimes the member's teammate, that a human has looked at it. Nobody has. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command. This routine meets more raw credentials than any other in this kit, because customers paste them into support tickets constantly, and the whole of Step 7 exists for that.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command. This routine meets more raw credentials than any other in this kit, because customers paste them into support tickets constantly, and the whole of Step 7 exists for that.
 
 **Everything else in this folder is yours, and you do not ask for any of it.** You add a surface you found that `strategy/channels.md` does not name yet. You rotate a dead surface out. You repair your own browser recipes when a selector drifts. You quarantine a malformed ledger line and rebuild the index from the rest. You tune your own caps. You create the ledger if intake has not created it yet. You make the call on ambiguity, write one line into `assumptions[]`, and keep going.
 
@@ -654,9 +654,9 @@ You never author, create, or install a skill, plugin, or extension in the member
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wait that was too short, a step order that mattered, a surface that moved for good, a route that should be tried first, a phase that has produced nothing for six runs. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule against marking anything read or resolved, the redaction rule, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule against marking anything read or resolved, the redaction rule, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

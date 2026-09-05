@@ -2,6 +2,17 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## 1.4.0, 2026-09-05
+
+The guardrail on outbound actions becomes the member's.
+
+The two stops were written as law. In practice one of them was a default that people wanted to move, channel by channel, once an employee had earned it, and the only honest gate was always the harness's own permission layer. This release says so.
+
+- **`RELEASES.md` in every kit**, classified `member` so an upgrade never touches it: one row per channel the member releases, with the action and their conditions. Shipped empty, which means every channel held exactly as before. A routine reads it in Step 0 and, on a released channel, completes the action, records it on the queue entry and in the run record, and lists it in the brief under what went out. Only the member writes it.
+- **The two guardrails** replace the two stops in every contract, role file, routine, browser recipe, launcher and `AGENTS.md`. The first is held unless released; the second, credentials, has no release.
+- **Agent Employee Standard v1.2**: LAW 2 rewritten the same way; every kit's `employee.json` now implements 1.2.
+- README, `docs/HOW-EMPLOYEES-WORK.md`, `SECURITY.md`, the FAQ and `CONTRIBUTING.md` describe the held default and the release, not a rule.
+
 ## 1.3.0, 2026-09-04
 
 Upgrades become possible, and the kits tell any harness what they are.

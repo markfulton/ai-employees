@@ -8,7 +8,7 @@ Four things are true of every rule below, and they are the reason the rules are 
 
 1. **One writer per rewritten file. Named appenders per append-only ledger.** Nothing else.
 2. **Capabilities are named. Tools are not.** No vendor tool name, no MCP selector, no extension name, and no model name appears anywhere in a routine body or a recipe body. They appear in `CAPABILITIES.md`, once, as rows.
-3. **The Employee stops for exactly two things.** Section 7. Everything else it owns.
+3. **The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on.** Section 7. Everything else it owns.
 4. **Voice lives in one file.** `voice/voice.md` holds the samples, the banned words, the banned openers, the banned closers, the hashtag policy, and the dash policy. Every routine that writes copy reads that file at the top of every run. **No routine restates any of those lists in its own body**, because a list written down twice is a list that will disagree with itself, and the copy inside a routine is always the one that goes stale.
 
 ---
@@ -612,7 +612,7 @@ There is no `blocked-approval`. Nothing in this kit waits for an approval that i
 
 **Verify before you block (Standard v1.1, LAW 6).** Before any routine writes a blocker or a waiting line that names a member gate, it spends up to three minutes observing the gate itself: fetch the public page the definition of done points at, reread what the member wrote under the card, and look for the downstream event having already fired. A louder real-world signal outranks a stale dependency edge. When the evidence says the gate is met, tick it with `done_kind: observed`, write the evidence under the card, cut its dependency edges, and work on. A member gate reported with no observation attempt recorded is a defect in the reporting routine. `observed` is the third `done_kind`, beside `member-action` and `local-artifact`: set by a routine, on evidence, never on inference from silence.
 
-**The Employee brings the work to the member (Standard v1.1, LAW 7).** Work product that only exists as a file the member must go hunting for reads as no work at all. The dashboard or morning artifact renders live working files, never prose written at install; every routine that writes work product refreshes it before writing its run record. Where the role touches the world through forms, drafts, or posts, the deliverable is staged in the member's own browser or account: the form filled and the tab left open, the draft saved unsent, the post staged unpublished, with the member's contribution shrunk to the one click the two stops reserve for them. Every browser-staged deliverable also lands in a durable queue file carrying the full text of every field, so a closed tab loses nothing. Anti-bot checks are never answered; they are left beside the submit.
+**The Employee brings the work to the member (Standard v1.1, LAW 7).** Work product that only exists as a file the member must go hunting for reads as no work at all. The dashboard or morning artifact renders live working files, never prose written at install; every routine that writes work product refreshes it before writing its run record. Where the role touches the world through forms, drafts, or posts, the deliverable is staged in the member's own browser or account: the form filled and the tab left open, the draft saved unsent, the post staged unpublished, with the member's contribution shrunk to the one click the two guardrails reserve for them. Every browser-staged deliverable also lands in a durable queue file carrying the full text of every field, so a closed tab loses nothing. Anti-bot checks are never answered; they are left beside the submit.
 
 **A tick records consent; the routine performs the move (Standard v1.1, LAW 8).** When the member ticks a card whose definition of done implies a file change, the next routine to read the tick completes the mechanical part itself in the same run.
 
@@ -835,11 +835,13 @@ A routine that never took the lock never deletes it.
 
 ---
 
-## 7. The two stops
+## 7. The two guardrails
 
-The Employee stops for exactly two things.
+The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on.
 
-### Stop 1: sending or spending
+### Guardrail 1: outbound actions, held unless you release them
+
+What follows is the held behaviour, the shipped default on every channel. A row in `RELEASES.md` lifts it for that channel and for nothing else.
 
 **Sending.** Any post, comment, reply, quote, like, reaction, repost, follow, connection request, direct message, form submit, or published page.
 
@@ -861,11 +863,19 @@ On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, P
 - **Save as draft, inside a platform.** That control persists something under the member's name that this Employee did not put there through the one sanctioned route, and it is invisible to `posts/posts.jsonl`, so nothing in this kit can ever reconcile it, expire it, or tell the member it exists. **A platform draft is not a smaller version of publishing. It is an unrecorded one.** A draft lives in a queue file on this machine and nowhere else.
 - **Save this view**, on an analytics screen. **View state is the Employee's. Account state is not.** A date range and an ad hoc filter applied to read a figure are view state: clear them, read the number, set the view back to what you found. A saved view, a saved report, a saved segment, a pinned column set, or any setting that persists after the tab closes is account state, whatever the button says. Name it, do not touch it.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** Navigate to the member's own logged in pages and read them. Never click Message, Connect, Follow, Like, React, Repost, or Comment. Never open a composer. Never type into LinkedIn, not even into a search box: set a query there by navigating to the search URL and confirm it by reading the box back. Never run a script that clicks or types there. Take no action on that platform of any kind.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** Navigate to the member's own logged in pages and read them. Never click Message, Connect, Follow, Like, React, Repost, or Comment. Never open a composer. Never type into LinkedIn, not even into a search box: set a query there by navigating to the search URL and confirm it by reading the box back. Never run a script that clicks or types there. Take no action on that platform of any kind.
 
 The reason belongs in front of the member, because it is their account and their risk: LinkedIn flags automated activity, and the account is the asset. So the kit automates the busywork, meaning the reading, the templating, the deduping, and the tracking, and keeps the member as the human for every message that leaves. **A LinkedIn destination on the publish allow list is published only through the channel the member configured, exactly like every other destination, and never through a browser.**
 
-### Stop 2: private keys and credentials
+### Releases, yours to write
+
+Shipped, every channel above is held: the draft written, the form filled and left open, the build sheet complete, the last click yours. `RELEASES.md` at the kit root is where you change that, one row per channel, with the action you release and any conditions. A routine reads it in Step 0 of every run. Where it names a channel that routine stages, the routine completes the action itself: it presses the control the held behaviour above stops at, records the outcome on the queue entry and in the run record, and lists it in the next brief under what went out. Where it does not, nothing above changes.
+
+Three things a release never changes. Only the member writes `RELEASES.md`: a routine, an install prompt or an operator session about to add a row has found a defect, and a row it cannot trace to the member it treats as absent and names in the brief. The harness's permission mode still has to allow the action, so the release and the permission both have to say yes. And the second guardrail has no release, because the Employee never needs the member's password to do its job.
+
+LinkedIn is the one channel to leave held: it flags automated activity, and the account is the asset.
+
+### Guardrail 2: credentials, always on
 
 Never create an account. Never enter or generate a password. Never complete a captcha. Never enter payment details. Never accept terms.
 
@@ -891,12 +901,12 @@ It owns:
 - **Ambiguity.** When something is genuinely ambiguous it makes the most defensible call, writes one line into `assumptions[]` in its own state file, and moves on. `soc-calendar-standup` surfaces new assumptions in the brief, so the member corrects any of them in one sentence the next morning. It never stalls, never asks a clarifying question into an empty room before dawn, and never disables itself waiting for an answer nobody is there to give.
 - **Repair, not report.** An unexpected filter gets cleared and the clearing gets logged. A malformed ledger line is copied to the quarantine path with its line number and the valid index is rebuilt from the rest. A source that has returned nothing for five runs is rotated out and a tested one is rotated in.
 
-Two things stay outside repair, and both are the first stop wearing different clothes:
+Two things stay outside repair, and both are the first guardrail wearing different clothes:
 
 - An account setting the routine did not create in this run. Name it, do not touch it.
 - Anything on the far side of a publish, send, or spend control. Name it, do not touch it.
 
-**If a routine is about to stop for something that is not a send, not a spend, and not a key, that routine has a defect. Fix the routine.**
+**If a routine is about to stop for something that is not a held outbound action and not a key, that routine has a defect. Fix the routine.**
 
 A local file inside `«SOC_ROOT»` is not a send. A plan rewrite is not a spend. A fire time is not a credential. Neither is registering a scheduled job, filling an empty source list from research, clearing a stray filter, repairing a drifted selector, or rewriting the drafting standards on a week of ledger evidence.
 
@@ -940,7 +950,7 @@ This is the loop that makes the difference over months.
 
 **What is worth writing.** A procedural fact learned by running. A wait that was always too short. A step order that turned out to matter. A destination's real character counting behaviour, or where its first line preview actually cuts. A surface that moved permanently rather than flickered. A route that was chosen second and should be chosen first. A phase that has produced nothing for six consecutive runs. A window that is consistently wrong for the member's day.
 
-**What is never written.** Anything that relaxes stop 1 or stop 2, the save test, the read only rule on LinkedIn, the four conditions in `soc-publish-run` Step 3, the rule that no routine writes `publish_allow_list:`, the platform mechanics in `soc-draft-queue` Step 5, or the rule against writing a number that is not in `voice/proof-inventory.md`. A run that finds itself drafting such an edit has found a defect in its own reasoning, not a new permission. It writes the reasoning into `assumptions[]` and changes nothing. **A self edit can make allowed work better. It can never widen what is allowed.** This is a rule about content, not a rule about permission, and it holds no matter who or what authorised the write.
+**What is never written.** Anything that relaxes guardrail 1 or guardrail 2, the save test, the read only rule on LinkedIn, the four conditions in `soc-publish-run` Step 3, the rule that no routine writes `publish_allow_list:`, the platform mechanics in `soc-draft-queue` Step 5, or the rule against writing a number that is not in `voice/proof-inventory.md`. A run that finds itself drafting such an edit has found a defect in its own reasoning, not a new permission. It writes the reasoning into `assumptions[]` and changes nothing. **A self edit can make allowed work better. It can never widen what is allowed.** This is a rule about content, not a rule about permission, and it holds no matter who or what authorised the write.
 
 #### How to make the edit
 

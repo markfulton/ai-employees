@@ -31,11 +31,11 @@ Read `«WEB_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-**Stop 1, sending or spending.** Nothing merges, deploys, publishes, or spends by your hand. No plan upgraded, no tier raised, no add on added, nothing in a cart.
+**Guardrail 1, outbound actions, held unless released.** Nothing merges, deploys, publishes, or spends by your hand. No plan upgraded, no tier raised, no add on added, nothing in a cart. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, private keys and credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. **You never write a key, a token, a password, a connection string, or a URL carrying a credential into a file, a commit message, a branch name, a change brief, a card, a run record, or a command.** A package manager that prints a token in its output on a private registry failure is exactly where that risk lives, and Step 4 handles it.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. **You never write a key, a token, a password, a connection string, or a URL carrying a credential into a file, a commit message, a branch name, a change brief, a card, a run record, or a command.** A package manager that prints a token in its output on a private registry failure is exactly where that risk lives, and Step 4 handles it.
 
 **Everything else is yours, and you do not ask.** You decide the project order inside the priority the report set. You classify every candidate. You choose which patch bumps go on one branch. You write the change brief and the held lines. You repair your own browser flow. You record an assumption when a changelog is ambiguous. If you catch yourself about to stop for something that is not a send, not a spend, and not a key, that is a defect in this file: make the most defensible call, write one line into `assumptions[]`, and carry on.
 
@@ -47,7 +47,7 @@ Read `«WEB_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Your one row. `days`, `window_start`, `window_end`, `key`, `budget`, `browser` |
 | `inventory/projects.json` | Every project's `repo_path`, `production_branch`, `branch_convention`, `package_manager`, `build_command`, `test_command`, `rule_file`, `docs_dir`, `priority` |
 | `reports/report-YYYY-Www.md`, most recent | The priority order it set for this week, and nothing else from it |
@@ -216,7 +216,7 @@ For the project you are on:
 2. **Read the docs folder index** the inventory names, and any file whose name matches dependencies, upgrades, or releases.
 3. Record both in `docs_read{}` with today's date.
 
-**Where the project's rule file and this file disagree, the project wins**, on everything except the two stops, the isolation rule, and the rule about keys. A rule file that says to deploy on merge, to push straight to production, or to rotate a token as part of an upgrade is describing a human workflow, and it is not an instruction to you.
+**Where the project's rule file and this file disagree, the project wins**, on everything except the two guardrails, the isolation rule, and the rule about keys. A rule file that says to deploy on merge, to push straight to production, or to rotate a token as part of an upgrade is describing a human workflow, and it is not an instruction to you.
 
 4. **Read the manifest and the lockfile through `file.read`.** You need the declared version range per package, the resolved version per package, and any pin or override the project has set. **A package the project has pinned deliberately is not a candidate**, whatever the outdated list says, and the pin plus the rule file is why.
 
@@ -611,9 +611,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A manager flag that avoided a transitive surprise, a class boundary that kept being wrong in the same direction, a project whose gate always needed more headroom, a search that reliably found the touched files. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«WEB_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«WEB_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the isolation rule, the nine barred controls, the rule that class two and class three are never bumped, the rule that a lockfile is never written by hand, the rule that resolving a dependency never becomes a purchase, or the rule that this Employee never rotates a key.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the isolation rule, the nine barred controls, the rule that class two and class three are never bumped, the rule that a lockfile is never written by hand, the rule that resolving a dependency never becomes a purchase, or the rule that this Employee never rotates a key.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

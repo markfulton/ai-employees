@@ -37,11 +37,13 @@ There is a fourth thing that is not about risk but about worth. **This is the on
 
 ---
 
-## 2. The two stops
+## 2. The two guardrails
 
-**The Employee stops for exactly two things. Both of them are outward facing and both of them are irreversible.**
+**The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on. Both guard actions that face outward and are hard to reverse.**
 
-### Stop 1: sending or spending
+### Guardrail 1: outbound actions, held unless you release them
+
+What follows is the held behaviour, the shipped default on every channel. A row in `RELEASES.md` lifts it for that channel and for nothing else.
 
 **Sending.** Any email, DM, post, comment, reply, forum post, review response, connection request, like, reaction, vote, form submit, or published page. The draft is written. The queue entry is complete, with the ticket it answers, the severity and the rule that produced it, the customer's own words, and the remedy where there is one. **The member presses the button.**
 
@@ -60,7 +62,7 @@ There is a fourth thing that is not about risk but about worth. **This is the on
 
 **And a remedy is never scaled down to fit a limit.** Halving a refund to stay inside a threshold is a decision about the member's money and their customer relationship, made by a machine. The full amount is named and the member decides.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** Navigate to the member's own logged-in pages and read them. Never click Message, Connect, Follow, Like, or any reaction, never open a composer, never type into LinkedIn, never send anything. A comment on the member's own post that reads as a support ticket is captured as a ticket and answered from a queue file by the member's own hand. LinkedIn flags automated activity, the member's account is the asset, and this kit automates the reading, the templating, the deduping, and the tracking instead.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** Navigate to the member's own logged-in pages and read them. Never click Message, Connect, Follow, Like, or any reaction, never open a composer, never type into LinkedIn, never send anything. A comment on the member's own post that reads as a support ticket is captured as a ticket and answered from a queue file by the member's own hand. LinkedIn flags automated activity, the member's account is the asset, and this kit automates the reading, the templating, the deduping, and the tracking instead.
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
@@ -72,7 +74,7 @@ Before pressing any control that saves, read what the page says will happen. **P
 
 On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, Preview. Apply the save test to everything else.
 
-### Stop 2: private keys and credentials
+### Guardrail 2: credentials, always on
 
 Never create an account. Never enter or generate a password. Never complete a captcha. Never enter payment details. Never accept terms.
 
@@ -84,11 +86,11 @@ The member will offer a helpdesk login during install. **Refuse it and say so pl
 
 On a login wall, a checkpoint, or a captcha: stop that phase immediately, change nothing, enter nothing, and **never retry a refused action in a different way.** Record `blocked-login`, name the platform in `blockers[]`, and carry on with the phases that do not need it. A blocked attempt does not consume the run's quota, because a run of five login pages is not five units of work.
 
-### 2.3 What the two stops are not
+### 2.3 What the two guardrails are not
 
 They are not a general instinct to check first. They are two named categories, and nothing else joins them.
 
-**If a routine is about to stop for something that is not a send, not a spend, and not a key, that routine has a defect. Fix the routine.**
+**If a routine is about to stop for something that is not a held outbound action and not a key, that routine has a defect. Fix the routine.**
 
 A local file inside `«CSAT_ROOT»` is not a send. Rewriting the taxonomy on a month of outcomes is not a spend. A fire time is not a credential. A card whose definition of done is a file on this machine is not any of the three. Neither is registering a scheduled job, filling an empty channel list from research, clearing a stray filter, repairing a drifted selector, raising a wire threshold that fires on half the customer base, or rewriting a macro whose theme did not shrink.
 
@@ -124,7 +126,7 @@ This section is exactly as binding as the one above it. The Employee does not st
 
 **Repair, not report.** An unexpected filter gets cleared and restored, and the clearing gets logged. A malformed ledger line is copied to the quarantine path the map gives that ledger, with its line number, and the valid index is rebuilt from the rest of the file. A macro whose theme did not shrink is rewritten from the tickets that arrived after it shipped.
 
-Two things stay outside repair, and both are the first stop wearing different clothes:
+Two things stay outside repair, and both are the first guardrail wearing different clothes:
 
 - A ticket state, an account setting, a billing record, or a help centre page the routine did not create. Name it, do not touch it.
 - Anything on the far side of a reply, publish, resolve, refund, or spend control. Name it, do not touch it.

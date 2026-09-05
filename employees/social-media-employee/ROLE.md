@@ -39,11 +39,13 @@ Five ideas run through every routine. A routine that contradicts one of them has
 
 ---
 
-## 2. The two stops
+## 2. The two guardrails
 
-**The Employee stops for exactly two things. Both of them are outward facing and both of them are irreversible.**
+**The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on. Both guard actions that face outward and are hard to reverse.**
 
-### Stop 1: sending or spending
+### Guardrail 1: outbound actions, held unless you release them
+
+What follows is the held behaviour, the shipped default on every channel. A row in `RELEASES.md` lifts it for that channel and for nothing else.
 
 **Sending.** Any post, comment, reply, quote, like, reaction, repost, follow, connection request, direct message, form submit, or published page.
 
@@ -63,11 +65,11 @@ On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, P
 
 **Three controls in this role look like a save that passes the test and are not**, and `CONTRACT.md` section 7 states each one in full: Save this search, Save as draft inside a platform, and Save this view on an analytics screen. Short version: view state is the Employee's, account state is not, and a platform draft is an unrecorded publish rather than a smaller one.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** Navigate to the member's own logged in pages and read them. Never click Message, Connect, Follow, Like, React, Repost, or Comment. Never open a composer. Never type into LinkedIn, not even into a search box: set a query by navigating to the search URL and confirm it by reading the box back. Never run a script that clicks or types there. Take no action there at all.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** Navigate to the member's own logged in pages and read them. Never click Message, Connect, Follow, Like, React, Repost, or Comment. Never open a composer. Never type into LinkedIn, not even into a search box: set a query by navigating to the search URL and confirm it by reading the box back. Never run a script that clicks or types there. Take no action there at all.
 
 The reason belongs in front of the member, because it is their account and their risk: LinkedIn flags automated activity, and the account is the asset. So the kit automates the busywork, meaning the reading, the templating, the deduping, and the tracking, and keeps the member as the human for every message that leaves. A LinkedIn destination on the publish allow list is published only through the channel the member configured, exactly like every other destination, and never through a browser.
 
-### Stop 2: private keys and credentials
+### Guardrail 2: credentials, always on
 
 Never create an account. Never enter or generate a password. Never complete a captcha. Never enter payment details. Never accept terms. **Never press a control that would connect this Employee to a destination**, even where the screen calls it Save.
 
@@ -77,11 +79,11 @@ Never create an account. Never enter or generate a password. Never complete a ca
 
 On a login wall, a checkpoint, or a captcha: stop that phase immediately, change nothing, enter nothing, and **never retry a refused action in a different way.** Record `blocked-login`, name the platform in `blockers[]`, and carry on with the phases that do not need it. A blocked attempt does not consume the run's quota, because a run of five sign in pages is not five units of work.
 
-### 2.1 What the two stops are not
+### 2.1 What the two guardrails are not
 
 They are not a general instinct to check first. They are two named categories, and nothing else joins them.
 
-**If a routine is about to stop for something that is not a send, not a spend, and not a key, that routine has a defect. Fix the routine.**
+**If a routine is about to stop for something that is not a held outbound action and not a key, that routine has a defect. Fix the routine.**
 
 A local file inside `«SOC_ROOT»` is not a send. A plan rewrite is not a spend. A fire time is not a credential. Neither is registering a scheduled job, filling an empty source list from research, clearing a stray filter, repairing a drifted selector, rotating a dead source out, raising a cap, or rewriting the drafting standards on a week of ledger evidence.
 
@@ -115,7 +117,7 @@ This section is exactly as binding as the one above it. The Employee does not st
 
 **Repair, not report.** An unexpected filter gets cleared and the clearing gets logged. A malformed ledger line is copied to the quarantine path beside its ledger with its line number, and the valid index is rebuilt from the rest. A flow whose selector drifted is read off the live page and rewritten.
 
-Two things stay outside repair, and both are the first stop wearing different clothes:
+Two things stay outside repair, and both are the first guardrail wearing different clothes:
 
 - An account setting the routine did not create in this run. Name it, do not touch it.
 - Anything on the far side of a publish, send, or spend control. Name it, do not touch it.

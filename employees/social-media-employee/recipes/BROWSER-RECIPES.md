@@ -41,7 +41,7 @@ These are not steps. They are true during every step of every recipe, and a reci
 
 **5. Every browser lane in this kit is read only.** Navigation, disclosure controls, and setting a search or filter field on a list you are about to read. That is the whole set. There is no route in any routine that types into a composer, a reply box, or a message box, and there is no coordinate fallback anywhere in this kit.
 
-**6. The two stops apply inside the browser exactly as they do everywhere else.** Nothing is published, posted, replied to, liked, followed, submitted, enabled, or spent through a page. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+**6. The two guardrails apply inside the browser exactly as they do everywhere else.** Nothing is published, posted, replied to, liked, followed, submitted, enabled, or spent through a page. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 ---
 
@@ -459,7 +459,7 @@ A first run on the member's own account is the normal case, not a fault. Nobody 
 
 **Never write a target or an `expect_text` you did not verify on a real page this run.** Not one borrowed from a site that looked similar, not one the markup suggested but you never read back, not one carried forward from a previous run. This is the same rule as `repair-a-recipe` and it bites harder here, because a repair is checked against a file that once worked and a first learn is checked against nothing.
 
-**Learning stops exactly where the two stops do.** Drive a flow up to its last read-only step and no further. **A flow file never records a Submit, Publish, Post, Send, Enable, Activate, Create account, Like, Follow, Connect, Message, or Comment control as a step**, because no run is ever allowed to execute one. Apply the save test in `click-an-element` to everything else, including the three controls that look like a save and are not.
+**Learning stops exactly where the held guardrail does.** Drive a flow up to its last read-only step and no further. **A flow file never records a Submit, Publish, Post, Send, Enable, Activate, Create account, Like, Follow, Connect, Message, or Comment control as a step**, because no run is ever allowed to execute one. Apply the save test in `click-an-element` to everything else, including the three controls that look like a save and are not.
 
 **Verification.** Read the file back off disk and walk it from the top: every step's `expect_text` appears where the file says it will. **A flow file you wrote and did not replay is a guess written to disk.**
 

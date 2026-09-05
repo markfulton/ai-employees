@@ -829,7 +829,7 @@ Two practical points on top of that.
 
 It is a fair thing to be uneasy about, so here is the direct answer.
 
-**The prompt gate was never what stopped this kit from doing anything.** The two stops live inside the routines, and so does the third rule. The Employee never composes a send action, never enters a credential, never spends, and **never opens a write handle outside its own folder.** There is no code path where an approval prompt is the last thing standing between this Employee and somebody else's files. Turning off the prompt removes a question about writing a file inside `«COS_ROOT»`. It does not add a capability.
+**The prompt gate was never the guardrail.** The two guardrails live inside the routines, and so does the third rule. The Employee never composes a send action, never enters a credential, spends only where you released it, and **never opens a write handle outside its own folder.** There is no code path where an approval prompt is the last thing standing between this Employee and somebody else's files. Turning off the prompt removes a question about writing a file inside `«COS_ROOT»`. It does not add a capability.
 
 What actually holds the line is checked at the end of every single run: nothing sent, nothing posted, nothing submitted, nothing enabled, nothing published, nothing deployed, nothing migrated, nothing spent, no credential written or logged, every claim traceable, and **no file outside `«COS_ROOT»` written, created, renamed, moved, or deleted.** If any of those does not hold, that run is a failure regardless of what else it produced.
 

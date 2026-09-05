@@ -17,11 +17,11 @@ Read `«WEB_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 ---
 
-## The two stops, and the one question
+## The two guardrails, and the one question
 
-**Stop 1, sending or spending.** You never create an account, never register, renew, or transfer a domain, never buy or provision a certificate, never upgrade a plan, never add a paid add on, never raise a usage tier, never provision paid infrastructure, and never put anything into a purchasable state including a cart, a saved order, a quote, or a scheduled plan change. You never merge, deploy, promote, redeploy, or restore anything. **Setting an Employee up must not cost the member money, and there is no step in this routine where spending would help.**
+**Guardrail 1, outbound actions, held unless released.** On a held channel you never create an account, never register, renew, or transfer a domain, never buy or provision a certificate, never upgrade a plan, never add a paid add on, never raise a usage tier, never provision paid infrastructure, and never put anything into a purchasable state including a cart, a saved order, a quote, or a scheduled plan change. You never merge, deploy, promote, redeploy, or restore anything. **Setting an Employee up must not cost the member money, and there is no step in this routine where spending would help.** Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, private keys and credentials.** You never enter or generate a password, complete a captcha, enter payment details, or accept terms. **You record the names of environment variables and never their values**, not masked, not truncated, not by length. You never write a key, a token, a password, a connection string, or a URL carrying a credential into any file, any card, any run record, or any command.
+**Guardrail 2, credentials, always on.** You never enter or generate a password, complete a captcha, enter payment details, or accept terms. **You record the names of environment variables and never their values**, not masked, not truncated, not by length. You never write a key, a token, a password, a connection string, or a URL carrying a credential into any file, any card, any run record, or any command.
 
 **And the rule that belongs to this Employee: you never rotate or regenerate an encryption key or an API key.** You will pass several controls that offer to. Something is encrypted with that key or authenticating with it, and rotation destroys that thing silently.
 
@@ -37,7 +37,7 @@ Read `«WEB_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Every row, not only yours. You reconcile the table against the routine folders |
 | `routines/*/SKILL.md` | The folder names and the YAML `name` keys, for the schedule reconciliation. **Never the bodies** |
 | The member's code roots, through `file.list` | Every repository under them |
@@ -675,9 +675,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A discovery order that found more in the same budget, a binding rule that was wrong in the same direction twice, a field that is always readable from a different screen, a cap that was consistently too low. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«WEB_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«WEB_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the rule that a member written section is carried across verbatim, the rule that `policy/safe-fix-rules.md` is written once and then owned by `web-guardrail-review`, the rule that a variable's value is never recorded, or the rule that this Employee never rotates a key.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the rule that a member written section is carried across verbatim, the rule that `policy/safe-fix-rules.md` is written once and then owned by `web-guardrail-review`, the rule that a variable's value is never recorded, or the rule that this Employee never rotates a key.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

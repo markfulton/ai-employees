@@ -6,9 +6,9 @@ An AI employee here is not a chat window and not a skill. It is a folder of sche
 
 Every one of the eight is built to the same five laws. They are the reason you can leave one running.
 
-**1. Maximum self reliance.** The employee does the work. It researches rather than interrogates, decides rather than proposes, repairs rather than reports. It never stops for anything that is not a send, a spend, or a credential; a routine about to stop for anything else has a defect. Where something is genuinely ambiguous it makes the most defensible call, records one line in its assumptions, and carries on. The next brief puts that line in front of you to correct in one line of your own.
+**1. Maximum self reliance.** The employee does the work. It researches rather than interrogates, decides rather than proposes, repairs rather than reports. It never stops for anything that is not a held outbound action or a credential; a routine about to stop for anything else has a defect. Where something is genuinely ambiguous it makes the most defensible call, records one line in its assumptions, and carries on. The next brief puts that line in front of you to correct in one line of your own.
 
-**2. Two stops, and only two.** Sending or spending: no email, DM, post, comment, connection request, form submit, or published page leaves; no budget, bid, campaign state, activation, or purchase changes, and nothing is created or saved inside an account that can spend, in any state, including a draft. Private keys and credentials: it never creates an account, enters or generates a password, completes a captcha, enters payment details, or accepts terms, and it never writes a credential into any file, log, or report. Everything up to those two lines is its job. Those two lines are yours.
+**2. Two guardrails, and the first one is yours.** Outbound actions: sending, posting, submitting, publishing and spending are all things an employee can do, and every one ships held, with the draft written, the form filled and left open, the build sheet complete and the last click yours. `RELEASES.md` in the employee's folder is where you release a channel, with your conditions, and only you write it. Credentials: it never creates an account, enters or generates a password, completes a captcha, enters payment details, or accepts terms, and it never writes a credential into any file. That one has no release, because it never needs your password to do its job.
 
 **3. Capabilities, never tools.** Routine bodies say things like `page.read`, `file.write`, `image.compress`. One file per kit, `CAPABILITIES.md`, maps each capability to a concrete route on each harness, with an honest confidence column. That is what makes a kit portable, and it is why a hosted route can be added later without a routine changing by one word.
 
@@ -22,7 +22,7 @@ Three more were earned in the first live week of the GTM Engineer running a real
 
 ```
 <root>/
-  CONTRACT.md          the spine: the routine roster, who writes which file, the guards, the two stops
+  CONTRACT.md          the spine: the routine roster, who writes which file, the guards, the two guardrails
   ROLE.md              who this employee is and how it thinks
   CAPABILITIES.md      capability to route, per harness, honest about what was confirmed
   SCHEDULE.md          the only file that carries a cadence, a fire time, a window, or a budget
@@ -81,5 +81,6 @@ Three actors touch a kit: the scheduled routines, you by hand, and you directing
 - **routine:** one scheduled job, one folder under `routines/`, one `SKILL.md`, one run record per run.
 - **window:** the span of local time inside which a routine is allowed to do its work.
 - **period key:** the local date, ISO week, or month that a run belongs to; the reason a duplicated fire does nothing.
-- **the two stops:** sending or spending, and credentials. The only two things an employee stops for.
+- **the two guardrails:** outbound actions, held until you release a channel in `RELEASES.md`, and credentials, always on. The only two things an employee holds for.
+- **release:** a row you write in `RELEASES.md` naming a channel, the action you hand over, and your conditions. No routine writes one.
 - **«placeholder»:** the guillemet marks in the kit mean a value the install fills in. Two survive on purpose in drafts: `«paste at send time»` for a credential you type yourself, and `«member: paste the detail»` for a number only you can supply.

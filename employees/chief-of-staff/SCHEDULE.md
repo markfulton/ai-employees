@@ -227,7 +227,7 @@ At 07:15 the reconcile asks to write a file, and then it sits there. Nobody clic
 
 **The fix lives in your harness's own settings: run scheduled work in its auto approve mode**, scoped as narrowly as your harness allows for writes, ideally to `«COS_ROOT»` and nothing else. Read access wants to be wider, because reading your other Employees' folders is the job.
 
-This does not weaken anything. **The prompt gate was never what stopped this kit from doing anything:** it never sends, never spends, never enters a credential, and never opens a write handle outside its own folder, and all four are checked as invariants at the end of every run. Turning off the prompt removes a question about writing a file inside `«COS_ROOT»`. It does not add a capability. `CAPABILITIES.md` section 10 has the full treatment.
+This does not weaken anything. **The prompt gate was never the guardrail:** it holds every outbound action unless you released the channel, never enters a credential, and never opens a write handle outside its own folder, and all four are checked as invariants at the end of every run. Turning off the prompt removes a question about writing a file inside `«COS_ROOT»`. It does not add a capability. `CAPABILITIES.md` section 10 has the full treatment.
 
 If your harness cannot run without interactive approval at all, **schedule the four routines whose lane is `never` and run the other three by hand.** You still get the brief, the dossier, the Friday argument, and the monthly score.
 

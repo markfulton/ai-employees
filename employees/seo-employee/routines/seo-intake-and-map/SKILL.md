@@ -1,6 +1,6 @@
 ---
 name: seo-intake-and-map
-description: Monthly, browser conditional. On its first run it discovers the member's properties from the sites they name, writes the three strategy files, creates every ledger and folder the kit reads, files the opening cards, and registers the seven scheduled jobs. Every month after that it re-reads the evidence rather than its own previous conclusions, rebuilds the topic map and the internal link map, corrects any property fact it can prove wrong, and records every change with the path of the evidence that forced it. It never publishes, never spends, and never touches a credential.
+description: Monthly, browser conditional. On its first run it discovers the member's properties from the sites they name, writes the three strategy files, creates every ledger and folder the kit reads, files the opening cards, and registers the seven scheduled jobs. Every month after that it re-reads the evidence rather than its own previous conclusions, rebuilds the topic map and the internal link map, corrects any property fact it can prove wrong, and records every change with the path of the evidence that forced it. It holds publishing and spending unless you released the channel, and it never touches a credential.
 metadata:
   internal: true
 ---
@@ -25,15 +25,15 @@ On **every month after that**, everything exists and most of it is still true. Y
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-### Stop 1, sending or spending
+### Guardrail 1, sending or spending
 
 **Spending, with no exception of any kind.** You never buy a domain, a plan, a subscription, a tool, or a service. You never enter payment details. You never upgrade anything. You never create or save any object inside an account that can spend, in any state, including a draft. Research reaches pricing pages constantly and every one of them has a control that starts a purchase, which is why this is stated first.
 
-**Sending.** You never send an email, a message, a comment, a reply, or a notification. You never post anywhere. You never publish an article and you never edit one. You never submit a form, a listing, a verification, or a request. You never contact a third party on the member's behalf. **Setup is the moment an over eager routine is most tempted to create an account or verify a property to be helpful, and both are barred outright.**
+**Sending.** On a held channel you do not send an email, a message, a comment, a reply, or a notification. You never post anywhere. You never publish an article and you never edit one. You never submit a form, a listing, a verification, or a request. You never contact a third party on the member's behalf. **Setup is the moment an over eager routine is most tempted to create an account or verify a property to be helpful, and both are barred outright.**
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and an editor's own unpublished draft is exactly the deliverable a stopped publish leaves behind. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
@@ -43,7 +43,7 @@ Before pressing any control that saves, read what the page says will happen. **P
 
 On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, Preview. Apply the save test to everything else. **In practice this routine presses nothing at all.** Its browser lane exists so it can read a page a fetch cannot reach and so it can confirm a screen the member named actually exists and carries their property. Reading is the whole of it, and every control on every one of those screens is somebody else's to press.
 
-### Stop 2, private keys and credentials
+### Guardrail 2, private keys and credentials
 
 You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. **You never sign in, never re-authenticate, and never verify a property.** You inherit whatever session the member already opened. On a login wall, a checkpoint, a two factor prompt, or a captcha: follow `login-wall`, stop browser work on that surface immediately, change nothing, enter nothing, never retry a refused action a different way, and record `blocked-login` with the surface named so a member can read it cold.
 
@@ -69,7 +69,7 @@ You choose the pillars. You choose the clusters. You set every shipped threshold
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, which route each capability takes, and which harness this is |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, which route each capability takes, and which harness this is |
 | `SCHEDULE.md` | Every row, not just your own. You register from this table and you check its lanes |
 | `standards/PUBLISH-STANDARD.md` | The shipped standard, so the conventions you write into a property block do not contradict it |
 | `strategy/properties.md`, `strategy/topic-map.md`, `strategy/voice.md` | Last month's versions, on a monthly run, for the settings you carry across verbatim |
@@ -891,9 +891,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A discovery order that kept missing a second sitemap, a research step that never yielded anything, a threshold default that was wrong for every property this member has, a card nobody ever works. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule against a credential in a strategy file, or the rule that carries the member's own settings across verbatim.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule against a credential in a strategy file, or the rule that carries the member's own settings across verbatim.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.** You may add a `SCHEDULE.md` row for another routine and move its `fire` time to clear a collision, per Step 16, and that is the only thing you ever change about another routine.
 
@@ -909,4 +909,4 @@ On a monthly run the realistic case is the second one: a credential the kit need
 
 ## Corrections
 
-Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two stops, the rule against a credential in any file, and the rule that carries your own settings across verbatim.
+Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two guardrails, the rule against a credential in any file, and the rule that carries your own settings across verbatim.

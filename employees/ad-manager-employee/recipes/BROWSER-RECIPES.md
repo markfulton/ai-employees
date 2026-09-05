@@ -293,7 +293,7 @@ It is documented for one reason: three routines name it as a recipe they never r
 
 **What it would do.** Create a new draft in the member's own mailbox and nothing else. Never open an existing thread, never edit a draft it did not create, never touch recipients, and never click Send, the Send menu, Schedule send, or Send test.
 
-**Why this Employee has none.** Nothing in this kit has an outward surface, and nothing in it ever gains one. There is no composer, no mailbox mode, and no publishing route anywhere in the seven routines. An ad manager who never sends is a role with exactly one boundary to defend, and defending one boundary well is worth more than defending two badly.
+**Why this Employee has none.** Nothing in this kit has an outward surface until you release one in `RELEASES.md`. There is no composer, no mailbox mode, and no publishing route anywhere in the seven routines. An ad manager whose outbound channels are held has exactly one boundary to defend, spend, and defending one boundary well is worth more than defending two badly.
 
 **If a future routine here ever needs a mailbox, that is a change to `ROLE.md` section 1 first, not a recipe somebody reached for.**
 

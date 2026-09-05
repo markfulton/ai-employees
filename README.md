@@ -32,7 +32,7 @@ Not chat assistants. Scheduled jobs that cover a whole role, run on your own mac
 - **A published standard and a safe upgrade path.** Every kit implements the [Agent Employee Standard](docs/STANDARD.md), ships an `employee.json` manifest, and upgrades with `npx ai-employees upgrade`, which reports first, never overwrites a file you edited, and never reads your ledgers, strategy or learned flows. `npx ai-employees contribute` turns the repairs a kit made to itself into a field report you can open upstream.
 - **You can direct any of them in chat.** Open an interactive session in the kit folder and it may do anything you may do by hand, on your word: tick a card you confirmed, stage a form now, retune a strategy file, correct a stale brief. It leaves the same trail a routine would, and the scheduled runs treat its work as yours.
 - **Windows, not fire times.** Every routine checks a window and a period key before it reads a single document, so a late fire, a duplicate fire or a machine that woke up an hour late is harmless on every scheduler.
-- **Your harness's permission layer is the gate, and you set it.** Scheduled routines draft, fill, stage and brief by default; sending, publishing and spending happen where you configured them or on your word, and the permission mode you give each task is the scope it has. The kit is yours to widen: the guard script, the contract and every routine are plain files in your own folder. `scripts/guard.mjs` runs in front of every routine to check the window and the period key, with a self test you can run before you trust it.
+- **Your harness's permission layer is the gate, and you set it.** Scheduled routines draft, fill, stage and brief by default; sending, publishing and spending happen on the channels you release in `RELEASES.md`, the ones you configure, or on your word, and the permission mode you give each task is the scope it has. The kit is yours to widen: the guard script, the contract and every routine are plain files in your own folder. `scripts/guard.mjs` runs in front of every routine to check the window and the period key, with a self test you can run before you trust it.
 
 ## The eight
 
@@ -129,12 +129,13 @@ A free club account gets the guided Hire Your First AI Employee walkthrough with
 
 ## What an employee is
 
-A folder. Six documents and a `routines/` directory, and nothing runs anywhere else.
+A folder. Seven documents and a `routines/` directory, and nothing runs anywhere else.
 
 ```
 gtm-engineer/
-  CONTRACT.md          the spine: who writes which file, the guards, the two stops
+  CONTRACT.md          the spine: who writes which file, the guards, the two guardrails
   ROLE.md              who this employee is and how it thinks
+  RELEASES.md          yours: the channels you have released, shipped empty
   CAPABILITIES.md      capability to route, per harness, honest about what was confirmed
   SCHEDULE.md          the only file that carries a cadence, a fire time, a window, or a budget
   INSTALL-PROMPT.md    the one prompt you paste, once
@@ -151,15 +152,13 @@ gtm-engineer/
 
 **Glossary:** member: the person who owns this Employee. The kits say "the member" throughout; read it as you. The «guillemets» are placeholders the install fills in. [docs/HOW-EMPLOYEES-WORK.md](docs/HOW-EMPLOYEES-WORK.md) is the whole model, including the five laws every kit is built to.
 
-## Two rules, and what each routine does
+## Two guardrails, and what each routine does
 
-**They never send.** No email, DM, post, comment, connection request, form submit, or published page leaves without your hand on it. Drafts land in queue files and, if you turn it on, as unsent drafts in your own mailbox. Forms get filled and left open in their tab. On LinkedIn this is total: it reads your own signed in pages and never clicks, never types, never opens a composer.
+**The first guardrail is on outbound actions, and it is yours.** Every employee can send, post, submit, publish and spend. Shipped, every one of those is held: the draft is written, the form is filled and left open on the last step, the campaign arrives as a build sheet, and the last click is yours. `RELEASES.md` in the employee's folder is where you hand a channel over, one row at a time, with your conditions on it. From then on the routine that stages that channel completes the action itself and tells you in the morning brief what went out. Two of the eight ship with a channel already yours to configure: the SEO Employee publishes articles to the blog you name, and the Social Media Employee hands drafted posts to the channel you connect, after a veto window in the brief.
 
-**They never spend.** No budget, bid, campaign state, activation, or purchase changes. Nothing is created or saved inside an account that can spend, in any state, including a draft. A campaign is assembled as a build sheet and left for you. And they never create an account, enter a password, complete a captcha, accept terms, or write a credential into any file.
+**The second guardrail is on credentials, and it stays on.** No employee creates an account, enters or generates a password, completes a captcha, accepts terms, or writes a credential into any file. It never needs your password to do its job, so there is nothing to release.
 
-Two of the eight publish to properties you own, on your configuration and nowhere else: the SEO Employee publishes articles to your own blog, and the Social Media Employee hands drafted posts to the channel you connect, after a veto window in which the morning brief names what goes out today. Neither ever messages a person. Everything else is drafts.
-
-| Routine kind | Reads | Writes | Leaves for you | Never |
+| Routine kind | Reads | Writes | Leaves for you | Holds, unless you release it |
 |---|---|---|---|---|
 | The standup, every weekday | Every ledger, run record and tick since yesterday | The board and the thirty line brief | The brief, first thing | Uses a browser |
 | Sweeps (signals, prospects, inbox, site health, material, market) | Your own signed in pages and public pages | Dated, sourced ledger lines | Nothing to do; the drafts come from these | Types into a page, replies, marks anything read |

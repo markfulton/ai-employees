@@ -11,7 +11,7 @@ This is not a chat window and not a service running somewhere else. It is eight 
 
 It reads every place a customer can say something about your product, grades how much each one matters and shows you the rule it used, writes the hardest replies first, tells you which paying customers are about to leave and why, writes down the answer to the question that keeps coming back, and on Friday names the one thing you could change in the product to make the most of it stop happening.
 
-**It never sends and it never spends. You are the sender on every reply that leaves your machine, and you are the one who grants every refund.** That is not a limitation being apologised for. It is the reason you can leave this running.
+**It can send a reply and it can grant a refund. Whether it does is a setting you own: every channel ships held, with the reply drafted hardest first and the remedy named, and `RELEASES.md` hands a channel over when its drafts have earned it.** Held is the default because it is what lets you leave this running on day one. Released is where a channel goes once its drafts have earned it.
 
 ---
 
@@ -40,7 +40,7 @@ Every routine has an id. The id is the folder name under `routines/`, the `name`
 |---|---|---|---|
 | `csat-inbox-sweep` | Weekdays | 06:45 | Reads every support channel and captures each new or changed item as one dated, sourced, severity graded ticket. |
 | `csat-desk-standup` | Weekdays | 07:30 | Turns your ticks into answered dates and closed cards, computes the clocks, re-renders the board, and writes your morning brief. |
-| `csat-reply-desk` | Weekdays | 08:15 | Drafts today's replies, hardest first, and names the remedy where the honest answer is money. It never sends. |
+| `csat-reply-desk` | Weekdays | 08:15 | Drafts today's replies, hardest first, and names the remedy where the honest answer is money. Held unless you release it. |
 | `csat-churn-watch` | Weekdays | 09:20 | Flags the paying customers about to leave, one dossier each, with the evidence attached and one thing you can do today. |
 | `csat-deflection-desk` | Wednesdays | 11:00 | Writes the macro and the help draft for every question that keeps coming back, and audits whether the last ones worked. |
 | `csat-satisfaction-report` | Fridays | 16:00 | Scores the week with a source beside every number and names the one product change that would remove the most tickets. |
@@ -78,7 +78,7 @@ There are exactly two, and this list is the product. Read it before you install.
 - No email, DM, post, comment, reply, forum post, review response, connection request, like, reaction, vote, form submit, or published page. The draft is written. The queue entry is complete. You press the button.
 - **It never marks a ticket read**, and where a helpdesk marks one read simply because a session opened it, the sweep reads that surface from its list view only and says so on the ticket. A ticket showing as read tells your customer a human has looked at it, and nobody has.
 - **It never changes a ticket's state.** Not assigned, not tagged, not snoozed, not escalated, not merged, not closed, not resolved.
-- **It never publishes a help article.** The draft sits in `help/` and the card names the exact page it goes on.
+- **It publishes only where you released the channel a help article.** The draft sits in `help/` and the card names the exact page it goes on.
 - No refund, no credit, no discount, no plan change, no extension, no cancellation, no goodwill gesture. **It reads your billing screens and touches no control on them**, not a toggle, not a plan selector, not a pause button, not a payment retry, and not the "keep this customer" button your retention dashboard offers it. It also never opens a cancellation flow to see what it says, because some of those commit on the first step.
 - **On LinkedIn this is total and has no exception anywhere in the kit.** It may navigate to your own signed in pages and read them. It will never click Message, Connect, Follow, or Like, never open a composer, never type into LinkedIn, and never take any action there. LinkedIn flags automated activity and your account is the asset, so the kit automates the reading, the templating, the dedupe, and the tracking, and keeps you as the human for every message that leaves.
 
@@ -97,7 +97,7 @@ There is one option that touches a live surface and it ships off. If you set `he
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else it owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else it owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It writes and rewrites every file in its own working folder. It researches your business from your own published pages rather than interviewing you. It finds the forums where your product is discussed, tests each one, and writes the working ones into your channel list. It rotates a dead surface out and researches a replacement. It rewrites your themes and your severity rules once a month on a month of real outcomes. It creates its own board cards, advances them, and ticks the ones whose definition of done is a file it can verify. It registers its own scheduled jobs and moves a fire time to clear a collision it detected. When a site changes and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file. When a ledger line will not parse it copies that one line aside and rebuilds the index from the rest.
 
@@ -107,7 +107,7 @@ Every one of those changes lands as one line in `strategy/CHANGELOG.md`: the dat
 
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. **One of those calls has a stated direction and you should know which way it leans:** where the severity rules do not settle a grade, it takes the more severe reading. Over grading costs you ten minutes of attention. Under grading costs you a customer.
 
-Two things stay outside all of that, because they are the first stop wearing different clothes: a ticket state, an account setting, a billing record, or a help centre page it did not create, and anything on the far side of a reply, publish, resolve, or spend control. Those get named, never touched.
+Two things stay outside all of that, because they are the first guardrail wearing different clothes: a ticket state, an account setting, a billing record, or a help centre page it did not create, and anything on the far side of a reply, publish, resolve, or spend control. Those get named, never touched.
 
 **Every card carries a `done_kind`.** A card whose definition of done is a file on your machine ticks itself the moment the file is verified. A card whose definition of done is a refund, a credit, a plan change, a cancellation, a published article, or a reply reaching a customer is yours, and only your tick closes it. That single field is what lets it run at full speed on its own work without ever quietly claiming credit for something you have to do.
 
@@ -188,7 +188,7 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 **5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the marked slots at the top first. One is required. It investigates your business from your own public presence, writes the strategy folder, creates the ledgers, seeds the board, builds the dashboard and opens it, registers the eight scheduled jobs, and then runs the sweep, the standup, and the reply desk once each so you see real tickets and real drafts. It stops for you once, at the end, on the severity reasoning.
 
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«CSAT_ROOT»` if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two stops.
+**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«CSAT_ROOT»` if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
 
 **7. Correct one severity rule in week one.** This is the single highest value thing you will do with this kit and it takes one line. Read the triage block in `tickets/tickets-latest.md`, find the rule that is wrong for your business, and write a dated line in the `## Corrections` section at the bottom of `routines/csat-inbox-sweep/SKILL.md` saying what it should do instead. Then write today's date under `## Severity rules confirmed` in `strategy/themes.md` when you are happy.
 
@@ -367,7 +367,7 @@ If the standup ever opens by telling you that nothing has been produced since a 
 
 **That last row is worth being blunt about. A support ledger is not a prospect list.** Every line in it is somebody who wrote in because something was wrong, and handing that to an outbound routine is the fastest way to turn a support relationship into a complaint. There is no setting that enables it and no card that requests it.
 
-If you also run a Content or SEO Employee, the help drafts in `help/` are exactly the sort of page it would want. Decide once whether publishing them sits with you or with that Employee, and write the answer into that Employee's own folder. This one drafts and never publishes, either way.
+If you also run a Content or SEO Employee, the help drafts in `help/` are exactly the sort of page it would want. Decide once whether publishing them sits with you or with that Employee, and write the answer into that Employee's own folder. This one drafts and publishes only where you released the channel, either way.
 
 ---
 

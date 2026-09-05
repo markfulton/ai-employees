@@ -956,7 +956,7 @@ Two practical points on top of that.
 
 It is a fair thing to be uneasy about, so here is the direct answer.
 
-**The prompt gate was never what stopped this kit from sending.** The two stops live inside the routines. The Employee never composes an email, never comments, never posts to a third party surface, never enters a credential, and never spends. The one publish control carries three conditions that are checked in words against the screen every single time, and turning off an approval prompt does not relax one of them.
+**The prompt gate was never the guardrail.** The guardrails live in `CONTRACT.md` section 7 and the routines that read it, held unless the member releases a channel in `RELEASES.md`, and a release and the permission both have to say yes before anything goes out. Shipped, the Employee never composes an email, never comments, never posts to a third party surface, never enters a credential, and spends only where you released it. The one publish control carries three conditions that are checked in words against the screen every single time, and turning off an approval prompt does not relax one of them.
 
 What actually holds the line is in the routines and it is checked at the end of every single run: nothing sent, nothing emailed, nothing commented, nothing shared, nothing submitted, nothing spent, at most one article published and only to a property named in `strategy/properties.md`, no credential written or logged anywhere, and every figure traceable to something read this run. If any of those does not hold, that run is a failure regardless of what else it produced.
 

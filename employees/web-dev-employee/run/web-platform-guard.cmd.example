@@ -4,7 +4,7 @@
 :: Never point it at the Desktop app's bundled copy; Task Scheduler cannot see that path.
 :: Section 10 of CAPABILITIES.md: a scheduled run must never wait on a prompt. If this routine stalls
 :: or is refused a tool under acceptEdits, change it to bypassPermissions for this one file, knowing
-:: what that grants. The two stops live inside the routine, not in this flag.
+:: what that grants. The guardrails live in the contract and the routine, not in this flag.
 @echo off
 cd /d "«WEB_ROOT»"
 "%USERPROFILE%\.local\bin\claude.exe" -p "Read «WEB_ROOT»/routines/web-platform-guard/SKILL.md and follow it." --permission-mode acceptEdits --output-format json < nul > "«WEB_ROOT»\run\web-platform-guard.last.json"

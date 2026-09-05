@@ -55,7 +55,7 @@ These are not steps. They are true during every step of every recipe, and a reci
 
 **4. Never retry a refused action a different way.** A transient error and a refusal are two different things and the recipe `retry` keeps them apart. Routing around a refusal is the single behaviour that turns a safe kit into an unsafe one.
 
-**5. The two stops apply inside the browser exactly as they do everywhere else.** Nothing is sent, replied, posted, published, submitted, resolved, marked read, refunded, credited, cancelled, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+**5. The two guardrails apply inside the browser exactly as they do everywhere else.** On a held channel nothing is sent, replied, posted, published, submitted, resolved, marked read, refunded, credited, cancelled, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 **6. Leave the surface in the state you found it.** This Employee is reading somebody else's inbox, somebody else's queue, and somebody else's billing account. A filter you set gets restored. A date range you changed gets put back. An item you opened should ideally not be marked read, and where it will be, you do not open it. **There is no left-open-tab exception in this kit**, because every deliverable it produces is a file on disk.
 

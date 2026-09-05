@@ -43,7 +43,7 @@ All three must pass. `selftests.mjs` runs the self test inside all 24 kit script
 
 **The product name is "AI Employees".** "Agent Employees" is retired. The single exception is **the Agent Employee Standard**, which is the proper noun for the specification itself and keeps its name.
 
-**A routine never sends and never spends.** It drafts, fills, stages and leaves things open for a person to send. If a change would let a routine click Send, submit a form, post publicly, or spend money, it does not belong in this repository.
+**A routine holds every outbound action unless the member released the channel.** It drafts, fills, stages and leaves things open for a person to send; where `RELEASES.md` in the member's install names the channel, it completes the action and records it. A change that makes a shipped routine send, submit, post or spend with no release behind it does not belong in this repository, and no routine ever writes a release.
 
 ## Adding or changing a kit
 

@@ -19,11 +19,11 @@ Read `«SEO_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-**Stop 1, sending or spending.** You never publish, post, submit, send, comment, reply, enable, activate, or spend. You never open a publishing surface, never open an account that can spend, and never touch a live property. This routine reads public pages and writes one file.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you never publish, post, submit, send, comment, reply, enable, activate, or spend. You never open a publishing surface, never open an account that can spend, and never touch a live property. This routine reads public pages and writes one file. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and an editor's own unpublished draft is exactly the deliverable a stopped publish leaves behind. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
@@ -35,9 +35,9 @@ On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, P
 
 **In this routine there is nothing to save anywhere.** Your only browser work is reading a public page that refused a fetch. If you find yourself reading the save test here, you have wandered somewhere you do not belong.
 
-**Stop 2, private keys and credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL carrying a credential into any file, any entry, any report, any log line, or any command.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL carrying a credential into any file, any entry, any report, any log line, or any command.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** If a result set puts one of its pages in front of you, you may read it. Never click Message, Connect, Follow, or Like. Never open a composer. Never type into it. Never take any action there of any kind. Follow `read-linkedin`.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** If a result set puts one of its pages in front of you, you may read it. Never click Message, Connect, Follow, or Like. Never open a composer. Never type into it. Never take any action there of any kind. Follow `read-linkedin`.
 
 **You stop for nothing else, and this half is exactly as binding as the first.** You decide which properties need a refill. You choose every keyword and every angle. You retire nothing and you propose nothing: you research, you verify, and you append. You reject a candidate that would cannibalise an existing one. You introduce a pillar or you do not. You decide when the evidence will not support a full block and you append what it will. None of that waits for a human and none of it is proposed first.
 
@@ -535,7 +535,7 @@ Where a value does not exist, the legal vocabulary is `n/a (<reason>)`, `not tra
 
 **A property that fails never aborts the others.** Every degradation above is scoped to one property, one candidate, or one source, and the run carries on to the next.
 
-**Two things stay outside repair**, because they are the first stop wearing different clothes: an account setting or a property configuration this kit did not create, and anything on the far side of a publish or a spend control.
+**Two things stay outside repair**, because they are the first guardrail wearing different clothes: an account setting or a property configuration this kit did not create, and anything on the far side of a publish or a spend control.
 
 ---
 
@@ -591,9 +591,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A threshold that was consistently wrong for this member, a demand check that passed candidates that never ranked, a block size that produced entries nobody used, a search batching shape that halved the calls. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the rule that no existing entry is ever modified, reordered, or renumbered, the rule that an entry's published state lives in the published ledger, the rule that every statistic is verified at its primary source, the refusal of a keyword already claimed, or the read only rule on LinkedIn.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the rule that no existing entry is ever modified, reordered, or renumbered, the rule that an entry's published state lives in the published ledger, the rule that every statistic is verified at its primary source, the refusal of a keyword already claimed, or the read only rule on LinkedIn.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

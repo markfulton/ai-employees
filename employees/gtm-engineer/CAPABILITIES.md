@@ -882,7 +882,7 @@ Two practical points on top of that.
 
 It is a fair thing to be uneasy about, so here is the direct answer.
 
-**The prompt gate was never what stopped this kit from sending.** The two stops live inside the routines. The Employee never composes a send action, never clicks a final Submit or Publish control, never enters a credential, and never spends. There is no code path where an approval prompt is the last thing standing between a draft and your list. Turning off the prompt removes a question about opening a tab and writing a file. It does not add a capability.
+**The prompt gate was never the guardrail.** The guardrails live in `CONTRACT.md` section 7 and the routines that read it, held unless the member releases a channel in `RELEASES.md`, and a release and the permission both have to say yes before anything goes out. Shipped, the Employee never composes a send action, never clicks a final Submit or Publish control, never enters a credential, and spends only where you released it. There is no code path where an approval prompt is the last thing standing between a draft and your list. Turning off the prompt removes a question about opening a tab and writing a file. It does not add a capability.
 
 What actually holds the line is in the routines and it is checked at the end of every single run: nothing sent, nothing posted, nothing submitted, nothing enabled, nothing published, nothing spent, no credential written or logged anywhere, every claim traceable to the proof inventory. If any of those does not hold, that run is a failure regardless of what else it produced.
 

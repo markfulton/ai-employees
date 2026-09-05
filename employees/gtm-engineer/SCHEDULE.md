@@ -68,7 +68,7 @@ There is no status meaning "this machine has no browser". A missing capability m
 |---|---|---|---|
 | `gtm-signal-sweep` | Signal sweep | Weekdays | Reads the member's own signal sources and saved searches, captures dated buying signals and contactable people, and appends both to the ledgers the outreach queue reads |
 | `gtm-board-standup` | Board standup | Weekdays | Reconciles yesterday's ticks into the board and the contacted ledger, folds the card inbox, re renders the board, and writes the morning brief |
-| `gtm-outreach-queue` | Outreach queue | Weekdays | Drafts today's due first touches and follow ups into dated queue files. It never sends |
+| `gtm-outreach-queue` | Outreach queue | Weekdays | Drafts today's due first touches and follow ups into dated queue files. Held unless you release it |
 | `gtm-launch-step-runner` | Launch step runner | Weekdays | Executes the next ready board card: stages copy, fills a directory or press form and leaves it open, queues a batch, or verifies a setup |
 | `gtm-paid-and-tracking-guard` | Paid and tracking guard | Mondays | Confirms the primary conversion event still fires and the paid setup still sits inside its guardrails, and names every drift |
 | `gtm-scoreboard` | Scoreboard | Fridays | Scores the week from the ledgers with a source beside every number, replays the browser recipes, and files the kill and the scale as cards |
@@ -208,7 +208,7 @@ At 06:45 the sweep asks to open a tab, or to write a file, or to run a command, 
 
 **The fix lives in your harness's own settings: run scheduled work in its auto approve mode**, scoped as narrowly as your harness allows, ideally to `«GTM_ROOT»` and nothing else. These routines have no business writing anywhere else, and a scoped grant is what keeps that true rather than merely intended.
 
-This does not weaken anything, and the reason is worth being clear about. **The prompt gate was never what stopped this kit from sending.** The two stops live inside the routines: the Employee never composes a send action, never clicks a final Submit or Publish control, never enters a credential, and never spends. There is no path where an approval prompt is the last thing standing between a draft and a list. Turning off the prompt removes a question about opening a tab and writing a file. It does not add a capability.
+This does not weaken anything, and the reason is worth being clear about. **The prompt gate was never the guardrail.** The guardrails live in `CONTRACT.md` section 7 and the routines that read it, held unless the member releases a channel in `RELEASES.md`, and a release and the permission both have to say yes before anything goes out. Shipped, the Employee never composes a send action, never clicks a final Submit or Publish control, never enters a credential, and spends only where you released it. There is no path where an approval prompt is the last thing standing between a draft and a list. Turning off the prompt removes a question about opening a tab and writing a file. It does not add a capability.
 
 One limit case, because no setting clears it: a prompt raised by the browser rather than by the harness. **If your harness cannot run without interactive approval at all, do not schedule the browser routines.** Run those by hand when you are at the machine. The file routines schedule fine and you still get the brief, the queue, and the scoreboard. `CAPABILITIES.md` section 10 has the full treatment.
 

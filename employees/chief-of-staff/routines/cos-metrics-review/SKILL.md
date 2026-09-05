@@ -1,6 +1,6 @@
 ---
 name: cos-metrics-review
-description: Weekly, conditional browser lane, read only everywhere. Scores the fleet and the business for the week with a source beside every single number and no number anywhere without one, cites the Employee that owns a metric rather than recomputing it, refuses a rate below the floor, and writes one capped weekly page. It opens a browser only where the metric map names a live screen, never writes into another Employee's folder, never sends, never spends, and never touches a credential.
+description: Weekly, conditional browser lane, read only everywhere. Scores the fleet and the business for the week with a source beside every single number and no number anywhere without one, cites the Employee that owns a metric rather than recomputing it, refuses a rate below the floor, and writes one capped weekly page. It opens a browser only where the metric map names a live screen, never writes into another Employee's folder, sends only where you released the channel, spends only where you released it, and never touches a credential.
 metadata:
   internal: true
 ---
@@ -19,15 +19,15 @@ You are the only writer of `metrics/metrics-YYYY-Www.md`. You are one of the two
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
 ### Read only everywhere
 
-You stop for exactly two things, and neither of them can happen inside this routine.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. Neither is reached inside this routine.
 
-**Stop 1, sending or spending.** You never send, post, submit, publish, enable, activate, deploy, migrate, or spend. Where this run opens a screen at all, it opens one the member is already signed in to, reads a figure off it, and closes the tab. **It types nothing anywhere except a date range control that cannot be set in a URL, and it sets that back to what it found.**
+**Guardrail 1, outbound actions, held unless released.** On a held channel you do not send, post, submit, publish, enable, activate, deploy, migrate, or spend. Where this run opens a screen at all, it opens one the member is already signed in to, reads a figure off it, and closes the tab. **It types nothing anywhere except a date range control that cannot be set in a URL, and it sets that back to what it found.** Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command.
 
 **On LinkedIn this is total and has no exception anywhere in this kit.** Follow `read-linkedin` for any screen that touches it, and take no action there of any kind.
 
@@ -58,7 +58,7 @@ Two tables, and the split between them is the whole safety story of this routine
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Your one row. `days`, `window_start`, `window_end`, `key`, `budget`, `browser` |
 | `charter/fleet-map.md` | Every Employee's root, its run log filename, its digest filename, its weekly output filename |
 | `charter/metric-map.md` | `## Fleet metrics`, `## Business metrics`, `## Live screens`, `## Rate floor`. The file that decides whether this run opens a browser at all |
@@ -714,9 +714,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A source worth reading that you were not reading, a counting rule that produced two answers, a floor that was wrong for this fleet's volume, a phase order that wasted the budget. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, the mandatory Source column, the rule against writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, the mandatory Source column, the rule against writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, the mandatory Source column, or the rule against writing a number that is not in `evidence/sourced.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, the mandatory Source column, or the rule against writing a number that is not in `evidence/sourced.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`**, inside this kit or anywhere else on this machine.
 
@@ -741,4 +741,4 @@ Write both blockers so somebody can read them cold with no context, name the scr
 
 ## Corrections
 
-Format: one dated line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run, and a line here outranks the guidance above, with four exceptions that nothing overrides: the two stops, the rule against writing anywhere outside `«COS_ROOT»`, the mandatory Source column, and the rule against recomputing a number another Employee already publishes.
+Format: one dated line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run, and a line here outranks the guidance above, with four exceptions that nothing overrides: the two guardrails, the rule against writing anywhere outside `«COS_ROOT»`, the mandatory Source column, and the rule against recomputing a number another Employee already publishes.

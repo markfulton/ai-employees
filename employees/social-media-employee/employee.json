@@ -3,8 +3,8 @@
   "slug": "social-media-employee",
   "name": "Social Media Employee",
   "role": "Audience and distribution",
-  "version": "1.3.0",
-  "standard": "1.1",
+  "version": "1.4.0",
+  "standard": "1.2",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -113,6 +113,7 @@
       "SCHEDULE.md"
     ],
     "member": [
+      "RELEASES.md",
       "state/**",
       "board/**",
       "crm/**",

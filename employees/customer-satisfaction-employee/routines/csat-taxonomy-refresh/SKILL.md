@@ -1,6 +1,6 @@
 ---
 name: csat-taxonomy-refresh
-description: Monthly on the last weekday, light browser lane. Re-tests every theme and every severity rule against a month of real ticket evidence and rewrites strategy/themes.md wherever the evidence disagrees with the assumption. It merges two themes the evidence shows are one, splits a theme whose tickets have two different answers, retires a theme with no volume, creates a theme for a cluster that kept landing unclassified, and rewrites a severity rule wherever the outcomes contradict it. Theme ids are never reused and never renumbered. It never sends, never spends, and never touches a credential.
+description: Monthly on the last weekday, light browser lane. Re-tests every theme and every severity rule against a month of real ticket evidence and rewrites strategy/themes.md wherever the evidence disagrees with the assumption. It merges two themes the evidence shows are one, splits a theme whose tickets have two different answers, retires a theme with no volume, creates a theme for a cluster that kept landing unclassified, and rewrites a severity rule wherever the outcomes contradict it. Theme ids are never reused and never renumbered. It holds every outbound action unless you released the channel, and it never touches a credential.
 metadata:
   internal: true
 ---
@@ -33,13 +33,13 @@ When you find one, you are not looking at a bad ticket. You are looking at a rul
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things, and neither of them exists inside this routine. It reads files, reads a handful of pages the member is already signed in to, and writes one strategy file.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. Neither is reached inside this routine. It reads files, reads a handful of pages the member is already signed in to, and writes one strategy file.
 
-**Stop 1, sending or spending.** You never send, post, reply, comment, react, resolve, publish, or spend. You never issue a refund, a credit, a plan change, or a cancellation, and you never open the screen where one is issued. On any page you load you press nothing but navigation.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you do not send, post, reply, comment, react, resolve, publish, or spend. You never issue a refund, a credit, a plan change, or a cancellation, and you never open the screen where one is issued. On any page you load you press nothing but navigation. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command.
 
 **Everything else in this folder is yours and you do not ask for it.** You decide which themes are real. You merge, split, retire, and create. You rewrite a severity rule the outcomes contradict. You tune your own floors. You repair your own browser recipe. You quarantine a malformed ledger line and rebuild the index from the rest. You make the call on ambiguity, write one line into `assumptions[]`, and keep going. There is no approval ritual anywhere in this run and there is nothing in this kit for you to wait on.
 
@@ -702,7 +702,7 @@ The status vocabulary is closed at eight values and no ninth exists.
 | A transient tooling error | `retry`, class one. Once or twice, flat, no backoff |
 | A refusal, a wall, or a captcha | `retry`, class two. Never retried, never routed around |
 
-**Two things stay outside repair**, because they are the first stop wearing different clothes: a ticket state or a setting on a platform this kit did not create, and anything on the far side of a reply, resolve, or spend control. Those are named, never touched.
+**Two things stay outside repair**, because they are the first guardrail wearing different clothes: a ticket state or a setting on a platform this kit did not create, and anything on the far side of a reply, resolve, or spend control. Those are named, never touched.
 
 ---
 
@@ -781,9 +781,9 @@ You never author, create, or install a skill, plugin, or extension in the member
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A floor that never lets anything through, a signal that never means what it looked like it meant, a cohesion test that keeps producing the same wrong answer, a step order that mattered. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the rule that a theme id is never renamed or reused, the rule that old tickets are never re-themed, the evidence floors, the rule that you may clear the severity confirmation and never write one, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the rule that a theme id is never renamed or reused, the rule that old tickets are never re-themed, the evidence floors, the rule that you may clear the severity confirmation and never write one, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 
@@ -795,4 +795,4 @@ Follow `CONTRACT.md` section 9 exactly. This run sends a push only if it recorde
 
 ## Corrections
 
-Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run and every line here outranks the guidance above, with four exceptions that nothing overrides: the two stops, the rule that a theme id is never renamed or reused, the rule that old tickets are never re-themed, and the rule that this routine may clear the severity confirmation and may never write one.
+Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run and every line here outranks the guidance above, with four exceptions that nothing overrides: the two guardrails, the rule that a theme id is never renamed or reused, the rule that old tickets are never re-themed, and the rule that this routine may clear the severity confirmation and may never write one.

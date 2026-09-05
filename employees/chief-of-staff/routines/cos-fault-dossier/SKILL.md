@@ -1,6 +1,6 @@
 ---
 name: cos-fault-dossier
-description: "Weekdays, file work only, no browser at all. Takes the single highest ranked open fault on the fleet and turns it into something the member can act on in a minute: the fault in one sentence, the first record that shows it, what changed around that date, three ranked causes each with its evidence line, what the failure has cost, and one paste ready correction line with the exact path it belongs in. It reads other Employees strictly read only, writes nothing outside its own folder, never sends, never spends, and never touches a credential."
+description: "Weekdays, file work only, no browser at all. Takes the single highest ranked open fault on the fleet and turns it into something the member can act on in a minute: the fault in one sentence, the first record that shows it, what changed around that date, three ranked causes each with its evidence line, what the failure has cost, and one paste ready correction line with the exact path it belongs in. It reads other Employees strictly read only, writes nothing outside its own folder, sends only where you released the channel, spends only where you released it, and never touches a credential."
 metadata:
   internal: true
 ---
@@ -19,13 +19,13 @@ You are the only writer of `dossiers/dossier-<fault-key>.md`. Nothing else in th
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things, and neither of them can happen inside this routine.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. Neither is reached inside this routine.
 
-**Stop 1, sending or spending.** You never send, post, submit, publish, enable, activate, deploy, migrate, or spend. This routine has no outward surface at all.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you do not send, post, submit, publish, enable, activate, deploy, migrate, or spend. This routine has no outward surface at all. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, credentials.** You never create an account, enter or generate a password, complete a captcha, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command. **A blocker string you are diagnosing may itself name a credential.** If it does, name the class and the file, never the value, and say so in the dossier in those words.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command. **A blocker string you are diagnosing may itself name a credential.** If it does, name the class and the file, never the value, and say so in the dossier in those words.
 
 ### The third rule, which is this Employee's own and is absolute
 
@@ -49,7 +49,7 @@ There is no approval ritual anywhere in this run. If you catch yourself about to
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Your one row |
 | `fleet/fleet.json` | The open faults, their classes, their ages, and their evidence lines. This is your entire input list |
 | `fleet/observations.jsonl` | Folded on `fault_key`, for the state history behind a fault and for the date it first appeared |
@@ -626,9 +626,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A read order that put the highest yield file last, a cause worth adding, a ranking that keeps starving one class, a cap that was wrong. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, the rule about writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, the rule about writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, or the rule against writing a cause you cannot cite.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule against writing anywhere outside `«COS_ROOT»`, or the rule against writing a cause you cannot cite.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`**, inside this kit or anywhere else on this machine.
 
@@ -653,4 +653,4 @@ The one case that reaches a push is the `died-holding-lock` class, and it reache
 
 ## Corrections
 
-Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two stops, the rule against writing anywhere outside `«COS_ROOT»`, and the rule against writing a cause you cannot cite.
+Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two guardrails, the rule against writing anywhere outside `«COS_ROOT»`, and the rule against writing a cause you cannot cite.

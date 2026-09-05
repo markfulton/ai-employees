@@ -39,7 +39,7 @@ These are not steps. They are true during every step of every recipe, and a reci
 
 **4. Never retry a refused action a different way.** A transient error and a refusal are two different things and the recipe `retry` keeps them apart. Routing around a refusal is the single behaviour that turns a safe kit into an unsafe one.
 
-**5. The two stops apply inside the browser exactly as they do everywhere else.** Nothing is sent, submitted, published, posted, enabled, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+**5. The two guardrails apply inside the browser exactly as they do everywhere else.** On a held channel nothing is sent, submitted, published, posted, enabled, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 ---
 
@@ -218,7 +218,7 @@ On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, P
 **Failure behaviour.**
 
 - Login wall, checkpoint, or captcha: `login-wall`. Keep everything already written to disk.
-- The form requires an account, a password, payment details, or accepting terms: skip the site, set the card's `blocker` to the exact reason, let the member decide. That is Stop 2 and it does not bend.
+- The form requires an account, a password, payment details, or accepting terms: skip the site, set the card's `blocker` to the exact reason, let the member decide. That is Guardrail 2 and it does not bend.
 - A field you do not recognise, or a form in a state you did not expect: fill what you can, name the rest, move on.
 - The site is already `filled` or `submitted` in the ledger: skip it. Two routines filling the same form is how a listing gets submitted twice.
 
@@ -498,7 +498,7 @@ A first run on the member's own account is the normal case, not a fault. Nobody 
 
 **Never write a target or an `expect_text` you did not verify on a real page this run.** Not one borrowed from a site that looked similar, not one the markup suggested but you never read back, not one carried forward from a previous run. This is the same rule as `repair-a-recipe` and it bites harder here, because a repair is checked against a file that once worked and a first learn is checked against nothing.
 
-**Learning stops exactly where the two stops do.** Drive a flow up to its last read-only step and no further. **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and a mail client's own draft is exactly the deliverable this kit wants. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
+**Learning stops exactly where the held guardrail does.** Drive a flow up to its last read-only step and no further. **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and a mail client's own draft is exactly the deliverable this kit wants. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
 Before pressing any control that saves, read what the page says will happen. **Proceed** where the page calls the result a draft, saved, unpublished, unlisted, or not yet live. **Stop** where it calls the result published, live, submitted, sent, active, ordered, or visible to anyone else, and stop on `Save and publish`, on `Save and continue` where the page states the next step goes live, and on every save inside an account that can spend. Where the page does not say and it cannot be told from the screen, stop, leave the form as it is, and name the control.
 

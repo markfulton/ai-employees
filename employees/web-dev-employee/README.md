@@ -11,7 +11,7 @@ This is not a chat window and not a service running somewhere else. It is eight 
 
 It finds out every weekday whether your sites are up. It reads your production logs and turns a hundred error lines into one incident with an age and a count. It fixes the safe ones on a branch, behind your own build and your own tests, and hands you the rest written up with the evidence. It watches your registrar, your host, and your database for the drift nobody notices until a domain lapses. And on Friday it tells you what actually changed, with the file every number came from printed beside it.
 
-**It never merges, never deploys, and never spends. Every change stops at a branch you review.** That is not a limitation being apologised for. It is the reason you can leave this running.
+**It can merge, deploy and spend. Whether it does is a setting you own: shipped, every change stops at a branch you review, and `RELEASES.md` hands a step over when its branches have earned it.** Held is the default because it is what lets you leave this running on day one. Released is where a channel goes once its drafts have earned it.
 
 ---
 
@@ -102,7 +102,7 @@ Every provider screen it reads has a control that offers to do it. Several sit r
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 **It owns every branch it creates.** It picks how to write the change inside the card's definition of done, writes the code, runs your gate, writes the brief, and pushes. Nobody signs any of that off and it never waits. The boundary is not who approves the change: the boundary is that the change stops at the branch.
 
@@ -114,7 +114,7 @@ Every one of those changes lands as one line in a changelog: the date, the routi
 
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own.
 
-Two things stay outside all of that, because they are the first stop wearing different clothes: anything in a provider account it did not create, and anything on the far side of a merge, a deploy, a spend, or a rotate control. Those get named, never touched.
+Two things stay outside all of that, because they are the first guardrail wearing different clothes: anything in a provider account it did not create, and anything on the far side of a merge, a deploy, a spend, or a rotate control. Those get named, never touched.
 
 **Every card carries a kind.** A card whose definition of done is a file on your machine gets ticked by the routine that made that file, the moment it has verified it. A card whose definition of done is a merge, a spend, or a credential is yours, and it closes from exactly two marks: your tick, or the commit graph showing the change merged. The second is not a substitute for you acting. It is the record of you having acted, and it is more reliable than a tick because it cannot be forgotten.
 
@@ -179,13 +179,13 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 **2. Point your harness at `«WEB_ROOT»/routines`.** Every routine is a folder holding one `SKILL.md` with `name` and `description` frontmatter plus one `metadata` key that marks it internal, so a skills registry never offers a scheduled routine as an on demand skill, which is a plain enough format that a harness reading markdown instructions can run it. If your harness takes a routine source directory, set it to `«WEB_ROOT»/routines`. If it only reads one fixed directory, link the folders rather than copying them, and read the section above about why this is not a skills pack.
 
-**3. Read `CONTRACT.md`.** It is the spine. Every routine reads it first, every run. Where a routine and `CONTRACT.md` disagree, the contract wins. Where the contract and your own workspace rule file disagree, yours wins. Where the contract and one of your project's own rule files disagree about that project, your project wins, on everything except the two stops and the rule about keys. You do not have to fill anything in. You do have to have read it, because everything the role will and will not do is in there and you are the one who lives with it.
+**3. Read `CONTRACT.md`.** It is the spine. Every routine reads it first, every run. Where a routine and `CONTRACT.md` disagree, the contract wins. Where the contract and your own workspace rule file disagree, yours wins. Where the contract and one of your project's own rule files disagree about that project, your project wins, on everything except the two guardrails and the rule about keys. You do not have to fill anything in. You do have to have read it, because everything the role will and will not do is in there and you are the one who lives with it.
 
 **4. Run the capability probe in `CAPABILITIES.md` section 1.2.** It is a short block you paste into your agent. It changes no files, creates no branch, runs no build, and sends nothing. Read the answer next to section 2, and write any disagreement into the `## Corrections` section at the bottom of that file in one line. Your machine is the authority on your machine.
 
 **5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the one marked slot at the top. It walks your code roots, reads your three provider surfaces, writes the inventory, sets the opening safe fix rules deliberately narrow, seeds the board, builds a dashboard, registers eight scheduled jobs, and shows you what it found.
 
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«WEB_ROOT»` plus your code roots if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two stops.
+**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«WEB_ROOT»` plus your code roots if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
 
 **7. Let one full week happen before you change anything.** Treat week one the way you would treat a new maintainer's first week. Watch the output, correct it once, write the correction down.
 
@@ -299,7 +299,7 @@ You stay in control through three things rather than an approval queue. Your age
 
 If you disagree with something it taught itself, write one line in that routine's `Corrections` section. That line outranks the routine's own instructions from its next run onward.
 
-**One thing it can never teach itself is a wider boundary.** A self edit can make allowed work better and it can never widen what is allowed. Nothing that relaxes the two stops, the rule that every change stops at a branch, the rule that no key is ever rotated, or the rule that every number carries its source is ever written, whatever authorised the write.
+**One thing it can never teach itself is a wider boundary.** A self edit can make allowed work better and it can never widen what is allowed. Nothing that relaxes the two guardrails, the rule that every change stops at a branch, the rule that no key is ever rotated, or the rule that every number carries its source is ever written, whatever authorised the write.
 
 **It notifies you only when you are the thing blocking it.** A production path that has failed twice in a row. A domain or certificate inside its warning window. An expired login it needs. A stuck browser lock. Four cases, once each, never twice for the same problem, never outside your working hours. Everything else waits for the morning brief. If notifications are not available on your setup, nothing breaks: every one of those lines is in the brief too.
 

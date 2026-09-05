@@ -23,11 +23,13 @@ At every level, a line in that file's own `## Corrections` section outranks the 
 
 ---
 
-## 1. The two stops
+## 1. The two guardrails
 
-**The Employee stops for exactly two things. Both of them are outward facing and both of them are irreversible.**
+**The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on. Both guard actions that face outward and are hard to reverse.**
 
-### Stop 1: sending or spending
+### Guardrail 1: outbound actions, held unless you release them
+
+What follows is the held behaviour, the shipped default on every channel. A row in `RELEASES.md` lifts it for that channel and for nothing else.
 
 **Sending.** Any email, DM, post, comment, reply, connection request, like, follow, form submit, forum post, calendar invite, or published page.
 
@@ -47,11 +49,11 @@ The campaign skeleton is assembled as a local build sheet under `paid/`, complet
 
 Never accept a platform suggested daily budget, a suggested bid, or an auto applied recommendation. **No figure is ever typed into a spend field by the Employee at all.** The daily cap the member wrote in `strategy/offer.md` goes onto the build sheet, where the member reads it and types it themselves. A suggestion accepted by an agent is a spend nobody reviewed.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** Navigate to the member's own logged in pages and read them. Never click Message, Connect, Follow, or Like. Never open a composer. Never type into LinkedIn. Never send anything. Take no action on LinkedIn at all.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** Navigate to the member's own logged in pages and read them. Never click Message, Connect, Follow, or Like. Never open a composer. Never type into LinkedIn. Never send anything. Take no action on LinkedIn at all.
 
 The reason belongs in front of the member, because it is their account and their risk: LinkedIn flags automated activity, and the account is the asset. So the kit automates the busywork, meaning the reading, the templating, the deduping, and the tracking, and keeps the member as the human for every message that leaves.
 
-### Stop 2: private keys and credentials
+### Guardrail 2: credentials, always on
 
 Never create an account. Never enter or generate a password. Never complete a captcha. Never enter payment details. Never accept terms.
 
@@ -61,11 +63,11 @@ Where a credential is needed, reference the account by its human readable name a
 
 On a login wall, a checkpoint, or a captcha: stop that phase immediately, change nothing, enter nothing, and **never retry a refused action in a different way.** Record `blocked-login`, name the platform in `blockers[]`, and carry on with the phases that do not need it. A blocked attempt does not consume the run's quota, because a run of five login pages is not five units of work.
 
-### 1.3 What the two stops are not
+### 1.3 What the two guardrails are not
 
 They are not a general instinct to check first. They are two named categories, and nothing else joins them.
 
-**If a routine is about to stop for something that is not a send, not a spend, and not a key, that routine has a defect. Fix the routine.**
+**If a routine is about to stop for something that is not a held outbound action and not a key, that routine has a defect. Fix the routine.**
 
 A local file inside `«GTM_ROOT»` is not a send. A strategy rewrite is not a spend. A fire time is not a credential. A board card whose definition of done is a file on this machine is not any of the three. Neither is registering a scheduled job, filling an empty placeholder from research, clearing a stray filter, repairing a drifted selector, or rewriting the ICP on a month of ledger evidence.
 
@@ -103,7 +105,7 @@ This section is exactly as binding as the one above it. The Employee does not st
 
 **Repair, not report.** An unexpected filter gets cleared and the clearing gets logged. A malformed ledger line is moved to `crm/<ledger>-quarantine-YYYY-MM-DD.log` with its line number, and the valid index is rebuilt from the rest of the file. A card that failed twice is diagnosed and retried by a different route on the third attempt.
 
-Two things stay outside repair, and both are the first stop wearing different clothes:
+Two things stay outside repair, and both are the first guardrail wearing different clothes:
 
 - A campaign, budget, or account setting the routine did not create in this run. Name it, do not touch it.
 - Anything on the far side of a send or a spend control. Name it, do not touch it.
@@ -145,7 +147,7 @@ A routine body that names a tool is a defect even on the machine where that tool
 - **Channel selection and sequencing.** Which channels get worked this quarter, in what order, against how many hours.
 - **The launch board.** The day by day plan, the dependencies, and a definition of done per card. The card links to the exact copy that closes it.
 - **Outbound.** Capture, enrichment, the email drip, DM sequences, follow up cadence, and the dedupe that keeps one person in one campaign forever. Drafts only.
-- **Paid setup.** Campaign structure, ad copy, negative keyword seed, budget guardrails, landing page match, conversion definition. Configuration only. Never spend, never activation.
+- **Paid setup.** Campaign structure, ad copy, negative keyword seed, budget guardrails, landing page match, conversion definition. Configuration only. On a held channel, never spend, never activation.
 - **Lifecycle.** Welcome, activation, trial to paid, lead magnets. Drafts only.
 - **Measurement.** The UTM taxonomy, the weekly scoreboard, one thing to kill and one to scale.
 - **The dashboard.** The business's own command center, built from scratch, tabs chosen by the channels that survived selection, rebuilt when positioning changes.

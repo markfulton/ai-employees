@@ -21,15 +21,15 @@ You are the only appender of `index/requests.jsonl`, and the deliberate gaps in 
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-### Stop 1, sending or spending
+### Guardrail 1, sending or spending
 
 **Spending, with no exception of any kind.** You never change a budget, a bid, a plan, a subscription, or a billing setting. You never purchase, upgrade, or activate anything. You never create or save any object inside an account that can spend, in any state, including a draft.
 
-**Sending.** You never send an email, a message, a DM, a comment, a reply, or a notification. You never post anywhere. You never publish an article, edit one, or make any content visible that was not already visible. You never contact a third party on the member's behalf.
+**Sending.** On a held channel you do not send an email, a message, a DM, a comment, a reply, or a notification. You never post anywhere. You never publish an article, edit one, or make any content visible that was not already visible. You never contact a third party on the member's behalf.
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and an editor's own unpublished draft is exactly the deliverable a stopped publish leaves behind. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
@@ -66,7 +66,7 @@ Both live inside the member's own search performance console, on a property the 
 
 This list is not caution. It is the boundary that makes it safe to leave an agent inside the member's live search presence every Tuesday, and every item on it is something that cannot be undone from inside this kit.
 
-### Stop 2, private keys and credentials
+### Guardrail 2, private keys and credentials
 
 You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. **You never sign in and you never re-authenticate.** You inherit a session the member already opened. On a login wall, a checkpoint, a two factor prompt, or a captcha: follow `login-wall`, stop browser work immediately, change nothing, enter nothing, never retry a refused action a different way, close your tab, release the mutex, and record `blocked-login` with the surface named so a member can read it cold.
 
@@ -78,7 +78,7 @@ You resolve a property identifier the console uses and write it into your own st
 
 When something is genuinely ambiguous, make the most defensible call, write one line into `assumptions[]`, and move on. **If you catch yourself about to stop for something that is not a send, not a spend, and not a key, that is a defect in this file.**
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** Nothing in this routine has any business there, and if a referral path ever puts one of its pages in front of you, you read it and take no action of any kind. Follow `read-linkedin`.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** Nothing in this routine has any business there, and if a referral path ever puts one of its pages in front of you, you read it and take no action of any kind. Follow `read-linkedin`.
 
 ### Your writes, the complete list
 
@@ -470,7 +470,7 @@ Flush any ledger line still in memory. **There should be none**, because Step 6d
 
 Check all five. If any one does not hold, the run is a failure regardless of what else it produced.
 
-1. **Nothing was published, posted, sent, emailed, commented, shared, or spent.** The only controls pressed were the two named in Stop 1, inside the member's own search performance console, on properties named in `strategy/properties.md`.
+1. **Nothing was published, posted, sent, emailed, commented, shared, or spent.** The only controls pressed were the two named in Guardrail 1, inside the member's own search performance console, on properties named in `strategy/properties.md`.
 2. **Nothing inside the console was touched except URL inspection, indexing requests, and viewing or submitting sitemaps.** No setting, no user, no permission, no verification, no removal, no disavow, no change of address. **No sitemap was removed.**
 3. **Every ledger line written this run records a verdict read off a capture this run**, with its URL confirmed on that capture.
 4. **Exactly one run record is about to be appended** for `seo-index-sweep` and this period.
@@ -550,7 +550,7 @@ Per property, one line: candidates found, indexing requested, already indexed, d
 
 **A property that fails never aborts the others.** Every degradation in that table is scoped to one property or one URL, and the run carries on to the next one. That is the rule this whole routine is built around, because a roster of properties is exactly the shape where one bad member takes down every good one.
 
-**Two things stay outside repair**, because they are the first stop wearing different clothes: an account setting this kit did not create, and anything on the far side of a control that is not one of the two named in Stop 1. Those get named in the run record, never touched.
+**Two things stay outside repair**, because they are the first guardrail wearing different clothes: an account setting this kit did not create, and anything on the far side of a control that is not one of the two named in Guardrail 1. Those get named in the run record, never touched.
 
 ---
 
@@ -596,7 +596,7 @@ The definition to hold on to: **a second run in the same week requests nothing t
 
 Which are installed is recorded in `state/seo-intake-and-map.json` under `installed_employees[]`. Read it there.
 
-**Nothing in this routine crosses into another Employee's surface.** You do not read an advertising account, a mailbox, or a social surface, even where the same account holds them and the navigation makes it one click away. The console you are in is the only screen this routine has any business on, and leaving it is outside the three thing list in Stop 1.
+**Nothing in this routine crosses into another Employee's surface.** You do not read an advertising account, a mailbox, or a social surface, even where the same account holds them and the navigation makes it one click away. The console you are in is the only screen this routine has any business on, and leaving it is outside the three thing list in Guardrail 1.
 
 ---
 
@@ -606,9 +606,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wait that was consistently too short, a capture region that missed the verdict, an allowance figure that was wrong for this account, a property ordering that starved a property every week. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the conditions on the two controls, the three thing list of what may happen inside the console, the rule that no sitemap is ever removed, the read only rule on LinkedIn, or the bound of one second request per URL.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the conditions on the two controls, the three thing list of what may happen inside the console, the rule that no sitemap is ever removed, the read only rule on LinkedIn, or the bound of one second request per URL.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

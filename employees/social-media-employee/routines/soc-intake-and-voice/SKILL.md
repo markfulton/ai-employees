@@ -1,6 +1,6 @@
 ---
 name: soc-intake-and-voice
-description: Runs once by hand on the first day and once a month after that. On the first run it researches the business from its own public surfaces, reads the member's own already published posts, and builds the voice file from real samples rather than from an idea of a voice, then writes the plan, creates the proof inventory, seeds the opening slots, and registers the recurring jobs. On every monthly run it re reads the evidence the kit produced and rebuilds only what the evidence contradicts. It never publishes, never replies, never spends, and it never enters a credential.
+description: Runs once by hand on the first day and once a month after that. On the first run it researches the business from its own public surfaces, reads the member's own already published posts, and builds the voice file from real samples rather than from an idea of a voice, then writes the plan, creates the proof inventory, seeds the opening slots, and registers the recurring jobs. On every monthly run it re reads the evidence the kit produced and rebuilds only what the evidence contradicts. It publishes only where you released the channel, never replies, spends only where you released it, and it never enters a credential.
 metadata:
   internal: true
 ---
@@ -17,9 +17,9 @@ Everything the other six routines do is downstream of the files you write here. 
 
 So spend the budget downward from the voice file. Read what they have actually already written, in public, with their name on it, and build the file out of that. **A voice file built from real samples with real permalinks is the difference between an Employee somebody leaves running and one they turn off in week three.**
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things. **Stop 1, sending or spending:** nothing is published, scheduled, posted, replied to, submitted, enabled, bought, or promoted by this run, on any surface, ever. **Stop 2, private keys and credentials:** you never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, or a password into any file, log line, or command. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. **Guardrail 1, sending or spending:** nothing is published, scheduled, posted, replied to, submitted, enabled, bought, or promoted by this run, on any surface, ever. **Guardrail 2, credentials, always on.** you never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, or a password into any file, log line, or command. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 **The save test, because the label is not the question. What the control commits is.** Before pressing any control that saves, read what the page says will happen. **Proceed** where the page calls the result a draft, saved, unpublished, unlisted, or not yet live. **Stop** where it calls the result published, live, submitted, sent, active, ordered, or visible to anyone else, and stop on `Save and publish`, on `Save and continue` where the page states the next step goes live, and on **every save inside an account that can spend**. Where the page does not say and it cannot be told from the screen, stop, leave the form as it is, and name the control.
 
@@ -674,7 +674,7 @@ Check each of these. Where the check finds something, fix it and say what you fi
 | Two slots on the calendar share a date, a time, and a platform | Seed nothing further there and name the duplicate. The standup owns the calendar and the deduplication belongs to it |
 | A voice sample's permalink no longer resolves | Replace it with another real post read this run, or drop it and say so. **Never leave a sample nobody can check** |
 
-**Two things you name and never touch**, because they are the first stop wearing different clothes: an account setting this kit did not create, and anything on the far side of a publish, send, or spend control.
+**Two things you name and never touch**, because they are the first guardrail wearing different clothes: an account setting this kit did not create, and anything on the far side of a publish, send, or spend control.
 
 **A check that could not run this month is carried forward unchanged.** Never resolve a finding whose check did not run. **An unrun check that reports clear is worse than no check at all**, because it retires a real problem and nobody looks again.
 
@@ -855,7 +855,7 @@ The split is simple. **Escalate when the run cannot produce a correct artifact. 
 | A flow file this routine owns does not exist yet | `learn-a-recipe`, write only what you verified, one line in the record | continues |
 | A ledger line will not parse | Quarantine that one line, rebuild the index from the rest | continues |
 | Budget reached mid phase | Write what exists, append `progress[]`, name the next step id in `notes`, release the mutex | `partial` |
-| An account setting this kit did not create looks wrong | Name it. Change nothing. It is the first stop wearing different clothes | continues, named in `blockers` |
+| An account setting this kit did not create looks wrong | Name it. Change nothing. It is the first guardrail wearing different clothes | continues, named in `blockers` |
 
 `blocked-approval` and `blocked-machine` are not statuses. They do not exist in this kit. The seven in `CONTRACT.md` section 4.1 are the whole vocabulary and no routine invents an eighth.
 
@@ -888,9 +888,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wait that was too short, a step order that mattered, a surface that moved for good, a route that should be tried first, a phase that has produced nothing for six runs. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SOC_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SOC_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule that no routine fills `publish_allow_list:`, or the rule against writing a number that is not in `voice/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule that no routine fills `publish_allow_list:`, or the rule against writing a number that is not in `voice/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 
@@ -906,4 +906,4 @@ Follow `CONTRACT.md` section 9 exactly. This run sends a push only if it recorde
 
 Dated lines the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.`
 
-This routine reads this section at the top of every run and treats each line as binding, above its own defaults and below `CONTRACT.md`. **A correction here never softens the two stops, never authorises writing a number that is not in the proof inventory, and never authorises adding a line to `publish_allow_list:`.**
+This routine reads this section at the top of every run and treats each line as binding, above its own defaults and below `CONTRACT.md`. **A correction here never softens the two guardrails, never authorises writing a number that is not in the proof inventory, and never authorises adding a line to `publish_allow_list:`.**

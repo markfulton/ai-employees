@@ -11,7 +11,7 @@ This is not a chat window and not a service running somewhere else. It is seven 
 
 It takes your sites and builds the search motion around them: which topics you have a right to rank for, what to write next and why, an article a day written against what actually ranks today, published to your property, requested for indexing, and measured on Friday. Then it uses that measurement to decide what to write next month.
 
-**It publishes.** That is the part most tools stop short of. An article this Employee drafted, to a property you named, verified live by loading the URL and reading what rendered. It never emails anyone, never comments anywhere, never posts to a third party surface, and never spends a penny.
+**It publishes.** That is the part most tools stop short of. An article this Employee drafted, to a property you named, verified live by loading the URL and reading what rendered. It emails no one, comments nowhere, posts to no third party surface, and spends nothing, unless you released the channel.
 
 ---
 
@@ -91,7 +91,7 @@ Inside that console exactly three things can happen: inspect a URL, request inde
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else it owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else it owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It writes and rewrites every file in its own working folder. It rebuilds your topic map on the evidence and retires a cluster that earned nothing in three months. It chooses every keyword and every angle, and refuses a candidate that would compete with something you already rank for. It writes the article, picks the sources, swaps a dead authority link, and drops a hero that came back wrong. It publishes, runs your property's build, fixes a build error its own files caused, and pushes. It resubmits a stale sitemap and spends a second indexing request on a URL that has stayed invisible for three weeks. It creates its own board cards, advances them, and closes the ones whose evidence is a file it can verify. It registers its own scheduled jobs and moves a fire time to clear a collision it detected. When a site changes and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file. When a ledger line will not parse it copies that one line out with its number and rebuilds the index from the rest.
 
@@ -99,7 +99,7 @@ Every change to a strategy file lands as one line in `strategy/CHANGELOG.md`: th
 
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own.
 
-Two things stay outside all of that, because they are the first stop wearing different clothes: an account setting or a property configuration it did not create, and anything on the far side of a control that commits. Those get named, never touched.
+Two things stay outside all of that, because they are the first guardrail wearing different clothes: an account setting or a property configuration it did not create, and anything on the far side of a control that commits. Those get named, never touched.
 
 **Every card carries a kind.** A card whose definition of done is a file on your machine or a line in one of its own ledgers closes itself the moment the evidence is verified. A card whose definition of done is something only you can do inside your own account, like adding and verifying a property, waits for your tick and nothing else sets it.
 
@@ -168,7 +168,7 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 **5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the two marked lines at the top first. It reads your sites, writes your strategy folder, creates the ledgers, seeds the board, registers the seven scheduled jobs, and shows you one drafted article. It stops for you once, on that article.
 
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 08:00, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«SEO_ROOT»` plus each property repository if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the index sweep and the rank review; run those two by hand and let the other five schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two stops.
+**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 08:00, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«SEO_ROOT»` plus each property repository if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the index sweep and the rank review; run those two by hand and let the other five schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
 
 **7. Let one full week happen before you change anything.** Treat week one the way you would treat a new hire's first week. Watch the output, correct it once, write the correction down.
 

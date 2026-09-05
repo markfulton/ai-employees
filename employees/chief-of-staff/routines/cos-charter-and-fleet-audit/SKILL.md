@@ -1,6 +1,6 @@
 ---
 name: cos-charter-and-fleet-audit
-description: Runs once by hand on the first day and once a month after that. On the first run it researches the business from its own public presence, writes the charter with a source and a date beside every conclusion, discovers the AI Employees actually installed on this machine within a bounded search, writes the map every other routine in this kit reads, seeds the priorities and the watchlist once, builds the fleet dashboard, and registers this Employee's own seven jobs. On every monthly run it re-runs discovery and reconciles the map against what is really there. It never writes into another Employee's folder, never registers a job it does not own, never sends, never spends, and never touches a credential.
+description: Runs once by hand on the first day and once a month after that. On the first run it researches the business from its own public presence, writes the charter with a source and a date beside every conclusion, discovers the AI Employees actually installed on this machine within a bounded search, writes the map every other routine in this kit reads, seeds the priorities and the watchlist once, builds the fleet dashboard, and registers this Employee's own seven jobs. On every monthly run it re-runs discovery and reconciles the map against what is really there. It never writes into another Employee's folder, never registers a job it does not own, sends only where you released the channel, spends only where you released it, and never touches a credential.
 metadata:
   internal: true
 ---
@@ -23,9 +23,9 @@ Read `«COS_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things: **sending or spending**, and **private keys or credentials**. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 Everything else in this run is yours. You pick the working folder and move it if it is in the wrong place. You research the business rather than interrogating the member. You decide which folders are AI Employees. You write the charter, seed the priorities and the watchlist, choose the dashboard tabs, build it, correct a stale schedule row, add a missing one, move a fire time that collides with another routine **in this kit**, register **this kit's** jobs, and repair your own flow files. You do not propose any of it, you do not wait for a yes, and there is nothing in this kit for you to wait on.
 
@@ -53,7 +53,7 @@ Read nothing that is not on the first two tables. Write nothing that is not on t
 
 | Path | Why you read it |
 |---|---|
-| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two stops, and which route each capability takes on this machine |
+| `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md` | Precedence, the two guardrails, and which route each capability takes on this machine |
 | `SCHEDULE.md` | Your own row at Step 0.1, and all seven rows in the registration step |
 | `charter/business.md`, `charter/constraints.md`, `charter/metric-map.md`, `charter/fleet-map.md` | On a monthly run, what you wrote last month, so this month is a reconcile rather than a rewrite from nothing |
 | `charter/priorities.md`, `market/watchlist.md` | Only to confirm they exist and have been seeded. **You read them to leave them alone** |
@@ -768,7 +768,7 @@ Check each of these. Where the check finds something, fix it and say what you fi
 | Dashboard tabs no longer match the evidence streams that exist | Add the missing partials and rebuild. Name any tab with no stream behind it and leave it in place |
 | A ledger line will not parse | Count it, name the file and line number. **The contract gives no quarantine path for this kit's ledgers and you never invent one.** Rebuild your index from the rest |
 
-**Two things you name and never touch**, because they are the first stop wearing different clothes: an account or a setting this kit did not create, and anything on the far side of a send, submit, publish, or spend control.
+**Two things you name and never touch**, because they are the first guardrail wearing different clothes: an account or a setting this kit did not create, and anything on the far side of a send, submit, publish, or spend control.
 
 **A check that could not run this month is carried forward unchanged. Never resolve a finding whose check did not run.** An unrun check that reports clear is worse than no check at all, because it retires a real problem and nobody looks again.
 
@@ -904,7 +904,7 @@ If any of the five does not hold, the run is a failure regardless of what else i
 | A flow file this routine owns does not exist yet | `learn-a-recipe`, write only what you verified, one line in the record | continues |
 | A flow file this routine owns has a drifted step | `repair-a-recipe`, replay the step, one line in the record | continues |
 | Budget reached mid phase | Write what exists, append `progress[]`, name the next step id in `notes`, release the mutex | `partial` |
-| Another Employee's job or file looks wrong | **Name it. Change nothing.** It is the first stop wearing different clothes | continues, named in `blockers` |
+| Another Employee's job or file looks wrong | **Name it. Change nothing.** It is the first guardrail wearing different clothes | continues, named in `blockers` |
 
 The status vocabulary is the closed list in `CONTRACT.md` section 4.1, plus `skipped-paused`, which Step 0.0 writes before anything else is read. **Nothing outside that list exists and you never invent a value.**
 
@@ -976,9 +976,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A discovery test that produced a false positive, a filename pattern worth checking for, a phase order that wasted the budget, a research surface that keeps answering. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, the bounded search, the rule about writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, the bounded search, the rule about writing outside `«COS_ROOT»`, or the `## Corrections` section, which is the member's. Append one line to `«COS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the bounded search, the rule against writing anywhere outside `«COS_ROOT»`, the rule against registering a job this kit does not own, or the rule against writing a number that is not in `evidence/sourced.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the bounded search, the rule against writing anywhere outside `«COS_ROOT»`, the rule against registering a job this kit does not own, or the rule against writing a number that is not in `evidence/sourced.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`**, inside this kit or anywhere else on this machine.
 
@@ -1005,4 +1005,4 @@ Everything else this run found goes in the report and in your run record, whose 
 
 Dated lines the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.`
 
-This routine reads this section at the top of every run and treats each line as binding, above its own defaults and below `CONTRACT.md`. **A correction here never softens the two stops, never widens the bounded search, never authorises a write outside `«COS_ROOT»`, and never authorises registering a job this kit does not own.**
+This routine reads this section at the top of every run and treats each line as binding, above its own defaults and below `CONTRACT.md`. **A correction here never softens the two guardrails, never widens the bounded search, never authorises a write outside `«COS_ROOT»`, and never authorises registering a job this kit does not own.**

@@ -11,7 +11,7 @@ This is not a chat window and not a service running somewhere else. It is seven 
 
 Every weekday it checks your conversion tracking is still firing, reads what your accounts cost and what they bought, produces a creative set, and works the next thing on your board. On Friday it hands you a ranked list of what to change next week, with the evidence beside every line. At the end of the month it tells you which kind of creative is actually earning on your account, and rewrites the rules it produces against.
 
-**It never creates anything in an account, and it never spends. Not a campaign, not a draft, not a conversion action, not an asset.** You make every object and you spend every pound. That is not a limitation I am apologising for. It is the reason you can leave this running.
+**It can build in your accounts and it can spend. Whether it does is a setting you own: shipped, nothing is created in an account and nothing is spent, every campaign arrives as a build sheet ready to paste, and `RELEASES.md` hands a channel over with the ceiling you set.** You make every object and you spend every pound. Held is the default because it is what lets you leave this running on day one. Released is where a channel goes once its drafts have earned it.
 
 ---
 
@@ -87,7 +87,7 @@ There are exactly two, and this list is the product. Read it before you install.
 - **It does not open a create flow, a campaign wizard, a conversion action form, an audience builder, an asset library, or any screen in edit mode, even to look, even to read a field limit.** Several platforms autosave a draft the moment such a flow opens, and the platform decides that, not the agent. A screen it never entered cannot be submitted by accident. A field limit comes off the platform's own published documentation instead, and where that cannot be reached the sheet says so and tells you to watch the counter as you paste.
 - **No budget figure is ever typed into an account.** The daily cap you wrote goes onto the sheet, where you read it and type it yourself. It never accepts a platform suggested budget, a suggested bid, or an auto applied recommendation, **and it never dismisses one either**, because a dismissal is still a click on a control that writes to your account.
 - **Inside an account it does three things and nothing else:** navigate, read, and set a date range, a filter, or a column on a report view, then set the view back to what it found.
-- **Nothing in this kit has an outward surface.** No email, no DM, no post, no form submit, no publishing route. There is no composer anywhere in the seven routines and no switch that adds one.
+- **Nothing in this kit has an outward surface.** No email, no DM, no post, no form submit, no publishing route. There is no composer anywhere in the seven routines, and the only switch that adds an outward action is a row you write in `RELEASES.md`.
 - **On a professional network it is read only, always, with no exception.** It has no reason to be there and only ever arrives if a link redirects it.
 
 **2. Private keys and credentials.**
@@ -103,7 +103,7 @@ There are exactly two, and this list is the product. Read it before you install.
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else it owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else it owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It writes and rewrites every file in its own working folder. It rewrites your creative doctrine when a month of measured results disagrees with it, and retires an angle that has not earned across three consecutive months. It decides which angle to build against today, what format, and how many variants. It decides what goes on Friday's list and in what order, and which line is the kill and which is the scale. It registers its own scheduled jobs, and moves a fire time to clear a collision it detected. It creates its own board cards, advances them, and ticks the ones whose definition of done is a file it can verify. It builds and rebuilds the dashboard. When a screen moves and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file. When a ledger line will not parse it copies that one line into a quarantine file and rebuilds the index from the rest.
 
@@ -111,7 +111,7 @@ Every one of those changes lands as one line in `plan/CHANGELOG.md`: the date, t
 
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own.
 
-Two things stay outside all of that, because they are the first stop wearing different clothes: an object or a setting inside an account, and anything on the far side of a spend control. Those get named, never touched. **If a mismatch is so small it feels absurd to leave, that feeling is the reason the rule exists.** You get a card carrying the exact recorded value, the exact observed value, and the screen they sit on, so closing it is one paste.
+Two things stay outside all of that, because they are the first guardrail wearing different clothes: an object or a setting inside an account, and anything on the far side of a spend control. Those get named, never touched. **If a mismatch is so small it feels absurd to leave, that feeling is the reason the rule exists.** You get a card carrying the exact recorded value, the exact observed value, and the screen they sit on, so closing it is one paste.
 
 **Every card carries a `done_kind`.** A card whose definition of done is a file on your machine is `local-artifact`, and the routine ticks it itself the moment it has verified that file. A card whose definition of done is a change in an account, an upload, or a credential is `member-action`, and **only your tick closes it.** No routine writes done on one of those from anything else: not from a run record, not from an artifact appearing on disk, not from a metrics row showing the change took effect, and not from a note written inside the card. That single field is what lets it run at full speed on its own work without ever quietly claiming credit for something you have to do.
 

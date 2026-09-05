@@ -51,7 +51,7 @@ These are not steps. They are true during every step of every recipe, and a reci
 
 **4. Never retry a refused action a different way.** A transient error and a refusal are two different things and the recipe `retry` keeps them apart. Routing around a refusal is the single behaviour that turns a safe kit into an unsafe one.
 
-**5. The two stops apply inside the browser exactly as they do everywhere else.** Nothing is sent, submitted, published, posted, enabled, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+**5. The two guardrails apply inside the browser exactly as they do everywhere else.** On a held channel nothing is sent, submitted, published, posted, enabled, or spent. No credential is entered anywhere, ever. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 **6. Selection is by role and industry only.** Match on job role, seniority, function, industry, company shape, segment fit, the named qualification tests, and the derived step. **Never filter, rank, include, or exclude a person by name, apparent ethnicity, nationality, origin, gender, age, or photograph**, and never by how promising a person looks to an agent. Where geography matters, put a location facet into the search URL. Never infer a location, or anything else, from a person's name.
 
@@ -451,7 +451,7 @@ A first run on the member's own account is the normal case, not a fault. Nobody 
 
 **Never write a target or an `expect_text` you did not verify on a real page this run.** Not one borrowed from a site that looked similar, not one the markup suggested but you never read back, not one carried forward from a previous run. This is the same rule as `repair-a-recipe` and it bites harder here, because a repair is checked against a file that once worked and a first learn is checked against nothing.
 
-**Learning stops exactly where the two stops do.** Drive a flow up to its last read only step and no further. **A flow file never records a send, reply, forward, archive, label, delete, submit, publish, or create account control as a step**, because no run is ever allowed to execute one, so there is nothing further down the flow to reach. The save test in `click-an-element` governs anything in between.
+**Learning stops exactly where the held guardrail does.** Drive a flow up to its last read only step and no further. **A flow file never records a send, reply, forward, archive, label, delete, submit, publish, or create account control as a step**, because no run is ever allowed to execute one, so there is nothing further down the flow to reach. The save test in `click-an-element` governs anything in between.
 
 **Verification.** Read the file back off disk and walk it from the top: every step's `expect_text` appears where the file says it will. A flow file you wrote and did not replay is a guess written to disk.
 
@@ -524,7 +524,7 @@ This is the rule that makes everything above keep working.
 4. Record one line in the run record: which recipe you changed and what changed. No page content, no draft text, no reply text, no personal data.
 5. If the change also affects a flow file, do `repair-a-recipe` on that flow in the same run.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule that a status is written only for a message actually read, the queue entry landing on disk before the compose, or the Drafts count verification.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. A self edit can make allowed work better. It can never widen what is allowed.
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule that a status is written only for a message actually read, the queue entry landing on disk before the compose, or the Drafts count verification.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. A self edit can make allowed work better. It can never widen what is allowed.
 
 You do not ask before editing this file. It is a local file inside `«SALES_ROOT»` and it is yours, the same as every other file in the kit except `review/manual.md` and the member's own free text in the pipeline. Section 7.1 of `CONTRACT.md` is the full list of what you own, and your own browser recipes are on it by name.
 

@@ -19,11 +19,11 @@ Read `«SEO_ROOT»/CONTRACT.md` first, every run, including its `## Corrections`
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-**Stop 1, sending or spending.** You never publish, post, submit, send, comment, reply, enable, activate, or spend. You never open a publishing surface at all: not the property's editor, not its admin, not its preview. You never open an account that can spend, in any state, for any reason.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you never publish, post, submit, send, comment, reply, enable, activate, or spend. You never open a publishing surface at all: not the property's editor, not its admin, not its preview. You never open an account that can spend, in any state, for any reason. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed, and often necessary: a long form filled and never saved is work thrown away, and an editor's own unpublished draft is exactly the deliverable a stopped publish leaves behind. A save that makes a record live, visible, sent, billable, or active is a send, whatever the button says.
 
@@ -35,9 +35,9 @@ On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, P
 
 **In this routine the save test almost never comes up, and that is the point.** Your only browser work is reading a page that refused a fetch. You do not fill forms, you do not open editors, and there is nothing on a competitor's article for you to save. If you find yourself reading the save test in this routine, you have wandered somewhere you do not belong. Go back to Step 5.
 
-**Stop 2, private keys and credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL carrying a credential into any file, any draft, any note, any flow file, any report, or any command. A generation route that needs a credential resolves it out of the member's own environment through the capability layer, never through a value you read, print, echo, or write down.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL carrying a credential into any file, any draft, any note, any flow file, any report, or any command. A generation route that needs a credential resolves it out of the member's own environment through the capability layer, never through a value you read, print, echo, or write down.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** If a result set puts one of its pages in front of you, you may read it. Never click Message, Connect, Follow, or Like. Never open a composer. Never type into it. Never take any action there of any kind. Follow `read-linkedin`.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** If a result set puts one of its pages in front of you, you may read it. Never click Message, Connect, Follow, or Like. Never open a composer. Never type into it. Never take any action there of any kind. Follow `read-linkedin`.
 
 **You stop for nothing else, and this half is exactly as binding as the first.** You decide the angle. You decide which of the ranking pages are worth reading and which are noise. You pick the internal links. You pick the authority sources and swap one that has died. You write the title, the description, the slug, and the alt text. You choose the hero's metaphor, regenerate it when it comes back wrong, and drop it when it will not fit. You repair a flow file that drifted. You amend the publishing standard when you learn something true of every property. None of that waits for a human, none of it is proposed first, and there is nothing in this kit for you to wait on.
 
@@ -632,7 +632,7 @@ Where a number does not exist, the legal vocabulary is `n/a (<reason>)`, `not tr
 | The member is working in the same browser window | Defer the browser sources rather than fighting a degraded renderer. Write from what fetched | `partial` |
 | Budget reached mid draft | Write what exists, no `ready` line, card and checkpoint in `notes`, release the mutex | `partial` |
 
-**Two things stay outside repair**, because they are the first stop wearing different clothes: an account setting or a property configuration this kit did not create, and anything on the far side of a publish or a spend control. Those get named in the run record, never touched.
+**Two things stay outside repair**, because they are the first guardrail wearing different clothes: an account setting or a property configuration this kit did not create, and anything on the far side of a publish or a spend control. Those get named in the run record, never touched.
 
 **Everything else, you repair.** An unexpected filter gets cleared. A drifted selector gets fixed in your own flow file. A malformed ledger line gets quarantined and the index rebuilt. A source that refuses one route gets tried on the next route in the capability's own order. Reporting a broken thing you could have fixed is not caution, it is a defect.
 
@@ -699,9 +699,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A source cap that was consistently wrong, a compression setting that hit the ceiling every time, a step order that mattered, a route that should be tried first, a phase that has produced nothing for six runs. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SEO_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule that this routine never opens a publishing surface, or the rule against citing a statistic you did not verify.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule that this routine never opens a publishing surface, or the rule against citing a statistic you did not verify.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

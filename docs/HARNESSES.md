@@ -27,7 +27,7 @@ Two rules hold on every harness. **Routines are scheduled jobs, not skills**: po
 ## What the invocation has to get right, on every harness
 
 1. **The working directory is the kit folder.** Every path in a routine is relative to it.
-2. **No permission prompt.** A scheduled run in a prompting mode does not fail at 06:45; it hangs, and leaves no record. Run scheduled work in the harness's auto approve mode, scoped to the kit folder where the harness allows scoping. This does not weaken the two stops, which live inside the routines, not in the prompt gate. `CAPABILITIES.md` section 10 in every kit is the full argument.
+2. **No permission prompt.** A scheduled run in a prompting mode does not fail at 06:45; it hangs, and leaves no record. Run scheduled work in the harness's auto approve mode, scoped to the kit folder where the harness allows scoping. This does not weaken the two guardrails, which live in the contract and the routines, not in the prompt gate. `CAPABILITIES.md` section 10 in every kit is the full argument.
 3. **Prove one routine by hand before registering the rest.** Run the standup, watch it write `brief-latest.md` and exactly one line into `runlog.jsonl`. Eight jobs registered on an invocation nobody ran is eight silent failures on the same morning.
 4. **A non zero exit should leave a record.** The Windows launcher does this through `runlog.mjs --failed-run`. On other harnesses, add the same `||` fallback to the command line.
 

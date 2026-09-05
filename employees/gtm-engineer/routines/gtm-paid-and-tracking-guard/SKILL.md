@@ -1,6 +1,6 @@
 ---
 name: gtm-paid-and-tracking-guard
-description: "Weekly. Audits the paid and measurement setup the member already has by reading it, then assembles the parts that are missing as local files: campaign structure, ad copy, negative keyword seeds, and conversion tracking specifications, each one complete and ready to paste. It creates nothing in an account, saves nothing, activates nothing, and never spends. This is where the spend stop lives."
+description: "Weekly. Audits the paid and measurement setup the member already has by reading it, then assembles the parts that are missing as local files: campaign structure, ad copy, negative keyword seeds, and conversion tracking specifications, each one complete and ready to paste. It creates nothing in an account, saves nothing, activates nothing, and spends nothing, unless you released the channel. This is where the spend stop lives."
 metadata:
   internal: true
 ---
@@ -482,7 +482,7 @@ action on it is yours to take. Nothing here has been done in the account.
 
 3. Fill category, counting, value handling, and attribution window from `## Primary conversion event` where the taxonomy describes any of them. Where the taxonomy is silent, **write the words `platform default` rather than a figure**, name that heading under `## Values left at the platform default`, and put one line in `assumptions[]`. A default you did not read is not a number you may state, and a number in this file is a number the member will type.
 4. **Never modify, pause, or remove an existing conversion action**, and never create one that duplicates it, even where the existing one looks broken. Name the duplicate or the broken one as a finding and let the member decide.
-5. If a snippet has to go onto the member's own site, that is outside `«GTM_ROOT»` and outside this kit. The `## Snippet or tag location` heading names the install location and the page. **If any part of the snippet is a key, a token, or a password, it does not go into the sheet or the card at all:** name the account screen the member copies it from and stop there. Section 4.2 of the contract, and Stop 2.
+5. If a snippet has to go onto the member's own site, that is outside `«GTM_ROOT»` and outside this kit. The `## Snippet or tag location` heading names the install location and the page. **If any part of the snippet is a key, a token, or a password, it does not go into the sheet or the card at all:** name the account screen the member copies it from and stop there. Section 4.2 of the contract, and Guardrail 2.
 6. **Verify your own artifact, not the account.** Read `paid/conversion-«slug».md` back off disk. Every heading present, no heading empty, no `«` or `»` surviving in any value the member is meant to paste, and `copy.check` clean at `--dest form`. A sheet that failed any one of those is not left in place and not carded: fix it, rename it in again, and read it back again. **The account is not part of this verification and you do not open the conversion list to confirm anything**, because there is nothing of yours in it to confirm.
 7. File one `verify` card, `done_kind: "member-action"`, `url` set to the exact screen from `## Where`, `artifact` set to the sheet path, `field_spec{}` carrying name, category, counting, value handling, and attribution window as the exact strings to enter, and `definition_of_done` reading that the conversion action exists in the account under that name. That card is the whole handoff, and the member closes it.
 
@@ -715,7 +715,7 @@ You never write `board/board.json` or `board/LAUNCH-BOARD.md`. You append to `bo
 
 The one `local-artifact` card is the intake card, because its definition of done is a heading in a local file gaining a value, and intake ticks that itself the moment it writes it.
 
-**Local work is not carded at all.** You do not file a card to write a build sheet, because you write it in the same run and nothing about it waits for anybody. Cards exist here for one purpose: carrying work across the boundary to the member. That single distinction is what lets this routine own every file it can own while the two stops stay exactly where they are.
+**Local work is not carded at all.** You do not file a card to write a build sheet, because you write it in the same run and nothing about it waits for anybody. Cards exist here for one purpose: carrying work across the boundary to the member. That single distinction is what lets this routine own every file it can own while the two guardrails stay exactly where they are.
 
 **Every account card carries the two things that make it closable in one sitting:** `url` set to the exact screen, and either the exact values in `field_spec{}` or a named heading in a named sheet under `paid/`. A card that names a problem without naming the screen and the values is half a card, and the member pays for the other half.
 
@@ -955,9 +955,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wait that was too short, a step order that mattered, a surface that moved for good, a route that should be tried first, a phase that has produced nothing for six runs. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«GTM_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«GTM_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 

@@ -27,13 +27,13 @@ Every sentence in a dossier answers one of three questions and nothing else: **w
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-**Stop 1, sending or spending.** You never send, post, reply, comment, resolve, or spend. **You never issue a refund, a credit, a discount, a plan change, an extension, a cancellation, or a retention offer of any kind.** You read billing screens, account screens, and usage screens, and **you touch no control on any of them**. Not a toggle, not a plan selector, not a "pause subscription", not a "apply credit", not a "keep this customer" button a retention dashboard offers you. Every one of those moves the member's money or their customer's contract, and every one of them sits on the far side of the spend stop. You name the save. The member makes it.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you do not send, post, reply, comment, resolve, or spend. **You never issue a refund, a credit, a discount, a plan change, an extension, a cancellation, or a retention offer of any kind.** You read billing screens, account screens, and usage screens, and **you touch no control on any of them**. Not a toggle, not a plan selector, not a "pause subscription", not a "apply credit", not a "keep this customer" button a retention dashboard offers you. Every one of those moves the member's money or their customer's contract, and every one of them sits on the far side of the spend stop. You name the save. The member makes it. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any dossier, any log line, or any command.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any dossier, any log line, or any command.
 
 **Everything else in this folder is yours and you do not ask for it.** You decide which wires fired. You write the dossier. You clear a flag when the evidence says the risk receded. You tune your own wires and thresholds. You repair your own browser recipes. You quarantine a malformed ledger line and rebuild the index from the rest. You make the call on ambiguity, write one line into `assumptions[]`, and keep going. There is no approval ritual anywhere in this run.
 
@@ -292,7 +292,7 @@ Follow the pre recipe block at the head of `recipes/BROWSER-RECIPES.md`, confirm
 Three reads, each producing one string you write down verbatim:
 
 1. **Subscription status.** The plan name, the state as the page words it, and the next billing date. Copy the state string exactly: `past due`, `payment failed`, `cancels on 2026-04-01`, `auto renew off`. **Never translate it into your own word.** The member knows what their own billing product means by its own words, and a paraphrase is where a wrong conclusion enters.
-2. **Payment history**, only the most recent entries and only their status and date. **Never a card number, never a last four, never a billing address, never a payment method identifier.** Those are Stop 2 material and they belong nowhere in this kit.
+2. **Payment history**, only the most recent entries and only their status and date. **Never a card number, never a last four, never a billing address, never a payment method identifier.** Those are Guardrail 2 material and they belong nowhere in this kit.
 3. **Usage**, where `strategy/channels.md` names a usage surface. The current figure and the prior period figure, both as the page shows them, with the units the page uses.
 
 **Follow `read-a-page` before you believe any of it, and `verify-the-query` on any filtered account list.** A billing screen rendered from a stale view is how a healthy account gets flagged as past due, and that is a dossier the member will forward to a customer.
@@ -692,9 +692,9 @@ You never author, create, or install a skill, plugin, or extension in the member
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wire that never fires, a wire that always fires, a screen that moved for good, a step order that mattered. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the read only rule on billing and account screens, the rule that a save is named and never made, the suppression rule in Step 3b, the rule that a flag never clears on time alone, or the rule that a flag is never a bare score.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the read only rule on billing and account screens, the rule that a save is named and never made, the suppression rule in Step 3b, the rule that a flag never clears on time alone, or the rule that a flag is never a bare score.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 
@@ -706,4 +706,4 @@ Follow `CONTRACT.md` section 9 exactly. This run sends a push only if it recorde
 
 ## Corrections
 
-Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run and every line here outranks the guidance above, with three exceptions that nothing overrides: the two stops, the read only rule on billing and account screens, and the rule that a flag carries its evidence rather than a score.
+Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run and every line here outranks the guidance above, with three exceptions that nothing overrides: the two guardrails, the read only rule on billing and account screens, and the rule that a flag carries its evidence rather than a score.

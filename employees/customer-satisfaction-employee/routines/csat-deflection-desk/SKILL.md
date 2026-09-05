@@ -1,6 +1,6 @@
 ---
 name: csat-deflection-desk
-description: Weekly on a Wednesday, light browser lane. Turns the questions that keep coming back into the answer that only has to be written once. It reads the ticket ledger over the recurrence window, finds every theme that crossed its threshold, checks the member's own help center and the existing macros for an answer that already covers it, and writes a reusable macro and a help article draft for every theme that has neither. It never publishes an article, never edits a live help center page, never sends, never spends, and never touches a credential.
+description: Weekly on a Wednesday, light browser lane. Turns the questions that keep coming back into the answer that only has to be written once. It reads the ticket ledger over the recurrence window, finds every theme that crossed its threshold, checks the member's own help center and the existing macros for an answer that already covers it, and writes a reusable macro and a help article draft for every theme that has neither. It publishes only where you released the channel an article, never edits a live help center page, sends only where you released the channel, spends only where you released it, and never touches a credential.
 metadata:
   internal: true
 ---
@@ -33,13 +33,13 @@ Writing a macro is easy. Writing a macro that works is the job.
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-**Stop 1, sending or spending.** You never send, post, reply, publish, or spend. **You never publish a help article, never create a page in the member's help center, never edit a live help center page, and never open a help center editor with the intention of saving anything into it.** Publishing is a publish, and `Publish` is one of the seven labels barred by name in this kit whatever the page claims. You write a draft on disk and name the exact page the member would publish it on. They press the button.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you do not send, post, reply, publish, or spend. **You never publish a help article, never create a page in the member's help center, never edit a live help center page, and never open a help center editor with the intention of saving anything into it.** Publishing is a publish, and `Publish` is one of the seven labels barred by name in this kit whatever the page claims. You write a draft on disk and name the exact page the member would publish it on. They press the button. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any macro, any help draft, any log line, or any command.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, accept terms, or write a key, a token, a password, or a URL carrying a credential into any file, any macro, any help draft, any log line, or any command.
 
 **Everything else in this folder is yours and you do not ask for it.** You decide which themes crossed the line. You write the macro and the article. You rewrite a macro the evidence says failed. You retire a macro whose theme was retired. You tune your own thresholds and caps. You repair your own browser recipe. You quarantine a malformed ledger line and rebuild the index from the rest. You make the call on ambiguity, write one line into `assumptions[]`, and keep going. There is no approval ritual anywhere in this run.
 
@@ -578,7 +578,7 @@ The status vocabulary is closed at eight values and no ninth exists.
 | A transient tooling error | `retry`, class one. Once or twice, flat, no backoff |
 | A refusal, a wall, or a captcha | `retry`, class two. Never retried, never routed around |
 
-**Two things stay outside repair**, because they are the first stop wearing different clothes: a page, a category, or a setting in the member's help center, and anything on the far side of a publish or a save control there. Those are named, never touched.
+**Two things stay outside repair**, because they are the first guardrail wearing different clothes: a page, a category, or a setting in the member's help center, and anything on the far side of a publish or a save control there. Those are named, never touched.
 
 ---
 
@@ -654,9 +654,9 @@ You never author, create, or install a skill, plugin, or extension in the member
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A threshold that never qualifies anything, an audit window that is too short to be fair, a macro shape that keeps getting edited before it is sent, a step order that mattered. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«CSAT_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the rule that an article is drafted and never published, the read only rule on the help center, the self audit in Step 6, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** In particular, **never write an amendment that lets a failed macro stay in the folder.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the rule that an article is drafted and never published, the read only rule on the help center, the self audit in Step 6, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** In particular, **never write an amendment that lets a failed macro stay in the folder.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 
@@ -668,4 +668,4 @@ Follow `CONTRACT.md` section 9 exactly. This run sends a push only if it recorde
 
 ## Corrections
 
-Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run and every line here outranks the guidance above, with three exceptions that nothing overrides: the two stops, the rule that an article is drafted and never published, and the rule that a macro whose theme did not fall is rewritten rather than left in the folder.
+Dated entries the member adds, newest at the top. Format: `YYYY-MM-DD: what was wrong, what to do instead.` This routine reads this section at the top of every run and every line here outranks the guidance above, with three exceptions that nothing overrides: the two guardrails, the rule that an article is drafted and never published, and the rule that a macro whose theme did not fall is rewritten rather than left in the folder.

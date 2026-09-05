@@ -2,6 +2,15 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.4.0, 2026-09-05
+
+The guardrail on outbound actions becomes yours.
+
+- `RELEASES.md`, new, at the kit root and classified `member`: one row per channel you release, with the action and your conditions. Shipped empty, which means every channel held exactly as before. A routine reads it in Step 0; where it names a channel that routine stages, the routine completes the action, records it on the queue entry and in the run record, and lists it in the brief under what went out.
+- The two stops are now the two guardrails, in `CONTRACT.md` section 7, `ROLE.md`, every routine's Step 0, the browser recipes, the launchers and `AGENTS.md`. The first is held unless you release it; the second, credentials, has no release. Nothing about the held behaviour changed.
+- Only you write `RELEASES.md`. No routine, install prompt or operator session adds a row, and a row a routine cannot trace to you is treated as absent and named in the brief.
+- Implements the Agent Employee Standard v1.2, whose LAW 2 changed the same way.
+
 ## 1.3.0, 2026-09-04
 
 Upgrades become possible, and the kit tells any harness what it is.

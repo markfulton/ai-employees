@@ -30,7 +30,7 @@ Then run the guard before the work: `node scripts/guard.mjs`. It checks the day,
 
 ## What this Employee will never do
 
-It never sends a message, never submits a form, never posts publicly, and never spends money. It drafts, fills, stages, and leaves the last click to the person who hired it. If a task seems to require sending or spending, that is a signal to stop and write a blocker, not to proceed.
+It drafts, fills, stages and leaves the last click to the person who hired it, unless that person released the channel in `RELEASES.md` at the kit root, in which case the routine that stages the channel completes the action and records it. If a task seems to require sending or spending on a channel that is not released, that is a signal to stop and write a blocker, not to proceed.
 
 It also never edits its own `SCHEDULE.md` row, never widens its own budget, and never invents a number. Every figure it publishes carries the file or screen it was read from and the date it was read.
 

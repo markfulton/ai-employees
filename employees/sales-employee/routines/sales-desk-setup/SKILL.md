@@ -1,6 +1,6 @@
 ---
 name: sales-desk-setup
-description: Runs once by hand on the first day and once a month after that, on the first weekday, light browser lane. On the first run it researches the business from its own public surfaces before asking anything, writes the strategy folder, seeds the pipeline, reconciles the schedule table, and registers the recurring jobs. On every monthly run it re-reads the evidence the kit produced, applies what changed to the files it owns, and carries every member written setting across verbatim. It never sends, submits, publishes, or spends, and it never enters a credential.
+description: Runs once by hand on the first day and once a month after that, on the first weekday, light browser lane. On the first run it researches the business from its own public surfaces before asking anything, writes the strategy folder, seeds the pipeline, reconciles the schedule table, and registers the recurring jobs. On every monthly run it re-reads the evidence the kit produced, applies what changed to the files it owns, and carries every member written setting across verbatim. It holds every outbound action unless you released the channel, and it never enters a credential.
 metadata:
   internal: true
 ---
@@ -15,9 +15,9 @@ Everything the other six routines do is downstream of the files you write here. 
 
 **The strategy folder is the product.** Six correct files leave the other six routines with everything they need to run tomorrow. A file written on values you guessed at repeats the guess every morning, in the member's own copy, where they will not notice it until somebody replies to it.
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things: **sending or spending**, and **private keys or credentials**. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on. Section 7 of `CONTRACT.md` is the full statement and nothing in this file softens it.
 
 **The save test, because the label is not the question.** What the control commits is. A save that persists a private draft only the member can see is allowed somewhere in this kit, because a mail client's own draft is exactly the deliverable the drafting routines want. **No control of that kind exists on any surface you touch.** Your browser phase reads the member's own public surfaces to research the business, and it presses nothing but navigation.
 
@@ -666,7 +666,7 @@ Check each of these. Where the check finds something, fix it and say what you fi
 | A seed card from the first run is still open after two months | Name it in the report in one line. **It is `member-action` and only the member ticks it.** Never close it and never re-file it |
 | A ledger line will not parse | Move that one line to `crm/<ledger>-quarantine-YYYY-MM-DD.log` with its line number, **and only for a `crm/*.jsonl` file**, because the map gives no quarantine path for any other JSONL, rebuild the valid index from the rest, and carry on. Never rewrite the ledger and never delete the line |
 
-**Two things you name and never touch**, because they are the first stop wearing different clothes: an account or a setting this kit did not create, and anything on the far side of a send, submit, publish, or spend control.
+**Two things you name and never touch**, because they are the first guardrail wearing different clothes: an account or a setting this kit did not create, and anything on the far side of a send, submit, publish, or spend control.
 
 **A check that could not run this month is carried forward unchanged.** Never resolve a finding whose check did not run. An unrun check that reports clear is worse than no check at all, because it retires a real problem and nobody looks again.
 
@@ -873,9 +873,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A research step that never resolves anything, a scheduler expression that had to be written differently, a detection order that mattered, a route that should be tried first. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SALES_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SALES_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rule that member written settings are carried across verbatim, the rule that no row is ever removed or set to `off`, or the rule that account names are names and never credentials.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rule that member written settings are carried across verbatim, the rule that no row is ever removed or set to `off`, or the rule that account names are names and never credentials.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 
@@ -892,5 +892,5 @@ Before leaving any strategy field empty or writing a research card for a public 
 
 ## Corrections
 
-Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two stops, the rule that member written settings are carried across verbatim, and the rule that no row is ever removed or set to `off`.
+Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two guardrails, the rule that member written settings are carried across verbatim, and the rule that no row is ever removed or set to `off`.
 

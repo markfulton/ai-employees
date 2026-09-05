@@ -386,7 +386,7 @@ A first run on the member's own account is the normal case, not a fault. Nobody 
 
 **Never write a target or an `expect_text` you did not verify on a real page this run.** Not one borrowed from a surface that looked similar, not one the markup suggested but you never read back, not one carried forward from a previous run. A repair is checked against a file that once worked. A first learn is checked against nothing.
 
-**Learning stops exactly where the two stops do, and on this Employee that line is drawn harder than anywhere else in the kit.** Drive a flow up to its last read-only step and no further.
+**Learning stops exactly where the two guardrails do, and on this Employee that line is drawn harder than anywhere else in the kit.** Drive a flow up to its last read-only step and no further.
 
 **A flow file never records a control that saves, applies, deploys, promotes, restores, rotates, renews, or buys, and it never records one of the sixteen barred labels.** Not as a step you skip, not as a step marked do-not-run, not as a note. It is simply not in the file. **The reason is `web-weekly-report`:** on a Friday afternoon it replays every flow in this kit, step by step, with nobody at the machine. A state changing step recorded in a flow file is a state change that happens on a Friday with no member watching. That is the failure this rule exists to make impossible.
 
@@ -466,7 +466,7 @@ This is the rule that makes everything above keep working.
 4. Record one line in the run record: which recipe you changed and what changed. No page content, no log line, no personal data.
 5. If the change also affects a flow file, do `repair-a-recipe` on that flow in the same run.
 
-**Never write an amendment that relaxes the two stops, the save test, the sixteen barred controls, the rule that every step in a flow file is read only, or the rule that this Employee never rotates a key.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the sixteen barred controls, the rule that every step in a flow file is read only, or the rule that this Employee never rotates a key.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 You do not ask before editing this file. It is a local file inside `«WEB_ROOT»` and it is yours, the same as every other file in the kit except the member's own free text on the board and their own sections of `policy/budgets.md`. Section 7.3 of `CONTRACT.md` is the full list of what you own, and your own browser recipes are on it by name.
 

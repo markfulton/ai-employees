@@ -1,6 +1,6 @@
 ---
 name: sales-pipeline-review
-description: Weekly, on a Friday, read only everywhere. Scores the week from the ledgers with a source path beside every number, replays the browser flows the other routines depend on, names one thing to kill and one thing to scale, and files both as cards. It never sends, never spends, never touches a credential, and never writes a number it did not count out of a named file this run.
+description: Weekly, on a Friday, read only everywhere. Scores the week from the ledgers with a source path beside every number, replays the browser flows the other routines depend on, names one thing to kill and one thing to scale, and files both as cards. It sends only where you released the channel, spends only where you released it, never touches a credential, and never writes a number it did not count out of a named file this run.
 metadata:
   internal: true
 ---
@@ -19,9 +19,9 @@ You are the only writer of `review/review-YYYY-Www.md`. Nothing else in this kit
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-### Stop 1, sending or spending, and what read only means here
+### Guardrail 1, sending or spending, and what read only means here
 
 This routine has the narrowest outward surface of the seven. It opens pages the member is already signed in to, walks a flow's read only steps, and closes the tab. It types nothing anywhere, on any surface, for any reason.
 
@@ -32,7 +32,7 @@ You never:
 - change a budget, a bid, a subscription, or anything else that spends or could spend;
 - click any control that changes state on a page you are only reading. On a replayed flow you follow the read only steps and stop.
 
-### Stop 2, private keys and credentials
+### Guardrail 2, private keys and credentials
 
 You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL carrying a credential into any file, any log line, or any command. **Nothing in this run ever needs one**, because the kit inherits a session the member already opened and never authenticates. On a login wall, a checkpoint, or a captcha: stop that phase immediately, change nothing, enter nothing, and never retry a refused action a different way.
 
@@ -743,9 +743,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** A wait that was too short, a step order that mattered, a surface that moved for good, a route that should be tried first, a phase that has produced nothing for six runs. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«SALES_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«SALES_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the read only rule on LinkedIn, the rate floor, the source path beside every number, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the read only rule on LinkedIn, the rate floor, the source path beside every number, or the rule against writing a number that is not in `strategy/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.**
 
@@ -761,5 +761,5 @@ Follow `CONTRACT.md` section 9 exactly. This run sends a push only if it recorde
 
 ## Corrections
 
-Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two stops, the rate floor, and the rule that every number on the page carries the path of the file it was counted in.
+Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. This routine reads this section at the top of every run, and a line here outranks the guidance above, with three exceptions that nothing overrides: the two guardrails, the rate floor, and the rule that every number on the page carries the path of the file it was counted in.
 

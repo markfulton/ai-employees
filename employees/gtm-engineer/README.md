@@ -13,7 +13,7 @@ It takes one offer and builds the go to market around it: who it is for, what it
 
 After that it works the board every weekday. It captures buying signals, drafts outreach, fills listing forms, holds your paid setup inside its guardrails, and on Friday it names one thing to kill and one thing to scale.
 
-**It never sends and it never spends. You are the sender on every message that leaves your machine, and you are the one who spends the money.** That is not a limitation I am apologising for. It is the reason you can leave this running.
+**It can send and it can spend. Whether it does is a setting you own: every channel ships held, with the draft written and the form filled one click from done, and `RELEASES.md` hands a channel over when its drafts have earned it.** Held is the default because it is what lets you leave this running on day one. Released is where a channel goes once its drafts have earned it.
 
 ---
 
@@ -41,7 +41,7 @@ Every routine has an id. The id is the folder name under `routines/`, the `name`
 |---|---|---|---|
 | `gtm-signal-sweep` | Weekdays | 06:45 | Reads your own signal sources and saved searches, captures dated buying signals and contactable people, and appends both to the ledgers the queue reads. |
 | `gtm-board-standup` | Weekdays | 07:30 | Reconciles yesterday's ticks into the board and the contact ledger, folds new cards in, re-renders the board, and writes your morning brief. |
-| `gtm-outreach-queue` | Weekdays | 08:15 | Drafts today's due first touches and follow ups into dated queue files. It never sends. |
+| `gtm-outreach-queue` | Weekdays | 08:15 | Drafts today's due first touches and follow ups into dated queue files. Held unless you release it. |
 | `gtm-launch-step-runner` | Weekdays | 09:15 | Works the next ready board card: stages copy, fills a directory or press form and leaves it open, queues a batch, or verifies a setup. |
 | `gtm-paid-and-tracking-guard` | Mondays | 11:00 | Confirms your primary conversion event still fires and your paid setup still sits inside its guardrails, and names every drift. |
 | `gtm-scoreboard` | Fridays | 16:00 | Scores the week from the ledgers with a source beside every number, replays the browser flows, and files the kill and the scale as cards. |
@@ -93,7 +93,7 @@ There is one option that touches a live surface and it ships off. If you set `ma
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It writes and rewrites every file in its own working folder. It rewrites your ICP when the ledger evidence disagrees with the assumption. It researches and fills in a segment's signal sources when they are empty rather than waiting for you to paste them. It registers its own scheduled jobs, and moves a fire time to clear a collision it detected. It creates its own board cards, advances them, and ticks the ones whose definition of done is a file it can verify. It builds and rebuilds the dashboard, and adds a tab when a channel gains a card. When a site changes and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file. When a ledger line will not parse it quarantines that one line and rebuilds the index from the rest.
 
@@ -101,7 +101,7 @@ Every one of those changes lands as one line in `strategy/CHANGELOG.md`: the dat
 
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own.
 
-Two things stay outside all of that, because they are the first stop wearing different clothes: a campaign or an account setting it did not create, and anything on the far side of a send or a spend control. Those get named, never touched.
+Two things stay outside all of that, because they are the first guardrail wearing different clothes: a campaign or an account setting it did not create, and anything on the far side of a send or a spend control. Those get named, never touched.
 
 **Every card carries a `done_kind`.** A card whose definition of done is a file on your machine is `local-artifact`, and the routine ticks it itself the moment it has verified that file. A card whose definition of done is a send, a submit, a publish, or a spend is `member-action`, and only your tick closes it. That single field is what lets the Employee run at full speed on its own work without ever quietly claiming credit for something you have to do.
 
@@ -170,7 +170,7 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 **5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the three marked slots at the top first. Two of them are required and one is optional. It investigates your business from your own public presence, writes the strategy folder, seeds the board, builds the dashboard and opens it, registers the eight scheduled jobs, and drafts a first small batch of outreach. It stops for you once, on those drafts.
 
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«GTM_ROOT»` if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two stops.
+**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 06:45, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«GTM_ROOT»` if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the browser routines; run them by hand and let the file routines schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
 
 **7. Let one full day happen before you change anything.** Treat week one the way you would treat a new hire's first week. Watch the output, correct it once, write the correction down.
 

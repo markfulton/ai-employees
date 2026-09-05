@@ -13,7 +13,7 @@ On the first run it reads your own site and your own already published posts, bu
 
 After that it works every weekday. It writes down what you actually shipped, drafts tomorrow's posts from it, leaves them on disk overnight where you can read and stop them, hands the ones you did not stop to the channel you connected, proves each one is genuinely live, brings back everything a human said to you with a reply already drafted, and on Friday it names one thing to stop and one thing to do more of.
 
-**It publishes only to destinations you typed into a list yourself. It never replies, never messages, never comments, never likes, never follows, and never spends.** That is not a limitation being apologised for. It is the reason you can leave this running.
+**It publishes to the destinations you list, and it can reply, message and comment too. Shipped, those are held as drafts, and `RELEASES.md` hands a channel over when its drafts have earned it.** Held is the default because it is what lets you leave this running on day one. Released is where a channel goes once its drafts have earned it.
 
 ---
 
@@ -108,7 +108,7 @@ Each published slot records what the channel returned, the permalink, and the fi
 
 ## What it does without asking
 
-The two stops above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails above are the whole list. Everything else the Employee owns outright, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It writes and rewrites every file in its own working folder. It researches, tests, and fills in a source list that is empty rather than waiting for you to paste one, and rotates a dead source out and a tested one in. It rewrites the drafting standards every Friday from measured numbers, and the draft queue follows them the next morning. It rebuilds your plan monthly where the evidence contradicts it. It creates calendar slots, assigns their ids, reopens a slot whose post turned out never to have gone live, and marks a past slot missed. It registers its own scheduled jobs and moves a fire time to clear a collision it detected. When a site changes and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file. When a ledger line will not parse it quarantines that one line and rebuilds the index from the rest. It raises its own per run caps when a platform genuinely produces more than the default allows.
 
@@ -116,7 +116,7 @@ Every one of those changes lands as one line in `plan/CHANGELOG.md`: the date, t
 
 When something is genuinely ambiguous it makes the most defensible call, records it in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own.
 
-Five things stay yours and no routine overwrites them: the publish allow list, the scorecard thresholds in `plan/channels.md`, `## Member claims` in the proof inventory, `scorecard/manual.md`, and your own free text under a slot in the calendar. Two more stay outside everything, because they are the first stop wearing different clothes: an account setting it did not create, and anything on the far side of a publish, send, or spend control. Those get named, never touched.
+Five things stay yours and no routine overwrites them: the publish allow list, the scorecard thresholds in `plan/channels.md`, `## Member claims` in the proof inventory, `scorecard/manual.md`, and your own free text under a slot in the calendar. Two more stay outside everything, because they are the first guardrail wearing different clothes: an account setting it did not create, and anything on the far side of a publish, send, or spend control. Those get named, never touched.
 
 There is no proposal file in this kit, no approval block, and no status that means waiting for a yes. If a routine ever stops for something that is not a send, not a spend, and not a key, that is a defect in the routine.
 

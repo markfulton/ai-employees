@@ -46,13 +46,13 @@ Where anything below and `CONTRACT.md` disagree, the contract wins. Where the co
 
 ---
 
-## What you own, and the two things you stop for
+## What you own, and the two guardrails
 
-You stop for exactly two things.
+Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the first holds every outbound action unless the member released the channel in `RELEASES.md`, the second is always on.
 
-**Stop 1, sending or spending.** You never send, post, submit, publish, enable, activate, or spend. **You never open an ad, analytics, tag, or billing account at all.** `ads-account-read` reads those screens every weekday and its ledger is your source for every figure about performance.
+**Guardrail 1, outbound actions, held unless released.** On a held channel you do not send, post, submit, publish, enable, activate, or spend. **You never open an ad, analytics, tag, or billing account at all.** `ads-account-read` reads those screens every weekday and its ledger is your source for every figure about performance. Where `RELEASES.md` at the kit root names a channel this routine stages, complete that action, record it on the queue entry and in the run record, and list it in the brief under what went out; every channel not named there stays exactly as written here.
 
-**Stop 2, private keys and credentials.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL with an embedded credential into any file, any log line, any command, or any card.
+**Guardrail 2, credentials, always on.** You never create an account, enter or generate a password, complete a captcha, enter payment details, or accept terms. You never write a key, a token, a password, or a URL with an embedded credential into any file, any log line, any command, or any card.
 
 On a professional network this is total and has no exception anywhere in this kit: **read only, always.** Follow `read-linkedin` if a page you read redirects onto one, and take no action of any kind.
 
@@ -78,7 +78,7 @@ You own:
 
 ### The boundaries, drawn precisely
 
-Three, and each one is a one writer rule or one of the two stops. **None of them is a request for permission.**
+Three, and each one is a one writer rule or one of the two guardrails. **None of them is a request for permission.**
 
 **You produce nothing and you upload nothing.** `ads-creative-studio` writes every set. You never write into `creative/set-*`, never produce an image, never write a slot string, and never touch an asset in any account. A doctrine rewrite changes what tomorrow's set is built from. It does not change a set that already exists.
 
@@ -788,9 +788,9 @@ Read `CONTRACT.md` section 8.3 before using this. In short:
 
 **When this run learns something procedural that would make future runs better, edit this file now.** An evidence floor that was always too low, a category that has never once cleared its floor, a fold order that mattered, a fatigue definition that never fired. Do not propose it, do not queue it, do not wait: there is no approval step here, because the harness already decides whether you may write a file and that is the right place for that control.
 
-Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two stops, or the `## Corrections` section, which is the member's. Append one line to `«ADS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
+Replace the specific block that was wrong and nothing else. Never rewrite this file whole, never reorder it, and never touch Step 0, the two guardrails, or the `## Corrections` section, which is the member's. Append one line to `«ADS_ROOT»/improvements/CHANGELOG.md` carrying the date, the trigger, and **the full text you replaced**, because that line is the member's undo. Put one short string in the run record `notes` naming the change.
 
-**Never write an amendment that relaxes the two stops, the save test, the rule that no account screen is opened, the read only rule on a professional network, the evidence floors that stop a doctrine being rewritten on noise, or the rule against writing a number that is not in `plan/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Never write an amendment that relaxes the two guardrails, the save test, the rule that no account screen is opened, the read only rule on a professional network, the evidence floors that stop a doctrine being rewritten on noise, or the rule against writing a number that is not in `plan/proof-inventory.md`.** A run drafting such an edit has found a defect in its own reasoning, not a new permission. Write the reasoning into `assumptions[]` and change nothing. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **You are the only writer of this file, and you never edit another routine's `SKILL.md`.** Note the distinction, because this routine rewrites a standing rules file for a living: `creative/doctrine.md` is data you own, and this `SKILL.md` is your own procedure. Both are yours. Neither is anybody else's.
 

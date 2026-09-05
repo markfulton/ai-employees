@@ -1,6 +1,6 @@
 {
   "name": "ai-employees",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Open source AI Employees. 8 scheduled business roles, 59 routines, on Claude Code and 10 other harnesses. They drive your browser the way you do and improve every run. You own the files.",
   "private": true,
   "type": "module",

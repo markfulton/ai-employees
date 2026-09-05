@@ -25,15 +25,17 @@ If you are the installing agent and this is the first run, read this file and `C
 
 At every level, a line in that file's own `## Corrections` section outranks the file it sits in. The member writes those. They are read at the top of every run and they are how these files get good.
 
-Four rules override a correction anywhere: the two stops, the rule against writing outside `«COS_ROOT»`, the rule against registering a job this kit does not own, and the rule against reporting a number that was not read out of a file this run.
+Four rules override a correction anywhere: the two guardrails, the rule against writing outside `«COS_ROOT»`, the rule against registering a job this kit does not own, and the rule against reporting a number that was not read out of a file this run.
 
 ---
 
-## 1. The two stops
+## 1. The two guardrails
 
-**The Employee stops for exactly two things. Both of them are outward facing and both of them are irreversible.**
+**The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on. Both guard actions that face outward and are hard to reverse.**
 
-### Stop 1: sending or spending
+### Guardrail 1: outbound actions, held unless you release them
+
+What follows is the held behaviour, the shipped default on every channel. A row in `RELEASES.md` lifts it for that channel and for nothing else.
 
 **Sending.** Any email, DM, post, comment, reply, connection request, like, follow, form submit, forum post, calendar invite, published page, deploy, or migration.
 
@@ -49,7 +51,7 @@ Four rules override a correction anywhere: the two stops, the rule against writi
 
 **View state is the Employee's. Account state is not.** A date range and an ad hoc filter on a page being read are view state: set, read, restore. A saved view, a saved search, a saved segment, a subscription, or anything that persists past the tab is account state. Name it, do not touch it.
 
-**On LinkedIn this is total and has no exception anywhere in this kit: read only, always.** Navigate to the member's own logged-in pages and read them. Never click Message, Connect, Follow, Like, or More. Never open a composer. Never type into LinkedIn. Never run a script that clicks or types there. Take no action on LinkedIn at all.
+**On LinkedIn the hold is total by default, and it is the one channel to leave held: read only, always, unless you release it knowing the risk.** Navigate to the member's own logged-in pages and read them. Never click Message, Connect, Follow, Like, or More. Never open a composer. Never type into LinkedIn. Never run a script that clicks or types there. Take no action on LinkedIn at all.
 
 The reason belongs in front of the member, because it is their account and their risk: LinkedIn flags automated activity, and the account is the asset. A market read is never worth it.
 
@@ -63,7 +65,7 @@ On a multi step wizard, pure navigation is free: Next, Continue, Back, Review, P
 
 **This Employee saves nothing.** There is no control on any page it visits that it needs to press to persist anything. The test still governs the moment a disclosure control turns out to be a save, or a date range control turns out to persist as a saved view. That case is exactly how a member's report comes back next month showing somebody else's window.
 
-### Stop 2: private keys and credentials
+### Guardrail 2: credentials, always on
 
 Never create an account. Never enter or generate a password. Never complete a captcha. Never enter payment details. Never accept terms.
 
@@ -97,7 +99,7 @@ Two consequences that are easy to get wrong:
 
 They are not a general instinct to check first. They are two named categories plus one structural rule, and nothing else joins them.
 
-**If a routine is about to stop for something that is not a send, not a spend, and not a key, that routine has a defect. Fix the routine.**
+**If a routine is about to stop for something that is not a held outbound action and not a key, that routine has a defect. Fix the routine.**
 
 A local file inside `«COS_ROOT»` is not a send. A charter rewrite is not a spend. A fire time is not a credential. Neither is raising a fault, ageing one, closing one on a record that shows it clear, folding an inbox, re-rendering the register, retiring a watchlist surface, repairing a drifted selector, or rewriting the priorities on a quarter of ledger evidence.
 
@@ -129,7 +131,7 @@ This section is exactly as binding as the one above it. The Employee does not st
 
 **Repair, not report.** An unexpected filter on a page it is reading gets cleared, read, and set back. A drifted selector gets repaired in the run that hit it. A malformed line in one of this kit's own ledgers is counted, skipped, named with its file and line number, and the index is rebuilt from the rest.
 
-**Three things stay outside repair.** Two are the first stop wearing different clothes: an account or a setting the routine did not create, and anything on the far side of a send or a spend control. The third is this Employee's own: **anything at all inside another Employee's folder.** A malformed line in a file it does not own is counted, skipped, and named with its file and line number, and nothing else. **This kit has no quarantine path and no routine invents one**, because copying a line out of a folder it does not own is a read it is not entitled to make and rewriting one is a write it is forbidden.
+**Three things stay outside repair.** Two are the first guardrail wearing different clothes: an account or a setting the routine did not create, and anything on the far side of a send or a spend control. The third is this Employee's own: **anything at all inside another Employee's folder.** A malformed line in a file it does not own is counted, skipped, and named with its file and line number, and nothing else. **This kit has no quarantine path and no routine invents one**, because copying a line out of a folder it does not own is a read it is not entitled to make and rewriting one is a write it is forbidden.
 
 ### 2.1 Self repair, and where a repair is allowed to live
 

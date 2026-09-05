@@ -11,7 +11,7 @@ This is not a chat window and not a service running somewhere else. It is seven 
 
 Every weekday morning it walks every AI Employee installed on your machine, reads each one's own run log, and writes you one short page: what ran, what stopped, what is waiting on you. Every weekday afternoon it takes the single worst fault on the fleet and turns it into a page you can act on in a minute. Once a week it reads the world, scores what your machine and your business actually produced, and argues three moves both ways. Once a month it grades its own advice.
 
-**It is read only toward everything.** It never sends, never spends, never deploys, never migrates, and never publishes. **And it never writes a single file into another Employee's folder.** That second rule is the one that makes the first one worth having, and the whole of it is below.
+**It is read only toward everything.** It sends only where you released the channel, spends only where you released it, never deploys, never migrates, and publishes only where you released the channel. **And it never writes a single file into another Employee's folder.** That second rule is the one that makes the first one worth having, and the whole of it is below.
 
 ---
 
@@ -127,7 +127,7 @@ If a diagnosis would need one of those files, it says so in those words and name
 
 ## What it does without asking
 
-The two stops and the third rule are the whole list. Everything else it owns outright inside its own folder, and it is worth being explicit, because this is the half people assume they will have to supervise.
+The two guardrails and the third rule are the whole list. Everything else it owns outright inside its own folder, and it is worth being explicit, because this is the half people assume they will have to supervise.
 
 It raises a fault, ages it, and closes one when a record shows it clear. It folds new items onto your register and assigns their ids. It turns your tick into a ledger line. It adds a surface to its watchlist when it proves one worth watching, and retires one that has produced nothing for six runs, in place, with the date and the reason. It rewrites your charter when your own site's price or buy URL no longer matches what the file says. It rewrites your priorities when a quarter of ledger evidence disagrees with them. It registers its own seven jobs and moves one of its own fire times to clear a collision it detected. When a site changes and a browser flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into its own recipe file.
 
@@ -214,7 +214,7 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 **5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the two marked slots at the top first. One is required. It researches your business, finds your Employees, writes the charter and the map, seeds the watchlist and the priorities, builds the dashboard, and registers the seven jobs.
 
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 07:15, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. **That is precisely the silent stop this Employee exists to catch on your other Employees, and it is the one shape of failure that nothing catches on this one.** Scope the write permission to `«COS_ROOT»` if your harness supports scoping; read permission wants to be wider. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two stops.
+**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 07:15, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. **That is precisely the silent stop this Employee exists to catch on your other Employees, and it is the one shape of failure that nothing catches on this one.** Scope the write permission to `«COS_ROOT»` if your harness supports scoping; read permission wants to be wider. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
 
 **7. Let one full week happen before you change anything.** The first brief will be thin, the first market page will be all baselines, the first scorecard will be mostly blank, and the first calibration figure will refuse to exist. Every one of those is correct rather than broken, and the next section says why.
 
@@ -256,7 +256,7 @@ You stay in control through three things rather than an approval queue. **Your a
 
 If you disagree with something it taught itself, write one line in that routine's `Corrections` section. That line outranks the routine's own instructions from its next run onward.
 
-**Four rules it can never teach itself out of**, whatever it concludes: the two stops, the rule against writing anywhere outside its own folder, the rule against registering a job it does not own, and the rule against reporting a number it did not read in a file that run. A run that finds itself drafting one of those edits has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
+**Four rules it can never teach itself out of**, whatever it concludes: the two guardrails, the rule against writing anywhere outside its own folder, the rule against registering a job it does not own, and the rule against reporting a number it did not read in a file that run. A run that finds itself drafting one of those edits has found a defect in its own reasoning, not a new permission. **A self edit can make allowed work better. It can never widen what is allowed.**
 
 **It notifies you only when you are the thing blocking it.** An expired login on a surface it needs, a credential it named that is absent, your primary metric becoming unreadable, or a browser lock held by a run that died. Four cases, once each, never twice for the same problem, never outside your working hours, never on a first run. Everything else waits for the morning brief. **A silently stopped Employee is a brief line and never a buzz**, unless its cause is one of those four: it is discovered in the morning and read in the morning, and a channel that fires every day is a channel you mute.
 
