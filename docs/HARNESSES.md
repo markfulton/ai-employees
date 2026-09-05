@@ -2,7 +2,7 @@
 
 Every routine is one `SKILL.md` with `name` and `description` frontmatter, plain markdown instructions, and no clock time in it. Any harness that can read files, write files, run a command, read the clock, and (ideally) drive your signed in browser can run one. What differs is the scheduler and the invocation, and this page has both for each harness, with the one thing to check on a first run.
 
-The kits are built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and run on Windows, macOS and Linux. Claude Code on Windows is where the GTM Engineer has run my own club launch every weekday since August 27.
+The kits are built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and run on Windows, macOS and Linux. Claude Code on Windows is where the GTM Engineer has run my own club launch every weekday since August 27.
 
 Two rules hold on every harness. **Routines are scheduled jobs, not skills**: point the scheduler at the kit's `routines/` folder and never copy them into a global skills directory, because a skills directory loads all of them into every session you open and lets any of them be invoked outside its window, where it will only record a skip and exit. **Keep one copy**: every routine ends with a `## Corrections` section you write into and it reads on its next run, and two copies means you write into one and it reads from the other.
 
@@ -19,6 +19,10 @@ Two rules hold on every harness. **Routines are scheduled jobs, not skills**: po
 | Grok Bot | Ready | Its bots run routines on a schedule from their own cloud computer | One recurring task per routine, handed that routine's `SKILL.md` as the run prompt | Whether it can reach your signed in accounts at all; it runs elsewhere |
 | Codex | Ready | Scheduled runs, one per routine | `codex exec "<prompt>"`, confirm against `codex --help` | The sandbox: confirm it can write in the kit folder and reach the network |
 | Antigravity | Ready | `agy` job runner pointed at the routine folder | `agy -p "<prompt>"` | Whether it drives your signed in browser profile or a clean one |
+| Pi | Ready | None built in; use the operating system's | `pi -p "<prompt>"`, confirm against `pi --help` | Whether it reads the kit folder as the working directory; then the browser question |
+| Cline | Ready | Built in cron: `cline schedule create "<prompt>" --cron "<cron>"`, one per routine, auto approve on | The prompt is `Read <root>/routines/<id>/SKILL.md and follow it.` | That a scheduled run starts in the kit folder, and that auto approve is on so it never hangs |
+| Qwen Code | Ready | Built in scheduled tasks, or the operating system's | `qwen -p "<prompt>"`, confirm against `qwen --help` | That it can write inside the kit folder and reach the network |
+| DeepSeek | Ready | Its scheduling plugin, one run per routine | `dsh` runs a local server; confirm the headless prompt form against `dsh --help` | Whether it drives your signed in browser profile or a clean one |
 
 ## What the invocation has to get right, on every harness
 

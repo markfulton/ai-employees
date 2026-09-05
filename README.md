@@ -51,7 +51,7 @@ npx ai-employees hire gtm-engineer --to D:\AgentOps\gtm-engineer
 
 Either way: you spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session. It researches your business from your own public pages instead of interviewing you, writes your strategy files, builds your dashboard, registers its own schedule, and stops exactly once to show you its first drafts. [docs/INSTALL.md](docs/INSTALL.md) is the long version, per operating system and per scheduler.
 
-Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and runs on Windows, macOS and Linux. Claude Code on Windows is where the GTM Engineer runs my own club launch every weekday. OpenClaw and Hermes have built in cron, Codex has scheduled runs, Antigravity has the `agy` job runner, OpenCode uses the operating system's scheduler, and Grok Bot runs from its own cloud computer. [docs/HARNESSES.md](docs/HARNESSES.md) has the invocation and the first run check for each.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. Claude Code on Windows is where the GTM Engineer runs my own club launch every weekday. OpenClaw, Hermes, Cline and Qwen Code have built in cron or scheduled tasks, Codex has scheduled runs, Antigravity has the `agy` job runner, DeepSeek schedules through a plugin, OpenCode and Pi use the operating system's scheduler, and Grok Bot runs from its own cloud computer. [docs/HARNESSES.md](docs/HARNESSES.md) has the invocation and the first run check for each.
 
 <details>
 <summary>OpenClaw</summary>
@@ -87,6 +87,30 @@ Drive the cadence with scheduled runs, one per routine, each `codex exec "Read <
 <summary>Antigravity</summary>
 
 Schedule each routine with the `agy` job runner pointed at the routine folder rather than registered as a global pack: `agy -p "Read <root>/routines/<id>/SKILL.md and follow it."`. Settle whether it drives the browser profile you are signed in to or a clean one.
+</details>
+
+<details>
+<summary>Pi</summary>
+
+Reads skills folders directly and runs headless with `pi -p "Read <root>/routines/<id>/SKILL.md and follow it."`. No scheduler of its own: mirror `SCHEDULE.md` into the operating system's scheduler, one job per routine, with the kit folder as the working directory. Confirm the print flag against `pi --help`, then settle the browser question.
+</details>
+
+<details>
+<summary>Cline</summary>
+
+The Cline CLI has its own cron: `cline schedule create "Read <root>/routines/<id>/SKILL.md and follow it." --cron "<cron>"`, one per routine, run with auto approve on so a scheduled run never hangs on a prompt. Confirm the flags against `cline --help`. Check that a scheduled run starts in the kit folder before you trust it.
+</details>
+
+<details>
+<summary>Qwen Code</summary>
+
+Reads the skill format and ships scheduled tasks. Register one per routine, or drive `qwen -p "Read <root>/routines/<id>/SKILL.md and follow it."` from the operating system's scheduler. Confirm the print flag against `qwen --help`, and confirm it can write inside the kit folder and reach the network.
+</details>
+
+<details>
+<summary>DeepSeek</summary>
+
+`dsh` runs a local server with a web interface, and scheduling is one of its plugins. Register one scheduled run per routine, handed that routine's `SKILL.md` as the prompt, with the kit folder as the working directory. Confirm the headless prompt form against `dsh --help`, then settle whether it drives your signed in browser profile or a clean one.
 </details>
 
 A free club account gets the guided Hire Your First AI Employee walkthrough with the launch replay, the session calendar, the preview lessons and employee updates: [club.reinventing.ai](https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees).

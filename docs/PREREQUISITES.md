@@ -68,4 +68,4 @@ Measured on the GTM Engineer over 29 production runs: about $20 of API equivalen
 
 ## Where it runs
 
-Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and runs on Windows, macOS and Linux. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron, OpenClaw and Hermes through their built in cron. `docs/HARNESSES.md` has the invocation and the first run check for each, and `docs/INSTALL.md` has the steps per operating system.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron, OpenClaw and Hermes through their built in cron. `docs/HARNESSES.md` has the invocation and the first run check for each, and `docs/INSTALL.md` has the steps per operating system.

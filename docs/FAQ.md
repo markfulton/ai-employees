@@ -8,7 +8,7 @@
 
 **Windows, macOS or Linux?** All three. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron. `docs/INSTALL.md` has the steps for each scheduler and what a first run should look like.
 
-**Which harness?** Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity. Claude Code is the one the GTM Engineer runs my own club launch on every weekday. OpenClaw and Hermes have built in cron, Codex has scheduled runs, Antigravity has the `agy` job runner, OpenCode uses the operating system's scheduler, and Grok Bot runs from its own cloud computer. `docs/HARNESSES.md` has the invocation and the first run check for each.
+**Which harness?** Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. Claude Code is the one the GTM Engineer runs my own club launch on every weekday. OpenClaw, Hermes, Cline and Qwen Code have built in cron or scheduled tasks, Codex has scheduled runs, Antigravity has the `agy` job runner, DeepSeek schedules through a plugin, OpenCode and Pi use the operating system's scheduler, and Grok Bot runs from its own cloud computer. `docs/HARNESSES.md` has the invocation and the first run check for each.
 
 **Can I run just one?** Yes. Each employee is a self contained folder. They share nothing but a scheduler. The GTM Engineer is the one to start with; the Chief of Staff is the one to add second, because it reads the run logs of every other employee on the machine and tells you which one quietly stopped.
 

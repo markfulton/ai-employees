@@ -180,7 +180,7 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 9. **A working folder outside OneDrive, Dropbox, Google Drive and iCloud.** That folder is `«SOC_ROOT»` everywhere in this kit.
 10. **A usage budget.** Measured on the GTM Engineer over 29 production runs: about $20 of API equivalent usage on a plain weekday on Opus, about $8 on Sonnet, and a skipped fire costs cents now that `scripts/guard.mjs` runs before any document is read. The repo's `docs/COST.md` has the table and the dates.
 
-Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex and Antigravity, and runs on Windows, macOS and Linux. The repo's `docs/HARNESSES.md` has the scheduler and invocation for each harness, and `docs/INSTALL.md` has the steps per operating system and what a first run should look like.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. The repo's `docs/HARNESSES.md` has the scheduler and invocation for each harness, and `docs/INSTALL.md` has the steps per operating system and what a first run should look like.
 
 ---
 
