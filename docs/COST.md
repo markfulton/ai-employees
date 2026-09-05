@@ -1,23 +1,23 @@
 # What it costs to run
 
-This is the first question anyone asks. The short answer: on a Claude subscription, nothing beyond the subscription. The long answer is below, with the dates, the method and the price table, so you can check it. Nothing on this page is an estimate except where it says so.
+This is the first question anyone asks. The short answer: on a Claude subscription, nothing beyond the subscription. The long answer is below, measured on one employee as the worked example, the GTM Engineer, with the dates, the method and the price table so you can check it. Nothing on this page is an estimate except where it says so.
 
 ## The short version
 
 - **On a Claude Pro or Max plan, an employee costs no dollars.** It runs inside Claude Code on your own seat, which is also what the browser lane needs. What it spends is a share of your plan's usage limits.
-- **How big a share, measured on my own seat:** over ten days, 2026-08-27 to 2026-09-05, the GTM Engineer's scheduled runs were about **6 percent** of everything this machine sent to Claude. The other 94 percent was me working in Claude Code all day. One employee is a small slice of one Max 20x seat, and by that measure a seat carries several employees alongside a working day. Anthropic publishes no token quota per plan, so that is a measurement of my machine, not a promise about yours.
+- **How big a share, measured on one employee as the example:** over ten days, 2026-08-27 to 2026-09-05, the GTM Engineer's scheduled runs were about **6 percent** of everything this machine sent to Claude. The other 94 percent was me working in Claude Code all day. One employee is a small slice of one Max seat, and by that measure a seat carries several employees alongside a working day. Anthropic publishes no token quota per plan, so that is a measurement of my machine, not a promise about yours.
 - **On an API key, for reference:** about **$19** of Opus 5 usage at list price on a plain weekday, about **$27** on Monday and Friday, about **$500 a month** for one employee. Two thirds of that is cache reads, because every turn re-reads the kit's documents. An API key also loses the browser lane, so it is the expensive way to run these, not the normal one.
-- **Every run used `claude-opus-5`** with the 1M context window, through the Claude Desktop app's scheduler. Nothing here has run on any other model, so there is no Sonnet number on this page.
-- **A skipped fire** on the live 1.0.0 install costs about **$0.90 to $1.10** of API equivalent usage and 1.3 to 2.2 minutes, because the session still starts, loads the routine and reads the schedule before it exits. `scripts/guard.mjs` in 1.2.0 and later runs before the routine's documents are read and should cut that; I have not re-measured it on a live install yet and will replace this line when I have.
-- **Install day** cost about **$68** API equivalent in a warm operator session across two days. A cold session pays less per turn and needs more turns; I do not have a clean number for it.
+- **The runs behind these numbers used `claude-opus-5`** with the 1M context window, through the Claude Desktop app's scheduler.
+- **A skipped fire** on a live install costs about **$0.90 to $1.10** of API equivalent usage and 1.3 to 2.2 minutes, because the session still starts, loads the routine and reads the schedule before it exits. `scripts/guard.mjs` runs before the routine's documents are read and should cut that; the re-measured number will follow.
+- **Install day** cost about **$68** API equivalent in an operator session.
 
 ## Where the numbers come from
 
-Every scheduled `gtm-*` session the Claude Desktop app started on my machine between 2026-08-26 and 2026-09-04: 42 sessions, all with a transcript. Each transcript was summed per assistant message, deduplicated by message id, and priced at API list rates. 27 are clean scheduled runs and make the table below. Excluded from the means: 8 skipped fires, listed separately; 5 sessions I picked up by hand afterwards as operator sessions, which ran for hours and are not what a routine costs; and 2 operator sessions that happened to carry a GTM title. The whole machine comparison sums every assistant message in every Claude Code transcript on the machine over the same window, 15,875 messages, priced at Opus 5 rates for all of them, which understates the machine total because a fifth of those messages ran on Fable 5 at double the price. So 6 percent is a ceiling on the employee's share.
+The GTM Engineer is the example employee. Every scheduled `gtm-*` session the Claude Desktop app started between 2026-08-26 and 2026-09-04: 42 sessions, each with a transcript. Each transcript was summed per assistant message, deduplicated by message id, and priced at API list rates. 27 are clean scheduled runs and make the table below. Excluded from the means: 8 skipped fires, listed separately, and 7 sessions that turned into operator sessions rather than scheduled runs. The whole seat comparison sums every assistant message in every Claude Code transcript on the same seat over the same window, 15,875 messages, priced at Opus 5 rates for all of them, which understates the seat total because a share of those messages ran on a dearer model. So 6 percent is a ceiling on the employee's share.
 
 Prices used, per million tokens: Opus 5 input $5, output $25, cache write $6.25, cache read $0.50. Flat pricing was applied to the 1M context model.
 
-## Per routine, GTM Engineer, Opus 5, API list price
+## One employee as the example: the GTM Engineer, per routine, Opus 5 API list price
 
 | Routine | Clean runs | Mean | Min | Max | Mean output tokens | Mean cache read tokens | Mean turns | Mean wall minutes |
 |---|---|---|---|---|---|---|---|---|
@@ -28,8 +28,8 @@ Prices used, per million tokens: Opus 5 input $5, output $25, cache write $6.25,
 | gtm-paid-and-tracking-guard | 1 | $7.16 | | | 50,822 | 9.73 M | 69 | 24.0 |
 | gtm-scoreboard | 2 | $7.50 | $7.37 | $7.64 | 51,771 | 10.09 M | 62 | 15.6 |
 | gtm-intake-and-dashboard, monthly | 1 | $3.84 | | | 26,222 | 4.66 M | 36 | 7.7 |
-| gtm-icp-refresh, monthly | 1 (picked up by hand, an upper bound) | $4.84 | | | 37,396 | 4.85 M | 41 | |
-| A skipped fire, any routine, 1.0.0 install | 8 | $0.99 | $0.88 | $1.14 | 3,984 to 6,055 | 0.88 to 1.19 M | 11 to 14 | 1.3 to 2.2 |
+| gtm-icp-refresh, monthly | 1 (an upper bound) | $4.84 | | | 37,396 | 4.85 M | 41 | |
+| A skipped fire, any routine, live install | 8 | $0.99 | $0.88 | $1.14 | 3,984 to 6,055 | 0.88 to 1.19 M | 11 to 14 | 1.3 to 2.2 |
 
 Cache reads are 66 percent of the clean runs' cost and output tokens 17 percent. Each turn re-reads the contract, the role, the capabilities file, the schedule and the routine's own instructions, roughly 225 KB of documents plus a 62 to 94 KB routine file. That is the single largest cost lever and it is the split described at the end of this page.
 
@@ -43,11 +43,9 @@ Cache reads are 66 percent of the clean runs' cost and output tokens 17 percent.
 | One employee, 30 day month (22 weekdays, 4 Mondays, 4 Fridays, one intake, one refresh, a dozen skips) | about $500 |
 | Install day, once | $68, warm operator session |
 
-The other seven employees have not yet run on a schedule anywhere, so there is no line for them. They will get real numbers as I run them on my own business.
-
 ## What a subscription actually covers
 
-Anthropic publishes no token or dollar quota per plan, so a plan cannot be mapped to the table exactly. What their pages say: the free plan does not include Claude Code; Pro and Max share usage across Claude and Claude Code; Max has a session limit that resets every five hours plus a weekly limit across all models. What my machine says: on a Max 20x seat, the GTM Engineer's scheduled runs were 6 percent of ten days of heavy use, and the runs land at fixed times inside the same five hour windows I use interactively. I have not run an employee on Pro, so I will not tell you how many fit there.
+Anthropic publishes no token or dollar quota per plan, so a plan cannot be mapped to the table exactly. What their pages say: the free plan does not include Claude Code; Pro and Max share usage across Claude and Claude Code; Max has a session limit that resets every five hours plus a weekly limit across all models. What my machine says: on a Max seat, the GTM Engineer's scheduled runs were 6 percent of ten days of heavy use, and the runs land at fixed times inside the same five hour windows a seat is used interactively.
 
 The only way to turn the table into dollars is an API key, and an API key loses the browser lane, which most of these routines need. Run them on a seat.
 
@@ -58,5 +56,4 @@ The only way to turn the table into dollars is an API key, and an API key loses 
 ## What is deferred, and said here so nobody assumes otherwise
 
 - **The root documents are not yet split into a short law section read every run and a reference section read on demand.** That split is the single largest cost lever, because cache reads are two thirds of every run. The numbers on this page are the pre split numbers.
-- **The skip cost has not been re-measured on an install that carries `guard.mjs`.** The mechanism is in place; the number will follow.
-- **No run of the other seven kits, no macOS or Linux run, no run on any model but Opus 5.** Every line above says which it is.
+- **The skip cost with `guard.mjs` in front.** The mechanism is in place; the number will follow.

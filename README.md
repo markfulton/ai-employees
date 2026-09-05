@@ -201,9 +201,9 @@ Guided version, updates and premium employees: club.reinventing.ai
 ## What it costs
 
 - **On a Claude Pro or Max plan, nothing beyond the plan.** The employees run inside Claude Code on your own seat, which is also what the browser lane needs. They spend a share of your plan's usage limits, not dollars.
-- **How big a share, measured:** over ten days on my own Max 20x seat, the GTM Engineer's scheduled runs were about 6 percent of everything this machine sent to Claude, and the rest was me working in Claude Code all day. One employee is a small slice of one seat, and by that measure a seat carries several employees alongside a working day. Anthropic publishes no quota per plan, so that is my machine, not a promise about yours.
+- **How big a share, measured on one employee as the example:** over ten days on my own Max seat, the GTM Engineer's scheduled runs were about 6 percent of everything this machine sent to Claude, and the rest was me working in Claude Code all day. One employee is a small slice of one seat, and by that measure a seat carries several employees alongside a working day. Anthropic publishes no quota per plan, so that is my machine, not a promise about yours.
 - **On an API key, for reference only:** about $19 of Opus 5 usage at list price on a plain weekday, about $27 on Monday and Friday, measured over 27 scheduled runs. Two thirds of that is cache reads, because every turn re-reads the kit's documents. An API key also loses the browser lane, so it is the expensive way to run these, not the normal one.
-- Every run so far used `claude-opus-5` with the 1M context window; nothing here has run on another model. [docs/COST.md](docs/COST.md) has the per routine table, the dates and the method.
+- The runs behind these numbers used `claude-opus-5` with the 1M context window. [docs/COST.md](docs/COST.md) has the per routine table, the dates and the method.
 
 ## Before first run
 

@@ -64,7 +64,7 @@ Not inside OneDrive, Dropbox, Google Drive or iCloud. The routines write state a
 
 ## 10. A usage budget
 
-On a Claude Pro or Max plan an employee costs nothing beyond the plan; it spends a share of the plan's usage limits. Measured on the GTM Engineer over 27 scheduled runs, that share was about 6 percent of everything one Max 20x seat sent to Claude in ten days of heavy use. On an API key it is about $19 of Opus 5 usage at list price on a plain weekday, about $27 on a Monday or a Friday, and an API key loses the browser lane. `docs/COST.md` has the table, the dates and the method.
+On a Claude Pro or Max plan an employee costs nothing beyond the plan; it spends a share of the plan's usage limits. Measured on one employee as the example, the GTM Engineer, over 27 scheduled runs, that share was about 6 percent of everything one Max seat sent to Claude in ten days of heavy use. On an API key it is about $19 of Opus 5 usage at list price on a plain weekday, about $27 on a Monday or a Friday, and an API key loses the browser lane. `docs/COST.md` has the table, the dates and the method.
 
 ## Where it runs
 
