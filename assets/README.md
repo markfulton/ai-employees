@@ -14,7 +14,7 @@ Two images live in this folder and are built from the same eight square thumbnai
 |---|---|---|
 | `banner.png` | 1600 by 400. The eight, named, on the navy ground, beside the one line promise. | The README, under the heading block and above the intro. |
 | `social-preview.png` | 1280 by 640. The same eight under the repo name, with the GitHub URL. | The repository settings, under Social preview. GitHub does not read it from the tree, so upload it by hand after a change. |
-| `cta-install-prompt.png` | 940 by 148, the club's own primary button at two times scale. Shown at `width="470"`, so it stays crisp on a retina screen. | The README, in the install prompt block above What sets them apart. |
+| `cta-install-prompt.png` | 660 by 104, the club's own primary button at two times scale. Shown at `width="330"`, so it stays crisp on a retina screen. | The README, in the install prompt block above What sets these AI Employees apart. |
 
 Both are rendered from the pages in `src/` in headless Chrome at two times scale and downsampled, with Montserrat for the display line, Inter for text and JetBrains Mono for the eyebrow, which are the club's own three faces. No gradient text. To rebuild one:
 
@@ -22,10 +22,10 @@ Both are rendered from the pages in `src/` in headless Chrome at two times scale
 chrome --headless=new --hide-scrollbars --force-device-scale-factor=2 --window-size=1600,400 --virtual-time-budget=8000 --default-background-color=00000000 --screenshot=banner@2x.png assets/src/banner.html
 ```
 
-then downsample to 1600 by 400. The social preview is the same with `--window-size=1280,640`, no transparent background, and 1280 by 640 at the end. The button is `--window-size=470,74` and keeps its two times pixels rather than being downsampled, because GitHub renders an `img` at `height: auto` and will only ever scale one down:
+then downsample to 1600 by 400. The social preview is the same with `--window-size=1280,640`, no transparent background, and 1280 by 640 at the end. The button is `--window-size=330,52` and keeps its two times pixels rather than being downsampled, because GitHub renders an `img` at `height: auto` and will only ever scale one down:
 
 ```
-chrome --headless=new --hide-scrollbars --force-device-scale-factor=2 --window-size=470,74 --virtual-time-budget=8000 --default-background-color=00000000 --screenshot=assets/cta-install-prompt.png assets/src/cta-install-prompt.html
+chrome --headless=new --hide-scrollbars --force-device-scale-factor=2 --window-size=330,52 --virtual-time-budget=8000 --default-background-color=00000000 --screenshot=assets/cta-install-prompt.png assets/src/cta-install-prompt.html
 ```
 
 The button is cream on a navy rim rather than cream alone, because GitHub's light theme washes out an unrimmed cream fill.
