@@ -219,10 +219,6 @@ Guided version, updates and premium employees: club.reinventing.ai
 - **Your ceilings.** A paid ceiling of zero puts the guard into observation only. Which channels are off limits, and any claim that must never be made, one line each.
 - **A machine that is awake** at the fire times in `SCHEDULE.md`, or fire times moved to after it normally wakes.
 
-## AI Employee of the Week
-
-One AI Employee at a time, with a real output from a real run on my own business. The series lives at [docs/EMPLOYEE-OF-THE-WEEK.md](docs/EMPLOYEE-OF-THE-WEEK.md). Community entries from Discussions go there too, with your name on them.
-
 ## Contributing
 
 Routine requests, AI Employee proposals, harness reports, translations, and corrections from real runs. Post what an employee did for your business in Discussions under Show and tell; good builds go into the README with your name on them. [CONTRIBUTING.md](CONTRIBUTING.md) has the rules: MIT in and out, a DCO sign off on every commit, no em or en dash anywhere, and the drafting defaults are not negotiable in a shipped routine.

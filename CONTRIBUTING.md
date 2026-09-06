@@ -8,7 +8,7 @@ Thank you for looking under the hood. This repo is eight AI employees, each a fo
 - **Routine requests.** A routine one of the eight should have. Use the routine request template; say which employee, what it would own, and what it must never do.
 - **Employee proposals.** A ninth role. Use the employee request template. Read `docs/HOW-EMPLOYEES-WORK.md` first, because a proposal that keeps the two guardrails and the schedule model is one I can build on.
 - **Harness notes.** Ran a kit on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code or DeepSeek, or on a Mac through launchd or Linux through cron? Open an issue with the invocation you used, what the first run record said, and what you changed, and it goes into the notes in `docs/HARNESSES.md` with your name on the change.
-- **Show and tell.** Post what an AI Employee did for your business in Discussions under Show and tell. Good ones go into the README's AI Employee of the Week series, with your name on them.
+- **Show and tell.** Post what an AI Employee did for your business in Discussions under Show and tell. Good builds go into the README with your name on them.
 
 ## Before you open a pull request
 
