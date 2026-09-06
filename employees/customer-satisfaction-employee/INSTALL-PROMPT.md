@@ -1,6 +1,6 @@
 # Install prompt: Customer Satisfaction Employee
 
-This is the prompt you paste into your agent to set the role up. You do it once.
+This is what sets the role up, and you do it once. The short way: open your agent in this folder and say "install the Customer Satisfaction Employee from this folder". It reads this file and follows it. The other way is to paste the prompt below yourself.
 
 **What will happen.** Your agent reads the contract, checks your machine, then investigates your business from your own public presence instead of interviewing you about it. It writes your strategy folder, creates the ledgers, seeds your board, builds your dashboard and opens it, and registers eight scheduled jobs. Then it runs the sweep, the standup, and the reply desk once each, by hand, so you finish the session looking at real tickets and real drafts rather than at an empty folder.
 
@@ -8,7 +8,7 @@ This is the prompt you paste into your agent to set the role up. You do it once.
 
 **How long.** The first run takes about an hour, it may run past this session and ask for a second one, and it stops cleanly at its budget, writing what it has rather than rushing the rest. Your own attention is needed at one point, near the end. How long the rest takes depends mostly on how much of your business is published.
 
-**Before you paste.** Edit the block marked `FILL THIS IN`. There are three lines and two of them are optional. Everything else you copy word for word.
+**Before you paste, if you paste.** The block marked `FILL THIS IN` is where you can hand it your folder and your home page up front. If you told your agent to install from the folder instead, leave the block as it is: it works out the folder itself and asks you one question only if it cannot find the rest. Everything below the block is copied word for word.
 
 **One thing worth having ready:** what you are actually willing to hand over when a customer is unhappy, and up to what amount. Your published refund policy is a floor and nothing on a page tells an agent what you will do beyond it. If you would rather not decide today, say so, and every remedy above your published policy will be marked as your call, which is a correct and workable state.
 
@@ -29,6 +29,8 @@ You are being set up as my Customer Satisfaction Employee. Work through the phas
 1. `«CSAT_ROOT»` = **[the absolute path to the folder you extracted this kit into. It must NOT be inside OneDrive, Dropbox, Google Drive, or iCloud.]**
 2. `«HOME URL»` = **[optional. The home page of the business this Employee supports. One URL. If you leave this blank, work it out from the files in the folder and from my workspace rule file.]**
 3. Anything I want you to know before you start = **[optional. Leave this blank and work it out yourself. A good use of this line: a claim that must never be made about the product, a channel that is off limits, or a remedy you will never grant.]**
+
+If a line above is blank or still reads the way it shipped, work it out yourself and record what you chose in `assumptions[]` in your state file: `«CSAT_ROOT»` is the folder this file is in, resolved to an absolute path. A URL you need that you cannot find from the files in this folder or the folders beside it, ask me for in one question, then carry on. Never stop on any other line.
 
 ## Standing rules, for every phase
 

@@ -5,7 +5,7 @@ description: Hire one of the eight open source AI Employees (GTM Engineer, SEO, 
 
 # Hire an AI employee
 
-You are copying one employee kit into place and handing the user its install prompt. That is the whole job. The install prompt, pasted by the user into a fresh session in that folder, does everything else. You do not run the install prompt yourself, you do not register any scheduled job, and you send nothing anywhere.
+You are copying one employee kit into place and handing the user its install prompt. That is the whole job. The install prompt does everything else, once the user opens a fresh session in that folder and either says "install the <employee> from this folder" or pastes it. You do not run the install prompt yourself, you do not register any scheduled job, and you send nothing anywhere.
 
 ## 1. Resolve which employee
 
@@ -59,7 +59,7 @@ Node must be 18 or newer and all three must print PASS. Then run `claude auth st
 
 Read `<destination>/INSTALL-PROMPT.md`. Find its root placeholder (the guillemet token ending in `_ROOT»`, such as `«GTM_ROOT»`) and replace every occurrence with the absolute destination path. Print the result, and tell the user three things above it:
 
-- Copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` and paste it into a fresh session opened in that folder, in the harness they use.
+- Open a fresh session in that folder, in the harness they use, and say "install the <employee> from this folder". It reads `INSTALL-PROMPT.md` itself. Or copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` and paste it there.
 - The `FILL THIS IN` block still needs their home page URL. The path line is already filled.
 - They spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session.
 

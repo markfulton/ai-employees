@@ -182,11 +182,11 @@ async function hire(args) {
 
   out("");
   out("=".repeat(78));
-  out("Next: open a session in " + dst + " in the harness you use (Claude Code or any of the other ten), fill in your home page URL in the");
-  out("FILL THIS IN block below (the path is already filled), copy everything between");
-  out("=== BEGIN PROMPT === and === END PROMPT ===, and paste it. You spend about ten minutes");
-  out("answering questions. The employee's first run takes about an hour and may ask for a");
-  out("second session." + (ok ? "" : " Fix the failed self test first; docs/PREREQUISITES.md says how."));
+  out("Next: open a session in " + dst + " in the agent you use (Claude Code or any of the other ten) and say");
+  out("\"install the " + emp.name + " from this folder\". It reads INSTALL-PROMPT.md itself and asks for your home page");
+  out("only if it cannot find it. Or paste it yourself: the prompt is printed below with the path already filled in;");
+  out("copy everything between === BEGIN PROMPT === and === END PROMPT ===. The employee's first run takes");
+  out("about an hour and may ask for a second session." + (ok ? "" : " Fix the failed self test first; docs/PREREQUISITES.md says how."));
   out("=".repeat(78));
   out("");
   out(prompt.trim());

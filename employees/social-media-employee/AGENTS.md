@@ -4,6 +4,10 @@
 
 This file follows the [AGENTS.md](https://agents.md) convention so that any harness can pick this kit up without being told how. It is a map, not the instructions. **The instructions are the files it points at, and they are authoritative over anything summarised here.**
 
+## If you have been asked to install this Employee
+
+The person opened you in this folder and said something like "install the Social Media Employee from this folder". Read `INSTALL-PROMPT.md` and follow everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` exactly as if they had pasted it. `«SOC_ROOT»` is this folder, resolved to an absolute path. Where the `FILL THIS IN` block is unedited, work the lines out yourself the way the prompt says, and ask one question only if you cannot.
+
 ## If you have been asked to run a routine
 
 Read these, in this order, before you do anything else:

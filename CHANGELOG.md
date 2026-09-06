@@ -2,6 +2,15 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## Unreleased
+
+The install is two steps, and the README says so first.
+
+- **README**: the two step install sits directly under the intro. Extract a kit to a local folder, open your agent there and say "install the GTM Engineer from this folder". The ten other agents fold into one collapsed block, "What sets these apart" and "How an AI Employee runs" are written for a first time reader, and the mechanics (windows, period keys, capability routes, the guard script) stay in `docs/HOW-EMPLOYEES-WORK.md` and `docs/STANDARD.md` where they belong.
+- **Every kit's `INSTALL-PROMPT.md`** works when the agent reads it from the folder instead of a person pasting it: the root resolves to the folder the file sits in, and a URL the agent cannot find is one question, never a stop. The `FILL THIS IN` block stays for anyone who wants to hand those over up front.
+- **Every kit's README, Install section**: the same two steps, with the one copy rule, the no prompt rule and the week one notes kept as a short list under them.
+- `docs/INSTALL.md` opens with the two steps and keeps the per scheduler detail.
+
 ## 1.4.0, 2026-09-05
 
 The guardrail on outbound actions becomes the member's.

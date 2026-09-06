@@ -158,19 +158,17 @@ Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity,
 
 ## Install
 
-**1. Extract into your working folder.** Files sit at the root of the archive, so extract straight into the local, unsynced folder you picked above.
+Two steps. Your agent does the rest.
 
-**2. Point your harness at `«SEO_ROOT»/routines`.** Every routine is a folder holding one `SKILL.md` with `name` and `description` frontmatter plus one `metadata` key that marks it internal, so a skills registry never offers a scheduled routine as an on demand skill, which is a plain enough format that a harness reading markdown instructions can run it. If your harness takes a routine source directory, set it to `«SEO_ROOT»/routines`. If it only reads one fixed directory, link the folders rather than copying them.
+**1. Extract the kit to a local folder.** Files sit at the root of the archive. Anywhere on your PC works, as long as it is not inside OneDrive, Dropbox, Google Drive or iCloud.
 
-**3. Read `CONTRACT.md`.** It is the spine. Every routine reads it first, every run. Where a routine and `CONTRACT.md` disagree, the contract wins. Where the contract and your own workspace rule file disagree, yours wins. You do not have to fill anything in. You do have to have read it, because everything the role will and will not do is in there and you are the one who lives with it.
+**2. Open your agent in that folder and say "install the SEO Employee from this folder".** That is the whole instruction. It reads `INSTALL-PROMPT.md` itself and follows it, checks your machine, points its scheduler at `«SEO_ROOT»/routines`, and registers the schedule. If you would rather paste, open `INSTALL-PROMPT.md` and copy everything between the two markers into your agent. It reads your sites, writes your strategy folder, creates the ledgers, seeds the board, registers the seven scheduled jobs, and shows you one drafted article. It stops for you once, on that article.
 
-**4. Run the capability probe in `CAPABILITIES.md` section 1.2.** It is a short block you paste into your agent. It changes no files and publishes nothing. Read the answer next to section 2, and write any disagreement into the `## Corrections` section at the bottom of that file in one line. Your machine is the authority on your machine.
+That is the install. A few things are worth knowing once it is running:
 
-**5. Paste `INSTALL-PROMPT.md` into your agent, in that folder.** Edit the two marked lines at the top first. It reads your sites, writes your strategy folder, creates the ledgers, seeds the board, registers the seven scheduled jobs, and shows you one drafted article. It stops for you once, on that article.
-
-**6. Set your harness to run scheduled work without interactive approval.** A routine launched in a prompting mode does not fail at 08:00, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«SEO_ROOT»` plus each property repository if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the index sweep and the rank review; run those two by hand and let the other five schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
-
-**7. Let one full week happen before you change anything.** Treat week one the way you would treat a new hire's first week. Watch the output, correct it once, write the correction down.
+- **Keep one copy of the kit.** Every routine ends with a `## Corrections` section you write into and the routine reads on its next run. With two copies you write into one and it reads from the other. Your agent points its scheduler at this folder and never copies the routines into a global skills directory. `CAPABILITIES.md` section 2 says what I was able to confirm about each of eleven agents, and what I could not.
+- **Let scheduled runs go without a prompt.** A routine launched in a prompting mode does not fail at 08:00, which would at least leave a record. It hangs, waiting for a human who is asleep, and there is no run record and no blocker to read in the morning. Every harness calls this setting something different. Scope it to `«SEO_ROOT»` plus each property repository if yours supports scoping. If yours cannot run without interactive approval at all, do not schedule the index sweep and the rank review; run those two by hand and let the other five schedule normally. `CAPABILITIES.md` section 10 is the detail, including why this does not weaken the two guardrails.
+- **Let one full week happen before you change anything.** Treat week one the way you would treat a new hire's first week. Watch the output, correct it once, write the correction down.
 
 Corrections go in the `## Corrections` section at the bottom of the routine, or of `CONTRACT.md`, or of `CAPABILITIES.md`, or of `standards/PUBLISH-STANDARD.md`, whichever the mistake belongs to. Every routine reads the ones that apply to it at the top of every run. This is how the kit gets good at your business specifically, and it is worth more than any edit you make to a routine body.
 

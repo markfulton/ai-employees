@@ -2,15 +2,14 @@
 
 # AI Employees
 
-**Eight open source AI Employees. Each one runs a whole business role on a schedule, on your own machine, on the agent you already use.**
+**Eight open source AI Employees. Each one runs a whole business role on a schedule, on your own machine, on the AI agent you already use.**
 
-59 scheduled routines. 11 harnesses. Windows, macOS and Linux. They drive your browser and your PC the way you do, and every run makes the next one better. Running my own business every weekday since August 27, 2026.
+59 scheduled routines. Windows, macOS and Linux. Claude Code and ten other agents. They drive your browser and your PC the way you do, and every run makes the next one better. Running my own business every weekday since August 27, 2026.
 
 [![Claude Code](https://img.shields.io/badge/Claude_Code-ready-D97757?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![License](https://img.shields.io/badge/License-MIT-3FB950?style=for-the-badge)](LICENSE)
-[![Harnesses](https://img.shields.io/badge/11_harnesses-ready-0B7FC7?style=for-the-badge)](docs/HARNESSES.md)
+[![Agents](https://img.shields.io/badge/Claude_Code_+_10_agents-ready-0B7FC7?style=for-the-badge)](docs/HARNESSES.md)
 [![Runs on](https://img.shields.io/badge/Windows_macOS_Linux-ready-2B2B2B?style=for-the-badge)](docs/INSTALL.md)
-[![DCO](https://img.shields.io/badge/DCO-sign_off_required-30363D?style=for-the-badge)](CONTRIBUTING.md)
 [![npm](https://img.shields.io/badge/npm-ai--employees-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/ai-employees)
 
 **Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (330,000+ members)
@@ -25,65 +24,20 @@ Not chat assistants. Scheduled jobs that cover a whole role, run on your own mac
 
 Compare them with anything else you can install today. I think these are **the world's best AI Employees**, and this repo is all the evidence you need to decide.
 
-<table>
-<tr><td align="center" width="900">
+## Hire one in two steps
 
-<h2>Get your custom install prompt + the Hire Your First AI Employee walkthrough</h2>
+**1. Get a kit onto your PC.** Click **Code, then Download ZIP** at the top of this page and extract it, or copy one role straight to a folder with `npx ai-employees hire gtm-engineer --to <folder>`. Any local folder works, as long as it is not inside OneDrive, Dropbox, Google Drive or iCloud.
 
-<p><b>Tick the roles you want and the club dashboard writes one prompt for your agent:</b> the fetch command for each kit, every kick off prompt in order, and the guardrails.</p>
+**2. Open your agent in the employee's folder and say: "Install the GTM Engineer from this folder."** That is the whole instruction. It reads the kit, checks your machine, researches your business from your own website instead of interviewing you, writes its strategy files, builds your dashboard, schedules its own routines, and stops once to show you its first drafts. Then it runs on its own and briefs you every morning.
 
-<p>The walkthrough is the guided first hire with my launch replay, so your first hour goes the way mine did.</p>
+You need two things before you start: an AI agent you are logged in to (Claude Code is what I use), and a browser signed in to the accounts the employee should read. [docs/PREREQUISITES.md](docs/PREREQUISITES.md) has the full list, and the one that fails quietly is the login. [docs/INSTALL.md](docs/INSTALL.md) is the long version: every operating system, every scheduler, and what a first run should look like.
 
-<p>Masterclass modules 1 and 2 in full, and Agent Ops Chat for questions while you install.</p>
+<details>
+<summary><b>Not on Claude Code?</b> The same two steps on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek</summary>
 
-<a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt and walkthrough, free in the Agent Ops Club"></a>
+<br>
 
-<p><sub><b>Free account, no card,</b> at club.reinventing.ai.</sub></p>
-
-</td></tr>
-</table>
-
-## What sets these AI Employees apart
-
-- **They improve their own routines.** Recursive self improvement is built into every kit. A moved selector, a changed confirmation string or a step that now needs a scroll is repaired in the run that hit it. A lesson that would otherwise repeat is written into the routine's own `SKILL.md`, surgically, with the full replaced text logged to `improvements/CHANGELOG.md` as the undo. The next morning's brief says what changed under "What changed about me". No invented approval gate: your harness already asks before anything writes to your disk, and that is the right place for it.
-- **One push to your phone, only when you are the blocker.** A session expired on a surface a routine needs, a credential is missing, the conversion event stopped firing while paid spend is live, or a browser lock is held by a run that died. Four cases and no fifth. One line under 200 characters with no draft text, no name and no credential fragment in it, because it lands on a lock screen. Never twice for the same blocker, never outside your working hours, never on a first run. Everything else stays in the brief. [The one push](docs/STANDARD.md#23-the-one-push).
-- **PC and browser use, trained by hand.** Every browser routine runs on `recipes/BROWSER-RECIPES.md`, a technique library written from real runs on my own machine rather than from documentation: click what the page actually rendered, verify by reading the page back, compress an image before it goes in, stage a filled form and leave the tab open on the last step. The per site flow files are learned on your machine the first time a routine needs one and repaired every time after. The browser lane locks per platform so two routines never crawl the same signed in account at once, and on LinkedIn it reads and never clicks.
-- **Capabilities, never tools.** Routine bodies say `page.read` and `notify.push`. One file per kit maps each capability to a concrete route on your harness. That is why one kit runs on Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek without a routine changing by one word.
-- **A published standard and a safe upgrade path.** Every kit implements the [Agent Employee Standard](docs/STANDARD.md), ships an `employee.json` manifest, and upgrades with `npx ai-employees upgrade`, which reports first, never overwrites a file you edited, and never reads your ledgers, strategy or learned flows. `npx ai-employees contribute` turns the repairs a kit made to itself into a field report you can open upstream.
-- **You can direct any of them in chat.** Open an interactive session in the kit folder and it may do anything you may do by hand, on your word: tick a card you confirmed, stage a form now, retune a strategy file, correct a stale brief. It leaves the same trail a routine would, and the scheduled runs treat its work as yours.
-- **Windows, not fire times.** Every routine checks a window and a period key before it reads a single document, so a late fire, a duplicate fire or a machine that woke up an hour late is harmless on every scheduler.
-- **Your harness's permission layer is the gate, and you set it.** Scheduled routines draft, fill, stage and brief by default; sending, publishing and spending happen on the channels you release in `RELEASES.md`, the ones you configure, or on your word, and the permission mode you give each task is the scope it has. The kit is yours to widen: the guard script, the contract and every routine are plain files in your own folder. `scripts/guard.mjs` runs in front of every routine to check the window and the period key, with a self test you can run before you trust it.
-
-## The eight AI Employees
-
-| Employee | Role | What it owns | Routines | Cadence | Folder |
-|---|---|---|---|---|---|
-| <img src="https://club.reinventing.ai/img/employees/thumbs/gtm-engineer.webp" width="72" height="72" alt=""><br>**GTM Engineer** | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="72" height="72" alt=""><br>**SEO Employee** | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="72" height="72" alt=""><br>**Web Dev Employee** | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="72" height="72" alt=""><br>**Social Media Employee** | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>**Ad Manager Employee** | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/sales-employee.webp" width="72" height="72" alt=""><br>**Sales Employee** | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>**Customer Satisfaction Employee** | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="72" height="72" alt=""><br>**Chief of Staff** | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
-
-Fifty nine routines. Every one has an id that is its folder name, its YAML `name`, and the name of its scheduled job, always the same string.
-
-## Quick start: hire your first AI Employee
-
-Read [docs/PREREQUISITES.md](docs/PREREQUISITES.md) first. It is ten items, and the one that fails silently is the login.
-
-**Path A, the installer.** Copies one AI Employee to a folder outside cloud sync, runs its self tests, and prints its install prompt with the path filled in.
-
-```
-npx ai-employees hire gtm-engineer --to D:\AgentOps\gtm-engineer
-```
-
-**Path B, a clone.** Copy `employees/gtm-engineer` to a folder outside OneDrive, Dropbox, Google Drive or iCloud, open a session there in the harness you use, and paste `INSTALL-PROMPT.md`.
-
-Either way: you spend about ten minutes answering questions. The AI Employee's first run takes about an hour and may ask for a second session. It researches your business from your own public pages instead of interviewing you, writes your strategy files, builds your dashboard, registers its own schedule, and stops exactly once to show you its first drafts. [docs/INSTALL.md](docs/INSTALL.md) is the long version, per operating system and per scheduler.
-
-Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. Claude Code on Windows is where the GTM Engineer runs my own club launch every weekday. OpenClaw, Hermes, Cline and Qwen Code have built in cron or scheduled tasks, Codex has scheduled runs, Antigravity has the `agy` job runner, DeepSeek schedules through a plugin, OpenCode and Pi use the operating system's scheduler, and Grok Bot runs from its own cloud computer. [docs/HARNESSES.md](docs/HARNESSES.md) has the invocation and the first run check for each.
+The kits are written for whichever agent you already use. The one difference is how each agent schedules the routines, and the agent handles that during the install. [docs/HARNESSES.md](docs/HARNESSES.md) has the command and the first run check for each; the short version per agent is below.
 
 <details>
 <summary>OpenClaw</summary>
@@ -144,31 +98,71 @@ Reads the skill format and ships scheduled tasks. Register one per routine, or d
 
 `dsh` runs a local server with a web interface, and scheduling is one of its plugins. Register one scheduled run per routine, handed that routine's `SKILL.md` as the prompt, with the kit folder as the working directory. Confirm the headless prompt form against `dsh --help`, then settle whether it drives your signed in browser profile or a clean one.
 </details>
+</details>
 
-A free club account gets the guided Hire Your First AI Employee walkthrough with the launch replay, the session calendar, the preview lessons and AI Employee updates: [club.reinventing.ai](https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees).
+<table>
+<tr><td align="center" width="900">
 
-## What an AI Employee is
+<h2>Get your custom install prompt + the Hire Your First AI Employee walkthrough</h2>
 
-A folder. Seven documents and a `routines/` directory, and nothing runs anywhere else.
+<p><b>Tick the roles you want and the club dashboard writes one prompt for your agent:</b> every kit in the order you picked, each one's kick off prompt, and the guardrails.</p>
+
+<p>The walkthrough is the guided first hire with my launch replay, so your first hour goes the way mine did.</p>
+
+<p>Masterclass modules 1 and 2 in full, and Agent Ops Chat for questions while you install.</p>
+
+<a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt and walkthrough, free in the Agent Ops Club"></a>
+
+<p><sub><b>Free account, no card,</b> at club.reinventing.ai.</sub></p>
+
+</td></tr>
+</table>
+
+## What sets these AI Employees apart
+
+- **They get better at your business every run.** When a page moves, a button changes or a step now needs a scroll, the routine fixes its own instructions in the run that hit it, keeps the text it replaced as the undo, and tells you in the next morning's brief under "What changed about me".
+- **They drive your browser and your PC the way you do.** Every browser routine works from a technique library written from real runs on my own machine, not from documentation: click what the page actually shows, read the page back to verify, leave a filled form open on the last step. Each site's flow is learned on your machine the first time a routine needs it and repaired every time after. Two routines never use the same signed in account at once, and on LinkedIn they read and never click.
+- **One push to your phone, only when you are the blocker.** A login expired, a credential is missing, your conversion tracking stopped while ads are live, or a run died holding the browser. Four cases and no fifth. One short line, never twice for the same thing, never outside your working hours, never on a first run. Everything else waits for the brief. [The one push](docs/STANDARD.md#23-the-one-push).
+- **They run on the agent you already use.** Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, without a routine changing by one word. Routines describe what they need done, and one file per kit says how each agent does it.
+- **You can direct any of them in chat.** Open a session in the employee's folder and it does anything you could do by hand, on your word: tick a card you confirmed, stage a form now, retune a strategy file, correct a stale brief. It leaves the same trail a routine would, and the scheduled runs treat that work as yours.
+- **You set how far they go.** Every employee drafts, fills and stages by default, and the last click is yours. Release a channel in `RELEASES.md` and the routine completes that action itself from then on. Your agent's own permission settings are the gate, and every file in the kit is plain text in your own folder, yours to change.
+- **Upgrades never overwrite your work.** `npx ai-employees upgrade` reports first, leaves any file you edited alone, and never reads your strategy or your ledgers. Every kit follows the published [Agent Employee Standard](docs/STANDARD.md), and `npx ai-employees contribute` turns the fixes a kit made to itself into a report you can send upstream.
+
+## The eight AI Employees
+
+| Employee | Role | What it owns | Routines | Cadence | Folder |
+|---|---|---|---|---|---|
+| <img src="https://club.reinventing.ai/img/employees/thumbs/gtm-engineer.webp" width="72" height="72" alt=""><br>**GTM Engineer** | Go to market and launch | The growth hire who would own your entire launch: ICP, positioning, the launch board, outbound drafts, directory and press forms, paid setup, the weekly scoreboard | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/gtm-engineer](employees/gtm-engineer) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="72" height="72" alt=""><br>**SEO Employee** | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="72" height="72" alt=""><br>**Web Dev Employee** | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="72" height="72" alt=""><br>**Social Media Employee** | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>**Ad Manager Employee** | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/sales-employee.webp" width="72" height="72" alt=""><br>**Sales Employee** | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>**Customer Satisfaction Employee** | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="72" height="72" alt=""><br>**Chief of Staff** | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
+
+Fifty nine routines. Each one is a folder with one instruction file, and the folder's name is the name of its scheduled job.
+
+## How an AI Employee runs
+
+A folder. Every file in it is plain text you can open, and nothing runs anywhere else.
 
 ```
 gtm-engineer/
-  CONTRACT.md          the spine: who writes which file, the guards, the two guardrails
+  INSTALL-PROMPT.md    what your agent reads to set itself up, once
   ROLE.md              who this employee is and how it thinks
+  CONTRACT.md          the rules every routine follows, every run
+  SCHEDULE.md          when each routine runs
   RELEASES.md          yours: the channels you have released, shipped empty
-  CAPABILITIES.md      capability to route, per harness, honest about what was confirmed
-  SCHEDULE.md          the only file that carries a cadence, a fire time, a window, or a budget
-  INSTALL-PROMPT.md    the one prompt you paste, once
+  CAPABILITIES.md      how the routines map onto your agent
   routines/<id>/SKILL.md   one folder per routine
-  scripts/             guard.mjs, runlog.mjs, copy-check.mjs, each with a --selftest
+  scripts/             three small checks, each with a self test
   run/                 one Windows launcher example per routine
 ```
 
-**Windows, not fire times.** Every routine has a fire time you register and a window it checks. Outside the window it records a skip and exits. A period key (the local date, the ISO week, or the month) makes sure the work happens once however many times the job fires. That is what makes a late or duplicated fire harmless, on every scheduler.
+**Scheduled, inside a window.** Each routine has a time it runs and a window it works in. If your machine was asleep and the job fires late, or fires twice, the routine sees that today's work is done or the window has passed and does nothing. That is what makes it safe on any scheduler.
 
-**Scheduled jobs, not skills.** A skill is invoked on demand. A routine is fired at a time, in a folder, inside a window. Point your scheduler at the kit's `routines/` folder and never copy them into a global skills directory; they carry `metadata: internal: true` so registries do not list them. The only on demand skill in this repo is [`hire`](skills/hire/SKILL.md).
-
-**No Sunday.** A Sunday belongs to the ISO week that just ended, so a weekly routine there would share a period key with the following week and one of the two runs would be lost with no error.
+**Jobs, not skills.** A skill is something you ask for. A routine runs at its time, in its folder, on its own. Your agent points its scheduler at the kit's `routines/` folder and keeps one copy; the only on demand skill in this repo is [`hire`](skills/hire/SKILL.md).
 
 **Glossary:** member: the person who owns this Employee. The kits say "the member" throughout; read it as you. The «guillemets» are placeholders the install fills in. [docs/HOW-EMPLOYEES-WORK.md](docs/HOW-EMPLOYEES-WORK.md) is the whole model, including the five laws every kit is built to.
 
@@ -227,7 +221,7 @@ Guided version, updates and premium employees: club.reinventing.ai
 
 ## Before first run
 
-- **Nothing to fill in.** The install researches your offer, your buyer and your positioning from your own public pages and confirms a short list with you. Three lines at the top of the install prompt: your folder, your home page, and an optional line for anything off limits.
+- **Nothing to fill in.** The install researches your offer, your buyer and your positioning from your own public pages and confirms a short list with you. If it cannot find your home page on its own it asks once. Anything you want it to know up front, a channel that is off limits or a claim that must never be made, goes in one optional line at the top of `INSTALL-PROMPT.md`.
 - **A browser signed in** to the accounts the employee should read, and your mailbox if you want drafts landing there. Log in yourself; it never will.
 - **Real customer words, if you have any.** Real quotes are the only social proof the routines are allowed to use. With none, they write copy with no social proof rather than inventing any.
 - **Your ceilings.** A paid ceiling of zero puts the guard into observation only. Which channels are off limits, and any claim that must never be made, one line each.

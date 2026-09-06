@@ -1,6 +1,6 @@
 # Install
 
-You spend about ten minutes answering questions. The employee's first run takes about an hour and may ask for a second session. This page is the long version of the README's Quick start: every operating system, every scheduler, and what a first run should look like so you know when it did not.
+The short version is two steps: extract a kit to a local folder, then open your agent in that folder and tell it to install the employee from there. The employee's first run takes about an hour and may ask for a second session. This page is the long version of the README's two steps: every operating system, every scheduler, and what a first run should look like so you know when it did not.
 
 Read `docs/PREREQUISITES.md` first. Item 3, the login, is the one that fails silently.
 
@@ -42,7 +42,7 @@ Four passes and `loggedIn: true`. If the last one says false, run `claude` and `
 
 ## Step 3. Paste the install prompt
 
-Open a session in that folder in the harness you use. On Claude Code, the Desktop app: open the folder, trust it; the CLI: `cd` into it and run `claude`. On another harness, `docs/HARNESSES.md` has its command. Open `INSTALL-PROMPT.md`, edit the block marked `FILL THIS IN` (your folder path and your home page URL; the third line is optional), copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===`, and paste it.
+Open a session in that folder in the harness you use. On Claude Code, the Desktop app: open the folder, trust it; the CLI: `cd` into it and run `claude`. On another harness, `docs/HARNESSES.md` has its command. Say "install the GTM Engineer from this folder" and it reads `INSTALL-PROMPT.md` itself. Or paste it: open that file, fill in the block marked `FILL THIS IN` if you want to hand it your folder path and home page up front, copy everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===`, and paste it.
 
 Then let it work. It reads the contract, checks the machine, researches your business from your own public pages instead of interviewing you, writes the strategy folder, seeds the board, builds the dashboard, registers its own schedule, and stops exactly once for you to read its first drafts. It asks about at most five things a crawl genuinely could not settle, and it does not wait for the answers.
 

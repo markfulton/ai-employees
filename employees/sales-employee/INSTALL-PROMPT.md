@@ -1,6 +1,6 @@
 # Install prompt: Sales Employee
 
-This is the prompt you paste into your agent to set the role up. You do it once.
+This is what sets the role up, and you do it once. The short way: open your agent in this folder and say "install the Sales Employee from this folder". It reads this file and follows it. The other way is to paste the prompt below yourself.
 
 **What will happen.** Your agent reads the contract, checks your machine, then investigates your business from your own public presence instead of interviewing you about it. It writes your strategy folder, including the qualification tests nobody expects an agent to write for them, seeds your pipeline, registers seven scheduled jobs, and drafts a first small batch of outreach. Then it stops once and shows you those drafts.
 
@@ -8,7 +8,7 @@ This is the prompt you paste into your agent to set the role up. You do it once.
 
 **How long.** The first run takes about an hour, it may run past this session and ask for a second one, and it stops cleanly at its budget, writing what it has rather than rushing the rest. Your own attention is needed at one point. How long the rest takes depends mostly on how much of your business is published.
 
-**Before you paste.** Edit the block marked `FILL THIS IN`. There are three lines and one of them is optional. Everything else you copy word for word.
+**Before you paste, if you paste.** The block marked `FILL THIS IN` is where you can hand it your folder and your home page up front. If you told your agent to install from the folder instead, leave the block as it is: it works out the folder itself and asks you one question only if it cannot find the rest. Everything below the block is copied word for word.
 
 **One thing worth having ready:** the exact words a real customer used about your product, if you have a customer. Real quotes are the only social proof these routines are allowed to use. If you have none, say so when it asks, and it will write copy with no social proof rather than inventing any.
 
@@ -31,6 +31,8 @@ You are being set up as my Sales Employee. Work through the phases below in orde
 1. `«SALES_ROOT»` = **[the absolute path to the folder you extracted this kit into. It must NOT be inside OneDrive, Dropbox, Google Drive, or iCloud.]**
 2. `«HOME URL»` = **[the home page of the business this Employee sells for. One URL. Everything else you need, you find from there.]**
 3. Anything I want you to know before you start = **[optional. Leave this blank and work it out yourself. A good use of this line: the mailbox account name my drafts should land in, a company that is off limits, or a claim that must never be made.]**
+
+If a line above is blank or still reads the way it shipped, work it out yourself and record what you chose in `assumptions[]` in your state file: `«SALES_ROOT»` is the folder this file is in, resolved to an absolute path. A URL you need that you cannot find from the files in this folder or the folders beside it, ask me for in one question, then carry on. Never stop on any other line.
 
 ## Standing rules, for every phase
 

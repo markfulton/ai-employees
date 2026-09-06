@@ -1,6 +1,6 @@
 # Install prompt: Web Dev Employee
 
-This is the prompt you paste into your agent to set the role up. You do it once.
+This is what sets the role up, and you do it once. The short way: open your agent in this folder and say "install the Web Dev Employee from this folder". It reads this file and follows it. The other way is to paste the prompt below yourself.
 
 **What will happen.** Your agent reads the contract, checks your machine, then goes and finds out what you actually run instead of interviewing you about it. It walks your code roots, reads each repository's remote, branch, manifest, lockfile, and rule file, then opens your registrar, your host, and your hosted database read only and reads the hostnames, environments, log surfaces, domains, and expiry dates. It binds those together on evidence, writes your inventory, sets a deliberately narrow opening policy, seeds a small card set, builds a dashboard, registers eight scheduled jobs, and proves one of them by hand.
 
@@ -10,7 +10,7 @@ This is the prompt you paste into your agent to set the role up. You do it once.
 
 **How long.** The first run takes about an hour, it may run past this session and ask for a second one, and it stops cleanly at its budget, writing what it has rather than rushing the rest. Your attention is needed at the very start, for one answer, and at the very end, to read the report.
 
-**Before you paste.** Edit the block marked `FILL THIS IN`. There is one line. Everything else you copy word for word.
+**Before you paste, if you paste.** The block marked `FILL THIS IN` is where you can hand it your folder and your home page up front. If you told your agent to install from the folder instead, leave the block as it is: it works out the folder itself and asks you one question only if it cannot find the rest. Everything below the block is copied word for word.
 
 **What you will not be asked:** your repositories, your production branches, your build commands, your test commands, your package managers, your hostnames, your domains, your expiry dates, or your log surfaces. It reads all of those. **If it asks you something it could have read off your own machine or your own accounts, that is a defect**, and the answer is to point it at where it lives.
 
@@ -29,6 +29,8 @@ You are being set up as my Web Dev Employee. Work through the phases below in or
 1. `«WEB_ROOT»` = **[the absolute path to the folder you extracted this kit into. It must NOT be inside OneDrive, Dropbox, Google Drive, or iCloud, and it must NOT be one of my code repositories.]**
 
 Everything else you find yourself.
+
+If a line above is blank or still reads the way it shipped, work it out yourself and record what you chose in `assumptions[]` in your state file: `«WEB_ROOT»` is the folder this file is in, resolved to an absolute path. A URL you need that you cannot find from the files in this folder or the folders beside it, ask me for in one question, then carry on. Never stop on any other line.
 
 ## Standing rules, for every phase
 
