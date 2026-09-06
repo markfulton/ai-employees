@@ -18,19 +18,15 @@
 
 <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees"><img src="assets/banner.png" alt="The eight AI Employees: GTM Engineer, SEO, Web Dev, Social Media, Ad Manager, Sales, Customer Satisfaction and Chief of Staff" width="100%"></a>
 
-The GTM Engineer has run my club launch every weekday since August 27. The other seven are built to the same standard and I am running them on my own business from launch day, in public.
+An AI Employee is a folder of scheduled routines that covers one business role. It runs on your own machine, on the AI agent you already use, and briefs you every morning. Eight roles, every routine and schedule in this repo, nothing held back.
 
-Not chat assistants. Scheduled jobs that cover a whole role, run on your own machine, and brief you every morning. Every routine, every schedule, every install prompt is in this repo. Nothing is held back.
+## Install in two steps
 
-Compare them with anything else you can install today. I think these are **the world's best AI Employees**, and this repo is all the evidence you need to decide.
+**1. Download a kit and extract it to your PC.** Click **Code, Download ZIP** above, or run `npx ai-employees hire gtm-engineer --to <folder>`. Any folder not inside OneDrive, Dropbox, Google Drive or iCloud.
 
-## Hire one in two steps
+**2. Open your agent in that folder and say "Install the GTM Engineer from this folder."** It researches your business from your website, builds your dashboard, schedules its own routines, and stops once to show you its first drafts.
 
-**1. Get a kit onto your PC.** Click **Code, then Download ZIP** at the top of this page and extract it, or copy one role straight to a folder with `npx ai-employees hire gtm-engineer --to <folder>`. Any local folder works, as long as it is not inside OneDrive, Dropbox, Google Drive or iCloud.
-
-**2. Open your agent in the employee's folder and say: "Install the GTM Engineer from this folder."** That is the whole instruction. It reads the kit, checks your machine, researches your business from your own website instead of interviewing you, writes its strategy files, builds your dashboard, schedules its own routines, and stops once to show you its first drafts. Then it runs on its own and briefs you every morning.
-
-You need two things before you start: an AI agent you are logged in to (Claude Code is what I use), and a browser signed in to the accounts the employee should read. [docs/PREREQUISITES.md](docs/PREREQUISITES.md) has the full list, and the one that fails quietly is the login. [docs/INSTALL.md](docs/INSTALL.md) is the long version: every operating system, every scheduler, and what a first run should look like.
+You need an AI agent you are logged in to (Claude Code is what I use) and a browser signed in to the accounts it should read. [Prerequisites](docs/PREREQUISITES.md). [Full install guide](docs/INSTALL.md).
 
 <details>
 <summary><b>Not on Claude Code?</b> The same two steps on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek</summary>
@@ -103,17 +99,13 @@ Reads the skill format and ships scheduled tasks. Register one per routine, or d
 <table>
 <tr><td align="center" width="900">
 
-<h2>Get your custom install prompt + the Hire Your First AI Employee walkthrough</h2>
+<h2>Hiring more than one? Get one install prompt for all of them</h2>
 
-<p><b>Tick the roles you want and the club dashboard writes one prompt for your agent:</b> every kit in the order you picked, each one's kick off prompt, and the guardrails.</p>
-
-<p>The walkthrough is the guided first hire with my launch replay, so your first hour goes the way mine did.</p>
-
-<p>Masterclass modules 1 and 2 in full, and Agent Ops Chat for questions while you install.</p>
+<p>Tick the roles you want in the Agent Ops Club and copy a single prompt for your agent, with every role in the order you picked. Includes the guided Hire Your First AI Employee walkthrough.</p>
 
 <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt and walkthrough, free in the Agent Ops Club"></a>
 
-<p><sub><b>Free account, no card,</b> at club.reinventing.ai.</sub></p>
+<p><sub><b>Free account, no card.</b></sub></p>
 
 </td></tr>
 </table>
