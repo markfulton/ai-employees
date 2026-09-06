@@ -183,7 +183,7 @@ async function hire(args) {
   out("");
   out("=".repeat(78));
   out("Next: open a session in " + dst + " in the agent you use (Claude Code or any of the other ten) and say");
-  out("\"install the " + emp.name + " from this folder\". It reads INSTALL-PROMPT.md itself and asks for your home page");
+  out("\"install the " + e.name + " from this folder\". It reads INSTALL-PROMPT.md itself and asks for your home page");
   out("only if it cannot find it. Or paste it yourself: the prompt is printed below with the path already filled in;");
   out("copy everything between === BEGIN PROMPT === and === END PROMPT ===. The employee's first run takes");
   out("about an hour and may ask for a second session." + (ok ? "" : " Fix the failed self test first; docs/PREREQUISITES.md says how."));
