@@ -28,13 +28,15 @@ Compare them with anything else you can install today. I think these are **the w
 <table>
 <tr><td align="center" width="900">
 
-<h2>Get the full guides and your custom AI Employee install prompt</h2>
+<h2>Get your custom install prompt + the Hire Your First AI Employee walkthrough</h2>
 
-<p><b>Every kit here ships its own INSTALL-PROMPT.md. Your club dashboard writes you one.</b></p>
+<p><b>Tick the roles you want and the club dashboard writes one prompt for your agent:</b> the fetch command for each kit, every kick off prompt in order, and the guardrails.</p>
 
-<p>Tick the roles you want and it composes one prompt for your agent: the fetch command for each kit, every kick off prompt in order, and the guardrails. A guide per AI Employee and the guided walkthrough sit beside it.</p>
+<p>The walkthrough is the guided first hire with my launch replay, so your first hour goes the way mine did.</p>
 
-<a href="https://club.reinventing.ai/members/hire?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="330" alt="Get my AI Employee install prompt in the Agent Ops Club dashboard"></a>
+<p>Masterclass modules 1 and 2 in full, and Agent Ops Chat for questions while you install.</p>
+
+<a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt and walkthrough, free in the Agent Ops Club"></a>
 
 <p><sub><b>Free account, no card,</b> at club.reinventing.ai.</sub></p>
 
