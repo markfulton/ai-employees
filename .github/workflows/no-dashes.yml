@@ -1,0 +1,20 @@
+name: no-dashes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  no-dashes:
+    name: No em or en dash in shipped text
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Scan README, docs, and every kit file above its Corrections heading
+        run: node .github/scripts/no-dashes.mjs
+      - name: Run the three self tests in every kit
+        run: node .github/scripts/selftests.mjs
