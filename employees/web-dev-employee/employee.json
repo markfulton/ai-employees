@@ -3,8 +3,8 @@
   "slug": "web-dev-employee",
   "name": "Web Dev Employee",
   "role": "Engineering and maintenance",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,81 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "vcs.remote.read",
+      "providers": [
+        "gh-cli",
+        "github-mcp-readonly"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "host.read",
+      "providers": [
+        "vercel",
+        "vercel-cli",
+        "netlify",
+        "railway",
+        "render",
+        "cloudflare-observability"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "db.read",
+      "providers": [
+        "supabase-readonly",
+        "neon-readonly",
+        "planetscale-insights"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "errors.read",
+      "providers": [
+        "sentry",
+        "posthog",
+        "better-stack"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "browser.headless",
+      "providers": [
+        "chrome-devtools-mcp",
+        "playwright-mcp"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "registrar.read",
+      "providers": [
+        "porkbun-api",
+        "cloudflare-registrar-api",
+        "vercel-domains",
+        "dynadot-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "advisories.read",
+      "providers": [
+        "npm-audit",
+        "osv-api",
+        "gh-cli",
+        "context7"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
   "routines": [
     {
       "id": "web-dependency-run",

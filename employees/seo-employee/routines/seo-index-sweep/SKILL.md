@@ -291,6 +291,8 @@ Write the planned spend down before you open the console: property, URL, and ord
 
 ## Step 5. Open the console, and take the lock
 
+**Resolve `index.request` through `CAPABILITIES.md` section 4b first.** Where a connected route exists for an engine, submit each candidate through it and count those submissions as done for that engine before you open anything. The console below is the route only for an engine that 4b gives none, and the allowance in Step 4 governs those requests alone.
+
 **Take the browser mutex here, before the first navigation**, per `CONTRACT.md` section 6 and Step 0.4. Read `state/browser-lock.json`.
 
 - Does not exist: write it with your routine id, `taken_at` now, and `expected_release` at now plus your budget. Proceed.

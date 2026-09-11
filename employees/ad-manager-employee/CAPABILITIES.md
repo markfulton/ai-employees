@@ -467,6 +467,26 @@ Send one short notification to your own device.
 
 ---
 
+## 4b. Connected sources
+
+A connected source is a route the member connected once in their own harness that reads an account this Employee works in: a connector from the harness's own directory, the vendor's own server added by its URL, or the vendor's command line tool. The rule is the one in section 8: the kit detects a connection, uses it, degrades without it, and never installs one. A routine names the capability in the left column; this table says what it resolves to on this machine, and `docs/HARNESSES.md` says how each harness adds one.
+
+**Prefer a connected route over the browser lane wherever both exist.** It reads the same figures the account screen shows with no tab, no mutex, no login wall, and no learned flow that drifts. The browser lane in section 4 is the fallback for every row that resolves to nothing, and section 7 says what that costs.
+
+**Read only, scoped, and never more than this Employee reads.** Where a vendor offers a read only form of a route, that form is the only one named here. Where it offers none, the two guardrails still hold: no routine calls a tool that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel. Every connected server loads its tool descriptions into every run on most harnesses, so connect the rows a routine in this kit reads and nothing for the sake of having it.
+
+| Capability | What it reads | Routes, in order of preference | Read only form | Confidence |
+|---|---|---|---|---|
+| `ads.account.read` | Yesterday's spend, delivery and results at four levels; the object tree once a month | Meta accounts: the Ads MCP server (`https://mcp.facebook.com/ads`, connected from Business Suite under Settings, Integrations, or through a developer app) or the Ads CLI. Google accounts: the Google Ads MCP server (official, `pipx run google-ads-mcp`, a Google Cloud project with at least Explorer access on the Ads API). Several platforms at once: the Supermetrics or Windsor.ai connector | The Google server is read only by design. The Meta server carries write tools and this kit never calls one | `expected` |
+| `ads.signal.check` | Whether the primary conversion event fired inside the read window | Meta: the Ads MCP server's signals and datasets tools. Web analytics: the Google Analytics MCP server (official, `pipx run analytics-mcp`), or the host's own analytics connector where the landing page runs there | Read only by design | `expected` |
+| `ads.creative.export` | A finished design pulled from the member's design tool into a set folder | The Canva connector (`https://mcp.canva.com/mcp`) export tools | Export only; this kit uploads nothing anywhere | `expected` |
+
+TikTok for Business and Microsoft Advertising ship official servers for their own accounts. Name one in `plan/measurement.md` by its human readable name only where the intake found that account.
+
+`confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
+
+---
+
 ## 5. Content
 
 Seven capabilities. Two of them decide whether a creative set arrives finished or arrives as text with a note. Two are research. Three are documented and unused, and section 8 says why.
@@ -728,6 +748,8 @@ Six of the seven produce their main deliverable with no browser at all. **The se
 Some harnesses let you install named helpers of your own: skills, plugins, extensions, whatever yours calls them. The kit's relationship to those is fixed and short.
 
 **It detects. It uses. It degrades. It never installs.**
+
+Connected sources in section 4b are named helpers under exactly this rule: detect, use, degrade, never install. A routine that resolves a capability through one never calls a tool on it that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel, and it takes the read only form of the route wherever the vendor offers one.
 
 A routine may name an optional helper as a dependency, check whether it is present, use it when it is, and fall back to a stated route when it is not. **No routine in this kit ever creates, authors, or installs a helper in your global directory.** Your global setup is yours. You add helpers from the library when you decide to, and nothing here reaches into it.
 

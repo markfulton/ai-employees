@@ -472,6 +472,27 @@ Send one short notification to your own device.
 
 ---
 
+## 4b. Connected sources
+
+A connected source is a route the member connected once in their own harness that reads an account this Employee works in: a connector from the harness's own directory, the vendor's own server added by its URL, or the vendor's command line tool. The rule is the one in section 8: the kit detects a connection, uses it, degrades without it, and never installs one. A routine names the capability in the left column; this table says what it resolves to on this machine, and `docs/HARNESSES.md` says how each harness adds one.
+
+**Prefer a connected route over the browser lane wherever both exist.** It reads the same figures the account screen shows with no tab, no mutex, no login wall, and no learned flow that drifts. The browser lane in section 4 is the fallback for every row that resolves to nothing, and section 7 says what that costs.
+
+**Read only, scoped, and never more than this Employee reads.** Where a vendor offers a read only form of a route, that form is the only one named here. Where it offers none, the two guardrails still hold: no routine calls a tool that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel. Every connected server loads its tool descriptions into every run on most harnesses, so connect the rows a routine in this kit reads and nothing for the sake of having it.
+
+| Capability | What it reads | Routes, in order of preference | Read only form | Confidence |
+|---|---|---|---|---|
+| `search.performance.read` | Clicks, impressions and position per page and query for the scoring window | OpenSEO (a server plus skills, hosted or self hosted with your own DataForSEO key; its Search Console tools read the property you signed in with), or a read only Search Console API script with a service account added to each property. Google ships no server of its own for Search Console | `webmasters.readonly` scope | `expected` |
+| `analytics.read` | Sessions and conversions per landing page | The Google Analytics MCP server (official, `pipx run analytics-mcp`), or the GA4 Data API from a script with the same service account | `analytics.readonly` by design | `expected` |
+| `serp.read` | The live result set for one keyword, and what ranks | OpenSEO; the Apify connector (`https://mcp.apify.com`) running a Google search results actor; the Ahrefs or Semrush connector where the member already pays for one | Read only | `expected` |
+| `keyword.research` | Volume, difficulty and ideas for the refill | OpenSEO; the Ahrefs, Semrush or DataForSEO server where the member already pays for one | Read only | `expected` |
+| `index.request` | Telling an engine that a URL changed | IndexNow (a key file at the site root, then one request per batch of URLs) for every engine that honours it, and the Search Console API's sitemap submit call. Google offers no request route for an ordinary page, so its console stays the route for that, inside the allowance | A write, bounded by the allowance | `expected` |
+| `cms.publish` | Publishing a ready draft to a surface property | The WordPress.com connector for a WordPress.com site; the WordPress MCP Adapter, or the REST API with an application password, for a self hosted site; the Webflow, Wix or Shopify connector; the Ghost admin API. A repository property needs no connection | The same guardrail as today: one draft per run, to the property's own route | `expected` |
+
+`confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
+
+---
+
 ## 5. Content
 
 Seven capabilities. Five of them decide whether an article arrives finished or arrives as text with a note. Two are research, and one of those two decides whether the calendar refills at all.
@@ -747,6 +768,8 @@ Five of the seven produce their main deliverable with no browser at all. That is
 Some harnesses let you install named helpers of your own: skills, plugins, extensions, whatever yours calls them. The kit's relationship to those is fixed and short.
 
 **It detects. It uses. It degrades. It never installs.**
+
+Connected sources in section 4b are named helpers under exactly this rule: detect, use, degrade, never install. A routine that resolves a capability through one never calls a tool on it that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel, and it takes the read only form of the route wherever the vendor offers one.
 
 A routine may name an optional helper as a dependency, check whether it is present, use it when it is, and fall back to a stated route when it is not. **No routine in this kit ever creates, authors, or installs a helper in your global directory.** Your global setup is yours. You add helpers from the library when you decide to, and nothing here reaches into it.
 

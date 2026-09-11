@@ -2,6 +2,16 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.5.0, 2026-09-11
+
+The Employee reads its accounts through the connections you already have.
+
+- `CAPABILITIES.md` section 4b, new: connected sources. One row per capability this Employee reads through a connector in your harness's own directory, the vendor's own server, or its command line tool, with the read only form of each route. A connected route is preferred over the browser lane wherever both exist, and the browser lane stays the fallback for every row that resolves to nothing.
+- `cos-metrics-review` resolves each live screen on the metric map through 4b before it opens a tab. No routine names a vendor; the routes live in section 4b and nowhere else.
+- The install prompt checks every 4b row in Phase 0 and names the absent ones in the handover, each with the one step you take in your own harness to add it. `employee.json` carries the same rows under `connections`.
+- The rule is the one in section 8: detect, use, degrade, never install. A connected route is used read only, and nothing on it creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel.
+- Implements the Agent Employee Standard v1.3.
+
 ## 1.4.0, 2026-09-05
 
 The guardrail on outbound actions becomes yours.

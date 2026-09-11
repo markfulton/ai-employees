@@ -1,6 +1,6 @@
 # Prerequisites
 
-Ten things. Every line here was either measured on my own machine or read from the vendor's own page, and the install prompt checks the ones it can. Read this before `npx ai-employees hire` or a clone, because the one thing that fails silently is the login, and it fails after everything else looks fine.
+Ten things, and one optional eleventh. Every line here was either measured on my own machine or read from the vendor's own page, and the install prompt checks the ones it can. Read this before `npx ai-employees hire` or a clone, because the one thing that fails silently is the login, and it fails after everything else looks fine.
 
 The kits run on eleven harnesses: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. Claude Code is the worked example in every item below because it is the one I run these on every weekday. Where another harness differs, the item says so, and `docs/HARNESSES.md` has the scheduler, the invocation and the first run check for each of the eleven.
 
@@ -81,6 +81,10 @@ Not inside OneDrive, Dropbox, Google Drive or iCloud. The routines write state a
 ## 10. A usage budget
 
 On a Claude Pro or Max plan an employee costs nothing beyond the plan; it spends a share of the plan's usage limits. Measured on one employee as the example, the GTM Engineer, over 27 scheduled runs, that share was about 6 percent of everything one Max seat sent to Claude in ten days of heavy use. On an API key it is about $19 of Opus 5 usage at list price on a plain weekday, about $27 on a Monday or a Friday, and an API key loses the browser lane. On another harness the cost is that harness's own model bill for the same work; the per routine table in `docs/COST.md` gives the token shape so you can estimate it, along with the dates and the method.
+
+## 11. Connections, optional
+
+Every kit's `CAPABILITIES.md` has a section 4b naming the connections that read its accounts without a browser: a connector from your harness's own directory, the vendor's own server added by its URL, or the vendor's command line tool. Each one is optional. The install checks for it, uses it when it is there, and falls back to the browser lane when it is not. Four rules hold on every harness: the kit never installs a connection; a connected route is used read only wherever the vendor offers a read only form; nothing on a connection creates, sends, spends, deploys or deletes unless you release that channel in `RELEASES.md`; and a connection earns its place only if a routine reads it every day or every week, because most harnesses load every connected server's tool descriptions into every run. `docs/HARNESSES.md` has the column that says how each harness adds one.
 
 ## Where it runs
 

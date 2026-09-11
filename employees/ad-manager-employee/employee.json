@@ -3,8 +3,8 @@
   "slug": "ad-manager-employee",
   "name": "Ad Manager Employee",
   "role": "Paid acquisition",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,38 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "ads.account.read",
+      "providers": [
+        "meta-ads-mcp",
+        "meta-ads-cli",
+        "google-ads-mcp",
+        "supermetrics",
+        "windsor-ai"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "ads.signal.check",
+      "providers": [
+        "meta-ads-mcp",
+        "google-analytics-mcp",
+        "vercel"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "ads.creative.export",
+      "providers": [
+        "canva"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
   "routines": [
     {
       "id": "ads-account-intake",

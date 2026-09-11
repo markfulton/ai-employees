@@ -64,6 +64,7 @@ These apply from now until I remove them. They are not negotiable inside this se
    - Do you have a `web.search` route. **Without one, Phase 5 appends no calendar entries at all and Phase 6 has nothing to draft**, and I need to know that today rather than on Wednesday.
    - Do you have an `image.generate` route, and does it need a credential I would have to set. Do not generate anything yet.
    Cache nothing. Detection happens at the top of every run.
+   - For each row of `CAPABILITIES.md` section 4b, say whether that connection is present on this harness, under what name, and whether it is read only. Write the answers in your working notes. A row that is absent costs nothing today: the browser lane in section 4 is the route, and section 7 says what that read produces without one.
 6. Confirm seven folders exist under `«SEO_ROOT»/routines/` and that each holds a `SKILL.md` whose YAML `name` equals its folder name exactly. The seven are `seo-standup`, `seo-draft-run`, `seo-publish-run`, `seo-index-sweep`, `seo-calendar-refill`, `seo-rank-review`, `seo-intake-and-map`. If one is missing or its name key differs, record it as a blocker and carry on with the ones that are correct.
 7. Create these if they do not exist: `strategy/`, `calendar/`, `content/`, `index/`, `drafts/`, `board/`, `briefs/`, `scoreboard/`, `tracking/`, `recipes/`, `improvements/`, `state/`, `archive/`, `run/`.
 8. **This install session is exempt from the window guard and from nothing else**, because I launched it by hand and I am watching. That covers `seo-intake-and-map` on this first run, identified by the absence of `«SEO_ROOT»/state/seo-intake-and-map.json`, and it covers the three routines you run as supervised steps in Phase 5 and Phase 6. Every other guard applies in full: the pause switch, the once per period guard, the budget, the browser mutex, and both stops. Each of those runs records the exemption in its own `notes`.
@@ -192,6 +193,7 @@ Then, with my answers:
    - **Which sitemaps you found per property, and whether my published articles actually appear in one.** Put that near the top: it is the difference between articles that get discovered and articles that do not.
    - Every assumption you adopted, each with the one line that corrects it.
    - Anything blocked on a login or a credential: name the account and the exact screen where I set it, and never the credential itself.
+   - Every connection in `CAPABILITIES.md` section 4b that is absent, one line each: what it would turn on, and the one step I take in my own harness to add it.
 
 Do not tell me how you built any of this. I have the files.
 

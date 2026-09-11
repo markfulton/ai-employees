@@ -65,6 +65,7 @@ These apply from now until I remove them. They are not negotiable inside this se
    - Can you read a commit graph and a working tree status without changing either?
    - Does your browser control attach to a browser I am already signed in to, or does it start a clean one? The kit never signs in, so a clean browser means every read of my accounts lands on a sign in wall.
    Cache nothing. Detection happens at the top of every run.
+   - For each row of `CAPABILITIES.md` section 4b, say whether that connection is present on this harness, under what name, and whether it is read only. Write the answers in your working notes. A row that is absent costs nothing today: the browser lane in section 4 is the route, and section 7 says what that read produces without one.
 6. Confirm eight folders exist under `«WEB_ROOT»/routines/` and that each holds a `SKILL.md` whose YAML `name` equals its folder name exactly. The eight are `web-site-sweep`, `web-standup`, `web-fix-runner`, `web-platform-guard`, `web-inventory-refresh`, `web-dependency-run`, `web-weekly-report`, `web-guardrail-review`. If one is missing or its `name` key differs, record it as a blocker, do not rename either, and carry on with the ones that are correct. **A folder whose name and `name` key differ is a routine that fails on its first line, forever, with no error I ever see.**
 7. **This first run is exempt from the window guard, and only from the window guard**, because I launched it by hand. Detect that by the absence of `«WEB_ROOT»/state/web-inventory-refresh.json`. Every other guard still applies: the pause switch, the once per period guard, the budget, the browser mutex, and every standing rule above.
 
@@ -173,6 +174,7 @@ Every screen below is read only. **You navigate, you read, and you set a view co
    - what fires tomorrow morning, at what time in my timezone, and which file I open first;
    - every assumption you adopted, each with the one line that corrects it;
    - anything blocked on a login: name the account and the exact screen, and never the credential itself.
+   - Every connection in `CAPABILITIES.md` section 4b that is absent, one line each: what it would turn on, and the one step I take in my own harness to add it.
 
 Do not tell me how you built any of this. I have the files.
 

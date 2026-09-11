@@ -2,7 +2,7 @@
 
 Build spec for every AI Employee in the club. Not shipped to members. The GTM Engineer is the reference implementation; every later Employee inherits everything here and adds only its own domain expertise.
 
-Standard version 1.2, 2026-09-05: LAW 2 became the two guardrails, the first of them released channel by channel by the member in `RELEASES.md`. Version 1.1, 2026-08-28. Laws 6 through 8 and the operator-session and browser-lane sections were earned in the first live week of the GTM Engineer running Mark's own launch; the release notes in each kit's CHANGELOG carry the short story.
+Standard version 1.3, 2026-09-11: LAW 4 names connected sources, the per capability routes a member connects in their own harness, read only and preferred over the browser lane. Version 1.2, 2026-09-05: LAW 2 became the two guardrails, the first of them released channel by channel by the member in `RELEASES.md`. Version 1.1, 2026-08-28. Laws 6 through 8 and the operator-session and browser-lane sections were earned in the first live week of the GTM Engineer running Mark's own launch; the release notes in each kit's CHANGELOG carry the short story.
 
 Derived from Mark's own production routines rather than invented: the push mechanics come from `night-shift-brief` and `morning-clicks-block`, the window and period guards from the same, the browser craft from roughly thirty live Chrome routines.
 
@@ -26,7 +26,7 @@ An Employee is judged on one question: **after ninety days of running unattended
 
 **LAW 3: The Employee names capabilities, never tools.** Routine bodies say `page.read`, `notify.push`, `image.compress`. One file per kit maps capability to concrete route per harness. This is what makes a kit harness agnostic, and it is what lets a club hosted web tool slot in later as another route without a routine changing by one word.
 
-**LAW 4: No global skills bloat.** An Employee never authors, installs, or bundles a skill into the member's global skills directory. It may **name** an optional global skill as a dependency, detect whether it is present, use it when it is, and degrade with a stated fallback when it is not. Which global skills a member installs is their choice, made separately.
+**LAW 4: No global skills bloat.** An Employee never authors, installs, or bundles a skill into the member's global skills directory. It may **name** an optional global skill as a dependency, detect whether it is present, use it when it is, and degrade with a stated fallback when it is not. Which global skills a member installs is their choice, made separately. Connected sources follow the same rule: a kit names them per capability in `CAPABILITIES.md` section 4b, detects each at the top of a run, uses the read only form of a route wherever the vendor offers one, prefers a connected route over the browser lane, and never installs, sends, spends, deploys or deletes through one unless `RELEASES.md` names that channel. (v1.3, 2026-09-11.)
 
 **LAW 5: Every hard won rule carries its date and lives in a file.** A procedural discovery that only exists in a run note does not survive to the next run.
 

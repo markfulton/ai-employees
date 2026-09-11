@@ -3,8 +3,8 @@
   "slug": "chief-of-staff",
   "name": "Chief of Staff",
   "role": "Oversight and strategy",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,77 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "mail.read",
+      "providers": [
+        "gmail",
+        "google-calendar",
+        "google-drive",
+        "microsoft-365"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "board.read",
+      "providers": [
+        "notion",
+        "linear-readonly",
+        "asana",
+        "atlassian",
+        "monday",
+        "clickup",
+        "todoist"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "money.read",
+      "providers": [
+        "stripe-restricted-key",
+        "xero",
+        "quickbooks",
+        "mercury",
+        "ramp",
+        "brex",
+        "chargebee"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "analytics.read",
+      "providers": [
+        "posthog",
+        "google-analytics-mcp",
+        "vercel"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "page.diff",
+      "providers": [
+        "firecrawl",
+        "exa",
+        "tavily",
+        "similarweb",
+        "crunchbase"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "chat.read",
+      "providers": [
+        "slack"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
   "routines": [
     {
       "id": "cos-charter-and-fleet-audit",

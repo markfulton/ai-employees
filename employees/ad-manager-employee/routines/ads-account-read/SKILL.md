@@ -303,6 +303,8 @@ A derived event is overridden the moment intake writes a real one. The plan wins
 
 ## Step 3. The conversion event check, which runs before you trust any other figure
 
+**Resolve `ads.signal.check` and `ads.account.read` through `CAPABILITIES.md` section 4b first.** Where a capability resolves to a connected route, the steps that use it read through that route and open no tab. Take the browser lock below only where a step in 3 to 7 still needs a screen because 4b resolved to nothing for it on this machine.
+
 **Take the browser mutex here, before the first navigation, per Step 0.4 and section 6 of the contract.** Read `state/browser-lock.json`.
 
 - **Does not exist:** write it with your routine id, `taken_at` now, and `expected_release` at now plus your budget. Proceed.
@@ -343,6 +345,8 @@ A check that did not run never resolves a finding. That rule is Step 8 and it is
 
 You cannot append a row for an object whose identity you have not settled, and a row keyed on a name is a row that renames itself the first time somebody edits a campaign title.
 
+**Where `ads.account.read` resolved to a connected route in Step 3, read the object tree through that route and skip the screen below;** the identity rules in this step do not change, and `notes` records `route: "connected"`.
+
 Follow `read-a-page` on the account overview screen named in `## Read screens`, driven by `recipes/structure-read.json`. **If that file does not exist yet, follow `learn-a-recipe` and write it now, then continue this step.**
 
 For each account in `## Accounts`, in the order the file lists them:
@@ -362,6 +366,8 @@ Take the per run object cap from `human-pace` and do not exceed it. Where the ac
 ## Step 5. Read yesterday, one row per object per day
 
 This is the step the rest of the kit lives on.
+
+**The same rule as Step 4:** where `ads.account.read` resolved to a connected route, read yesterday's rows through it at all four levels and skip the screens. The row in 5.2 does not change.
 
 Follow `read-a-page` on each performance screen named in `## Read screens`, driven by `recipes/performance-read.json`. **If that file does not exist yet, follow `learn-a-recipe` and write it now, then continue this step.**
 

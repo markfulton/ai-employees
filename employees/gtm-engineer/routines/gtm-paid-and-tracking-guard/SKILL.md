@@ -364,6 +364,8 @@ Four steps. Each one names a setting, its recorded value, and its observed value
 
 ## Step 4. The conversion event check
 
+**Resolve `analytics.read` and `ads.signal.check` through `CAPABILITIES.md` section 4b first.** Where either resolves to a connected route, read whether the event fired, and whether the ad platform received it, through that route and open no tab for it. The screens below are the route only for what 4b leaves unresolved on this machine.
+
 **Take the browser mutex here, before the first navigation, per Step 0.4 and section 6 of the contract.** Read `state/browser-lock.json`.
 
 - **Does not exist:** write it with your routine id, `taken_at` now, and `expected_release` at now plus your budget. Proceed.

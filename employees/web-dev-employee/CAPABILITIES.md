@@ -467,6 +467,28 @@ Read the messages a page emitted while it loaded.
 
 ---
 
+## 4b. Connected sources
+
+A connected source is a route the member connected once in their own harness that reads an account this Employee works in: a connector from the harness's own directory, the vendor's own server added by its URL, or the vendor's command line tool. The rule is the one in section 8: the kit detects a connection, uses it, degrades without it, and never installs one. A routine names the capability in the left column; this table says what it resolves to on this machine, and `docs/HARNESSES.md` says how each harness adds one.
+
+**Prefer a connected route over the browser lane wherever both exist.** It reads the same figures the account screen shows with no tab, no mutex, no login wall, and no learned flow that drifts. The browser lane in section 4 is the fallback for every row that resolves to nothing, and section 7 says what that costs.
+
+**Read only, scoped, and never more than this Employee reads.** Where a vendor offers a read only form of a route, that form is the only one named here. Where it offers none, the two guardrails still hold: no routine calls a tool that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel. Every connected server loads its tool descriptions into every run on most harnesses, so connect the rows a routine in this kit reads and nothing for the sake of having it.
+
+| Capability | What it reads | Routes, in order of preference | Read only form | Confidence |
+|---|---|---|---|---|
+| `vcs.remote.read` | Merged pull requests, workflow runs and failed job logs, dependency alerts | The `gh` command line tool, signed in once (`gh auth status`; a token in the environment for a scheduled run); the GitHub MCP server's read only URL (`https://api.githubcopilot.com/mcp/readonly`) where the harness has no shell | The `/readonly` URL; the command line route lists read commands only | `expected` |
+| `host.read` | Deployments, build logs, runtime logs and grouped errors since the cursor, web analytics | The Vercel connector (`https://mcp.vercel.com`) or the Vercel command line tool with a token; the Netlify, Railway, Render or Cloudflare observability connector for those hosts | Vercel has no read only form and carries deploy and purchase tools; this kit never calls one | `expected` |
+| `db.read` | Tables, migrations, advisors and logs of the hosted database | The Supabase connector with `?read_only=true&project_ref=<ref>&features=database,debugging,development,docs`; Neon with `?readonly=true`; PlanetScale's insights only server | Enforced at the database role | `expected` |
+| `errors.read` | Grouped production errors with stack traces | The Sentry connector (`https://mcp.sentry.dev/mcp/<org>/<project>?skills=inspect`); the PostHog connector; Better Stack | `skills=inspect` | `expected` |
+| `browser.headless` | The render, the console and one performance sample of a path, without the member's profile | Chrome DevTools MCP (`npx -y chrome-devtools-mcp@latest --headless --isolated`), or Playwright MCP | A throwaway profile, never the signed in one | `expected` |
+| `registrar.read` | Expiry, auto renew and nameservers per domain | A read only script against the registrar's own API: Porkbun v3, Cloudflare Registrar registrations, Vercel domains, Dynadot. No registrar ships a server | Read endpoints only | `expected` |
+| `advisories.read` | Known vulnerabilities and the changelog behind a bump | `npm audit --json`, the OSV batch query, GitHub advisories through `gh api`; the Context7 connector for current documentation | Read only | `expected` |
+
+`confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
+
+---
+
 ## 5. The Employee's own surfaces
 
 Seven capabilities, and they are what make this Employee what it is. Every one of them is read only about somebody else's running system, except the four version control routes that operate on a branch this Employee created.
@@ -697,6 +719,8 @@ A missing browser does not get its own status, and no routine invents one. It ma
 Some harnesses let you install named helpers of your own: skills, plugins, extensions, whatever yours calls them. The kit's relationship to those is fixed and short.
 
 **It detects. It uses. It degrades. It never installs.**
+
+Connected sources in section 4b are named helpers under exactly this rule: detect, use, degrade, never install. A routine that resolves a capability through one never calls a tool on it that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel, and it takes the read only form of the route wherever the vendor offers one.
 
 A routine may name an optional helper as a dependency, check whether it is present, use it when it is, and fall back to a stated route when it is not. **No routine in this kit ever creates, authors, or installs a helper in your global directory.** Your global setup is yours. You add helpers from the library when you decide to, and nothing here reaches into it.
 

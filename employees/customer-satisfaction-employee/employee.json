@@ -3,8 +3,8 @@
   "slug": "customer-satisfaction-employee",
   "name": "Customer Satisfaction Employee",
   "role": "Support and retention",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,84 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "helpdesk.read",
+      "providers": [
+        "intercom",
+        "help-scout",
+        "front",
+        "zoho-desk"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "helpdesk.note",
+      "providers": [
+        "front",
+        "intercom",
+        "gmail"
+      ],
+      "required": false,
+      "readonly": false
+    },
+    {
+      "capability": "mail.read",
+      "providers": [
+        "gmail",
+        "microsoft-365"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "community.read",
+      "providers": [
+        "slack",
+        "discord-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "billing.read",
+      "providers": [
+        "stripe-restricted-key",
+        "paddle",
+        "chargebee"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "usage.read",
+      "providers": [
+        "posthog",
+        "supabase-readonly"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "reviews.read",
+      "providers": [
+        "trustpilot-api",
+        "expo"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "helpcentre.read",
+      "providers": [
+        "intercom",
+        "notion"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
   "routines": [
     {
       "id": "csat-churn-watch",

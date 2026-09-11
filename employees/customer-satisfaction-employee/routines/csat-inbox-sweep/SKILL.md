@@ -194,6 +194,8 @@ YYYY-MM-DD | csat-inbox-sweep | strategy/channels.md | added <n> tested surfaces
 
 ## Step 3. The browser, the mutex, the tab, and your state file
 
+**Resolve `helpdesk.read` and `mail.read` through `CAPABILITIES.md` section 4b first, per channel.** A channel that resolves to a connected route is swept through it in Step 5 with no tab. The browser below is the route for the channels 4b leaves unresolved.
+
 **Get a browser.** Follow the pre recipe block at the head of `recipes/BROWSER-RECIPES.md`. Confirm `browser.session` is attached to a browser holding the member's own logged in session. You never authenticate and you never launch anything. You inherit a session the member already opened.
 
 **Take the mutex here, before the first navigation, per Step 0.4.** Read `state/browser-lock.json`. If it exists and is not stale, another routine is live: do every phase of this run that does not need a browser, which is Step 9, append `status: "blocked-browser-busy"` with `blockers: ["browser held by <routine> since <taken_at>"]`, and exit. If it exists and is stale, overwrite it with your own and note that you took a stale lock from that routine. Otherwise write your own.

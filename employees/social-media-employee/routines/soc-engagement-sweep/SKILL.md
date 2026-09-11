@@ -209,6 +209,8 @@ Read every ledger in full before you capture anything. Strip a leading byte orde
 
 ## Step 3. The browser, the mutex, the tab, and your state file
 
+**Resolve `engagement.read` through `CAPABILITIES.md` section 4b first, per platform.** Where a platform resolves to a connected route, do Steps 4 to 6 for that platform through it and open no tab for it. The browser below is the route for the platforms 4b leaves unresolved, and on a professional network it is always the route and always read only.
+
 **Get a browser.** Follow the pre recipe block at the head of `recipes/BROWSER-RECIPES.md`. Confirm `browser.session` is attached to a browser holding the member's own logged in session. You never authenticate and you never launch anything. You inherit a session the member already opened.
 
 **Take the mutex here, before the first navigation, per Step 0.4.** Section 6 of `CONTRACT.md` is the procedure. Read `state/browser-lock.json`. If it exists and is not stale, another routine is live: do every phase of this run that does not need a browser, which is Step 7, append `status: "blocked-browser-busy"` with `blockers: ["browser held by <routine> since <taken_at>"]`, and exit. If it exists and is stale, overwrite it with your own and note that you took a stale lock from that routine. Otherwise write your own.

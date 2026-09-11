@@ -73,6 +73,7 @@ These apply from now until I remove them. They are not negotiable inside this se
    - **Does `image.generate` have a route?** If it does not, the creative sets ship as text only, which is a smaller product and not a broken one. Note it and move on.
 
    Cache nothing. Detection happens at the top of every run.
+   - For each row of `CAPABILITIES.md` section 4b, say whether that connection is present on this harness, under what name, and whether it is read only. Write the answers in your working notes. A row that is absent costs nothing today: the browser lane in section 4 is the route, and section 7 says what that read produces without one.
 6. Confirm seven folders exist under `«ADS_ROOT»/routines/` and that each holds a `SKILL.md` whose YAML `name` equals its folder name exactly. The seven are `ads-account-read`, `ads-desk-standup`, `ads-creative-studio`, `ads-build-desk`, `ads-change-list`, `ads-account-intake`, `ads-creative-retro`. **Nothing outside that list may be referenced anywhere in this kit.** If one is missing or its name key differs, rename the folder to match the `name` key, record it, and carry on.
 7. Create every path in `CONTRACT.md` section 2 that does not exist, and **create nothing that is not in it.** Two exceptions to note as you go: `board/board.json` is **not** created here, because `ads-desk-standup` is its only whole file writer and it builds it on its first morning by folding `board/inbox.jsonl`. And `creative/doctrine.md` **is** created here, once, and never written by you again.
 8. **This first run is exempt from the window guard, and only from the window guard**, because I launched it by hand. Detect that by the absence of `«ADS_ROOT»/state/ads-account-intake.json`. Every other guard still applies: the pause switch, the once per period guard, the budget, the browser mutex, and both stops.
@@ -224,6 +225,7 @@ Before appending, read `board/inbox.jsonl` back and fold it on `title` plus `pro
    - The dashboard path and its tabs.
    - What is registered, at what times, in this machine's own timezone, named by zone id. Plus one line about the permission setting, pointing at `CAPABILITIES.md` section 10 without restating its argument.
    - Anything missing and the one action that would fix it.
+   - Every connection in `CAPABILITIES.md` section 4b that is absent, one line each: what it would turn on, and the one step I take in my own harness to add it.
 7. **Set my expectation once, plainly:** the first weekly change list will be mostly `n/a`, and the first monthly retrospective will retire nothing. Both are correct. They have one period of my own data and they will not estimate the rest.
 
 Do not tell me how you built any of this. I have the files.

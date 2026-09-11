@@ -248,6 +248,8 @@ Record the plan in `progress[]` as the first entry.
 
 ## Step 3. Take the lane, open your own tab
 
+**Resolve `registrar.read`, `host.read` and `db.read` through `CAPABILITIES.md` section 4b first.** A surface that resolves to a connected route is read through it in Steps 4 to 6 with no tab. Take the lane below only where at least one surface resolves to nothing, and open a tab for that surface alone.
+
 Read `state/browser-lock.json`.
 
 - **Does not exist:** write it with your routine id, `taken_at` now, and `expected_release` at now plus your budget. Proceed.

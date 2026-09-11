@@ -324,6 +324,8 @@ Record the decision in `progress[]` so a resumed run does not re-derive it.
 
 ## Step 5. The browser phase, only where the map named a screen
 
+**Resolve `money.read`, `analytics.read` and `board.read` through `CAPABILITIES.md` section 4b first.** A screen on the metric map whose figure a connected route returns is read through the route, counts as a live read with the route named as its source, and needs no tab. Take the lock below only for a screen 4b leaves unresolved.
+
 One contiguous phase, one tab, one lock.
 
 **Take the browser mutex here, before the first navigation, per Step 0.4 and section 6 of the contract.** Read `«COS_ROOT»/state/browser-lock.json`.

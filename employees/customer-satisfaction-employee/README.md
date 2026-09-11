@@ -172,6 +172,8 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 9. **A working folder outside OneDrive, Dropbox, Google Drive and iCloud.** That folder is `«CSAT_ROOT»` everywhere in this kit.
 10. **A usage budget.** On a Claude Pro or Max plan an employee costs nothing beyond the plan; it spends a share of the plan's usage limits. Measured on one employee as the example, the GTM Engineer, over 27 scheduled runs, that share was about 6 percent of everything one Max seat sent to Claude in ten days of heavy use. On an API key it is about $19 of Opus 5 usage at list price on a plain weekday, and an API key loses the browser lane. The repo's `docs/COST.md` has the table and the dates.
 
+**Connections that turn the browser lane off, all optional.** Your helpdesk's own connector (Intercom, Help Scout, Front or Zoho Desk) and the Gmail connector feed the morning sweep without a screen; Front and Intercom hold a reply as a draft or an internal note; the Stripe connector, on a restricted read only key, and the PostHog connector feed the churn watch. Connect them in your own harness and the install checks for each one and works without it. Nothing sends and nothing refunds unless you release that channel in `RELEASES.md`. The table, with the read only form of each route, is section 4b of `CAPABILITIES.md`.
+
 Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. The repo's `docs/HARNESSES.md` has the scheduler and invocation for each harness, and `docs/INSTALL.md` has the steps per operating system and what a first run should look like.
 
 ---

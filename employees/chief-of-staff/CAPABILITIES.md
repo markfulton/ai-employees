@@ -451,6 +451,27 @@ Wait for a condition, polling rather than sleeping long.
 
 ---
 
+## 4b. Connected sources
+
+A connected source is a route the member connected once in their own harness that reads an account this Employee works in: a connector from the harness's own directory, the vendor's own server added by its URL, or the vendor's command line tool. The rule is the one in section 8: the kit detects a connection, uses it, degrades without it, and never installs one. A routine names the capability in the left column; this table says what it resolves to on this machine, and `docs/HARNESSES.md` says how each harness adds one.
+
+**Prefer a connected route over the browser lane wherever both exist.** It reads the same figures the account screen shows with no tab, no mutex, no login wall, and no learned flow that drifts. The browser lane in section 4 is the fallback for every row that resolves to nothing, and section 7 says what that costs.
+
+**Read only, scoped, and never more than this Employee reads.** Where a vendor offers a read only form of a route, that form is the only one named here. Where it offers none, the two guardrails still hold: no routine calls a tool that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel. Every connected server loads its tool descriptions into every run on most harnesses, so connect the rows a routine in this kit reads and nothing for the sake of having it.
+
+| Capability | What it reads | Routes, in order of preference | Read only form | Confidence |
+|---|---|---|---|---|
+| `mail.read`, `calendar.read`, `files.read` | Mail, meetings and documents the metric map or the charter names | The Gmail, Google Calendar and Google Drive connectors (Drive reads Docs, Sheets and PDFs); the Microsoft 365 connector | Read only | `expected` |
+| `board.read` | Cards and status in the member's project tool | The Notion, Linear (`https://mcp.linear.app/mcp/readonly`), Asana, Atlassian, monday.com, ClickUp or Todoist connector | Read only | `expected` |
+| `money.read` | Revenue, cash and subscriptions for the Thursday review | The Stripe connector with a restricted, read only key; the Xero, QuickBooks, Mercury, Ramp, Brex or Chargebee connector | Read only | `expected` |
+| `analytics.read` | Traffic and signups | The PostHog connector; the Google Analytics MCP server (official, `pipx run analytics-mcp`); the host's own analytics tool | Read only | `expected` |
+| `page.diff` | A competitor page read for the Wednesday sweep when a plain fetch fails | `web.fetch` first; the Firecrawl, Exa or Tavily connector; the Similarweb and Crunchbase connectors for traffic and company signals | Read only | `expected` |
+| `chat.read` | A team or community channel on the watchlist | The Slack connector | Read only | `expected` |
+
+`confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
+
+---
+
 ## 5. Notification and research
 
 Three capabilities. One of them is the only thing in this kit that reaches your phone, and two are how the audit and the sweep learn anything about the outside world without a browser.
@@ -626,6 +647,8 @@ The honest headline first.
 Some harnesses let you install named helpers of your own: skills, plugins, extensions, whatever yours calls them. The kit's relationship to those is fixed and short.
 
 **It detects. It uses. It degrades. It never installs.**
+
+Connected sources in section 4b are named helpers under exactly this rule: detect, use, degrade, never install. A routine that resolves a capability through one never calls a tool on it that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel, and it takes the read only form of the route wherever the vendor offers one.
 
 A routine may name an optional helper as a dependency, check whether it is present, use it when it is, and fall back to a stated route when it is not. **No routine in this kit ever creates, authors, or installs a helper in your global directory.** Your global setup is yours. You add helpers from the library when you decide to, and nothing here reaches into it.
 

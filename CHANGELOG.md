@@ -2,9 +2,14 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
-## Unreleased
+## 1.5.0, 2026-09-11
 
-The install is two steps, and the README says so first.
+The Employees read their accounts through the connections you already have, and the install is two steps.
+
+- **`CAPABILITIES.md` section 4b in every kit, connected sources**: one row per capability an Employee reads through a connector in the harness's own directory, the vendor's own server, or its command line tool, with the read only form of each route. A connected route is preferred over the browser lane wherever both exist; the browser lane stays the fallback for every row that resolves to nothing. Routines still name capabilities and never a vendor: ten routines across the eight kits now resolve their account reads through 4b before they open a tab.
+- **The install prompt** checks every 4b row in Phase 0 and names the absent ones in the handover, each with the one step the member takes in their own harness to add it. `employee.json` carries the rows under `connections`.
+- **`docs/HARNESSES.md`** gains an "Adding a connection" column, `docs/PREREQUISITES.md` an optional item 11, and the Agent Employee Standard moves to v1.3: LAW 4 covers connected sources under the same rule as skills, detect, use, degrade, never install.
+- Every kit is 1.5.0.
 
 - **README**: the two step install sits directly under the intro. Extract a kit to a local folder, open your agent there and say "install the GTM Engineer from this folder". The ten other agents fold into one collapsed block, "What sets these apart" and "How an AI Employee runs" are written for a first time reader, and the mechanics (windows, period keys, capability routes, the guard script) stay in `docs/HOW-EMPLOYEES-WORK.md` and `docs/STANDARD.md` where they belong.
 - **Every kit's `INSTALL-PROMPT.md`** works when the agent reads it from the folder instead of a person pasting it: the root resolves to the folder the file sits in, and a URL the agent cannot find is one question, never a stop. The `FILL THIS IN` block stays for anyone who wants to hand those over up front.

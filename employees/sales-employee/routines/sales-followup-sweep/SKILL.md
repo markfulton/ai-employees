@@ -241,6 +241,8 @@ Read each file with `file.read`, strip a leading byte order mark by removing cod
 
 ### 3.1 Take the lane, once, for both halves
 
+**Resolve `mail.read` through `CAPABILITIES.md` section 4b first.** Where it resolves to a connected route, read the replies in 3.5 through it, verify the account in 3.2 from what the route reports, and take no lane for half one. The browser below is the route only where 4b resolves to nothing.
+
 **Take the browser mutex here, before the first navigation, per Step 0.4.** Read `state/browser-lock.json`.
 
 - Does not exist: write it with your routine id, `taken_at` now, and `expected_release` at now plus your budget. Proceed.

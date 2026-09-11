@@ -462,6 +462,8 @@ Append one `crm/contacted.jsonl` line per queued DM with `"channel":"linkedin"` 
 
 ## Step 7. Mailbox draft mode, which ships off
 
+**Where this step runs, resolve `mail.draft` through `CAPABILITIES.md` section 4b first.** A connected route that saves an unsent draft in the member's own mailbox replaces the compose surface below: create the draft through it, verify it exists by reading it back through the same route, and open no tab. Everything else in this step, the account check, the never send rule and the `mailbox_drafted[]` record, applies unchanged.
+
 Everything above produces the deliverable and needs no browser. This step is the optional extra, it is off unless the member switched it on, and it is the one place this routine reaches outside `«GTM_ROOT»`.
 
 Read `mailbox_draft_mode` from state. Absent or false means skip this whole step, silently. It is not a blocker, it is not a degradation, and it does not change the run's status.

@@ -3,8 +3,8 @@
   "slug": "social-media-employee",
   "name": "Social Media Employee",
   "role": "Audience and distribution",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,58 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "channel.schedule",
+      "providers": [
+        "metricool",
+        "buffer",
+        "postiz"
+      ],
+      "required": false,
+      "readonly": false
+    },
+    {
+      "capability": "engagement.read",
+      "providers": [
+        "metricool",
+        "threads-api",
+        "meta-graph-api",
+        "youtube-data-api",
+        "bluesky",
+        "mastodon",
+        "x-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "analytics.read",
+      "providers": [
+        "metricool"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "design.export",
+      "providers": [
+        "canva"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "community.read",
+      "providers": [
+        "slack",
+        "discord-api",
+        "circle-api"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
   "routines": [
     {
       "id": "soc-calendar-standup",

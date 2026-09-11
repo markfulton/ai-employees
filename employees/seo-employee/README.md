@@ -152,6 +152,8 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 9. **A working folder outside OneDrive, Dropbox, Google Drive and iCloud.** That folder is `«SEO_ROOT»` everywhere in this kit.
 10. **A usage budget.** On a Claude Pro or Max plan an employee costs nothing beyond the plan; it spends a share of the plan's usage limits. Measured on one employee as the example, the GTM Engineer, over 27 scheduled runs, that share was about 6 percent of everything one Max seat sent to Claude in ten days of heavy use. On an API key it is about $19 of Opus 5 usage at list price on a plain weekday, and an API key loses the browser lane. The repo's `docs/COST.md` has the table and the dates.
 
+**Connections that turn the browser lane off, all optional.** OpenSEO reads your Search Console performance, live results and keyword data through one server, with Apify as the result set route that never runs out of session budget; Google's own Analytics MCP server covers traffic; a WordPress.com, Webflow, Wix or Shopify connector, or a self hosted WordPress route, publishes to a surface property. Connect them in your own harness and the install checks for each one and works without it. Every read is read only, and publishing stays the one sanctioned action it is today. The table, with the read only form of each route, is section 4b of `CAPABILITIES.md`.
+
 Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. The repo's `docs/HARNESSES.md` has the scheduler and invocation for each harness, and `docs/INSTALL.md` has the steps per operating system and what a first run should look like.
 
 ---

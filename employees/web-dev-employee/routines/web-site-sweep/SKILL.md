@@ -271,6 +271,8 @@ Only the `tracked_path` for this project gets the full treatment. Every other de
 
 ### 5a. The render and the console
 
+**Resolve `browser.headless` through `CAPABILITIES.md` section 4b first.** Where it resolves to a route, render the tracked path, read its console and take the sample in 5b through that route's own browser, and open no tab in the member's. The steps below describe the member's browser and apply only where 4b resolves to nothing.
+
 Follow `read-a-page` on the tracked path. `browser.navigate`, then `page.wait` polling for a condition rather than sleeping for a number you guessed, then `page.read` for structure and `page.capture` for anything you have to see.
 
 **The staleness rule governs this step.** A single page application leaves stale DOM behind, so reading page text straight after a navigation can return the previous view, confidently and with no error. Read verdicts off `page.capture`, not off `page.text`, and where you must use text, prove first that you are on the new view by finding a string that belongs only to it.
@@ -317,6 +319,8 @@ If neither route answers, `build_id: null` with `"build identifier not read"` in
 This is the step that makes the difference between a health check and a triage system, and it is the only place in this kit where a raw log line is ever read.
 
 ### 6a. The window
+
+**Resolve `host.read` and `db.read` through `CAPABILITIES.md` section 4b first.** Where a log surface's host or database resolves to a connected route, read the lines since the cursor through it and open no screen for that surface; the screen is the route only for a surface 4b leaves unresolved.
 
 For each `log_surfaces` entry the inventory names for this project, in order:
 

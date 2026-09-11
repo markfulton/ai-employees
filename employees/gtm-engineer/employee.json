@@ -3,8 +3,8 @@
   "slug": "gtm-engineer",
   "name": "GTM Engineer",
   "role": "Go to market and launch",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,83 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "mail.draft",
+      "providers": [
+        "gmail",
+        "microsoft-365"
+      ],
+      "required": false,
+      "readonly": false
+    },
+    {
+      "capability": "calendar.read",
+      "providers": [
+        "google-calendar",
+        "microsoft-365"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "analytics.read",
+      "providers": [
+        "posthog",
+        "google-analytics-mcp",
+        "vercel",
+        "mixpanel",
+        "amplitude"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "ads.signal.check",
+      "providers": [
+        "meta-ads-mcp",
+        "google-ads-mcp"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "people.search",
+      "providers": [
+        "apollo",
+        "clay",
+        "zoominfo",
+        "exa",
+        "firecrawl",
+        "tavily"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "automation.run",
+      "providers": [
+        "make",
+        "zapier",
+        "n8n"
+      ],
+      "required": false,
+      "readonly": false
+    },
+    {
+      "capability": "email.batch",
+      "providers": [
+        "resend",
+        "mailchimp",
+        "brevo",
+        "klaviyo",
+        "mailerlite",
+        "beehiiv"
+      ],
+      "required": false,
+      "readonly": false
+    }
+  ],
   "routines": [
     {
       "id": "gtm-board-standup",

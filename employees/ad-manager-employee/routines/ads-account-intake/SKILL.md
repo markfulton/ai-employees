@@ -332,6 +332,8 @@ Write what you chose, the reason, and the exact screen it is measured on into `p
 
 ### A4.6 The one account read, first run only
 
+**Resolve `ads.account.read` through `CAPABILITIES.md` section 4b first.** Where it resolves to a connected route, read the account list and the object tree through that route, record the same names and ids, and open no tab. The screen read below is the route only where 4b resolves to nothing on this machine.
+
 **Take the browser mutex here**, per Step 0.4 and section 6 of the contract, if you did not already take it in A4.2.
 
 This is the only time this routine opens an account screen, ever. **Navigate and read. Nothing else.**

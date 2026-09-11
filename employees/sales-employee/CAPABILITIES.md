@@ -451,6 +451,27 @@ Fixed waits are not a failure mode though. They are the shipped behaviour on the
 
 ---
 
+## 4b. Connected sources
+
+A connected source is a route the member connected once in their own harness that reads an account this Employee works in: a connector from the harness's own directory, the vendor's own server added by its URL, or the vendor's command line tool. The rule is the one in section 8: the kit detects a connection, uses it, degrades without it, and never installs one. A routine names the capability in the left column; this table says what it resolves to on this machine, and `docs/HARNESSES.md` says how each harness adds one.
+
+**Prefer a connected route over the browser lane wherever both exist.** It reads the same figures the account screen shows with no tab, no mutex, no login wall, and no learned flow that drifts. The browser lane in section 4 is the fallback for every row that resolves to nothing, and section 7 says what that costs.
+
+**Read only, scoped, and never more than this Employee reads.** Where a vendor offers a read only form of a route, that form is the only one named here. Where it offers none, the two guardrails still hold: no routine calls a tool that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel. Every connected server loads its tool descriptions into every run on most harnesses, so connect the rows a routine in this kit reads and nothing for the sake of having it.
+
+| Capability | What it reads | Routes, in order of preference | Read only form | Confidence |
+|---|---|---|---|---|
+| `mail.read` | Replies on the threads the ledger says were sent | The Gmail connector (`https://gmailmcp.googleapis.com/mcp/v1`); the Microsoft 365 connector for Outlook, which searches and reads only | Read tools only | `expected` |
+| `mail.draft` | A first touch or follow up saved as an unsent draft in the member's own mailbox | The Gmail connector's draft tool; on Outlook the queue file stays the route | Draft only; a send is held until `RELEASES.md` names the channel | `expected` |
+| `calendar.read` | Meetings booked from an outreach thread | The Google Calendar connector; the Microsoft 365 connector | Read only | `expected` |
+| `crm.read` | Pipeline state the member keeps outside this kit | The member's own CRM connector: HubSpot (`https://mcp.hubspot.com`), Attio, Close, Zoho CRM, Salesflare, Salesforce | Read tools only; a write is held | `expected` |
+| `people.search`, `people.enrich` | Contactable people behind a source, and the fields that qualify them | The Apollo connector (`https://mcp.apollo.io/mcp`; search costs no credits, enrichment does); the Clay or ZoomInfo connector. A professional network stays on the browser lane, read only | Read only | `expected` |
+| `billing.read` | Whether a prospect became a customer | The Stripe connector with a restricted, read only key | The restricted key only | `expected` |
+
+`confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
+
+---
+
 ## 5. Research and notification
 
 Three capabilities. Two are how the kit learns anything about a business or a source without opening a browser, and one is the only thing that ever interrupts you.
@@ -625,6 +646,8 @@ Six of the seven produce their main deliverable with no browser at all. That is 
 Some harnesses let you install named helpers of your own: skills, plugins, extensions, whatever yours calls them. The kit's relationship to those is fixed and short.
 
 **It detects. It uses. It degrades. It never installs.**
+
+Connected sources in section 4b are named helpers under exactly this rule: detect, use, degrade, never install. A routine that resolves a capability through one never calls a tool on it that creates, sends, spends, deploys or deletes unless `RELEASES.md` names that channel, and it takes the read only form of the route wherever the vendor offers one.
 
 A routine may name an optional helper as a dependency, check whether it is present, use it when it is, and fall back to a stated route when it is not. **No routine in this kit ever creates, authors, or installs a helper in your global directory.** Your global setup is yours. You add helpers when you decide to, and nothing here reaches into that decision.
 

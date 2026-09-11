@@ -3,8 +3,8 @@
   "slug": "seo-employee",
   "name": "SEO Employee",
   "role": "Search and content",
-  "version": "1.4.0",
-  "standard": "1.2",
+  "version": "1.5.0",
+  "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -19,6 +19,71 @@
       "antigravity"
     ]
   },
+  "connections": [
+    {
+      "capability": "search.performance.read",
+      "providers": [
+        "openseo",
+        "search-console-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "analytics.read",
+      "providers": [
+        "google-analytics-mcp",
+        "ga4-data-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "serp.read",
+      "providers": [
+        "openseo",
+        "apify",
+        "ahrefs",
+        "semrush"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "keyword.research",
+      "providers": [
+        "openseo",
+        "ahrefs",
+        "semrush",
+        "dataforseo"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "index.request",
+      "providers": [
+        "indexnow",
+        "search-console-api"
+      ],
+      "required": false,
+      "readonly": false
+    },
+    {
+      "capability": "cms.publish",
+      "providers": [
+        "wordpress-com",
+        "wordpress-mcp-adapter",
+        "wordpress-rest",
+        "webflow",
+        "wix",
+        "shopify",
+        "ghost"
+      ],
+      "required": false,
+      "readonly": false
+    }
+  ],
   "routines": [
     {
       "id": "seo-calendar-refill",

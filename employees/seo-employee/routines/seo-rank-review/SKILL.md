@@ -305,6 +305,8 @@ Record the set size per property. That number is what every `n/a` below is measu
 
 ## Step 4. Take the browser, open your tab, and learn or load the flow
 
+**Resolve `search.performance.read` and `analytics.read` through `CAPABILITIES.md` section 4b first.** Where both resolve to connected routes, read the figures in Steps 6 and 7 through them, open no tab, take no lock, and skip the flow file. Where only one resolves, open the browser for the other alone. The rest of this step applies only to a screen you still have to read.
+
 **Get a browser.** Follow the pre recipe block at the head of `recipes/BROWSER-RECIPES.md`. Confirm `browser.session` is attached to a browser holding the member's own logged in session. You never authenticate and you never launch anything.
 
 **Take the mutex here, before the first navigation, per Step 0.4.** Read `state/browser-lock.json`. If it exists and is not stale, another routine is live: you have no file only deliverable worth writing without figures, so record `status: "blocked-browser-busy"` with `blockers: ["browser held by <routine> since <taken_at>"]`, write nothing over `tracking/rank-latest.md`, and exit. **Leaving last week's rolling file in place is correct**: it carries its own date, every reader checks that date, and a file overwritten with nothing is worse than a file that is one week old and says so. If the lock exists and is stale, overwrite it with your own and note that you took a stale lock from that routine. Otherwise write your own.
