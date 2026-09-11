@@ -28,7 +28,7 @@ const VERSION = readVersion();
 
 const EMPLOYEES = {
   "gtm-engineer": { name: "GTM Engineer", role: "Go to market and launch", aliases: ["gtm", "go-to-market", "launch", "growth"] },
-  "seo-employee": { name: "SEO Employee", role: "Search and content", aliases: ["seo", "search", "content"] },
+  "seo-employee": { name: "SEO/AEO Employee", role: "Search and answer visibility", aliases: ["seo", "aeo", "geo", "search", "content"] },
   "web-dev-employee": { name: "Web Dev Employee", role: "Engineering and maintenance", aliases: ["web-dev", "webdev", "web", "developer", "dev"] },
   "social-media-employee": { name: "Social Media Employee", role: "Audience and distribution", aliases: ["social", "social-media"] },
   "ad-manager-employee": { name: "Ad Manager Employee", role: "Paid acquisition", aliases: ["ads", "ad-manager", "paid"] },

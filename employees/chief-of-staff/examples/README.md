@@ -1,6 +1,6 @@
 # Example output
 
-Everything in this folder is fictional. It is what the Chief of Staff kit writes during one baseline week for Northwind Roofing, a residential and light commercial roofing company run by Sam, with three other AI Employees installed beside it on the same machine: the GTM Engineer, the SEO Employee, and the Sales Employee.
+Everything in this folder is fictional. It is what the Chief of Staff kit writes during one baseline week for Northwind Roofing, a residential and light commercial roofing company run by Sam, with three other AI Employees installed beside it on the same machine: the GTM Engineer, the SEO/AEO Employee, and the Sales Employee.
 
 The week runs from 2026-03-02 to 2026-03-06 and every file is dated the way the routines would have dated it. Nothing here is a real business, a real person, a real domain, or a real run.
 

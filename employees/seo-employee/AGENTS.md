@@ -1,12 +1,12 @@
 # AGENTS.md
 
-**SEO Employee**, kit version 1.2.0. One of the eight AI Employees from [github.com/markfulton/ai-employees](https://github.com/markfulton/ai-employees).
+**SEO/AEO Employee**, kit version 1.6.0. One of the eight AI Employees from [github.com/markfulton/ai-employees](https://github.com/markfulton/ai-employees).
 
 This file follows the [AGENTS.md](https://agents.md) convention so that any harness can pick this kit up without being told how. It is a map, not the instructions. **The instructions are the files it points at, and they are authoritative over anything summarised here.**
 
 ## If you have been asked to install this Employee
 
-The person opened you in this folder and said something like "install the SEO Employee from this folder". Read `INSTALL-PROMPT.md` and follow everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` exactly as if they had pasted it. `«SEO_ROOT»` is this folder, resolved to an absolute path. Where the `FILL THIS IN` block is unedited, work the lines out yourself the way the prompt says, and ask one question only if you cannot.
+The person opened you in this folder and said something like "install the SEO/AEO Employee from this folder". Read `INSTALL-PROMPT.md` and follow everything between `=== BEGIN PROMPT ===` and `=== END PROMPT ===` exactly as if they had pasted it. `«SEO_ROOT»` is this folder, resolved to an absolute path. Where the `FILL THIS IN` block is unedited, work the lines out yourself the way the prompt says, and ask one question only if you cannot.
 
 ## If you have been asked to run a routine
 
@@ -29,6 +29,7 @@ Then run the guard before the work: `node scripts/guard.mjs`. It checks the day,
 | `seo-intake-and-map` | `routines/seo-intake-and-map/SKILL.md` |
 | `seo-publish-run` | `routines/seo-publish-run/SKILL.md` |
 | `seo-rank-review` | `routines/seo-rank-review/SKILL.md` |
+| `seo-answer-visibility` | `routines/seo-answer-visibility/SKILL.md` |
 | `seo-standup` | `routines/seo-standup/SKILL.md` |
 
 ## What this Employee will never do

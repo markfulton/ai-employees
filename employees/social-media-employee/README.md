@@ -372,7 +372,7 @@ No routine ever writes a secret, a credential, a post body, a suggested reply, a
 | Employee | They own | Social hands over | Social never |
 |---|---|---|---|
 | **GTM Engineer** | The go to market system for one offer: ICP, positioning, outbound, paid setup, the launch board | Nothing automatically. Launch week posts reach the calendar as slots you or that Employee file into `calendar/inbox.jsonl` | Writes into that folder, drafts outbound email or DMs, or takes a claim from it by any route other than you pasting it into `## Member claims` |
-| **SEO Employee** | Keyword research, editorial calendar, writing, publishing, internal linking, search console | Your pillars and your audience language | Writes or publishes an article, touches a blog repo, or requests indexing |
+| **SEO/AEO Employee** | Keyword research, editorial calendar, writing, publishing, internal linking, search console | Your pillars and your audience language | Writes or publishes an article, touches a blog repo, or requests indexing |
 | **Ad Manager Employee** | Live account operations: spend pacing, bids, budgets, creative rotation | Nothing. Organic and paid are different accounts and different risks | Boosts a post, promotes anything, or opens a screen inside an account that can spend |
 
 If you run the GTM Engineer as well, decide once whether launch week social copy is drafted here or handed over as slots, and write the answer into `plan/`. That is the one overlap worth settling before day two.

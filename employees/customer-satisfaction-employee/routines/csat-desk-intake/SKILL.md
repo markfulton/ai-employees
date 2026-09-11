@@ -1076,7 +1076,7 @@ They are readers of `strategy/`. Write these handover lines whether or not any o
 
 | Employee | You hand over | You never |
 |---|---|---|
-| A content or SEO Employee | The theme names and the help drafts under `help/`, through `csat-latest.md` | Write or publish an article, touch a content repo, or edit an editorial calendar |
+| A content or SEO/AEO Employee | The theme names and the help drafts under `help/`, through `csat-latest.md` | Write or publish an article, touch a content repo, or edit an editorial calendar |
 | A community or social Employee | The `forum` channel rows, so it knows which surfaces this desk reads | Post, reply, or react anywhere |
 | A GTM or outreach Employee | Nothing at all. **A support ledger is not a prospect list** and no line of it is ever handed to an outbound routine | Export a customer, a quote, or an account slug for any outbound purpose |
 

@@ -773,7 +773,7 @@ The rule from the head of that file that governs this run above all the others: 
 ### With the other AI Employees
 
 - **GTM Engineer** owns positioning research. Where its positioning and this kit's `plan/positioning.md` disagree, this kit's file is what you test angles against, because it is the file intake maintains.
-- **SEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. **An offer framing rule that fails because the landing page changed is not a reason to touch a content repo**, ever. File the card and let the boundary hold.
+- **SEO/AEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. **An offer framing rule that fails because the landing page changed is not a reason to touch a content repo**, ever. File the card and let the boundary hold.
 - **Social Employee** owns the organic calendar. **A retired paid angle says nothing about an organic one** and you never write a rule about organic content.
 
 ### Forbidden dependencies

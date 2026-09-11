@@ -356,7 +356,7 @@ If the standup ever opens by telling you that nothing has been produced since a 
 | Employee | They own | Sales hands over | Sales never |
 |---|---|---|---|
 | **GTM Engineer** | Positioning, the launch board, channel selection, paid setup | The buyer definition, the qualification tests, and the reply evidence behind both | Writes positioning, opens an ad account, names a bid or a budget, or works a launch board card |
-| **SEO Employee** | Keyword research, editorial calendar, writing, publishing, search console | The buyer language and the objections that came back in real replies | Writes or publishes an article, touches a blog repo, requests indexing, or edits a content calendar |
+| **SEO/AEO Employee** | Keyword research, editorial calendar, writing, publishing, search console | The buyer language and the objections that came back in real replies | Writes or publishes an article, touches a blog repo, requests indexing, or edits a content calendar |
 | **Social Media Employee** | The organic calendar, community engagement, replies | The message frameworks that earned replies | Runs a calendar, replies to anyone, or posts |
 
 **If you run both the GTM Engineer and the Sales Employee, decide once whether outbound drafting sits with GTM or with Sales and write the answer into `strategy/`.** Two roles drafting into the same mailbox is the one overlap worth settling before day two. The install detects which sibling Employees you have and asks about that one specifically if it finds a GTM Engineer.

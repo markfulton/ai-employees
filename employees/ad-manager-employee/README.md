@@ -341,7 +341,7 @@ If this is the only Employee you have installed, everything works exactly the sa
 | Employee | They own | Ad Manager hands over | Ad Manager never |
 |---|---|---|---|
 | **GTM Engineer** | Positioning research, outbound, the launch board, and the campaign build sheets an account was first created from | Nothing. Each writes into its own folder | Reads its folder, writes its files, or ticks its handoff card |
-| **SEO Employee** | Keyword research, editorial calendar, writing, publishing, internal linking, search console | The category language and the angle list | Writes or publishes an article, touches a blog repo, requests indexing, or edits a content calendar |
+| **SEO/AEO Employee** | Keyword research, editorial calendar, writing, publishing, internal linking, search console | The category language and the angle list | Writes or publishes an article, touches a blog repo, requests indexing, or edits a content calendar |
 | **Social Media Employee** | The always on organic calendar, community engagement, replies | Positioning language and the angle list | Runs the calendar, replies to anyone, posts, or lets paid creative reach an organic surface |
 
 **If you also run the GTM Engineer**, the handoff is a dated card on that Employee's board. Once it is closed, live account reading belongs here and that Employee's paid guard goes read only and stops assembling campaign skeletons. **Neither Employee was ever allowed to click**, so the handoff moves who writes the specification and never who is allowed to change an account.

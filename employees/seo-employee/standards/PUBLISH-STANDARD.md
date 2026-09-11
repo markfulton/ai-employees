@@ -190,7 +190,7 @@ Write it into `meta.json` as `alt`, and write it **even where the hero was dropp
 
 ## 7. The end of run report
 
-Every routine writes exactly one run record through `runlog.append`, to the schema in `CONTRACT.md` section 4. What belongs here is the standard the report holds itself to, which is the same one for all seven.
+Every routine writes exactly one run record through `runlog.append`, to the schema in `CONTRACT.md` section 4. What belongs here is the standard the report holds itself to, which is the same one for all eight.
 
 **Report what you did, never what you intended.** If six sources were planned and four were read, the number is four. If twelve requests were budgeted and the allowance refused after nine, the number is nine. If a block of thirty entries was planned and twenty eight could be defended, the number is twenty eight.
 

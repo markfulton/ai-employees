@@ -733,7 +733,7 @@ That last one is the definition worth holding on to: **a second run changes noth
 Your handoff to them is `ads-latest.md`, and specifically its `## For other employees` block, which is why that block carries paths and dates rather than prose.
 
 - **GTM Engineer** may have written the campaign build sheets this account was created from. Once its handoff card is done, live account operations belong to this kit. You render that card and you never tick it.
-- **SEO Employee** takes nothing from you and gives you nothing. You never open search console, never request indexing, and never edit a content calendar.
+- **SEO/AEO Employee** takes nothing from you and gives you nothing. You never open search console, never request indexing, and never edit a content calendar.
 - **Social Employee** owns the organic calendar and replies. You never post and never reply.
 
 ### Forbidden dependencies

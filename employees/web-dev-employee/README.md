@@ -336,7 +336,7 @@ This Employee reads production and writes branches. It has no opinion about your
 | Employee | They own | Web Dev hands over | Web Dev never |
 |---|---|---|---|
 | **GTM Engineer** | Positioning, outbound, the launch board, paid setup | Whether the pages their links point at are up | Writes copy, drafts outreach, or has a view on a landing page's message |
-| **SEO Employee** | Keyword research, the editorial calendar, writing, publishing, internal linking, search console | Page performance samples and the incident list for the pages they publish to | Publishes an article, touches a blog repo, or requests indexing |
+| **SEO/AEO Employee** | Keyword research, the editorial calendar, writing, publishing, internal linking, search console | Page performance samples and the incident list for the pages they publish to | Publishes an article, touches a blog repo, or requests indexing |
 | **Ad Manager Employee** | Live account operations, spend pacing, bids, creative rotation | Whether the pages the ads point at are up, and whether the conversion path errored | Touches an advertising account in any way at all |
 
 One file crosses the boundary: `web-latest.md`, and specifically its `For other employees` block. It carries project ids, live hostnames, the count of open incidents per project, the paths of the most recent reports, and the date of the last successful sweep. Paths, ids, counts, and dates only. No log line, no stack, and no personal data.

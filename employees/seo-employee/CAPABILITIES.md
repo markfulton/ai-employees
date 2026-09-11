@@ -1,4 +1,4 @@
-# SEO Employee: capabilities
+# SEO/AEO Employee: capabilities
 
 This is the only file in the kit that maps a capability to a concrete route on a concrete harness.
 
@@ -219,7 +219,7 @@ Run a local command and read its output.
 
 Ten capabilities, all reached through one thing: whatever your harness uses to drive a browser. If that one thing is missing, all ten are missing together, and the degradation is the same for every one of them.
 
-**The shared degradation.** The routine does its file only work, records `partial`, and puts `no browser control capability configured` in `blockers[]`. A routine whose entire job is in the browser records `failed` with the same blocker. A missing browser never fails the day for the other six routines, and **it never stops the morning brief**, because `seo-standup` has no browser lane at all.
+**The shared degradation.** The routine does its file only work, records `partial`, and puts `no browser control capability configured` in `blockers[]`. A routine whose entire job is in the browser records `failed` with the same blocker. A missing browser never fails the day for the other seven routines, and **it never stops the morning brief**, because `seo-standup` has no browser lane at all.
 
 **There is no eighth status for this.** Missing browser control maps onto `partial` or `failed` and nothing else. If you see a routine invent a status for it, that is a defect.
 
@@ -309,7 +309,7 @@ Read the page as a structured tree where each interactive element carries a stab
 | Codex | As OpenCode | As OpenCode |
 | Antigravity | Unknown | Re-read after any view change |
 
-**The rule that holds on all seven:** never act on a reference taken before the last view change. Where your read keeps the stale ones alongside the live ones, prefer the most recently assigned. Where it re-snapshots, read again and use what it gives you.
+**The rule that holds on all eight:** never act on a reference taken before the last view change. Where your read keeps the stale ones alongside the live ones, prefer the most recently assigned. Where it re-snapshots, read again and use what it gives you.
 
 **This is the single most expensive row in this file for `seo-index-sweep`.** A search performance console keeps a detached copy of every previous inspection alongside the live one, so a search for the request control returns one reference per URL inspected so far in the session, and every one but the last is a ghost. A click on a ghost produces a silent no op rather than an error.
 
@@ -759,7 +759,7 @@ There is no workaround for that pair and I will not invent one. If you cannot gi
 | `seo-rank-review` | The whole job | Nothing. It records the blocker, leaves last week's rolling file in place, and names the consequence for the refill and the draft run | `failed` |
 | `seo-intake-and-map` | Reads a site a fetch cannot render, confirms a read screen | Both facts become `n/a` with the reason. All three strategy files still get written | `ok` or `partial` |
 
-Five of the seven produce their main deliverable with no browser at all. That is most of the product. But do not buy this expecting the rank review to work without one, because it will not, and I would rather you know that now.
+Five of the eight produce their main deliverable with no browser at all. That is most of the product. But do not buy this expecting the rank review to work without one, because it will not, and I would rather you know that now.
 
 ---
 
@@ -793,7 +793,7 @@ Every harness schedules differently and some do not schedule at all. The shape b
 
 ### 9.1 The shape
 
-**One job per routine.** Seven routines, seven jobs. Never one job that runs several in sequence: a chained job defeats the per routine period guard, blurs the budgets, and turns one failure into seven.
+**One job per routine.** Seven routines, eight jobs. Never one job that runs several in sequence: a chained job defeats the per routine period guard, blurs the budgets, and turns one failure into eight.
 
 **The job's only content is the invocation.** All the logic is in the routine.
 
@@ -883,7 +883,7 @@ Three things decide whether the line works, and all three are outside the comman
 
 **The approval mode.** Section 10. A scheduled run in a prompting mode hangs at 08:00 and leaves no record at all, which is worse than failing.
 
-**One routine run by hand, first.** Take the line for `seo-standup`, run it in a terminal, and watch it write `brief-latest.md` and one line into `runlog.jsonl`. Then register the other six.
+**One routine run by hand, first.** Take the line for `seo-standup`, run it in a terminal, and watch it write `brief-latest.md` and one line into `runlog.jsonl`. Then register the other seven.
 
 Where your harness's row above says `expected` rather than `confirmed`, and you have run a routine through it, put what you found in `## Corrections` at the bottom of this file.
 
@@ -931,7 +931,7 @@ Four things in that file are there because a scheduled fire found each one missi
 
 The monthly line fires on the first Monday, the first Tuesday, and so on, up to five times. The period key reduces that to one run per month. This is deliberate: be generous about when, be strict about how many times.
 
-Task Scheduler has a setting called **Run task as soon as possible after a scheduled start is missed.** Turn it on for all seven. The window guard makes the catch up safe, and without it a laptop that was closed at 07:15 gets no brief at all that day.
+Task Scheduler has a setting called **Run task as soon as possible after a scheduled start is missed.** Turn it on for all eight. The window guard makes the catch up safe, and without it a laptop that was closed at 07:15 gets no brief at all that day.
 
 ### 9.5 Machines that sleep
 
@@ -967,7 +967,7 @@ This is the setting that decides whether your schedule produces anything at all,
 
 **A routine launched in a prompting mode stalls forever waiting for a human who is asleep.** At 08:00 the draft run asks to fetch a page, or to write a file, or to run a command, and then it sits there. Nobody clicks Allow. The run does not fail, which would at least leave a record. It hangs. There is no run record, no brief, and no blocker for you to read in the morning, because the routine never reached the line that writes one. The next morning's standup opens by telling you nothing has been produced since a given date, which is the correct behaviour and a day late.
 
-**The fix lives in your harness's own settings: run scheduled work in its auto approve mode.** Every harness calls it something different. Ask yours for the flag or setting that runs a session without interactive approval, and apply it to the seven scheduled jobs only.
+**The fix lives in your harness's own settings: run scheduled work in its auto approve mode.** Every harness calls it something different. Ask yours for the flag or setting that runs a session without interactive approval, and apply it to the eight scheduled jobs only.
 
 Two practical points on top of that.
 
@@ -992,3 +992,7 @@ What actually holds the line is in the routines and it is checked at the end of 
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.`
 
 This is where your probe result goes when it disagrees with a table above. Your machine is the authority on your machine. Every routine reads this section at the top of every run, and a line here outranks anything in sections 3 to 6.
+
+## Answer visibility reads
+
+`answer.visibility.read`: prefer a member-provided dated capture/export of the actual surface, or an authorized browser route to Google AI Overviews/AI Mode, ChatGPT search, Gemini or another selected answer surface. Bing Webmaster Tools AI Performance may supply its own supported citation data. Probe every route live and label its product scope. These are optional, unknown until verified. A general model API response is not a consumer search observation. No unattended browser support means file-only eligibility work plus explicitly unavailable answer samples. AEO-PLAYBOOK.md defines the fields and denominators.

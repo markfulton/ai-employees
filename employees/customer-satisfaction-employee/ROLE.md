@@ -210,7 +210,7 @@ Break any one link and the loop stops producing numbers. All eight exist because
 
 | Employee | They own | This role hands over | This role never |
 |---|---|---|---|
-| A content or SEO Employee | Keyword research, the editorial calendar, writing, publishing, internal linking, search console | The theme ids and the help drafts under `help/`, named in `csat-latest.md`, which a sibling reads and opens itself | Writes or publishes an article, touches a content repo, edits an editorial calendar, or requests indexing |
+| A content or SEO/AEO Employee | Keyword research, the editorial calendar, writing, publishing, internal linking, search console | The theme ids and the help drafts under `help/`, named in `csat-latest.md`, which a sibling reads and opens itself | Writes or publishes an article, touches a content repo, edits an editorial calendar, or requests indexing |
 | A community or social Employee | The organic calendar, community engagement, replies | The `forum` channel rows, so it knows which surfaces this desk already reads | Posts, replies, or reacts anywhere |
 | A GTM, sales, or outreach Employee | Prospecting, outbound, the pipeline | **Nothing at all** | Exports a customer, a quote, an account slug, or a ticket for any outbound purpose |
 

@@ -1,9 +1,9 @@
 {
   "schema": "ai-employee/1",
   "slug": "seo-employee",
-  "name": "SEO Employee",
-  "role": "Search and content",
-  "version": "1.5.0",
+  "name": "SEO/AEO Employee",
+  "role": "Search, content and answer visibility",
+  "version": "1.6.0",
   "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
@@ -82,6 +82,16 @@
       ],
       "required": false,
       "readonly": false
+    },
+    {
+      "capability": "answer.visibility.read",
+      "providers": [
+        "member-observation",
+        "browser",
+        "bing-webmaster-tools"
+      ],
+      "required": false,
+      "readonly": true
     }
   ],
   "routines": [
@@ -154,6 +164,16 @@
       "period_key": "YYYY-MM-DD",
       "budget": "12 min",
       "browser": "never"
+    },
+    {
+      "id": "seo-answer-visibility",
+      "days": "thu",
+      "fire": "11:00",
+      "window_start": "10:45",
+      "window_end": "14:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "conditional"
     }
   ],
   "files": {
@@ -172,7 +192,8 @@
       "routines/**",
       "run/**",
       "scripts/**",
-      "examples/**"
+      "examples/**",
+      "AEO-PLAYBOOK.md"
     ],
     "merge": [
       "SCHEDULE.md"
@@ -197,7 +218,11 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "tracking/**",
+      "content/**",
+      "index/**",
+      "standards/**"
     ]
   },
   "notes": {

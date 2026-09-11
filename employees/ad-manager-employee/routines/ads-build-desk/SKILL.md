@@ -835,7 +835,7 @@ The rule from the head of that file that governs this run above all the others: 
 ### With the other AI Employees
 
 - **GTM Engineer** may have written the original campaign build sheets under its own `paid/` folder, and hands over files rather than objects. **You never read that folder**, because it is outside this kit's root and its own routines maintain it. A value it holds reaches you through `plan/`, written by intake.
-- **SEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar, even when a landing page a sheet points at obviously needs organic work.
+- **SEO/AEO Employee** owns keyword research, the editorial calendar, publishing, and internal linking. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar, even when a landing page a sheet points at obviously needs organic work.
 - **Social Employee** owns the organic calendar and replies. **Paid creative you package in an upload packet never reaches an organic surface by your hand.**
 
 ### Forbidden dependencies

@@ -8,7 +8,7 @@
 - fleet state read from: fleet/fleet.json, generated 2026-03-04
 
 ## What is happening
-The publish run starts every weekday morning and never finishes. Nothing has been published since 2026-02-19, and the SEO Employee's own brief cannot say so, because the line that would say it is never reached.
+The publish run starts every weekday morning and never finishes. Nothing has been published since 2026-02-19, and the SEO/AEO Employee's own brief cannot say so, because the line that would say it is never reached.
 
 ## The first record that shows it
 2026-02-19 | seo-employee runlog.jsonl line 402 | status ok | no blocker. This is the last record the routine wrote. Every record after it on that log belongs to another routine.

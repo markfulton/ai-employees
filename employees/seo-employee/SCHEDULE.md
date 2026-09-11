@@ -1,10 +1,10 @@
-# SEO Employee: the schedule
+# SEO/AEO Employee: the schedule
 
 This file is the only place cadences, fire times, windows, budgets, period keys, and browser lanes live. Every routine reads its own row here at the top of every run, as Step 0.1, and takes `days`, `window_start`, `window_end`, `key`, `budget`, and `browser` from it. **A SKILL.md never carries a clock time.** A registered job may drift from this table without breaking anything, because the window guard catches it and the monthly drift check reports it.
 
 If a routine cannot find its row here, or cannot parse it, it records `status: "failed"` with the blocker `no SCHEDULE.md row for <routine-id>` and exits. It never guesses a window.
 
-`CONTRACT.md` section 1 carries the same seven routines with their cadence in words. **Where the two disagree, this file wins**, because this is the file the member edits and the file the guard reads.
+`CONTRACT.md` section 1 carries the same eight routines with their cadence in words. **Where the two disagree, this file wins**, because this is the file the member edits and the file the guard reads.
 
 All times are 24 hour local machine time. No time in this file is UTC and none is relative to any other zone.
 
@@ -21,10 +21,11 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `seo-publish-run` | `mon-fri` | 09:15 | 09:00 | 13:00 | `YYYY-MM-DD` | 30 min | conditional |
 | `seo-index-sweep` | `tue` | 11:00 | 10:45 | 16:00 | `YYYY-Www` | 40 min | heavy |
 | `seo-calendar-refill` | `wed` | 13:00 | 12:45 | 17:00 | `YYYY-Www` | 40 min | conditional |
+| `seo-answer-visibility` | `thu` | 11:00 | 10:45 | 14:00 | `YYYY-Www` | 40 min | conditional |
 | `seo-rank-review` | `fri` | 16:00 | 15:45 | 19:00 | `YYYY-Www` | 40 min | heavy |
 | `seo-intake-and-map` | `first-weekday` | 14:30 | 14:15 | 18:00 | `YYYY-MM` | 45 min | conditional |
 
-Seven rows, seven routines, and every id carries the `seo-` prefix so they namespace cleanly beside other AI Employees.
+Seven rows, eight routines, and every id carries the `seo-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 
@@ -57,7 +58,7 @@ There is no status meaning "this machine has no browser". A missing capability m
 - File work still to do: `partial`, with `no browser control capability configured` in `blockers[]`.
 - Nothing else to do: `failed`, same blocker string.
 
-**Four of the seven produce their main deliverable with no browser at all**, including the morning brief, the whole calendar refill, the draft folder, and a repository publish verified through a fetch. `CAPABILITIES.md` section 7 has the routine by routine detail and it is honest about the two that genuinely need a browser, which are the index sweep and the rank review.
+**Four of the eight produce their main deliverable with no browser at all**, including the morning brief, the whole calendar refill, the draft folder, and a repository publish verified through a fetch. `CAPABILITIES.md` section 7 has the routine by routine detail and it is honest about the two that genuinely need a browser, which are the index sweep and the rank review.
 
 ---
 
@@ -70,8 +71,9 @@ There is no status meaning "this machine has no browser". A missing capability m
 | `seo-publish-run` | Publish run | Weekdays | Takes the oldest ready draft, publishes it to its own named property by that property's route, verifies the live URL, and writes the published line |
 | `seo-index-sweep` | Index sweep | Tuesdays | Unions every declared sitemap, requests indexing inside an account wide allowance, and keeps every declared sitemap fresh |
 | `seo-calendar-refill` | Calendar refill | Wednesdays | Reads the runway on every property and refills only the ones running low, with fully specified entries researched from rank evidence and live result sets |
+| `seo-answer-visibility` | Answer visibility | Thursdays | Samples approved buyer questions, audits eligibility and files evidence-backed answer improvements |
 | `seo-rank-review` | Rank review | Fridays | Reads the member's own search performance and analytics screens, classifies every published article by a fixed rule, writes the scoreboard, and files what it found as cards |
-| `seo-intake-and-map` | Intake and topic map | First weekday of the month | First run it discovers the properties, writes the three strategy files, creates the ledgers, files the opening cards, and registers the seven jobs. Monthly it re-reads a month of evidence and rebuilds |
+| `seo-intake-and-map` | Intake and topic map | First weekday of the month | First run it discovers the properties, writes the three strategy files, creates the ledgers, files the opening cards, and registers the eight jobs. Monthly it re-reads a month of evidence and rebuilds |
 
 **`seo-standup` is the one that cannot be turned off.** It writes `brief-latest.md`, which is what the member opens first every morning. It is the only writer of `board/board.json` and `board/WORK-BOARD.md`, the only reader of `board/inbox.jsonl`, and the only thing in this kit that decides what `seo-draft-run` works today. Without it no finding ever reaches the board and no card is ever worked.
 
@@ -189,10 +191,10 @@ Every harness schedules differently and some do not schedule at all. **`CAPABILI
 
 What belongs here is the shape, which is the same on every harness.
 
-1. **One job per routine.** Seven routines, seven jobs. Never one job that runs several in sequence: a chained job defeats the per routine period guard, blurs the budgets, and turns one failure into seven.
+1. **One job per routine.** Seven routines, eight jobs. Never one job that runs several in sequence: a chained job defeats the per routine period guard, blurs the budgets, and turns one failure into eight.
 2. **The job's only content is the invocation.** All the logic is in the SKILL.md. If a scheduler grows a shell script with business rules in it, the rules now live in two places and you find out which one is wrong on the day it matters.
 3. **Know what the invocation is before you register anything.** `CAPABILITIES.md` 9.2a gives its shape per harness.
-4. **Prove one routine by hand before you register seven.** Run the line for `seo-standup` in a terminal and watch it write `brief-latest.md` and one line into `runlog.jsonl`. Seven jobs registered on an invocation nobody has run is seven silent failures on the same morning, and the first thing you see is an empty brief.
+4. **Prove one routine by hand before you register eight.** Run the line for `seo-standup` in a terminal and watch it write `brief-latest.md` and one line into `runlog.jsonl`. Eight jobs registered on an invocation nobody has run is eight silent failures on the same morning, and the first thing you see is an empty brief.
 5. **Register the `fire` column, not the window.** The window is enforced inside the routine.
 6. **Name every job exactly after its routine id.** The monthly drift check can only match a registered job to a row when the names are identical.
 

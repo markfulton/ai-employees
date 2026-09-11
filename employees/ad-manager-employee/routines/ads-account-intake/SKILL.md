@@ -879,7 +879,7 @@ Write these sections whether or not any of them is installed. They cost nothing 
 | Employee | They own | You hand over | You never |
 |---|---|---|---|
 | GTM Engineer | Positioning research, outbound, the launch board, and the campaign build sheets an account was created from | Nothing. It writes into its own root and its own paid guard goes read only once its handoff card is done | Read its folder, write its files, or tick its handoff card |
-| SEO Employee | Keyword research, editorial calendar, writing, publishing, internal linking, search console | The category language and the positioning, in `plan/positioning.md` | Write or publish an article, touch a content repo, request indexing, or edit an editorial calendar |
+| SEO/AEO Employee | Keyword research, editorial calendar, writing, publishing, internal linking, search console | The category language and the positioning, in `plan/positioning.md` | Write or publish an article, touch a content repo, request indexing, or edit an editorial calendar |
 | Social Employee | The organic calendar, community engagement, replies | Positioning language and the angle list | Run the calendar, reply to anyone, or post |
 
 Where `installed_employees[]` names one of them, say in the report which employee reads which file. Where it names none, write the same sections and say nothing.

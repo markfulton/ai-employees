@@ -367,7 +367,7 @@ If the standup ever opens by telling you that nothing has been produced since a 
 
 **That last row is worth being blunt about. A support ledger is not a prospect list.** Every line in it is somebody who wrote in because something was wrong, and handing that to an outbound routine is the fastest way to turn a support relationship into a complaint. There is no setting that enables it and no card that requests it.
 
-If you also run a Content or SEO Employee, the help drafts in `help/` are exactly the sort of page it would want. Decide once whether publishing them sits with you or with that Employee, and write the answer into that Employee's own folder. This one drafts and publishes only where you released the channel, either way.
+If you also run a Content or SEO/AEO Employee, the help drafts in `help/` are exactly the sort of page it would want. Decide once whether publishing them sits with you or with that Employee, and write the answer into that Employee's own folder. This one drafts and publishes only where you released the channel, either way.
 
 ---
 

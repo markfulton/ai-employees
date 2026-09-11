@@ -1,0 +1,30 @@
+import fs from "node:fs";
+import path from "node:path";
+import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const kit = path.join(root, "employees/seo-employee");
+const manifest = JSON.parse(fs.readFileSync(path.join(kit, "employee.json"), "utf8"));
+const schedule = fs.readFileSync(path.join(kit, "SCHEDULE.md"), "utf8");
+const rows = schedule.split(/\r?\n/).filter(l => /^\| `seo-.*` \| `(mon-fri|thu|fri|tue|wed|first-weekday)`/.test(l));
+assert.equal(rows.length, 8);
+assert.equal(manifest.routines.length, 8);
+assert.equal(new Set(manifest.routines.map(r => r.id)).size, 8);
+for (const r of manifest.routines) {
+  assert.ok(fs.existsSync(path.join(kit, "routines", r.id, "SKILL.md")));
+  assert.ok(fs.existsSync(path.join(kit, "run", r.id + ".cmd.example")));
+  const row = rows.find(l => l.startsWith(`| \`${r.id}\` |`)); assert.ok(row, r.id);
+  const parts = row.split("|").slice(1, -1).map(s => s.trim().replaceAll("`", ""));
+  assert.deepEqual(parts.slice(1), [r.days, r.fire, r.window_start, r.window_end, r.period_key, r.budget, r.browser]);
+}
+assert.ok(manifest.files.kit.includes("AEO-PLAYBOOK.md"));
+assert.ok(manifest.files.member.includes("tracking/**"));
+assert.equal(manifest.version, fs.readFileSync(path.join(kit, "VERSION"), "utf8").trim());
+const id = "seo-answer-visibility";
+for (const file of ["AGENTS.md", "README.md", "CONTRACT.md", "INSTALL-PROMPT.md", "routines/seo-intake-and-map/SKILL.md"]) assert.ok(fs.readFileSync(path.join(kit, file), "utf8").includes(id), file);
+const g = spawnSync(process.execPath, [path.join(kit, "scripts/guard.mjs"), id, "--now", "2026-09-10T11:00", "--no-record", "--json"], { encoding: "utf8" });
+assert.equal(g.status, 0, g.stdout + g.stderr);
+const audit = spawnSync(process.execPath, [path.join(kit, "scripts/answer-audit.mjs"), "--selftest"], { encoding: "utf8" });
+assert.equal(audit.status, 0, audit.stdout + audit.stderr);
+console.log("aeo-check: PASS (roster, manifest, schedule, install wiring, guard and measurement tests)");

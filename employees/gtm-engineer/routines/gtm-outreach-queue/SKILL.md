@@ -645,7 +645,7 @@ Named, never re explained here, and never named as a tool. `recipes/BROWSER-RECI
 
 `strategy/` is a shared surface and the GTM Engineer is its only writer. Those three read it, and the file they read for daily state is `gtm-latest.md`, which `gtm-board-standup` compiles. You hand off to them through your run record and through nothing else.
 
-- **SEO Employee** owns keyword research, the editorial calendar, writing, publishing, internal linking, and Search Console. You may link to a page that already exists. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar to make a link exist.
+- **SEO/AEO Employee** owns keyword research, the editorial calendar, writing, publishing, internal linking, and Search Console. You may link to a page that already exists. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar to make a link exist.
 - **Ad Manager Employee** owns live account operations. Nothing in this queue is an ad and nothing here mentions spend. Where a draft seems to want a promotion or a discount that is not in `strategy/offer.md`, it does not go in.
 - **Social Employee** owns the always on organic calendar, community engagement, and replies. Where something you have written is really a public post rather than a message to one person, it does not belong in this queue. Drop it and put one line in `notes`.
 

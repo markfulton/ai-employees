@@ -260,7 +260,7 @@ Read in this order and stop at the phase cap:
 | About | Who it is for, and any founder story that carries a defensible claim |
 | Buy URL | The billing shape confirmed at the point of sale, and the conversion surface |
 | Terms, refund, or checkout footer | Countries sold into, billing period, guarantee wording |
-| Blog index or resources | The topics they already publish on, which the SEO Employee will want |
+| Blog index or resources | The topics they already publish on, which the SEO/AEO Employee will want |
 | Contact or support | Channels they already accept inbound on, and a public contact address |
 
 Every line you keep carries the URL you read it on and the date you read it. **A line with no source does not get written.** Never carry a value forward from a previous run as though you read it today, and never write the value you expected instead of the value you read.
@@ -1000,7 +1000,7 @@ They are readers of `strategy/`. Write these sections whether or not any of them
 
 | Employee | They own | You hand over | You never |
 |---|---|---|---|
-| SEO Employee | Keyword research, editorial calendar, writing, publishing, internal linking, search console | The ICP language and the category language, in `strategy/icp.md` and `strategy/positioning.md`, plus the topics your crawl found on their own blog, under `## Sources read` | Write or publish an article, touch a content repo, request indexing, or edit an editorial calendar |
+| SEO/AEO Employee | Keyword research, editorial calendar, writing, publishing, internal linking, search console | The ICP language and the category language, in `strategy/icp.md` and `strategy/positioning.md`, plus the topics your crawl found on their own blog, under `## Sources read` | Write or publish an article, touch a content repo, request indexing, or edit an editorial calendar |
 | Ad Manager Employee | Live account operations: pacing, bids, search term mining, budget reallocation, creative rotation | The conversion definition, the link convention, the monthly ceiling and daily cap from `strategy/offer.md`, the positioning, and the dated handoff card | Change a budget, a bid, or a status. Enable anything. Keep touching the account after the dated handoff card closes |
 | Social Employee | The always on organic calendar, community engagement, replies | Positioning language and the launch phase from the board | Run the daily calendar, reply to anyone, or post |
 

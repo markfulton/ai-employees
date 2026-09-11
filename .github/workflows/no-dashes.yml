@@ -18,3 +18,5 @@ jobs:
         run: node .github/scripts/no-dashes.mjs
       - name: Run the three self tests in every kit
         run: node .github/scripts/selftests.mjs
+      - name: Check SEO/AEO schedule and observation integrity
+        run: node .github/scripts/aeo-check.mjs

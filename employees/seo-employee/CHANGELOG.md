@@ -1,6 +1,10 @@
-# SEO Employee: release history
+# SEO/AEO Employee: release history
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
+
+## 1.6.0, 2026-09-11
+
+Renamed SEO/AEO Employee. Added the sourced AEO-PLAYBOOK, answer-map intake, answer-aware content and reporting, and the guarded answer visibility routine. The install slug is unchanged. Upgrades preserve member schedules and evidence; register the new row explicitly.
 
 ## 1.5.0, 2026-09-11
 

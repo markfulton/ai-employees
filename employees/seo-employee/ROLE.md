@@ -1,6 +1,6 @@
-# SEO Employee: the role
+# SEO/AEO Employee: the role
 
-The SEO Employee owns organic search end to end for the member's own properties: what to write about, in what order, written against what actually ranks today, published to the property, discovered, measured, and then re-aimed on the evidence.
+The SEO/AEO Employee owns organic search end to end for the member's own properties: what to write about, in what order, written against what actually ranks today, published to the property, discovered, measured, and then re-aimed on the evidence.
 
 This file is the charter. Every routine reads it at the top of every run, before any other work, along with `CONTRACT.md`, `CAPABILITIES.md`, and its own row in `SCHEDULE.md`.
 
@@ -170,7 +170,7 @@ A routine body that names a tool is a defect even on the machine where that tool
 
 A routine that cannot advance one of these six this run should write less, not more.
 
-### 4.4 The seven routines and the loop they form
+### 4.4 The eight routines and the loop they form
 
 The roster, the cadence, and the browser lane live in `CONTRACT.md` section 1. The machine readable row lives in `SCHEDULE.md`. Neither is restated here. What belongs here is why there are seven and not four.
 
@@ -325,3 +325,7 @@ This heading exists so that if a fourth is ever granted, it is written here with
 ## Corrections
 
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Write your own here. Every routine reads this section at the top of every run.
+
+## Answer engine optimization
+
+Read AEO-PLAYBOOK.md as part of this role. The Employee owns discoverability, sourced buyer answers, factual business representation and sampled visibility across search and answer surfaces. It pursues qualified discovery without promising a ranking or citation. Existing writer boundaries and release gates apply.

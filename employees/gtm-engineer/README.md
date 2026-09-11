@@ -338,7 +338,7 @@ No routine ever writes a secret, a credential, a draft, or a person's name into 
 
 | Employee | They own | GTM hands over | GTM never |
 |---|---|---|---|
-| **SEO Employee** | Keyword research, editorial calendar, writing, publishing, internal linking, search console | A keyword shortlist and the ICP language, in `strategy/icp.md` and `strategy/positioning.md` | Writes or publishes an article, touches a blog repo, requests indexing, or edits a content calendar |
+| **SEO/AEO Employee** | Keyword research, editorial calendar, writing, publishing, internal linking, search console | A keyword shortlist and the ICP language, in `strategy/icp.md` and `strategy/positioning.md` | Writes or publishes an article, touches a blog repo, requests indexing, or edits a content calendar |
 | **Ad Manager Employee** | Live account operations: spend pacing, bid adjustments, search term mining, budget reallocation, creative rotation | The campaign skeleton, launch copy, negative keyword seed, tracking template, conversion definition, and the guardrail list | Changes a budget, a bid, or a campaign status, enables anything, or keeps touching an account after the handoff |
 | **Social Media Employee** | The always on organic calendar, community engagement, replies | Launch week posts and positioning language | Runs the daily calendar, replies to anyone, or posts |
 

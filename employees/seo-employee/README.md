@@ -1,19 +1,23 @@
-# SEO Employee
+# SEO/AEO Employee
 
-<img src="https://club.reinventing.ai/img/employees/seo-employee.webp" alt="SEO Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/seo-employee.webp" alt="SEO/AEO Employee" width="100%">
 
 
 **Role:** organic search, end to end.
 **What it replaces:** the content agency retainer, for the parts that repeat.
-**What it is:** seven scheduled routines that run on your own machine, on your own schedule, against your own properties.
+**What it is:** eight scheduled routines that run on your own machine, on your own schedule, against your own properties.
 
-This is not a chat window and not a service running somewhere else. It is seven jobs your agent runs at fixed times each week, in a working folder you own, reading and writing plain files you can open.
+This is not a chat window and not a service running somewhere else. It is eight jobs your agent runs at fixed times each week, in a working folder you own, reading and writing plain files you can open.
 
 It takes your sites and builds the search motion around them: which topics you have a right to rank for, what to write next and why, an article a day written against what actually ranks today, published to your property, requested for indexing, and measured on Friday. Then it uses that measurement to decide what to write next month.
 
 **It publishes.** That is the part most tools stop short of. An article this Employee drafted, to a property you named, verified live by loading the URL and reading what rendered. It emails no one, comments nowhere, posts to no third party surface, and spends nothing, unless you released the channel.
 
 ---
+
+## Search and answer visibility
+
+The SEO/AEO Employee maps real buyer questions, checks discoverability, improves sourced answers and records observed mentions and citations on selected AI search surfaces. Its answer visibility routine turns the evidence into work for the existing content queue. See [the playbook](AEO-PLAYBOOK.md) for the method and provider sources. No engine placement is guaranteed.
 
 ## What it owns
 
@@ -27,7 +31,7 @@ It takes your sites and builds the search motion around them: which topics you h
 
 ---
 
-## The seven routines
+## The eight routines
 
 Every routine has an id. The id is the folder name under `routines/`, the `name` key in that folder's `SKILL.md`, and the name of the scheduled job. All three are the same string, always.
 
@@ -38,6 +42,7 @@ Every routine has an id. The id is the folder name under `routines/`, the `name`
 | `seo-publish-run` | Weekdays | 09:15 | Takes the oldest ready draft, publishes it to its property, verifies the live URL, and records it. |
 | `seo-index-sweep` | Tuesdays | 11:00 | Unions every declared sitemap, requests indexing inside your allowance, and keeps every sitemap fresh. |
 | `seo-calendar-refill` | Wednesdays | 13:00 | Reads the runway on every property, and refills only the ones running low. Most weeks it records the counts and exits. |
+| `seo-answer-visibility` | From SCHEDULE.md | From SCHEDULE.md | Samples buyer answers, audits eligibility and files sourced improvements |
 | `seo-rank-review` | Fridays | 16:00 | Reads your search performance and analytics screens, classifies every published article by a fixed rule, writes the scoreboard, and files what it found as cards. |
 | `seo-intake-and-map` | First weekday of the month | 14:30 | First run: discovers your properties, writes your strategy files, creates the ledgers, registers the schedule. Monthly: re-reads a month of evidence and rebuilds. |
 
@@ -111,7 +116,7 @@ There is no proposal file in this kit, no approval block, and no status that mea
 
 This is a kit of scheduled work. It is not a set of global skills, and it never becomes one.
 
-**Do not copy the routines into your harness's global skills directory.** Registering them there loads all seven into every session you open and lets one be invoked outside its window, where it does nothing but record that it skipped and exit. Point your harness at `«SEO_ROOT»/routines` as a source directory, or link the folders. Do not keep two copies: every routine ends with a `## Corrections` section you write into and the routine reads on its next run, and with two copies you write into one and it reads from the other.
+**Do not copy the routines into your harness's global skills directory.** Registering them there loads all eight into every session you open and lets one be invoked outside its window, where it does nothing but record that it skipped and exit. Point your harness at `«SEO_ROOT»/routines` as a source directory, or link the folders. Do not keep two copies: every routine ends with a `## Corrections` section you write into and the routine reads on its next run, and with two copies you write into one and it reads from the other.
 
 **No routine here creates, authors, or installs anything in your global skills or plugins directory.** Not on the first run, not on a monthly run, not as part of a repair. Your global setup is yours.
 
@@ -164,7 +169,7 @@ Two steps. Your agent does the rest.
 
 **1. Extract the kit to a local folder.** Files sit at the root of the archive. Anywhere on your PC works, as long as it is not inside OneDrive, Dropbox, Google Drive or iCloud.
 
-**2. Open your agent in that folder and say "install the SEO Employee from this folder".** That is the whole instruction. It reads `INSTALL-PROMPT.md` itself and follows it, checks your machine, points its scheduler at `«SEO_ROOT»/routines`, and registers the schedule. If you would rather paste, open `INSTALL-PROMPT.md` and copy everything between the two markers into your agent. It reads your sites, writes your strategy folder, creates the ledgers, seeds the board, registers the seven scheduled jobs, and shows you one drafted article. It stops for you once, on that article.
+**2. Open your agent in that folder and say "install the SEO/AEO Employee from this folder".** That is the whole instruction. It reads `INSTALL-PROMPT.md` itself and follows it, checks your machine, points its scheduler at `«SEO_ROOT»/routines`, and registers the schedule. If you would rather paste, open `INSTALL-PROMPT.md` and copy everything between the two markers into your agent. It reads your sites, writes your strategy folder, creates the ledgers, seeds the board, registers the eight scheduled jobs, and shows you one drafted article. It stops for you once, on that article.
 
 That is the install. A few things are worth knowing once it is running:
 
@@ -207,7 +212,7 @@ It reads the contract, then investigates: your sites, their sitemaps, their blog
 
 Then it researches your topics and writes three files: your properties, your topic map, and your voice. The voice file is taken from your own published writing, with real excerpts and the URL each came from. **It will not invent a sample.**
 
-It creates the ledgers empty, files the opening cards, registers seven scheduled jobs, and proves one of them by hand before registering the rest.
+It creates the ledgers empty, files the opening cards, registers eight scheduled jobs, and proves one of them by hand before registering the rest.
 
 **Then it stops once, and only once.** It shows you one drafted article and asks whether you would publish it as written. If a claim is wrong, the fix goes in the source rather than in the draft: a property fact goes in `strategy/properties.md`, a wording problem goes in `strategy/voice.md`. Patch a draft by hand and the same wording comes back tomorrow. Fix the source and it never comes back.
 
@@ -245,7 +250,7 @@ There is no workaround for that pair and this kit will not pretend otherwise. If
 | `seo-rank-review` | The whole job | Nothing. It records the blocker and names what that costs the refill and the draft run |
 | `seo-intake-and-map` | Reads a site a fetch cannot render, confirms a console property | Both become unknown with the reason. All three strategy files still get written |
 
-Five of the seven produce their main deliverable with no browser at all. That is most of the product, not a consolation prize.
+Five of the eight produce their main deliverable with no browser at all. That is most of the product, not a consolation prize.
 
 A missing browser does not get its own status, and no routine invents one. It maps onto `partial` when the routine had file work to do and `failed` when it did not, with the reason written out in plain words either way.
 
@@ -262,7 +267,7 @@ A missing browser does not get its own status, and no routine invents one. It ma
   README.md                    this file
   INSTALL-PROMPT.md            the setup prompt
   standards/PUBLISH-STANDARD.md  research, authority links, heroes, alt text, the report
-  routines/seo-<id>/SKILL.md   the seven routines
+  routines/seo-<id>/SKILL.md   the eight routines
   scripts/runlog.mjs           the only sanctioned way to append a run record
   scripts/guard.mjs            the pause, window and period guards, run before any document is read
   scripts/copy-check.mjs       the scripted judge for anything about to be written

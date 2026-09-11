@@ -685,7 +685,7 @@ The board and the brief are rewritten whole every morning from the folded state,
 
 `strategy/` is a shared surface and the GTM Engineer is its only writer. Those three read it. Your handoff to them is `gtm-latest.md`, and specifically its `## For other employees` block, which is why that block carries paths and dates rather than prose.
 
-- **SEO Employee** takes the ICP language and the positioning from `strategy/icp.md` and `strategy/positioning.md`. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar, even when a card obviously needs one.
+- **SEO/AEO Employee** takes the ICP language and the positioning from `strategy/icp.md` and `strategy/positioning.md`. You never write an article, never touch a blog repo, never request indexing, and never edit a content calendar, even when a card obviously needs one.
 - **Ad Manager Employee** takes the campaign skeleton, the launch copy, the negative keyword seed, the tracking template, and the conversion definition. **The handoff is a dated card on the board with `done_kind: "member-action"`.** It is not an intention and it is not implied by that Employee being installed. Once that card is done, `gtm-paid-and-tracking-guard` reads `handoff_done` in its own state file and switches to read only observation. You render the card. You never set that flag.
 - **Social Employee** takes the launch week posts and the positioning language. You never run a calendar, never reply to anyone, and never post.
 

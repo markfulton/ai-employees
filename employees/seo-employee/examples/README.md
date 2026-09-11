@@ -1,4 +1,4 @@
-# Example output: SEO Employee
+# Example output: SEO/AEO Employee
 
 Fictional example output for Northwind Roofing, a residential and light commercial roofing company run by Sam, with one property at https://www.example.com. It shows what the working folder holds after a baseline week, the first week of March 2026: intake on Monday, the first article live on Tuesday, and the Thursday morning brief below. Every person, company, URL, figure, and article here is invented and none of it comes from a real installation.
 Every file was run through the kit's own scripts/copy-check.mjs, and every line of runlog.jsonl through scripts/runlog.mjs in dry run mode, so the shapes match what the routines write.

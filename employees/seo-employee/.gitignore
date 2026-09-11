@@ -15,3 +15,11 @@
 /schedule-commands.txt
 /recipes/*.json
 node_modules/
+
+# SEO/AEO observations and runtime output never ship.
+/tracking/
+/content/
+/index/
+/drafts/
+/calendar/
+/improvements/

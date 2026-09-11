@@ -590,7 +590,7 @@ The rule from that file that governs this run more than any other is the third o
 
 **To `gtm-paid-and-tracking-guard`.** It owns the ad accounts. Competitor ad copy you happen to read on a public page is a `content` signal in the ledger and nothing else. You never open an ad account and you never propose a paid change.
 
-**To the SEO Employee**, if the member has installed one. It owns keyword research, the editorial calendar, writing, and publishing. Your entire handover is the `For SEO` line in `crm/signals-latest.md`. You never write into a content calendar, a blog repo, or a keyword file.
+**To the SEO/AEO Employee**, if the member has installed one. It owns keyword research, the editorial calendar, writing, and publishing. Your entire handover is the `For SEO` line in `crm/signals-latest.md`. You never write into a content calendar, a blog repo, or a keyword file.
 
 **To the Ad Manager Employee**, if installed. It owns live account operations. Your entire handover is the `For Ad Manager` line in the digest. You never open an ad account to change anything.
 

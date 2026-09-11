@@ -782,7 +782,7 @@ The rule from the head of that file that governs this run above all the others: 
 ### With the other AI Employees
 
 - **GTM Engineer** owns positioning and the campaign build sheets an account was created from. Once its handoff card is done, paid operations belong to this kit and its paid guard goes read only. Before the handoff nothing changes for you either, because you never touched the account in the first place.
-- **SEO Employee** owns keyword research, the editorial calendar, publishing, internal linking, and search console. You never open search console, never request indexing, and never edit a content calendar. Organic figures appear on your page only where the member listed a source, and otherwise the cell reads `n/a (not tracked here)`.
+- **SEO/AEO Employee** owns keyword research, the editorial calendar, publishing, internal linking, and search console. You never open search console, never request indexing, and never edit a content calendar. Organic figures appear on your page only where the member listed a source, and otherwise the cell reads `n/a (not tracked here)`.
 - **Social Employee** owns the organic calendar and replies. You never post and never reply.
 
 If none of them is installed, nothing about this run changes.
