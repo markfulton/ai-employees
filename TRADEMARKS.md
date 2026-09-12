@@ -8,7 +8,7 @@ logo (together, "the Marks") identify Mark Fulton's business, Reinventing.AI.
 They are claimed as trademarks whether or not they are registered.
 
 "AI Employees", "AI Employees" and the role names used in this repository
-(GTM Engineer, SEO Employee, Web Dev Employee, Social Media Employee, Ad
+(GTM Engineer, SEO/AEO Employee, Web Dev Employee, Social Media Employee, Ad
 Manager Employee, Sales Employee, Customer Satisfaction Employee, Chief of
 Staff) are descriptive terms. I make no trademark claim on them. Use them
 freely.
