@@ -20,7 +20,6 @@
 
 An AI Employee is a folder of scheduled routines that covers one business role. It runs on your own machine, on the AI agent you already use, and briefs you every morning. Eight roles, every routine and schedule in this repo, nothing held back.
 
-> **Updated 2026-09-18.** The Ad Manager 1.6.0 is the production release: once you release the ad account it publishes approved creative through your own Meta connection, with a receipt for every id, a review page for approvals, and a Meta recipe file written from a real launch. Every kit now confirms Codex as a harness and reports scheduled readiness as its own fact. The GTM Engineer and the Ad Manager have both run live launches end to end, and every field report goes back into the kits. [Release history](CHANGELOG.md).
 
 ## Install in two steps
 
