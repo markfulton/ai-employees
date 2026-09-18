@@ -209,10 +209,11 @@ Write one line into `strategy/CHANGELOG.md` per file, newest at the top.
 7. Where the operating system's scheduler has a setting for running a task as soon as possible after a missed start, turn it on for all eight. **A day the sweep does not run is a day of tickets nobody captured, and nothing later gets them back.**
 
 8. Read each registered job back and compare its time to `SCHEDULE.md`. Report any difference in one line naming both times.
+9. **Registration is not readiness.** A job that reads back correctly proves the scheduler holds it, nothing more. Report `scheduled execution: not yet verified` as its own line, and tell me what to look for tomorrow: a new line in `runlog.jsonl` from a run I did not start, at the registered time, with the status it should have. A run I start by hand never counts, and a connection that worked in this session may not be reachable by the process the scheduler starts, so the first scheduled fire is also the first real test of every connected route. `CAPABILITIES.md` section 9.2b is the rule.
 
-9. If no route can register a job, write every command you would have run into `«CSAT_ROOT»/schedule-commands.txt`, **expanded, with no `«RUN <routine-id>»` left in it**, and name that file in the first paragraph of your day one report.
+10. If no route can register a job, write every command you would have run into `«CSAT_ROOT»/schedule-commands.txt`, **expanded, with no `«RUN <routine-id>»` left in it**, and name that file in the first paragraph of your day one report.
 
-10. Confirm my harness can run scheduled work without an interactive approval prompt. If it cannot, say so plainly and tell me to run the browser routines by hand. A routine that hangs at 06:45 waiting for a click does not fail, which would at least leave a record. It leaves nothing.
+11. Confirm my harness can run scheduled work without an interactive approval prompt. If it cannot, say so plainly and tell me to run the browser routines by hand. A routine that hangs at 06:45 waiting for a click does not fail, which would at least leave a record. It leaves nothing.
 
 ## PHASE 7. Run the desk once, in front of me
 

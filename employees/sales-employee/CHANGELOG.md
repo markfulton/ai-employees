@@ -2,6 +2,15 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.6.0, 2026-09-18
+
+Scheduled readiness is a scheduled fire. Found on the first Ad Manager install on Codex, where a connected route worked in the session that set it up and failed in the process the scheduler started the same evening.
+
+- `CAPABILITIES.md` 9.2 and 9.2a: Codex is `confirmed`. The app's automations hold one cron automation per routine, named after the routine id, local execution, the kit folder as a working directory; `codex exec` is the by hand form and runs only where the CLI is signed in.
+- `CAPABILITIES.md` 9.2b, new: registration proves the scheduler holds a job and nothing more. Readiness is one fire the scheduler started that wrote a run record; a run by hand never counts and never claims one; a connected route gets its second mark from the first scheduled read through it.
+- The install prompt's register phase reports `scheduled execution: not yet verified` as its own line and says what to look for the next morning. Installed, scheduled and proven are three words.
+- Implements the Agent Employee Standard v1.3.
+
 ## 1.5.0, 2026-09-11
 
 The Employee reads its accounts through the connections you already have.
