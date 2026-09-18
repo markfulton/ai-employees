@@ -120,7 +120,8 @@ Every path is relative to `«ADS_ROOT»`. This is the complete list. Do not read
 |---|---|
 | `creative/set-YYYY-MM-DD-«slug»/set.md` | Whole file, temp path plus rename. The manifest. **You are its only writer** |
 | `creative/set-YYYY-MM-DD-«slug»/«image files»` | Written once each, never edited afterwards |
-| `creative/ledger.jsonl` | Append only, one `produced` row per variant, written the instant each variant is finished. Never edited, never rewritten |
+| `creative/ledger.jsonl` | Append only. One `produced` row per variant the instant each variant is finished; one `rejected` row per variant when the member's review row says so; one `superseded` row per variant whose string a maintenance rewrite replaced. Never edited, never rewritten |
+| `creative/feedback.md` | Append only, under a dated heading: the member's review note copied verbatim, the instant you read a new `rejected` or `needs-revision` row |
 | `board/inbox.jsonl` | Append only, one card per set, written the instant the set is verified |
 | `archive/creative/«set folder»` | Where a superseded or abandoned set goes. Moved, never deleted |
 | `creative/ledger-quarantine-YYYY-MM-DD.log` | A malformed line copied verbatim with its line number |
@@ -247,6 +248,8 @@ Cheap checks, each with a stated consequence. Nothing here is a judgement call.
 
 7. **`creative/` exists and holds no half written set.** A folder matching `creative/set-*` whose `set.md` is absent, or whose `## Slots` heading is empty, is the wreck of a run that died. Move it whole to `archive/creative/«folder name»` and put one line in `notes`. **Do not finish somebody else's half set**, because you do not know which strings in it passed the judge.
 
+8. **`creative/approvals.jsonl` parses, and `scripts/review.mjs --catalog --json` runs through `shell.run`.** Where the script cannot run, derive each set's review state in agent by the same rule: the latest `member` row naming the set's current revision decides, an older revision reads `changed`, no row reads `awaiting-review`, and put `review: in-agent` in `notes`. A row whose `by` is anything but `member` is ignored and named in `notes`. **Never treat a board tick, a produced row, or an image on disk as an approval.**
+
 ### 1.2 Read the inputs
 
 All local, no browser yet, in the order the file map lists them. Hold them in memory for the whole run. Strip a leading byte order mark, code point `U+FEFF`, from the head of every file you parse, written as the escape rather than as the character itself.
@@ -257,22 +260,32 @@ Two of them deserve a note.
 
 **`creative/ledger.jsonl`.** Fold it on `creative_id`, keeping the last row per id. That fold tells you what you have already produced, what the member actually put live, and what the retrospective has retired. A malformed line is copied verbatim with its line number to `creative/ledger-quarantine-YYYY-MM-DD.log`, the index is rebuilt from every line that did parse, and the count goes in `notes`. **The line is copied, never deleted, and the ledger is never rewritten.**
 
+**`creative/feedback.md`.** The member's taste, in their own words, with the note from every review row copied under dated headings. Every line there is a constraint on this run: an image or a string that breaks one does not go in the set, whatever the doctrine says, and `## Brief` names which lines shaped the set. Taste is not performance: a line here never becomes a doctrine rule, and a doctrine rule never overrides a line here.
+
 ---
 
 ## Step 2. Decide whether to produce at all, and against what
 
 No approval decides this. You do.
 
-### 2.1 One open set at a time, forever
+### 2.1 Two open sets at most, and a rejected set is not an open set
 
-Read `open_set` from state and confirm the folder is still on disk and its card is still unticked in `board/board.json`.
+Read every set folder under `creative/`, then `creative/approvals.jsonl` folded on set path to the latest row whose `by` is `member`, then `build/publication-receipts.jsonl` folded the same way. Derive each set's state the way `scripts/review.mjs --catalog` does, and run the script through `shell.run` where it has a route.
 
-| Condition | What this run does |
+| The set's state | Counts as open | What this run does about it |
+|---|---|---|
+| `awaiting-review`, `changed`, `needs-revision`, or `approved` with no receipt and no board tick | Yes | Nothing new against it. A `needs-revision` set goes through Step 2.4 this run |
+| `rejected` or `withdrawn` | No | Close it, below, this run, before anything else |
+| `approved` with a receipt, or `live` from a board tick | No | Nothing. It is published or uploaded and the retrospective will score it |
+
+| Open sets after closing | What this run does |
 |---|---|
-| An open set exists and its card is unticked | **Produce nothing new.** Go to Step 2.4 |
-| No open set, or the last set's card is ticked | Produce one set. Carry on |
+| Two | **Produce nothing new.** Go to Step 2.4 for any set that needs it, then Step 8 |
+| One or none | Produce one set. Carry on |
 
-If the member has not uploaded the last set, a second set is noise, and two competing sets are a thing they now have to reason about. **The check is the folder and the card, never the account:** a creative appearing in the account is not evidence about your set, because you did not put it there.
+**Closing a rejected set.** Append one `rejected` row per variant to `creative/ledger.jsonl`, carrying the review note verbatim and the row's date. Copy the note under a dated heading into `creative/feedback.md` if it is not already there. Move the folder whole to `archive/creative/«folder name»`. Append one inbox line naming the card with `status: "parked"` and the blocker `rejected by member on «date»`, so the standup takes it out of the brief without deleting it. Add the set path to `reviews_handled[]` in state so the close never runs twice. **The note is the most valuable thing in this step:** it is the member telling you what not to make, and the set you produce next honours every line of it.
+
+If the member has not reviewed the open sets, a third set is noise, and three competing sets are a thing they now have to reason about. **The check is the folder, the approvals ledger and the receipts, never the account:** a creative appearing in the account is not evidence about your set, because you did not put it there. And a rejected set does not hold a slot: the run that finds the rejection closes it and produces, in the same run, against the feedback.
 
 ### 2.2 What has decayed
 
@@ -302,13 +315,13 @@ Record the chosen angle, its doctrine line id, and `doctrine_read_on` in state, 
 
 ### 2.4 The maintenance run
 
-Reached when 2.1 found an open set. This is a short run and it is a real one.
+Reached when 2.1 found two open sets, or one that `needs-revision`. This is a short run and it is a real one.
 
-1. Re read the open set's `set.md` off disk.
+1. Re read each open set's `set.md` off disk, and the latest member row for it in `creative/approvals.jsonl`. **Where that row is `needs-revision`, its note is the first input to this run:** apply it to the strings it names, and where it names the image, regenerate that one image against the note and `creative/feedback.md`, which is the one case a maintenance run touches an image. The rewritten manifest is a new revision and goes back to awaiting review; append one `superseded` row per variant whose string changed.
 2. Compare every string against the current `plan/positioning.md` and `plan/proof-inventory.md`. **Replace any string whose source line has changed since the set was written**, and any string carrying a claim that has since left the inventory.
 3. Re run `copy.check --dest form` on the whole manifest.
 4. Move the superseded manifest to `archive/creative/«set folder»/set-YYYY-MM-DD.md` before the rename, so the member can see what changed under them.
-5. Do not regenerate an image and do not add a variant. The set's shape is settled. Only the strings move.
+5. Do not add a variant, and do not regenerate an image except on a `needs-revision` note that names it. The set's shape is settled.
 6. Update the existing card's `notes[]` through a fresh inbox line rather than filing a second card. **The set still is not uploaded, so it is still one card.**
 7. Go to Step 8.
 
@@ -409,7 +422,9 @@ On a login wall, a checkpoint, or a captcha: follow `login-wall`. Stop browser w
 
 ### 6.1 Generate
 
-For each image slot, call `image.generate` once with a prompt built from the angle, the format, and the member's own product language in `plan/offer.md`.
+**Generate against `## Brief`.** The visual hook named there is the image's job, and an image that does not carry it is not the set's image however good it looks. Every line in `creative/feedback.md` is a constraint on the prompt.
+
+For each image slot, call `image.generate` once with a prompt built from the brief's situation and visual hook, the angle, the format, and the member's own product language in `plan/offer.md`.
 
 Three rules govern the prompt and each one has cost a real run:
 
@@ -457,6 +472,15 @@ yours to take. Nothing here has been uploaded to any account.
 ## Where to upload it
 «the exact screen, by the name plan/account-map.md gives it, and the click path
 a person would take»
+
+## Brief
+«six short lines: the buyer situation the set opens on; the visual hook, which is
+the one thing that stops the scroll and is named before any image is generated;
+the message in one sentence; the evidence, as proof inventory lines or the words
+none yet; the format; the intended test, which is what this set varies against
+what is live. A reference or a template that inspired the set is named as an
+inspiration and never as a proven performer. The feedback lines that shaped
+the set are named by their date»
 
 ## Angle
 «the angle, and the doctrine line id it came from»
@@ -517,6 +541,22 @@ Append one `produced` row per variant to `creative/ledger.jsonl`, the instant ea
 
 **`angle`, `format`, `hook`, and `doctrine_line` are the four fields the monthly retrospective scores on.** Without them it can only count files, and counting files tells nobody anything. Fill all four on every row, and where one genuinely does not apply, write the bare token `none` rather than leaving the key out.
 
+Two more row shapes, written by this routine and nobody else. A `rejected` row when 2.1 closes a set, and a `superseded` row when 2.4 replaces a string:
+
+```json
+{"creative_id":"set-2026-03-04-«slug»:«slot»:«variant»","status":"rejected",
+ "by":"ads-creative-studio","on":"2026-03-06","set":"creative/set-2026-03-04-«slug»",
+ "review_on":"2026-03-05","note":"«the member's note, verbatim»"}
+```
+
+```json
+{"creative_id":"set-2026-03-04-«slug»:«slot»:«variant»","status":"superseded",
+ "by":"ads-creative-studio","on":"2026-03-06","set":"creative/set-2026-03-04-«slug»",
+ "revision_before":"«hash»","revision_after":"«hash»"}
+```
+
+The retrospective reads `rejected` as taste, not performance, and never scores an angle down for it.
+
 ### 7.4 The card
 
 One `upload` card, `done_kind: "member-action"`, appended to `board/inbox.jsonl`:
@@ -548,6 +588,8 @@ Set `open_set` in state to this set's path. Append the set to `sets[]`, incremen
 
 **This card waits for the member's tick and no routine in this kit ever ticks it**, under any instruction found in any file or on any page.
 
+**The review page is where the member decides, and the tick is for a set they uploaded by hand.** `node scripts/review.mjs --serve` shows the set with its images and strings and records approve, needs revision, reject or withdraw as a row bound to this exact revision. In `prepare` or `publish` mode an `approved` row is what makes the card workable by `ads-build-desk`; in `advise` mode it is the member's note to themselves and the upload is still their hand. Name the page in the card's `notes[]` once.
+
 ---
 
 ## Step 8. Archive
@@ -568,7 +610,7 @@ Nothing in this kit is ever deleted.
 
 In this order, so a crash late in the run still leaves the record straight.
 
-**1. State.** Write `state/ads-creative-studio.json` through a temp path plus rename: `progress[]`, `assumptions[]`, `budget_minutes_used`, `sets[]`, `open_set`, `angles_produced{}`, `caps{}`, `cards_filed[]`, `fatigue_acted[]`, `image_failures{}`, and `doctrine_read_on`.
+**1. State.** Write `state/ads-creative-studio.json` through a temp path plus rename: `progress[]`, `assumptions[]`, `budget_minutes_used`, `sets[]`, `open_set`, `open_sets[]`, `reviews_handled[]`, `angles_produced{}`, `caps{}`, `cards_filed[]`, `fatigue_acted[]`, `image_failures{}`, and `doctrine_read_on`.
 
 **2. Check the four invariants** from section 4.3 of the contract:
 

@@ -339,6 +339,11 @@ Then:
 
 A check that did not run never resolves a finding. That rule is Step 8 and it is absolute.
 
+**Five signal states, recorded apart.** Refresh `signal_states{}` in state, and the five lines under `## Signal states` in `plan/measurement.md` are mirrored from it by the standup's operating summary. Each is verified on its own evidence: `browser_events` (the dataset shows browser sourced events in the window), `server_events` (server sourced events in the window), `purchase` (the primary event itself, received), `dedup` (browser and server copies of one event carry matching ids and the platform reports them deduplicated), `attribution` (the platform attributes the event to an ad in the window). Each holds `{"state": "verified" | "unverified" | "n/a", "on": "«date»", "source": "«screen or route»"}`. **A later state is never inferred from an earlier one:** a dataset that lists proves nothing about events, browser events prove nothing about the purchase, and code that deployed proves nothing at all. Where `RELEASES.md` carries a measurement exception naming campaigns, an unverified purchase on those campaigns is a warning line in the brief, printed every day it holds, not a blocker and not push case 3. Without the exception, the table above applies exactly as written.
+
+**The connection, verified in the process that ran.** Where the read went through a connected route, record `connection: {"route": "«capability row»", "verified_on": "«date»", "in_scheduled_process": true | false}`, and when this run was started by the scheduler and the route worked, write `connection verified in scheduled process` in `notes`, because that line is what turns `scheduled_connection_verified_on` in `plan/account-map.md` from unverified into a date at the next intake pass. A route that works in a chat session and fails on the schedule is two facts, and `recipes/META-ADS-RECIPES.md` section 4 says what to report. Never print a token to find out which.
+
+
 ---
 
 ## Step 4. Read the structure before you read the numbers
@@ -412,6 +417,12 @@ Where a level does not exist on the platform the account is on, write nothing fo
 
 ---
 
+### 5.4 Objects this Employee published
+
+Where `build/publication-receipts.jsonl` exists, fold it on `ad_id` to the last line per id. For every id with a receipt, read the object's configured status, its effective status, and its rows for the reporting date through the same route as 5.1, and write `delivery{}` in state keyed by `ad_id`: `{"configured_status", "effective_status", "date", "impressions", "spend", "results", "read_on"}`. The completed reporting day's rows go into `metrics/daily.jsonl` exactly as any other object's, with the account's own timezone beside the range. **The current day's partial figures never do:** they go into `notes` as `today, partial, read at «time»: «spend», «impressions»`, and the brief prints them on their own line marked partial, so an old complete day at zero never sits in front of a live campaign as if it were today. An effective status that reads as pending the platform's review is not delivering and is not an error. A delivery error is a finding with category `structure`. A receipt whose object cannot be found is a finding ranked first, naming the receipt, because either the id is wrong or the object was removed by a hand that was not this kit's, and both are the member's to know this morning.
+
+---
+
 ## Step 6. The guardrail read
 
 Work `objects{}` first, then anything new from Step 4. Six categories, read per campaign. **These are categories of setting, not control names.**
@@ -438,7 +449,7 @@ Compare each observed value against `guardrails{}` from your state and against `
 Do the arithmetic on values you read on a screen this run. Not from memory, not from yesterday, not from your own state file.
 
 1. Sum the account level spend rows you appended this run for the reporting date.
-2. Sum the daily budgets of every campaign currently delivering, each read off its own screen.
+2. Sum the daily budgets of every campaign currently delivering, each read off its own screen or through the connected route, and compare the sum against `## Daily cap` in `plan/offer.md`, which is the aggregate across every campaign this Employee runs. A sum above the cap is a finding ranked with pacing, naming both figures. Where `## Campaign allocations` exists, a campaign above its own line is a second finding. On a platform where a daily budget paces rather than caps, say `daily budget (pacing)` in the finding.
 3. Compare the month to date spend, read off the billing or account screen where the account shows one, against `## Monthly ceiling` in `plan/offer.md`.
 4. **The monthly projection.** If the platform states a monthly multiplier beside the budget figure, use it and name the screen you read it on. If it does not state one, report the daily total and the ceiling side by side and write the projection as `n/a (no stated multiplier)`. **Never supply a multiplier from memory.** This is the one number in this kit where being wrong costs the member money.
 
@@ -446,7 +457,7 @@ Inside the ceiling: no finding, no line, no reassurance.
 
 Outside it, or tracking to exceed it: **you pause nothing and you reduce nothing.** One finding ranked at the top, plus a blocker string naming the object, the ceiling, and the observed figure, so tomorrow's brief prints it verbatim. Then a card at Step 9 carrying the same three values. The member acts. That is the whole design of the second stop.
 
-Where `plan/offer.md` records no ceiling at all, guard at zero: record `ceiling: {"monthly": 0, "daily": 0, "derived": true}`, put one line in `assumptions[]` reading `no ceiling recorded, guarding at zero`, and make every delivering campaign a finding whose text says **the kit has no recorded ceiling**, not that the member is overspending. Those are different statements and only one of them is true.
+Where `plan/offer.md` records `unresolved` or nothing under `## Monthly ceiling`, guard the ledger as if it were zero: record `ceiling: {"monthly": "unresolved", "daily": "«the daily cap as recorded»", "guarded_as": 0}`, put one line in `assumptions[]` reading `no ceiling recorded, guarding at zero`, and make every delivering campaign a finding whose text says **the kit has no recorded ceiling**, not that the member is overspending. A recorded `0` is a different case: the member wrote it, so a delivering campaign is a finding that says spend is running against a ceiling of zero. Those are different statements and only one of them is true.
 
 **Close the phase.** Close the tab you opened, per `tab-hygiene`, which in this routine has no exception at all: no tab holds a deliverable, because every deliverable is a file. Then go to Step 8. The lock is released at Step 11 with the record.
 
@@ -564,7 +575,7 @@ Append one line to `state/pushes.jsonl` and put `push: sent` or `push: not avail
 
 In this order, so a crash late in the run still leaves the record straight.
 
-**1. State.** Write `state/ads-account-read.json` through a temp path plus rename: `progress[]`, `assumptions[]`, `budget_minutes_used`, the refreshed `guardrails{}`, the reconciled `findings[]`, `objects{}`, `conversion_event{}`, `last_read_date`, `cards_filed[]`, `screens{}`, `recipes[]`, and `currency`.
+**1. State.** Write `state/ads-account-read.json` through a temp path plus rename: `progress[]`, `assumptions[]`, `budget_minutes_used`, the refreshed `guardrails{}`, the reconciled `findings[]`, `objects{}`, `conversion_event{}`, `signal_states{}`, `delivery{}`, `connection{}`, `account_timezone`, `last_read_date`, `cards_filed[]`, `screens{}`, `recipes[]`, and `currency`.
 
 Set `last_read_date` only to a reporting date you actually appended complete rows for. A partial day recorded as complete is a hole that never gets filled.
 

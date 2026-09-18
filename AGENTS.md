@@ -6,7 +6,7 @@ This file follows the [AGENTS.md](https://agents.md) convention, stewarded by th
 
 ## What this repository is
 
-Eight AI Employees. Each one is a folder of plain markdown instructions plus three small Node scripts, which a person installs into their own working folder and registers on a schedule. There is no framework, no runtime and no service. The instructions are the product.
+Eight AI Employees. Each one is a folder of plain markdown instructions plus a few small Node scripts, which a person installs into their own working folder and registers on a schedule. There is no framework, no runtime and no service. The instructions are the product.
 
 A kit is large on purpose: a shipped kit is roughly 1.1 MB of instructions, with `CONTRACT.md` near 85 KB and each routine's `SKILL.md` between 60 and 94 KB. Do not "tidy" a kit by shortening it. Precision in these files is what keeps a scheduled agent from improvising against someone's live business.
 
@@ -16,7 +16,7 @@ A kit is large on purpose: a shipped kit is roughly 1.1 MB of instructions, with
 |---|---|
 | `employees/<slug>/` | One complete kit. Eight of them |
 | `employees/<slug>/routines/<id>/SKILL.md` | One scheduled routine. The largest and most important files here |
-| `employees/<slug>/scripts/` | `guard.mjs`, `runlog.mjs`, `copy-check.mjs`. Each carries its own self test |
+| `employees/<slug>/scripts/` | `guard.mjs`, `runlog.mjs`, `copy-check.mjs`, and a kit's own extras such as the Ad Manager's `review.mjs`. Each carries its own self test |
 | `employees/<slug>/examples/` | Fictional example output. Never real customer or member data |
 | `installer/cli.mjs` | `npx ai-employees hire <slug>`. No dependencies, Node 18 or newer |
 | `skills/hire/` | The same install flow as a Claude Code skill |
@@ -31,7 +31,7 @@ node .github/scripts/no-dashes.mjs
 node installer/cli.mjs list
 ```
 
-All three must pass. `selftests.mjs` runs the self test inside all 24 kit scripts. `no-dashes.mjs` enforces the rule below and is the one gate that fails builds most often.
+All three must pass. `selftests.mjs` runs the self test inside every script under each kit's `scripts/` folder. `no-dashes.mjs` enforces the rule below and is the one gate that fails builds most often.
 
 ## Rules that are not style preferences
 

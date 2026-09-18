@@ -38,8 +38,8 @@ Every routine has an id. The id is the folder name under `routines/`, the `name`
 |---|---|---|---|
 | `ads-account-read` | Weekdays | 06:45 | Confirms your conversion event still fired, then reads yesterday's spend, delivery, and results at four levels and appends them to the metrics ledger. |
 | `ads-desk-standup` | Weekdays | 07:30 | Folds every ledger, turns yesterday's ticks into dated facts, rewrites the board, and writes your morning brief. |
-| `ads-creative-studio` | Weekdays | 08:15 | Produces one creative set against the doctrine and what has decayed. It uploads nothing. |
-| `ads-build-desk` | Weekdays | 09:15 | Works the next ready card and assembles what it asks for as a complete local file, ready to paste. |
+| `ads-creative-studio` | Weekdays | 08:15 | Produces one creative set against the doctrine, what has decayed, and your feedback. It uploads nothing; you approve or reject each set on the review page. |
+| `ads-build-desk` | Weekdays | 09:15 | Works the next ready card and assembles what it asks for as a complete local file, ready to paste. Where you released the ad account, it publishes the approved set through a connection you already have and writes a receipt. |
 | `ads-change-list` | Fridays | 16:00 | Scores the week from the metrics ledger alone and writes the ranked list of what to change next week. |
 | `ads-account-intake` | First weekday of the month | 13:00 | First run: researches your business, reads your account structure once, writes the plan folder, builds the dashboard, registers the schedule. Monthly: re reads the evidence and applies what changed. |
 | `ads-creative-retro` | Last weekday of the month | 14:00 | Scores a month of creative by angle, format, hook, and offer framing, and rewrites the doctrine. |
@@ -97,7 +97,7 @@ There are exactly two, and this list is the product. Read it before you install.
 - If you offer it a key during setup, it will stop you and tell you it is not needed. **Nothing in this kit ever needs one.**
 - On a login wall, a checkpoint, or a captcha it stops that phase, changes nothing, enters nothing, records the blocker, and carries on with the phases that do not need it. It never retries a refused action a different way.
 
-**Nothing in the kit can create an object in your account.** There is no switch, no exception, and no routine with the capability buried inside it.
+**Nothing in the kit creates an object in your account until you write the row.** `RELEASES.md` names the account and one of two actions: `prepare`, which creates an approved set as a paused campaign so activating it is your click, or `publish`, which creates and activates it inside the total daily budget you recorded. Either way it runs through a connection you already have, never a browser create flow, every call lands as a line in a receipts file with the ids the platform returned, a set is only eligible once you approved that exact version on the review page, and the brief shows approved, published and delivering as three separate facts. There is no other switch, and no routine with the capability buried inside it.
 
 ---
 
@@ -141,7 +141,7 @@ Self repair means the same thing. The first time `ads-account-read` needs a brow
 
 **A working folder that is not synced.** Pick a local path that is **not** inside OneDrive, Dropbox, Google Drive, or iCloud. The routines write state and a run log mid run, and a sync client corrupts exactly the file that tells tomorrow's run what already happened. It matters twice over here, because creative sets are written as a burst of image files and a sync client mangles those too. Something like `D:\AgentOps\ad-manager` or `~/agent-ops/ad-manager` is right. If you point the install at a synced path it moves the kit to a local one, tells you where it went, and carries on.
 
-**Two numbers, and they are the only things it will ask you for.** Your monthly ceiling and your daily cap. They are the only two values in the whole kit that are never researched, never inferred, and never derived from what your accounts currently spend, because they are your money. Leave them blank and they are recorded as an explicit zero, which is a working mode rather than a broken one: the account still gets read, and every delivering campaign gets ranked as spending against no recorded ceiling, which is true and useful.
+**Two numbers, and they are the only things it will ask you for.** Your monthly ceiling and your daily cap. They are the only two values in the whole kit that are never researched, never inferred, and never derived from what your accounts currently spend, because they are your money. The daily cap is the total across every campaign it runs, in your account's currency. Leave them blank and they are recorded as unresolved, which the ledgers guard as zero and which no publish ever treats as an authorised figure: the account still gets read, and every delivering campaign gets ranked as spending against no recorded ceiling, which is true and useful.
 
 **Your own public presence.** The install investigates before it asks anything: your site, your pricing or checkout page, your landing pages, your public collateral. The more of your positioning is public, the less there is to ask you about. In practice one URL plus the two numbers is the whole input.
 
@@ -223,7 +223,7 @@ You end day one with a plan folder in your own language, a doctrine with every r
 
 **The next weekday.** The read routine runs at 06:45, checks your conversion event, and appends your first metrics rows. The standup runs at 07:30 and writes `brief-latest.md`: what the account cost yesterday and what it bought, what is waiting on you, what is blocked. The studio runs at 08:15 and writes your first creative set. The build desk runs at 09:15 and works the next ready card.
 
-You open the brief, open the set folder, upload it if you like it, and tick the card. That tick is what makes the retrospective able to score an angle a month from now.
+You open the brief, open the set folder, upload it if you like it, and tick the card. That tick is what makes the retrospective able to score an angle a month from now. Or run `node scripts/review.mjs --serve` and approve, reject or send it back on the review page, which is the same decision bound to the exact version you saw, and a rejected set leaves the queue with your note instead of blocking the next one.
 
 **Friday afternoon** is the change list.
 

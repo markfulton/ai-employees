@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Runs the three self tests in every kit and checks every routine's frontmatter.
+// Runs the self test inside every script under each kit's scripts/ folder and checks every routine's frontmatter.
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -12,7 +12,7 @@ let failures = 0;
 for (const slug of fs.readdirSync(EMPLOYEES).sort()) {
   const dir = path.join(EMPLOYEES, slug);
   if (!fs.statSync(dir).isDirectory()) continue;
-  for (const script of ["copy-check.mjs", "runlog.mjs", "guard.mjs"]) {
+  for (const script of fs.readdirSync(path.join(dir, "scripts")).filter((f) => f.endsWith(".mjs")).sort()) {
     const r = spawnSync(process.execPath, [path.join(dir, "scripts", script), "--selftest"], { encoding: "utf8" });
     const last = (r.stdout || "").trim().split("\n").pop() || (r.stderr || "").trim();
     const ok = r.status === 0;

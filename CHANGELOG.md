@@ -2,6 +2,16 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## Ad Manager Employee 1.6.0, and every kit bumped, 2026-09-18
+
+The production release for the Ad Manager, written from the first install that published. An Ad Manager installed on Codex ran a real account, published three campaigns through the platform's own connection, and was audited for everything that had to be discovered one dependency at a time.
+
+- **Ad Manager 1.6.0**: three operating modes (`advise`, `prepare`, `publish`) selected by one row in `RELEASES.md`; the build desk publishes an approved package with a receipt for every id; `recipes/META-ADS-RECIPES.md` carries the Meta dependency chain, budget semantics, publication sequence and observed recoveries; `scripts/review.mjs` is the member's review page with approvals bound to the exact revision; a rejected set leaves the queue instead of blocking the studio; budgets are typed fields with `unresolved`, `0` and authorised kept apart; measurement is five signal states; the standup writes an operating summary and shows approved, published and delivering as three facts; seven install milestones are reported separately. See [kit changelog](employees/ad-manager-employee/CHANGELOG.md).
+- **Every kit**: Codex is a confirmed harness, through the app's automations, one per routine. `CAPABILITIES.md` 9.2b, new: scheduled readiness is a scheduled fire, a run by hand never counts, and a connected route gets its second confidence mark from the first scheduled read. The install prompts report scheduled execution as not yet verified until that fire happens. GTM Engineer, Web Dev, Social Media, Sales, Customer Satisfaction and Chief of Staff move to 1.6.0; SEO/AEO to 1.7.0.
+- CI runs the self test inside every script under each kit's `scripts/` folder, so a new kit script is covered the day it lands.
+
+The GTM Engineer and the Ad Manager are the two kits that have now run live launches end to end, and both carry what those runs taught. Further updates follow from every field report.
+
 ## SEO/AEO Employee 1.6.0, 2026-09-11
 
 The SEO/AEO kit adds buyer-question mapping, sourced answer improvements and a scheduled answer visibility audit. Other kits remain at 1.5.0. See [kit changelog](employees/seo-employee/CHANGELOG.md).

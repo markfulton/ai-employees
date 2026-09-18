@@ -3,7 +3,7 @@
   "slug": "ad-manager-employee",
   "name": "Ad Manager Employee",
   "role": "Paid acquisition",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "standard": "1.3",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
@@ -49,6 +49,15 @@
       ],
       "required": false,
       "readonly": true
+    },
+    {
+      "capability": "ads.account.write",
+      "providers": [
+        "meta-ads-mcp"
+      ],
+      "required": false,
+      "readonly": false,
+      "held": "RELEASES.md names the ad account with prepare or publish; ads-build-desk Step 6a only"
     }
   ],
   "routines": [
@@ -136,6 +145,7 @@
       ".gitignore",
       "employee.json",
       "recipes/BROWSER-RECIPES.md",
+      "recipes/META-ADS-RECIPES.md",
       "routines/**",
       "run/**",
       "scripts/**",

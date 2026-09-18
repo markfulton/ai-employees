@@ -480,10 +480,13 @@ A connected source is a route the member connected once in their own harness tha
 | `ads.account.read` | Yesterday's spend, delivery and results at four levels; the object tree once a month | Meta accounts: the Ads MCP server (`https://mcp.facebook.com/ads`, connected from Business Suite under Settings, Integrations, or through a developer app) or the Ads CLI. Google accounts: the Google Ads MCP server (official, `pipx run google-ads-mcp`, a Google Cloud project with at least Explorer access on the Ads API). Several platforms at once: the Supermetrics or Windsor.ai connector | The Google server is read only by design. The Meta server carries write tools and this kit never calls one | `expected` |
 | `ads.signal.check` | Whether the primary conversion event fired inside the read window | Meta: the Ads MCP server's signals and datasets tools. Web analytics: the Google Analytics MCP server (official, `pipx run analytics-mcp`), or the host's own analytics connector where the landing page runs there | Read only by design | `expected` |
 | `ads.creative.export` | A finished design pulled from the member's design tool into a set folder | The Canva connector (`https://mcp.canva.com/mcp`) export tools | Export only; this kit uploads nothing anywhere | `expected` |
+| `ads.account.write` | Uploading approved media, creating a campaign, ad set, creative and ad, reading a preview back, and activating, all on one approved package | Meta accounts: the Ads MCP server's upload, create, preview and activate tools. Google accounts: `n/a (no write route in this release)` | **Held.** Called by `ads-build-desk` Step 6a only, and only where `RELEASES.md` names the account with `prepare` or `publish`. Every call lands in `build/publication-receipts.jsonl` | `expected` |
 
 TikTok for Business and Microsoft Advertising ship official servers for their own accounts. Name one in `plan/measurement.md` by its human readable name only where the intake found that account.
 
 `confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
+
+**A row confirmed in a chat session is not a row confirmed on the schedule.** The scheduled process may not inherit the session's secret store, its environment or its working directory, and the observed failure was an account read that worked in the session that connected it and a scheduled build desk that could not decrypt the same saved token. Every row gets two marks in `## Corrections`: one from the session that connected it and one from the first scheduled run that read through it. `recipes/META-ADS-RECIPES.md` section 4 says what to do when the two disagree, and it never involves printing the token.
 
 ---
 
@@ -636,7 +639,7 @@ Keeping the rows here rather than deleting them is deliberate. A routine that sa
 
 ## 6. Kit capabilities
 
-Three. These are the kit's own, and two of them ship as scripts inside it.
+Four. These are the kit's own, and three of them ship as scripts inside it.
 
 ### `runlog.append`
 Append exactly one validated run record to `runlog.jsonl`.
@@ -691,6 +694,29 @@ node "«ADS_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [-
 `--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. **This kit uses four of them:** `form` for anything you will paste into a field, which is every creative string and every build sheet asset; `strategy` for a plan file and the doctrine; `dashboard` for a dashboard partial; and `plain` for the brief, the board, the digest, and the change list. `--selftest` takes no other flag and confirms the script runs, which is worth doing once on install so you find out on day one rather than at 08:15 on a Tuesday. **There is no `--profile`, no `--destination`, and no bare positional path.**
 
 The rules it applies, in order, are in `CONTRACT.md` section 3.4. **Do not eyeball any of them. The script is the judge**, including on the dashes, and a stated preference has never been enough.
+
+### `review.catalog`
+Derive every creative set's review, publication and delivery state from the three files that hold them, and serve the member's review page.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | `shell.run` on `scripts/review.mjs --catalog --json`, then the same derivation in agent | `confirmed` |
+| OpenClaw | `shell.run` on `scripts/review.mjs`, then in agent | `expected` |
+| Hermes | `shell.run` if present, then in agent | `unknown` |
+| OpenCode | `shell.run` on `scripts/review.mjs`, then in agent | `expected` |
+| Grok Bot | `shell.run` if present, then in agent | `unknown` |
+| Codex | `shell.run` on `scripts/review.mjs`, then in agent | `confirmed` |
+| Antigravity | `shell.run` on `scripts/review.mjs`, then in agent | `expected` |
+
+**Absent the script:** derive in agent by the same rule, the latest `member` row in `creative/approvals.jsonl` naming a set's current revision decides, and put `review: in-agent` in `notes`. **No routine ever appends a row to that file**, and the in agent route is a derivation, not a permission to approve anything.
+
+One interface, used verbatim at every call site:
+
+```
+node "«ADS_ROOT»/scripts/review.mjs" --catalog --json
+```
+
+The member runs `node "«ADS_ROOT»/scripts/review.mjs" --serve` to open the page on the loopback address, and `--record` to review from a terminal. The page makes no network call, calls no platform, and writes one file.
 
 ### `schedule.register`
 Register, inspect, or change a recurring job named after a routine id.
@@ -803,7 +829,7 @@ No two share a fire minute, including the one that never touches a browser.
 | **Hermes** | Built in cron, one job per routine, each handed that routine's `SKILL.md` as the prompt | `expected` |
 | **OpenCode** | None of its own. Use the operating system's scheduler below | `expected` |
 | **Grok Bot** | Its bots run on a schedule from their own cloud computer: one recurring task per routine | `expected` |
-| **Codex** | Scheduled runs, one per routine | `expected` |
+| **Codex** | The Codex app's automations: one `kind = "cron"` automation per routine, named after the routine id, `execution_environment = "local"`, the kit folder among its working directories, and an `rrule` built from the `SCHEDULE.md` row. Each automation keeps its own memory file, which is a note to itself and never a ledger this kit reads | `confirmed` on Windows: seven routines fired on schedule under the app's automatic review mode, after the member approved the registrations in the session |
 | **Antigravity** | The `agy` job runner, one job per routine, pointed at the routine folder | `expected` |
 | **Pi** | None of its own. Use the operating system's scheduler below | `expected` |
 | **Cline** | Built in cron: `cline schedule create "<prompt>" --cron "<cron>"`, one per routine, auto approve on | `expected` |
@@ -844,7 +870,7 @@ Two shapes cover every harness.
 | **Hermes** | The cron job's prompt is the Shape B prompt. For a run by hand, use its own headless flag from its help output | `expected` |
 | **OpenCode** | `opencode run "<prompt>"` is its non interactive form. Confirm it against `opencode --help` on your version. Shape B | `expected` |
 | **Grok Bot** | The recurring task's run prompt is the Shape B prompt. It runs on its own cloud computer, not on this machine | `expected` |
-| **Codex** | `codex exec "<prompt>"` is its non interactive form. Confirm it against `codex --help` on your version. Shape B | `expected` |
+| **Codex** | The app's automation holds the invocation: its prompt is the Shape B prompt with the kit folder named as the working directory, and no separate headless line is written. `codex exec "<prompt>"` is the by hand form, and it runs only where the CLI is signed in, which the app's own sign in does not imply. Shape B | `confirmed` for the automation route; `codex exec` stays `expected` |
 | **Antigravity** | `agy -p "<prompt>"`. The print flag is read off the CLI's own help text. That a routine then runs correctly through it is not verified | `expected` |
 | **Pi** | `pi -p "<prompt>"`. Confirm the print flag against `pi --help` on your version. Shape B | `expected` |
 | **Cline** | `cline schedule create "<prompt>" --cron "<cron>"` holds the invocation. For a run by hand, confirm the headless form against `cline --help`. Shape B | `expected` |
@@ -860,6 +886,14 @@ Three things decide whether the line works, and all three are outside the comman
 **One routine run by hand, first.** Take the line for `ads-desk-standup`, run it in a terminal, and watch it write `brief-latest.md` and one line into `runlog.jsonl`. Then register the other six. Seven jobs registered on an invocation nobody has run is seven silent failures on the same morning, and the first thing you would see is an empty brief.
 
 Where your harness's row above says `expected` rather than `confirmed`, and you have run a routine through it, put what you found in `## Corrections` at the bottom of this file.
+
+### 9.2b Scheduled readiness is a scheduled fire
+
+Registration proves that the scheduler holds a job. It does not prove that the job runs, that it runs with the permission mode you set, that it starts in the kit folder, or that it can reach the connections a chat session could. All four have failed after a clean registration, and the one that hides longest is the last: a token or a secret store that unlocks for the signed in user and not for the process the scheduler starts. The observed case was an account read that worked in the session that connected it, and a scheduled routine the same evening that could not decrypt the same saved token.
+
+So readiness is proved once, by a fire the scheduler started, and it is reported as its own fact. The install prompt registers the jobs and reports `scheduled execution: not yet verified`. The proof is a line in `runlog.jsonl` from a run nobody started by hand, at the registered time, with the status it should have, and where a routine reads through a connected route, that first scheduled read is the second mark on the route's row in `## Corrections`, next to the mark the chat session left. Two marks, two processes, and a row with only the first is not ready.
+
+**A run by hand never counts**, however well it went. It goes through the same guard, records the same period, writes `run by hand` in `notes`, and never claims a scheduled fire happened. Installed, scheduled and proven are three words, and a report that uses one of them for all three has hidden the failure that matters most.
 
 ### 9.3 cron, on macOS or Linux
 

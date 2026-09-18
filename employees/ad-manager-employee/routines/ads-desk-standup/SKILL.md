@@ -99,8 +99,9 @@ Read nothing that is not on the first table. Write nothing that is not on the se
 | `brief-latest.md` | Overwritten, thirty lines maximum, four sections |
 | `briefs/brief-YYYY-MM-DD.md` | A verbatim copy of the brief, same content, not a longer version |
 | `ads-latest.md` | Overwritten, uncapped, machine facing |
+| `operating-summary.md` | Overwritten, uncapped, seven headings, a source and a date beside every line, Step 9a |
 | `changes/ledger.jsonl` | Appended, `status: "applied"` only, one line per newly ticked change card |
-| `creative/ledger.jsonl` | Appended, `status: "live"` only, one line per newly ticked upload card |
+| `creative/ledger.jsonl` | Appended, `status: "live"` only, one line per newly ticked upload card and one per creative id on a new receipt whose object is active |
 | `metrics/daily-quarantine-YYYY-MM-DD.log`, `changes/ledger-quarantine-YYYY-MM-DD.log`, `creative/ledger-quarantine-YYYY-MM-DD.log` | A malformed line copied verbatim with its line number |
 | `state/ads-desk-standup.json` | Your own state, temp path plus rename |
 | `archive/**` | Files older than thirty days, moved with their paths preserved |
@@ -244,6 +245,8 @@ Read each file with `file.read`. Strip a leading byte order mark by removing cod
 | `metrics/daily.jsonl` | `(object_id, date)` | The last row per pair, inside the archive window |
 | `changes/ledger.jsonl` | `change_id` | The last line per id |
 | `creative/ledger.jsonl` | `creative_id` | The last line per id |
+| `creative/approvals.jsonl` | `set` | The last row per set whose `by` is `member`. Any other row is ignored and named in `ads-latest.md` |
+| `build/publication-receipts.jsonl` | `set`, then `ad_id` | The last line per set and per ad id |
 | `plan/CHANGELOG.md` | line order | Every line dated after your `last_period` |
 | `improvements/CHANGELOG.md` | line order | Every line after `improvements_cursor` |
 | `state/ads-<id>.json`, all seven | routine id | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used` |
@@ -330,6 +333,20 @@ Every field except `status`, `by`, `on`, and `card` comes off the `produced` row
 5. Add the card id to `upload_ticks_reconciled` the moment the last line lands.
 
 **Never untick, never re file, never tidy.** A change card or an upload card left unticked for weeks is not a mess to clean up. It is the member deciding not to do that one, and it gets one line in the brief under `Waiting on you` naming the card and its age. The member decides, and they have already decided.
+
+### 3c.1 A receipt becomes a `live` row, and a rejection parks the card
+
+For every receipt folded in Step 2 whose `ad_id` is present and whose `configured_status` is active:
+
+1. **Build the key**, which is the receipt's `ad_id`. If it is already in `receipts_reconciled[]`, skip it.
+2. **Resolve the creative ids** from the `produced` rows whose `set` equals the receipt's `set`. Where none resolve, one blocker naming the receipt, no ledger line, move on.
+3. **Append one `live` line per creative id** in the shape 3c gives, with `card` set to the upload card that named the set and `receipt` set to the receipt path. `on` is today, the date you observed the receipt.
+4. **Close the upload card from the receipt**, per section 2.6 of the contract: set `done: true`, `done_on` today, and append `closed from build/receipt-«slug».md` to `notes[]`. This is the one `member-action` card a routine closes, and only because the member's hand is the approval row the receipt names. A receipt whose `configured_status` is paused, which is what `prepare` mode writes, closes nothing: the card stays open and the brief carries one line saying the campaign is prepared and waiting for the member to activate it.
+5. Add the ad id to `receipts_reconciled[]`.
+
+For every set whose latest member review row is `rejected` or `withdrawn` and whose card is still open after the inbox fold: set `status: "parked"` and `blocker` to `rejected by member on «date»`, where the studio's own inbox line has not already done it. The card leaves the brief and stays on the board. **Never delete it and never untick anything.**
+
+**Three labels, never one.** For every receipt, the brief and the summary carry review, publication and delivery as separate words: `approved «date»`, `published «configured status», platform «effective status»`, and `delivering «impressions» on «date»` or `not yet delivering`. A page or a line that shows one word for the three is the defect that made a verified publication read as queued.
 
 ### 3d. Local artifacts are verified, not trusted
 
@@ -475,7 +492,9 @@ Never soften a blocker, never summarise one, never merge two into a sentence, an
 ## Live and what it cost
 one line for the account total for the last complete reporting day, with the ledger path
 one line per campaign that spent, with its cost per result or n/a and the ledger path
-one line if the primary conversion event did not fire in the read window
+one line per object this Employee published, as three labels kept apart: approved «date», published «configured status, platform status», delivering «impressions on date» or not yet
+one line for today's partial spend where the read routine recorded one, marked partial
+one line if the primary conversion event did not fire in the read window, as a warning where the release row carries a measurement exception and as a blocker otherwise
 
 ## Waiting on you
 one line per member-action card that is ready, oldest first
@@ -547,7 +566,7 @@ Then copy the passing file verbatim to `briefs/brief-YYYY-MM-DD.md`. The dated c
 Overwritten, uncapped, machine facing. You are its only writer. Everything that does not belong in front of the member goes here, and this is the file sibling Employees and the member's other agents read:
 
 - Every run record you folded this run: routine, status, outputs, blockers, notes.
-- The reconciliation counts: board boxes read, `applied` rows appended, `live` rows appended, board ticks applied in each direction, cards reopened for a missing artifact, inbox lines folded, cards deduplicated, cards blocked on an unrecognised type.
+- The reconciliation counts: board boxes read, `applied` rows appended, `live` rows appended from ticks and from receipts, cards closed from receipts, cards parked on a rejection, board ticks applied in each direction, cards reopened for a missing artifact, inbox lines folded, cards deduplicated, cards blocked on an unrecognised type.
 - The `applied` date convention, stated in one line, every run.
 - Every cursor position at the end of the run.
 - Malformed line counts per file with their line numbers, and the quarantine path where there is one.
@@ -558,6 +577,40 @@ Overwritten, uncapped, machine facing. You are its only writer. Everything that 
 - A `## For other employees` block: the current `plan/` file paths with their dates, the account names in `plan/account-map.md`, the open change ids, the live creative ids, and the path of the most recent change list and retrospective. **Paths and dates only. No draft copy, no personal data, no figure you did not fold out of a file this run.**
 
 Run `copy.check --dest plain` on this file too. It catches a dash before the file reaches another agent.
+
+---
+
+## Step 9a. Write `operating-summary.md`
+
+Overwritten every run, uncapped, seven headings in this order, and every line carries its source path and the date it was verified. This is the one file that says what is true now, so no routine and no operator session has to re-derive it from the ledgers, and so a blocker that was resolved last week is not appended beside a newer fact for the third time.
+
+```
+# Operating summary, 2026-03-05
+
+## Business and offer
+one line per plan file: what it says, its path, its date
+
+## Budget and authorisation
+the daily cap, its currency, the allocations and the ceiling as recorded, each with its state: unresolved, 0, or authorised
+the operating mode per account from RELEASES.md, with the row's date and conditions, or "advise, no row"
+
+## Platform identity and connection
+every line under plan/account-map.md#Platform identity, and whether the connection was verified in the scheduled process
+
+## Published objects
+one line per receipt: set, ids, configured status, platform status, delivery on the last read, the receipt path
+
+## Measurement
+the five signal states with their dates and sources, from state/ads-account-read.json
+
+## Open decisions
+one line per member-action card that is ready, and per assumption not yet corrected
+
+## Resolved
+one line per blocker resolved since this file was last written, with the date and the evidence, kept for thirty days
+```
+
+A blocker moves to `## Resolved` in the run you see the fact that resolved it. It is never repeated under an open heading afterwards, and it is never deleted from the ledgers. Run `copy.check --dest plain` on the file. It carries no figure you did not fold this run, no draft copy, and no credential.
 
 ---
 

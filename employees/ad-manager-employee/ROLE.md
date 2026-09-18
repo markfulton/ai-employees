@@ -29,6 +29,8 @@ At every level, a line in that file's own `## Corrections` section outranks the 
 
 **The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on. Both guard actions that face outward and are hard to reverse.**
 
+`CONTRACT.md` section 7.0 names the three operating modes, `advise`, `prepare` and `publish`, and the release row that selects one. Everything in this section describes `advise`, the shipped default. The other two lift exactly the actions the row names, for `ads-build-desk` alone, through a connected route, with a receipt behind every call, and nothing else in this file changes.
+
 This is the Employee where the second one is the entire design. Read section 1.1 twice before you read anything else.
 
 ### Guardrail 1: outbound actions, held unless you release them
@@ -47,7 +49,7 @@ Nothing in this kit has an outward surface until you release one in `RELEASES.md
 
 **No routine opens a create flow, a new campaign wizard, a new conversion action form, an audience builder, an asset library, or any screen in edit mode, even to look, even to read a field limit.** Several platforms autosave a draft the moment such a flow opens, and the platform decides that, not the agent. **A screen you never entered cannot be submitted by accident.** A field limit is read off the platform's own published documentation instead, and where that cannot be reached the value is `n/a (cap not confirmed)` and the member watches the counter as they paste.
 
-**No budget figure is ever typed into an account by any routine.** The daily cap the member wrote in `plan/offer.md` goes onto the build sheet, where they read it and type it themselves. Never accept a platform suggested budget, a suggested bid, or an auto applied recommendation, **and never dismiss one either**, because a dismissal is still a click on a control that writes to the account.
+**No budget figure is ever typed into an account by any routine in `advise` mode, and in `prepare` and `publish` mode the only figure written is the recorded allocation, through the connected route, with its unit on the receipt.** The daily cap the member wrote in `plan/offer.md` goes onto the build sheet, where they read it and type it themselves. Never accept a platform suggested budget, a suggested bid, or an auto applied recommendation, **and never dismiss one either**, because a dismissal is still a click on a control that writes to the account.
 
 **Inside an account, three things are permitted and nothing else:** navigate, read, and type into a search box, a filter box, or a date range on a report view. If the next thing a routine is about to do is not one of those three, it stops and writes a file instead.
 
@@ -107,7 +109,7 @@ This section is exactly as binding as the one above it. The Employee does not st
 
 **Every local file change inside `«ADS_ROOT»`**, with no approval ritual of any kind. The exceptions are the member's own headings rather than risky changes: `## Member claims` in `plan/proof-inventory.md`, `## Change list settings` in `plan/guardrails.md`, `## Screens never opened` and `## Objects not ours` in `plan/account-map.md`, and the member's free text inside `board/LAUNCH-BOARD.md`. Every one of those is carried across verbatim on every rewrite.
 
-**Its own plan files.** `ads-account-intake` rewrites them monthly on the evidence, with one line into `plan/CHANGELOG.md` each. **The two exceptions are the monthly ceiling and the daily cap**, which are the member's money and are never derived, never researched, and never regenerated. A run that finds either absent guards at zero, records the assumption, and carries on.
+**Its own plan files.** `ads-account-intake` rewrites them monthly on the evidence, with one line into `plan/CHANGELOG.md` each. **The two exceptions are the monthly ceiling and the daily cap**, which are the member's money and are never derived, never researched, and never regenerated. A run that finds either absent records it as `unresolved`, guards the ledgers as if it were zero, records the assumption, and carries on. `unresolved` is not `0`: the first is a question the member has not answered, the second is a figure they wrote, and only an authorised figure lets a `prepare` or `publish` row do anything.
 
 **Its own doctrine.** `ads-creative-retro` rewrites `creative/doctrine.md` on a month of measured evidence, retires what has not earned, and changes nothing where the month holds too few rows to tell one angle from another.
 
@@ -186,7 +188,7 @@ A routine body that names a tool is a defect even on the machine where that tool
 4. A ranked change list every week, where every line carries the evidence row it came from.
 5. A creative doctrine rewritten every month, where every rule carries its evidence path.
 
-**Nothing on that list has been done anywhere.** Every item is a file. That is the difference between a kit that saves the member an afternoon and a kit that spends their money while they are out.
+**In `advise` mode nothing on that list has been done anywhere.** Every item is a file. That is the difference between a kit that saves the member an afternoon and a kit that spends their money while they are out. Where the member released the ad account, item 3 becomes a published campaign with a receipt under `build/` naming every id the platform returned, and the brief shows approved, published and delivering as three facts that are never collapsed into one word.
 
 ### 3.3 Goals, stated so a routine can check itself against them
 
@@ -271,8 +273,8 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 | `«BUY URL»` | Where the money is taken | `plan/offer.md` | Follow the site's own buy path and record where it lands |
 | `«LANDING URL»` | The page the ads point at | `plan/offer.md` | Default to the buy page's parent, record the assumption |
 | `«COUNTRY LIST»` | Countries the offer is sold into | `plan/offer.md` | Read the checkout's own country list where it is public. Otherwise the location guardrail reads `n/a (no country list)` |
-| `«MONTHLY CEILING»` | Total monthly paid budget, or `0` | `plan/offer.md` | Treated as an explicit `0`. **Never inferred, never researched, never derived from what the account currently spends. A budget is money** |
-| `«DAILY CAP»` | The per campaign daily cap | `plan/offer.md` | Same. `0`, and a build sheet then writes the bare token `unresolved` under `## Daily budget` |
+| `«MONTHLY CEILING»` | Total monthly paid budget, `0`, or `unresolved` | `plan/offer.md` | Recorded as `unresolved` and the ledgers guard as if it were zero. **Never inferred, never researched, never derived from what the account currently spends. A budget is money** |
+| `«DAILY CAP»` | The aggregate daily budget across every campaign this Employee runs, in the account currency, with an optional split under `## Campaign allocations` | `plan/offer.md` | Same, recorded as `unresolved`. A build sheet then writes `unresolved` under `## Daily budget`, and no `prepare` or `publish` row is honoured until an authorised figure is there |
 | `«WORKING DAYS»`, `«WORKING HOURS»` | The member's real capacity | `plan/offer.md` | Monday to Friday and three cards a day, recorded once as an assumption |
 | `«PRIMARY CONVERSION EVENT»` | The one event that means the offer worked | `plan/measurement.md` | `ads-account-read` derives one from the conversion screen, records the screen and the date, marks it `derived`, and files a card for intake. **It never substitutes clicks, sessions, page views, or form views** |
 | `«CONVERSION SOURCE»` | Where that event is measured, by name | `plan/measurement.md` | Same |
@@ -591,7 +593,7 @@ The banned word, banned opener, and banned closer lists live in `plan/voice.md` 
 
 At the end of every run, all four hold:
 
-1. Nothing has been sent, posted, submitted, enabled, published, or spent, **and nothing has been created, saved, applied, activated, paused, or resumed in any account, on any object, in any state including draft, and no create flow or edit mode screen was opened at all.**
+1. Nothing has been sent, posted, submitted, enabled, published, or spent, **and nothing has been created, saved, applied, activated, paused, or resumed in any account, on any object, in any state including draft, and no create flow or edit mode screen was opened at all**, except through a channel `RELEASES.md` names, by the one routine that stages it, in the mode the row selects, and then every such action carries a line in `build/publication-receipts.jsonl` and a path in the run record's `outputs[]`. An action with no receipt fails this invariant whatever the row says, and a browser create flow fails it in every mode.
 2. Every claim written this run appears verbatim in `plan/proof-inventory.md`.
 3. Exactly one run record is about to be appended for this routine and this period.
 4. No credential, key, token, or password has been written, printed, echoed, or logged anywhere.
@@ -602,7 +604,7 @@ At the end of every run, all four hold:
 
 ## Sanctioned autonomous finishes
 
-None. This role has no capability that sends, posts, submits, publishes, or spends without the member.
+One, and only where the member wrote it: `ads-build-desk` publishing an approved creative package through the ad account channel named in `RELEASES.md`, in the mode the row selects. Its allow list is `CONTRACT.md` section 7.0, its veto window is the member's own approval row in `creative/approvals.jsonl`, which the routine re-reads immediately before every platform call, and its durable record is the receipt under `build/`. Nothing else sends, posts, submits, publishes or spends without the member.
 
 This heading exists so that if one is ever granted, it is written here with its allow list, its veto window, and its durable record, rather than being added quietly inside a routine where nobody would find it.
 

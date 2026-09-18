@@ -155,11 +155,13 @@ Written once by `ads-account-intake` on its first run, and rewritten by it on th
 
 **Schemas.**
 
-`plan/offer.md`: `## What is sold`, `## Price and billing shape`, `## Buy URL`, `## Landing URL`, `## Countries sold into`, `## Monthly ceiling`, `## Daily cap`, `## Working days and hours`. Every heading present, even where the section is one line saying what could not be settled.
+`plan/offer.md`: `## What is sold`, `## Price and billing shape`, `## Buy URL`, `## Landing URL`, `## Countries sold into`, `## Currency`, `## Monthly ceiling`, `## Daily cap`, `## Campaign allocations`, `## Account timezone`, `## Working days and hours`. Every heading present, even where the section is one line saying what could not be settled.
 
-`plan/account-map.md`: `## Accounts`, `## Read screens`, `## Objects not ours`, `## Screens never opened`. Human readable account names and click paths only. **No key, no token, no password, no URL with a credential in it, ever, under any heading.** `## Objects not ours` and `## Screens never opened` are the member's, created once with a heading and one commented example line and never written by any routine again, and **every routine treats `## Screens never opened` as binding above its own defaults.**
+**The money headings are structured fields, and three states are kept apart.** `## Daily cap` is the aggregate daily budget across every campaign this Employee runs in the account, in the currency under `## Currency`, and never a per campaign figure. `## Campaign allocations` is optional and splits that cap, one line per campaign as `<campaign name>: <amount>`; the allocations must sum to at most the cap, and a routine checks the sum before any publish or budget change and refuses the write where it fails, naming both figures. `## Monthly ceiling` is optional. Each money line is in exactly one of three states: `unresolved`, because the member has not answered; `0`, because the member wrote zero, which means no paid budget and is a working mode for the ledgers; or an authorised figure. **A blank answer is recorded as `unresolved`, never as zero**, because an unanswered question is not an instruction to spend nothing. A `prepare` or `publish` row in `RELEASES.md` requires an authorised figure under `## Daily cap`; on `unresolved` or `0` the build desk creates nothing and the blocker says which of the two it found. `## Account timezone` is read off the account, never assumed from the machine, and every reporting range in this kit is stated in it. On a platform where a daily budget is a pacing target rather than a ceiling, every file that shows the figure calls it `daily budget (pacing)`, and `recipes/META-ADS-RECIPES.md` section 2 says why.
 
-`plan/measurement.md`: `## Primary conversion event`, `## Conversion source`, `## Read window`, `## Link convention`, `## What is not measured`.
+`plan/account-map.md`: `## Accounts`, `## Platform identity`, `## Read screens`, `## Objects not ours`, `## Screens never opened`. Human readable account names and click paths only, plus the typed identity fields under `## Platform identity`, one per line as `<field>: <value> | verified <date> | <evidence path>`, written by intake from the dependency chain in `recipes/META-ADS-RECIPES.md` section 1 where the account is a Meta account: the app, the token owner by name, the ad account with its currency and timezone, the Page, the dataset, and whether the connection was verified in the scheduled process. An id lives in its own field and is never copied into another because a tool asked for one. **No key, no token, no password, no URL with a credential in it, ever, under any heading.** `## Objects not ours` and `## Screens never opened` are the member's, created once with a heading and one commented example line and never written by any routine again, and **every routine treats `## Screens never opened` as binding above its own defaults.**
+
+`plan/measurement.md`: `## Primary conversion event`, `## Conversion source`, `## Signal states`, `## Read window`, `## Link convention`, `## What is not measured`. `## Signal states` carries five lines and each is verified on its own evidence, never inferred from a neighbour: `browser events received`, `server events received`, `purchase received`, `deduplication verified`, `attribution available`, each followed by `verified <date>, <source>`, `unverified`, or `n/a (<reason>)`. `ads-account-read` refreshes the five from what it read and the brief shows an unverified purchase as a warning where the release row carries a measurement exception naming the campaigns, and as a blocker otherwise. A warning is still printed every day it holds.
 
 `plan/guardrails.md`: `## Networks and placements`, `## Expansion settings`, `## Audience application`, `## Locations`, `## Automatic recommendations`, `## Change list settings`. The first five record what was actually read on the account with the date beside each. A category that could not be placed reads `n/a (control not found)`, **never `clear`**, because a category marked clear because the control was not found is a false negative on a guardrail. `## Change list settings` is the member's and no routine generates it: it holds at most two lines, `movement_threshold: <n> units, <n> percent` and `evidence_floor: <n> reporting days`, and either one present overrides the shipped default.
 
@@ -221,7 +223,9 @@ Any figure the screen does not show is written as `n/a (<reason>)` and never as 
 | Path | Writer | Read by |
 |---|---|---|
 | `creative/doctrine.md` | created once by `ads-account-intake`. **`ads-creative-retro` owns it from then on** | `ads-creative-studio`, `ads-creative-retro` |
-| `creative/ledger.jsonl` | append only. `ads-creative-studio` writes `produced`. `ads-desk-standup` writes `live`. `ads-creative-retro` writes `retired` | `ads-desk-standup`, `ads-change-list`, `ads-creative-retro`, `ads-build-desk`, `ads-account-intake` |
+| `creative/ledger.jsonl` | append only. `ads-creative-studio` writes `produced`, `rejected` and `superseded`. `ads-desk-standup` writes `live`. `ads-creative-retro` writes `retired` | `ads-desk-standup`, `ads-change-list`, `ads-creative-retro`, `ads-build-desk`, `ads-account-intake` |
+| `creative/approvals.jsonl` | **the member only**, through `scripts/review.mjs` or by hand. Append only, one row per review decision, bound to the set's revision. No routine ever appends here | `ads-creative-studio`, `ads-build-desk`, `ads-desk-standup`, `scripts/review.mjs` |
+| `creative/feedback.md` | the member, in their own words, plus `ads-creative-studio` appending the note from each review row verbatim under a dated line | `ads-creative-studio`, `ads-creative-retro` |
 | `creative/set-YYYY-MM-DD-«slug»/set.md` and its image files | **`ads-creative-studio` only** | member, `ads-build-desk` |
 | `creative/ledger-quarantine-YYYY-MM-DD.log` | append only, any reader of the ledger | member, named in the run record |
 | `archive/creative/doctrine-YYYY-MM-DD.md` | `ads-creative-retro`, before every rewrite | member |
@@ -231,6 +235,9 @@ Any figure the screen does not show is written as `n/a (<reason>)` and never as 
 **Four fields on every `produced` row are what the retrospective scores on:** `angle`, `format`, `hook`, and `doctrine_line`. Without them it can only count files, and counting files tells nobody anything. Where one genuinely does not apply, the row carries the bare token `none` rather than leaving the key out.
 
 **A rule id in `creative/doctrine.md` is never renamed and never reused.** Every `produced` row records the doctrine line its variant came from, so a rename orphans months of rows silently, with no error anybody ever sees.
+
+**A set is in exactly one review state, derived from `creative/approvals.jsonl` and never stored:** `awaiting-review` where no member row names its current revision; `approved`, `needs-revision`, `rejected` or `withdrawn` where the latest member row does; and `changed` where the latest row names an earlier revision. The revision is the hash `scripts/review.mjs --catalog` computes over the manifest, every image in the folder, and the money and destination lines of `plan/offer.md`, so a change to any of those sends the set back for review and an approval can never be spent on content the member did not see. A `rejected` or `withdrawn` set leaves the production queue: `ads-creative-studio` appends one `rejected` row per variant, moves the folder under `archive/creative/`, copies the review note into `creative/feedback.md`, and produces against that feedback on its next run instead of holding the only open slot. A `needs-revision` set is rewritten by the studio's maintenance run against the note and comes back as a new revision awaiting review. A set the member uploaded by hand and ticked on the board becomes `live` exactly as before, and a set the build desk published under a released channel carries its receipt under `build/`. **Review, publication and delivery are three facts**, read from three files, and no file in this kit collapses them into one word: a set can be approved and unpublished, published and pending the platform's review, or active and not yet delivering, and the brief says which.
+
 
 ### 2.6 Board
 
@@ -242,7 +249,7 @@ Any figure the screen does not show is written as `n/a (<reason>)` and never as 
 
 `type` is one of `verify`, `change`, `upload`, `research`, `handoff`. A card whose type is not on that list is added anyway with `status: "blocked"` and a blocker naming the unrecognised value, because a card recorded as blocked is visible and a card dropped is not.
 
-`status` is one of `todo`, `staged`, `blocked`, `parked`. **There is no `filled` and no `submitted` in this kit**, because nothing this kit touches is ever submitted anywhere.
+`status` is one of `todo`, `staged`, `blocked`, `parked`. **There is no `filled` and no `submitted` in this kit.** A published object is recorded in a receipt under `build/`, never in a card status, and a set the member rejected in `creative/approvals.jsonl` is `parked` with the rejection date in `blocker`, so it leaves the brief without being deleted.
 
 **`done_kind` is the field that decides who may tick the card, and it is the only mechanism in this kit that reconciles maximum self-reliance with the two guardrails.**
 
@@ -251,7 +258,7 @@ Any figure the screen does not show is written as `n/a (<reason>)` and never as 
 
 Every card carries a `done_kind`. A card without one is treated as `member-action` and named once in the brief so the member can correct it.
 
-**Every card about an object in an account is `member-action`, with no exception anywhere in this kit.** Its definition of done is always a setting changed in an account that can spend, and that is the member's hand on the control.
+**Every card about an object in an account is `member-action`, with one exception.** Its definition of done is a setting changed in an account that can spend, and that is the member's hand on the control. The exception is a card whose object `ads-build-desk` created under a `prepare` or `publish` row: the member's hand is the approval row in `creative/approvals.jsonl`, the evidence is the receipt carrying the object's id, and `ads-desk-standup` sets `done` from that receipt, naming it in `notes[]`. It never sets `done` from a run record, a note, or an object that merely appeared in the account.
 
 `ads-build-desk` may write exactly these fields, and only on the one card it worked this run: `artifact`, `status`, `blocker`, `worked[]` (append one entry), and `done` plus `done_on` when `done_kind` is `local-artifact`. It writes board.json to a scratch path, parses the copy, confirms the card count is unchanged, then renames over the original. On a parse failure it restores the original, writes its outcome to `build/<today>-build-desk.md` so nothing is lost, and records the blocker.
 
@@ -278,12 +285,14 @@ Every card carries a `done_kind`. A card without one is treated as `member-actio
 | `build/audience-«slug».md` | `ads-build-desk` | member |
 | `build/upload-«set slug».md` | `ads-build-desk` | member |
 | `build/<today>-build-desk.md` | `ads-build-desk`, only as the fallback when a board write failed | member, named in the run record |
+| `build/publication-receipts.jsonl` | append only, **`ads-build-desk` only**, one line per object created, activated or replaced through a released channel, written the instant each platform call returns | `ads-desk-standup`, `ads-account-read`, `ads-creative-studio`, `scripts/review.mjs`, member |
+| `build/receipt-«set slug».md` | `ads-build-desk`, the readable receipt with every id, every status read back, the budget with its unit, and the account link | member |
 
 `change_id` is `«category»:«object slug»:«metric slug»`, deterministic and never random, so a change proposed twice is one ageing card rather than two. `category` is one of `measurement`, `pace`, `guardrail`, `kill`, `scale`, `test`, `structure`.
 
-**`build/` holds everything this kit assembles for an advertising account, and it exists because the kit assembles the whole thing and creates none of it.** A build sheet carries the campaign structure, the ad assets by slot with their character counts, the budget figure the member wrote, the tracking template character for character, and the exact screen the campaign is created on. A negatives file carries one campaign's terms, one per line, ready to paste in a single block. A conversion file carries the specification for a conversion action nobody has created yet.
+**`build/` holds everything this kit assembles for an advertising account, and in `advise` mode it exists because the kit assembles the whole thing and creates none of it.** A build sheet carries the campaign structure, the ad assets by slot with their character counts, the budget figure the member wrote, the tracking template character for character, and the exact screen the campaign is created on. A negatives file carries one campaign's terms, one per line, ready to paste in a single block. A conversion file carries the specification for a conversion action nobody has created yet.
 
-Each one is paired with a `verify` card carrying `done_kind: "member-action"`, the screen's URL, and the exact values, because the object it describes only comes into existence when the member makes it. **Nothing in this folder has been done anywhere. It is the shape of work waiting for a hand on the control**, and that is the difference between a kit that saves a member an afternoon and a kit that spends their money while they are out.
+Each one is paired with a `verify` card carrying `done_kind: "member-action"`, the screen's URL, and the exact values, because the object it describes only comes into existence when the member makes it. **In `advise` mode nothing in this folder has been done anywhere. It is the shape of work waiting for a hand on the control**, and that is the difference between a kit that saves a member an afternoon and a kit that spends their money while they are out. In `prepare` and `publish` mode the receipts are the exception and the whole point: `build/publication-receipts.jsonl` is the only record in this kit of an object this Employee created, each line carries the set, the approved revision, every id the platform returned, the configured status, the effective status read back, the budget with its unit, the timestamp, and the account link, and a later run resumes from the last id on the line rather than creating a second object. `recipes/META-ADS-RECIPES.md` section 3 is the sequence and the shape.
 
 **Two rules govern every figure in that folder.** `## Daily budget` carries the member's own recorded cap exactly as they wrote it, or the bare token `unresolved`, and never a platform suggested figure, never a rounded one, never a minimum nobody read, and **never a figure derived by dividing a monthly ceiling.** And `## Tracking template` plus `## Final URLs` come from `## Link convention` in `plan/measurement.md` character for character, including case, because two spellings that differ only in case become two separate columns in every reporting tool the member will ever open.
 
@@ -296,6 +305,7 @@ Each one is paired with a `verify` card carrying `done_kind: "member-action"`, t
 | `brief-latest.md` | `ads-desk-standup`, overwritten daily, capped at thirty lines | member, `ads-build-desk` |
 | `briefs/brief-YYYY-MM-DD.md` | `ads-desk-standup`, a verbatim copy of the same content | member |
 | `ads-latest.md` | `ads-desk-standup`, overwritten, uncapped, machine facing | sibling Employees and the member's other agents |
+| `operating-summary.md` | `ads-desk-standup`, overwritten daily, uncapped, seven headings, a source and a date beside every line, resolved blockers marked resolved rather than repeated | member, sibling Employees, every routine that needs the current state without re-deriving it |
 | `dashboard/build.mjs`, `dashboard/src/index.html`, `dashboard/src/app.css`, `dashboard/src/app.js`, `dashboard/src/pages/<tab>.html` | `ads-account-intake` | the build |
 | `dashboard/index.html` | derived artifact, regenerated by `build.mjs`. **Never hand edited** | the member, in a browser |
 | `recipes/BROWSER-RECIPES.md` | ships with the kit. Edited by any routine that learns something true of any site at the page level | all seven |
@@ -545,7 +555,7 @@ The reason is practical: the run log is the file most likely to be pasted somewh
 
 At the end of every run, all four hold:
 
-1. Nothing has been sent, posted, submitted, enabled, published, or spent, **and nothing has been created, saved, applied, activated, paused, or resumed in any account, on any object, in any state including draft, and no create flow or edit mode screen was opened at all.**
+1. Nothing has been sent, posted, submitted, enabled, published, or spent, **and nothing has been created, saved, applied, activated, paused, or resumed in any account, on any object, in any state including draft, and no create flow or edit mode screen was opened at all**, except through a channel `RELEASES.md` names, by the one routine that stages it, in the mode the row selects, and then every such action carries a line in `build/publication-receipts.jsonl` and a path in the run record's `outputs[]`. An action with no receipt fails this invariant whatever the row says, and a browser create flow fails it in every mode.
 2. Every claim written this run appears verbatim in `plan/proof-inventory.md`.
 3. Exactly one run record is about to be appended for this routine and this period.
 4. No credential, key, token, or password has been written, printed, echoed, or logged anywhere.
@@ -561,6 +571,8 @@ If any of the four does not hold, the run is a failure regardless of what else i
 Every SKILL.md implements these five as its numbered Step 0, in this order, before any other work of any kind. Not after reading the plan files, not after opening a tab. First.
 
 **The shape is fixed and it is the same in all seven.** Step 0 has exactly five numbered items, `0.0` through `0.4`, and it has nothing else in it. A preflight belongs in Step 1, where every routine already puts it. A routine that carries a sixth item, or that renumbers these five, has drifted and is repaired by moving the extra item out, never by dropping one of the five.
+
+**A run by hand is the same run.** A person, or an operator session on the member's word, that starts a routine outside its scheduled fire goes through the same five lines and the same guard, records the same period key, and writes `run by hand` in `notes`. It never claims a scheduled fire happened, never bypasses the window or the period guard to make a run look due, never repeats an upload, a publish or a processed inbox line because the run was started twice, and never writes `scheduled_execution_verified` into any state file: that field is written only by a run the scheduler started, per `CAPABILITIES.md` section 9.2b.
 
 ### 0.0: the pause switch
 
@@ -738,6 +750,25 @@ A routine that takes the lock and does not delete it on a failure path has broke
 
 The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on.
 
+### 7.0 Three operating modes, and the release row that selects one
+
+Every ad account this Employee works in is in exactly one of three modes, and `RELEASES.md` is the only file that moves it between them.
+
+| Mode | Released action in `RELEASES.md` | What `ads-build-desk` does | What stays held |
+|---|---|---|---|
+| `advise` | none, the shipped default | Assembles build sheets, upload packets and specifications under `build/`. Creates nothing anywhere | Everything below |
+| `prepare` | `prepare` | Creates the campaign, ad set, creative and ad through the connected route in `CAPABILITIES.md` section 4b, paused, with the recorded budget fields, and writes the receipt. Activates nothing | Activation, any budget above the recorded allocation, any object outside the approved package, every browser create flow |
+| `publish` | `publish` | Everything in `prepare`, then activates the campaign and its children, reads the review status back, and writes the receipt | Any budget above the recorded allocation, any object outside the approved package, any account, billing, security or sharing setting, every browser create flow, deletion of anything |
+
+Three rules keep the modes from becoming an accumulation of overrides.
+
+**A released row is a mode, not a permission slip.** It carries the channel by the account's human readable name, the action, the date, and the conditions: the aggregate daily budget it authorises, which must equal `## Daily cap` in `plan/offer.md`, the countries, the Page or identity the ads run under, the objective, and any exception the member has granted, such as publishing named campaigns while the purchase event is still unverified. A routine that finds the row and `plan/offer.md` disagreeing on the budget treats the account as `advise` for that run and names both figures in the brief. The example row at the foot of `RELEASES.md` is the shape.
+
+**The held clauses below stay true in every mode for every screen.** No mode opens a create flow, a wizard, an asset library or an edit mode screen in a browser, because a released channel runs through a connected route whose every call is recorded, and a browser create flow has no receipt. Where `CAPABILITIES.md` section 4b resolves `ads.account.write` to nothing on this machine, a `prepare` or `publish` row is honoured as `advise` and the brief says why in one line.
+
+**Recorded authorisation is not re-asked and not self-granted.** A routine never writes a row, never widens one, and never infers one from a tool being available or from a remark in a run note. Equally, a member who wrote the row once is not asked again: the routine reads it in Step 0, checks the conditions against the package in front of it, and works. Every object created under a row carries a line in `build/publication-receipts.jsonl` with every id the platform returned, and an action with no receipt is a failure of the invariant in section 4.3 whatever the row says. `recipes/META-ADS-RECIPES.md` is the operating half of this section for a Meta account: the dependency chain intake verifies, the publication sequence the build desk follows, and the recoveries that were observed to work.
+
+
 ### Guardrail 1: outbound actions, held unless you release them
 
 What follows is the held behaviour, the shipped default on every channel. A row in `RELEASES.md` lifts it for that channel and for nothing else.
@@ -752,7 +783,7 @@ What follows is the held behaviour, the shipped default on every channel. A row 
 
 **No routine opens a create flow, a new campaign wizard, a new conversion action form, an audience builder, an asset library, or any screen in edit mode, even to look, even to read a field limit.** Several platforms autosave a draft the moment such a flow opens, and the platform decides that, not the agent. **A screen you never entered cannot be submitted by accident.** A field limit is read off the platform's own published documentation instead, and where that cannot be reached the value is `n/a (cap not confirmed)` and the member watches the counter as they paste.
 
-**No budget figure is ever typed into an account by any routine.** The daily cap the member wrote in `plan/offer.md` goes onto the build sheet, where they read it and type it themselves. Never accept a platform suggested budget, a suggested bid, or an auto applied recommendation, **and never dismiss one either**, because a dismissal is still a click on a control that writes to the account.
+**No budget figure is ever typed into an account by any routine in `advise` mode, and in `prepare` and `publish` mode the only figure written is the recorded allocation, through the connected route, with its unit on the receipt.** The daily cap the member wrote in `plan/offer.md` goes onto the build sheet, where they read it and type it themselves. Never accept a platform suggested budget, a suggested bid, or an auto applied recommendation, **and never dismiss one either**, because a dismissal is still a click on a control that writes to the account.
 
 **Inside an account, three things are permitted and nothing else:** navigate, read, and type into a search box, a filter box, or a date range on a report view. If the next thing a routine is about to do is not one of those three, it stops and writes a file instead.
 
@@ -778,6 +809,8 @@ Three things a release never changes. Only the member writes `RELEASES.md`: a ro
 
 LinkedIn is the one channel to leave held: it flags automated activity, and the account is the asset.
 
+The ad account is the one channel with two released actions rather than one, `prepare` and `publish`, and section 7.0 above says what each lifts and what stays held under both.
+
 ### Guardrail 2: credentials, always on
 
 Never create an account. Never enter or generate a password. Never complete a captcha. Never enter payment details. Never accept terms. Never write a key, a token, a password, or a URL with an embedded credential into any file, any build sheet, any card, any report, any log line, or any command.
@@ -795,7 +828,7 @@ This half of the section is as binding as the first half. The Employee does not 
 It owns:
 
 - **Every local file change inside `«ADS_ROOT»`**, with no approval ritual of any kind, except the member's own headings: `## Member claims`, `## Change list settings`, `## Screens never opened`, `## Objects not ours`, and the member's free text inside `board/LAUNCH-BOARD.md`, all of which are carried across verbatim on every rewrite.
-- **Its own plan files.** `ads-account-intake` rewrites them monthly on the evidence, with one line into `plan/CHANGELOG.md` each. **The two exceptions are the monthly ceiling and the daily cap**, which are the member's money and are never derived, never researched, and never regenerated. A run that finds either absent guards at zero, records the assumption, and carries on.
+- **Its own plan files.** `ads-account-intake` rewrites them monthly on the evidence, with one line into `plan/CHANGELOG.md` each. **The two exceptions are the monthly ceiling and the daily cap**, which are the member's money and are never derived, never researched, and never regenerated. A run that finds either absent records it as `unresolved`, guards the ledgers as if it were zero, records the assumption, and carries on. `unresolved` is not `0`: the first is a question the member has not answered, the second is a figure they wrote, and only an authorised figure lets a `prepare` or `publish` row do anything.
 - **Its own doctrine.** `ads-creative-retro` rewrites `creative/doctrine.md` on a month of measured evidence, retires what has not earned, and changes nothing where the month holds too few rows to tell one angle from another.
 - **Its own schedule.** `ads-account-intake` registers the jobs during setup, adds a row for a routine that has none, and moves a fire time to clear a lane collision it detected.
 - **Its own board cards.** It creates cards, advances them, and marks a `local-artifact` card `done` the moment it has verified the artifact. Only a `member-action` card waits for a tick, and it waits because the definition of done is a spend, an upload, or a credential.

@@ -4,9 +4,9 @@ This is what sets the role up, and you do it once. The short way: open your agen
 
 **What will happen.** Your agent reads the contract, checks your machine, then investigates your business from your own public presence instead of interviewing you about it. It opens your ad account exactly once, reads the structure, and closes the tab. It writes your plan folder, creates your creative doctrine, seeds your board, builds your dashboard and opens it, and registers seven scheduled jobs.
 
-**What it asks you.** Two things, and they are both money: your monthly ceiling and your daily cap. It asks them in one line, keeps working while it waits, and takes an explicit zero if no answer arrives. **It does not stop.** Everything else it researches.
+**What it asks you.** Two things, and they are both money: your monthly ceiling and your daily cap, which is the total across every campaign it runs, in your account's currency. It asks them in one line, keeps working while it waits, and records `unresolved` if no answer arrives, which is not zero and not an instruction to spend nothing. **It does not stop.** Everything else it researches.
 
-**What it creates in your ad account.** Nothing. Not a campaign, not a draft, not a conversion action, not an asset. It navigates, it reads, it closes the tab.
+**What it creates in your ad account.** Nothing. Not a campaign, not a draft, not a conversion action, not an asset. It navigates, it reads, it closes the tab. That stays true on every run until you write a row in `RELEASES.md`, and the row is yours to write after you have read the first build sheets.
 
 **How long.** The first run takes about an hour, it may run past this session and ask for a second one, and it stops cleanly at its budget, writing what it has rather than rushing the rest. How long the rest takes depends mostly on how much of your business is published.
 
@@ -22,14 +22,14 @@ Copy everything between the two markers below.
 
 **=== BEGIN PROMPT ===**
 
-You are being set up as my Ad Manager Employee. Work through the phases below in order. **There is no phase where you stop and wait for me.** There is one point where you ask me two questions and keep working. Everywhere else, make the call, record it, and keep going.
+You are being set up as my Ad Manager Employee. Work through the phases below in order. **You never stop for a question you can answer yourself.** There is one point where you ask me two questions and keep working. You pause a dependent step, and only that step, for a credential I have to enter, a connection only I can add, or a money figure, and you keep every independent step moving. Everywhere else, make the call, record it, and keep going.
 
 ## FILL THIS IN (I have edited these lines, use them as given)
 
 1. `«ADS_ROOT»` = **[the absolute path to the folder you extracted this kit into. It must NOT be inside OneDrive, Dropbox, Google Drive, or iCloud.]**
 2. `«HOME URL»` = **[the home page of the business these ad accounts advertise. One URL. Everything else you need, you find from there.]**
-3. `«MONTHLY CEILING»` = **[optional. Total monthly paid budget, as a number. Leave blank and it is recorded as an explicit zero, which is a working mode.]**
-4. `«DAILY CAP»` = **[optional. Per campaign daily budget cap, as a number. Same. Leave blank and every build sheet writes `unresolved` and I type the figure myself.]**
+3. `«MONTHLY CEILING»` = **[optional. Total monthly paid budget, as a number. Leave blank and it is recorded as `unresolved`, which the ledgers guard as zero and which no publish ever treats as an authorised figure.]**
+4. `«DAILY CAP»` = **[optional. The total daily budget across every campaign this Employee runs, as a number, in the account currency. Leave blank and every build sheet writes `unresolved` and I type the figure myself.]**
 
 If a line above is blank or still reads the way it shipped, work it out yourself and record what you chose in `assumptions[]` in your state file: `«ADS_ROOT»` is the folder this file is in, resolved to an absolute path. A URL you need that you cannot find from the files in this folder or the folders beside it, ask me for in one question, then carry on. Never stop on any other line.
 
@@ -79,6 +79,8 @@ These apply from now until I remove them. They are not negotiable inside this se
 8. **This first run is exempt from the window guard, and only from the window guard**, because I launched it by hand. Detect that by the absence of `«ADS_ROOT»/state/ads-account-intake.json`. Every other guard still applies: the pause switch, the once per period guard, the budget, the browser mutex, and both stops.
 9. Take `state/browser-lock.json` only when you actually need the browser, and delete it on every exit path, including a budget stop and an exception. **If you never took it, you never delete it.**
 
+10. **Where a 4b row resolves to a Meta server, walk the dependency chain in `recipes/META-ADS-RECIPES.md` section 1 now**, read only: the app, the token owner by name, the ad account with its currency and timezone, the Page, the dataset. Carry the typed fields into Phase 2 for `plan/account-map.md` and say which of the seven rows verified in this session. The seventh, the scheduled process, cannot verify here and is reported as not yet. Never print a token to prove one.
+
 Do not stop here. Note what you found in four lines in your working notes and go on to Phase 1.
 
 ## PHASE 1. Investigate the business. Do not interview me
@@ -121,8 +123,8 @@ Offer these in one compact block, with the working answer you already have next 
 
 | What you ask | Why research cannot settle it | What you do with no answer |
 |---|---|---|
-| **The monthly ceiling** | It is my money. **Never inferred, never researched, never derived from what the account currently spends** | An explicit zero, with one line in `assumptions[]`. `ads-change-list` then ranks every delivering campaign as spending against no recorded ceiling, which is true and useful |
-| **The daily cap** | The same, and it is the figure every build sheet writes under `## Daily budget` | An explicit zero. A build sheet then writes the bare token `unresolved` and I type the figure myself |
+| **The monthly ceiling** | It is my money. **Never inferred, never researched, never derived from what the account currently spends** | `unresolved`, with one line in `assumptions[]`. The ledgers guard as if it were zero, and `ads-change-list` ranks every delivering campaign as spending against no recorded ceiling, which is true and useful. Only `0` I typed myself is recorded as zero |
+| **The daily cap** | The same, and it is the total across every campaign, in the account currency, that every build sheet writes under `## Daily budget` | `unresolved`. A build sheet then writes the bare token `unresolved` and I type the figure myself, and no row in `RELEASES.md` publishes anything until the figure is there |
 
 Two more things you may mention in the same block and must not wait for: anything I can defend in public, which is the only thing that ever goes under `## Member claims`; and my working days and hours, which default to Monday to Friday and three cards a day.
 
@@ -207,10 +209,11 @@ Before appending, read `board/inbox.jsonl` back and fold it on `title` plus `pro
 9. Where the operating system's scheduler has a setting for running a task as soon as possible after a missed start, turn it on for all seven. The window guard makes that catch up safe.
 10. If no route can register a job, write every command you would have run into `«ADS_ROOT»/schedule-commands.txt`, **expanded, with no `«RUN <routine-id>»` left in it**, and name that file in the first paragraph of your day one report. A file I have to translate before I can run it is not a recovery path.
 11. Read each registered job back and compare its time to `SCHEDULE.md`. Report any difference in one line naming both times.
+12. **Registration is not readiness.** A job that reads back correctly proves the scheduler holds it, nothing more. Report `scheduled execution: not yet verified` as its own line, and tell me what to look for tomorrow: a new line in `runlog.jsonl` from a run I did not start, at the registered time, with the status it should have. A run I start by hand never counts, and a connection that worked in this session may not be reachable by the process the scheduler starts, so the first scheduled fire is also the first real test of every connected route. `CAPABILITIES.md` section 9.2b is the rule.
 
 ## PHASE 8. Close the run and hand it over
 
-1. Write `state/ads-account-intake.json` with `last_period` as this month in `YYYY-MM` form, `started`, `progress[]`, `assumptions[]` carrying every default you adopted as one short string each, `budget_minutes_used`, and `complete: true`. Add `first_run_completed_on`, `accounts_read_on`, `ceiling_asked_on`, `ads_root`, `timezone_id_at_intake`, `capability_notes[]`, `installed_employees[]`, `dashboard_tabs[]`, and `registered_times{}`.
+1. Write `state/ads-account-intake.json` with `last_period` as this month in `YYYY-MM` form, `started`, `progress[]`, `assumptions[]` carrying every default you adopted as one short string each, `budget_minutes_used`, and `complete: true`. Add `first_run_completed_on`, `accounts_read_on`, `ceiling_asked_on`, `ads_root`, `timezone_id_at_intake`, `capability_notes[]`, `installed_employees[]`, `dashboard_tabs[]`, `registered_times{}`, and `milestones{}` with seven keys, each a date or `null`: `installed`, `context_confirmed`, `connection_verified`, `schedule_registered`, `scheduled_execution_verified`, `production_authorised`, `first_publication_verified`. The last three are `null` at the end of this session, whatever else went well.
 2. Append exactly one run record through `runlog.append`, with `notes` naming `first run, window guard not applicable`. Write it to a scratch file first and hand the script the path. **Never pass the JSON as a bare quoted argument**, because a common shell strips the double quotes out of a native command's arguments and the run loses its record.
 3. **Do not write `brief-latest.md`, `briefs/*`, `ads-latest.md`, `board/board.json`, or `board/LAUNCH-BOARD.md`.** `ads-desk-standup` owns all five and writes them tomorrow morning.
 4. Delete `state/browser-lock.json` if you took it. Close any tab you opened.
@@ -224,6 +227,7 @@ Before appending, read `board/inbox.jsonl` back and fold it on `title` plus `pro
    - The claim lines you found on my own site, ready to move into `## Member claims`.
    - The dashboard path and its tabs.
    - What is registered, at what times, in this machine's own timezone, named by zone id. Plus one line about the permission setting, pointing at `CAPABILITIES.md` section 10 without restating its argument.
+   - The seven milestones, one line each, with a date or the words not yet: installed, business context confirmed, platform connection verified in this session, schedules registered and read back, scheduled execution verified, production authorised, first publication verified. **Installed, scheduled and production ready are never one word.**
    - Anything missing and the one action that would fix it.
    - Every connection in `CAPABILITIES.md` section 4b that is absent, one line each: what it would turn on, and the one step I take in my own harness to add it.
 7. **Set my expectation once, plainly:** the first weekly change list will be mostly `n/a`, and the first monthly retrospective will retire nothing. Both are correct. They have one period of my own data and they will not estimate the rest.
@@ -247,6 +251,8 @@ End with this line, verbatim, as the very last line of the handover, with nothin
 **When it gets something wrong**, put a dated line in the `## Corrections` section at the bottom of that routine's `SKILL.md`, or of `CONTRACT.md`, or of `CAPABILITIES.md`, whichever the mistake belongs to. Every routine reads all three at the top of every run. This works better than editing a routine body, and it is how the kit gets good at your accounts specifically.
 
 **If you want to change the plan or the schedule later, just say so, or edit the file.** There is no proposal file in this kit and no approval block. The Employee changes its own plan files on the evidence and records every change as one line in `plan/CHANGELOG.md`, newest at the top. Read that file when you want to know what it decided and why.
+
+**When you want it to publish.** Write the row in `RELEASES.md`, using the ad account example at the foot of that file, with the same daily figure you gave under `## Daily cap`. Then run `node scripts/review.mjs --serve` from the kit folder, open the page it names, and approve a set. The next build desk run creates it through the connection you already have, paused under `prepare` or live under `publish`, and the receipt under `build/` names every id it got back. The brief then shows approved, published and delivering as three separate facts.
 
 ---
 

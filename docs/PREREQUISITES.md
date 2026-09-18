@@ -37,7 +37,7 @@ A scheduled run that is not logged in exits in about a third of a second, on Cla
 
 ## 4. Node 18 or newer
 
-For the three scripts in every kit: `guard.mjs`, `runlog.mjs` and `copy-check.mjs`. They are dependency free and the same on every harness. Nothing to install beyond Node itself. Check with `node --version`, then run all three self tests once from the kit folder:
+For the scripts in every kit: `guard.mjs`, `runlog.mjs`, `copy-check.mjs`, and a kit's own extras such as the Ad Manager's `review.mjs`. They are dependency free and the same on every harness. Nothing to install beyond Node itself. Check with `node --version`, then run all three self tests once from the kit folder:
 
 ```
 node scripts/copy-check.mjs --selftest

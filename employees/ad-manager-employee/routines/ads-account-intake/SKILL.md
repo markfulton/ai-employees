@@ -334,6 +334,8 @@ Write what you chose, the reason, and the exact screen it is measured on into `p
 
 **Resolve `ads.account.read` through `CAPABILITIES.md` section 4b first.** Where it resolves to a connected route, read the account list and the object tree through that route, record the same names and ids, and open no tab. The screen read below is the route only where 4b resolves to nothing on this machine.
 
+**Where the route is a Meta server, walk the dependency chain in `recipes/META-ADS-RECIPES.md` section 1 in order** and write `## Platform identity` in `plan/account-map.md`, one typed field per line with the date and the evidence path: the app, the token owner by name and never the token, the ad account with its currency and timezone, the Page and its access, the dataset and whether it is connected, and `scheduled_connection_verified_on: unverified`, which only a scheduled `ads-account-read` run may turn into a date. A row you cannot verify reads `unverified (<reason>)`. Never guess which field an id belongs to from its shape, and never copy an id from one field into another because a tool asked for one.
+
 **Take the browser mutex here**, per Step 0.4 and section 6 of the contract, if you did not already take it in A4.2.
 
 This is the only time this routine opens an account screen, ever. **Navigate and read. Nothing else.**
@@ -407,9 +409,9 @@ A line with no ledger path is invalid and copy-check rejects the file.
 
 **An empty proof inventory is a correct file.** It means the creative carries no claims.
 
-**3. `plan/offer.md`.** `## What is sold`, `## Price and billing shape`, `## Buy URL`, `## Landing URL`, `## Countries sold into`, `## Monthly ceiling`, `## Daily cap`, `## Working days and hours`. Every heading present, even where the section is one line saying what you could not settle.
+**3. `plan/offer.md`.** `## What is sold`, `## Price and billing shape`, `## Buy URL`, `## Landing URL`, `## Countries sold into`, `## Currency`, `## Monthly ceiling`, `## Daily cap`, `## Campaign allocations`, `## Account timezone`, `## Working days and hours`. Every heading present, even where the section is one line saying what you could not settle.
 
-**`## Monthly ceiling` and `## Daily cap` carry exactly what the member said, or an explicit zero.** Never a figure derived from what the account currently spends, never a rounded one, never a platform minimum. **Write real values everywhere else and never leave a guillemet:** `copy.check` fails on `«` and `»` and the whole file gets rejected. Where a value is genuinely not public, the line reads `n/a (not public)`.
+**`## Monthly ceiling` and `## Daily cap` carry exactly what the member said, `0` only where they wrote zero, and `unresolved` where they did not answer.** `## Daily cap` is the aggregate across every campaign this Employee runs, in the currency under `## Currency`, and `## Campaign allocations` splits it, one campaign per line, summing to at most the cap, or reads `none`. `## Account timezone` is what the account reports, never the machine's. Never a figure derived from what the account currently spends, never a rounded one, never a platform minimum. **Write real values everywhere else and never leave a guillemet:** `copy.check` fails on `«` and `»` and the whole file gets rejected. Where a value is genuinely not public, the line reads `n/a (not public)`.
 
 **4. `plan/guardrails.md`.** `## Networks and placements`, `## Expansion settings`, `## Audience application`, `## Locations`, `## Automatic recommendations`, `## Change list settings`.
 
@@ -417,13 +419,13 @@ The first five record what you actually read at A4.6, with the date, so `ads-acc
 
 **`## Change list settings` is the member's and you never generate it.** Create it empty on the first run. It holds at most two lines, `movement_threshold: «n» units, «n» percent` and `evidence_floor: «n» reporting days`, and `ads-change-list` and `ads-creative-retro` read them as overrides. **On every monthly rewrite of this file, carry the heading and every line under it across verbatim, whatever they say.** A setting the member typed is not research output, and regenerating this file without it silently resets their thresholds on the first monthly pass.
 
-**5. `plan/account-map.md`.** `## Accounts`, `## Read screens`, `## Objects not ours`, `## Screens never opened`.
+**5. `plan/account-map.md`.** `## Accounts`, `## Platform identity`, `## Read screens`, `## Objects not ours`, `## Screens never opened`. `## Platform identity` is the typed table from A4.6, or one line reading `n/a (no connected route)` where no ads route resolved.
 
 `## Accounts` and `## Read screens` come from A4.6: human readable names and the click path a person would take. **No key, no token, no password, no URL with a credential in it, in any of them, ever.**
 
 `## Objects not ours` names any campaign, audience, or conversion action the member says this kit should ignore. `## Screens never opened` is the member's own list of screens they do not want an agent on, and **every routine treats it as binding above its own defaults.** Create both with a heading and one commented example line, and never write into either again: they belong to the member from that moment.
 
-**6. `plan/measurement.md`.** `## Primary conversion event`, `## Conversion source`, `## Read window`, `## Link convention`, `## What is not measured`.
+**6. `plan/measurement.md`.** `## Primary conversion event`, `## Conversion source`, `## Signal states`, `## Read window`, `## Link convention`, `## What is not measured`. `## Signal states` is five lines, `browser events received`, `server events received`, `purchase received`, `deduplication verified`, `attribution available`, each reading `unverified` on the first run unless you read the evidence yourself, and `ads-account-read` keeps them current from its first morning. Never mark a later one verified because an earlier one is.
 
 `## What is not measured` is the honest list: every thing the member might expect to see on a change list that no wired source can produce. **It is more useful than it sounds**, because it stops a member reading an `n/a` as a defect every Friday for a year.
 
@@ -620,9 +622,13 @@ Record what you registered in `registered_times{}` in state, keyed by routine id
 
 `progress[]` += `schedule-registered`.
 
+### A9.5 Registration is not readiness
+
+A job that is registered and reads back correctly has proved that the scheduler holds it, and nothing else. Scheduled readiness is proved by one fire the scheduler started that wrote a run record, and that fire happens after this session ends. So this routine records `milestones.schedule_registered` as today and `milestones.scheduled_execution_verified` as `null`, says so in the report as its own line, and the next intake pass turns it into a date from the first run record the scheduler produced, per `CAPABILITIES.md` section 9.2b and Step B2. A run by hand never sets it. Where the connection to an ad account was verified in this session, `plan/account-map.md` still carries `scheduled_connection_verified_on: unverified` until a scheduled read succeeds through it, because a chat session and a scheduled process can hold different secrets, and the observed failure was exactly that.
+
 ## Step A10. Close the first run
 
-Set `first_run_completed_on` to today's local date, `accounts_read_on` to today, and `complete: true`. Write the state file, temp path plus rename. Write the report, per the reporting section below. Append exactly one run record.
+Set `first_run_completed_on` to today's local date, `accounts_read_on` to today, `complete: true`, and `milestones{}` with seven keys, each a date or `null`: `installed`, `context_confirmed`, `connection_verified`, `schedule_registered`, `scheduled_execution_verified`, `production_authorised`, `first_publication_verified`. `complete` means the local install finished. It never means the schedule fired or that anything may be published, and the report keeps the seven apart. Write the state file, temp path plus rename. Write the report, per the reporting section below. Append exactly one run record.
 
 ---
 
@@ -648,6 +654,8 @@ Read exactly these, in this order, and stop at a quarter of your budget. **Read 
 **The weekly change lists and the doctrine are not on this list and that is deliberate.** `ads-change-list` and `ads-creative-retro` own those files, and the same evidence reaches you through the ledgers with the paths attached, which is the form you can act on.
 
 ## Step B2. Apply what the evidence says
+
+**Freshness first.** Re-verify every line under `## Platform identity` in `plan/account-map.md` through the connected route where one exists, and rewrite a line whose fact changed with the new date. A blocker the plan files still carry that a later fact resolved is rewritten as resolved with the date, never left standing beside the newer fact: the file the member reads says what is true now, and the history is in `plan/CHANGELOG.md`. Refresh `milestones{}` from the evidence: a scheduled run record turns `scheduled_execution_verified` into a date, a traceable row in `RELEASES.md` turns `production_authorised` into its date, and a receipt whose object delivered turns `first_publication_verified` into the date of the read that saw it.
 
 Directly. No proposal, no decision block, no waiting. **Archive first, write second, check third, log fourth.**
 
@@ -717,7 +725,7 @@ Update `registered_times{}` for anything you re registered. Set `complete: true`
 
 ## Files, stated once
 
-**Reads.** `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md`, `SCHEDULE.md`, this file's own `## Corrections`, everything under `plan/`, `metrics/daily.jsonl`, `changes/ledger.jsonl`, `creative/ledger.jsonl`, `board/board.json`, `runlog.jsonl`, all seven `state/ads-<id>.json`, `state/pushes.jsonl` before any push, and `recipes/BROWSER-RECIPES.md`. `board/inbox.jsonl` is read back for deduplication before your own append, and for nothing else. **Not read, and named here so nobody adds them back:** `creative/doctrine.md`, anything under `creative/set-*` or `build/`, `changes/change-list-*`, `brief-latest.md`, `briefs/*`, and `ads-latest.md`.
+**Reads.** `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md`, `SCHEDULE.md`, this file's own `## Corrections`, everything under `plan/`, `metrics/daily.jsonl`, `changes/ledger.jsonl`, `creative/ledger.jsonl`, `board/board.json`, `runlog.jsonl`, all seven `state/ads-<id>.json`, `state/pushes.jsonl` before any push, and `recipes/BROWSER-RECIPES.md`, `recipes/META-ADS-RECIPES.md` where 4b resolves an ads route to a Meta server, and `RELEASES.md` for the mode the milestones report. `board/inbox.jsonl` is read back for deduplication before your own append, and for nothing else. **Not read, and named here so nobody adds them back:** `creative/doctrine.md`, anything under `creative/set-*` or `build/`, `changes/change-list-*`, `brief-latest.md`, `briefs/*`, and `ads-latest.md`.
 
 **Writes, whole file, one writer, this routine:** `plan/offer.md`, `plan/account-map.md`, `plan/measurement.md`, `plan/guardrails.md`, `plan/positioning.md`, `plan/voice.md`, everything under `dashboard/`, and `creative/doctrine.md` **on the first run only**. Its own state file, and `state/browser-lock.json` while it holds the mutex.
 
@@ -740,7 +748,8 @@ A plain summary for the member, in this order, and nothing else:
 5. The dashboard path and its tabs.
 6. The claim lines you found on the member's own site, ready to move into `## Member claims` if they want the kit to be able to use them.
 7. What is registered, at what times, in the machine's own timezone, named by zone id. Plus the one line about the permission setting.
-8. Anything missing and the one action that would fix it.
+8. The seven milestones, one line each, with a date or the words not yet: installed, business context confirmed, platform connection verified in this session, schedules registered and read back, scheduled execution verified, production authorised, first publication verified. **Installed, scheduled and production ready are never one word.**
+9. Anything missing and the one action that would fix it.
 
 ### The session report, monthly
 

@@ -20,6 +20,8 @@
 
 An AI Employee is a folder of scheduled routines that covers one business role. It runs on your own machine, on the AI agent you already use, and briefs you every morning. Eight roles, every routine and schedule in this repo, nothing held back.
 
+> **Updated 2026-09-18.** The Ad Manager 1.6.0 is the production release: once you release the ad account it publishes approved creative through your own Meta connection, with a receipt for every id, a review page for approvals, and a Meta recipe file written from a real launch. Every kit now confirms Codex as a harness and reports scheduled readiness as its own fact. The GTM Engineer and the Ad Manager have both run live launches end to end, and every field report goes back into the kits. [Release history](CHANGELOG.md).
+
 ## Install in two steps
 
 **1. Download a kit and extract it to your PC.** Click **Code, Download ZIP** above, or run `npx ai-employees hire gtm-engineer --to <folder>`. Any folder not inside OneDrive, Dropbox, Google Drive or iCloud.
@@ -129,7 +131,7 @@ Reads the skill format and ships scheduled tasks. Register one per routine, or d
 | <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="72" height="72" alt=""><br>**SEO/AEO Employee** | Search and content | A content marketer plus the SEO retainer: keyword research, one article a weekday, publishing to properties with no API, indexing, rank review, the calendar | 7 | 3 weekday, 3 weekly, 1 monthly | [employees/seo-employee](employees/seo-employee) |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="72" height="72" alt=""><br>**Web Dev Employee** | Engineering and maintenance | The monthly maintenance retainer and the ticket queue: site health, error triage, small changes on a branch, dependency review, platform drift | 8 | 3 weekday, 3 weekly, 2 monthly | [employees/web-dev-employee](employees/web-dev-employee) |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="72" height="72" alt=""><br>**Social Media Employee** | Audience and distribution | The social manager you keep meaning to hire: material sweep, platform native drafts in your voice, a veto window, engagement replies drafted never sent | 7 | 5 weekday, 1 weekly, 1 monthly | [employees/social-media-employee](employees/social-media-employee) |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>**Ad Manager Employee** | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>**Ad Manager Employee** | Paid acquisition | The percentage of spend agency, for the cadence work: account reads, creative sets, build sheets, the weekly change list, and, once you release the account, the publish itself through your own Meta connection with a receipt for every id. Money moves only when you approve | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/ad-manager-employee](employees/ad-manager-employee) |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/sales-employee.webp" width="72" height="72" alt=""><br>**Sales Employee** | Pipeline and outreach | The SDR you cannot justify hiring yet: prospect sweeps, first touches into your own drafts, follow ups that never go quiet, the pipeline review | 7 | 4 weekday, 1 weekly, 2 monthly | [employees/sales-employee](employees/sales-employee) |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>**Customer Satisfaction Employee** | Support and retention | The support lead role, before you can afford one: inbox sweep, replies drafted hardest first, churn flags with evidence, the one product change that removes the most tickets | 8 | 4 weekday, 2 weekly, 2 monthly | [employees/customer-satisfaction-employee](employees/customer-satisfaction-employee) |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="72" height="72" alt=""><br>**Chief of Staff** | Oversight and strategy | The operator who would run your week: reads every other employee's run log, names what quietly stopped, and argues against its own top recommendation | 7 | 2 weekday, 3 weekly, 2 monthly | [employees/chief-of-staff](employees/chief-of-staff) |
@@ -149,7 +151,7 @@ gtm-engineer/
   RELEASES.md          yours: the channels you have released, shipped empty
   CAPABILITIES.md      how the routines map onto your agent
   routines/<id>/SKILL.md   one folder per routine
-  scripts/             three small checks, each with a self test
+  scripts/             the kit's own checks, each with a self test
   run/                 one Windows launcher example per routine
 ```
 
