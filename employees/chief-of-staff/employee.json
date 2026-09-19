@@ -203,7 +203,15 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "charter/**",
+      "decisions/**",
+      "dossiers/**",
+      "market/**",
+      "metrics/**",
+      "evidence/**",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

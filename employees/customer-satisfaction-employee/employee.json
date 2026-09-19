@@ -220,7 +220,15 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "desk/**",
+      "tickets/**",
+      "risk/**",
+      "macros/**",
+      "help/**",
+      "report/**",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

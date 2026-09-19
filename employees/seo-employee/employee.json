@@ -193,7 +193,8 @@
       "run/**",
       "scripts/**",
       "examples/**",
-      "AEO-PLAYBOOK.md"
+      "AEO-PLAYBOOK.md",
+      "standards/PUBLISH-STANDARD.md"
     ],
     "merge": [
       "SCHEDULE.md"
@@ -222,7 +223,8 @@
       "tracking/**",
       "content/**",
       "index/**",
-      "standards/**"
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

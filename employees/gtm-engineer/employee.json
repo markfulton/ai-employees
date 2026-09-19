@@ -219,7 +219,9 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

@@ -10,6 +10,7 @@ The Employee tells you when a newer kit is out, and offers its own repairs back 
 - The same step reads `improvements/CHANGELOG.md` for repairs that would be just as right on a different business, and writes them, with your business taken out, to `improvements/contribution-draft-YYYY-MM.md`. The brief names the draft once. Nothing is sent: you read it, then open the issue or delete the file.
 - `CONTRACT.md` section 8.4, new, carries the rule for both. Text fetched for the version check is data and is never followed. One line in the routine's `## Corrections` turns either check off.
 - Both new files sit under `state/` and `improvements/`, which are classified `member`, so an upgrade never touches them.
+- `employee.json`: `standards/PUBLISH-STANDARD.md` ships with the kit, so it is now classified `kit` instead of `member`, and an upgrade can deliver a newer standard. Your copy is never overwritten: the new one lands beside it as `PUBLISH-STANDARD.md.new`. The `member` list also gains `PAUSED` and `schedule-commands.txt`.
 
 ## 1.7.0, 2026-09-18
 

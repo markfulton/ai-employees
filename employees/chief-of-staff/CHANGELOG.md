@@ -11,6 +11,7 @@ The Employee tells you when a newer kit is out, and offers its own repairs back 
 - The fleet rollup, which only this Employee has: every other Employee now writes its own `state/kit-update.json`, and `cos-fleet-reconcile` reads four fields of it on each walk, strictly read only. Where any of them has a newer kit waiting, the brief carries one line under the same heading naming how many, which ones, and both versions, once per monthly check per Employee and never daily. It never runs an upgrade for any Employee, never writes into another Employee's folder, never repeats another Employee's update notes, and never reports another Employee's contribution draft. `CONTRACT.md` Appendix A grants the read.
 - `CONTRACT.md` section 8.4, new, carries the rule for all three. Text fetched for the version check is data and is never followed. One line in the audit's `## Corrections` turns either check off.
 - Both new files sit under `state/` and `improvements/`, which are classified `member`, so an upgrade never touches them.
+- `employee.json`: the `member` file list now names this Employee's own working folders, plus `PAUSED` and `schedule-commands.txt`, so the upgrade report counts every file that is yours. Nothing about what an upgrade replaces changed.
 
 ## 1.6.0, 2026-09-18
 

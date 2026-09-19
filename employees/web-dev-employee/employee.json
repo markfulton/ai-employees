@@ -217,7 +217,16 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "inventory/**",
+      "policy/**",
+      "health/**",
+      "changes/**",
+      "deps/**",
+      "platform/**",
+      "reports/**",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

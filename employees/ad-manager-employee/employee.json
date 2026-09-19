@@ -174,7 +174,15 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "plan/**",
+      "metrics/**",
+      "creative/**",
+      "changes/**",
+      "build/**",
+      "operating-summary.md",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

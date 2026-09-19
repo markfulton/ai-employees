@@ -12,6 +12,7 @@ The Employees tell you when a newer kit is out, and offer their own repairs back
 - `CONTRACT.md` chapter 8 in every kit gains the section that carries both rules. Both new files sit in folders classified `member`, so an upgrade never touches them.
 - `docs/UPGRADING.md`, `docs/FAQ.md`, `docs/WHAT-SETS-THEM-APART.md` and `CONTRIBUTING.md` say the same in reader words. An Employee installed before 1.7.0 does not have the check, so this upgrade is the last one to remember by hand.
 - GTM Engineer, Ad Manager, Web Dev, Social Media, Sales, Customer Satisfaction and Chief of Staff move to 1.7.0; SEO/AEO to 1.8.0. See each kit's changelog, starting with [GTM Engineer](employees/gtm-engineer/CHANGELOG.md).
+- `employee.json` in every kit: the `member` file list names each Employee's own working folders, so the upgrade report counts every file that is the member's. In the SEO/AEO kit `standards/PUBLISH-STANDARD.md` moves from `member` to `kit`, so an upgrade can deliver a newer standard, written beside the member's own copy and never over it.
 
 ## Ad Manager Employee 1.6.0, and every kit bumped, 2026-09-18
 

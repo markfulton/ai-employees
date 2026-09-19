@@ -184,7 +184,16 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "plan/**",
+      "voice/**",
+      "posts/**",
+      "engagement/**",
+      "material/**",
+      "scorecard/**",
+      "standards/**",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {

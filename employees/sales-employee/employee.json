@@ -191,7 +191,11 @@
       "recipes/*.json",
       "runlog.jsonl",
       "*-latest.md",
-      ".installed.json"
+      ".installed.json",
+      "pipeline/**",
+      "review/**",
+      "PAUSED",
+      "schedule-commands.txt"
     ]
   },
   "notes": {
