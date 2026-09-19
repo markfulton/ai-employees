@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=JetBrains+Mono:wght@500&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* The four README header buttons, one image each so each keeps its own link.
+   Open with #install, #join, #sessions or #club. The club's three
+   colours carry the order of importance: cream is the primary action, signal
+   blue the second, navy the two that follow. Every button has a rim, so cream
+   holds on GitHub's light theme and navy holds on its dark one. */
+html,body{margin:0;padding:0;background:transparent}
+.b{box-sizing:border-box;width:max-content;height:60px;border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 13px 0 16px;overflow:hidden;position:relative}
+.w{display:flex;flex-direction:column;gap:5px;min-width:0}
+.t{font-family:Montserrat,system-ui,sans-serif;font-weight:800;font-size:14px;line-height:1;letter-spacing:-.015em;white-space:nowrap}
+.s{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:8.5px;line-height:1;letter-spacing:.17em;white-space:nowrap}
+.a{flex:none;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;font-weight:700;font-size:15px;line-height:1}
+.a span{transform:translateY(-1px)}
+
+.cream{background:#f1e8cb;border:2px solid #0d161b;color:#080f14}
+.cream .s{color:#4a5a64}
+.cream .a{background:#0d161b;color:#f1e8cb}
+
+.blue{background:#0b7fc7;border:2px solid #075a8e;color:#fff}
+.blue .s{color:#d3ecfb}
+.blue .a{background:#fff;color:#0b7fc7}
+
+.navy{background:#0d161b;border:1px solid rgba(241,232,203,.28);color:#f1e8cb}
+.navy::before{content:"";position:absolute;inset:0;background:radial-gradient(140px 70px at 100% 0%,rgba(11,127,199,.30),transparent 70%)}
+.navy>*{position:relative}
+.navy .s{color:#8fa6b3}
+.navy .a{background:rgba(241,232,203,.12);color:#f1e8cb;border:1px solid rgba(241,232,203,.25)}
+</style></head><body>
+<div id="m"></div>
+<script>
+const B={
+  install:["cream","Get my free install prompt","ONE PROMPT, ANY ROLE"],
+  join:["blue","Join the club free","FREE, NO CARD NEEDED"],
+  sessions:["navy","Live sessions","SAVE YOUR SEAT"],
+  club:["navy","Agent Ops Club","SEE WHAT IS INSIDE"],
+};
+const [c,t,s]=B[location.hash.slice(1)]||B.install;
+document.getElementById("m").innerHTML=`<div class="b ${c}"><div class="w"><div class="t">${t}</div><div class="s">${s}</div></div><div class="a"><span>&#8594;</span></div></div>`;
+</script>
+</body></html>

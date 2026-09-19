@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nav-employees"><strong>The eight AI Employees</strong></a>
   &nbsp;&bull;&nbsp;
-  <a href="https://club.reinventing.ai/masterclass?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nav-masterclass"><strong>Masterclass</strong></a>
+  <a href="https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nav-club"><strong>Agent Ops Club</strong></a>
   &nbsp;&bull;&nbsp;
   <a href="https://club.reinventing.ai/events?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nav-sessions"><strong>Live sessions</strong></a>
   &nbsp;&bull;&nbsp;
@@ -29,10 +29,10 @@
 </p>
 
 <p align="center">
-  <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-install-prompt"><img alt="Get my free install prompt in the Agent Ops Club" src="https://img.shields.io/badge/Get%20my%20free%20install%20prompt-0B7FC7?style=for-the-badge"></a>
-  <a href="https://club.reinventing.ai/register?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-join"><img alt="Join the Agent Ops Club free" src="https://img.shields.io/badge/Join%20the%20club%20free-3FB950?style=for-the-badge"></a>
-  <a href="https://club.reinventing.ai/events?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-sessions"><img alt="Agent Ops Club live sessions" src="https://img.shields.io/badge/Live%20sessions-D97757?style=for-the-badge"></a>
-  <a href="https://club.reinventing.ai/masterclass?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-masterclass"><img alt="The Agent Ops Masterclass" src="https://img.shields.io/badge/Masterclass-475569?style=for-the-badge"></a>
+  <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-install-prompt"><img src="assets/btn-install.png" width="260" height="60" alt="Get my free install prompt in the Agent Ops Club"></a>
+  <a href="https://club.reinventing.ai/register?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-join"><img src="assets/btn-join.png" width="199" height="60" alt="Join the Agent Ops Club free"></a>
+  <a href="https://club.reinventing.ai/events?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-sessions"><img src="assets/btn-sessions.png" width="163" height="60" alt="Agent Ops Club live sessions"></a>
+  <a href="https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-club"><img src="assets/btn-club.png" width="186" height="60" alt="Visit the Agent Ops Club"></a>
 </p>
 
 <p align="center">
@@ -40,7 +40,7 @@
 </p>
 
 <p align="center">
-  ⭐ <em>Star this repo so more founders find the eight.</em>
+  ⭐ <em>Found something useful? Star the repo. It takes a second and helps the next person find it.</em>
 </p>
 
 ## AI Employees
