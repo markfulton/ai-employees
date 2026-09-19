@@ -4,6 +4,14 @@ The short version is two steps: extract a kit to a local folder, then open your 
 
 Read `docs/PREREQUISITES.md` first. Item 3, the login, is the one that fails silently.
 
+## Before first run
+
+- **Nothing to fill in.** The install researches your offer, your buyer and your positioning from your own public pages and confirms a short list with you. If it cannot find your home page on its own it asks once. Anything you want it to know up front, a channel that is off limits or a claim that must never be made, goes in one optional line at the top of `INSTALL-PROMPT.md`.
+- **A browser signed in** to the accounts the employee should read, and your mailbox if you want drafts landing there. Log in yourself; it never will.
+- **Real customer words, if you have any.** Real quotes are the only social proof the routines are allowed to use. With none, they write copy with no social proof rather than inventing any.
+- **Your ceilings.** A paid ceiling of zero puts the guard into observation only. Which channels are off limits, and any claim that must never be made, one line each.
+- **A machine that is awake** at the fire times in `SCHEDULE.md`, or fire times moved to after it normally wakes.
+
 ## Step 1. Get one employee folder
 
 Pick one. The GTM Engineer is the one I have run in production the longest, so it is the one to start with unless your business needs one of the others more.

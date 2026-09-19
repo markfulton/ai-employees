@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+<style>
+/* The README wordmark. Eight tiles, one per role, the last one lit in signal
+   blue: the one that is running now. Open with #dark for the cream version
+   GitHub's dark theme gets; the default is navy for the light theme. */
+html,body{margin:0;padding:0;background:transparent}
+:root{--ink:#0d161b;--sub:#4a5a64;--blue:#0b7fc7}
+.dark{--ink:#f1e8cb;--sub:#9fb0ba;--blue:#2f9fe3}
+.l{width:840px;height:200px;display:flex;align-items:center;justify-content:center;gap:30px}
+.mark{display:grid;grid-template-columns:repeat(4,26px);grid-template-rows:repeat(2,26px);gap:9px}
+.mark i{display:block;border-radius:7px;background:var(--ink)}
+.mark i:last-child{background:var(--blue)}
+.w{display:flex;flex-direction:column;gap:9px}
+.name{font-family:Montserrat,system-ui,sans-serif;font-weight:800;font-size:68px;line-height:1;letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
+.tag{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:17px;letter-spacing:.2em;color:var(--sub);padding-left:4px}
+</style></head><body>
+<div class="l" id="l">
+<div class="mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="w"><div class="name">AI Employees</div><div class="tag">OPEN SOURCE · BY REINVENTING.AI</div></div>
+</div>
+<script>if(location.hash==="#dark")document.getElementById("l").classList.add("dark")</script>
+</body></html>
