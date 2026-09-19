@@ -12,7 +12,7 @@
 [![Runs on](https://img.shields.io/badge/Windows_macOS_Linux-ready-2B2B2B?style=for-the-badge)](docs/INSTALL.md)
 [![npm](https://img.shields.io/badge/npm-ai--employees-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/ai-employees)
 
-**Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (335,000+ members)
+**Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees), Reinventing.AI.** Founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (340,000+ members)
 
 </div>
 
