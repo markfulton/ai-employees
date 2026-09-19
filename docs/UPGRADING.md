@@ -4,6 +4,14 @@ An installed employee is two things sharing one folder. The **kit** is ours: the
 
 An upgrade replaces the first and never touches the second. Everything on this page exists to make that guarantee real rather than hopeful.
 
+## Your employee tells you when there is one
+
+From 1.7.0 on, each employee checks once a month, on its first weekday routine, whether a newer version of its kit has been published. When there is one, the next morning brief carries a short `## About this kit` section: the two version numbers, up to five plain lines on what you get, and the two lines below. It shows in full once per version and as a one line reminder once a month after that.
+
+The check reads one public file and nothing else. **No routine ever runs the upgrade**, because a scheduled run that downloads a program and executes it unattended is the shape these kits refuse everywhere else. You run it, or you open a chat session in the employee's folder and tell your agent to run it for you. One line in that routine's `## Corrections` turns the check off.
+
+An employee installed before 1.7.0 does not have the check, so that upgrade is the last one you have to remember by yourself.
+
 ## The short version
 
 ```bash
@@ -68,6 +76,8 @@ npx ai-employees contribute gtm-engineer --to /path/to/your/employee --since 202
 ```
 
 That prints a field report ready to open as an issue. **Read it before you send it.** Those lines can name your own files, your customers and your numbers, and the command redacts nothing.
+
+From 1.7.0 on the employee also does a first pass for you. The same monthly routine reads that changelog, keeps only the repairs that would be just as right on a different business, takes your business out of them, and writes `improvements/contribution-draft-YYYY-MM.md`. The brief names the draft once. It is still yours to read before it goes anywhere, and **no routine ever opens an issue or a pull request**: you paste it into a new issue, or you delete the file.
 
 ## What an upgrade will not do for you
 

@@ -97,6 +97,7 @@ You need an AI agent you are logged in to (Claude Code is what I use) and a brow
 - **They run on the agent you already use.** Claude Code and ten others, without a routine changing by one word.
 - **You can direct any of them in chat.** Open a session in the employee's folder and tell it what to do.
 - **Upgrades never overwrite your work.** `npx ai-employees upgrade` leaves every file you edited alone.
+- **They tell you when a newer kit is out.** Once a month, in the morning brief, in plain words. A fix an employee made to itself that would help everyone is drafted for you to send back, and nothing is sent without you.
 
 [The long version](docs/WHAT-SETS-THEM-APART.md).
 

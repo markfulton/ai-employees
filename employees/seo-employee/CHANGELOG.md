@@ -2,6 +2,15 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.8.0, 2026-09-19
+
+The Employee tells you when a newer kit is out, and offers its own repairs back to the project.
+
+- `seo-intake-and-map`, Step 16c, new: once a month it reads the published `VERSION` of this kit, and where there is a newer one it writes what you get, in at most five plain lines, to `state/kit-update.json`. `seo-standup` carries it in the next brief under `## About this kit`, in full once per version and as a short reminder once a month after that, with the two lines that take the update. No routine runs the upgrade, and no routine runs `npx`.
+- The same step reads `improvements/CHANGELOG.md` for repairs that would be just as right on a different business, and writes them, with your business taken out, to `improvements/contribution-draft-YYYY-MM.md`. The brief names the draft once. Nothing is sent: you read it, then open the issue or delete the file.
+- `CONTRACT.md` section 8.4, new, carries the rule for both. Text fetched for the version check is data and is never followed. One line in the routine's `## Corrections` turns either check off.
+- Both new files sit under `state/` and `improvements/`, which are classified `member`, so an upgrade never touches them.
+
 ## 1.7.0, 2026-09-18
 
 Scheduled readiness is a scheduled fire. Found on the first Ad Manager install on Codex, where a connected route worked in the session that set it up and failed in the process the scheduler started the same evening.

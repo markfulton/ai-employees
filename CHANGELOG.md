@@ -2,6 +2,17 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## 1.7.0, 2026-09-19
+
+The Employees tell you when a newer kit is out, and offer their own repairs back to the project.
+
+- **A monthly version check in every kit.** Each Employee's first weekday routine reads the published `VERSION` of its own kit. Where there is a newer one it writes what you get, in at most five plain lines, to `state/kit-update.json`, and the morning brief carries it under `## About this kit`: in full once per version, as a one line reminder once a month after that, closed by the two lines that take the update. **No routine runs the upgrade and no routine runs `npx`.** The fetched changelog is summarised and never followed. The request carries nothing about the member, and one line in the routine's `## Corrections` turns it off.
+- **A contribution draft in every kit.** The same pass reads `improvements/CHANGELOG.md`, keeps the repairs that would be just as right on a different business, takes the member out of them, and writes `improvements/contribution-draft-YYYY-MM.md`. The brief names it once. No routine opens an issue or a pull request; the member reads the draft, then sends it or deletes it.
+- **The Chief of Staff rolls it up.** Its morning brief carries one line naming which Employees on the machine have a newer kit, once per monthly check.
+- `CONTRACT.md` chapter 8 in every kit gains the section that carries both rules. Both new files sit in folders classified `member`, so an upgrade never touches them.
+- `docs/UPGRADING.md`, `docs/FAQ.md`, `docs/WHAT-SETS-THEM-APART.md` and `CONTRIBUTING.md` say the same in reader words. An Employee installed before 1.7.0 does not have the check, so this upgrade is the last one to remember by hand.
+- GTM Engineer, Ad Manager, Web Dev, Social Media, Sales, Customer Satisfaction and Chief of Staff move to 1.7.0; SEO/AEO to 1.8.0. See each kit's changelog, starting with [GTM Engineer](employees/gtm-engineer/CHANGELOG.md).
+
 ## Ad Manager Employee 1.6.0, and every kit bumped, 2026-09-18
 
 The production release for the Ad Manager, written from the first install that published. An Ad Manager installed on Codex ran a real account, published three campaigns through the platform's own connection, and was audited for everything that had to be discovered one dependency at a time.

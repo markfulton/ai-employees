@@ -4,7 +4,7 @@ Thank you for looking under the hood. This repo is eight AI employees, each a fo
 
 ## What I am looking for
 
-- **Corrections from a real run.** A routine that asked for something it should have researched, a browser flow that no longer matches a site, a rule that reads wrong on a Monday morning. Open an issue with the routine id and what happened, or a pull request with the smallest change that fixes it.
+- **Corrections from a real run.** A routine that asked for something it should have researched, a browser flow that no longer matches a site, a rule that reads wrong on a Monday morning. Open an issue with the routine id and what happened, or a pull request with the smallest change that fixes it. From 1.7.0 on your employee drafts these for you: once a month it writes the repairs it made to its own instructions that would help every install to `improvements/contribution-draft-YYYY-MM.md`, with your business taken out. Read it, then paste it into an issue. It never sends anything itself.
 - **Routine requests.** A routine one of the eight should have. Use the routine request template; say which employee, what it would own, and what it must never do.
 - **Employee proposals.** A ninth role. Use the employee request template. Read `docs/HOW-EMPLOYEES-WORK.md` first, because a proposal that keeps the two guardrails and the schedule model is one I can build on.
 - **Harness notes.** Ran a kit on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code or DeepSeek, or on a Mac through launchd or Linux through cron? Open an issue with the invocation you used, what the first run record said, and what you changed, and it goes into the notes in `docs/HARNESSES.md` with your name on the change.
