@@ -48,6 +48,7 @@ All three must pass. `selftests.mjs` runs the self test inside every script unde
 ## Adding or changing a kit
 
 - Every kit carries `VERSION` and `CHANGELOG.md`. Bump both in the same commit that changes kit behaviour, and add a line to the root `CHANGELOG.md` linking the kit changelog.
+- `npx ai-employees` serves the kits from the `ai-employees` package on npm, not from this repository. A kit release is not out until the root `package.json` version is bumped and the maintainer has run `npm publish --access public`; until then `npx` keeps handing out the previous kit. Say so in the pull request when a change needs a publish. A published version number can never be reused.
 - The eight kits share one skeleton. If you change a shared section in one kit, check whether the other seven need the same change. Roughly 60 to 70 percent of a kit by bytes is shared standard text with the role name substituted.
 - A new routine needs a `SCHEDULE.md` row, a `run/<id>.cmd.example` launcher, and a `routines/<id>/SKILL.md`. The routine id, the folder name and the YAML `name` key are always the same string.
 - Fire times are staggered: a browser capable routine takes the first free minute at or after the previous browser capable fire plus that routine's **full budget** plus twenty minutes. Use the budget, never the typical run time.
