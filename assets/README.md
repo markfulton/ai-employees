@@ -10,6 +10,8 @@ The employee artwork is hosted on the club so the README and every employee READ
 
 The README wordmark is `logo-light.png` and `logo-dark.png`, 1680 by 400 with a transparent ground, shown at `width="480"` inside a `picture` tag so each GitHub theme gets its own: navy for light, cream for dark. Eight tiles, one per role, the last one lit in signal blue. Both render from `src/logo.html` (add `#dark` to the URL for the cream one) with `--window-size=840,200` and keep their two times pixels.
 
+`harness-strip.png` is the compatibility strip in the README header: 838 by 92, rendered at three times scale. It shows the eleven agents in `docs/HARNESSES.md`, in that order, each brand's own favicon on a white tile so a dark mark never disappears into the navy. It renders from `src/harness-strip.html`, which reads the icons from the club repository checked out beside this one (`agent-ops-club/public/img/harnesses`). Rebuild it with `--allow-file-access-from-files --force-device-scale-factor=3 --window-size=838,92`. Adding a harness means adding it to `docs/HARNESSES.md`, to the list in that page, and to the alt text in the README.
+
 Three more images live in this folder; the first two and are built from the same eight square thumbnails:
 
 | File | What it is | Where it goes |

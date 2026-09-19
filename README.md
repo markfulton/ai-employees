@@ -36,6 +36,10 @@
 </p>
 
 <p align="center">
+  <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=harness-strip#install"><img src="assets/harness-strip.png" width="838" alt="Runs on the agent you use: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek"></a>
+</p>
+
+<p align="center">
   ⭐ <em>Star this repo so more founders find the eight.</em>
 </p>
 

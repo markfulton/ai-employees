@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* The README compatibility strip: the eleven agents in docs/HARNESSES.md, in
+   that order. A navy card so it reads the same on GitHub's light and dark
+   themes, and every icon sits on its own white tile so a dark mark never
+   disappears into the ground. Icons are each brand's own favicon, the same
+   files the club's harness bar uses. */
+html,body{margin:0;padding:0;background:transparent}
+.s{position:relative;width:838px;height:92px;box-sizing:border-box;border-radius:14px;overflow:hidden;background:#0D161B;border:1px solid rgba(241,232,203,.14);
+ display:flex;align-items:center;padding:0 14px 0 22px;font-family:Inter,system-ui,sans-serif}
+.glow{position:absolute;inset:0;background:radial-gradient(420px 160px at 100% 0%,rgba(11,127,199,.22),transparent 70%)}
+.label{position:relative;flex:none;width:88px;font-family:"JetBrains Mono",monospace;font-weight:500;font-size:9.5px;line-height:1.6;letter-spacing:.18em;color:#cfc6ab}
+.label b{display:block;color:#f1e8cb;font-weight:500}
+.rule{position:relative;flex:none;width:1px;height:44px;background:rgba(241,232,203,.16);margin-right:6px}
+.row{position:relative;flex:1;display:flex;align-items:flex-start}
+.h{flex:1 1 0;min-width:0;text-align:center}
+.t{width:34px;height:34px;margin:0 auto;border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.t img{width:24px;height:24px;display:block;border-radius:4px}
+.t.full img{width:34px;height:34px;border-radius:0}
+.n{margin-top:7px;font-size:10px;font-weight:600;color:#f1e8cb;white-space:nowrap;letter-spacing:-.01em}
+</style></head><body>
+<div class="s"><div class="glow"></div>
+<div class="label"><b>RUNS ON</b>THE AGENT<br>YOU USE</div><div class="rule"></div>
+<div class="row" id="row"></div>
+</div>
+<script>
+const base="../../../agent-ops-club/public/img/harnesses/";
+const list=[["claude-code","Claude Code"],["openclaw","OpenClaw"],["hermes","Hermes"],["opencode","OpenCode"],["grokbot","Grok Bot"],["codex","Codex"],["antigravity","Antigravity"],["pi","Pi"],["cline","Cline"],["qwen-code","Qwen Code"],["deepseek","DeepSeek"]];
+const full=new Set(location.hash.slice(1).split(",").filter(Boolean));
+document.getElementById("row").innerHTML=list.map(([s,n])=>`<div class="h"><div class="t${full.has(s)?" full":""}"><img src="${base}${s}.png"></div><div class="n">${n}</div></div>`).join("");
+</script>
+</body></html>
