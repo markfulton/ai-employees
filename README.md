@@ -6,7 +6,7 @@
 </p>
 
 <h3 align="center">Eight open source AI Employees. Each one runs a whole business role.</h3>
-<p align="center">59 scheduled routines. Your own machine. The AI agent you already use.</p>
+<p align="center">60 scheduled routines. Your own machine. The AI agent you already use.</p>
 
 <p align="center">
   <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nav-employees"><strong>The eight AI Employees</strong></a>
@@ -50,7 +50,7 @@ Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_mediu
 | Employee | What it owns | Routines |
 |---|---|---|
 | <img src="https://club.reinventing.ai/img/employees/thumbs/gtm-engineer.webp" width="72" height="72" alt=""><br>[**GTM Engineer**](employees/gtm-engineer) | Your launch: positioning, the launch board, outbound drafts, directory and press forms, the weekly scoreboard | 8 |
-| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="72" height="72" alt=""><br>[**SEO/AEO Employee**](employees/seo-employee) | Keyword research, one article a weekday, publishing, indexing and rank review | 7 |
+| <img src="https://club.reinventing.ai/img/employees/thumbs/seo-employee.webp" width="72" height="72" alt=""><br>[**SEO/AEO Employee**](employees/seo-employee) | Keyword research, one article a weekday, publishing, indexing, rank review and your visibility in AI answers | 8 |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/web-dev-employee.webp" width="72" height="72" alt=""><br>[**Web Dev Employee**](employees/web-dev-employee) | Site health, error triage, small changes on a branch, dependency review | 8 |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/social-media-employee.webp" width="72" height="72" alt=""><br>[**Social Media Employee**](employees/social-media-employee) | Posts drafted in your voice for each platform, a veto window, replies drafted for you | 7 |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>[**Ad Manager Employee**](employees/ad-manager-employee) | Account reads, creative sets, build sheets and the weekly change list. Money moves only when you approve | 7 |
@@ -58,7 +58,7 @@ Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_mediu
 | <img src="https://club.reinventing.ai/img/employees/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>[**Customer Satisfaction Employee**](employees/customer-satisfaction-employee) | Inbox sweep, replies drafted hardest first, churn flags with evidence | 8 |
 | <img src="https://club.reinventing.ai/img/employees/thumbs/chief-of-staff.webp" width="72" height="72" alt=""><br>[**Chief of Staff**](employees/chief-of-staff) | Reads every other employee's run log, names what quietly stopped, brings you three moves | 7 |
 
-Fifty nine routines. Each employee's folder has its full schedule and a sample of its output.
+Sixty routines. Each employee's folder has its full schedule and a sample of its output.
 
 ## Install in two steps
 
