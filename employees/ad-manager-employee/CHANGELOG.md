@@ -2,6 +2,18 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.8.0, 2026-09-23
+
+The Employee runs on a hosted agent, and its brief reaches you wherever it runs.
+
+- `CAPABILITIES.md` section 2, the Grok Bot row and paragraph, rewritten from operators' published accounts of the product: every bot on an account shares one persistent cloud computer with a terminal, files and a browser; the kit lives on that computer; one bot per Employee with `AGENTS.md` pasted into its Instructions field; one recurring task per routine; sessions reach the bot only through a sync you run, and every bot then shares every login. Every Grok Bot row in sections 3 to 6 moves from `unknown` to a named route at `expected`.
+- `CAPABILITIES.md` section 6, `brief.deliver`, new: the standup brings `brief-latest.md` to you after it writes it, by opening the dashboard, by posting the brief into the Employee's own thread on a harness whose computer you never open, or by sending it to your own address where a mail route exists. `CONTRACT.md` section 3.2a carries the capability and the rule: a brief to your own thread or address is delivery, not a send, and no personal data or draft copy is ever added for the delivery. Absent every route the file is the brief and the run record says `brief: file only`.
+- `routines/ads-desk-standup/SKILL.md`, the step that writes the brief, gains the delivery line.
+- `browser.session` names the route that keeps a hosted bot signed in (a cookie sync you run, such as Agent Cookie from a Mac over Tailscale). The kit detects it and installs nothing, as section 8 has always said.
+- `AGENTS.md` no longer carries a version number that drifted from `VERSION`, and says what to do with itself on a harness that has an Instructions field instead of a folder.
+- `employee.json` lists all eleven harnesses the docs promise. Pi, Cline, Qwen Code and DeepSeek were missing.
+- The install prompt's Phase 0 says the cloud sync rule does not apply on a hosted harness.
+
 ## 1.7.0, 2026-09-19
 
 The Employee tells you when a newer kit is out, and offers its own repairs back to the project.

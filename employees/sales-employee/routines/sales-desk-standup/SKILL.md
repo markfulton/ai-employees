@@ -581,6 +581,8 @@ Then copy the passing file verbatim to `briefs/brief-YYYY-MM-DD.md`. The dated c
 
 ---
 
+**Then deliver it.** Resolve `brief.deliver` through `CAPABILITIES.md` section 6: open the dashboard where this machine is one the member uses, post the brief text into this Employee's own thread on a harness whose computer the member never opens, or send it to the member's own address where a mail route exists. The delivered text is `brief-latest.md` exactly, with nothing added, and a brief to the member's own thread or address is delivery, not a send. Absent every route, put `brief: file only` in the run record `notes` and carry on. It is never a blocker.
+
 ## Step 9. Write `sales-latest.md`
 
 Overwritten, uncapped, machine facing. You are its only writer. Everything that does not belong in front of the member goes here, and this is the file sibling Employees and the member's other agents read:

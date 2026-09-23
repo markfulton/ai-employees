@@ -3,8 +3,8 @@
   "slug": "seo-employee",
   "name": "SEO/AEO Employee",
   "role": "Search, content and answer visibility",
-  "version": "1.8.0",
-  "standard": "1.3",
+  "version": "1.9.0",
+  "standard": "1.4",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -16,7 +16,11 @@
       "opencode",
       "grok-bot",
       "codex",
-      "antigravity"
+      "antigravity",
+      "pi",
+      "cline",
+      "qwen-code",
+      "deepseek"
     ]
   },
   "connections": [

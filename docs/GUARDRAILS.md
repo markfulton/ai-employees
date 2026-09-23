@@ -4,6 +4,8 @@
 
 **The second guardrail is on credentials, and it stays on.** No AI Employee creates an account, enters or generates a password, completes a captcha, accepts terms, or writes a credential into any file. It never needs your password to do its job, so there is nothing to release.
 
+**On a hosted harness the guardrails are still yours to keep, and bots are not a boundary.** On Grok Bot every bot on your account shares one cloud computer, one filesystem and every login on it. A release you write for one Employee is a file every bot can read, and a session you sync there is a session every bot can use. Scope by what you sign in to on that computer, never by which bot you talk to, and start read only on public pages before you sync anything.
+
 | Routine kind | Reads | Writes | Leaves for you | Holds, unless you release it |
 |---|---|---|---|---|
 | The standup, every weekday | Every ledger, run record and tick since yesterday | The board and the thirty line brief | The brief, first thing | Uses a browser |

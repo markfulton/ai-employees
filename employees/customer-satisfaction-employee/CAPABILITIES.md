@@ -90,7 +90,7 @@ One row each. The browser column is the one that changes how much of the kit run
 | **OpenClaw** | Expected, core to it | Unconfirmed. Probe | Probe this specifically | Built in cron, `openclaw automations create` | `expected` on files, `unknown` on browser |
 | **Hermes** | Expected | Probe | Probe this specifically | Built in cron | `expected` on files, `unknown` on browser |
 | **OpenCode** | Expected, core to it | Add a browser automation server | Depends on that server's config | None of its own, use the operating system's | `expected` on files |
-| **Grok Bot** | Expected, on its own cloud computer | Its own browser, on that computer | Check first; it runs elsewhere | Built in recurring tasks | `expected` on files, `unknown` on your sessions |
+| **Grok Bot** | Yes, on its own cloud computer: a Linux machine with a terminal, files and a browser, shared by every bot on your account | Its own browser, on that computer | Only what you signed in to on that computer, or a session you sync to it | Built in recurring tasks | `expected`; your sessions depend on the sync |
 | **Codex** | Expected, core to it | Add a browser automation server | Depends on that server's config | Scheduled runs | `expected` on files |
 | **Antigravity** | Expected, core to it | Part of the product | Probe this specifically | The `agy` job runner | `expected` |
 | **Pi** | Expected, core to it | Probe | Probe this specifically | None of its own, use the operating system's | `expected` on files |
@@ -108,7 +108,7 @@ The capability tables in sections 3 to 6 carry one row for each of the first sev
 
 **OpenCode.** An open source terminal coding agent. Reading files, writing files, and running commands are core to what it is for, so the whole environment table should hold. It supports MCP servers, which is the route to browser control: add a browser automation server and the browser table becomes available under different names. I know of no built in scheduler, so use the operating system's, per section 9.
 
-**Grok Bot.** Its bots already run routines on a schedule from their own cloud computer, so the scheduler is built in and the invocation is the routine file handed over as the run prompt. The thing to settle first is whether it can reach your own signed in accounts at all, because it runs somewhere else; if it cannot, section 7 says what the file side of the kit still produces.
+**Grok Bot.** xAI's hosted agent, and the one harness on this list that does not run on your machine. Every bot on your account shares one persistent cloud computer: a Linux machine with a terminal, file access and a real browser, where each bot has its own screen and runs one computer-use task at a time. The kit lives on that computer, so the bot installs it there itself (`npx ai-employees hire <slug> --to ~/ai-employees/<slug>`, run in its own terminal), and the cloud sync rule does not apply. One bot per Employee, named after the role, with this kit's `AGENTS.md` pasted into the bot's Instructions field, which is the map the bot reads before every task. One recurring task per routine, the Shape B prompt from section 9.2a, the fire time from `SCHEDULE.md` in the timezone that file names. Three things follow from the shared computer. Your signed in sessions are only there if you signed in on that computer or you run a sync that keeps them there (Agent Cookie syncs a Mac's Chrome cookies to the bot over Tailscale), and every bot on the account can then use every login, so bots are not a security boundary: scope by what you sign in to, never by which bot you talk to. The browser lock in `CONTRACT.md` section 6 still matters, because two bots on one platform share one browser. And the brief is a file on a computer you never open, so `brief.deliver` in section 6 posts it into the bot's own thread. Two more routes worth knowing: Claude Code can be logged in on the bot's computer, which turns this row into the Claude Code CLI row with Grok Bot as the scheduler; and Peekaboo, installed by you on a Mac, lets the bot see and click native Mac apps over the same link. The kit names both, detects them, and installs neither. Everything in this paragraph is read from operators' published accounts of the product in August 2026 and is `expected` until you write `confirmed` into `## Corrections` with the date.
 
 **Codex.** OpenAI's coding agent. Files and commands are core. The specific thing to check here is the sandbox: confirm it can write inside `«CSAT_ROOT»` and confirm whether it can reach the network, because a sandbox that blocks outbound requests turns off `web.fetch` and `web.search` without announcing it, and a routine will report a page as unreachable when the page is fine. Browser control comes from adding a browser automation server. Codex has scheduled runs; register one per routine.
 
@@ -137,7 +137,7 @@ Read the machine timezone id and the local wall clock time.
 | OpenClaw | Its own clock, or a shell command | `expected` |
 | Hermes | Unknown. A shell command is the fallback if it has one | `unknown` |
 | OpenCode | Its own clock, or a shell command | `expected` |
-| Grok Bot | Unknown. A shell command is the fallback if it has one | `unknown` |
+| Grok Bot | A shell command on its cloud computer. That computer keeps its own clock, so read the timezone from `SCHEDULE.md` and never assume the machine's | `expected` |
 | Codex | Its own clock, or a shell command | `expected` |
 | Antigravity | Its own clock, or a shell command | `expected` |
 
@@ -152,7 +152,7 @@ Read a file as text.
 | OpenClaw | Its file read, or a shell command | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its file read, or a shell command | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own file access on its cloud computer, where the kit lives | `expected` |
 | Codex | Its file read. Confirm the sandbox includes `«CSAT_ROOT»` | `expected` |
 | Antigravity | Its file read, or a shell command | `expected` |
 
@@ -167,7 +167,7 @@ Write a file. Anything a crash could truncate is written to a temp path and rena
 | OpenClaw | Its file write, or a shell command | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its file write, or a shell command | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own file access on its cloud computer, where the kit lives | `expected` |
 | Codex | Its file write. Confirm the sandbox allows writes, not just reads | `expected` |
 | Antigravity | Its file write, or a shell command | `expected` |
 
@@ -184,7 +184,7 @@ List paths under a folder.
 | OpenClaw | Its glob, or a shell command | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its glob, or a shell command | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own file access on its cloud computer, where the kit lives | `expected` |
 | Codex | Its glob, or a shell command | `expected` |
 | Antigravity | Its glob, or a shell command | `expected` |
 
@@ -199,7 +199,7 @@ Run a local command and read its output.
 | OpenClaw | Its shell | `expected` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Its shell | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | The terminal on its cloud computer | `expected` |
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
@@ -224,7 +224,7 @@ Confirm browser control is attached to a browser holding your own logged in sess
 | OpenClaw | Its own browser control if it has one, otherwise a browser automation server | `unknown` |
 | Hermes | Unknown. Probe before relying on any browser routine | `unknown` |
 | OpenCode | A browser automation server added to the harness | `expected` |
-| Grok Bot | Unknown. Probe before relying on any browser routine | `unknown` |
+| Grok Bot | Its own browser on its cloud computer. Your session is there only if you signed in on that computer, or you run a sync that keeps it there (Agent Cookie syncs a Mac's Chrome cookies over Tailscale, every fifteen minutes). Every bot on the account shares that browser and its logins | `expected` |
 | Codex | A browser automation server added to the harness | `expected` |
 | Antigravity | Its built in browser control. Confirm it drives your signed in profile | `expected` |
 
@@ -238,7 +238,7 @@ Confirm browser control is attached to a browser holding your own logged in sess
 | OpenClaw | Unknown |
 | Hermes | Unknown |
 | OpenCode | A browser automation server over a local protocol. A failed call is expected to mean a failed action, though a timeout still leaves the action's fate unknown |
-| Grok Bot | Unknown |
+| Grok Bot | Its own computer-use lane, one task per bot at a time. A failed call's fate is unknown until the page is re-read |
 | Codex | As OpenCode |
 | Antigravity | Unknown |
 
@@ -253,7 +253,7 @@ Create a tab for this run and close it at the end.
 | OpenClaw | Its browser control, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's page or context handling | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's page or context handling | `expected` |
 | Antigravity | Its browser control | `expected` |
 
@@ -268,7 +268,7 @@ Go to a URL.
 | OpenClaw | Its browser control, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's navigation | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's navigation | `expected` |
 | Antigravity | Its browser control | `expected` |
 
@@ -283,7 +283,7 @@ Read the page as a structured tree where each interactive element carries a stab
 | OpenClaw | Its page read, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's accessibility snapshot | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer, reading the page as a tree; fall back to `page.text` where a read returns only a picture | `expected` |
 | Codex | The browser automation server's accessibility snapshot | `expected` |
 | Antigravity | Its page read | `expected` |
 
@@ -297,7 +297,7 @@ Read the page as a structured tree where each interactive element carries a stab
 | OpenClaw | Unknown | Re-read after any view change and use what the fresh read returns |
 | Hermes | Unknown | Same |
 | OpenCode | The browser automation server's snapshot is expected to re-number on every read, with detached nodes absent | Take a fresh read after any view change. Highest numbered means nothing here and would pick an arbitrary element |
-| Grok Bot | Unknown | Re-read after any view change |
+| Grok Bot | Expected to re-number on every read, as a hosted browser does | Re-read after any view change and use what the fresh read returns |
 | Codex | As OpenCode | As OpenCode |
 | Antigravity | Unknown | Re-read after any view change |
 
@@ -312,7 +312,7 @@ Read the visible text.
 | OpenClaw | Its text extraction, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's text or content read | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's text or content read | `expected` |
 | Antigravity | Its text extraction | `expected` |
 
@@ -329,7 +329,7 @@ Capture the screen, or a region of it.
 | OpenClaw | Its screenshot, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's screenshot | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's screenshot | `expected` |
 | Antigravity | Its screenshot | `expected` |
 
@@ -346,7 +346,7 @@ Click one element by its reference from `page.read`.
 | OpenClaw | Its click, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's click on a snapshot reference | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's click on a snapshot reference | `expected` |
 | Antigravity | Its click | `expected` |
 
@@ -364,7 +364,7 @@ Click one element by its reference from `page.read`.
 | OpenClaw | Unknown. Assume the harness permission layer at minimum |
 | Hermes | Unknown. Same |
 | OpenCode | The harness permission layer. A browser automation server has no classifier of its own and does not refuse |
-| Grok Bot | Unknown. Same |
+| Grok Bot | Its own approval layer, which pauses a bot and asks you in its thread. A routine that hits it records the blocker and carries on with the phases that do not need it |
 | Codex | The harness permission layer plus its sandbox, which can decline network access without saying so |
 | Antigravity | Unknown. Assume the harness permission layer |
 
@@ -379,7 +379,7 @@ Set a form field's value by reference.
 | OpenClaw | Its form input, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's fill or type | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's fill or type | `expected` |
 | Antigravity | Its form input | `expected` |
 
@@ -404,7 +404,7 @@ Evaluate a script in the page context and get a JSON result back.
 | OpenClaw | Its script evaluation, if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's evaluate | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer, where it exposes script evaluation; otherwise `page.read` plus `field.set` plus `element.click` | `expected` |
 | Codex | The browser automation server's evaluate | `expected` |
 | Antigravity | Its script evaluation | `expected` |
 
@@ -420,7 +420,7 @@ Evaluate a script in the page context and get a JSON result back.
 | OpenClaw | Unknown |
 | Hermes | Unknown |
 | OpenCode | The browser automation server's own default, commonly 30 seconds and usually configurable |
-| Grok Bot | Unknown |
+| Grok Bot | Its own default, not published. Treat a slow call as unknown and re-read the page |
 | Codex | As OpenCode |
 | Antigravity | Unknown |
 
@@ -435,7 +435,7 @@ Wait for a condition, polling rather than sleeping long.
 | OpenClaw | Its wait, if present, or polling | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | The browser automation server's wait for selector or load state | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its own browser on its cloud computer | `expected` |
 | Codex | The browser automation server's wait for selector or load state | `expected` |
 | Antigravity | Its wait | `expected` |
 
@@ -456,7 +456,7 @@ Send one short notification to your own device.
 | OpenClaw | Its own notification route if it has one, then a hosted club notifier | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | A hosted club notifier, or none | `unknown` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | A message in the bot's own thread, which the Grok app carries to your phone | `expected` |
 | Codex | A hosted club notifier, or none | `unknown` |
 | Antigravity | Unknown | `unknown` |
 
@@ -504,7 +504,7 @@ Put formatted copy into a rich text editor.
 | OpenClaw | Hosted club converter when available, then a synthetic paste | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | Hosted club converter when available, then a synthetic paste through evaluate | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Hosted club converter, then a synthetic paste in its own browser | `expected` |
 | Codex | Hosted club converter when available, then a synthetic paste through evaluate | `expected` |
 | Antigravity | Hosted club converter when available, then a synthetic paste | `expected` |
 
@@ -525,7 +525,7 @@ Get search results for a query.
 | OpenClaw | Its web search if present | `unknown` |
 | Hermes | Unknown | `unknown` |
 | OpenCode | A search server if you added one | `expected` |
-| Grok Bot | Unknown | `unknown` |
+| Grok Bot | Its built in web search, then its own browser | `expected` |
 | Codex | Its search. Confirm the sandbox allows outbound requests | `expected` |
 | Antigravity | Its web search | `expected` |
 
@@ -542,7 +542,7 @@ Read a URL's text without opening a browser.
 | OpenClaw | Its fetch, then `shell.run` with a fetch command, then the browser | `expected` |
 | Hermes | Unknown. `shell.run` with a fetch command if it has a shell | `unknown` |
 | OpenCode | Its fetch, then `shell.run` with a fetch command, then the browser | `expected` |
-| Grok Bot | Unknown. `shell.run` with a fetch command if it has a shell | `unknown` |
+| Grok Bot | `shell.run` with a fetch command on its cloud computer, then its own browser | `expected` |
 | Codex | Its fetch or `shell.run`. Confirm the sandbox allows outbound requests | `expected` |
 | Antigravity | Its fetch, then the browser | `expected` |
 
@@ -562,7 +562,7 @@ If a later routine genuinely needs one, it goes into this table and into `CONTRA
 
 ## 6. Kit capabilities
 
-Three. These are the kit's own, and two of them ship as scripts inside it.
+Four. These are the kit's own, and two of them ship as scripts inside it.
 
 ### `runlog.append`
 Append exactly one validated run record to `runlog.jsonl`.
@@ -573,7 +573,7 @@ Append exactly one validated run record to `runlog.jsonl`.
 | OpenClaw | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
 | Hermes | `shell.run` if present, then a direct append through `file.write` | `unknown` |
 | OpenCode | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
-| Grok Bot | `shell.run` if present, then a direct append through `file.write` | `unknown` |
+| Grok Bot | `shell.run` on its cloud computer, then a direct append through `file.write` | `expected` |
 | Codex | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
 | Antigravity | `shell.run` on `scripts/runlog.mjs`, then a direct append | `expected` |
 
@@ -602,7 +602,7 @@ The scripted judge for any text about to be written into a queue file, a strateg
 | OpenClaw | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
 | Hermes | `shell.run` if present, then in agent | `unknown` |
 | OpenCode | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
-| Grok Bot | `shell.run` if present, then in agent | `unknown` |
+| Grok Bot | `shell.run` on its cloud computer, then in agent | `expected` |
 | Codex | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
 | Antigravity | `shell.run` on `scripts/copy-check.mjs`, then in agent | `expected` |
 
@@ -633,7 +633,7 @@ Register, inspect, or change a recurring job named after a routine id.
 | OpenClaw | Its built in cron, `openclaw automations create`, through `shell.run` | `expected` |
 | Hermes | Its built in cron | `expected` |
 | OpenCode | Not available in the harness. The operating system's scheduler | `expected` |
-| Grok Bot | Its recurring tasks, on its own cloud computer | `expected` |
+| Grok Bot | Its recurring tasks, one per routine, on its own cloud computer | `expected` |
 | Codex | Its scheduled runs | `expected` |
 | Antigravity | Its `agy` job runner, through `shell.run` | `expected` |
 | Pi | Not available in the harness. The operating system's scheduler | `expected` |
@@ -644,6 +644,21 @@ Register, inspect, or change a recurring job named after a routine id.
 **Absent all routes:** write the exact commands to `«CSAT_ROOT»/schedule-commands.txt` and name that file in the brief. You run them yourself, once, and the kit is scheduled.
 
 **Nothing about a routine's behaviour depends on which of the three registered it.** The routine reads the clock, reads its row in `SCHEDULE.md`, and decides for itself whether to work. A job that fires at the wrong time gets caught by the window guard. A job that fires twice gets caught by the period guard. The scheduler is a starter motor, not a controller.
+
+### `brief.deliver`
+Bring `brief-latest.md` to you after the standup writes it. The brief is the product, and on a harness whose computer you never open it is otherwise a file nobody reads.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | Rebuild the dashboard and open it, as the standup already does | `confirmed` |
+| OpenClaw | The dashboard, then the harness's own delivery channel where its cron delivers to one | `expected` |
+| Hermes | Its cron's delivery target, which reaches any platform you set | `expected` |
+| OpenCode | The dashboard, then none | `expected` |
+| Grok Bot | The brief text posted into this Employee's own thread, where the Grok app shows it and carries it to your phone | `expected` |
+| Codex | The dashboard, then the automation's own result view | `expected` |
+| Antigravity | The dashboard, then none | `expected` |
+
+**Absent every route, the file is the brief** and the run record says `brief: file only`. That is a normal outcome and never a blocker. The brief posted anywhere is the same text as the file: no draft copy, no personal data and no credential ever leaves the file in a delivery, because a thread and a phone are less private than a folder. A brief delivered to your own address or your own thread is delivery, not a send, and needs no row in `RELEASES.md`; every other destination is a send and is held.
 
 ---
 
@@ -732,7 +747,7 @@ No two share a fire minute, including the one that never touches a browser. Host
 | **OpenClaw** | Built in cron: `openclaw automations create "<cron>" "<message>" --name <id> --session isolated`, one per routine, with the timezone flag | `expected` |
 | **Hermes** | Built in cron, one job per routine, each handed that routine's `SKILL.md` as the prompt | `expected` |
 | **OpenCode** | None of its own. Use the operating system's scheduler below | `expected` |
-| **Grok Bot** | Its bots run on a schedule from their own cloud computer: one recurring task per routine | `expected` |
+| **Grok Bot** | Its recurring tasks, on the shared cloud computer: one recurring task per routine, on the bot named after this Employee, with the fire time in the timezone `SCHEDULE.md` names | `expected` |
 | **Codex** | The Codex app's automations: one `kind = "cron"` automation per routine, named after the routine id, `execution_environment = "local"`, the kit folder among its working directories, and an `rrule` built from the `SCHEDULE.md` row. Each automation keeps its own memory file, which is a note to itself and never a ledger this kit reads | `confirmed` on Windows: seven routines fired on schedule under the app's automatic review mode, after the member approved the registrations in the session |
 | **Antigravity** | The `agy` job runner, one job per routine, pointed at the routine folder | `expected` |
 | **Pi** | None of its own. Use the operating system's scheduler below | `expected` |
@@ -773,7 +788,7 @@ Two shapes cover every harness.
 | **OpenClaw** | The automation holds the invocation: its message is the Shape B prompt, so there is no separate headless command to write. For a run by hand, use its own headless flag from its help output | `expected` |
 | **Hermes** | The cron job's prompt is the Shape B prompt. For a run by hand, use its own headless flag from its help output | `expected` |
 | **OpenCode** | `opencode run "<prompt>"` is its non interactive form. Confirm it against `opencode --help` on your version. Shape B | `expected` |
-| **Grok Bot** | The recurring task's run prompt is the Shape B prompt. It runs on its own cloud computer, not on this machine | `expected` |
+| **Grok Bot** | The recurring task's run prompt is the Shape B prompt, with the kit's path on the bot's own cloud computer, where the kit lives. Nothing runs on your machine. Shape B | `expected` |
 | **Codex** | The app's automation holds the invocation: its prompt is the Shape B prompt with the kit folder named as the working directory, and no separate headless line is written. `codex exec "<prompt>"` is the by hand form, and it runs only where the CLI is signed in, which the app's own sign in does not imply. Shape B | `confirmed` for the automation route; `codex exec` stays `expected` |
 | **Antigravity** | `agy -p "<prompt>"`. The print flag is read off the CLI's own help text. That a routine then runs correctly through it is not verified | `expected` |
 | **Pi** | `pi -p "<prompt>"`. Confirm the print flag against `pi --help` on your version. Shape B | `expected` |

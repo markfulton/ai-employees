@@ -1,8 +1,12 @@
 # AGENTS.md
 
-**Social Media Employee**, kit version 1.2.0. One of the eight AI Employees from [github.com/markfulton/ai-employees](https://github.com/markfulton/ai-employees).
+**Social Media Employee**, one of the eight AI Employees from [github.com/markfulton/ai-employees](https://github.com/markfulton/ai-employees).
 
-This file follows the [AGENTS.md](https://agents.md) convention so that any harness can pick this kit up without being told how. It is a map, not the instructions. **The instructions are the files it points at, and they are authoritative over anything summarised here.**
+This file follows the [AGENTS.md](https://agents.md) convention so that any harness can pick this kit up without being told how. It is a map, not the instructions. **The instructions are the files it points at, and they are authoritative over anything summarised here.** The version this kit ships as is in `VERSION` at the root.
+
+## If your harness has an Instructions field instead of a folder
+
+On a hosted agent such as Grok Bot, the kit lives on the bot's own cloud computer and the bot reads an Instructions field before every task. Paste this whole file into that field, with the folder's absolute path on that computer in place of `«SOC_ROOT»`. It is the base layer (the two guardrails and the files that outrank everything else), the role layer (`ROLE.md`, which names the evidence standard) and the current focus (the strategy folder the routines keep current), and it is short enough to fit. Everything else stays in the files.
 
 ## If you have been asked to install this Employee
 

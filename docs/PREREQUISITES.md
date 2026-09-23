@@ -53,7 +53,7 @@ Claude Code uses it for its shell tool and the Desktop app requires it for local
 
 Optional, and the section in each kit's README called "What you lose with no browser control" is honest about what it costs to skip. The requirement is the same on every harness: it has to drive a browser that carries your own logins, not a clean automated profile, because the routines share your browser's login state and never sign in to anything. On a login wall or a captcha they stop that phase and say so.
 
-On Claude Code that means Google Chrome or Microsoft Edge, the Claude in Chrome extension (1.0.36 or later), `claude --chrome` on the CLI or the Desktop app's own integration, a login based session rather than an API key, and the site permissions granted in the extension before the first scheduled run. On OpenCode and Codex it is a browser automation server you add. On Antigravity and DeepSeek browser control is part of the product, and the thing to settle is which profile it drives. On Grok Bot the browser runs on its own cloud computer, so whether it can reach your accounts at all is the first check. Each kit's `CAPABILITIES.md` section 1.2 has a probe that answers the question on any harness in a minute.
+On Claude Code that means Google Chrome or Microsoft Edge, the Claude in Chrome extension (1.0.36 or later), `claude --chrome` on the CLI or the Desktop app's own integration, a login based session rather than an API key, and the site permissions granted in the extension before the first scheduled run. On OpenCode and Codex it is a browser automation server you add. On Antigravity and DeepSeek browser control is part of the product, and the thing to settle is which profile it drives. On Grok Bot the browser runs on the bot's own cloud computer, so your sessions are there only if you signed in on that computer or you run a cookie sync to it (Agent Cookie syncs a Mac's Chrome cookies over Tailscale), and every bot on the account then shares every login: scope by what you sign in to, never by which bot you talk to. Each kit's `CAPABILITIES.md` section 1.2 has a probe that answers the question on any harness in a minute.
 
 ## 7. A scheduler
 
@@ -72,11 +72,11 @@ Otherwise the operating system's:
 
 ## 8. A machine that is awake at fire time
 
-These are scheduled routines on your machine, not a service somewhere else. Either the machine is awake at the times in `SCHEDULE.md`, or you move the fire times to after it normally wakes. On the Desktop app, turn on Keep computer awake. A closed lid still sleeps. Grok Bot is the one exception, because its schedule runs on its own cloud computer.
+These are scheduled routines on your machine, not a service somewhere else. Either the machine is awake at the times in `SCHEDULE.md`, or you move the fire times to after it normally wakes. On the Desktop app, turn on Keep computer awake. A closed lid still sleeps. Grok Bot is the one exception, because its schedule runs on its own cloud computer. The kit lives on that computer too, and the brief reaches you in the bot's own thread rather than in a file you open (`brief.deliver`, `CAPABILITIES.md` section 6).
 
 ## 9. A working folder outside cloud sync
 
-Not inside OneDrive, Dropbox, Google Drive or iCloud. The routines write state and a run log mid run, and a sync client corrupts exactly the file that tells tomorrow's run what already happened. `D:\AgentOps\gtm-engineer` or `~/ai-employees/gtm-engineer` is right. The installer refuses a synced path, and the install prompt moves the kit out of one if it finds itself there.
+Not inside OneDrive, Dropbox, Google Drive or iCloud. The routines write state and a run log mid run, and a sync client corrupts exactly the file that tells tomorrow's run what already happened. `D:\AgentOps\gtm-engineer` or `~/ai-employees/gtm-engineer` is right. The installer refuses a synced path, and the install prompt moves the kit out of one if it finds itself there. On Grok Bot the folder is on the bot's own cloud computer, which no sync client touches.
 
 ## 10. A usage budget
 

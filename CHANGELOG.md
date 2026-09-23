@@ -2,6 +2,16 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## 1.8.0, 2026-09-23
+
+The Employees run on a hosted agent, and the brief reaches you wherever they run.
+
+- **Grok Bot, written from the facts.** Every kit's `CAPABILITIES.md` section 2 row and paragraph for Grok Bot is rewritten from operators' published accounts of the product: every bot on an account shares one persistent cloud computer with a terminal, files and a browser; the kit lives on that computer and the bot installs it there; one bot per Employee with `AGENTS.md` pasted into its Instructions field; one recurring task per routine; sessions reach the bot only through a cookie sync you run, and every bot then shares every login, so bots are not a security boundary. Every Grok Bot row in sections 3 to 6 moves from `unknown` to a named route at `expected`. `docs/HARNESSES.md` gains a hosted harness section, and `docs/PREREQUISITES.md`, `docs/GUARDRAILS.md`, `docs/COST.md`, `docs/INSTALL.md` and `docs/FAQ.md` say the same in reader words.
+- **`brief.deliver`, in every kit.** The standup brings `brief-latest.md` to you after it writes it: the dashboard on a machine you use, the Employee's own thread on a harness whose computer you never open, or your own address where a mail route exists. `CONTRACT.md` 3.2a carries the capability, `CAPABILITIES.md` section 6 the route per harness, and the standup routine the one delivery line. A brief to your own thread or address is delivery, not a send, and needs no release. Absent every route the file is the brief and the run record says `brief: file only`. The Agent Employee Standard moves to v1.4 for it.
+- **Five questions before a routine exists**, in `docs/STANDARD.md` section 4 and the routine request in `CONTRIBUTING.md`: trigger, frequency, output, silence, stop.
+- **Drift fixed.** Every kit's `AGENTS.md` carried a version number two releases behind `VERSION`; it now points at `VERSION` and says what to do with itself on a harness that has an Instructions field instead of a folder. Every `employee.json` listed seven harnesses where the docs promise eleven; Pi, Cline, Qwen Code and DeepSeek are now on the list.
+- GTM Engineer, Ad Manager, Web Dev, Social Media, Sales, Customer Satisfaction and Chief of Staff move to 1.8.0; SEO/AEO to 1.9.0. See each kit's changelog, starting with [GTM Engineer](employees/gtm-engineer/CHANGELOG.md).
+
 ## 1.7.0, 2026-09-19
 
 The Employees tell you when a newer kit is out, and offer their own repairs back to the project.

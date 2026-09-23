@@ -501,6 +501,7 @@ Every capability in this table degrades the same way when the harness has no bro
 | Capability | What it does | Routes, in preference order | Degradation |
 |---|---|---|---|
 | `notify.push` | Send one short notification to the member's own device | harness push notification tool, then a hosted club notifier, then none | **Absence is not a failure and is never a blocker.** Put `push: not available` in the run record `notes` and carry on. Every push in this kit is a shortcut to a line that is already in the brief, so the member loses speed and never loses information |
+| `brief.deliver` | Bring `brief-latest.md` to the member after the standup writes it: open the dashboard on a machine the member uses, post the brief text into the Employee's own thread on a harness whose computer the member never opens, or send it to the member's own address where a mail route exists. The brief to the member's own thread or address is delivery, not a send, and needs no release | The dashboard, then the Employee's own thread or delivery channel, then the member's own address, then none | **Absence is not a failure and is never a blocker.** Put `brief: file only` in the run record `notes` and carry on. The delivered text is the file's text: no draft copy, no personal data and no credential is added for the delivery, because a thread and a phone are less private than a folder |
 
 ### 3.3 Content capabilities the club dashboard may host
 

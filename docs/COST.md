@@ -49,6 +49,10 @@ Anthropic publishes no token or dollar quota per plan, so a plan cannot be mappe
 
 The only way to turn the table into dollars is an API key, and an API key loses the browser lane, which most of these routines need. Run them on a seat.
 
+## On Grok Bot
+
+Grok Bot is metered differently: a plan carries a weekly usage allowance, and the bots draw it down. As of August 21, 2026, bots come with Cursor Pro+ at $60 a month, SuperGrok Plus at $100, Cursor Ultra at $200, SuperGrok Heavy at $300, and Cursor Teams at $40 a seat, with a limited free trial. What the price does not say is how fast the allowance moves under a fleet: operators running several bots on patrol report reaching it early in the week. The kits are not always on, which is the point. One Employee is a handful of runs a day, each inside a window and a budget, and a skipped fire exits before it reads the contract. Start on the lowest tier that includes bots, run one Employee for a week, and read the meter before you add a second. Nothing on this page was measured on Grok Bot; the numbers above are its published prices, and the measurement will follow the first install that reports.
+
 ## Making cost a field, not a guess
 
 `scripts/runlog.mjs` accepts nine optional fields on a run record: `model`, `harness`, `turns`, `input_tokens`, `output_tokens`, `cache_write_tokens`, `cache_read_tokens`, `cost_usd`, and `cost_basis` (`api-list`, `subscription`, or `unknown`). They are counts and prices only, never required, and the refusal rules on the rest of the record are untouched. On the CLI, `claude -p --output-format json` prints `total_cost_usd` and the token counts on exit; the launcher in `run/` writes that JSON to `run/<id>.last.json`. A flag that attaches those numbers to the record the routine just wrote is not built yet, and until it is the fields get filled by the routine's own last step where a harness exposes them, or stay absent.
