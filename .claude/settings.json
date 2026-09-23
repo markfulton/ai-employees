@@ -1,0 +1,35 @@
+{
+  "enabledPlugins": {
+    "ecc@ecc": true
+  },
+  "permissions": {
+    "deny": [
+      "Bash(npm publish:*)",
+      "Bash(npm unpublish:*)",
+      "Bash(gh release create:*)",
+      "Bash(gh release delete:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(chmod 777:*)",
+      "Bash(ssh:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/repo-guard.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
