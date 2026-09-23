@@ -23,7 +23,7 @@ function walk(dir) {
   });
 }
 function aboveCorrections(text) {
-  const cut = text.indexOf("\n## Corrections");
+  const cut = text.lastIndexOf("\n## Corrections");
   return cut >= 0 ? text.slice(0, cut) : text;
 }
 
@@ -87,6 +87,20 @@ const evals = [
       const plugin = JSON.parse(read(path.join(ROOT, ".claude-plugin", "plugin.json"))).version;
       const market = JSON.parse(read(path.join(ROOT, ".claude-plugin", "marketplace.json"))).plugins.map((p) => p.version);
       return [plugin, ...market].every((v) => v === pkg) ? [] : ["package.json " + pkg + ", plugin.json " + plugin + ", marketplace.json " + market.join("/")];
+    },
+  },
+  {
+    id: "kit-version-sync",
+    rule: "A kit's VERSION and the version in its employee.json are bumped together.",
+    run() {
+      const problems = [];
+      for (const kit of kits) {
+        const dir = path.join(EMPLOYEES, kit);
+        const v = read(path.join(dir, "VERSION")).trim();
+        const json = JSON.parse(read(path.join(dir, "employee.json"))).version;
+        if (json !== v) problems.push(kit + ": VERSION " + v + ", employee.json " + json);
+      }
+      return problems;
     },
   },
   {

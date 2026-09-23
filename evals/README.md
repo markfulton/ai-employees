@@ -14,13 +14,14 @@ node evals/run.mjs --json   # machine report
 | `routine-wiring` | A routine needs a `SCHEDULE.md` row, a `run/<id>.cmd.example` and a `routines/<id>/SKILL.md` with one id | code |
 | `guard-identical` | Shared standard code stays the same across the kits: `guard.mjs` is byte identical | code |
 | `version-sync` | `package.json`, `plugin.json` and `marketplace.json` versions move together | code |
+| `kit-version-sync` | A kit's `VERSION` and its `employee.json` version move together | code |
 | `examples-fictional` | Every email under `employees/*/examples/` uses a reserved example or test domain | code |
 | `retired-name` | "Agent Employees" appears nowhere outside changelog history | code |
 | `no-new-clock-times` | A routine `SKILL.md` holds no clock time; times live in `SCHEDULE.md` | code, against a baseline |
 
 ## The clock time baseline
 
-`baseline/clock-times.json` records every clock time already present in a routine above its `## Corrections` heading, counted per file. ISO timestamps and zone offsets inside example JSON are not counted. The eval fails only when a file goes above its recorded count.
+`baseline/clock-times.json` records every clock time already present in a routine above its last `## Corrections` heading, the member's own section at the foot, counted per file. ISO timestamps and zone offsets inside example JSON are not counted. The eval fails only when a file goes above its recorded count.
 
 Each recorded count is a candidate defect, not an approved exception. After fixing a routine, lower its count with `node evals/run.mjs --write-baseline` and commit the smaller baseline in the same commit. Never raise a count to make the eval pass.
 
