@@ -396,7 +396,7 @@ One file per destination platform, `queue/YYYY-MM-DD-<platform>.md`, dated **tod
 ## P-01
 - id: S-042
 - destination: «destination name»
-- goes out: 2026-03-06 09:15
+- goes out: 2026-03-06 «HH:MM»
 - framework: build-log
 - pillar: p-2
 - material: «the quote», «source name», «occurred date»

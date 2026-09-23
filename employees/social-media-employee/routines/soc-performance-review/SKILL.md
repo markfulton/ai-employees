@@ -552,7 +552,7 @@ The rules that keep this honest:
 ```json
 {"proposed_by": "soc-performance-review", "proposed_on": "2026-03-06",
  "reason": "do more of: build-log on «platform», highest per post engagement across 4 windows",
- "slot": {"date": "2026-03-09", "time": "09:15",
+ "slot": {"date": "2026-03-09", "time": "«HH:MM»",
    "platform": "«platform-id»", "destination": "«destination name»",
    "pillar": "p-2", "framework": "build-log",
    "note": "filed by the Friday review, evidence scorecard/scorecard-2026-W10.md"}}

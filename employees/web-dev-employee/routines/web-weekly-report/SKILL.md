@@ -170,7 +170,7 @@ Read your own state file and hold it in memory for the whole run.
 
 **Every number in this report is counted inside one window, and the window is stated at the top of the report.** A figure counted over one range and compared against a figure counted over another is worse than no figure at all, because it looks comparable.
 
-The window is the ISO week this run is keyed to: from the Monday of that week at 00:00 local to the moment this run started. **Not the last seven days.** A rolling seven day window makes every week overlap the last one and makes the week over week column meaningless.
+The window is the ISO week this run is keyed to: from the start of the Monday of that week, local time, to the moment this run started. **Not the last seven days.** A rolling seven day window makes every week overlap the last one and makes the week over week column meaningless.
 
 State it once, at the top of the report, as two ISO timestamps. Every fold below filters on it, and a ledger line outside it is not counted, however recent.
 

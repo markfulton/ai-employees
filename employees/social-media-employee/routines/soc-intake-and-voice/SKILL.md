@@ -479,7 +479,7 @@ You add slots by appending to `calendar/inbox.jsonl`, one JSON object per line. 
 ```json
 {"proposed_by": "soc-intake-and-voice", "proposed_on": "2026-03-02",
  "reason": "first run: opening two weeks seeded from plan/pillars.md and plan/channels.md",
- "slot": {"date": "2026-03-04", "time": "09:15",
+ "slot": {"date": "2026-03-04", "time": "«HH:MM»",
    "platform": "«platform-id»", "destination": "«destination name»",
    "pillar": "p-1", "framework": null,
    "note": "seeded at intake"}}

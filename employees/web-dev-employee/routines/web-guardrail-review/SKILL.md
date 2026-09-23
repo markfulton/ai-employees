@@ -199,7 +199,7 @@ Read your own state file and hold it in memory for the whole run.
 
 ## Step 2. Fix the evidence window, and decide whether the month is thin
 
-**The window is the calendar month this run is keyed to**, from the first local day at 00:00 to the moment this run started. Not the last thirty days. A rolling window overlaps the previous month and makes a consecutive streak count the same merge twice.
+**The window is the calendar month this run is keyed to**, from the start of the first local day to the moment this run started. Not the last thirty days. A rolling window overlaps the previous month and makes a consecutive streak count the same merge twice.
 
 State the window once and every fold filters on it.
 

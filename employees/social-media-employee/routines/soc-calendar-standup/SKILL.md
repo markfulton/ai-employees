@@ -376,7 +376,7 @@ Set `generated_on` to today.
 A slot's shape:
 
 ```json
-{"id":"S-042","date":"2026-03-06","time":"09:15",
+{"id":"S-042","date":"2026-03-06","time":"«HH:MM»",
  "platform":"«platform-id»","destination":"«destination name from plan/channels.md»",
  "pillar":"p-2","framework":"build-log","status":"drafted","held":false,
  "draft_path":"queue/2026-03-05-«platform».md","draft_entry":"P-03",
@@ -400,9 +400,9 @@ The lines starting with a dash are rewritten each morning.
 
 ## Friday 2026-03-06
 
-- [ ] S-042 | 09:15 | «platform name» | «destination» | build-log | queue/2026-03-05-«platform».md#P-03
+- [ ] S-042 | «HH:MM» | «platform name» | «destination» | build-log | queue/2026-03-05-«platform».md#P-03
   make sure the screenshot is the new one
-- [x] S-039 | 07:30 | «platform name» | «destination» | published | https://«permalink»
+- [x] S-039 | «HH:MM» | «platform name» | «destination» | published | https://«permalink»
 
 ## Notes
 
@@ -491,8 +491,8 @@ The pointer line at the foot is fixed text, written verbatim on every brief, one
 The first lines under `## Today` are the due slots, and they read like this:
 
 ```
-Publishing today: 09:15 «platform name» to «destination», S-042, queue/2026-03-05-«platform».md#P-03
-Publishing today: 16:40 «platform name» to «destination», S-044, queue/2026-03-05-«platform».md#P-04
+Publishing today: «HH:MM» «platform name» to «destination», S-042, queue/2026-03-05-«platform».md#P-03
+Publishing today: «HH:MM» «platform name» to «destination», S-044, queue/2026-03-05-«platform».md#P-04
 To stop one, tick "hold this one" in that queue entry before the publish run fires this morning.
 ```
 

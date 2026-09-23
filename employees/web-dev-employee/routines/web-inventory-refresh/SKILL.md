@@ -338,7 +338,7 @@ one line per project: «project» | «n» page loads per sweep run
 consecutive_clean_merges_to_widen: 3
 
 ## Working days and hours
-mon-fri 09:00 to 18:00
+«WORKING DAYS» «WORKING HOURS»
 
 ## Member set
 Anything you write under this heading is yours and is carried across every
@@ -346,6 +346,8 @@ rebuild of this file, word for word.
 ```
 
 **On a first run there is no `health/checks.jsonl` to set a performance budget from**, so every budget row reads `«metric» | not yet measured | set from the first four weeks of checks | «date»`, and the first monthly pass fills it. **Never invent a performance number**, and never copy one from a general recommendation: a budget the member's site has never met is a budget every report fails against for no reason.
+
+**`## Working days and hours` is never a clock time you choose.** Write the days and hours the member named, where they named them. Otherwise write the default in `INSTALL-PROMPT.md` Phase 4 step 5, which is the one place that default lives, in the timezone recorded at setup. Never leave `«WORKING DAYS»` or `«WORKING HOURS»` in the written file.
 
 ### `policy/safe-fix-rules.md`
 

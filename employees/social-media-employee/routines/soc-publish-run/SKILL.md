@@ -302,7 +302,7 @@ Two capabilities, and the choice is made per slot from that slot's own posting t
 ```json
 {"post_id":"«platform»:S-044","slot_id":"S-044","platform":"«platform-id»",
  "destination":"«destination name»","status":"deferred-no-scheduler",
- "slot_time":"16:40","observed_on":"YYYY-MM-DD",
+ "slot_time":"«HH:MM»","observed_on":"YYYY-MM-DD",
  "reason":"channel.schedule has no route on this machine and the slot time has not arrived",
  "by":"soc-publish-run"}
 ```
@@ -473,7 +473,7 @@ node "«SOC_ROOT»/scripts/runlog.mjs" --file <path to a .json file> --once
 {"routine":"soc-publish-run","period":"2026-03-05",
  "start":"«ISO»","end":"«ISO»","status":"ok",
  "outputs":["posts/posts.jsonl (+2 published, +1 deferred-no-scheduler)",
-            "S-042 scheduled for 09:15 to «destination»",
+            "S-042 scheduled for «HH:MM» to «destination»",
             "S-039 published, permalink read back and matched"],
  "blockers":["S-043 publish-failed, the destination rejected the post length"],
  "notes":"1 slot held by the member, 3 slots skipped because the destination is not on the publish allow list in plan/channels.md; scheduler route resolved; permalink read back on 1 of 2"}

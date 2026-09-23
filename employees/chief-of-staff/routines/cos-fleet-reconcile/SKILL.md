@@ -249,7 +249,7 @@ Every "since you last ran" filter below uses the two timestamps set here and the
 - First ever run, meaning `last_window_end` is absent: the window starts at local midnight at the beginning of the previous calendar day, so a first run has something to reconcile rather than an empty page.
 - Every run after that: the window starts at the exact `last_window_end` the previous run recorded.
 
-This is the only boundary that neither double counts an hour nor loses one. A fixed "yesterday" does both, because this routine fires in the morning: an Employee that ran late yesterday afternoon and an Employee that ran at 06:45 this morning would fall into different days under a naive rule and into the same window under this one, which is correct, because both of them happened since you last looked.
+This is the only boundary that neither double counts an hour nor loses one. A fixed "yesterday" does both, because this routine fires in the morning: an Employee that ran late yesterday afternoon and an Employee that ran early this morning would fall into different days under a naive rule and into the same window under this one, which is correct, because both of them happened since you last looked.
 
 It also survives a skipped day. If the machine was off on Tuesday, Wednesday's window covers both days, once, and nothing is lost.
 
@@ -263,10 +263,10 @@ Say your window runs from Wednesday morning to Thursday morning, and you are loo
 
 | The routine's own row | Eligible periods in this window | What silence means |
 |---|---|---|
-| `mon-fri`, window 06:30 to 09:45 | One: Thursday. Wednesday's window closed before your window opened, and its record was folded yesterday | Silent on Thursday is one missed eligible period |
-| `mon-fri`, window 15:00 to 19:00 | One: Wednesday. Thursday afternoon has not happened yet | Silent on Wednesday is one missed eligible period |
-| `fri`, window 15:45 to 19:00 | None | Silence is correct. State `running`. Report nothing |
-| `first-weekday`, window 12:45 to 17:00 | One, only if a first weekday of the month fell inside the window | Silence outside that span is correct |
+| `mon-fri`, a morning window that closes before this routine fires | One: Thursday. Wednesday's window closed before your window opened, and its record was folded yesterday | Silent on Thursday is one missed eligible period |
+| `mon-fri`, an afternoon window | One: Wednesday. Thursday afternoon has not happened yet | Silent on Wednesday is one missed eligible period |
+| `fri`, an afternoon window | None | Silence is correct. State `running`. Report nothing |
+| `first-weekday`, a midday window | One, only if a first weekday of the month fell inside the window | Silence outside that span is correct |
 
 Two rules fall out of that table and both matter.
 
