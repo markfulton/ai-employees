@@ -460,8 +460,8 @@ Two more rules on the test:
 - first_seen: 2026-03-02
 - last_confirmed: 2026-03-02
 - routines:
-  - «routine-id» | days: mon-fri | window: 06:30 to 09:45 | key: YYYY-MM-DD | lane: heavy
-  - «routine-id» | days: fri | window: 15:45 to 19:00 | key: YYYY-Www | lane: read only
+  - «routine-id» | days: mon-fri | window: «window_start» to «window_end» | key: YYYY-MM-DD | lane: heavy
+  - «routine-id» | days: fri | window: «window_start» to «window_end» | key: YYYY-Www | lane: read only
 ```
 
 Six things about that block, each of which prevents a specific wrong brief:

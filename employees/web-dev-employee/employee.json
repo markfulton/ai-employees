@@ -3,7 +3,7 @@
   "slug": "web-dev-employee",
   "name": "Web Dev Employee",
   "role": "Engineering and maintenance",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "standard": "1.4",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",

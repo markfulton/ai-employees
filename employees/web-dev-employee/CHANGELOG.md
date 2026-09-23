@@ -2,6 +2,13 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.8.1, 2026-09-24
+
+No routine carries a clock time any more; the working hours default lives only in `INSTALL-PROMPT.md`.
+
+- `routines/web-inventory-refresh/SKILL.md`, the starting `policy/budgets.md`: `## Working days and hours` is written from the member's own days and hours, or from the default in `INSTALL-PROMPT.md` Phase 4 step 5, instead of a second copy of that default. A new line forbids leaving the placeholders in the written file.
+- `routines/web-guardrail-review/SKILL.md` and `routines/web-weekly-report/SKILL.md`: the reporting window starts at the start of its first local day, with the same meaning and no clock time.
+
 ## 1.8.0, 2026-09-23
 
 The Employee runs on a hosted agent, and its brief reaches you wherever it runs.

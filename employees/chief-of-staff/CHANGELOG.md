@@ -2,6 +2,13 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.8.1, 2026-09-24
+
+No routine carries a clock time any more; every window comes from the schedule row it names.
+
+- `routines/cos-charter-and-fleet-audit/SKILL.md`, the fleet map example: the two routine rows show `window: «window_start» to «window_end»` instead of sample clock times, since those values are copied from each Employee's own schedule row.
+- `routines/cos-fleet-reconcile/SKILL.md`, the eligibility worked example: the four rows name a morning, afternoon or midday window instead of clock times, and the boundary paragraph says an Employee ran early this morning. The reasoning in every row is unchanged.
+
 ## 1.8.0, 2026-09-23
 
 The Employee runs on a hosted agent, and its brief reaches you wherever it runs.

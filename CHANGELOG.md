@@ -2,6 +2,10 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## Chief of Staff, Social Media Employee and Web Dev Employee 1.8.1, 2026-09-24
+
+No routine in these three kits carries a clock time any more, as `AGENTS.md` requires: sample times became placeholders or plain words, and the Web Dev working hours default is read from `INSTALL-PROMPT.md` instead of copied. See the [Chief of Staff](employees/chief-of-staff/CHANGELOG.md), [Social Media Employee](employees/social-media-employee/CHANGELOG.md) and [Web Dev Employee](employees/web-dev-employee/CHANGELOG.md) changelogs. The public npm package still ships 1.8.0 until the maintainer bumps the root version and publishes.
+
 ## GTM Engineer Vietnam variant 1.11.0, 2026-09-24
 
 The eight GTM routines received an evidence bounded Vietnam localization pass, then an audit that repaired the order source, the outreach consent check, the brief template and the version check. The fork's bundled installer lists and hires `gtm-engineer-vn`. See the [variant changelog](employees/gtm-engineer-vn/CHANGELOG.md). The public npm installer does not contain this variant.

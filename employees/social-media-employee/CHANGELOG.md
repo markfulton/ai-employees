@@ -2,6 +2,12 @@
 
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
+## 1.8.1, 2026-09-24
+
+No routine carries a clock time any more; slot times come from `calendar/calendar.json`.
+
+- `routines/soc-calendar-standup/SKILL.md`, `routines/soc-draft-queue/SKILL.md`, `routines/soc-publish-run/SKILL.md`, `routines/soc-intake-and-voice/SKILL.md` and `routines/soc-performance-review/SKILL.md`: every example slot time is now `«HH:MM»`, the placeholder `CONTRACT.md` already uses for `default_time`. The last two were missed by earlier checks because a template inside each file carries its own `## Corrections` heading.
+
 ## 1.8.0, 2026-09-23
 
 The Employee runs on a hosted agent, and its brief reaches you wherever it runs.

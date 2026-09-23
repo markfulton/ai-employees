@@ -1,13 +1,4 @@
 {
   "note": "Clock times found in routine SKILL.md files above their Corrections heading. Each is a candidate defect under AGENTS.md. Lower a count after fixing, never raise it.",
-  "counts": {
-    "employees/chief-of-staff/routines/cos-charter-and-fleet-audit/SKILL.md": 4,
-    "employees/chief-of-staff/routines/cos-fleet-reconcile/SKILL.md": 9,
-    "employees/social-media-employee/routines/soc-calendar-standup/SKILL.md": 5,
-    "employees/social-media-employee/routines/soc-draft-queue/SKILL.md": 1,
-    "employees/social-media-employee/routines/soc-publish-run/SKILL.md": 2,
-    "employees/web-dev-employee/routines/web-guardrail-review/SKILL.md": 1,
-    "employees/web-dev-employee/routines/web-inventory-refresh/SKILL.md": 2,
-    "employees/web-dev-employee/routines/web-weekly-report/SKILL.md": 1
-  }
+  "counts": {}
 }
