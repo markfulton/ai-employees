@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Fails on any em dash (U+2014) or en dash (U+2013) in shipped text.
 // Covers README.md, the root documents, docs/, skills/, installer/, and every file under
-// employees/. In a Markdown file that carries a "## Corrections" heading, only the text above
-// that heading is checked, because the section below it belongs to whoever installed the kit.
+// employees/. In a Markdown file that carries a "## Corrections" heading, only the text above the last
+// such heading is checked, because the section below it belongs to whoever installed the kit.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -19,7 +19,7 @@ const hits = [];
 function scan(file) {
   let text = fs.readFileSync(file, "utf8");
   if (file.endsWith(".md")) {
-    const cut = text.indexOf("\n## Corrections");
+    const cut = text.lastIndexOf("\n## Corrections");
     if (cut >= 0) text = text.slice(0, cut);
   }
   const lines = text.split("\n");
