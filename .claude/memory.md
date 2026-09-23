@@ -12,7 +12,6 @@ Durable notes for an agent working on this repository. `AGENTS.md` holds the rul
 
 - ECC is the only extra plugin enabled for this project, through `.claude/settings.json`. The repo itself is the `ai-employees` plugin.
 - `.claude/settings.local.json` is personal and ignored by git. Do not copy its permission list into a shared file.
-- `docs/ECC-CLAUDE-LOCALIZATION.md` and `docs/ECC-COMMANDS.md` explain how ECC is used to localize kits.
 - Harness audit: `node ~/.claude/plugins/cache/ecc/ecc/<version>/scripts/harness-audit.js repo --root .`
 
 ## Release state
