@@ -19,7 +19,8 @@ A kit is large on purpose: a shipped kit is roughly 1.1 MB of instructions, with
 | `employees/<slug>/scripts/` | `guard.mjs`, `runlog.mjs`, `copy-check.mjs`, and a kit's own extras such as the Ad Manager's `review.mjs`. Each carries its own self test |
 | `employees/<slug>/examples/` | Fictional example output. Never real customer or member data |
 | `installer/cli.mjs` | `npx ai-employees hire <slug>`. No dependencies, Node 18 or newer |
-| `skills/hire/` | The same install flow as a Claude Code skill |
+| `skills/hire/` | The same install flow as a Claude Code skill. Inside the plugin it runs the bundled `installer/cli.mjs` |
+| `.claude-plugin/` | `plugin.json` and `marketplace.json`: the repo root is the Claude Code plugin `ai-employees` and its own marketplace. Both must pass `claude plugin validate . --strict`, and both `version` fields move with `package.json` |
 | `docs/` | Reader documentation: install, prerequisites, harnesses, cost, FAQ |
 | `.github/scripts/` | `no-dashes.mjs` and `selftests.mjs`, both wired to CI |
 

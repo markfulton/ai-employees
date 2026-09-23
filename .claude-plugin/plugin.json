@@ -1,0 +1,25 @@
+{
+  "name": "ai-employees",
+  "displayName": "AI Employees",
+  "version": "1.8.0",
+  "description": "Hire any of eight open source AI Employees into a local folder: GTM Engineer, SEO/AEO, Web Dev, Social Media, Ad Manager, Sales, Customer Satisfaction and Chief of Staff. Each one is a folder of scheduled routines that covers a whole business role, drafts and stages the work, leaves the last click to you, and improves from your corrections. The hire skill copies the kit, runs its self tests and hands over the install prompt. MIT licensed, 60 routines, nothing sent without you.",
+  "author": {
+    "name": "Mark Fulton",
+    "url": "https://github.com/markfulton"
+  },
+  "homepage": "https://club.reinventing.ai/plugin",
+  "repository": "https://github.com/markfulton/ai-employees",
+  "license": "MIT",
+  "keywords": [
+    "ai-employees",
+    "scheduled-tasks",
+    "routines",
+    "automation",
+    "small-business",
+    "marketing",
+    "seo",
+    "sales",
+    "customer-support",
+    "devops"
+  ]
+}

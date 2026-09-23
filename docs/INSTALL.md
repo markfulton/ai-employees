@@ -32,7 +32,9 @@ git clone https://github.com/markfulton/ai-employees.git
 
 Then copy `employees/gtm-engineer` to a folder outside cloud sync. Do not run an employee from inside the clone if the clone sits in a synced folder.
 
-**Path C, inside Claude Code, or any harness that reads its skill format:** copy `skills/hire` into `~/.claude/skills/` (or your harness's skills folder) and say "hire the GTM Engineer into D:\AgentOps". It does the same as Path A.
+**Path C, the Claude Code plugin:** in any Claude Code session, run `/plugin marketplace add markfulton/ai-employees`, then `/plugin install ai-employees@ai-employees`, then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer" or run `/ai-employees:hire`. The plugin carries all eight kits and the installer, so the skill runs Path A from the bundled files with no download. To take a newer release later, run `/plugin marketplace update ai-employees`.
+
+**Path D, any harness that reads the skill format:** copy `skills/hire` into `~/.claude/skills/` (or your harness's skills folder) and say "hire the GTM Engineer into D:\AgentOps". Outside the plugin it uses the installer through `npx`, which is Path A.
 
 ## Step 2. Check the machine
 

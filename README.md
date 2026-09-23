@@ -72,6 +72,17 @@ Sixty routines. Every kit, with its full schedule and a sample of its output, is
 
 You need an AI agent you are logged in to (Claude Code is what I use) and a browser signed in to the accounts it should read. [Prerequisites](docs/PREREQUISITES.md). [Full install guide](docs/INSTALL.md).
 
+### On Claude Code, as a plugin
+
+This repository is also a Claude Code plugin with one skill, `hire`, and all eight kits bundled. In any Claude Code session:
+
+```
+/plugin marketplace add markfulton/ai-employees
+/plugin install ai-employees@ai-employees
+```
+
+Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-employees:hire`. The skill checks the folder is outside cloud sync, copies the kit from the plugin with no download, runs the self tests, and tells you the one line to say in a fresh session in that folder. It registers nothing and sends nothing. [The plugin page](https://club.reinventing.ai/plugin?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=plugin) has the same steps with a walkthrough.
+
 **Not on Claude Code?** The same two steps work on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. [docs/HARNESSES.md](docs/HARNESSES.md) has the command for each.
 
 <table>

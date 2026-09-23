@@ -2,6 +2,11 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## Unreleased
+
+- **A Claude Code plugin.** The repository root is now the plugin `ai-employees` and its own marketplace (`.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`). `/plugin marketplace add markfulton/ai-employees`, then `/plugin install ai-employees@ai-employees`, and `/ai-employees:hire` is available in every session. The plugin carries all eight kits and the installer, so a hire needs no download.
+- **The `hire` skill, rewritten.** It now runs the bundled installer instead of copying by hand, so a skill hire writes `.installed.json` like an `npx` hire and a later upgrade can tell the member's edits from ours. It adds which employee to hire first, what to check the next weekday, the guardrails, and how a hired employee is directed, corrected, rescheduled and upgraded.
+
 ## 1.8.0, 2026-09-23
 
 The Employees run on a hosted agent, and the brief reaches you wherever they run.

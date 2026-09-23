@@ -1,0 +1,25 @@
+{
+  "name": "ai-employees",
+  "owner": {
+    "name": "Mark Fulton",
+    "url": "https://github.com/markfulton"
+  },
+  "metadata": {
+    "description": "The AI Employees plugin: eight open source business roles, hired into your own folder and run on a schedule."
+  },
+  "plugins": [
+    {
+      "name": "ai-employees",
+      "source": "./",
+      "description": "Hire any of eight open source AI Employees into a local folder. Each one is a folder of scheduled routines that covers a whole business role and improves from your corrections.",
+      "version": "1.8.0",
+      "author": {
+        "name": "Mark Fulton"
+      },
+      "homepage": "https://club.reinventing.ai/plugin",
+      "repository": "https://github.com/markfulton/ai-employees",
+      "license": "MIT",
+      "category": "productivity"
+    }
+  ]
+}
