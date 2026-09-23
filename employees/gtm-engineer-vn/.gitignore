@@ -1,0 +1,20 @@
+# Everything this Employee writes while it works stays on your machine.
+# A fork or a push of a working folder must never publish your leads, drafts, ledgers or strategy.
+/archive/
+/board/
+/briefs/
+/crm/
+/dashboard/
+/queue/
+/scoreboard/
+/state/
+/strategy/
+/run/*
+!/run/*.cmd.example
+/runlog.jsonl
+/PAUSED
+/brief-latest.md
+/*-latest.md
+/schedule-commands.txt
+/recipes/*.json
+node_modules/

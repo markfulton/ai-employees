@@ -28,6 +28,7 @@ const VERSION = readVersion();
 
 const EMPLOYEES = {
   "gtm-engineer": { name: "GTM Engineer", role: "Go to market and launch", aliases: ["gtm", "go-to-market", "launch", "growth"] },
+  "gtm-engineer-vn": { name: "GTM Engineer VN", role: "Go to market and launch in Vietnam", aliases: ["gtm-vn", "growth-vn"] },
   "seo-employee": { name: "SEO/AEO Employee", role: "Search and answer visibility", aliases: ["seo", "aeo", "geo", "search", "content"] },
   "web-dev-employee": { name: "Web Dev Employee", role: "Engineering and maintenance", aliases: ["web-dev", "webdev", "web", "developer", "dev"] },
   "social-media-employee": { name: "Social Media Employee", role: "Audience and distribution", aliases: ["social", "social-media"] },
@@ -52,7 +53,7 @@ function usage() {
     "ai-employees " + VERSION,
     "",
     "  npx ai-employees hire <employee> [--to <folder>]   copy one employee into place and print its install prompt",
-    "  npx ai-employees list                              the eight, one line each",
+    "  npx ai-employees list                              eight roles plus the GTM Vietnam variant",
     "  npx ai-employees upgrade <employee> [--to <folder>] [--apply]   report what a new version would change, then apply it",
     "  npx ai-employees contribute <employee> [--to <folder>] [--since YYYY-MM-DD]  turn your employee's own field repairs into an issue",
     "",
@@ -164,6 +165,7 @@ async function hire(args) {
     copyDir(local, dst);
     out("  copied employees/" + slug + " from the package");
   } else {
+    if (slug === "gtm-engineer-vn") fail("gtm-engineer-vn is available only from a checkout of the Vietnam fork that contains employees/gtm-engineer-vn. Use its bundled installer.", 2);
     await fetchTarball(slug, dst);
   }
 
@@ -198,6 +200,7 @@ async function hire(args) {
 async function resolveFreshKit(slug) {
   const local = path.join(HERE, "..", "employees", slug);
   if (fs.existsSync(path.join(local, "CONTRACT.md"))) return { dir: local, cleanup: null };
+  if (slug === "gtm-engineer-vn") fail("gtm-engineer-vn upgrade needs the bundled kit in the Vietnam fork checkout.", 2);
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ai-employees-up-"));
   const dst = path.join(tmp, slug);
   await fetchTarball(slug, dst);

@@ -20,3 +20,5 @@ jobs:
         run: node .github/scripts/selftests.mjs
       - name: Check SEO/AEO schedule and observation integrity
         run: node .github/scripts/aeo-check.mjs
+      - name: Run the repository rule evals
+        run: node evals/run.mjs
