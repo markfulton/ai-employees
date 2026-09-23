@@ -2,10 +2,6 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
-## GTM Engineer Vietnam variant 1.11.0, 2026-09-24
-
-The eight GTM routines received an evidence bounded Vietnam localization pass, then an audit that repaired the order source, the outreach consent check, the brief template and the version check. The fork's bundled installer lists and hires `gtm-engineer-vn`. See the [variant changelog](employees/gtm-engineer-vn/CHANGELOG.md). The public npm installer does not contain this variant.
-
 ## Unreleased
 
 - **A Claude Code plugin.** The repository root is now the plugin `ai-employees` and its own marketplace (`.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`). `/plugin marketplace add markfulton/ai-employees`, then `/plugin install ai-employees@ai-employees`, and `/ai-employees:hire` is available in every session. The plugin carries all eight kits and the installer, so a hire needs no download.

@@ -22,9 +22,6 @@ Pick one. The GTM Engineer is the one I have run in production the longest, so i
 npx ai-employees hire gtm-engineer --to D:\AgentOps\gtm-engineer
 ```
 
-For the Vietnam variant in this fork, run the bundled installer from the clone: `node installer/cli.mjs hire gtm-engineer-vn --to ~/ai-employees/gtm-engineer-vn`. The public npm package does not contain this fork's variant.
-The clone for this variant is `https://github.com/phantanphatdgteam-gif/ai-employees-VN.git`.
-
 It copies that one folder, refuses a path under OneDrive, Dropbox, Google Drive or iCloud, runs the three self tests, and prints the install prompt with your path filled in. On macOS or Linux, `--to ~/ai-employees/gtm-engineer`. Without `--to` it uses `./employees/<slug>` under the current folder.
 
 **Path B, a clone:**

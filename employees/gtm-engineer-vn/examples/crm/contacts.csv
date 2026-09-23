@@ -1,4 +1,0 @@
-contact_id,first,name,company,account_url,email,linkedin_url,segment,campaign,tags,source,added_on
-c-0001,Minh,Nguyễn Văn Minh,Công ty TNHH Kiến trúc Nhà Sáng,https://www.example.org,minh@example.org,,segment-2,noi-that-van-phong,,member-import,2026-09-16
-# --- agent rows below this marker, append only, never edit above it ---
-c-0002,Lan,Trần Thị Lan,Công ty Cổ phần Logistics Sông Xanh,https://www.example.net,,,segment-2,noi-that-van-phong,,careers-example,2026-09-21

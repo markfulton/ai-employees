@@ -16,7 +16,6 @@ If the user is asking a question rather than hiring (which one first, how the sc
 | Slug | Employee | Owns | Routines | Also called |
 |---|---|---|---|---|
 | `gtm-engineer` | GTM Engineer | Positioning, the launch board, outbound drafts, directory and press forms, the weekly scoreboard | 8 | GTM, go to market, launch, growth |
-| `gtm-engineer-vn` | GTM Engineer VN | The GTM role with Vietnam owner copy and evidence rules | 8 | GTM VN, growth VN |
 | `seo-employee` | SEO/AEO Employee | Keyword research, one article a weekday, publishing, indexing, rank review, visibility in AI answers | 8 | SEO, AEO, search, content, blog |
 | `web-dev-employee` | Web Dev Employee | Site health, error triage, small changes on a branch, dependency review | 8 | web dev, developer, site maintenance |
 | `social-media-employee` | Social Media Employee | Posts drafted in the user's voice per platform, a veto window, replies drafted | 7 | social, social media, posting |
@@ -55,8 +54,8 @@ Use the first route that works:
    ```
 
    It copies the kit from the bundled files with no network, refuses a synced or non empty folder, writes `.installed.json` (the record that lets a later upgrade tell the user's edits from ours), runs the three self tests, checks the login, and prints the install prompt with the path filled in.
-2. **The published installer.** `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm. For `gtm-engineer-vn`, use the installer bundled in this fork until a package that includes the variant has been published.
-3. **Only if neither can run:** download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip`, extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them. This fallback does not contain `gtm-engineer-vn`; use the Vietnam fork checkout for that variant.
+2. **The published installer.** `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm.
+3. **Only if neither can run:** download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip`, extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them.
 
 Never rename anything inside the kit. A routine's folder name, its YAML `name` and the name of its scheduled job are the same string, and a rename breaks the install.
 

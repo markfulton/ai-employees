@@ -55,9 +55,3 @@ employees/*/recipes/*.json
 node_modules/
 .DS_Store
 Thumbs.db
-
-# Secrets and local harness state. A key or a personal permission list never belongs in a repo.
-.env
-.env.*
-!.env.example
-.claude/settings.local.json

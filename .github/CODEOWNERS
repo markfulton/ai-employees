@@ -1,9 +1,0 @@
-# Reviews for this fork route to its owner. Upstream keeps its own ownership.
-* @phantanphatdgteam-gif
-
-# Maintainer only files named in AGENTS.md.
-/LICENSE @phantanphatdgteam-gif
-/TRADEMARKS.md @phantanphatdgteam-gif
-/SECURITY.md @phantanphatdgteam-gif
-/package.json @phantanphatdgteam-gif
-/.claude-plugin/ @phantanphatdgteam-gif
