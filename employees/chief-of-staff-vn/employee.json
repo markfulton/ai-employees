@@ -1,0 +1,226 @@
+{
+  "schema": "ai-employee/1",
+  "slug": "chief-of-staff-vn",
+  "name": "Chief of Staff (Vietnam)",
+  "role": "Oversight and strategy",
+  "version": "1.9.0",
+  "standard": "1.4",
+  "repository": "https://github.com/markfulton/ai-employees",
+  "license": "MIT",
+  "requires": {
+    "node": ">=18",
+    "harness": [
+      "claude-code",
+      "openclaw",
+      "hermes",
+      "opencode",
+      "grok-bot",
+      "codex",
+      "antigravity",
+      "pi",
+      "cline",
+      "qwen-code",
+      "deepseek"
+    ]
+  },
+  "connections": [
+    {
+      "capability": "mail.read",
+      "providers": [
+        "gmail",
+        "google-calendar",
+        "google-drive",
+        "microsoft-365"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "board.read",
+      "providers": [
+        "notion",
+        "linear-readonly",
+        "asana",
+        "atlassian",
+        "monday",
+        "clickup",
+        "todoist"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "money.read",
+      "providers": [
+        "stripe-restricted-key",
+        "xero",
+        "quickbooks",
+        "mercury",
+        "ramp",
+        "brex",
+        "chargebee"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "analytics.read",
+      "providers": [
+        "posthog",
+        "google-analytics-mcp",
+        "vercel"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "page.diff",
+      "providers": [
+        "firecrawl",
+        "exa",
+        "tavily",
+        "similarweb",
+        "crunchbase"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "chat.read",
+      "providers": [
+        "slack"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
+  "routines": [
+    {
+      "id": "cos-charter-and-fleet-audit",
+      "days": "first-weekday",
+      "fire": "08:55",
+      "window_start": "08:40",
+      "window_end": "17:00",
+      "period_key": "YYYY-MM",
+      "budget": "45 min",
+      "browser": "light"
+    },
+    {
+      "id": "cos-decision-brief",
+      "days": "fri",
+      "fire": "16:00",
+      "window_start": "15:45",
+      "window_end": "19:00",
+      "period_key": "YYYY-Www",
+      "budget": "30 min",
+      "browser": "never"
+    },
+    {
+      "id": "cos-decision-review",
+      "days": "last-weekday",
+      "fire": "13:00",
+      "window_start": "12:45",
+      "window_end": "17:30",
+      "period_key": "YYYY-MM",
+      "budget": "30 min",
+      "browser": "never"
+    },
+    {
+      "id": "cos-fault-dossier",
+      "days": "mon-fri",
+      "fire": "14:30",
+      "window_start": "14:15",
+      "window_end": "18:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "25 min",
+      "browser": "never"
+    },
+    {
+      "id": "cos-fleet-reconcile",
+      "days": "mon-fri",
+      "fire": "07:15",
+      "window_start": "07:00",
+      "window_end": "11:30",
+      "period_key": "YYYY-MM-DD",
+      "budget": "20 min",
+      "browser": "never"
+    },
+    {
+      "id": "cos-market-sweep",
+      "days": "wed",
+      "fire": "10:00",
+      "window_start": "09:45",
+      "window_end": "14:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "cos-metrics-review",
+      "days": "thu",
+      "fire": "10:30",
+      "window_start": "10:15",
+      "window_end": "15:00",
+      "period_key": "YYYY-Www",
+      "budget": "30 min",
+      "browser": "conditional"
+    }
+  ],
+  "files": {
+    "kit": [
+      "AGENTS.md",
+      "CAPABILITIES.md",
+      "CHANGELOG.md",
+      "CONTRACT.md",
+      "INSTALL-PROMPT.md",
+      "README.md",
+      "ROLE.md",
+      "VERSION",
+      ".gitignore",
+      "employee.json",
+      "recipes/BROWSER-RECIPES.md",
+      "routines/**",
+      "run/**",
+      "scripts/**",
+      "examples/**"
+    ],
+    "merge": [
+      "SCHEDULE.md"
+    ],
+    "member": [
+      "RELEASES.md",
+      "state/**",
+      "board/**",
+      "crm/**",
+      "queue/**",
+      "strategy/**",
+      "briefs/**",
+      "scoreboard/**",
+      "dashboard/**",
+      "improvements/**",
+      "archive/**",
+      "paid/**",
+      "fleet/**",
+      "drafts/**",
+      "calendar/**",
+      "run/*.log",
+      "recipes/*.json",
+      "runlog.jsonl",
+      "*-latest.md",
+      ".installed.json",
+      "charter/**",
+      "decisions/**",
+      "dossiers/**",
+      "market/**",
+      "metrics/**",
+      "evidence/**",
+      "PAUSED",
+      "schedule-commands.txt"
+    ]
+  },
+  "notes": {
+    "merge": "SCHEDULE.md carries the shape the kit ships and the days, windows and budgets the member owns. An upgrade reports a changed shape and never rewrites the row values.",
+    "member": "Everything under member is the business the employee has been running: its evidence, its ledgers, its learned browser flows and its own field repairs. An upgrade that overwrites any of it has destroyed work that exists nowhere else.",
+    "recipes": "recipes/BROWSER-RECIPES.md ships with the kit. Every recipes/*.json is learned on the member's own screens by the routine that owns it, so it is member data."
+  }
+}
