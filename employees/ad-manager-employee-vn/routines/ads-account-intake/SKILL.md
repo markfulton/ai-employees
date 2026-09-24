@@ -329,7 +329,7 @@ Look for these four things, in this order, and stop at the phase cap:
 1. The keyword suggestions the member's own seller centre ads screen shows for the exact product name, as the member sees them there. Never a marketplace's public search box.
 2. The newest reviews on the member's own shop, low stars first, which is where the objections are.
 3. Conversations the member exports from their own sales software or inbox, **with names and phone numbers removed before they reach you.** If a pasted conversation still carries a phone number or a name, do not keep it: note that it arrived unredacted and ask for a clean copy.
-4. What competitors' public ads and public industry groups are stressing, as the member saw them, only to know what they lead with. **Never a sentence copied from them into anything of this business.**
+4. What competitors' public ads and public industry groups are stressing, as the member saw them, only to know what they lead with, and never from another shop's page, listing or ad on a platform whose terms `CAPABILITIES.md` records as forbidding monitoring by hand as well: nobody tracks or copies those. **Never a sentence copied from them into anything of this business.**
 
 **Buyers often type without diacritics.** Where they do, keep both spellings side by side under `## Sources read`, for example `giay tang chieu cao` beside `giày tăng chiều cao`, because the unaccented form is what they search. Take no keyword from a tool whose page is not in Vietnamese.
 

@@ -186,3 +186,13 @@ Wording made consistent in the same pass (Vietnamese the member reads; no parsed
 The variant `CHANGELOG.md`, 1.9.0 entry, `CAPABILITIES.md` bullet: one sentence added, "No row permits a browser: your own account on those platforms is read through a connector you authorised or an export you drop into `exports/`." The version stays 1.9.0; nothing has been published.
 
 Totals for this pass: 14 pending rows settled (11 applied, 1 applied and adapted, 1 record only, 1 already applied in the routine by its fixer), one paired deferral applied, one wording unification in two routines.
+
+## Global wiring pass, D23, 24/09/2026
+
+Decision D23 in `localization-reports/VN-DECISIONS.md`: Shopee's terms (section 3.1) forbid manual tracking as well as automated tracking, so another shop's page on Shopee is never tracked, counted or copied, by hand or automatically. The global integrator grepped every Vietnam variant (routines, `CONTRACT.md`, `INSTALL-PROMPT.md`, `README.md`, examples); in this kit one line invited the member to read another shop and paste from it. The member's own Shopee exports and connectors stay allowed. The routine names no platform, because the kit checker fails a vendor name the original routine never carries; A4.2a already says "one marketplace forbids manual monitoring as well", and `CAPABILITIES.md` 4c names it.
+
+| File | Change | Basis |
+|---|---|---|
+| `routines/csat-desk-intake/SKILL.md` A4.4, the surface A4.2a rules out | "The member reads those" now excepts another shop's page or a public listing search on the marketplace that forbids manual monitoring as well: nobody reads or pastes from those for this kit, and the report names them as closed | D23 |
+
+Check after the change: routine checker on `csat-desk-intake`, `PASS (0 fail, 0 warn)`. No version bump: 1.9.0 is unpublished and this is part of the same localization pass.

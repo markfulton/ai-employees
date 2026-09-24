@@ -75,7 +75,7 @@ These apply from now until I remove them. They are not negotiable inside this se
    - Create `fleet/inbox.jsonl`, `fleet/observations.jsonl`, `decisions/decisions.jsonl`, and `improvements/CHANGELOG.md` empty.
    - **Do not create `fleet/fleet.json` and do not create `decisions/REGISTER.md`.** `cos-fleet-reconcile` is the only writer of both and it builds each on its first morning. One writer per rewritten file is what stops a file being corrupted by two routines that both meant well.
    - Create `evidence/sourced.md` with exactly the two headings in `CONTRACT.md` section 2.6 and nothing else. **An empty proof inventory is a correct file.**
-   - Create `market/manual.md`, only where it does not exist yet, holding exactly the header below and no observation line, then never write it again. That file is mine, or the person on duty's: one line per page one of us opened by hand on a platform whose terms forbid automated reading, in the shape `CONTRACT.md` section 10.4 gives, and `cos-market-sweep` only reads it.
+   - Create `market/manual.md`, only where it does not exist yet, holding exactly the header below and no observation line, then never write it again. That file is mine, or the person on duty's: one line per page one of us opened by hand on a platform whose terms forbid automated reading, never a competitor's or any other shop's page on Shopee, whose terms forbid tracking it by hand too, in the shape `CONTRACT.md` section 10.4 gives, and `cos-market-sweep` only reads it.
 
      ```
      # Quan sát tay

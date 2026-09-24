@@ -224,3 +224,15 @@ The fifteen rows marked `pending, after review` above were applied by the final 
 | change list 4 to 7 | `CONTRACT.md` 2.8, 10.2, 10.1 rule 7; `CAPABILITIES.md` 4c `learning-phase` | Exact text. Resolves the change list BLOCK: the reader line in 2.8 and the order check paragraph now name the change list's account level read |
 | change list 8 to 10 | `_shared/parsed-strings.md`, `_shared/glossary.md` | Exact text |
 | change list, outbound | `routines/ads-account-read/SKILL.md`, `How this hands off` | Exact text; the rest of that bullet is unchanged |
+
+## Global wiring pass, D23, 24/09/2026
+
+Decision D23 in `localization-reports/VN-DECISIONS.md`: Shopee's terms (section 3.1) forbid manual tracking as well as automated tracking, so a competitor's or any other shop's page, listing or ad on Shopee is never tracked, counted or copied, by hand or automatically. The global integrator grepped every Vietnam variant (routines, `CONTRACT.md`, `INSTALL-PROMPT.md`, `README.md`, examples) and changed each line in this kit that asked the member to paste what they saw on a competitor's page on a platform that forbids automated reading, without excepting Shopee. The member's own Shopee exports stay allowed. Routine prose names no platform, because the kit checker fails a vendor name the original routine never carries; it points at `CAPABILITIES.md`, whose Shopee rows already read "no automatic or manual monitoring".
+
+| File | Change | Basis |
+|---|---|---|
+| `CONTRACT.md` 10.1 rule 3 | New sentence after "What the member saw there by hand reaches the kit only because the member pasted it": a competitor's or any other shop's page, listing or ad on Shopee is never tracked, counted or copied, by hand or automatically, so nobody pastes from one; the member's own Shopee exports stay allowed | D23 |
+| `INSTALL-PROMPT.md` Phase 1 item 6 | New sentence: never ask the member to paste from a competitor's or any other shop's page, listing or ad on Shopee, because its terms (section 3.1) forbid tracking or copying it by hand as well | D23 |
+| `routines/ads-account-intake/SKILL.md` A4.3, place 4 | The competitor ads the member saw never come from another shop's page, listing or ad on a platform whose terms `CAPABILITIES.md` records as forbidding monitoring by hand as well | D23 |
+
+Check after the change: routine checker on `ads-account-intake`, `PASS WITH WARNINGS (0 fail, 3 warn)`, the same three percent warnings as before the change. No version bump: 1.9.0 is unpublished and this is part of the same localization pass.

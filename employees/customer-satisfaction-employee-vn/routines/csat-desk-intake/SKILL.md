@@ -345,7 +345,7 @@ You will find more surfaces than a support desk can sweep. Reject a candidate on
 - **It is not about this product**, only about the category. The sweep's first check is whether an item is about this product at all, and a channel that fails it wholesale wastes that check every day.
 - **Reading it requires creating an account, setting a password, or accepting terms.** That is Guardrail 2 and it does not bend. Record it in the report as a surface the member can add themselves once they are signed in.
 - **It is a private group the member is not already a member of.**
-- **It is a surface Step A4.2a rules out**: another shop, a public listing search, a customer group on a social platform or a chat app, whether or not the member belongs to it, or anybody's personal chat account. The member reads those. Record each one in the report as a surface they can paste from.
+- **It is a surface Step A4.2a rules out**: another shop, a public listing search, a customer group on a social platform or a chat app, whether or not the member belongs to it, or anybody's personal chat account. The member reads those, except another shop's page or a public listing search on the marketplace that forbids manual monitoring as well (Step A4.2a): nobody reads or pastes from those for this kit, and the report names them as closed. Record each of the others in the report as a surface they can paste from.
 
 What survives becomes a channel row in Step A6.
 

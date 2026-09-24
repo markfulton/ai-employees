@@ -170,3 +170,18 @@ Shared file changes made on the lead's direct tasks, not on a routine's patch re
 | `INSTALL-PROMPT.md` Phase 0 item 7 | Create `market/manual.md` once, only where absent, with a seven line Vietnamese header and no observation line | D22 |
 | `CHANGELOG.md` 1.9.0 | The `market/manual.md` sentence names the install's header | Accuracy |
 | `examples/brief-latest.md` line 4 | `29 routine` to `29 việc định kỳ` | New glossary row for "routine" |
+
+## Global wiring pass, D23, 24/09/2026
+
+Decision D23 in `localization-reports/VN-DECISIONS.md`: Shopee's terms (section 3.1) forbid manual tracking as well as automated tracking, so the hand route of D17 never covers a competitor's or any other shop's page on Shopee. The global integrator grepped every Vietnam variant (routines, `CONTRACT.md`, `INSTALL-PROMPT.md`, `README.md`, examples) for a line that invites a person or a routine to track, monitor, count or copy such a page, and changed each one found in this kit. The member's own Shopee exports stay allowed. This settles the report's row "Shopee and the hand route". Routine prose names no platform, because the kit checker fails a vendor name the original routine never carries; it points at the platform terms table in `CAPABILITIES.md` section 4b, whose Shopee row already reads "no automated or manual tracking".
+
+| File | Change | Basis |
+|---|---|---|
+| `CONTRACT.md` 2.6, `market/manual.md` row | The content cell adds "never a competitor's or any other shop's page on Shopee" | D23 |
+| `CONTRACT.md` 10.1 rule 1 | New sentence: a competitor's or any other shop's page on Shopee is never tracked, counted or copied, by hand or automatically, because Shopee's terms (section 3.1, in the section 4b table) forbid manual tracking as well; the member's own Shopee exports stay allowed | D23 |
+| `CONTRACT.md` 10.4 | The hand route now excepts a competitor's or any other shop's page on Shopee: nobody writes a line for such a page, and the sweep copies none | D23; the report's open row on 10.4 |
+| `INSTALL-PROMPT.md` Phase 0 item 7 | The description of `market/manual.md` excepts a competitor's or any other shop's page on Shopee, matching the last line of the header the install writes | D23 |
+| `routines/cos-market-sweep/SKILL.md` Step 6, fixed lines | For a retired surface that is a competitor's or another shop's page on a platform whose terms table row forbids tracking by hand as well, the line reads `- ngừng theo dõi «surface», điều khoản của nền tảng cấm cả theo dõi bằng tay trang của shop khác; không ai ghi trang này vào market/manual.md` instead of inviting a hand look | D23; the report's open row on the retirement line |
+| `routines/cos-market-sweep/SKILL.md` Step 6, lines a person opened by hand | A `market/manual.md` line whose URL is a page of a shop other than the member's own on such a platform is not copied, and its line number goes in the run record `notes` like any other skipped line | D23 |
+
+Check after the change: routine checker on `cos-market-sweep`, `PASS WITH WARNINGS (0 fail, 1 warn)`, the same shared section warning as before the change. No version bump: 1.9.0 is unpublished and this is part of the same localization pass.
