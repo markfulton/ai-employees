@@ -1,0 +1,11 @@
+:: «SEO_ROOT»\run\seo-standup.cmd
+:: Copy this file to seo-standup.cmd (drop the .example), replace «SEO_ROOT» with your real folder, and check the
+:: path to claude.exe: this is where the native installer puts it (where.exe claude shows yours).
+:: Never point it at the Desktop app's bundled copy; Task Scheduler cannot see that path.
+:: Section 10 of CAPABILITIES.md: a scheduled run must never wait on a prompt. If this routine stalls
+:: or is refused a tool under acceptEdits, change it to bypassPermissions for this one file, knowing
+:: what that grants. The guardrails live in the contract and the routine, not in this flag.
+@echo off
+cd /d "«SEO_ROOT»"
+"%USERPROFILE%\.local\bin\claude.exe" -p "Read «SEO_ROOT»/routines/seo-standup/SKILL.md and follow it." --permission-mode acceptEdits --output-format json < nul > "«SEO_ROOT»\run\seo-standup.last.json"
+if errorlevel 1 node "«SEO_ROOT»\scripts\runlog.mjs" --failed-run seo-standup --exit-code %errorlevel%
