@@ -1,0 +1,4 @@
+contact_id,first,name,company,account_url,role,email,linkedin_url,segment,campaign,tags,source,added_on
+c-0151,Minh,Nguyễn Văn Minh,Công ty TNHH Cơ khí Mẫu Nam,https://comaunam.example.com,Giám đốc,minh@comaunam.example.com,,xuong-gia-cong,xuong-gia-cong,consent-email-2026-09-18,member-import,2026-09-18
+# --- agent rows below this marker, append only, never edit above it ---
+c-0151,Minh,Nguyễn Văn Minh,Công ty TNHH Cơ khí Mẫu Nam,https://comaunam.example.com,Giám đốc,minh@comaunam.example.com,,xuong-gia-cong,xuong-gia-cong,,company-site,2026-09-17
