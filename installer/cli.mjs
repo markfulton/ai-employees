@@ -30,12 +30,19 @@ const EMPLOYEES = {
   "gtm-engineer": { name: "GTM Engineer", role: "Go to market and launch", aliases: ["gtm", "go-to-market", "launch", "growth"] },
   "gtm-engineer-vn": { name: "GTM Engineer VN", role: "Go to market and launch in Vietnam", aliases: ["gtm-vn", "growth-vn"] },
   "seo-employee": { name: "SEO/AEO Employee", role: "Search and answer visibility", aliases: ["seo", "aeo", "geo", "search", "content"] },
+  "seo-employee-vn": { name: "SEO/AEO Employee VN", role: "Search and answer visibility in Vietnam", aliases: ["seo-vn", "aeo-vn"] },
   "web-dev-employee": { name: "Web Dev Employee", role: "Engineering and maintenance", aliases: ["web-dev", "webdev", "web", "developer", "dev"] },
+  "web-dev-employee-vn": { name: "Web Dev Employee VN", role: "Engineering and maintenance in Vietnam", aliases: ["web-dev-vn", "dev-vn"] },
   "social-media-employee": { name: "Social Media Employee", role: "Audience and distribution", aliases: ["social", "social-media"] },
+  "social-media-employee-vn": { name: "Social Media Employee VN", role: "Audience and distribution in Vietnam", aliases: ["social-vn", "social-media-vn"] },
   "ad-manager-employee": { name: "Ad Manager Employee", role: "Paid acquisition", aliases: ["ads", "ad-manager", "paid"] },
+  "ad-manager-employee-vn": { name: "Ad Manager Employee VN", role: "Paid acquisition in Vietnam", aliases: ["ads-vn", "paid-vn"] },
   "sales-employee": { name: "Sales Employee", role: "Pipeline and outreach", aliases: ["sales", "sdr"] },
+  "sales-employee-vn": { name: "Sales Employee VN", role: "Pipeline and outreach in Vietnam", aliases: ["sales-vn", "sdr-vn"] },
   "customer-satisfaction-employee": { name: "Customer Satisfaction Employee", role: "Support and retention", aliases: ["csat", "support", "customer-satisfaction", "customer"] },
+  "customer-satisfaction-employee-vn": { name: "Customer Satisfaction Employee VN", role: "Support and retention in Vietnam", aliases: ["csat-vn", "support-vn"] },
   "chief-of-staff": { name: "Chief of Staff", role: "Oversight and strategy", aliases: ["cos", "chief", "chief-of-staff"] },
+  "chief-of-staff-vn": { name: "Chief of Staff VN", role: "Oversight and strategy in Vietnam", aliases: ["cos-vn", "chief-vn"] },
 };
 
 const SYNC_MARKERS = ["onedrive", "dropbox", "icloud", "google drive", "googledrive", "mobile documents"];
@@ -53,7 +60,7 @@ function usage() {
     "ai-employees " + VERSION,
     "",
     "  npx ai-employees hire <employee> [--to <folder>]   copy one employee into place and print its install prompt",
-    "  npx ai-employees list                              eight roles plus the GTM Vietnam variant",
+    "  npx ai-employees list                              eight roles plus a Vietnam variant of each",
     "  npx ai-employees upgrade <employee> [--to <folder>] [--apply]   report what a new version would change, then apply it",
     "  npx ai-employees contribute <employee> [--to <folder>] [--since YYYY-MM-DD]  turn your employee's own field repairs into an issue",
     "",
@@ -63,7 +70,7 @@ function usage() {
 }
 
 function list() {
-  for (const [slug, e] of Object.entries(EMPLOYEES)) out("  " + slug.padEnd(32) + e.name.padEnd(32) + e.role);
+  for (const [slug, e] of Object.entries(EMPLOYEES)) out("  " + slug.padEnd(36) + e.name.padEnd(36) + e.role);
 }
 
 function resolveSlug(word) {
@@ -165,7 +172,7 @@ async function hire(args) {
     copyDir(local, dst);
     out("  copied employees/" + slug + " from the package");
   } else {
-    if (slug === "gtm-engineer-vn") fail("gtm-engineer-vn is available only from a checkout of the Vietnam fork that contains employees/gtm-engineer-vn. Use its bundled installer.", 2);
+    if (slug.endsWith("-vn")) fail(slug + " is available only from a checkout of the Vietnam fork that contains employees/" + slug + ". Use its bundled installer.", 2);
     await fetchTarball(slug, dst);
   }
 
@@ -200,7 +207,7 @@ async function hire(args) {
 async function resolveFreshKit(slug) {
   const local = path.join(HERE, "..", "employees", slug);
   if (fs.existsSync(path.join(local, "CONTRACT.md"))) return { dir: local, cleanup: null };
-  if (slug === "gtm-engineer-vn") fail("gtm-engineer-vn upgrade needs the bundled kit in the Vietnam fork checkout.", 2);
+  if (slug.endsWith("-vn")) fail(slug + " upgrade needs the bundled kit in the Vietnam fork checkout.", 2);
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ai-employees-up-"));
   const dst = path.join(tmp, slug);
   await fetchTarball(slug, dst);

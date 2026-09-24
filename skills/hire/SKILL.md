@@ -18,12 +18,19 @@ If the user is asking a question rather than hiring (which one first, how the sc
 | `gtm-engineer` | GTM Engineer | Positioning, the launch board, outbound drafts, directory and press forms, the weekly scoreboard | 8 | GTM, go to market, launch, growth |
 | `gtm-engineer-vn` | GTM Engineer VN | The GTM role with Vietnam owner copy and evidence rules | 8 | GTM VN, growth VN |
 | `seo-employee` | SEO/AEO Employee | Keyword research, one article a weekday, publishing, indexing, rank review, visibility in AI answers | 8 | SEO, AEO, search, content, blog |
+| `seo-employee-vn` | SEO/AEO Employee VN | The SEO/AEO role for buyers in Vietnam. A person pastes result pages and AI answers | 8 | SEO VN, AEO VN |
 | `web-dev-employee` | Web Dev Employee | Site health, error triage, small changes on a branch, dependency review | 8 | web dev, developer, site maintenance |
+| `web-dev-employee-vn` | Web Dev Employee VN | The Web Dev role with Vietnam owner copy, sale day freezes and `.vn` name checks | 8 | web dev VN, dev VN |
 | `social-media-employee` | Social Media Employee | Posts drafted in the user's voice per platform, a veto window, replies drafted | 7 | social, social media, posting |
+| `social-media-employee-vn` | Social Media Employee VN | The Social Media role with Vietnamese posts and each platform's terms checked | 7 | social VN, social media VN |
 | `ad-manager-employee` | Ad Manager Employee | Account reads, creative sets, build sheets, the weekly change list. Money moves only on approval | 7 | ads, paid, campaigns |
+| `ad-manager-employee-vn` | Ad Manager Employee VN | The Ad Manager role for Vietnam. It advises and never spends | 7 | ads VN, paid VN |
 | `sales-employee` | Sales Employee | Prospect sweeps, first touches into the user's own drafts, follow ups | 7 | sales, SDR, prospecting, outreach |
+| `sales-employee-vn` | Sales Employee VN | The Sales role for Vietnam. A first touch only where a consent is on record | 7 | sales VN, SDR VN |
 | `customer-satisfaction-employee` | Customer Satisfaction Employee | Inbox sweep, replies drafted hardest first, churn flags with evidence | 8 | support, CSAT, retention |
+| `customer-satisfaction-employee-vn` | Customer Satisfaction Employee VN | The support desk for Vietnamese marketplace, social and chat inboxes | 8 | CSAT VN, support VN |
 | `chief-of-staff` | Chief of Staff | Reads every other employee's run log, names what quietly stopped, brings three moves | 7 | chief of staff, COS, oversight |
+| `chief-of-staff-vn` | Chief of Staff VN | The Chief of Staff role with Vietnamese briefs and sale week checks | 7 | COS VN, chief of staff VN |
 
 If the request names one loosely, pick the obvious slug and say which you picked. If it names none, show this table and ask which. If they ask where to start:
 
@@ -55,8 +62,8 @@ Use the first route that works:
    ```
 
    It copies the kit from the bundled files with no network, refuses a synced or non empty folder, writes `.installed.json` (the record that lets a later upgrade tell the user's edits from ours), runs the three self tests, checks the login, and prints the install prompt with the path filled in.
-2. **The published installer.** `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm. For `gtm-engineer-vn`, use the installer bundled in this fork until a package that includes the variant has been published.
-3. **Only if neither can run:** download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip`, extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them. This fallback does not contain `gtm-engineer-vn`; use the Vietnam fork checkout for that variant.
+2. **The published installer.** `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm. For a Vietnam variant, any slug ending in `-vn`, use the installer bundled in this fork until a package that includes the variant has been published.
+3. **Only if neither can run:** download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip`, extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them. This fallback does not contain any Vietnam variant (a slug ending in `-vn`); use the Vietnam fork checkout for those.
 
 Never rename anything inside the kit. A routine's folder name, its YAML `name` and the name of its scheduled job are the same string, and a rename breaks the install.
 
@@ -101,7 +108,7 @@ Use this to answer questions after the hire.
 
 **Changing the schedule.** `SCHEDULE.md` is the only place fire times, windows and budgets live. Edit a row and the routines follow on their next fire. A window guard in every routine makes a late, early or doubled fire harmless.
 
-**Upgrading.** Once a month the brief says when a newer kit is out. `npx ai-employees upgrade <slug> --to "<folder>"` reports what would change, and `--apply` takes it. It never overwrites a file the user edited.
+**Upgrading.** Once a month the brief says when a newer kit is out. `npx ai-employees upgrade <slug> --to "<folder>"` reports what would change, and `--apply` takes it. It never overwrites a file the user edited. For a Vietnam variant, run the same command through the fork's bundled installer, `node installer/cli.mjs upgrade <slug> --to "<folder>"`.
 
 **Other agents.** The same kits run on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. `docs/HARNESSES.md` has the command and the scheduler for each.
 
