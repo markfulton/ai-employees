@@ -1,0 +1,241 @@
+{
+  "schema": "ai-employee/1",
+  "slug": "web-dev-employee-vn",
+  "name": "Web Dev Employee (Vietnam)",
+  "role": "Engineering and maintenance",
+  "version": "1.9.0",
+  "standard": "1.4",
+  "repository": "https://github.com/markfulton/ai-employees",
+  "license": "MIT",
+  "requires": {
+    "node": ">=18",
+    "harness": [
+      "claude-code",
+      "openclaw",
+      "hermes",
+      "opencode",
+      "grok-bot",
+      "codex",
+      "antigravity",
+      "pi",
+      "cline",
+      "qwen-code",
+      "deepseek"
+    ]
+  },
+  "connections": [
+    {
+      "capability": "vcs.remote.read",
+      "providers": [
+        "gh-cli",
+        "github-mcp-readonly"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "host.read",
+      "providers": [
+        "vercel",
+        "vercel-cli",
+        "netlify",
+        "railway",
+        "render",
+        "cloudflare-observability"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "db.read",
+      "providers": [
+        "supabase-readonly",
+        "neon-readonly",
+        "planetscale-insights"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "errors.read",
+      "providers": [
+        "sentry",
+        "posthog",
+        "better-stack"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "browser.headless",
+      "providers": [
+        "chrome-devtools-mcp",
+        "playwright-mcp"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "registrar.read",
+      "providers": [
+        "porkbun-api",
+        "cloudflare-registrar-api",
+        "vercel-domains",
+        "dynadot-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "advisories.read",
+      "providers": [
+        "npm-audit",
+        "osv-api",
+        "gh-cli",
+        "context7"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
+  "routines": [
+    {
+      "id": "web-dependency-run",
+      "days": "wed",
+      "fire": "13:30",
+      "window_start": "13:15",
+      "window_end": "17:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "web-fix-runner",
+      "days": "mon-fri",
+      "fire": "08:10",
+      "window_start": "08:00",
+      "window_end": "13:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "40 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "web-guardrail-review",
+      "days": "last-weekday",
+      "fire": "16:45",
+      "window_start": "16:30",
+      "window_end": "19:30",
+      "period_key": "YYYY-MM",
+      "budget": "20 min",
+      "browser": "never"
+    },
+    {
+      "id": "web-inventory-refresh",
+      "days": "first-weekday",
+      "fire": "11:45",
+      "window_start": "11:30",
+      "window_end": "16:00",
+      "period_key": "YYYY-MM",
+      "budget": "45 min",
+      "browser": "light"
+    },
+    {
+      "id": "web-platform-guard",
+      "days": "mon",
+      "fire": "10:30",
+      "window_start": "10:15",
+      "window_end": "15:00",
+      "period_key": "YYYY-Www",
+      "budget": "30 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "web-site-sweep",
+      "days": "mon-fri",
+      "fire": "06:45",
+      "window_start": "06:30",
+      "window_end": "09:45",
+      "period_key": "YYYY-MM-DD",
+      "budget": "25 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "web-standup",
+      "days": "mon-fri",
+      "fire": "07:30",
+      "window_start": "07:15",
+      "window_end": "11:30",
+      "period_key": "YYYY-MM-DD",
+      "budget": "15 min",
+      "browser": "never"
+    },
+    {
+      "id": "web-weekly-report",
+      "days": "fri",
+      "fire": "15:30",
+      "window_start": "15:15",
+      "window_end": "18:00",
+      "period_key": "YYYY-Www",
+      "budget": "35 min",
+      "browser": "light"
+    }
+  ],
+  "files": {
+    "kit": [
+      "AGENTS.md",
+      "CAPABILITIES.md",
+      "CHANGELOG.md",
+      "CONTRACT.md",
+      "INSTALL-PROMPT.md",
+      "README.md",
+      "ROLE.md",
+      "VERSION",
+      ".gitignore",
+      "employee.json",
+      "recipes/BROWSER-RECIPES.md",
+      "routines/**",
+      "run/**",
+      "scripts/**",
+      "examples/**"
+    ],
+    "merge": [
+      "SCHEDULE.md"
+    ],
+    "member": [
+      "RELEASES.md",
+      "state/**",
+      "board/**",
+      "crm/**",
+      "queue/**",
+      "strategy/**",
+      "briefs/**",
+      "scoreboard/**",
+      "dashboard/**",
+      "improvements/**",
+      "archive/**",
+      "paid/**",
+      "fleet/**",
+      "drafts/**",
+      "calendar/**",
+      "run/*.log",
+      "recipes/*.json",
+      "runlog.jsonl",
+      "*-latest.md",
+      ".installed.json",
+      "inventory/**",
+      "policy/**",
+      "health/**",
+      "changes/**",
+      "deps/**",
+      "platform/**",
+      "reports/**",
+      "PAUSED",
+      "schedule-commands.txt"
+    ]
+  },
+  "notes": {
+    "merge": "SCHEDULE.md carries the shape the kit ships and the days, windows and budgets the member owns. An upgrade reports a changed shape and never rewrites the row values.",
+    "member": "Everything under member is the business the employee has been running: its evidence, its ledgers, its learned browser flows and its own field repairs. An upgrade that overwrites any of it has destroyed work that exists nowhere else.",
+    "recipes": "recipes/BROWSER-RECIPES.md ships with the kit. Every recipes/*.json is learned on the member's own screens by the routine that owns it, so it is member data."
+  }
+}
