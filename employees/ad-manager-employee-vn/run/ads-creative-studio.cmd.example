@@ -1,0 +1,11 @@
+:: «ADS_ROOT»\run\ads-creative-studio.cmd
+:: Copy this file to ads-creative-studio.cmd (drop the .example), replace «ADS_ROOT» with your real folder, and check the
+:: path to claude.exe: this is where the native installer puts it (where.exe claude shows yours).
+:: Never point it at the Desktop app's bundled copy; Task Scheduler cannot see that path.
+:: Section 10 of CAPABILITIES.md: a scheduled run must never wait on a prompt. If this routine stalls
+:: or is refused a tool under acceptEdits, change it to bypassPermissions for this one file, knowing
+:: what that grants. The guardrails live in the contract and the routine, not in this flag.
+@echo off
+cd /d "«ADS_ROOT»"
+"%USERPROFILE%\.local\bin\claude.exe" -p "Read «ADS_ROOT»/routines/ads-creative-studio/SKILL.md and follow it." --permission-mode acceptEdits --output-format json < nul > "«ADS_ROOT»\run\ads-creative-studio.last.json"
+if errorlevel 1 node "«ADS_ROOT»\scripts\runlog.mjs" --failed-run ads-creative-studio --exit-code %errorlevel%
