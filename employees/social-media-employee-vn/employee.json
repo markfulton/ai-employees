@@ -1,0 +1,208 @@
+{
+  "schema": "ai-employee/1",
+  "slug": "social-media-employee-vn",
+  "name": "Social Media Employee (Vietnam)",
+  "role": "Audience and distribution",
+  "version": "1.9.0",
+  "standard": "1.4",
+  "repository": "https://github.com/markfulton/ai-employees",
+  "license": "MIT",
+  "requires": {
+    "node": ">=18",
+    "harness": [
+      "claude-code",
+      "openclaw",
+      "hermes",
+      "opencode",
+      "grok-bot",
+      "codex",
+      "antigravity",
+      "pi",
+      "cline",
+      "qwen-code",
+      "deepseek"
+    ]
+  },
+  "connections": [
+    {
+      "capability": "channel.schedule",
+      "providers": [
+        "metricool",
+        "buffer",
+        "postiz"
+      ],
+      "required": false,
+      "readonly": false
+    },
+    {
+      "capability": "engagement.read",
+      "providers": [
+        "metricool",
+        "threads-api",
+        "meta-graph-api",
+        "youtube-data-api",
+        "bluesky",
+        "mastodon",
+        "x-api"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "analytics.read",
+      "providers": [
+        "metricool"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "design.export",
+      "providers": [
+        "canva"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "community.read",
+      "providers": [
+        "slack",
+        "discord-api",
+        "circle-api"
+      ],
+      "required": false,
+      "readonly": true
+    }
+  ],
+  "routines": [
+    {
+      "id": "soc-calendar-standup",
+      "days": "mon-fri",
+      "fire": "07:10",
+      "window_start": "07:00",
+      "window_end": "07:40",
+      "period_key": "YYYY-MM-DD",
+      "budget": "12 min",
+      "browser": "never"
+    },
+    {
+      "id": "soc-draft-queue",
+      "days": "mon-fri",
+      "fire": "10:15",
+      "window_start": "10:05",
+      "window_end": "15:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "35 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "soc-engagement-sweep",
+      "days": "mon-fri",
+      "fire": "05:45",
+      "window_start": "05:30",
+      "window_end": "08:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "40 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "soc-intake-and-voice",
+      "days": "first-weekday",
+      "fire": "13:00",
+      "window_start": "12:45",
+      "window_end": "17:00",
+      "period_key": "YYYY-MM",
+      "budget": "45 min",
+      "browser": "light"
+    },
+    {
+      "id": "soc-material-sweep",
+      "days": "mon-fri",
+      "fire": "09:20",
+      "window_start": "09:10",
+      "window_end": "12:30",
+      "period_key": "YYYY-MM-DD",
+      "budget": "35 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "soc-performance-review",
+      "days": "fri",
+      "fire": "15:50",
+      "window_start": "15:35",
+      "window_end": "19:00",
+      "period_key": "YYYY-Www",
+      "budget": "40 min",
+      "browser": "heavy"
+    },
+    {
+      "id": "soc-publish-run",
+      "days": "mon-fri",
+      "fire": "08:40",
+      "window_start": "08:35",
+      "window_end": "11:00",
+      "period_key": "YYYY-MM-DD",
+      "budget": "20 min",
+      "browser": "light"
+    }
+  ],
+  "files": {
+    "kit": [
+      "AGENTS.md",
+      "CAPABILITIES.md",
+      "CHANGELOG.md",
+      "CONTRACT.md",
+      "INSTALL-PROMPT.md",
+      "README.md",
+      "ROLE.md",
+      "VERSION",
+      ".gitignore",
+      "employee.json",
+      "recipes/BROWSER-RECIPES.md",
+      "routines/**",
+      "run/**",
+      "scripts/**",
+      "examples/**"
+    ],
+    "merge": [
+      "SCHEDULE.md"
+    ],
+    "member": [
+      "RELEASES.md",
+      "state/**",
+      "board/**",
+      "crm/**",
+      "queue/**",
+      "strategy/**",
+      "briefs/**",
+      "scoreboard/**",
+      "dashboard/**",
+      "improvements/**",
+      "archive/**",
+      "paid/**",
+      "fleet/**",
+      "drafts/**",
+      "calendar/**",
+      "run/*.log",
+      "recipes/*.json",
+      "runlog.jsonl",
+      "*-latest.md",
+      ".installed.json",
+      "plan/**",
+      "voice/**",
+      "posts/**",
+      "engagement/**",
+      "material/**",
+      "scorecard/**",
+      "standards/**",
+      "PAUSED",
+      "schedule-commands.txt"
+    ]
+  },
+  "notes": {
+    "merge": "SCHEDULE.md carries the shape the kit ships and the days, windows and budgets the member owns. An upgrade reports a changed shape and never rewrites the row values.",
+    "member": "Everything under member is the business the employee has been running: its evidence, its ledgers, its learned browser flows and its own field repairs. An upgrade that overwrites any of it has destroyed work that exists nowhere else.",
+    "recipes": "recipes/BROWSER-RECIPES.md ships with the kit. Every recipes/*.json is learned on the member's own screens by the routine that owns it, so it is member data."
+  }
+}
