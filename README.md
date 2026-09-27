@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-install-prompt"><img src="assets/btn-install.png" width="260" height="60" alt="Get my free install prompt in the Agent Ops Club"></a>
+  <a href="https://club.reinventing.ai/register?next=%2Fmembers%2Fhire&utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-install-prompt"><img src="assets/btn-install.png" width="260" height="60" alt="Get my free install prompt in the Agent Ops Club"></a>
   <a href="https://club.reinventing.ai/register?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-join"><img src="assets/btn-join.png" width="199" height="60" alt="Join the Agent Ops Club free"></a>
   <a href="https://club.reinventing.ai/events?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-sessions"><img src="assets/btn-sessions.png" width="163" height="60" alt="Agent Ops Club live sessions"></a>
   <a href="https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-club"><img src="assets/btn-club.png" width="186" height="60" alt="Visit the Agent Ops Club"></a>
@@ -92,7 +92,7 @@ Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-empl
 
 <p>Hiring one or all eight, pick your roles in the Agent Ops Club and copy one prompt your agent runs from start to finish. The Hire Your First AI Employee walkthrough takes you through it step by step.</p>
 
-<a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=install-prompt"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt and walkthrough, free in the Agent Ops Club"></a>
+<a href="https://club.reinventing.ai/ai-employees-setup?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=cta-setup-guide"><img src="assets/cta-install-prompt.png" width="470" alt="Get my install prompt and walkthrough, free in the Agent Ops Club"></a>
 
 <p><sub><b>Free account, no card.</b></sub></p>
 
