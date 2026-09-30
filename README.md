@@ -36,7 +36,7 @@
 </p>
 
 <p align="center">
-  <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=harness-strip#install"><img src="assets/harness-strip.png" width="838" alt="Runs on the agent you use: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek"></a>
+  <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=harness-strip#install"><img src="assets/harness-strip.png" width="838" alt="Runs on the agent you use: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots"></a>
 </p>
 
 <p align="center">
@@ -83,7 +83,7 @@ This repository is also a Claude Code plugin with one skill, `hire`, and all eig
 
 Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-employees:hire`. The skill checks the folder is outside cloud sync, copies the kit from the plugin with no download, runs the self tests, and tells you the one line to say in a fresh session in that folder. It registers nothing and sends nothing. [The plugin page](https://club.reinventing.ai/plugin?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=plugin) has the same steps with a walkthrough.
 
-**Not on Claude Code?** The same two steps work on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. [docs/HARNESSES.md](docs/HARNESSES.md) has the command for each.
+**Not on Claude Code?** The same two steps work on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots. [docs/HARNESSES.md](docs/HARNESSES.md) has the command for each.
 
 <table>
 <tr><td align="center" width="900">

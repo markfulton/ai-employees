@@ -102,7 +102,7 @@ Use this to answer questions after the hire.
 
 **Upgrading.** Once a month the brief says when a newer kit is out. `npx ai-employees upgrade <slug> --to "<folder>"` reports what would change, and `--apply` takes it. It never overwrites a file the user edited.
 
-**Other agents.** The same kits run on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. `docs/HARNESSES.md` has the command and the scheduler for each.
+**Other agents.** The same kits run on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots. `docs/HARNESSES.md` has the command and the scheduler for each.
 
 ## 9. Close
 

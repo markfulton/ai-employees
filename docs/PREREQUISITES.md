@@ -2,13 +2,13 @@
 
 Ten things, and one optional eleventh. Every line here was either measured on my own machine or read from the vendor's own page, and the install prompt checks the ones it can. Read this before `npx ai-employees hire` or a clone, because the one thing that fails silently is the login, and it fails after everything else looks fine.
 
-The kits run on eleven harnesses: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek. Claude Code is the worked example in every item below because it is the one I run these on every weekday. Where another harness differs, the item says so, and `docs/HARNESSES.md` has the scheduler, the invocation and the first run check for each of the eleven.
+The kits run on thirteen harnesses: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots. Claude Code is the worked example in every item below because it is the one I run these on every weekday. Where another harness differs, the item says so, and `docs/HARNESSES.md` has the scheduler, the invocation and the first run check for each of the thirteen.
 
 ## 1. An agent harness that can do four things
 
 Read and write files in a folder, read the machine clock and timezone, run a local command, and, for the browser lane, drive a browser that carries your own signed in sessions. Any of the eleven qualifies. Pick the one you already use; nothing in a kit is written for one harness's tools, because the routines name capabilities and `CAPABILITIES.md` in each kit maps them to a route per harness.
 
-On Claude Code that means a plan that includes it: Pro, Max 5x, Max 20x, Team or Enterprise. The free plan does not include Claude Code. An Anthropic Console API key also works, but it turns the browser lane off (item 6), so the routines that read your own accounts fall back to public pages. On the other ten, the account or key the harness already runs on is the whole requirement; the kits add no credential of their own.
+On Claude Code that means a plan that includes it: Pro, Max 5x, Max 20x, Team or Enterprise. The free plan does not include Claude Code. An Anthropic Console API key also works, but it turns the browser lane off (item 6), so the routines that read your own accounts fall back to public pages. On the other twelve, the account or key the harness already runs on is the whole requirement; the kits add no credential of their own.
 
 ## 2. The harness installed, in a shape you can schedule
 
@@ -21,7 +21,7 @@ On Claude Code the two shapes are:
 
 Minimums from Claude Code's setup page: macOS 13.0 or later, Windows 10 1809 or later, Ubuntu 20.04 or later, 4 GB of RAM.
 
-On the other ten, install the harness the way its own page says. OpenClaw, Hermes, Cline, Qwen Code, Codex, Antigravity and DeepSeek bring a scheduler; Grok Bot runs its schedule from its own cloud computer; OpenCode and Pi have none of their own and pair with the operating system's. `docs/HARNESSES.md` has one row per harness.
+On the other twelve, install the harness the way its own page says. OpenClaw, Hermes, Cline, Qwen Code, Codex, Antigravity and DeepSeek bring a scheduler; Grok Bot, Muse and Dots run their schedules from a cloud computer of their own; OpenCode and Pi have none of their own and pair with the operating system's. `docs/HARNESSES.md` has one row per harness.
 
 ## 3. Logged in, by a human, once
 
@@ -60,7 +60,7 @@ On Claude Code that means Google Chrome or Microsoft Edge, the Claude in Chrome 
 Your harness's own, where it has one:
 
 - The Claude Desktop app's local scheduled tasks (Routines, Local), one task per routine, named after the routine id.
-- The built in cron in OpenClaw, Hermes, Cline and Qwen Code; Codex scheduled runs; the Antigravity `agy` job runner; the DeepSeek scheduling plugin; a recurring task per routine on Grok Bot.
+- The built in cron in OpenClaw, Hermes, Cline and Qwen Code; Codex scheduled runs; the Antigravity `agy` job runner; the DeepSeek scheduling plugin; a recurring task per routine on Grok Bot, Muse and Dots.
 
 Otherwise the operating system's:
 
@@ -88,4 +88,4 @@ Every kit's `CAPABILITIES.md` has a section 4b naming the connections that read 
 
 ## Where it runs
 
-Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code and DeepSeek, and runs on Windows, macOS and Linux. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron, and the harnesses with a scheduler of their own through that. `docs/HARNESSES.md` has the invocation and the first run check for each, and `docs/INSTALL.md` has the steps per operating system.
+Built for Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots, and runs on Windows, macOS and Linux. Windows through the Desktop app scheduler or Task Scheduler, macOS through the Desktop app or launchd, Linux through cron, and the harnesses with a scheduler of their own through that. `docs/HARNESSES.md` has the invocation and the first run check for each, and `docs/INSTALL.md` has the steps per operating system.
