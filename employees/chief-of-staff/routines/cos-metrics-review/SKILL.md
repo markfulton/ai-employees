@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Metrics review
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«COS_ROOT»/scripts/guard.mjs" cos-metrics-review`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/cos-metrics-review.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -123,6 +128,8 @@ Read the row in `«COS_ROOT»/SCHEDULE.md` whose routine id is `cos-metrics-revi
 No clock time, no window, and no budget figure appears anywhere in this file, by `CONTRACT.md` section 1.1, because a number that lives in two places will eventually disagree with itself. Two facts are properties of the routine rather than of the row: it runs once a week, late in the week, and its browser lane is `conditional`.
 
 ### 0.2 The once per period guard, written before any work
+
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
 
 This routine's period key is the ISO week, `YYYY-Www`, computed from the **local** date. Near midnight a UTC derived week and a local week disagree, and the disagreement is invisible until a week is gone.
 
@@ -685,7 +692,7 @@ The browser mutex is not on this list. It prevents collision, not repetition, an
 - **`cos-fault-dossier`** gives you the dossier count through its run records: a fleet where dossiers are written every week and faults never close is a pattern you can see and it cannot.
 - **`cos-market-sweep`** runs the day before you. You cite its page as a source for anything that came from the market. **You never recompute an observation and it never computes a metric.**
 - **`cos-decision-brief`** runs the day after you and reads this page in full. Every clause of its case for and case against has to carry a number that appears on this page or in a file it names by path. **That is the entire reason your Source column is mandatory**: a move argued from a number with no source is a move argued from a feeling with a table around it.
-- **`cos-decision-review`** verifies a decision's predicted effect against **this page**, never against the decision's own prediction and never against a display. That is why `last_values` matters beyond your own trend line: a metric you did not record is a decision nobody can score, and it becomes `no-effect (never measured)` rather than a pass or a fail.
+- **`cos-decision-review`** verifies a decision's predicted effect against **this page**, never against the decision's own prediction and never against a display. That is why `last_values` matters beyond your own trend line: a metric you did not record is a decision nobody can score, and it becomes `unmeasured` rather than a measured effect.
 - **`cos-charter-and-fleet-audit`** owns `charter/metric-map.md` and carries its `## Rate floor` heading across verbatim on every monthly rewrite. Every screen finding and every unwired metric you name reaches it through your `Needs you` lines.
 
 ### To the Employees you score
@@ -740,6 +747,10 @@ Two things this run can produce reach a push, and both reach it through the reco
 Write both blockers so somebody can read them cold with no context, name the screen or the routine, and let the brief carry them. If you believe a number is urgent enough to justify a buzz, write that belief into `assumptions[]` and put the reason in your run record. The member reads it in the morning and, if they agree, one line in `## Corrections` changes what this routine does about it.
 
 ---
+
+## Delivery versus business results
+
+Read configured progress receipts under the contract extension. Report usable deliverables with evidence separately from routine execution counts and commercial metrics. Missing receipts or outcomes are unknown. Include handoff completion only when the receiving employee has a verified receipt; acceptance is not completion. Never sum bookkeeping files as output.
 
 ## Corrections
 

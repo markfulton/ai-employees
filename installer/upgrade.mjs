@@ -62,13 +62,22 @@ export function hashFile(p) {
  * Written at hire time. Without it an upgrade cannot tell a file the member
  * edited from a file the kit changed, and the safe thing becomes impossible.
  */
-export function writeReceipt(dst, slug, version) {
-  const manifest = readJson(path.join(dst, "employee.json"));
+export function writeReceipt(dst, slug, version, { source = dst, pending = [] } = {}) {
+  const manifest = readJson(path.join(source, "employee.json"));
+  const previous = readJson(path.join(dst, RECEIPT));
   const files = {};
-  for (const rel of walkFiles(dst)) {
-    if (rel === RECEIPT) continue;
-    if (manifest && classify(manifest, rel) === "member") continue;
-    files[rel.split(path.sep).join("/")] = hashFile(path.join(dst, rel));
+  for (const rel of walkFiles(source)) {
+    const key = rel.split(path.sep).join("/");
+    if (!manifest || !["kit", "merge"].includes(classify(manifest, rel))) continue;
+    if (pending.includes(key)) {
+      // Never bless a local edit as the new shipped baseline during an upgrade.
+      if (previous?.files?.[key]) files[key] = previous.files[key];
+      continue;
+    }
+    files[key] = hashFile(path.join(source, rel));
+    const baseline = path.join(dst, ".upgrade", "baseline", rel);
+    fs.mkdirSync(path.dirname(baseline), { recursive: true });
+    fs.copyFileSync(path.join(source, rel), baseline);
   }
   const receipt = {
     schema: "ai-employee-receipt/1",
@@ -77,6 +86,7 @@ export function writeReceipt(dst, slug, version) {
     standard: manifest?.standard ?? null,
     installed_on: new Date().toISOString().slice(0, 10),
     files,
+    pending,
   };
   fs.writeFileSync(path.join(dst, RECEIPT), JSON.stringify(receipt, null, 2) + "\n");
   return receipt;
@@ -128,8 +138,10 @@ export function upgrade({ installed, fresh, slug, apply, out, fail }) {
   }
 
   if (installedVersion === newVersion) {
-    out("Already on " + newVersion + ". Nothing to upgrade.");
-    return { changed: 0, drifted: 0, skipped: 0 };
+    const pending = (receipt?.pending || []).filter(rel => fs.existsSync(path.join(installed, rel + ".new")));
+    out(pending.length ? "Version metadata is " + newVersion + ", but " + pending.length + " files still need reconciliation. This is partial adoption." : "Already on " + newVersion + ". Nothing to upgrade.");
+    if (pending.length) out("Run reconcile to inspect pending files before scheduled execution. Preserve your schedule values.");
+    return { changed: 0, drifted: 0, skipped: 0, pending };
   }
 
   /*
@@ -147,12 +159,15 @@ export function upgrade({ installed, fresh, slug, apply, out, fail }) {
     const key = rel.split(path.sep).join("/");
     if (key === RECEIPT) continue;
     const kind = classify(manifest, rel);
-    if (kind === "member") continue;
+    if (kind !== "kit" && kind !== "merge") continue;
 
     const target = path.join(installed, rel);
     const source = path.join(fresh, rel);
 
-    if (kind === "merge") { rows.merge.push(key); continue; }
+    if (kind === "merge") {
+      if (fs.existsSync(target) && hashFile(target) === hashFile(source)) continue;
+      rows.merge.push(key); continue;
+    }
     if (!fs.existsSync(target)) { rows.added.push(key); continue; }
 
     const now = hashFile(target);
@@ -204,10 +219,11 @@ export function upgrade({ installed, fresh, slug, apply, out, fail }) {
     else fs.copyFileSync(path.join(fresh, rel), path.join(installed, rel + ".new"));
   }
 
-  writeReceipt(installed, slug, newVersion);
+  writeReceipt(installed, slug, newVersion, { source: fresh, pending: rows.drifted.concat(rows.merge) });
   out("Applied. " + (rows.replace.length + rows.added.length) + " files updated, " +
       (rows.drifted.length + rows.merge.length) + " written as .new for you to read.");
   out("Your state, ledgers, strategy, learned browser flows and improvements were not touched.");
+  if (rows.drifted.length || rows.merge.length) out("Partial adoption: reconcile pending instructions and review schedule settings before the next scheduled execution. VERSION alone is not readiness.");
   return rows;
 }
 

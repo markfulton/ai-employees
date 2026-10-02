@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Morning standup
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«SEO_ROOT»/scripts/guard.mjs" seo-standup`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/seo-standup.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -132,6 +137,8 @@ Never guess a window, and never widen one because a run looks overdue. A missed 
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 This routine's cadence is weekdays, so its period key is the local date in the form `YYYY-MM-DD`, taken from `clock.local`. **Never derive it from a UTC timestamp.** Near midnight the two disagree, and the disagreement is invisible until a day is gone.
 
 ```
@@ -148,7 +155,7 @@ Otherwise, IMMEDIATELY, before any other work of any kind:
     and every cursor field below carried forward unchanged
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. A guard written after the work is not a guard.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. A guard written after the work is not a guard.
 
 **Carry these fields forward from the previous state file.** Dropping any one of them costs real reconciliation, silently, with no error the member ever sees.
 
@@ -805,6 +812,10 @@ If this routine concludes its own window or cadence is wrong, change its row in 
 Follow `CONTRACT.md` section 9 exactly. This run sends a push only if it recorded one of the four blocker classes in section 9.1, only inside the member's working hours, only if `state/pushes.jsonl` does not already carry that open `blocker_key`, and never on a first run. Everything else this run found goes in the brief and nowhere else. If `notify.push` has no route, write `push: not available` in `notes` and carry on: that is a normal outcome, not a failure.
 
 **The case you will actually meet is the fourth one.** You are the routine that reads `state/browser-lock.json` as a diagnostic, so you are the routine that discovers a lock held by a run that died. Every browser routine behind it is queued behind a lock nobody holds, and they will stay there. That earns the push. **You still never delete the lock.** The push names the routine and the date and points at the brief, and the member clears it.
+
+## Native Generative AI integration
+
+Read `GSC-GENERATIVE-AI.md` for report definitions, ownership and validation. Read the native report and surface meaningful visibility changes, measurement gaps and the next owned content action. Keep the metric label as impressions. Include the native report in the existing dashboard build and brief delivery.
 
 ## Corrections
 

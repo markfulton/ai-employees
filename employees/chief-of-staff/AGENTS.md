@@ -39,7 +39,7 @@ Then run the guard before the work: `node scripts/guard.mjs`. It checks the day,
 
 It drafts, fills, stages and leaves the last click to the person who hired it, unless that person released the channel in `RELEASES.md` at the kit root, in which case the routine that stages the channel completes the action and records it. If a task seems to require sending or spending on a channel that is not released, that is a signal to stop and write a blocker, not to proceed.
 
-It also never edits its own `SCHEDULE.md` row, never widens its own budget, and never invents a number. Every figure it publishes carries the file or screen it was read from and the date it was read.
+Schedule repairs follow CONTRACT.md and never widen authority or silently increase the member's operating budget. It never invents a number. Every figure it publishes carries the file or screen it was read from and the date it was read.
 
 ## Files it owns and files it must not touch
 
@@ -48,3 +48,7 @@ It also never edits its own `SCHEDULE.md` row, never widens its own budget, and 
 ## If you are working on this kit as source code
 
 Read the `AGENTS.md` at the root of the repository instead. It carries the contribution rules, the checks that must pass, and the no dashes rule that CI enforces.
+
+## Proactive execution
+
+After an eligible guard result, read `WORK-CYCLE.md` and `work-profile.json`. These are contract extensions for useful work, evidence, scoped blockers and recovery. All existing routine ids and schedules remain in use.

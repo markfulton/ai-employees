@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "objective": "Verified resolutions and fewer recurring customer problems",
+  "standup": "csat-desk-standup",
+  "reviewer": "csat-satisfaction-report",
+  "routines": {
+    "csat-churn-watch": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-deflection-desk": {
+      "kind": "produce",
+      "expected_when": "An owned feasible card, due commitment or scheduled deliverable exists. A blocked due commitment remains expected.",
+      "acceptance": "A usable reviewed artifact meets the card definition of done and proof requirements.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-desk-intake": {
+      "kind": "research",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-desk-standup": {
+      "kind": "standup",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Reverify stale blockers, reconcile progress receipts and select the next authorized owned action. Surface delivery stalls separately from run failures.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-inbox-sweep": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-reply-desk": {
+      "kind": "produce",
+      "expected_when": "An owned feasible card, due commitment or scheduled deliverable exists. A blocked due commitment remains expected.",
+      "acceptance": "A usable reviewed artifact meets the card definition of done and proof requirements.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-satisfaction-report": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "csat-taxonomy-refresh": {
+      "kind": "research",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    }
+  }
+}

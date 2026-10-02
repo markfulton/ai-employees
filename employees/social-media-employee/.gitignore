@@ -20,3 +20,12 @@
 /schedule-commands.txt
 /recipes/*.json
 node_modules/
+
+/progress/
+/experiments/
+/handoffs/
+/.upgrade/
+/*.new
+*.new
+*.reconcile-tmp
+/.installed.json

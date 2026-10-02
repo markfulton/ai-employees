@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 if (!fs.existsSync(path.join(ROOT, "employees"))) { process.stderr.write("no-dashes: cannot find employees/ under " + ROOT + "\n"); process.exit(2); }
-const ROOTS = ["README.md", "CONTRIBUTING.md", "TRADEMARKS.md", "SECURITY.md", "CHANGELOG.md", "CREDITS.md", "docs", "skills", "installer", "employees", "assets", "package.json"];
+const ROOTS = ["README.md", "CONTRIBUTING.md", "TRADEMARKS.md", "SECURITY.md", "CHANGELOG.md", "CREDITS.md", "docs", "skills", "installer", "employees", "shared", "assets", "package.json"];
 const SKIP_DIRS = new Set([".git", "node_modules"]);
 const TEXT = /\.(md|mjs|js|cjs|json|yml|yaml|txt|example|csv|jsonl)$/i;
 // The en dash and the em dash, built from code points so this file never carries either character itself.

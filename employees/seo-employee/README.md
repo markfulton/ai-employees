@@ -361,6 +361,10 @@ If you also run the GTM Engineer, both kits keep a voice file. The install detec
 
 ---
 
+## Native Google AI visibility
+
+The existing answer-visibility routine reads Search Console Performance > Generative AI. It tracks native AI Overviews and AI Mode impressions with property, range, filters and evidence, keeping Gemini app samples and conversions separate. See [the measurement contract](GSC-GENERATIVE-AI.md).
+
 ## Corrections
 
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.`

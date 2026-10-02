@@ -20,3 +20,9 @@ jobs:
         run: node .github/scripts/selftests.mjs
       - name: Check SEO/AEO schedule and observation integrity
         run: node .github/scripts/aeo-check.mjs
+      - name: Check useful work, recovery and shared source consistency
+        run: node .github/scripts/work-cycle-check.mjs
+      - name: Check protected upgrades and reconciliation
+        run: node .github/scripts/upgrade-check.mjs
+      - name: Check release metadata and protected member paths
+        run: node .github/scripts/release-check.mjs

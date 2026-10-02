@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Intake and topic map
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«SEO_ROOT»/scripts/guard.mjs" seo-intake-and-map`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/seo-intake-and-map.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -158,6 +163,8 @@ The member launches the first run by hand at whatever hour they extracted the ki
 **The exemption covers the window check and nothing else.** The pause switch, the period guard, the budget, the mutex, and both stops all apply in full on the first run and on every run after it. No other routine in this kit has a first run exemption of any kind, and you never grant one to another routine. On every later run: never guess a window, and never widen one because a run looks overdue. The monthly range is generous on purpose so a machine that was asleep on the exact day still gets its month, and the period guard reduces the range to exactly one run.
 
 ### 0.2 The once per period guard, written before any work
+
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
 
 This routine's cadence is monthly, so its period key is the calendar month in the form `YYYY-MM`, **taken from the local date and never from a UTC timestamp**.
 
@@ -376,6 +383,10 @@ operator_notes: «resolved quirks, one per line, each with the date it was resol
 ### Harvest at intake, amended at Standard v1.1, 2026-08-28
 
 Before leaving any strategy field empty or writing a research card for a public fact, look for it in the member's own live properties: the checkout page, the site footer, the codebase, the storefront. The public contact address, and the member's existing accounts on every platform this kit submits to or reads from, are collected here at intake, so no form-filling or sweeping routine discovers the gap mid-run.
+
+## Native Generative AI integration
+
+Read `GSC-GENERATIVE-AI.md` for report definitions, ownership and validation. Verify the mapped Search Console property and Performance > Generative AI availability. Record the read route and date in strategy/properties.md. Do not require a new connection if the signed-in browser already works.
 
 ## Corrections
 ```

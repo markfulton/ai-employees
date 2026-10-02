@@ -12,7 +12,7 @@
       "name": "ai-employees",
       "source": "./",
       "description": "Hire any of eight open source AI Employees into a local folder. Each one is a folder of scheduled routines that covers a whole business role and improves from your corrections.",
-      "version": "1.8.0",
+      "version": "1.9.0",
       "author": {
         "name": "Mark Fulton"
       },

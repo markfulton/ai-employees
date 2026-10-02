@@ -1,5 +1,13 @@
 # GTM Engineer: release history
 
+## 1.9.0, 2026-10-02
+
+- Shared work cycle: evidence of useful delivery, scoped blockers, bounded experiments, configured handoffs and compact progress in existing briefs.
+- Atomic run claims distinguish completion from attempts and preserve the remaining budget on partial resumes.
+- Existing routines read role-specific acceptance and fallback guidance. Releases, member corrections and single writers remain protected.
+- Progress and recovery helpers carry regression self tests; shared copies are checked for drift.
+
+
 The version this kit ships as lives in `VERSION` at the root. This file is written by the people who publish the kit and **no routine ever writes it**. Your own improvements go to `improvements/CHANGELOG.md`, which is a different file and stays yours.
 
 ## 1.8.0, 2026-09-23

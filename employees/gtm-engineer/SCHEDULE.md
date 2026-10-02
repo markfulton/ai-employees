@@ -252,6 +252,17 @@ Rows that differ from the shipped defaults are recorded here with the date and t
 
 Format: `YYYY-MM-DD: <routine>, <what changed>, <why>.`
 
+## Work-cycle limits
+
+These settings are the single source for shared work-cycle limits. Existing stricter role limits still apply. A period is an eligible scheduled period, not a retry.
+
+```text
+stalled_after_eligible_periods: 2
+active_experiments: 2
+```
+
+Recovery uses the routine row's unused budget and current window. No automatic catch-up outside the row, no new jobs and no burst of old outbound work.
+
 ## Corrections
 
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.` Every routine reads this section at the top of every run.

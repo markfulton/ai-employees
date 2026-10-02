@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Fault dossier
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«COS_ROOT»/scripts/guard.mjs" cos-fault-dossier`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/cos-fault-dossier.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -132,6 +137,8 @@ Never guess a window, and never widen one because a run looks overdue. The host 
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 This routine's cadence is weekdays, so its period key is the local date in the form `YYYY-MM-DD`, taken from `clock.local`. **Never derive it from a UTC timestamp.** Near midnight the two disagree, and the disagreement is invisible until a day is gone.
 
 ```
@@ -148,7 +155,7 @@ Otherwise, IMMEDIATELY, before any other work of any kind:
     and every field in the table below carried forward unchanged
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion.
 
 **Carry these fields forward.**
 
@@ -438,6 +445,8 @@ Read the file back off disk after the rename and confirm it parses as text and c
 
 A fault clears when the routine that owns it produced a record, after the fault's `last_seen`, that shows the condition gone: a status that is not `failed` and does not begin `blocked-` for `failed-twice`, any record at all for `silent-stop`, a record without that blocker string for `repeat-blocker`, or a lock file that no longer exists for `died-holding-lock`.
 
+For `delivery-stalled`, require a changed verified deliverable or an explicitly revised commitment. For `progress-unknown`, require a valid progress receipt and its verified artifact or legitimate quiet reason. A new ok run record alone clears neither. For either delivery fault, inspect the first missed expected deliverable and its source commitment as well as the run history.
+
 Do all three of these, in this order:
 
 1. **Write the closing line into the dossier**, if one exists, and name the record that shows it clear with its date and line number. Add the dated line to `## History`. **Never delete the dossier.** Nothing in this kit is ever deleted, and a closed dossier is the cheapest thing a member can read the next time the same fault appears.
@@ -650,6 +659,10 @@ Everything this run finds reaches the member by two routes, both of which land i
 The one case that reaches a push is the `died-holding-lock` class, and it reaches it through the reconcile tomorrow morning, not through you. If you believe something is urgent enough tonight to justify a buzz, write that belief into `assumptions[]` and put the reason in your run record. The member reads it in the morning and, if they agree, one line in `## Corrections` changes what this routine does about it.
 
 ---
+
+## Delivery fault diagnosis
+
+For delivery-stalled or progress-unknown, inspect configured progress receipts, original commitment, current permitted inputs and the owned queue. Diagnose scope gates, stale dependencies, empty upstream supply or incomplete records. Propose the smallest concrete recovery with an owner and acceptance check. Never diagnose a quiet monitoring period as failure merely because no new draft was required.
 
 ## Corrections
 

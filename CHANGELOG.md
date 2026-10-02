@@ -2,8 +2,19 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
-## Unreleased
+## 1.9.0, 2026-10-02
 
+Prepared for release. GitHub publication and npm publication are separate maintainer steps.
+
+- All eight employees gain verified progress, scoped blockers, bounded experiments, configured handoffs and recoverable claims using the existing 60 routines.
+- The Chief of Staff separates delivery stalls from process failures and keeps unmeasured outcomes distinct from measured no-effect.
+- SEO/AEO explicitly tracks Google Search Console Performance > Generative AI impressions, with native-report validation and separate Gemini/answer samples.
+- The installer preserves true upgrade baselines and adds conservative, reviewable three-way reconciliation.
+- Shared-source drift, scenario, upgrade and release checks run in CI.
+- Kit changelogs: [GTM](employees/gtm-engineer/CHANGELOG.md), [Ad Manager](employees/ad-manager-employee/CHANGELOG.md), [SEO/AEO](employees/seo-employee/CHANGELOG.md), [Social](employees/social-media-employee/CHANGELOG.md), [Sales](employees/sales-employee/CHANGELOG.md), [Web Dev](employees/web-dev-employee/CHANGELOG.md), [Customer Satisfaction](employees/customer-satisfaction-employee/CHANGELOG.md), [Chief of Staff](employees/chief-of-staff/CHANGELOG.md). SEO/AEO is 1.10.0; the other kits are 1.9.0.
+
+
+- **The plugin says what it runs, and the harness count is right.** The README gains a "What the plugin runs" paragraph: the one installer command, the self tests, the sign in check, no network request and no telemetry on the plugin path. The `hire` skill now asks before it fetches anything from npm or GitHub when it is used without the plugin. The README badge, the README line under "What sets these AI Employees apart", the installer's handover text and the `package.json` description said Claude Code and ten others; they now say twelve, which is the thirteen harnesses the docs name. The kit files are untouched, so this needs no kit release. The npm page shows the new description after the next publish.
 - **Muse and Dots join the harness docs.** `docs/HARNESSES.md` gains a row for each: Muse (Meta's Muse Code and the Muse personal agent) and Dots (OpenAI's always on agents, announced September 29, 2026), with Dots added to the hosted shape section beside Grok Bot. The README strip, the prerequisites, install, FAQ and contributing pages now name thirteen harnesses. The kits themselves are unchanged.
 - **A Claude Code plugin.** The repository root is now the plugin `ai-employees` and its own marketplace (`.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`). `/plugin marketplace add markfulton/ai-employees`, then `/plugin install ai-employees@ai-employees`, and `/ai-employees:hire` is available in every session. The plugin carries all eight kits and the installer, so a hire needs no download.
 - **The `hire` skill, rewritten.** It now runs the bundled installer instead of copying by hand, so a skill hire writes `.installed.json` like an `npx` hire and a later upgrade can tell the member's edits from ours. It adds which employee to hire first, what to check the next weekday, the guardrails, and how a hired employee is directed, corrected, rescheduled and upgraded.

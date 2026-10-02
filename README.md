@@ -24,7 +24,7 @@
   <img alt="Stars" src="https://img.shields.io/github/stars/markfulton/ai-employees?style=flat-square&color=E3B341&logo=github&logoColor=white&label=Stars">
   <img alt="MIT license" src="https://img.shields.io/badge/License-MIT-3FB950?style=flat-square">
   <a href="https://www.npmjs.com/package/ai-employees"><img alt="npm ai-employees" src="https://img.shields.io/badge/npm-ai--employees-CB3837?style=flat-square&logo=npm&logoColor=white"></a>
-  <img alt="Claude Code and ten other agents" src="https://img.shields.io/badge/Claude_Code_+_10_agents-ready-D97757?style=flat-square&logo=anthropic&logoColor=white">
+  <img alt="Claude Code and twelve other agents" src="https://img.shields.io/badge/Claude_Code_+_12_agents-ready-D97757?style=flat-square&logo=anthropic&logoColor=white">
   <img alt="Windows, macOS and Linux" src="https://img.shields.io/badge/Windows_macOS_Linux-ready-2B2B2B?style=flat-square">
 </p>
 
@@ -83,6 +83,8 @@ This repository is also a Claude Code plugin with one skill, `hire`, and all eig
 
 Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-employees:hire`. The skill checks the folder is outside cloud sync, copies the kit from the plugin with no download, runs the self tests, and tells you the one line to say in a fresh session in that folder. It registers nothing and sends nothing. [The plugin page](https://club.reinventing.ai/plugin?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=plugin) has the same steps with a walkthrough.
 
+**What the plugin runs.** The `hire` skill runs one command, `node installer/cli.mjs hire <employee> --to <folder>`, from the installer bundled in the plugin. It copies one kit from the plugin into the folder you choose, writes `.installed.json` there, runs every kit script with `--selftest` under Node, and runs `claude auth status` to see whether you are signed in. On that path it makes no network request, collects no data and sends no telemetry. The installer downloads a kit from `github.com/markfulton/ai-employees` only when it has no bundled copy, which never happens inside the plugin or the npm package, since both carry the kits. Used without the plugin, the skill asks before it fetches anything from npm or GitHub. It registers no schedule, sends nothing and never reads or enters a credential. A hired employee is a separate step that runs in its own folder, and [docs/GUARDRAILS.md](docs/GUARDRAILS.md) says what it may and may not do.
+
 **Not on Claude Code?** The same two steps work on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots. [docs/HARNESSES.md](docs/HARNESSES.md) has the command for each.
 
 <table>
@@ -105,12 +107,18 @@ Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-empl
 - **They drive your browser and your PC the way you do.** Signed in as you, on your own machine, from techniques learned on real runs.
 - **You set how far they go.** Everything is drafted, filled and staged, and the last click is yours until you release a channel.
 - **One brief each morning.** One push to your phone, only when you are the blocker.
-- **They run on the agent you already use.** Claude Code and ten others, without a routine changing by one word.
+- **They run on the agent you already use.** Claude Code and twelve others, without a routine changing by one word.
 - **You can direct any of them in chat.** Open a session in the employee's folder and tell it what to do.
 - **Upgrades never overwrite your work.** `npx ai-employees upgrade` leaves every file you edited alone.
 - **They tell you when a newer kit is out.** Once a month, in the morning brief, in plain words. A fix an employee made to itself that would help everyone is drafted for you to send back, and nothing is sent without you.
 
 [The long version](docs/WHAT-SETS-THEM-APART.md).
+
+## Useful work, visible progress
+
+The existing routines now record verified deliverables separately from successful runs and business results. They keep preparing authorized work when another step is blocked, review bounded experiments, and report delivery stalls. Configured handoffs connect roles without writing into another employee's folder. Interrupted work uses atomic claims and the remaining scheduled budget.
+
+SEO/AEO includes native Google Search Console Generative AI impressions. Upgrades preserve local changes and offer reviewable three-way reconciliation. See [upgrade instructions](docs/UPGRADING.md), [behavior evaluation](docs/BEHAVIOR-EVALUATION.md) and [release commands](docs/RELEASING.md).
 
 ## What a morning looks like
 

@@ -1010,6 +1010,10 @@ What actually holds the line is in the routines and it is checked at the end of 
 
 ---
 
+### search.generative-ai.read
+
+Read-only native Google Search Console Generative AI reporting. Resolve a connector only after verifying it exposes this exact native report. Otherwise use the existing signed-in browser through Performance > Generative AI, following `GSC-GENERATIVE-AI.md`. A Web Search Analytics response is not an isolated AI response. Do not invent an API search type or use a model-generated answer as a substitute. Record the confirmed route and absence reason on this run.
+
 ## Corrections
 
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.`

@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Publish run
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«SOC_ROOT»/scripts/guard.mjs" soc-publish-run`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/soc-publish-run.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -113,6 +118,8 @@ On either failure: **publish nothing this run**, record `partial`, name every du
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 Your cadence is weekdays, so your period key is the local date, `YYYY-MM-DD`, taken from `clock.local`. Never derive it from a UTC timestamp: near midnight the two disagree and the disagreement is invisible until a day is gone.
 
 Read `«SOC_ROOT»/state/soc-publish-run.json` and strip a leading byte order mark, code point U+FEFF, from the head of the text before parsing.
@@ -147,7 +154,7 @@ Read `«SOC_ROOT»/state/soc-publish-run.json` and strip a leading byte order ma
 
 Reset `progress`, `assumptions`, `handed_over`, and `deferred_today` each run.
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. A guard written after the work is not a guard, and in this routine the thing it guards is a duplicate post.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. A guard written after the work is not a guard, and in this routine the thing it guards is a duplicate post.
 
 **Never process a slot whose date is not today.** There is no backlog flushing in this kit, ever, and here it is a hard safety property rather than a tidiness rule. A machine that slept through Wednesday and Thursday wakes on Friday and fires three queued jobs inside a minute. Without this rule, Friday morning would publish Wednesday's post, Thursday's post, and Friday's post in the same three minutes, under the member's name, to a live audience. **Wednesday's slot is missed. The standup marks it `missed`, the member sees it in the brief, and they decide.** You never catch up.
 

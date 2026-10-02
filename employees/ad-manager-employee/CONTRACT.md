@@ -628,6 +628,8 @@ A missed scheduled run does not fire once when the machine wakes. The host flush
 
 ### 0.2: the once-per-period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 ```
 Compute the period key for this cadence from the local date (section 1.3).
 Read «ADS_ROOT»/state/ads-<id>.json.
@@ -643,7 +645,7 @@ Otherwise, IMMEDIATELY, before any other work:
     carrying every other key in the file across unchanged
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. A guard written after the work is not a guard.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. A guard written after the work is not a guard.
 
 **Never process an item whose date is not the current period key. There is no backlog flushing in this kit, ever.** One thing looks like an exception and is not: the metrics rows appended today are dated for the day the account reports, which is normally yesterday. That is the reporting date on the row, not the period key of the run, and the two are different fields for exactly this reason.
 
@@ -999,6 +1001,12 @@ The complete id list. Nothing outside it may be referenced anywhere in this kit:
 There is one metrics ledger and its path is `metrics/daily.jsonl`. There is one creative ledger and its path is `creative/ledger.jsonl`. There is one change ledger and its path is `changes/ledger.jsonl`. `plan/PROPOSAL.md` does not exist in this kit and its function is `plan/CHANGELOG.md`.
 
 `scripts/runlog.mjs` refuses a stale id by name, so a routine that carries one fails loudly on its first record rather than silently forever.
+
+## Work-cycle extension
+
+`WORK-CYCLE.md` is part of this contract. Its progress and claim-recovery rules refine the legacy period instructions in section 5 and Step 0.2; they cannot widen guardrails. Each routine owns its own `progress/<routine-id>/*.json`, `experiments/<routine-id>/*.json`, `handoffs/outbox/<routine-id>/*.json` and `handoffs/receipts/<routine-id>/*.json`. These explicit paths extend the older closed writer lists. The guard and finish helper alone maintain `state/run-leases/`. The member owns `handoffs/routes.json`. Read `work-profile.json` for role-specific acceptance and fallback guidance.
+
+`ads-desk-standup` reads local progress and configured handoffs, reports execution, delivery and business results separately, and reconciles accepted work through its existing board. `ads-creative-retro` owns the role's experiment review and uses the existing review cadence. Other research routines may own experiments only under their own id. No new routine or scheduler registration is introduced. Missing progress evidence is unknown, not healthy. Existing queue caps and writer boundaries continue to apply.
 
 ## Corrections
 

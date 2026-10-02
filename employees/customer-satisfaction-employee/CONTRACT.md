@@ -799,6 +799,8 @@ A missed scheduled run does not fire once when the machine wakes. The host flush
 
 ### 0.2: the once-per-period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 ```
 Compute the period key for this cadence from the local date (section 1.3).
 Read «CSAT_ROOT»/state/csat-<id>.json.
@@ -812,7 +814,7 @@ Otherwise, IMMEDIATELY, before any other work:
     progress[], and budget_minutes_used, and carrying every other field across unchanged
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. A guard written after the work is not a guard.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. A guard written after the work is not a guard.
 
 **In this Employee a double run costs more than a lost one, and it costs it in public.** Two runs of the reply desk write two different answers to one customer on the same day. Two runs of the churn watch produce two dossiers and two save cards for one worried account. Two runs of the taxonomy refresh rewrite the taxonomy twice on one afternoon and produce a file describing neither month. Losing a run is cheap. Every one of those is not.
 
@@ -1143,6 +1145,12 @@ csat-taxonomy-refresh
 **A row, a registered job, or a reference anywhere in this kit carrying any other string is a defect**, and a routine whose row is keyed on a string no folder carries fails on its first line, forever, with no error the member ever sees.
 
 This kit shipped with one id set and carries no stale ones. If a routine is ever renamed, put the old string into the `STALE_IDS` map in `scripts/runlog.mjs` pointing at the new one, in the same edit that renames the folder, so a job still registered under the old name fails loudly rather than silently.
+
+## Work-cycle extension
+
+`WORK-CYCLE.md` is part of this contract. Its progress and claim-recovery rules refine the legacy period instructions in section 5 and Step 0.2; they cannot widen guardrails. Each routine owns its own `progress/<routine-id>/*.json`, `experiments/<routine-id>/*.json`, `handoffs/outbox/<routine-id>/*.json` and `handoffs/receipts/<routine-id>/*.json`. These explicit paths extend the older closed writer lists. The guard and finish helper alone maintain `state/run-leases/`. The member owns `handoffs/routes.json`. Read `work-profile.json` for role-specific acceptance and fallback guidance.
+
+`csat-desk-standup` reads local progress and configured handoffs, reports execution, delivery and business results separately, and reconciles accepted work through its existing board. `csat-satisfaction-report` owns the role's experiment review and uses the existing review cadence. Other research routines may own experiments only under their own id. No new routine or scheduler registration is introduced. Missing progress evidence is unknown, not healthy. Existing queue caps and writer boundaries continue to apply.
 
 ## Corrections
 

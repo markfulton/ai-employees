@@ -63,9 +63,23 @@ The last number is the one to look at. It is the work the employee has done sinc
 
 ## Merging a `.new` file
 
-There is no clever tool for this and there should not be. Open the two side by side, and carry your edit forward into the new version rather than carrying the new version back into your file. The kit changelog tells you what changed and why, so you usually only need to find your own edit and re-apply it.
+Version 1.9 adds a conservative three-way comparison. It prepares candidates and a JSON report without changing live kit files:
 
-When you are done, delete the `.new` file. Nothing reads it.
+```bash
+npx ai-employees@latest reconcile gtm-engineer --to /path/to/your/employee
+```
+
+Read the report under `.upgrade/reconcile/`. Nonoverlapping edits can be combined; overlapping edits are marked as conflicts. Member files, schedules and unknown paths are protected. The member's `## Corrections` must survive unchanged. Then apply the nonconflicting candidates explicitly:
+
+```bash
+npx ai-employees@latest reconcile gtm-engineer --to /path/to/your/employee --apply
+```
+
+Backups and incoming copies stay beside the report. The command checks JSON, routine frontmatter and JavaScript syntax. Run the kit scripts' self tests and review changed instructions before the next scheduled execution. Stop a running employee through its normal member controls while applying an upgrade; the installer does not interrupt it or change its schedule.
+
+New installs retain shipped baselines in `.upgrade/baseline/`. Older receipts have hashes only: supply `--base /path/to/original/kit` when you have that exact version. Each base file must match its recorded hash. Without verified base contents, the report names manual reconciliation instead of guessing. Carry member edits into the new version, preserving releases and schedule values. Repeated upgrades never reclassify a pending local edit as an unmodified shipped file.
+
+For this release, reconcile CONTRACT.md, the affected SKILL.md files and the new helper scripts as one compatible kit before resuming. Add the work-cycle settings from SCHEDULE.md.new while preserving your own rows. No new routine needs registering. A new VERSION file alone does not prove every local instruction has adopted the update.
 
 ## Your own repairs are worth sending back
 

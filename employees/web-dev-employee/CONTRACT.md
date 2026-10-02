@@ -703,6 +703,8 @@ A missed scheduled run does not fire once when the machine wakes. The host flush
 
 ### 0.2: the once-per-period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 ```
 Compute the period key for this cadence from the local date (section 1.3).
 Read «WEB_ROOT»/state/web-<id>.json.
@@ -718,7 +720,7 @@ Otherwise, IMMEDIATELY, before any other work:
     to state/web-<id>.json, temp path plus rename
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. A guard written after the work is not a guard. **On `web-fix-runner` and `web-dependency-run` it is the difference between one branch and two branches racing each other in the same repository, and on `web-guardrail-review` it is the difference between widening a class once and widening it twice on one month of evidence.**
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. A guard written after the work is not a guard. **On `web-fix-runner` and `web-dependency-run` it is the difference between one branch and two branches racing each other in the same repository, and on `web-guardrail-review` it is the difference between widening a class once and widening it twice on one month of evidence.**
 
 Never process an item whose date is not the current period key. There is no backlog flushing in this kit, ever.
 
@@ -1072,6 +1074,12 @@ Anything still carrying one of these strings is stale and must be corrected on s
 Stale paths, same rule. There is no `strategy/` folder in this kit and no `proof-inventory.md`: the metric rule is satisfied by naming the source on the line, and section 3.4 is the whole of it. There is no `state/proof-candidates.md` and no proposal file of any kind.
 
 Search this kit for every string in the left column and for `«` followed by a routine name. A single survivor is a routine that fails on its first line, forever, with no error the member ever sees.
+
+## Work-cycle extension
+
+`WORK-CYCLE.md` is part of this contract. Its progress and claim-recovery rules refine the legacy period instructions in section 5 and Step 0.2; they cannot widen guardrails. Each routine owns its own `progress/<routine-id>/*.json`, `experiments/<routine-id>/*.json`, `handoffs/outbox/<routine-id>/*.json` and `handoffs/receipts/<routine-id>/*.json`. These explicit paths extend the older closed writer lists. The guard and finish helper alone maintain `state/run-leases/`. The member owns `handoffs/routes.json`. Read `work-profile.json` for role-specific acceptance and fallback guidance.
+
+`web-standup` reads local progress and configured handoffs, reports execution, delivery and business results separately, and reconciles accepted work through its existing board. `web-weekly-report` owns the role's experiment review and uses the existing review cadence. Other research routines may own experiments only under their own id. No new routine or scheduler registration is introduced. Missing progress evidence is unknown, not healthy. Existing queue caps and writer boundaries continue to apply.
 
 ## Corrections
 

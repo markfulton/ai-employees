@@ -5,13 +5,18 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Answer visibility
 
 Run `node scripts/guard.mjs seo-answer-visibility --json` first. A non-run verdict has already been recorded; exit without reading the rest of the kit. For a run verdict read CONTRACT.md, ROLE.md, CAPABILITIES.md, AEO-PLAYBOOK.md and your SCHEDULE.md row in full. This routine inherits every contract guard, status, state schema, mutex rule and output writer boundary. Never infer a time, budget or cadence from this document.
 
 ## 0. Begin a recoverable run
 
-Read your row and compute its period key using the contract rules and local clock. Read `state/seo-answer-visibility.json`. Apply the contract's once-per-period check and atomic state update, recording `last_period`, `started`, the run id and progress before external work. The guard does not reserve the period for you. Use the established mutex/stale-lock rules before browser work, and release only the lock you own on every exit. Do not modify another routine's state, schedule or active lock.
+Read your row and compute its period key using the contract rules and local clock. Read `state/seo-answer-visibility.json`. Apply the contract's once-per-period check and atomic state update, recording `last_period`, `started`, the run id and progress before external work. A real guard run returns an atomic claim. Preserve its token and apply WORK-CYCLE.md recovery rules; an inspection with --no-record reserves nothing. Use the established mutex/stale-lock rules before browser work, and release only the lock you own on every exit. Do not modify another routine's state, schedule or active lock.
 
 Resolve capabilities live. Prefer a confirmed connected read route, then an approved browser session, then a dated member-supplied observation. CAPABILITIES.md is the only vendor-to-capability map. No connector purchase, install, account creation, authentication or credential entry. An unavailable route is an explicit gap, not zero visibility. Read-only observation includes submitting the approved public buyer question to an existing authorized search/chat surface; never include private client notes, secrets or unpublished strategy in that question. Do not use a route whose use requires accepting terms or an unapproved paid action.
 
@@ -49,6 +54,10 @@ Write a dated report under `tracking/answers/` and atomically replace `tracking/
 At budget, stop at the current question boundary, persist coverage and write a partial report. Do not resubmit a completed question to use up time. On failure retain the previous successful rolling report with its original date; write the new failure to your state and run record. If file work succeeded but external observation was unavailable, report partial and coverage unknown, with the precise blockers. Apply the closed statuses from CONTRACT.md rather than inventing an AEO status.
 
 Finish with the standard run record through `scripts/runlog.mjs` and its documented input contract. Include output paths, card ids, progress, blockers and assumptions. Release your browser lock and close only your own tabs in a finally-style cleanup. A log failure uses the contract's UNRECORDED RUN fallback; never silently report success. This routine never publishes, contacts prospects, changes infrastructure, spends, or writes RELEASES.md.
+
+## Native Generative AI integration
+
+Read `GSC-GENERATIVE-AI.md` for report definitions, ownership and validation. Before question sampling, collect native Generative AI impressions using the current property map. Append validated observations and write the dated native report. This work does not require an answer-question map or previously published kit content. If that map is absent, still read the mapped property report and continue factual eligibility checks.
 
 ## Corrections
 

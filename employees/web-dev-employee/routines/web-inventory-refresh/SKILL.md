@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Inventory refresh
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«WEB_ROOT»/scripts/guard.mjs" web-inventory-refresh`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/web-inventory-refresh.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -113,6 +118,8 @@ Read the row in `«WEB_ROOT»/SCHEDULE.md` whose routine id is `web-inventory-re
 `first-weekday` means any Monday to Friday date in the first seven days of the calendar month. It is a range rather than a single date so that a machine asleep on the first still gets its monthly run, and the period guard reduces the range to exactly one run per month.
 
 ### 0.2 The once per period guard, written before any work
+
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
 
 This routine's period key is the calendar month, `YYYY-MM`, taken from the local date.
 

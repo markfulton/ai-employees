@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "objective": "Qualified opportunities and evidenced pipeline movement",
+  "standup": "sales-desk-standup",
+  "reviewer": "sales-pipeline-review",
+  "routines": {
+    "sales-desk-setup": {
+      "kind": "research",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Investigate a qualification assumption, resolve prospect evidence or prepare a personalized objection response using permitted sources.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "sales-desk-standup": {
+      "kind": "standup",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Reverify stale blockers, reconcile progress receipts and select the next authorized owned action. Surface delivery stalls separately from run failures.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "sales-first-touch-drafts": {
+      "kind": "produce",
+      "expected_when": "An owned feasible card, due commitment or scheduled deliverable exists. A blocked due commitment remains expected.",
+      "acceptance": "A usable reviewed artifact meets the card definition of done and proof requirements.",
+      "fallback": "Investigate a qualification assumption, resolve prospect evidence or prepare a personalized objection response using permitted sources.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "sales-followup-sweep": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Investigate a qualification assumption, resolve prospect evidence or prepare a personalized objection response using permitted sources.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "sales-pipeline-review": {
+      "kind": "review",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Review existing experiments; distinguish missing measurement from insufficient evidence and measured effects. Prepare a smaller test when evidence cannot mature.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "sales-prospect-sweep": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Investigate a qualification assumption, resolve prospect evidence or prepare a personalized objection response using permitted sources.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "sales-qualification-refresh": {
+      "kind": "research",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Investigate a qualification assumption, resolve prospect evidence or prepare a personalized objection response using permitted sources.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    }
+  }
+}

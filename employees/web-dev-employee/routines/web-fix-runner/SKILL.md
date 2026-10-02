@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Fix runner
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«WEB_ROOT»/scripts/guard.mjs" web-fix-runner`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/web-fix-runner.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -128,6 +133,8 @@ Never guess a window, and never widen one because a run looks overdue. A missed 
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 This routine's cadence is weekdays, so its period key is the local date in the form `YYYY-MM-DD`, taken from `clock.local`. **Never derive it from a UTC timestamp.**
 
 ```
@@ -144,7 +151,7 @@ Otherwise, IMMEDIATELY, before any other work of any kind:
     and every field in the table below carried forward unchanged
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. **On this routine it is the difference between one branch and two branches racing each other in the same repository.**
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. **On this routine it is the difference between one branch and two branches racing each other in the same repository.**
 
 | Field | What it holds | What is lost if you drop it |
 |---|---|---|

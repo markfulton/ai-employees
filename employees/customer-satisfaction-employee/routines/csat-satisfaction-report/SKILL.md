@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Satisfaction report
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«CSAT_ROOT»/scripts/guard.mjs" csat-satisfaction-report`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/csat-satisfaction-report.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -101,6 +106,8 @@ Never guess a window, and never widen one because a run looks overdue. A missed 
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 This routine's cadence is weekly, so its period key is the ISO week in the form `YYYY-Www`, **computed from the local date and never from a UTC timestamp**. Near midnight the two disagree and the disagreement is invisible until a week is gone.
 
 ```
@@ -116,7 +123,7 @@ Otherwise, IMMEDIATELY, before any other work:
     and carrying forward every field in the table in Step 1
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point. A guard written after the work is not a guard.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion. A guard written after the work is not a guard.
 
 **Never process an item whose date is not the current period key.** There is no backlog flushing in this kit, ever. Step 2 is what makes a skipped Friday recoverable without breaking that rule: the scoring window reaches back to where the last one ended, so a week the machine slept through is counted once, in the next report, and named as a long window rather than silently absorbed.
 

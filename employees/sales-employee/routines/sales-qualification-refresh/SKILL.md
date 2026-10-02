@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Qualification refresh
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«SALES_ROOT»/scripts/guard.mjs" sales-qualification-refresh`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/sales-qualification-refresh.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -86,6 +91,8 @@ Never guess a window.
 A missed run does not fire once when the machine wakes. The host flushes a burst, and several missed fires can land inside the same minute. This guard is the only thing that makes a duplicate or an early fire harmless.
 
 ### 0.2 Once per period guard, written before any work
+
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
 
 This routine's period key is the calendar month, `YYYY-MM`, computed from the **local** date. Take the local year and the local month. Never derive it from a UTC timestamp: near midnight on the last of a month the two disagree and the disagreement is invisible until a month is gone.
 

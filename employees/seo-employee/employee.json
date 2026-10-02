@@ -3,8 +3,8 @@
   "slug": "seo-employee",
   "name": "SEO/AEO Employee",
   "role": "Search, content and answer visibility",
-  "version": "1.9.0",
-  "standard": "1.4",
+  "version": "1.10.0",
+  "standard": "1.5",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -93,6 +93,15 @@
         "member-observation",
         "browser",
         "bing-webmaster-tools"
+      ],
+      "required": false,
+      "readonly": true
+    },
+    {
+      "capability": "search.generative-ai.read",
+      "providers": [
+        "browser",
+        "verified-native-report-connector"
       ],
       "required": false,
       "readonly": true
@@ -198,7 +207,10 @@
       "scripts/**",
       "examples/**",
       "AEO-PLAYBOOK.md",
-      "standards/PUBLISH-STANDARD.md"
+      "standards/PUBLISH-STANDARD.md",
+      "WORK-CYCLE.md",
+      "work-profile.json",
+      "GSC-GENERATIVE-AI.md"
     ],
     "merge": [
       "SCHEDULE.md"
@@ -228,7 +240,11 @@
       "content/**",
       "index/**",
       "PAUSED",
-      "schedule-commands.txt"
+      "schedule-commands.txt",
+      "progress/**",
+      "experiments/**",
+      "handoffs/**",
+      ".upgrade/**"
     ]
   },
   "notes": {

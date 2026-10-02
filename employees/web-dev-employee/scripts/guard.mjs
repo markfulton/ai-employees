@@ -32,12 +32,12 @@
  *   run                    every guard passed: carry on with Step 0 and the routine
  *   skipped-paused         PAUSED exists and covers this routine
  *   skipped-out-of-window  today is not a listed day, or now is outside the window
- *   skipped-already-ran    state/<routine-id>.json already carries this period key
+ *   skipped-already-ran    period completed, legacy period recorded, active claim, or budget exhausted
  *   failed                 no SCHEDULE.md row for this routine, or the row will not parse
  *
  * For every verdict other than run, the script appends the run record through
  * scripts/runlog.mjs before it returns, so the routine has nothing left to
- * write. It never writes a state file: the once per period write in Step 0.2
+ * write. On run it atomically claims state/run-leases/<id>.json. For legacy state: the once per period write in Step 0.2
  * stays with the routine, because the cursors that file carries forward are
  * the routine's.
  *
@@ -53,6 +53,7 @@
  */
 
 import fs from "node:fs";
+import { readLease, inspectLease, claimRun } from './run-state.mjs';
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -257,6 +258,7 @@ function decide(root, id, now) {
   out.period = period;
 
   const state = readState(root, id);
+  if (state.unreadable) { out.verdict = "failed"; out.blockers = ["state unreadable; preserve it and reconcile receipts before recovery"]; return out; }
   const firstRun = row.days === "first-weekday" && !state.exists;
 
   if (firstRun) {
@@ -271,12 +273,15 @@ function decide(root, id, now) {
     return out;
   }
 
-  if (state.lastPeriod === period) {
+  if (state.lastPeriod === period && !readLease(root, id)) {
     out.verdict = "skipped-already-ran";
     out.notes.push("guard: state already carries period " + period);
     return out;
   }
-  if (state.unreadable) out.notes.push("guard: state file present but unreadable, treated as no period");
+  const recovery = inspectLease(root, id, period, row.budget, now.getTime());
+  if (!recovery.allowed) { out.verdict = "skipped-already-ran"; out.notes.push("guard: " + recovery.reason); return out; }
+  out.recovery = recovery;
+
 
   return out;
 }
@@ -427,10 +432,18 @@ function main() {
   if (opts.help) { usage(); process.exit(0); }
   if (opts.selftest) { selftest(); return; }
   if (!opts.id) die(2, "a routine id is required. Run with --help.");
+  if (opts.now && !opts.noRecord) die(2, "--now is inspection only; also pass --no-record");
 
   const root = resolveRoot(opts);
-  const verdict = decide(root, opts.id, localNow(opts.now));
+  let verdict;
+  try { verdict = decide(root, opts.id, localNow(opts.now)); }
+  catch (error) { verdict = { routine: opts.id, verdict: "failed", period: localDate(localNow(opts.now)), now: isoLocal(localNow(opts.now)), notes: ["guard: state could not be verified"], blockers: [error.message] }; }
 
+  if (verdict.verdict === "run" && !opts.noRecord) {
+    try { verdict.claim = claimRun(root, opts.id, verdict.period, verdict.budget); }
+    catch (error) { verdict.claim = { allowed: false, reason: error.message }; verdict.verdict = "failed"; verdict.blockers = [error.message]; }
+    if (!verdict.claim.allowed) { if (verdict.verdict !== "failed") verdict.verdict = "skipped-already-ran"; verdict.notes.push("guard: " + verdict.claim.reason); }
+  }
   if (verdict.verdict !== "run" && !opts.noRecord) {
     const wrote = writeRecord(root, verdict);
     verdict.record = wrote.ok ? "written" : "not written: " + wrote.reason;
@@ -439,6 +452,7 @@ function main() {
   }
 
   print(verdict, opts.json);
+  if (verdict.claim?.allowed && !opts.json) process.stdout.write("claim: " + JSON.stringify(verdict.claim) + "\n");
   if (verdict.verdict === "run") process.exit(0);
   if (verdict.verdict === "failed") process.exit(11);
   process.exit(10);

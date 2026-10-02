@@ -1,5 +1,7 @@
 # The Agent Employee Standard
 
+Current standard: **1.5, 2026-10-02**. The work-cycle section adds observable delivery, scoped blockers, bounded experiments, configured handoffs and atomic recovery across the existing routines.
+
 Build spec for every AI Employee in the club. Not shipped to members. The GTM Engineer is the reference implementation; every later Employee inherits everything here and adds only its own domain expertise.
 
 Standard version 1.4, 2026-09-23: LAW 7 gains a third delivery surface, `brief.deliver`, so the brief reaches the member on a harness whose computer they never open; section 4 gains the five questions a routine answers before it is scheduled. Version 1.3, 2026-09-11: LAW 4 names connected sources, the per capability routes a member connects in their own harness, read only and preferred over the browser lane. Version 1.2, 2026-09-05: LAW 2 became the two guardrails, the first of them released channel by channel by the member in `RELEASES.md`. Version 1.1, 2026-08-28. Laws 6 through 8 and the operator-session and browser-lane sections were earned in the first live week of the GTM Engineer running Mark's own launch; the release notes in each kit's CHANGELOG carry the short story.
@@ -195,3 +197,9 @@ Mark's own production operations are the raw material. Each maps to an Employee:
 | Mailbox searched, audited, analysed, monitored for outreach | Inbox Operator |
 
 **Mine the real routines before writing any kit.** The pace numbers, the idempotency mechanisms, the login-wall handling, and the verify-after-acting discipline are all already proven in production and must not be re-invented from theory.
+
+## Work cycle, standard 1.5
+
+Version 1.5, 2026-10-02, makes useful progress independently observable across all roles. Shared source lives in `shared/work-cycle/` and is copied to every kit with `node .github/scripts/sync-work-cycle.mjs --write`; CI verifies exact parity. Each self-contained kit adds WORK-CYCLE.md, work-profile.json and tested helpers. Existing routines own preparation, research, experiments, handoffs and recovery within their existing releases. Execution health, delivery progress and business results remain separate.
+
+Progress records never substitute for acceptance checks. Scenarios test quiet monitoring, repeated empty success, pending approval with independent preparation, insufficient evidence, configured handoffs and interrupted actions. Human/agent evaluations must inspect resulting artifacts and restraint; deterministic checks do not prove the quality of future model decisions.

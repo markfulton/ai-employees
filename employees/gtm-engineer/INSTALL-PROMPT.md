@@ -235,3 +235,7 @@ End with this line, verbatim, as the very last line of the handover, with nothin
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.`
 
 The installing agent reads this section once, in Phase 0, before it starts. If a previous install got something wrong about your setup, write it here and the next one will not repeat it.
+
+## Work-cycle adoption
+
+Read WORK-CYCLE.md and work-profile.json after the installation guard permits work. Check the new work-cycle and run-state helpers with --selftest alongside the existing checks. Preserve the 60-routine fleet roster and this kit's current schedule rows. On an upgrade, reconcile old CONTRACT and routine overrides before resuming; missing scripts or unmerged policy are a partial adoption, not a successful release. Verify the first scheduled deliverable and its progress receipt; a manual install run does not prove unattended delivery.

@@ -53,9 +53,9 @@ Use the first route that works:
    node "<base directory>/../../installer/cli.mjs" hire <slug> --to "<folder>"
    ```
 
-   It copies the kit from the bundled files with no network, refuses a synced or non empty folder, writes `.installed.json` (the record that lets a later upgrade tell the user's edits from ours), runs the three self tests, checks the login, and prints the install prompt with the path filled in.
-2. **The published installer.** `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm.
-3. **Only if neither can run:** download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip`, extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them.
+   It copies the kit from the bundled files with no network, refuses a synced or non empty folder, writes `.installed.json` (the record that lets a later upgrade tell the user's edits from ours), runs every kit script's self tests, checks the login, and prints the install prompt with the path filled in.
+2. **The published installer.** Inside the plugin route 1 always works, so this is for the skill used on its own. Tell the user it will fetch the `ai-employees` package from npm and wait for a yes, then run `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm.
+3. **Only if neither can run:** tell the user you need to download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip` and wait for a yes. Then extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them.
 
 Never rename anything inside the kit. A routine's folder name, its YAML `name` and the name of its scheduled job are the same string, and a rename breaks the install.
 
@@ -109,3 +109,7 @@ Use this to answer questions after the hire.
 End the handover with this line, and nothing after it:
 
 Step by step walkthrough and live setup sessions: [club.reinventing.ai/plugin](https://club.reinventing.ai/plugin?utm_source=claude-code&utm_medium=plugin&utm_campaign=hire)
+
+## Reconciling local improvements
+
+After an explicitly requested upgrade, `npx ai-employees@latest reconcile <slug> --to "<folder>"` prepares a reviewable comparison using recorded baseline files. Explain missing baselines or conflicts; preserve member corrections, releases, schedules and state. `--apply` combines only nonconflicting kit files, retaining backups. Use the bundled installer route when available, following the existing download rules. See docs/UPGRADING.md. Verify helper self tests and the first scheduled progress receipt after adoption.

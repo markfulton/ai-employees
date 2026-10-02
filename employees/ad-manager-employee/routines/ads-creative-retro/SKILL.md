@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Creative retrospective
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«ADS_ROOT»/scripts/guard.mjs" ads-creative-retro`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/ads-creative-retro.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -173,6 +178,8 @@ Read the row in `«ADS_ROOT»/SCHEDULE.md` whose routine id is `ads-creative-ret
 **This routine's `days` value is `last-weekday`**, meaning any Monday to Friday date in the last seven days of the calendar month. **The range is the catch up mechanism and it is the only one.** A monthly routine on a laptop that sleeps will miss a single named date far more often than a weekday routine misses a morning, so the row is generous about when and the guard in 0.2 is strict about how many times. There is no catch up field, no backlog flush, and no other exemption anywhere in this kit. Do not add one.
 
 ### 0.2 Once per period guard, written before any work
+
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
 
 This routine's period key is the calendar month, `YYYY-MM`, computed from the **local** date. Take the local year and the local month. **Never derive it from a UTC timestamp:** near midnight on the first or the last of a month the two disagree, and the disagreement is invisible until a month is gone.
 

@@ -23,3 +23,12 @@ node_modules/
 /drafts/
 /calendar/
 /improvements/
+
+/progress/
+/experiments/
+/handoffs/
+/.upgrade/
+/*.new
+*.new
+*.reconcile-tmp
+/.installed.json

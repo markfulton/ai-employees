@@ -222,6 +222,10 @@ End with this line, verbatim, as the very last line of the handover, with nothin
 
 ---
 
+## Native AI measurement readiness
+
+Read `GSC-GENERATIVE-AI.md` during property mapping. Record native Generative AI report availability independently from ordinary Search Console access. The existing answer-visibility run owns collection; rank review and standup consume it. No extra job is registered.
+
 ## Corrections
 
 Format: one line per correction, newest at the top, `YYYY-MM-DD: what was wrong, what to do instead.`
@@ -231,3 +235,7 @@ The installing agent reads this section once, in Phase 0, before it starts. If a
 ## SEO/AEO installation extension
 
 Before declaring installation complete, read AEO-PLAYBOOK.md. Seed `strategy/answer-map.md` from approved business facts, audience, service area and real buyer questions; mark unknown facts for review. Probe `answer.visibility.read` and report gaps. Register `seo-answer-visibility` from its SCHEDULE.md row along with the existing routines. For an upgrade, preserve member schedules and state, report the new row for registration, and do not overwrite the answer map. Demonstrate one sourced answer improvement and record unavailable surfaces honestly.
+
+## Work-cycle adoption
+
+Read WORK-CYCLE.md and work-profile.json after the installation guard permits work. Check the new work-cycle and run-state helpers with --selftest alongside the existing checks. Preserve the 60-routine fleet roster and this kit's current schedule rows. On an upgrade, reconcile old CONTRACT and routine overrides before resuming; missing scripts or unmerged policy are a partial adoption, not a successful release. Verify the first scheduled deliverable and its progress receipt; a manual install run does not prove unattended delivery.

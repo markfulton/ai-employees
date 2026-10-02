@@ -27,4 +27,9 @@ const g = spawnSync(process.execPath, [path.join(kit, "scripts/guard.mjs"), id, 
 assert.equal(g.status, 0, g.stdout + g.stderr);
 const audit = spawnSync(process.execPath, [path.join(kit, "scripts/answer-audit.mjs"), "--selftest"], { encoding: "utf8" });
 assert.equal(audit.status, 0, audit.stdout + audit.stderr);
+assert.ok(manifest.files.kit.includes("GSC-GENERATIVE-AI.md"));
+assert.ok(manifest.connections.some(c => c.capability === "search.generative-ai.read" && c.readonly));
+for (const routine of ["seo-answer-visibility", "seo-rank-review", "seo-standup", "seo-intake-and-map"]) assert.ok(fs.readFileSync(path.join(kit, "routines", routine, "SKILL.md"), "utf8").includes("GSC-GENERATIVE-AI.md"));
+const native = spawnSync(process.execPath, [path.join(kit, "scripts/gsc-ai.mjs"), "--selftest"], { encoding: "utf8" });
+assert.equal(native.status, 0, native.stdout + native.stderr);
 console.log("aeo-check: PASS (roster, manifest, schedule, install wiring, guard and measurement tests)");

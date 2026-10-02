@@ -55,3 +55,10 @@ employees/*/recipes/*.json
 node_modules/
 .DS_Store
 Thumbs.db
+
+employees/*/progress/
+employees/*/experiments/
+employees/*/handoffs/
+employees/*/.upgrade/
+employees/**/*.new
+*.tgz

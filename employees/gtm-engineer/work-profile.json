@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "objective": "Qualified demand and completed launch milestones",
+  "standup": "gtm-board-standup",
+  "reviewer": "gtm-scoreboard",
+  "routines": {
+    "gtm-board-standup": {
+      "kind": "standup",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Reverify stale blockers, reconcile progress receipts and select the next authorized owned action. Surface delivery stalls separately from run failures.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "gtm-icp-refresh": {
+      "kind": "research",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Convert a verified market or buyer signal into a completed launch preparation or an owned dependency resolution.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "gtm-intake-and-dashboard": {
+      "kind": "research",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Convert a verified market or buyer signal into a completed launch preparation or an owned dependency resolution.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "gtm-launch-step-runner": {
+      "kind": "execute",
+      "expected_when": "An owned feasible card, due commitment or scheduled deliverable exists. A blocked due commitment remains expected.",
+      "acceptance": "A prepared package or verified external receipt meets the card acceptance check; distinguish prepared, released and observed live.",
+      "fallback": "Convert a verified market or buyer signal into a completed launch preparation or an owned dependency resolution.",
+      "recovery": "Reconcile external receipts and current release before resuming. Hold ambiguous effects."
+    },
+    "gtm-outreach-queue": {
+      "kind": "produce",
+      "expected_when": "The scheduled deliverable is due and relevant owned inputs or an existing commitment are available. A blocked due commitment remains expected.",
+      "acceptance": "A usable sourced draft or decision brief satisfies its stated acceptance check and existing queue limits.",
+      "fallback": "Convert a verified market or buyer signal into a completed launch preparation or an owned dependency resolution.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "gtm-paid-and-tracking-guard": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Convert a verified market or buyer signal into a completed launch preparation or an owned dependency resolution.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "gtm-scoreboard": {
+      "kind": "review",
+      "expected_when": "The routine is due and its scoped report, research or reconciliation has not been verified for the period.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Review existing experiments; distinguish missing measurement from insufficient evidence and measured effects. Prepare a smaller test when evidence cannot mature.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
+    "gtm-signal-sweep": {
+      "kind": "monitor",
+      "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",
+      "acceptance": "A dated sourced finding, decision or reconciliation is usable by its intended reader.",
+      "fallback": "Convert a verified market or buyer signal into a completed launch preparation or an owned dependency resolution.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    }
+  }
+}

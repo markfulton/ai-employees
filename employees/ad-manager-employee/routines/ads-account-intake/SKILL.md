@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Account intake
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«ADS_ROOT»/scripts/guard.mjs" ads-account-intake`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/ads-account-intake.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -113,6 +118,8 @@ Never guess a window on any later run. A missed scheduled run does not fire once
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 The period key for this cadence is the calendar month, `YYYY-MM`, computed from the local date. **Never derive it from a UTC timestamp:** near midnight the two disagree and the disagreement is invisible until a month is gone.
 
 ```
@@ -139,7 +146,7 @@ Otherwise, IMMEDIATELY, before any other work of any kind:
 
 **Carry these forward from the previous file when you rewrite it:** `ads_root`, `timezone_id_at_intake`, `capability_notes[]`, `installed_employees[]`, `dashboard_tabs[]`, `registered_times{}`, `accounts_read_on`, `ceiling_asked_on`, and `first_run_completed_on`. Reset `progress[]`, `assumptions[]`, and `budget_minutes_used`.
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion.
 
 ### 0.3 The wall clock budget
 

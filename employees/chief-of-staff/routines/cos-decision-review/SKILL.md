@@ -5,6 +5,11 @@ metadata:
   internal: true
 ---
 
+## Shared work cycle
+
+After the guard returns `run`, read `WORK-CYCLE.md` and your entry in `work-profile.json`. Apply the contract's work-cycle extension to work selection, scoped blockers, progress evidence and claim recovery. Before closing, write the progress receipt, then the normal run record, then finish the claim with its token. Preserve the remaining budget on a resume. A same-period `run` with a claim overrides only the legacy Step 0.2 exit/reset. All pause, release and browser guards still apply.
+
+
 # Decision review
 
 **Run the guard before you read anything else, this file included past this line.** Through `shell.run`: `node "«COS_ROOT»/scripts/guard.mjs" cos-decision-review`. It reads `PAUSED`, your row in `SCHEDULE.md`, and `state/cos-decision-review.json`, and prints one verdict. On `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, or `failed` it has already appended the run record: exit now and read nothing else. On `run`, carry on. Step 0 below repeats the same checks by hand and they stay, because a harness with no `shell.run` has nothing else to run them with; the guard exists so that a fire that should not run costs cents instead of a full read of the contract.
@@ -128,6 +133,8 @@ Never guess a window, and never widen one because a run looks overdue.
 
 ### 0.2 The once per period guard, written before any work
 
+For a real guard-issued claim, use WORK-CYCLE.md: the claim is authoritative, a partial resume preserves cursors and remaining budget, and the legacy same-period exit and fresh-run resets below apply only without a claim or on a new claim respectively. Close the claim after the durable record.
+
 The period key for this cadence is the calendar month, `YYYY-MM`, computed from the local date. **Never derive it from a UTC timestamp:** near midnight the two disagree and the disagreement is invisible until a month is gone.
 
 ```
@@ -144,7 +151,7 @@ Otherwise, IMMEDIATELY, before any other work of any kind:
     and every field in the table below carried forward unchanged
 ```
 
-The write happens before the work, not after it. Two instances that start in the same second cannot both proceed, and that is the entire point.
+The write happens before the work, not after it. Atomic run claims prevent concurrent starts; a state-file rename alone does not provide mutual exclusion.
 
 **Carry these fields forward.**
 
@@ -202,7 +209,7 @@ Nothing here is a judgement call.
 
 4. **`decisions/decisions.jsonl` exists and parses.** If it does not exist, `cos-decision-brief` has never proposed anything: append one run record with `status: "ok"`, `notes: "no decisions to review"`, and exit. **A run with nothing to score writes a record saying so and stops.** It never invents a decision and never lowers the bar to find one.
 
-5. **At least one `metrics/metrics-*.md` exists inside the review window.** If none does, **you cannot verify a single effect.** Score `done`, `dropped`, and `reversed` from the files that do exist, write every effect as `no-effect (never measured)` with the reason `no metrics page in the window`, carry the blocker, and record `partial`. **Do not compute a metric yourself to fill the gap.** A verification against a number this routine derived is a verification against itself.
+5. **At least one `metrics/metrics-*.md` exists inside the review window.** If none does, **you cannot verify a single effect.** Score `done`, `dropped`, and `reversed` from the files that do exist, write every effect as `unmeasured (never measured)` with the reason `no metrics page in the window`, carry the blocker, and record `partial`. **Do not compute a metric yourself to fill the gap.** A verification against a number this routine derived is a verification against itself.
 
 6. **`charter/priorities.md` exists.** If it does not, `cos-charter-and-fleet-audit` has not seeded it. Score the decisions, skip Step 6 entirely, name that routine, and carry on. **You never create this file**: the audit seeds it with the business research in front of it, and a priorities file invented by the scoring routine is a priorities file scored by the routine that wrote it.
 
@@ -283,9 +290,9 @@ Four rules, and every one of them is the difference between a real score and a c
 
 **2. Never verify against a display.** Not a headline sentence, not a dashboard tile, not a summary line, not this routine's own memory of last month. **Go to the Numbers table, find the row, read the value and its Source cell.** A number in a headline is a display of a number in a table, and every discipline in this kit rests on going to the table.
 
-**3. Where the metric was never wired, the outcome is `no-effect (never measured)` and never a pass.** Not `worked`, not `probably worked`, not `no evidence either way`. **A check that did not run tells you nothing at all about the thing it checks**, and the single most damaging thing this routine could do is let an unmeasured decision count as a success, because that is the exact mechanism by which an adviser's recorded hit rate detaches from reality.
+**3. Where the metric was never wired, the outcome is `unmeasured (never measured)` and never a pass.** Not `worked`, not `probably worked`, not `no evidence either way`. **A check that did not run tells you nothing at all about the thing it checks**, and the single most damaging thing this routine could do is let an unmeasured decision count as a success, because that is the exact mechanism by which an adviser's recorded hit rate detaches from reality.
 
-**4. Where the metric cell reads `n/a (below the rate floor)` on the page covering `visible_by`, the outcome is `no-effect (below the rate floor)`.** The cohort was never large enough to read. That is not a failure of the move and the line says so, but it is not evidence that it worked either.
+**4. Where the metric cell reads `n/a (below the rate floor)` on the page covering `visible_by`, the outcome is `inconclusive (below the rate floor)`.** The cohort was never large enough to read. That is not a failure of the move and the line says so, but it is not evidence that it worked either.
 
 Then:
 
@@ -293,9 +300,9 @@ Then:
 |---|---|
 | The named row moved in the predicted direction, by `visible_by` | `worked` |
 | The named row did not move, or moved the other way, by `visible_by` | `no-effect` |
-| The named row reads `n/a` for any reason on the page covering `visible_by` | `no-effect («the n/a reason»)` |
-| No metrics page covers `visible_by` | `no-effect (never measured)` |
-| The named row cannot be found on the page | `no-effect (the metric named was not on the page)`. **This is also a finding**: the brief named a metric that does not exist, and one line in the run record says so |
+| The named row reads `n/a` for any reason on the page covering `visible_by` | `unmeasured («the n/a reason»)` |
+| No metrics page covers `visible_by` | `unmeasured (never measured)` |
+| The named row cannot be found on the page | `unmeasured (the metric named was not on the page)`. **This is also a finding**: the brief named a metric that does not exist, and one line in the run record says so |
 
 **Append one outcome line per decision**, the instant it is scored:
 
@@ -342,6 +349,10 @@ The file carries exactly three headings, in this order:
 ```
 ## Calibration
 ## Priorities
+## Measurement status compatibility
+
+Use `unmeasured` for absent measurement and `inconclusive` for insufficient or incomparable evidence. Reserve `no-effect` for an adequately measured result that did not improve. This refines the older outcome vocabulary and examples above. Read legacy no-effect rows by their reason without rewriting them. Exclude unknown outcomes from the measured success-rate denominator and show them separately. Revisit them when the named measurement becomes available; do not repeatedly append the same unknown outcome.
+
 ## Corrections
 ```
 
@@ -411,17 +422,19 @@ Count, from the folded ledger, over the window:
 | Accepted | Of those, how many reached `accepted` |
 | Done | Of the accepted, how many reached `done` |
 | Worked | Of the done, how many reached `worked` |
-| No effect | Of the done, how many reached `no-effect`, **broken out by reason**, with `never measured` shown separately from a real miss |
+| No effect | Of the measured decisions, how many reached `no-effect` with adequate evidence |
+| Unmeasured | Missing metric, source or measurement, including legacy no-effect rows with those reasons |
+| Inconclusive | Insufficient evidence or noncomparable observations |
 | Reversed | Of the done, how many reached `reversed` |
 | Dropped | Of the accepted, how many reached `dropped` |
 
-Write the section as counts with the ledger path, and **one rate only**: worked over done, and only where `done` is at least five. Below that, the rate cell reads `n/a (too few done decisions)` and the counts are shown instead.
+Write the section as counts with the ledger path, and **one rate only**: worked over measured decisions (`worked`, `no-effect`, `reversed`), and only where that denominator is at least five. Report unmeasured and inconclusive counts separately. Below that, the rate cell reads `n/a (too few measured decisions)` and the counts are shown instead. Fold each decision's latest measurement outcome separately from its acceptance and completion history; never count a prior unmeasured line twice when a later measurement arrives.
 
 ```
 ## Calibration
 Window 2026-01-01 to 2026-03-31, decisions/decisions.jsonl.
-Proposed `14`, accepted `9`, done `7`, worked `3`, no effect `3` (`2` never measured), reversed `0`, dropped `2`.
-Worked over done: `3 of 7`.
+Proposed `14`, accepted `9`, done `7`, worked `3`, no effect `2`, unmeasured `1`, inconclusive `1`, reversed `0`, dropped `2`.
+Worked over measured: `3 of 5`.
 ```
 
 **Show `never measured` separately, always.** A review reporting three of seven worked, where two of the four misses were never measured at all, is reporting a hit rate and a measurement gap as though they were the same thing. **They are not, and the second one is the one the member can fix this month.**
@@ -488,7 +501,7 @@ After the call, read the last line of `runlog.jsonl` and confirm it parses. **Ne
 
 - **A calibration figure on fewer than five closed decisions.** Ever. That refusal is the most important single behaviour in this routine.
 - **A rate computed on fewer than five done decisions.** Counts instead.
-- **A `worked` outcome for a decision whose metric was never wired.** It is `no-effect (never measured)` and it is never a pass.
+- **A `worked` outcome for a decision whose metric was never wired.** It is `unmeasured (never measured)` and it is never a pass.
 - **A `worked` outcome verified against a headline, a dashboard, a summary line, or your own memory.** Go to the Numbers table.
 - **A `done` outcome inferred from an effect** rather than from a change in a file you name.
 - **An `accepted` status.** You never write one, and you never infer acceptance from a change appearing in a file.
@@ -521,15 +534,15 @@ The status vocabulary is the closed list in `CONTRACT.md` section 4.1, plus `ski
 
 | Condition | What you do | Status |
 |---|---|---|
-| No metrics page in the window | Score `done`, `dropped`, and `reversed`. Every effect is `no-effect (never measured)`. **Never compute a metric yourself** | `partial` |
-| A metrics page exists but the named row is not on it | `no-effect (the metric named was not on the page)`, plus one line in the run record. **The brief named a metric that does not exist and that is worth knowing** | `ok` |
-| The named row reads `n/a` for any reason | `no-effect («the n/a reason»)`. Never a pass | `ok` |
+| No metrics page in the window | Score `done`, `dropped`, and `reversed`. Every effect is `unmeasured (never measured)`. **Never compute a metric yourself** | `partial` |
+| A metrics page exists but the named row is not on it | `unmeasured (the metric named was not on the page)`, plus one line in the run record. **The brief named a metric that does not exist and that is worth knowing** | `ok` |
+| The named row reads `n/a` for any reason | `unmeasured («the n/a reason»)`. Never a pass | `ok` |
 | `charter/priorities.md` missing | Skip Step 6, name `cos-charter-and-fleet-audit`. **Never create the file** | `partial` |
 | The priorities rewrite fails the copy check twice on your own text | Restore the previous file, record the failure | `partial` |
 | The copy check fails on preserved member text | Write the file anyway, one line in the run record naming the file and the rule | `ok` |
 | Fewer than five closed decisions | `## Calibration` reads `n/a (too few closed decisions)`. **The rest of the review runs normally** | `ok` |
 | A ledger line will not parse | Count it, skip it, name the line number. Rebuild your fold from the rest. **Never quarantine it: the contract gives no path for this file** | `ok` |
-| A decision's `proposed` line is missing `metric` or `visible_by` | `no-effect (the proposal carried no metric)` or `(no visible_by date)`, plus one line in the run record. **This is a finding about the brief and it is how that routine learns** | `ok` |
+| A decision's `proposed` line is missing `metric` or `visible_by` | `unmeasured (the proposal carried no metric)` or `unmeasured (no visible_by date)`, plus one line in the run record. **This is a finding about the brief and it is how that routine learns** | `ok` |
 | Two outcome lines already exist for the same id and status | Append nothing. `outcomes_written{}` is the guard and the ledger fold is the second one | `ok` |
 | A decision would have changed a file this Employee does not read | `dropped (the evidence would be in files this Employee does not read)`, plus one line saying the move should not have been proposed with a metric this kit cannot verify | `ok` |
 | The evidence is genuinely ambiguous | Take the more conservative outcome, one line in `assumptions[]`, move on. **The conservative outcome is always the one less flattering to this Employee** | `ok` |

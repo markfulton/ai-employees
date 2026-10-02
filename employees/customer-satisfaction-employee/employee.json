@@ -3,8 +3,8 @@
   "slug": "customer-satisfaction-employee",
   "name": "Customer Satisfaction Employee",
   "role": "Support and retention",
-  "version": "1.8.0",
-  "standard": "1.4",
+  "version": "1.9.0",
+  "standard": "1.5",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
   "requires": {
@@ -199,7 +199,9 @@
       "routines/**",
       "run/**",
       "scripts/**",
-      "examples/**"
+      "examples/**",
+      "WORK-CYCLE.md",
+      "work-profile.json"
     ],
     "merge": [
       "SCHEDULE.md"
@@ -232,7 +234,11 @@
       "help/**",
       "report/**",
       "PAUSED",
-      "schedule-commands.txt"
+      "schedule-commands.txt",
+      "progress/**",
+      "experiments/**",
+      "handoffs/**",
+      ".upgrade/**"
     ]
   },
   "notes": {

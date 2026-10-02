@@ -6,7 +6,7 @@
  *   npx ai-employees list
  *
  * Copies one employee folder into place, refuses a folder under cloud sync,
- * runs the kit's three self tests, and prints its install prompt with the
+ * runs every kit script's self test, and prints its install prompt with the
  * path filled in. It registers no schedule, sends nothing, and reports
  * nothing anywhere. The only network call is the download of the repo
  * tarball when the employee folder is not already beside this script.
@@ -20,6 +20,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { upgrade as runUpgrade, contribute as runContribute, writeReceipt } from "./upgrade.mjs";
+import { reconcile as runReconcile } from "./reconcile.mjs";
 
 const SELF = fileURLToPath(import.meta.url);
 const HERE = path.dirname(SELF);
@@ -54,6 +55,7 @@ function usage() {
     "  npx ai-employees hire <employee> [--to <folder>]   copy one employee into place and print its install prompt",
     "  npx ai-employees list                              the eight, one line each",
     "  npx ai-employees upgrade <employee> [--to <folder>] [--apply]   report what a new version would change, then apply it",
+    "  npx ai-employees reconcile <employee> --to <folder> [--base <original-kit>] [--apply]   prepare or apply nonconflicting three-way merges",
     "  npx ai-employees contribute <employee> [--to <folder>] [--since YYYY-MM-DD]  turn your employee's own field repairs into an issue",
     "",
     "The folder must be outside OneDrive, Dropbox, Google Drive and iCloud. Without --to it is ./employees/<slug>.",
@@ -125,7 +127,7 @@ async function fetchTarball(slug, dst) {
 
 function selftests(dst) {
   let allOk = true;
-  for (const script of ["copy-check.mjs", "runlog.mjs", "guard.mjs"]) {
+  for (const script of fs.readdirSync(path.join(dst, "scripts")).filter(f => f.endsWith(".mjs")).sort()) {
     const p = path.join(dst, "scripts", script);
     if (!fs.existsSync(p)) { out("  missing " + script); allOk = false; continue; }
     const r = spawnSync(process.execPath, [p, "--selftest"], { encoding: "utf8" });
@@ -182,7 +184,7 @@ async function hire(args) {
 
   out("");
   out("=".repeat(78));
-  out("Next: open a session in " + dst + " in the agent you use (Claude Code or any of the other ten) and say");
+  out("Next: open a session in " + dst + " in the agent you use (Claude Code or any of the other twelve) and say");
   out("\"install the " + e.name + " from this folder\". It reads INSTALL-PROMPT.md itself and asks for your home page");
   out("only if it cannot find it. Or paste it yourself: the prompt is printed below with the path already filled in;");
   out("copy everything between === BEGIN PROMPT === and === END PROMPT ===. The employee's first run takes");
@@ -224,12 +226,13 @@ function contributeCmd(args) {
 }
 
 function parse(argv) {
-  const args = { _: [], to: null, help: false, apply: false, since: null };
+  const args = { _: [], to: null, base: null, help: false, apply: false, since: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--to") { args.to = argv[++i]; if (!args.to) fail("--to needs a folder", 2); continue; }
     if (a.startsWith("--to=")) { args.to = a.slice(5); continue; }
     if (a === "--apply") { args.apply = true; continue; }
+    if (a === "--base") { args.base = argv[++i]; if (!args.base) fail("--base needs a folder", 2); continue; }
     if (a === "--since") { args.since = argv[++i]; if (!args.since) fail("--since needs a date, YYYY-MM-DD", 2); continue; }
     if (a.startsWith("--since=")) { args.since = a.slice(8); continue; }
     if (a === "--help" || a === "-h") { args.help = true; continue; }
@@ -246,5 +249,13 @@ if (args.help || !cmd) { usage(); process.exit(cmd ? 0 : 2); }
 if (cmd === "list") { list(); process.exit(0); }
 if (cmd === "hire") { await hire(args); process.exit(0); }
 if (cmd === "upgrade") { await upgradeCmd(args); process.exit(0); }
+if (cmd === "reconcile") {
+  const slug = resolveSlug(args._[0]);
+  if (!slug || !args.to) fail("reconcile needs an employee and --to folder", 2);
+  const installed = path.resolve(args.to);
+  const manifest = JSON.parse(fs.readFileSync(path.join(installed, "employee.json"), "utf8"));
+  if (manifest.slug !== slug) fail("employee does not match installed manifest", 2);
+  runReconcile({ installed, base: args.base, apply: args.apply, out }); process.exit(0);
+}
 if (cmd === "contribute") { contributeCmd(args); process.exit(0); }
-fail("unknown command " + cmd + ". Try one of: list, hire, upgrade, contribute", 2);
+fail("unknown command " + cmd + ". Try one of: list, hire, upgrade, reconcile, contribute", 2);

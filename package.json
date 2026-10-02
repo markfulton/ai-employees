@@ -1,7 +1,7 @@
 {
   "name": "ai-employees",
-  "version": "1.8.0",
-  "description": "Open source AI Employees. 8 scheduled business roles, 60 routines, on Claude Code and 10 other harnesses. They drive your browser the way you do and improve every run. You own the files.",
+  "version": "1.9.0",
+  "description": "Open source AI Employees. 8 scheduled business roles, 60 routines, on Claude Code and 12 other harnesses. They drive your browser the way you do and improve every run. You own the files.",
   "type": "module",
   "bin": {
     "ai-employees": "installer/cli.mjs"
@@ -16,7 +16,7 @@
     "TRADEMARKS.md"
   ],
   "scripts": {
-    "test": "node .github/scripts/selftests.mjs && node .github/scripts/no-dashes.mjs",
+    "test": "node .github/scripts/selftests.mjs && node .github/scripts/no-dashes.mjs && node .github/scripts/aeo-check.mjs && node .github/scripts/work-cycle-check.mjs && node .github/scripts/upgrade-check.mjs && node .github/scripts/release-check.mjs",
     "hire": "node installer/cli.mjs hire"
   },
   "engines": {

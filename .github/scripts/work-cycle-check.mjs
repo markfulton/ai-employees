@@ -1,0 +1,83 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+import assert from 'node:assert/strict';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { spawnSync, spawn } from 'node:child_process';
+import { chooseWork, deliveryHealth, recordProgress, readProgress, validateExperiment, validateHandoff, checkExperimentCapacity, handoffInbox } from '../../shared/work-cycle/work-cycle.mjs';
+import { finishRun } from '../../shared/work-cycle/run-state.mjs';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+const sync = spawnSync(process.execPath, [path.join(root, '.github/scripts/sync-work-cycle.mjs')], { encoding: 'utf8' });
+assert.equal(sync.status, 0, sync.stdout + sync.stderr);
+const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'employee-behavior-'));
+let routineCount = 0;
+try {
+  for (const slug of fs.readdirSync(path.join(root, 'employees'))) {
+    const dir = path.join(root, 'employees', slug), manifest = JSON.parse(fs.readFileSync(path.join(dir, 'employee.json')));
+    const profile = JSON.parse(fs.readFileSync(path.join(dir, 'work-profile.json')));
+    assert.deepEqual(Object.keys(profile.routines).sort(), manifest.routines.map(r => r.id).sort());
+    for (const r of manifest.routines) {
+      routineCount++;
+      assert.ok(fs.readFileSync(path.join(dir, 'routines', r.id, 'SKILL.md'), 'utf8').includes('WORK-CYCLE.md'));
+      assert.ok(profile.routines[r.id].acceptance && profile.routines[r.id].fallback);
+    }
+    const fixture = path.join(temp, slug); fs.mkdirSync(fixture);
+    fs.writeFileSync(path.join(fixture, 'work-profile.json'), JSON.stringify(profile));
+    fs.mkdirSync(path.join(fixture, 'drafts')); fs.writeFileSync(path.join(fixture, 'drafts/usable.md'), 'Fictional sourced deliverable and acceptance check');
+    const receipt = { schema: 1, routine: manifest.routines[0].id, period: '2026-10-01', observed_at: '2026-10-01T10:00:00Z', work_id: 'owned-draft', expected: true, delivery: 'advanced', business: 'unmeasured', summary: 'Prepared and checked', artifacts: ['drafts/usable.md'], blockers: [], next_action: 'Review current revision', next_check: 'next eligible period' };
+    const first = recordProgress(fixture, receipt); assert.equal(recordProgress(fixture, receipt), first);
+    assert.equal(readProgress(fixture, receipt.routine).length, 1);
+    const blocked = { ...receipt, delivery: 'blocked', artifacts: [], blockers: [{ key: 'review', step: 'publish', kind: 'permission', owner: 'member', evidence: 'current release read', verified_at: receipt.observed_at, next_action: 'Review completed package', next_check: 'next eligible period' }] };
+    recordProgress(fixture, { ...blocked, period: '2026-10-02', observed_at: '2026-10-02T10:00:00Z' });
+    recordProgress(fixture, { ...blocked, period: '2026-10-03', observed_at: '2026-10-03T10:00:00Z' });
+    assert.equal(deliveryHealth(readProgress(fixture, receipt.routine), 2).delivery, 'stalled');
+  }
+  assert.equal(routineCount, 60);
+  const available = { owned: true, authorized: true, fresh: true, inputs_ready: true };
+  assert.equal(chooseWork([{ ...available, id: 'publish', authorized: false }, { ...available, id: 'draft', fulfills_commitment: true }]).id, 'draft');
+  assert.equal(chooseWork([{ ...available, id: 'stale', fresh: false }, { ...available, id: 'resolve-input', unblocks_work: true }]).id, 'resolve-input');
+  assert.equal(chooseWork([{ ...available, id: 'other-owner', owned: false }]), null);
+  const x = { schema: 1, id: 'test', owner: 'review', hypothesis: 'A clearer answer helps', source: 'dated evidence', baseline: 'current version', change: 'one answer', primary_metric: 'qualified inquiries', guardrail: 'accuracy', review_when: 'decision checkpoint', decision_rule: 'compare eligible observations', authority: 'prepare only', design: 'directional', status: 'prepared' };
+  assert.equal(validateExperiment(x).status, 'prepared');
+  assert.throws(() => validateExperiment({ ...x, status: 'improved', measurement_ready: false, sufficient_evidence: false }));
+  assert.equal(validateExperiment({ ...x, status: 'inconclusive' }).status, 'inconclusive');
+  const h = { schema: 1, id: 'handoff-one', from: 'support', to: 'web', source: 'sanitized evidence', requested_deliverable: 'reproduction and fix', acceptance: 'test passes', expires_on: '2026-10-10', status: 'accepted' };
+  assert.equal(validateHandoff(h).status, 'accepted');
+  assert.throws(() => validateHandoff({ ...h, status: 'completed' }));
+  const handoffRoot = path.join(temp, 'handoff-consumer'), producer = path.join(temp, 'handoff-producer');
+  fs.mkdirSync(path.join(handoffRoot, 'handoffs'), { recursive: true }); fs.mkdirSync(path.join(producer, 'handoffs/outbox/source-run'), { recursive: true });
+  fs.writeFileSync(path.join(handoffRoot, 'work-profile.json'), JSON.stringify({ routines: { 'target-run': {} } }));
+  assert.equal(handoffInbox(handoffRoot, 'target-run').configured, false);
+  const proposal = { ...h, from: 'source', to: 'target-run', status: 'proposed', private_customer: 'must not pass through' };
+  fs.writeFileSync(path.join(producer, 'handoffs/outbox/source-run/item.json'), JSON.stringify(proposal));
+  fs.writeFileSync(path.join(handoffRoot, 'handoffs/routes.json'), JSON.stringify({ schema: 1, routes: [{ from: 'source', root: producer, source_routine: 'source-run', to_routine: 'target-run', fields: Object.keys(h) }] }));
+  const inbox = handoffInbox(handoffRoot, 'target-run', Date.parse('2026-10-01'));
+  assert.equal(inbox.items.length, 1); assert.equal(inbox.items[0].private_customer, undefined);
+  assert.equal(handoffInbox(handoffRoot, 'target-run', Date.parse('2026-10-11')).items[0].status, 'expired');
+  fs.writeFileSync(path.join(handoffRoot, 'SCHEDULE.md'), 'active_experiments: 1');
+  fs.mkdirSync(path.join(handoffRoot, 'experiments/review'), { recursive: true });
+  fs.writeFileSync(path.join(handoffRoot, 'experiments/review/test.json'), JSON.stringify(x));
+  assert.equal(checkExperimentCapacity(handoffRoot, x).active, 1);
+  assert.throws(() => checkExperimentCapacity(handoffRoot, { ...x, id: 'second' }), /limit/);
+  // Two independent processes compete for the same claim; only one may own work.
+  const claimRoot = path.join(temp, 'claims'); fs.mkdirSync(claimRoot);
+  const moduleUrl = pathToFileURL(path.join(root, 'shared/work-cycle/run-state.mjs')).href;
+  const code = `import {claimRun} from ${JSON.stringify(moduleUrl)}; console.log(JSON.stringify(claimRun(process.argv[1], 'test-run', 'p1', 10)));`;
+  const launch = () => new Promise((resolve, reject) => { const child = spawn(process.execPath, ['--input-type=module', '-e', code, claimRoot]); let output = ''; child.stdout.on('data', x => output += x); child.on('error', reject); child.on('exit', n => n === 0 ? resolve(JSON.parse(output)) : reject(new Error('Claim child failed'))); });
+  const claims = await Promise.all([launch(), launch()]); assert.equal(claims.filter(c => c.allowed).length, 1);
+  const guardRoot = path.join(temp, 'guard-integration'); fs.mkdirSync(guardRoot);
+  fs.writeFileSync(path.join(guardRoot, 'SCHEDULE.md'), '| `ads-account-read` | `mon tue wed thu fri sat sun` | 00:00 | 00:00 | 23:59 | `YYYY-MM-DD` | 10 min | light |\n');
+  const guardPath = path.join(root, 'employees/ad-manager-employee/scripts/guard.mjs');
+  const fire = () => { const result = spawnSync(process.execPath, [guardPath, 'ads-account-read', '--root', guardRoot, '--json'], { encoding: 'utf8' }); return JSON.parse(result.stdout); };
+  const firstFire = fire(); assert.equal(firstFire.verdict, 'run'); assert.ok(firstFire.claim.token);
+  fs.mkdirSync(path.join(guardRoot, 'state'), { recursive: true });
+  fs.writeFileSync(path.join(guardRoot, 'state/ads-account-read.json'), JSON.stringify({ last_period: firstFire.period, cursor: 'keep-me' }));
+  assert.equal(fire().verdict, 'skipped-already-ran');
+  finishRun(guardRoot, 'ads-account-read', firstFire.claim.token, 'partial');
+  const resumedFire = fire(); assert.equal(resumedFire.verdict, 'run'); assert.equal(resumedFire.claim.resume, true);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(guardRoot, 'state/ads-account-read.json'))).cursor, 'keep-me');
+  finishRun(guardRoot, 'ads-account-read', resumedFire.claim.token, 'completed');
+  assert.equal(fire().verdict, 'skipped-already-ran');
+  fs.writeFileSync(path.join(guardRoot, 'PAUSED'), ''); assert.equal(fire().verdict, 'skipped-paused');
+  console.log('work-cycle-check: PASS (8 roles, 60 routines, artifact evidence, stalls, preparation gates, ownership, experiments, handoffs, concurrent claims)');
+} finally { fs.rmSync(temp, { recursive: true, force: true }); }

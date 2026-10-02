@@ -49,3 +49,7 @@ Before reporting, run `node scripts/answer-audit.mjs --input tracking/answers/ob
 The new routine appends the inbox and reads the current board; only standup consumes the inbox and assigns cards. Existing restricted field writers remain unchanged. Use the existing CONTRACT.md inbox schema and existing card types. Put the question id, surface, source/date, target URL, observed gap and a testable acceptance criterion in every card. Deduplicate against open cards and this run's emissions. Content changes enter the draft/publish queue; technical changes become a member/Web Dev handoff; outreach stays a held draft. No new autonomous publishing lane is introduced.
 
 Intake seeds the map. Calendar refill reads it to cover buyer questions. Draft run uses it to resolve facts and answer intent. Publish run verifies the approved answer and evidence survived publication. Rank review keeps answer observations distinct from ordinary search metrics. Standup includes the dated answer report and its blockers in the brief. Missing map on an upgraded install: create a research card for intake and complete only factual eligibility checks until it exists.
+
+## Native provider measurement
+
+Read `GSC-GENERATIVE-AI.md` for the native Search Console Generative AI report, verified 2026-10-02. It provides isolated impressions for AI Overviews and AI Mode alongside the existing combined Web totals. The dedicated report is a key property metric. Gemini app observations and the sampled answer contract above remain separate. Missing data stays unknown.
