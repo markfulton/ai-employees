@@ -1,6 +1,6 @@
 # SEO/AEO Employee
 
-<img src="https://club.reinventing.ai/img/employees/seo-employee.webp" alt="SEO/AEO Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/seo-employee.webp" alt="SEO/AEO Employee" width="100%">
 
 
 **Role:** organic search, end to end.

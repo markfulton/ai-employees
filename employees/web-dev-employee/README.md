@@ -1,6 +1,6 @@
 # Web Dev Employee
 
-<img src="https://club.reinventing.ai/img/employees/web-dev-employee.webp" alt="Web Dev Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/web-dev-employee.webp" alt="Web Dev Employee" width="100%">
 
 
 **Role:** keeping the things you already shipped alive.

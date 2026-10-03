@@ -1,6 +1,6 @@
 # Chief of Staff
 
-<img src="https://club.reinventing.ai/img/employees/chief-of-staff.webp" alt="Chief of Staff" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/chief-of-staff.webp" alt="Chief of Staff" width="100%">
 
 
 **Role:** the Employee that watches the other Employees.

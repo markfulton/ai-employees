@@ -1,6 +1,6 @@
 # Ad Manager
 
-<img src="https://club.reinventing.ai/img/employees/ad-manager-employee.webp" alt="Ad Manager Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/ad-manager-employee.webp" alt="Ad Manager Employee" width="100%">
 
 
 **Role:** paid advertising, end to end, up to the spend button.

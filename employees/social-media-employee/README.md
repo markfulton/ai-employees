@@ -1,6 +1,6 @@
 # Social Media Employee
 
-<img src="https://club.reinventing.ai/img/employees/social-media-employee.webp" alt="Social Media Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/social-media-employee.webp" alt="Social Media Employee" width="100%">
 
 
 **Role:** the organic social account, run properly.

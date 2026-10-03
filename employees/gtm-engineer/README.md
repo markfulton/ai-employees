@@ -1,6 +1,6 @@
 # GTM Engineer
 
-<img src="https://club.reinventing.ai/img/employees/gtm-engineer.webp" alt="GTM Engineer" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/gtm-engineer.webp" alt="GTM Engineer" width="100%">
 
 
 **Role:** launch and demand.

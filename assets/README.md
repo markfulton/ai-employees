@@ -4,9 +4,9 @@ The employee artwork is hosted on the club so the README and every employee READ
 
 | Image | URL |
 |---|---|
-| The eight, one collage | `https://club.reinventing.ai/img/employees/ai-employees-collage.webp` |
-| One employee, 1600 by 900 | `https://club.reinventing.ai/img/employees/<slug>.webp` |
-| One employee, square thumbnail | `https://club.reinventing.ai/img/employees/thumbs/<slug>.webp` |
+| The eight, one collage | `https://club.reinventing.ai/img/employees/v2/ai-employees-collage.webp` |
+| One employee, 1024 square | `https://club.reinventing.ai/img/employees/v2/<slug>.webp` |
+| One employee, square thumbnail | `https://club.reinventing.ai/img/employees/v2/thumbs/<slug>.webp` |
 
 The README wordmark is `logo-light.png` and `logo-dark.png`, 1680 by 400 with a transparent ground, shown at `width="480"` inside a `picture` tag so each GitHub theme gets its own: navy for light, cream for dark. Eight tiles, one per role, the last one lit in signal blue. Both render from `src/logo.html` (add `#dark` to the URL for the cream one) with `--window-size=840,200` and keep their two times pixels.
 
@@ -43,4 +43,6 @@ Still to make:
 | `org-chart.png` | The eight employees as an org chart, with each one's cadence under its name. | 1280 by 640. Navy ground `#0D161B`, cream type `#f1e8cb`, signal blue accents `#0b7fc7`. No gradient text. |
 | `demo.gif` | Twenty seconds, no sound: paste the install prompt into Claude Code, watch the routines register, cut to the next morning's brief opening. Recorded on the fictional business in `employees/gtm-engineer/examples/`, never on a real one. | Under 6 MB. Terminal on navy. |
 
-Two rules for anything that lands here: no generated face of anyone, and nothing recorded against a real customer, a real contact, or a real account screen.
+The approved October 3, 2026 fictional character identity is stored locally in `employees/`: eight square WebP portraits and `team.webp`. Reuse each exact face, hair, clothing, accessory and accent in employee marketing. Accents in roster order: coral, jade, cobalt, violet, amber, magenta, cyan and gold. Never generate the face of a real person or record a real customer, contact or account screen.
+
+The current `banner.png` and `social-preview.png` are built from these masters using the Club repository's `scripts/build-employee-brand.mjs`. This is now the rebuild source; the earlier HTML layouts remain historical references. The images now use the approved ivory portrait system.

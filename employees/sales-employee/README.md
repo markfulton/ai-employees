@@ -1,6 +1,6 @@
 # Sales Employee
 
-<img src="https://club.reinventing.ai/img/employees/sales-employee.webp" alt="Sales Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/sales-employee.webp" alt="Sales Employee" width="100%">
 
 
 **Role:** the outbound desk.

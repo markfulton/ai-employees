@@ -1,6 +1,6 @@
 # Customer Satisfaction Employee
 
-<img src="https://club.reinventing.ai/img/employees/customer-satisfaction-employee.webp" alt="Customer Satisfaction Employee" width="100%">
+<img src="https://club.reinventing.ai/img/employees/v2/customer-satisfaction-employee.webp" alt="Customer Satisfaction Employee" width="100%">
 
 
 **Role:** the support desk.
