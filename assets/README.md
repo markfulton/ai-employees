@@ -46,3 +46,5 @@ Still to make:
 The approved October 3, 2026 fictional character identity is stored locally in `employees/`: eight square WebP portraits and `team.webp`. Reuse each exact face, hair, clothing, accessory and accent in employee marketing. Accents in roster order: coral, jade, cobalt, violet, amber, magenta, cyan and gold. Never generate the face of a real person or record a real customer, contact or account screen.
 
 The current `banner.png` and `social-preview.png` are built from these masters using the Club repository's `scripts/build-employee-brand.mjs`. This is now the rebuild source; the earlier HTML layouts remain historical references. The images now use the approved ivory portrait system.
+
+`cta-hire.png` (added 2026-10-08) is the README hero call to action, the hire path: 1800 by 336, rendered at two times scale from `src/cta-hire.html` with `--window-size=900,168` and shown at `width="900"`. It sits directly under the badges and links to the club's register page with `next=/members/hire`, so a visitor lands on the Hire page the moment the account exists. It replaced the small install prompt button; the join, sessions and club buttons stay under it.

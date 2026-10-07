@@ -29,7 +29,10 @@
 </p>
 
 <p align="center">
-  <a href="https://club.reinventing.ai/register?next=%2Fmembers%2Fhire&utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-install-prompt"><img src="assets/btn-install.png" width="260" height="60" alt="Get my free install prompt in the Agent Ops Club"></a>
+  <a href="https://club.reinventing.ai/register?next=%2Fmembers%2Fhire&utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=hero-hire"><img src="assets/cta-hire.png" width="900" alt="Hire your first AI Employee in one click: pick a role, copy one prompt, your agent installs it. Free account, no card."></a>
+</p>
+
+<p align="center">
   <a href="https://club.reinventing.ai/register?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-join"><img src="assets/btn-join.png" width="199" height="60" alt="Join the Agent Ops Club free"></a>
   <a href="https://club.reinventing.ai/events?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-sessions"><img src="assets/btn-sessions.png" width="163" height="60" alt="Agent Ops Club live sessions"></a>
   <a href="https://club.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=btn-club"><img src="assets/btn-club.png" width="186" height="60" alt="Visit the Agent Ops Club"></a>
@@ -69,6 +72,8 @@ Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_mediu
 Sixty routines. Every kit, with its full schedule and a sample of its output, is in [employees/](employees).
 
 ## Install in two steps
+
+**The fastest way:** [hire your first AI Employee in the Agent Ops Club](https://club.reinventing.ai/register?next=%2Fmembers%2Fhire&utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=install-hire). Pick the role, and the club writes the one prompt your agent runs from start to finish: it downloads the kit, researches your business from your website, builds your dashboard and schedules its own routines. A free account, no card, and the Hire Your First AI Employee walkthrough is waiting on the other side. The two steps below are the same install done by hand.
 
 **1. Download a kit and extract it to your PC.** Click **Code, Download ZIP** above, or run `npx ai-employees hire gtm-engineer --to <folder>`. Any folder not inside OneDrive, Dropbox, Google Drive or iCloud.
 
