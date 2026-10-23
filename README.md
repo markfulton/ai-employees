@@ -46,6 +46,20 @@
   ⭐ <em>Found something useful? Star the repo. It takes a second and helps the next person find it.</em>
 </p>
 
+<table>
+<tr><td align="center" width="900">
+
+<p><b>Free live session. Saturday, October 31, 10 AM Eastern, on Zoom.</b></p>
+
+<p>The Monday Blind Spot Report: one page every Monday, worst news first, every number with its source. I walk a sample report line by line and you leave with the free prompt pack that writes it. The replay goes to everyone who registers.</p>
+
+<p><a href="https://club.reinventing.ai/events/final-countdown-lifetime-last-call?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=oct31-session"><b>Save a free seat</b></a></p>
+
+<p><sub>The eight AI Employees stay free and MIT. The club's Lifetime plan is $499 until October 31 at 11:59 PM Eastern, then $999. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=oct31-pricing">Plans</a>.</sub></p>
+
+</td></tr>
+</table>
+
 ## AI Employees
 
 An AI Employee is a folder of scheduled routines that covers one business role. It runs on your own machine, on the AI agent you already use, and briefs you every morning. They drive your browser and your PC the way you do, and every run makes the next one better. Eight roles, every routine and schedule in this repo, nothing held back.
