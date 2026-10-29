@@ -49,13 +49,13 @@
 <table>
 <tr><td align="center" width="900">
 
-<p><b>Free live session. Saturday, October 31, 10 AM Eastern, on Zoom.</b></p>
+<p><b>Free live session. Saturday, November 14, 10 AM Eastern, on Zoom.</b></p>
 
-<p>Set Up and Sell AI Agent Employees in 1 Hour: pick the AI Employee a first client pays for, hire it in a desktop agent app, read its first brief, schedule it, then price it and land the client. The eight employees here are the software. The hour is the business around one. The replay goes to everyone who registers.</p>
+<p>Two New Premium AI Employees: Live Release. The replay goes to everyone who registers.</p>
 
-<p><a href="https://club.reinventing.ai/events/final-countdown-lifetime-last-call?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=oct31-session"><b>Save a free seat</b></a></p>
+<p><a href="https://club.reinventing.ai/events/final-countdown-lifetime-last-call?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov14-session"><b>Save a free seat</b></a></p>
 
-<p><sub>The eight AI Employees stay free and MIT. The club's Lifetime plan is $499 until October 31 at 11:59 PM Eastern, then $999. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=oct31-pricing">Plans</a>.</sub></p>
+<p><sub>The eight AI Employees stay free and MIT. The club's Lifetime plan is $499 until November 15 at 11:59 PM Eastern, then $999. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov15-pricing">Plans</a>.</sub></p>
 
 </td></tr>
 </table>
