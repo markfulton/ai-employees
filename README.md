@@ -66,6 +66,8 @@ An AI Employee is a folder of scheduled routines that covers one business role. 
 
 Created by [Mark Fulton](https://www.reinventing.ai/?utm_source=github&utm_medium=readme&utm_campaign=ai-employees) of Reinventing.AI, founder of [Vibe Coding is Life](https://facebook.com/groups/vibecodinglife) (340,000+ members). Running my own business every weekday since August 27, 2026.
 
+New to building with AI agents? Start with [What is vibe coding](https://insights.reinventing.ai/vibe-coding?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=vibe-coding-hub), the free reference that explains the practice, the tools and how to do it well.
+
 <p align="center">
   <img src="assets/employees/team.webp" width="960" alt="The eight AI Employees, each with its own identity and working tools">
 </p>
