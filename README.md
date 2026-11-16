@@ -55,7 +55,7 @@
 
 <p><a href="https://club.reinventing.ai/events/final-countdown-lifetime-last-call?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov14-session"><b>Save a free seat</b></a></p>
 
-<p><sub>The eight AI Employees stay free and MIT. The club's Lifetime plan is $499 until November 15 at 11:59 PM Eastern, then $999. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov15-pricing">Plans</a>.</sub></p>
+<p><sub>The eight AI Employees stay free and MIT. The club has Free, Pro and Lifetime plans. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov15-pricing">Plans</a>.</sub></p>
 
 </td></tr>
 </table>
