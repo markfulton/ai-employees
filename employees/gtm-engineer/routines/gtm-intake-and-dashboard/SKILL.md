@@ -177,13 +177,14 @@ Then check it. If any path segment matches, case insensitively, `OneDrive`, `Dro
 
 Do not stop to ask for a different folder. Choose one: the nearest local path outside every synced tree, under the member's own home directory, named after the kit. Create the tree there. Copy everything already present in the launch folder across. Leave the original in place, because nothing in this kit is deleted, and write one short pointer file beside it naming the new root. Record the move in `assumptions[]`, write one line into `strategy/CHANGELOG.md`, and name the new path in the first line of the report.
 
-**A1.3 Confirm the two scripts.** `scripts/runlog.mjs` and `scripts/copy-check.mjs` ship with the kit. Run the self test:
+**A1.3 Confirm the scripts.** `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs` ship with the kit. Run the self tests:
 
 ```
 node "«GTM_ROOT»/scripts/copy-check.mjs" --selftest
+node "«GTM_ROOT»/scripts/voice-check.mjs" --selftest
 ```
 
-If `shell.run` is unavailable, or the runtime is missing, or either script is absent, both capabilities have a second route: `runlog.append` performs the same validation inside the agent, and `copy.check` applies the same rule set inside the agent and marks the run record `copy-check: in-agent`. Take the second route and carry on. **The in-agent route is a degradation, never an exemption, and you never skip the check.**
+If `shell.run` is unavailable, or the runtime is missing, or a script is absent, each capability has a second route: `runlog.append` performs the same validation inside the agent, `copy.check` applies the same rule set inside the agent and marks the run record `copy-check: in-agent`, and `voice.check` applies the rules in `CONTRACT.md` under `voice.check` inside the agent and marks the run record `voice-check: in-agent`. Take the second route and carry on. **The in-agent route is a degradation, never an exemption, and you never skip the check.**
 
 Put one line in the report naming what the member would gain by installing the runtime named in `CAPABILITIES.md` section 1.1. One line, once, not a warning repeated every month.
 
@@ -199,6 +200,7 @@ Create every path in `CONTRACT.md` section 2 that does not exist. Create nothing
 «GTM_ROOT»/
   strategy/     offer.md  icp.md  positioning.md  voice.md
                 utm-taxonomy.md  proof-inventory.md  CHANGELOG.md
+                transcripts/, empty, the member's drop folder
   board/        board.json is NOT created here. inbox.jsonl, empty
   crm/          contacts.csv, header plus marker, nothing else
   queue/        empty
@@ -362,9 +364,57 @@ What you do instead: every claim shaped string you found on the member's own sit
 
 ## Step A6. Write the strategy files
 
-Write them in this order. The two judges depend on the first two.
+Write them in this order. The judges depend on the first two.
 
-**1. `strategy/voice.md`.** `## Samples`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, `## Dash policy`. The shipped banned lists live in this file and nowhere else in the kit. `copy.check` reads them from here. No routine restates them in its own body, including this one. Hashtag policy defaults to `none`. Dash policy is no dashes of any kind, including inside a code comment.
+**1. `strategy/voice.md`.** `## Samples`, `## How I talk`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, `## Dash policy`. The shipped banned lists live in this file and nowhere else in the kit. `copy.check` reads them from here, and `voice.check` reads `## How I talk`. No routine restates them in its own body, including this one. Hashtag policy defaults to `none`. Dash policy is no dashes of any kind, including inside a code comment.
+
+**1a. `## How I talk`, inside `strategy/voice.md`, from the member's own words.** `## Samples` shows the drafting routines what the member's finished copy looks like. `## How I talk` tells them which words, openers and closers are this person's, which is what the Anti-AI Voice Check rewrites every outreach draft from. **It is counted, never described.** No adjectives, no "friendly but direct", nothing a model could have written about anybody. Every line is a quote with a source and a count. The section carries this shape:
+
+```
+## How I talk
+Counted from my own recordings and posts. Built by gtm-intake-and-dashboard, step A6 item 1a.
+voice.check reads this section, and every rewrite takes its words from it.
+
+### Phrases I use
+- «phrase, quoted» | «source file or URL» | «count»
+
+### How I open
+- «opening words, quoted» | «source» | «count»
+
+### How I close
+- «closing line, quoted» | «source» | «count»
+
+### Tells that are not me
+- «phrase» | «why: absent from every source read»
+
+### Shapes that are mine
+- «rule id» | «evidence: n of m sources»
+```
+
+**What to read, in this order, read only:**
+
+1. **Every file in `strategy/transcripts/`.** The member drops their own recordings here: meeting captions (`.vtt`), subtitle files (`.srt`), call or podcast transcripts (`.txt`, `.md`). **Speech is the best evidence there is**, because nobody writes their speech with a model. Where the folder is empty, say once in the report, in one plain sentence, that dropping one recording of them talking about their business into that folder makes every outreach rewrite sound more like them.
+2. **The captions of the member's own public videos**, on the channels found in A4.2, where the platform shows a transcript panel to a signed out reader. Read the panel, save nothing but the text, to `strategy/transcripts/<platform>-<video id>.txt`, and only for videos the member published themselves. **Never a video by anybody else, however close their subject.** This routine adds those caption files and never edits or removes a file it did not write.
+3. **The lines you quoted under `## Samples`**, written to a scratch file `state/voice-samples.tmp.md`, deleted in this step and on every exit path.
+
+**Count it with the script, never by eye:**
+
+```
+node "«GTM_ROOT»/scripts/voice-check.mjs" --profile "«GTM_ROOT»/strategy/transcripts/«file»" "«GTM_ROOT»/state/voice-samples.tmp.md" --json
+```
+
+It returns their average sentence length, the share of short sentences and questions, how often they say I or we against you, their recurring two to four word phrases with counts, how their sentences open, the words they double for emphasis, their hedges, and which `voice.check` shapes fire on their own words. It judges nothing.
+
+**Then write the section from that output, with judgment:**
+
+- **`### Phrases I use`**: up to twelve recurring phrases that are theirs rather than the topic's. "Onboarding call" is the topic; "to be honest with you" is them. Each line: the phrase in quotes, the source file or URL, and the count.
+- **`### How I open`** and **`### How I close`**: up to five each, from the samples and from how they start and end a point in speech. Quoted, sourced, counted.
+- **`### Tells that are not me`**: phrases a generated draft reaches for that appear **nowhere** in everything you read: the stock lines and shapes `voice.check` already knows, plus any the category reaches for ("seamless integration" in a software account, "in today's market" in a property account). Only phrases with zero hits in their own words go here.
+- **`### Shapes that are mine`**, optional: a `voice.check` rule id goes here only where it fires in **at least half of their recordings, or half of at least six samples**. Some people really do talk in threes. **A shape that fires only on their written copy and never in their speech does not go here**, because written copy may already have been drafted by a model, and listing a model's habit as theirs would teach the check to let it through. Write the evidence on the line: `rule-of-three | 4 of 6 recordings`.
+
+Fewer than one recording and three samples and the section is thin: write what you have, put `voice: how-i-talk thin` in `assumptions[]`, and carry on. **Nothing in this section ever comes from anybody but the member**: not from another account, not from a competitor read in A4.3, not from the examples shipped in this kit, and not from the person who wrote this kit. A quoted phrase that fails `copy.check` below is the member's own words and is not repaired; name it in the report.
+
+`progress[]` += `voice-how-i-talk`.
 
 **2. `strategy/proof-inventory.md`.** Exactly two headings, exactly as the contract writes them:
 
@@ -744,6 +794,7 @@ For every strategy file you change:
 | `strategy/offer.md` | The site's price, billing shape, buy URL, or landing URL no longer matches what the file says. Re-crawl the two pages that carry it and write what is there, with the date |
 | `strategy/positioning.md` | A channel produced nothing for a month, or a new channel produced something. The objection map still answers only from `## Member claims` |
 | `strategy/voice.md` | The copy check failed the same rule repeatedly across the month, which means a banned list is missing an entry the drafts keep reaching for |
+| `strategy/voice.md`, `## How I talk` | A new file has appeared in `strategy/transcripts/` since the section was last built, or `gtm-outreach-queue` or `gtm-launch-step-runner` notes carry `voice: samples only`, or the same `voice.check` rule fired on most drafts this month while it fires in the member's own recordings too. Rebuild the section by Step A6 item 1a and name the evidence path |
 | `strategy/utm-taxonomy.md` | The conversion event, the read screens, or the account names drifted from what `gtm-paid-and-tracking-guard` has been reporting. It reports the drift. You are the file's writer, so you apply it |
 | `SCHEDULE.md` | A lane collision, a routine with no row, or a stale id from Appendix A. Never a removal, never `off` |
 
@@ -875,7 +926,9 @@ Rows added, stale ids corrected, and fire times changed, never removed: `SCHEDUL
 
 Whole files, one writer, this routine, on the monthly pass: `state/kit-update.json`, and `improvements/contribution-draft-YYYY-MM.md` in a month that has one. Step B3a.
 
-Its own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/browser-lock.json` while it holds the mutex.
+Its own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/browser-lock.json` while it holds the mutex and `state/voice-samples.tmp.md`, deleted in Step A6 item 1a.
+
+Added, never edited: `strategy/transcripts/<platform>-<video id>.txt`, the captions of the member's own public videos, Step A6 item 1a. Every other file in `strategy/transcripts/` is the member's and is read only.
 
 ### `state/gtm-intake-and-dashboard.json`
 

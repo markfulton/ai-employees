@@ -4,7 +4,7 @@ This file is the only place cadences, fire times, windows, budgets, period keys,
 
 If a routine cannot find its row here, or cannot parse it, it records `status: "failed"` with the blocker `no SCHEDULE.md row for <routine-id>` and exits. It never guesses a window.
 
-`CONTRACT.md` section 1 carries the same eight routines with their cadence in words. **Where the two disagree, this file wins**, because this is the file the member edits and the file the guard reads.
+`CONTRACT.md` section 1 carries the same nine routines with their cadence in words. **Where the two disagree, this file wins**, because this is the file the member edits and the file the guard reads.
 
 All times are 24 hour local machine time. No time in this file is UTC and none is relative to any other zone.
 
@@ -24,8 +24,9 @@ This table is authoritative. Edit it, and the routines follow on their next fire
 | `csat-satisfaction-report` | `fri` | 16:00 | 15:45 | 19:00 | `YYYY-Www` | 35 min | conditional |
 | `csat-desk-intake` | `first-weekday` | 13:00 | 12:45 | 17:00 | `YYYY-MM` | 45 min | light |
 | `csat-taxonomy-refresh` | `last-weekday` | 14:00 | 13:45 | 17:30 | `YYYY-MM` | 35 min | light |
+| `csat-review-requests` | `mon-fri` | 12:00 | 11:45 | 15:30 | `YYYY-MM-DD` | 20 min | conditional |
 
-Eight rows, eight routines, and every id carries the `csat-` prefix so they namespace cleanly beside other AI Employees.
+Nine rows, nine routines, and every id carries the `csat-` prefix so they namespace cleanly beside other AI Employees.
 
 ### 1.1 The column meanings
 
@@ -45,7 +46,7 @@ Eight rows, eight routines, and every id carries the `csat-` prefix so they name
 |---|---|
 | `never` | Reads and writes files only. Runs to full function on a machine with no browser control at all. Never takes the mutex |
 | `light` | Opens a small, capped, skippable set of pages. A run that skips that step never takes the lock |
-| `conditional` | Uses the browser on some paths only. `csat-reply-desk` uses it when `helpdesk_draft_mode` is on or a selected ticket is truncated. `csat-churn-watch` uses it only for an account that already tripped a wire on the file side. `csat-satisfaction-report` uses it when a listing rating is readable or a flow is due a replay |
+| `conditional` | Uses the browser on some paths only. `csat-reply-desk` uses it when `helpdesk_draft_mode` is on or a selected ticket is truncated. `csat-churn-watch` uses it only for an account that already tripped a wire on the file side. `csat-satisfaction-report` uses it when a listing rating is readable or a flow is due a replay. `csat-review-requests` uses it only to read an ask link or completed work that has no connected route, or to save a mailbox draft through the mailbox page |
 | `heavy` | Navigates and reads for most of its budget. Owns the lane for the whole run |
 
 **Anything other than `never` takes the browser mutex**, described in section 4.3.
@@ -57,7 +58,7 @@ There is no status meaning "this machine has no browser". A missing capability m
 - File work still to do: `partial`, with `no browser control capability configured` in `blockers[]`.
 - Nothing else to do: `failed`, same blocker string.
 
-**Seven of the eight produce their main deliverable with no browser at all**, including the morning brief, the reply queue, the dossiers the ledger evidence supports, the macros, and the whole arithmetic of the Friday report. `CAPABILITIES.md` section 7 has the routine by routine detail and it is honest about the one that genuinely needs a browser, which is the sweep.
+**Eight of the nine produce their main deliverable with no browser at all**, including the morning brief, the reply queue, the review requests, the dossiers the ledger evidence supports, the macros, and the whole arithmetic of the Friday report. `CAPABILITIES.md` section 7 has the routine by routine detail and it is honest about the one that genuinely needs a browser, which is the sweep.
 
 ---
 
@@ -73,6 +74,7 @@ There is no status meaning "this machine has no browser". A missing capability m
 | `csat-satisfaction-report` | Satisfaction report | Fridays | Scores the week with a source beside every number and names the one product change that would remove the most tickets |
 | `csat-desk-intake` | Desk intake and dashboard | First weekday of the month | First run it researches the business, writes the strategy folder, seeds the cards, builds the dashboard, registers the schedule. Monthly it re-reads the evidence and applies what changed |
 | `csat-taxonomy-refresh` | Taxonomy refresh | Last weekday of the month | Re-tests every theme and every severity rule against a month of real outcomes and rewrites `strategy/themes.md` where the evidence disagrees |
+| `csat-review-requests` | Review requests | Weekdays | Asks every customer whose job finished in the ask window for an honest review, once per job, held for anyone with an open problem. Held unless you release it |
 
 **Two of these cannot be turned off without breaking the rest.**
 
@@ -140,6 +142,7 @@ Times below are the fire time, the hard budget, and the time the lane is guarant
 07:30  csat-desk-standup       15 min  never        takes no lane
 08:15  csat-reply-desk         30 min  conditional  lane clear by 08:45
 09:20  csat-churn-watch        25 min  conditional  lane clear by 09:45
+12:00  csat-review-requests    20 min  conditional  lane clear by 12:20
 ```
 Gap from the sweep's worst case end to the reply desk's fire: 65 minutes. Gap from the reply desk's worst case end to the churn watch's fire: 35 minutes.
 
@@ -147,7 +150,7 @@ Gap from the sweep's worst case end to the reply desk's fire: 65 minutes. Gap fr
 ```
 11:00  csat-deflection-desk    25 min  light        lane clear by 11:25
 ```
-Gap from the churn watch's worst case end: 75 minutes.
+Gap from the churn watch's worst case end: 75 minutes. Gap from the deflection desk's worst case end to the review requests fire: 35 minutes.
 
 **Friday adds**
 ```
@@ -158,13 +161,13 @@ Gap from the churn watch's worst case end: 75 minutes.
 ```
 13:00  csat-desk-intake        45 min  light        lane clear by 13:45
 ```
-Gap from the churn watch's worst case end: 195 minutes. On a first weekday that is also a Wednesday, the gap from the deflection desk's worst case end is 95 minutes.
+Gap from the review requests' worst case end: 40 minutes. On a first weekday that is also a Wednesday, the gap from the deflection desk's worst case end is 95 minutes.
 
 **Last weekday of the month adds**
 ```
 14:00  csat-taxonomy-refresh   35 min  light        lane clear by 14:35
 ```
-Gap from the churn watch's worst case end: 255 minutes. On a last weekday that is also a Wednesday, the gap from the deflection desk's worst case end is 155 minutes. On a last weekday that is also a Friday, the gap to the report's 16:00 fire is 85 minutes.
+Gap from the review requests' worst case end: 100 minutes. On a last weekday that is also a Wednesday, the gap from the deflection desk's worst case end is 155 minutes. On a last weekday that is also a Friday, the gap to the report's 16:00 fire is 85 minutes.
 
 **The tightest gap in the schedule is 35 minutes**, between the reply desk's worst case end and the churn watch's fire. It clears the 20 minute rule with 15 minutes to spare, and it is the first thing to check after any edit.
 
@@ -204,7 +207,7 @@ Every harness schedules differently and some do not schedule at all. **`CAPABILI
 
 What belongs here is the shape, which is the same on every harness.
 
-1. **One job per routine.** Eight routines, eight jobs. Never one job that runs several in sequence: a chained job defeats the per routine period guard, blurs the budgets, and turns one failure into eight.
+1. **One job per routine.** Nine routines, nine jobs. Never one job that runs several in sequence: a chained job defeats the per routine period guard, blurs the budgets, and turns one failure into eight.
 2. **The job's only content is the invocation.** All the logic is in the SKILL.md. If your scheduler grows a shell script with business rules in it, the rules now live in two places and you find out which one is wrong on the day it matters.
 3. **Know what the invocation is before you register anything.** `CAPABILITIES.md` 9.2a gives its shape per harness. Where that section could not answer for your harness, find its non interactive run command and write what you found into the `## Corrections` at the bottom of that file.
 4. **Prove one routine by hand before you register eight.** Run the line for `csat-desk-standup` in a terminal and watch it write `brief-latest.md` and one line into `runlog.jsonl`. Eight jobs registered on an invocation nobody has run is eight silent failures on the same morning, and the first thing you see is an empty brief.

@@ -215,7 +215,7 @@ Create every path in `CONTRACT.md` section 2 that does not exist. Create nothing
 ```
 «SOC_ROOT»/
   plan/          audience.md  pillars.md  sources.md  channels.md  CHANGELOG.md
-  voice/         voice.md  proof-inventory.md
+  voice/         voice.md  proof-inventory.md  transcripts/, empty, the member's drop folder
   calendar/      calendar.json is NOT created here. inbox.jsonl, empty
   queue/         empty
   posts/         posts.jsonl, empty
@@ -337,7 +337,7 @@ For every platform found in A4.2, open the member's own profile and read their o
 
 ### A5.2 Write `voice/voice.md`
 
-Six headings, exactly these, in this order:
+Seven headings, exactly these, in this order:
 
 ```
 # Voice
@@ -347,6 +347,25 @@ Real posts, quoted, with their permalinks and the date they were read.
 Every routine that writes copy reads these first.
 
 - «the post, quoted verbatim» | https://«permalink» | read 2026-03-02
+
+## How I talk
+Counted from my own recordings and posts. Built by soc-intake-and-voice, step A5.3.
+voice.check reads this section, and every rewrite takes its words from it.
+
+### Phrases I use
+- «phrase, quoted» | «source file or permalink» | «count»
+
+### How I open
+- «opening words, quoted» | «source» | «count»
+
+### How I close
+- «closing line, quoted» | «source» | «count»
+
+### Tells that are not me
+- «phrase» | «why: absent from every source read»
+
+### Shapes that are mine
+- «rule id» | «evidence: n of m sources»
 
 ## Banned words
 One per line. copy.check reads this list from this file and nowhere else.
@@ -391,6 +410,37 @@ node "«SOC_ROOT»/scripts/copy-check.mjs" --file voice/voice.md --dest plan --j
 ```
 
 **A failure inside a `## Samples` quote is not repaired.** Those are the member's own words with their permalink beside them. Write the file, name it in the report, and move on. Every other failure is in a line you generated and you fix it at the source.
+
+### A5.3 Write `## How I talk`, from the member's own words
+
+`## Samples` shows the drafting routine what a finished post looks like. `## How I talk` tells it which words, openers and closers are this person's, which is what the Anti-AI Voice Check rewrites from. **It is counted, never described.** No adjectives, no "friendly but direct", nothing a model could have written about anybody. Every line is a quote with a source and a count.
+
+**What to read, in this order, read only:**
+
+1. **Every file in `voice/transcripts/`.** The member drops their own recordings here: meeting captions (`.vtt`), subtitle files (`.srt`), podcast or call transcripts (`.txt`, `.md`). **Speech is the best evidence there is**, because nobody writes their speech with a model. Where the folder is empty, say once in the report, in one plain sentence, that dropping one recording of them talking about their business into that folder makes every rewrite sound more like them.
+2. **The captions of the member's own public videos**, on the platforms found in A4.2, where the platform shows a transcript panel to a signed out reader. Read the panel, save nothing but the text, to `voice/transcripts/<platform>-<video id>.txt`, and only for videos the member published themselves. **Never a video by anybody else, however close their subject.**
+3. **The posts you quoted under `## Samples`**, written to a scratch file `state/voice-samples.tmp.md`, deleted in this step.
+
+**Count it with the script, never by eye:**
+
+```
+node "«SOC_ROOT»/scripts/voice-check.mjs" --profile "«SOC_ROOT»/voice/transcripts/«file»" "«SOC_ROOT»/state/voice-samples.tmp.md" --json
+```
+
+It returns their average sentence length, the share of short sentences and questions, how often they say I or we against you, their recurring two to four word phrases with counts, how their sentences open, the words they double for emphasis, their hedges, and which `voice.check` shapes fire on their own words.
+
+**Then write the section from that output, with judgment:**
+
+- **`### Phrases I use`**: up to twelve recurring phrases that are theirs rather than the topic's. "Booking page" is the topic; "to be honest with you" is them. Each line: the phrase in quotes, the source file or permalink, and the count.
+- **`### How I open`** and **`### How I close`**: up to five each, from the samples and from how they start and end a point in speech. Quoted, sourced, counted.
+- **`### Tells that are not me`**: phrases a generated draft reaches for that appear **nowhere** in everything you read: the stock lines and shapes `voice.check` already knows, plus any the category reaches for ("game changer" in a fitness account, "in today's market" in a property account). Only phrases with zero hits in their own words go here.
+- **`### Shapes that are mine`**: a `voice.check` rule id goes here only where it fires in **at least half of their recordings, or half of at least six samples**. Some people really do talk in threes. **A shape that fires only on their written posts and never in their speech does not go here**, because written posts may already have been drafted by a model, and listing a model's habit as theirs would teach the check to let it through. Write the evidence on the line: `rule-of-three | 4 of 6 recordings`.
+
+Fewer than one recording and three samples and the section is thin: write what you have, put `voice: how-i-talk thin` in `assumptions[]`, and carry on. **Nothing in this section ever comes from anybody but the member**: not from another account, not from the examples shipped in this kit, and not from the person who wrote this kit.
+
+Then run the judge over the finished file, as above, `--dest plan`. A quoted phrase that fails `copy.check` is the member's own words and is not repaired, the same rule as `## Samples`.
+
+`progress[]` += `voice-how-i-talk`.
 
 Record `voice_built_on` and every permalink you sampled in `voice_sample_urls[]`, so the monthly run can tell a stale sample from a fresh one.
 
@@ -635,6 +685,7 @@ For every file you change:
 |---|---|
 | `voice/voice.md`, `## Banned words` | The same word has been caught by `copy.check` in drafts across the month, which means the drafts keep reaching for something the member does not say. Add it, with the evidence path |
 | `voice/voice.md`, `## Samples` | A sampled permalink no longer resolves, or the member has published something notably better than what is in the file. **Replace a sample only with another real post carrying a real permalink** |
+| `voice/voice.md`, `## How I talk` | A new file has appeared in `voice/transcripts/` since `voice_built_on`, or `soc-draft-queue` notes carry `voice: samples only`, or the same `voice.check` rule fired on most drafts this month while it fires in the member's own recordings too. Rebuild the section by Step A5.3 and name the evidence path |
 | `voice/voice.md`, everything else | Only on a member correction in its own `## Corrections` section |
 | `plan/audience.md` | The site's own description of who it is for no longer matches the file. Re crawl the two pages that carry it and write what is there, with the date |
 | `plan/pillars.md` | A pillar has produced nothing for three consecutive weeks in the scorecards, or the material sweep reports it thin every week. **Retire it or reword it. Never add a fourth** |
@@ -758,7 +809,7 @@ Update `registered_times{}` for anything you re registered. Set `complete: true`
 
 **Read:** `CONTRACT.md`, `ROLE.md`, `CAPABILITIES.md`, `SCHEDULE.md`, this file's own `## Corrections`, everything under `plan/` and `voice/`, `standards/drafting-standards.md`, `scorecard/scorecard-*.md`, `runlog.jsonl`, all seven `state/soc-<id>.json`, the four ledgers for counts only, `recipes/BROWSER-RECIPES.md`, and `recipes/<flow>.json` for existence only. `calendar/inbox.jsonl` is read back for deduplication before your own append, and for nothing else. On the monthly pass, also `VERSION`, `improvements/CHANGELOG.md`, and `state/kit-update.json`, for Step B3a. **Not read, and named here so nobody adds them back:** `queue/*`, `brief-latest.md`, `briefs/*`, `soc-latest.md`, `calendar/calendar.json`, `calendar/CALENDAR.md`, and `scorecard/manual.md` beyond confirming it exists.
 
-**Written whole, one writer, this routine:** `voice/voice.md`, `plan/audience.md`, `plan/pillars.md`, `plan/sources.md`, `plan/channels.md`. **Created once and never written again:** `scorecard/manual.md`, the two headings of `voice/proof-inventory.md`, and the three empty ledgers. **Appended:** `plan/CHANGELOG.md`, `calendar/inbox.jsonl`, `voice/proof-inventory.md` under `## Agent sourced`, `runlog.jsonl`. **Rows added and fire times changed, never removed:** `SCHEDULE.md`. **Whole files, one writer, this routine, on the monthly pass:** `state/kit-update.json`, and `improvements/contribution-draft-YYYY-MM.md` in a month that has one. Step B3a. Its own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/browser-lock.json` while it holds the mutex.
+**Written whole, one writer, this routine:** `voice/voice.md`, `plan/audience.md`, `plan/pillars.md`, `plan/sources.md`, `plan/channels.md`. **Created once and never written again:** `scorecard/manual.md`, the two headings of `voice/proof-inventory.md`, and the three empty ledgers. **Appended:** `plan/CHANGELOG.md`, `calendar/inbox.jsonl`, `voice/proof-inventory.md` under `## Agent sourced`, `runlog.jsonl`. **Rows added and fire times changed, never removed:** `SCHEDULE.md`. **Whole files, one writer, this routine, on the monthly pass:** `state/kit-update.json`, and `improvements/contribution-draft-YYYY-MM.md` in a month that has one. Step B3a. Its own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/browser-lock.json` while it holds the mutex and `state/voice-samples.tmp.md`, deleted in Step A5.3. **Added, never edited:** `voice/transcripts/<platform>-<video id>.txt`, the captions of the member's own public videos, Step A5.3. Every other file in `voice/transcripts/` is the member's and is read only.
 
 ### `state/soc-intake-and-voice.json`
 

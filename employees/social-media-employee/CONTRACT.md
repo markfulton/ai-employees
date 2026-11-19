@@ -9,7 +9,7 @@ Four things are true of every rule below, and they are the reason the rules are 
 1. **One writer per rewritten file. Named appenders per append-only ledger.** Nothing else.
 2. **Capabilities are named. Tools are not.** No vendor tool name, no MCP selector, no extension name, and no model name appears anywhere in a routine body or a recipe body. They appear in `CAPABILITIES.md`, once, as rows.
 3. **The Employee can take every outward action below, and two guardrails decide which it takes on its own: the first is held until you release the channel in `RELEASES.md` at the kit root, the second is always on.** Section 7. Everything else it owns.
-4. **Voice lives in one file.** `voice/voice.md` holds the samples, the banned words, the banned openers, the banned closers, the hashtag policy, and the dash policy. Every routine that writes copy reads that file at the top of every run. **No routine restates any of those lists in its own body**, because a list written down twice is a list that will disagree with itself, and the copy inside a routine is always the one that goes stale.
+4. **Voice lives in one file.** `voice/voice.md` holds the samples, how the member talks, the banned words, the banned openers, the banned closers, the hashtag policy, and the dash policy. Every routine that writes copy reads that file at the top of every run. **No routine restates any of those lists in its own body**, because a list written down twice is a list that will disagree with itself, and the copy inside a routine is always the one that goes stale.
 
 ---
 
@@ -145,15 +145,17 @@ These ship with the kit. No routine rewrites them.
 |---|---|---|
 | `scripts/runlog.mjs` | ships with the kit | the `runlog.append` capability |
 | `scripts/copy-check.mjs` | ships with the kit | the `copy.check` capability |
+| `scripts/voice-check.mjs` | ships with the kit, identical in every kit that writes copy | the `voice.check` capability |
 
-Both are dependency free and take one interface, defined in section 3.4. Neither is optional and neither may be described in the present tense by any file until it exists on disk.
+All three are dependency free and take one interface, defined in section 3.4. Neither is optional and neither may be described in the present tense by any file until it exists on disk.
 
 ### 2.3 Plan and voice
 
 | Path | Writer | Read by |
 |---|---|---|
-| `voice/voice.md` | `soc-intake-and-voice` | `copy.check`, `soc-draft-queue`, `soc-engagement-sweep`, `soc-performance-review` |
+| `voice/voice.md` | `soc-intake-and-voice` | `copy.check`, `voice.check`, `soc-draft-queue`, `soc-engagement-sweep`, `soc-performance-review` |
 | `voice/proof-inventory.md` | split, see below | `copy.check`, and every routine that writes a claim |
+| `voice/transcripts/` | the member, who drops in their own recordings and transcripts; `soc-intake-and-voice` adds only the captions of the member's own public videos and never edits a file it did not write | `soc-intake-and-voice` |
 | `plan/audience.md` | `soc-intake-and-voice` | `soc-draft-queue`, `soc-calendar-standup`, `soc-performance-review`, `soc-material-sweep` |
 | `plan/pillars.md` | `soc-intake-and-voice` | `soc-draft-queue`, `soc-material-sweep`, `soc-calendar-standup`, `soc-performance-review` |
 | `plan/sources.md` | `soc-intake-and-voice` writes the file. **`soc-material-sweep` is a restricted writer of the `sources:` lists inside it, and of nothing else** | `soc-material-sweep` |
@@ -162,7 +164,9 @@ Both are dependency free and take one interface, defined in section 3.4. Neither
 
 **Schemas.**
 
-`voice/voice.md` carries six headings, in this order, each present even when empty, followed by its own `## Corrections`: `## Samples`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, `## Dash policy`.
+`voice/voice.md` carries seven headings, in this order, each present even when empty, followed by its own `## Corrections`: `## Samples`, `## How I talk`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, `## Dash policy`.
+
+`## How I talk` is measured, never described. It carries four sub headings, `### Phrases I use`, `### How I open`, `### How I close`, `### Tells that are not me`, and an optional fifth, `### Shapes that are mine`. Every line under them is a phrase, an opener or a closer quoted from the member's own recordings or posts with its source file or permalink and a count, built by `soc-intake-and-voice` from `voice-check.mjs --profile`. `voice.check` reads the section: a phrase under `### Phrases I use` is never flagged as stock, a phrase under `### Tells that are not me` is always a tell, and a rule id under `### Shapes that are mine` is a warn rather than a tell. It is the voice every rewrite in the Anti-AI Voice Check takes its words from, and no line in it is ever borrowed from another account.
 
 `## Samples` holds real posts, quoted verbatim, each with its permalink and the date it was read. **Nothing else.** Not a description of the voice, not adjectives, not a style guide. The samples are the style guide, and a drafting routine reading three real posts writes better copy than one reading a paragraph about tone, every time. `## Hashtag policy` ships as `none`. `## Dash policy` ships as no em dash and no en dash anywhere, enforced by `copy.check` on code point rather than by anybody's eye.
 
@@ -416,7 +420,7 @@ A blocker open for more than seven days gets a full line. Everything else open g
 
 `progress[]` is appended the moment each step completes, so a budget stop resumes instead of restarting. `assumptions[]` is where the Employee records a call it made on ambiguity, one short string each, and `soc-calendar-standup` surfaces new ones in the brief. Each routine adds only the cursors and caps it needs. **Cursors advance past completed work only.** A cursor that skips a failure loses the failure forever.
 
-**Scratch files under `state/` carry one naming shape and one lifetime.** A routine that needs to hand a string to `copy.check` writes it to `state/<name>.tmp.<ext>` and deletes it in the same step that wrote it, and on every exit path. The `.tmp.` segment is what tells every other reader, and the archive sweep, that the file is not a record of anything. Three exist in the shipped routines: `state/draft-candidate.tmp.md`, `state/reply-lines.tmp.md`, and `state/material-notes.tmp.md`.
+**Scratch files under `state/` carry one naming shape and one lifetime.** A routine that needs to hand a string to `copy.check` writes it to `state/<name>.tmp.<ext>` and deletes it in the same step that wrote it, and on every exit path. The `.tmp.` segment is what tells every other reader, and the archive sweep, that the file is not a record of anything. Four exist in the shipped routines: `state/draft-candidate.tmp.md`, `state/reply-lines.tmp.md`, `state/material-notes.tmp.md`, and `state/voice-samples.tmp.md`.
 
 ### 2.8 The whole data flow, at a glance
 
@@ -425,7 +429,7 @@ Read the columns as: what is written, who is the only one allowed to write it, a
 | File | Writer or appenders | Readers |
 |---|---|---|
 | `SCHEDULE.md` | member, plus intake for rows and fire times | all seven |
-| `voice/voice.md` | `soc-intake-and-voice` | `copy.check`, draft queue, engagement sweep, performance review |
+| `voice/voice.md` | `soc-intake-and-voice` | `copy.check`, `voice.check`, draft queue, engagement sweep, performance review |
 | `voice/proof-inventory.md` | member (`## Member claims`), performance review and intake (`## Agent sourced`) | `copy.check`, every routine that writes a claim |
 | `plan/audience.md`, `plan/pillars.md`, `plan/channels.md` | `soc-intake-and-voice` | draft queue, publish run, engagement sweep, material sweep, performance review, standup |
 | `plan/sources.md` | `soc-intake-and-voice` (the file), `soc-material-sweep` (the `sources:` lists) | `soc-material-sweep` |
@@ -536,6 +540,7 @@ Every capability in this table degrades the same way when the harness has no bro
 |---|---|---|---|
 | `runlog.append` | Append exactly one validated run record. Validates the shape, validates `status` against the closed list of eight, refuses secret-shaped substrings, post text, and personal data, writes UTF-8 with no byte order mark, and repairs a stray mark at the head of the file | `shell.run` on `scripts/runlog.mjs`, then a direct append performing the same validation in the agent | If neither is possible, write the record as the last line of `brief-latest.md` under a heading `UNRECORDED RUN` and stop. **A run with no record is a run that will be repeated**, and for `soc-publish-run` a repeated run is a duplicate public post, which is why that routine publishes nothing when this capability has no route |
 | `copy.check` | The scripted judge for any text about to be written into a queue file, a plan file, the standards, or a member facing page. Returns PASS or FAIL plus a reason class | `shell.run` on `scripts/copy-check.mjs`, then the same rule set applied in the agent, marked in the run record as `copy-check: in-agent` | Never skip it. The in-agent route is a degradation, not an exemption, and there is no third option where the copy goes out unchecked |
+| `voice.check` | The Anti-AI Voice Check: the second pass on any copy a person other than the member will read. Finds the shapes readers recognise as machine written and names each one as a tell or a warn | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in the agent, marked in the run record as `voice-check: in-agent` | Never skip it. It runs after `copy.check` passes, every tell is rewritten in the member's voice, and both run again on the rewrite |
 | `schedule.register` | Register, inspect, or change a recurring job named after a routine id | harness scheduler, then the OS scheduler through `shell.run`, then write the exact commands to `«SOC_ROOT»/schedule-commands.txt` and name that file in the intake report | The kit still runs when launched by hand. Nothing about a routine's behaviour depends on which of the three registered it |
 
 **A registered job's only content is the invocation that runs one routine unattended in `«SOC_ROOT»`.** What that invocation looks like is a property of the harness, so it lives in `CAPABILITIES.md` section 9.2a as one row per harness and nowhere else. Two rules sit above every route: one job per routine, never a chained job, and one routine proved by hand before seven are registered. **Prove `soc-calendar-standup` and never `soc-publish-run`**, because the standup writes files and sends nothing and the publish run is the one routine with an outward surface. Commands written to `schedule-commands.txt` are written expanded, because a file the member has to translate before running is not a recovery path.
@@ -581,6 +586,16 @@ autolink        y    y      y        y       n
 `plan` skips the voice rules because `voice/voice.md` is the file that holds the banned lists, and a checker that fails its own vocabulary file is useless. It skips autolink because `plan/channels.md` and `plan/sources.md` are mostly URLs.
 
 **Do not eyeball any of these. The script is the judge.** A stated preference has never been enough.
+
+**`voice.check` has exactly one interface and every call site uses it verbatim:**
+
+```
+node "«SOC_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`, and decides which shape rules apply: a reply about somebody's order is allowed a stack of "your", an article is allowed to have no "I" in it. `--selftest` confirms the script runs. `--profile <files>` counts how the member talks from their own recordings and posts, judges nothing, and is used only by `soc-intake-and-voice`. Exit `0` is clean or warns only, `1` is one or more tells, `2` is bad usage.
+
+**What `voice.check` flags as a tell**: an em or en dash; a stock phrase every generated draft reaches for; a label that announces the next line instead of saying it ("Here's the honest answer."); a line a general chatbot writes for any business ("Here's your sign.", "that one friend who"); engagement bait ("Tag someone") outside a support reply, an article or a brief; a phrase listed under `### Tells that are not me`; coach-speak; consultant-memo vocabulary; a prophecy about who will win; a standalone "Not X." fragment; the "It's not X, it's Y" frame; three or more sentences in a row starting with the same drum word; three clipped fragments on one line; three or more "X, Y and Z" lists in one piece; an opener that orders the reader about or asks a rhetorical question; an abstract noun as the hook with nobody in the copy; no I, my, we or our anywhere; five or more "your" outnumbering the writer two to one; and a "Thoughts?" close. Warns are read with judgment. **It reads `## How I talk` in `voice/voice.md`, so a member is never judged against somebody else's habits**, and the rewrite it triggers is written from that member's own samples and phrases and nobody else's.
 
 ---
 

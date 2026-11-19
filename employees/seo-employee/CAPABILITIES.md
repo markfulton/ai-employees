@@ -25,7 +25,7 @@ Ask it to write a file called `state/probe.txt` and read it back. If your harnes
 Ask it for the current local time and the timezone id, then check both against your own clock. Every routine's first act after the pause switch is a window check, and a routine that cannot read a clock records `failed` and stops. It will never assume a timezone and it will never trust one remembered from a previous run, because you might have moved.
 
 **3. Can it run a local command?**
-Ask it to run `node --version`. You need Node 18 or newer for the two scripts inside the kit, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. Both are dependency free. There is no install step and no package file.
+Ask it to run `node --version`. You need Node 18 or newer for the scripts inside the kit, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All are dependency free. There is no install step and no package file.
 
 **A shell matters more in this kit than in most.** A property whose posts live in a repository on this machine is published by writing files, running that property's own build, committing, and pushing. All four of those are `shell.run`. Without a shell, only a property with a publishing surface can be published at all.
 
@@ -209,7 +209,7 @@ Run a local command and read its output.
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
-**Absent:** `runlog.append` and `copy.check` take their in agent routes instead, described in section 6. Both still happen and neither is skipped.
+**Absent:** `runlog.append`, `copy.check` and `voice.check` take their in agent routes instead, described in section 6. All three still happen and none is skipped.
 
 **But absent also means a repository property cannot be published**, because the build, the commit, and the push all run through a shell. `seo-publish-run` records `partial` with a blocker naming the capability, leaves the draft `ready`, and publishes a surface property instead if the candidate set holds one. This is the one place in this kit where a missing shell is worse than a missing browser.
 
@@ -715,6 +715,29 @@ node "«SEO_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [-
 `--dest` is one of `article`, `strategy`, `plain`. `--selftest` takes no other flag and confirms the script runs, which is worth doing once on install so you find out on day one rather than at 08:00 on a Tuesday. There is no `--profile`, no `--destination`, and no bare positional path, and the script names the real interface if you use one of those.
 
 `CONTRACT.md` section 3.4 carries the eight rules it checks and the table of which rules apply to which destination.
+
+### `voice.check`
+The Anti-AI Voice Check: the second pass on an article body, after `copy.check` passes, fixed in place sentence by sentence.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in agent | `confirmed` |
+| OpenClaw | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Hermes | `shell.run` if present, then in agent | `unknown` |
+| OpenCode | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Grok Bot | `shell.run` on its cloud computer, then in agent | `expected` |
+| Codex | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Antigravity | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+
+**Absent the script:** the in agent route reads the rule list in `CONTRACT.md` under `voice.check`, applies it to the draft line by line, and the run record says `voice-check: in-agent`. **It is never skipped.**
+
+One interface, used verbatim at every call site:
+
+```
+node "«SEO_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`, and in this kit it is always `article`. `--selftest` confirms the script runs. `--profile <files>` is the intake routine's counting tool for the member's own recordings and posts. **The script reads one file inside the kit:** `## How I talk` in `strategy/voice.md`. Where the section is missing it runs the neutral rules alone and says so in its own output.
 
 ### `schedule.register`
 Register, inspect, or change a recurring job named after a routine id.

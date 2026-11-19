@@ -152,8 +152,9 @@ These ship with the kit. No routine rewrites them. Each ends with a `## Correcti
 |---|---|---|
 | `scripts/runlog.mjs` | ships with the kit | the `runlog.append` capability |
 | `scripts/copy-check.mjs` | ships with the kit | the `copy.check` capability |
+| `scripts/voice-check.mjs` | ships with the kit, identical in every kit that writes copy | the `voice.check` capability |
 
-Both are dependency free and take one interface, defined in section 3.4. Neither is optional and neither may be described in the present tense by any file until it exists on disk.
+All three are dependency free and take one interface each, defined in section 3.4. None is optional and none may be described in the present tense by any file until it exists on disk.
 
 ### 2.3 Charter
 
@@ -490,7 +491,7 @@ Each capability below carries a route preference order. **A route is tried in or
 | `file.read` | Read a file as text | harness file read, then shell | None. The kit does not run without it |
 | `file.write` | Write a file, temp path plus rename for anything a crash could truncate | harness file write, then shell | None |
 | `file.list` | List paths under a folder | harness glob, then shell | Enumerate from the known paths in section 2 and note the degradation. **The bounded discovery search in `cos-charter-and-fleet-audit` needs this**, so without it the fleet map holds this Employee's own root alone and says so |
-| `shell.run` | Run a local command and read its output | harness shell | `runlog.append` and `copy.check` fall back to their in-agent routes below |
+| `shell.run` | Run a local command and read its output | harness shell | `runlog.append`, `copy.check` and `voice.check` fall back to their in-agent routes below |
 
 ### 3.2 Browser
 
@@ -533,6 +534,7 @@ Every capability in this table degrades the same way when the harness has no bro
 |---|---|---|---|
 | `runlog.append` | Append exactly one validated run record. Validates the shape, validates `status` against the closed list of eight, refuses secret-shaped substrings, writes UTF-8 with no byte order mark, and repairs a stray mark at the head of the file | `shell.run` on `scripts/runlog.mjs`, then a direct append performing the same validation in the agent | If neither is possible, write the record as the last line of `brief-latest.md` under a heading `UNRECORDED RUN` and stop. A run with no record is a run that will be repeated |
 | `copy.check` | The scripted judge for any text about to be written into a brief, a dossier, a weekly page, a charter file, or a dashboard partial | `shell.run` on `scripts/copy-check.mjs`, then the same rule set applied in the agent, marked in the run record as `copy-check: in-agent` | Never skip it. The in-agent route is a degradation, not an exemption |
+| `voice.check` | The Anti-AI Voice Check: the second pass on any copy a person other than the member will read. In this kit that is one file, the monthly contribution draft the member may paste into a public issue. Finds the shapes readers recognise as machine written and names each one as a tell or a warn | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in the agent, marked in the run record as `voice-check: in-agent` | Never skip it where it applies. It runs after `copy.check` passes, every tell is rewritten in plain words from the source line, and both run again on the rewrite |
 | `schedule.register` | Register, inspect, or change a recurring job named after a routine id **in this kit** | harness scheduler, then the OS scheduler through `shell.run`, then write the exact commands to `«COS_ROOT»/schedule-commands.txt` and name that file in the report and the brief | The kit still runs when launched by hand. Nothing about a routine's behaviour depends on which of the three registered it |
 
 **A registered job's only content is the invocation that runs one routine unattended in `«COS_ROOT»`.** What that invocation looks like is a property of the harness, so it lives in `CAPABILITIES.md` section 9.2a as one row per harness and nowhere else. Three rules sit above every route: one job per routine, never a chained job; one routine proved by hand before seven are registered; and **never a job belonging to any routine outside this kit**, whatever it looks like from the outside.
@@ -558,6 +560,16 @@ node "«COS_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [-
 7. A dotted token left bare in prose, which an autolinker rewrites into a broken link.
 
 Do not eyeball any of these. **The script is the judge.** A stated preference has never been enough.
+
+**`voice.check` has exactly one interface and every call site uses it verbatim:**
+
+```
+node "«COS_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`, and decides which shape rules apply. **This kit calls one of the seven, `brief`**, at its one call site, `cos-charter-and-fleet-audit` Step B4a.3, on the lines it wrote into `improvements/contribution-draft-YYYY-MM.md`. That is the only file this kit writes for somebody other than the member to read: the brief, the dossiers, the weekly pages, the charter and the dashboard are each read by one person, and the paste ready correction lines in a dossier are read by an agent. `--selftest` confirms the script runs. `--profile <files>` exists because one script serves every AI Employee on the machine, and this kit never calls it. Exit `0` is clean or warns only, `1` is one or more tells, `2` is bad usage.
+
+**What `voice.check` flags as a tell**: an em or en dash; a stock phrase every generated draft reaches for; a label that announces the next line instead of saying it ("Here's the honest answer."); a line a general chatbot writes for any business ("Here's your sign.", "that one friend who"); engagement bait ("Tag someone") outside a support reply, an article or a brief; a phrase listed under `### Tells that are not me`; coach-speak; consultant-memo vocabulary; a prophecy about who will win; a standalone "Not X." fragment; the "It's not X, it's Y" frame; three or more sentences in a row starting with the same drum word; three clipped fragments on one line; three or more "X, Y and Z" lists in one piece; an opener that orders the reader about or asks a rhetorical question; an abstract noun as the hook with nobody in the copy; no I, my, we or our anywhere; five or more "your" outnumbering the writer two to one; and a "Thoughts?" close. Which of these apply depends on `--kind`, and warns are read with judgment. **The script reads `## How I talk` in a kit's voice file, and this kit has none**, for the reason in rule 4 above, so it runs the neutral rules alone and says so in its own output. That is correct and is never fixed by creating a voice file: the contribution draft speaks for the kit's own repair, its rewrite takes its words from the changelog line it reports, and it never borrows the member's voice or anybody else's.
 
 **Two failures are the ones this kit actually causes, and each has one mechanical answer.** A dash inside a blocker string or a quote written by somebody else becomes a comma, with the untouched original named one file away. A count that reads as a claim gains the file path it was read from, or is rewritten as a date. Neither answer is ever to add a line to `evidence/sourced.md` so a sentence passes: five of the seven routines are not appenders to that file at all, and the two that are may only append a figure they read out of a file inside this folder this run.
 

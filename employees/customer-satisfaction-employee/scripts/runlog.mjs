@@ -127,6 +127,7 @@ const CADENCE = {
   "csat-satisfaction-report": "week",
   "csat-desk-intake": "month",
   "csat-taxonomy-refresh": "month",
+  "csat-review-requests": "day",
 };
 
 // A stale id fails on its first line forever and the member never sees an

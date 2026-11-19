@@ -70,7 +70,7 @@ Read nothing that is not on the first table. Write nothing that is not on the se
 | `strategy/CHANGELOG.md` | Every line dated after your last run, so a strategy change reaches the member |
 | `improvements/CHANGELOG.md` | Every line since your last brief, for `## What changed about me` |
 | `report/satisfaction-YYYY-Www.md`, most recent | Its path and its week, to name in the brief. Never its numbers |
-| `state/csat-<id>.json`, all eight | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used` |
+| `state/csat-<id>.json`, all nine | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used` |
 | `state/browser-lock.json` | Read only, and only to detect a browser routine that died. See the browser section |
 | `state/pushes.jsonl` | Which blockers already pushed, so the brief can say a push was suppressed rather than lost |
 | `state/kit-update.json` | What `csat-desk-intake` found on its monthly check of the kit itself. See the extra duty at the foot of this file |
@@ -253,7 +253,7 @@ Read each file with `file.read`. Strip a leading byte order mark by removing cod
 | `risk/risk.jsonl` | `account_slug` | The last line per slug |
 | `strategy/CHANGELOG.md` | line order | Every line dated after your `last_period` |
 | `improvements/CHANGELOG.md` | line order | Every line after `improvements_cursor` |
-| `state/csat-<id>.json`, all eight | routine id | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used` |
+| `state/csat-<id>.json`, all nine | routine id | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used` |
 | `tickets/tickets-latest.md` | not folded | Its head counts, for `csat-latest.md` only |
 | `risk/at-risk-latest.md` | not folded | Its path and its open flag count |
 | `report/satisfaction-YYYY-Www.md`, most recent | not folded | Its path and its week |

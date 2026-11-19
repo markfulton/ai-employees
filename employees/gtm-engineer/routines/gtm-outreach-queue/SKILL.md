@@ -69,6 +69,7 @@ That is not an approval you are waiting for and it is not a gate. It is the one 
 - **Personal data stays inside `«GTM_ROOT»`.** Names, addresses, profile URLs, quotes, and draft text live in the queue files and the CRM files. They never go into a run record, a log line, a git repo, or a shared folder.
 - **No em dash and no en dash** in anything you write, including the queue files, your notes, and any code comment. `copy.check` is the judge, not your eye.
 - **The banned word, banned opener, and banned closer lists live in `strategy/voice.md` and nowhere else.** Read them there every run. This file does not restate them, because a list written down twice is a list that will disagree with itself.
+- **No draft is queued with an AI tell.** Every candidate that passes `copy.check` goes through `voice.check`, the Anti-AI Voice Check in Step 5, and every tell is rewritten in the member's own voice from `strategy/voice.md`. The rewrite never borrows anybody else's voice.
 
 ---
 
@@ -395,6 +396,35 @@ What the script fails, in the order it checks: an em dash or an en dash anywhere
 
 Every dropped draft is named in the run record with **its first failure reason only**. The dropped text goes nowhere: not into a report, not into the run record, not into a summary. Do not paste it anywhere to show your working.
 
+### Then the second pass: the Anti-AI Voice Check
+
+A draft can pass every rule in `copy.check` and still read as machine written, because a stranger recognises a **shape** before they read a word: a chant of "Your X. Your Y. Your Z.", three sentences in a row that start the same way, a standalone "Not someday." fragment, "It's not X, it's Y", a prophecy about the people who will win, an opener that orders the reader about, a message with nobody in it. A first touch that reads as generated is deleted unread, and the member's name is on it. `copy.check` judges words. This pass judges shape, and then rewrites the shape **in the member's own voice**. It runs on every candidate that passed the judge above, before anything lands. **No draft is queued with a tell.**
+
+Run it on the same temp file, with the kind that matches the channel:
+
+```
+node "«GTM_ROOT»/scripts/voice-check.mjs" --file "«GTM_ROOT»/state/draft-candidate.tmp.md" --kind email --json
+node "«GTM_ROOT»/scripts/voice-check.mjs" --file "«GTM_ROOT»/state/draft-candidate.tmp.md" --kind dm --json
+```
+
+That is the interface, verbatim. `--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`; every email this routine writes is `email` and every connection note and DM is `dm`. The script reads `## How I talk` in `strategy/voice.md` by itself: a phrase listed under `### Phrases I use` is never flagged, a phrase under `### Tells that are not me` always is, and a rule id under `### Shapes that are mine` drops from a tell to a warn because the member's own recordings show it. Exit `0` is clean or warns only. Exit `1` means one or more tells. Where `shell.run` is unavailable, apply the same rules in the agent from `CONTRACT.md` under `voice.check` and put `voice-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption.**
+
+**Every `tell` is rewritten. A `warn` is read with judgment** and stays where the line is concrete and true and sounds like the samples: real people write short lines and real three item lists.
+
+**Then one read by judgment, because the script is a list of patterns and a draft can dodge every one of them.** Read the draft as the member saying it out loud to someone they know, and ask three questions of every line: would it fit another business's copy with only the name swapped; is it a clever line rather than something that happened; is the member, or the person they are writing to, actually in it. A line that fails any of the three is rewritten by the same rules as a tell and counted under the rule id `judgment`. Most drafts written from real material pass this read untouched, and those stay exactly as they are.
+
+**The rewrite, one pass, in the member's voice and nobody else's:**
+
+1. **Read `## Samples` and `## How I talk` in `strategy/voice.md` again before you write a word.** The rewrite takes its phrases, its openers, its closers and its sentence length from those two headings. Where `## How I talk` does not exist yet, the samples alone are the voice, and you put `voice: samples only` in `notes` so `gtm-intake-and-dashboard` builds the section on its next pass.
+2. **Rewrite only the lines a tell names.** Keep every line that already sounds like the member. Keep the link and its tracking convention, the recipient's name, the recorded signal, every sourced fact and number, the sentinels, and the one ask exactly as they are.
+3. **Fix the shape, not the vocabulary.** A drumbeat of three "your" lines becomes one sentence with the member as its subject. A "Not X." fragment is cut and the positive fact is stated once, with its proof. A prophecy becomes what the member saw or did, or a view that says "I think". An imperative opener becomes the recorded signal stated plainly. A message with nobody in it gets the member in it, from the ledger row and the proof inventory, and never from invention.
+4. **Never import a phrase, a story, a number or a habit that is not in this member's own files.** Not from another account, not from a general sense of how good outreach sounds, and never from the writer of this kit. A scene that is not on the ledger row or in `strategy/proof-inventory.md` is invented, and an invented scene in the member's first person is a false statement to a stranger.
+5. **Then run both judges again on the rewrite**, `copy.check` first, then `voice.check`, because a rewrite is a new body and its caps, its numbers and its first line have to pass again.
+
+A rewrite that still carries a tell, or that now fails `copy.check`, **drops the draft**, named in the run record with `voice-check` as its first failure reason. The same rule as the table above: one pass, never a softer version of the same claim. The dropped text goes nowhere.
+
+**Keep the count.** For each queued draft record `tells_found` (tells on the first scan) and `tells_fixed` (tells gone on the rewrite), and the rule ids that fired. They go on the queue entry below as a `- voice check:` line, and the run totals go in `notes`. A clean first scan is `0` and `0`, which is a good result and is written down like any other.
+
 ### Append the queue entry immediately, one at a time
 
 Do not hold a batch in memory and write at the end. A stop at the last minute of the budget must lose nothing.
@@ -414,6 +444,9 @@ Do not hold a batch in memory and write at the end. A stop at the last minute of
 - framework: observation
 - signal: «the recorded signal», read «source» on «date»
 - subject: «subject line»
+- voice check: 2 tells found, 2 fixed (imperative-opener, not-fragment)
+- was: «the line as first drafted» (imperative-opener)
+- was: «the line as first drafted» (not-fragment)
 - [ ] sent
 
 «body»
@@ -422,6 +455,8 @@ Do not hold a batch in memory and write at the end. A stop at the last minute of
 ```
 
 **The `- id:` line and the `- [ ] sent` line are the two lines `gtm-board-standup` parses. Never reformat either one.** Everything else in the entry is for the member to read, and you may add a line to it where it helps them: `- prior:` on a re draft under Step 2b, `- mailbox: drafted` once Step 7 has verified a mailbox draft for that entry, and `- note:` where you skipped an enrichment or left a sentinel and want the member to know why in one clause.
+
+**The `- voice check:` line is written on every entry**, `0 tells found` included. Under it, one `- was:` line per rewritten line, at most three, carrying the line as it was first drafted and the rule that caught it, so the member can read the before beside the after and correct `strategy/voice.md` where the rewrite missed. A `- was:` line holds text that already passed `copy.check`, and it never holds a dropped draft. A mailbox draft in Step 7 carries the subject and body only, never these lines.
 
 ### Then append one line to `crm/contacted.jsonl`, per draft, the instant the entry lands
 
@@ -445,7 +480,7 @@ Readers fold on `signal_id` keeping the last line, so one appended line is the w
 
 ## Step 6. The DM queue
 
-No browser. No LinkedIn. The text goes into `queue/YYYY-MM-DD-dm.md` in the same entry shape, checked with `--dest dm`, with these differences:
+No browser. No LinkedIn. The text goes into `queue/YYYY-MM-DD-dm.md` in the same entry shape, checked with `--dest dm` and then by the Anti-AI Voice Check with `--kind dm`, carrying the same `- voice check:` and `- was:` lines, with these differences:
 
 - The heading counter is `D-01`, `D-02`, and so on.
 - `- to:` carries the name and the profile URL from the ledger row, exactly as recorded.
@@ -534,7 +569,7 @@ Then append **exactly one** record through `runlog.append`. Never through a shel
  "status":"ok",
  "outputs":["queue/2026-03-04-email.md (4 drafts)","queue/2026-03-04-dm.md (6 queued)","crm/contacted.jsonl (+10 queued, +2 dropped)","crm/signals.jsonl (+10 queued, +3 used)"],
  "blockers":[],
- "notes":"segment cursor segment-3; 1 draft dropped by copy-check, unsourced number, ledger path crm/contacted.jsonl; 2 stale rows retired; mailbox mode off"}
+ "notes":"segment cursor segment-3; voice check 4 tells found, 4 fixed, top rule imperative-opener; 1 draft dropped by copy-check, unsourced number, ledger path crm/contacted.jsonl; 2 stale rows retired; mailbox mode off"}
 ```
 
 Every field is required. `outputs` and `blockers` are always arrays, empty rather than absent. Paths are relative to `«GTM_ROOT»` and carry a count in brackets. `notes` is one line. After the call, read the last line of `runlog.jsonl` and confirm it parses. Where the shell mangled the inline argument, write the record to `state/run-record.tmp.json`, pass it by file, confirm again, and delete the temp file. Never leave a half written line behind.
@@ -600,6 +635,9 @@ The status vocabulary is closed at seven values. There is no `blocked-approval` 
 | A refusal, a wall, or a captcha | `retry`, class two. Never retried, never routed around |
 | `mailbox_draft_mode` absent or false | Skip Step 7 silently. This is the shipped default |
 | `copy.check` has no shell route | The in-agent route, and `copy-check: in-agent` in `notes` |
+| `voice.check` has no shell route | The in agent route from `CONTRACT.md` under `voice.check`, and `voice-check: in-agent` in `notes` |
+| `strategy/voice.md` has no `## How I talk` section | Rewrite from `## Samples` alone, `voice: samples only` in `notes`. Not a failure |
+| A rewrite still carries a tell | Drop the draft, `voice-check` as its first failure reason. Never queue it |
 | `strategy/proof-inventory.md` missing | Every draft today carries zero numbers. One line in `notes`. Not a failure |
 | `strategy/utm-taxonomy.md` names no link convention | Use the plain URL, one line in `notes`. Never invent a campaign name |
 

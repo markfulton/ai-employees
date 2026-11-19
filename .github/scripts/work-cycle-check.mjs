@@ -32,7 +32,7 @@ try {
     recordProgress(fixture, { ...blocked, period: '2026-10-03', observed_at: '2026-10-03T10:00:00Z' });
     assert.equal(deliveryHealth(readProgress(fixture, receipt.routine), 2).delivery, 'stalled');
   }
-  assert.equal(routineCount, 60);
+  assert.equal(routineCount, 61);
   const available = { owned: true, authorized: true, fresh: true, inputs_ready: true };
   assert.equal(chooseWork([{ ...available, id: 'publish', authorized: false }, { ...available, id: 'draft', fulfills_commitment: true }]).id, 'draft');
   assert.equal(chooseWork([{ ...available, id: 'stale', fresh: false }, { ...available, id: 'resolve-input', unblocks_work: true }]).id, 'resolve-input');
@@ -79,5 +79,5 @@ try {
   finishRun(guardRoot, 'ads-account-read', resumedFire.claim.token, 'completed');
   assert.equal(fire().verdict, 'skipped-already-ran');
   fs.writeFileSync(path.join(guardRoot, 'PAUSED'), ''); assert.equal(fire().verdict, 'skipped-paused');
-  console.log('work-cycle-check: PASS (8 roles, 60 routines, artifact evidence, stalls, preparation gates, ownership, experiments, handoffs, concurrent claims)');
+  console.log('work-cycle-check: PASS (8 roles, 61 routines, artifact evidence, stalls, preparation gates, ownership, experiments, handoffs, concurrent claims)');
 } finally { fs.rmSync(temp, { recursive: true, force: true }); }

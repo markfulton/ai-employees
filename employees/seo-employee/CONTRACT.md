@@ -138,8 +138,9 @@ These ship with the kit. Each ends with a `## Corrections` section the member wr
 |---|---|---|
 | `scripts/runlog.mjs` | ships with the kit | the `runlog.append` capability |
 | `scripts/copy-check.mjs` | ships with the kit | the `copy.check` capability |
+| `scripts/voice-check.mjs` | ships with the kit, identical in every kit that writes copy | the `voice.check` capability |
 
-Both are dependency free and take one interface, defined in section 3. Neither is optional and neither may be described in the present tense by any file until it exists on disk.
+All three are dependency free and take one interface each, defined in section 3. None is optional and none may be described in the present tense by any file until it exists on disk.
 
 ### 2.3 Strategy
 
@@ -147,7 +148,8 @@ Both are dependency free and take one interface, defined in section 3. Neither i
 |---|---|---|
 | `strategy/properties.md` | `seo-intake-and-map` | all eight |
 | `strategy/topic-map.md` | `seo-intake-and-map` | `seo-draft-run`, `seo-calendar-refill`, `seo-rank-review` |
-| `strategy/voice.md` | `seo-intake-and-map` | `copy.check`, `seo-draft-run` |
+| `strategy/voice.md` | `seo-intake-and-map` | `copy.check`, `voice.check`, `seo-draft-run` |
+| `strategy/transcripts/` | the member, who drops in their own recordings and transcripts. `seo-intake-and-map` creates the empty folder once and never writes inside it | `seo-intake-and-map` |
 | `strategy/CHANGELOG.md` | append only, every routine that changes a strategy file | member, `seo-standup`, `seo-intake-and-map` |
 
 **In practice `seo-intake-and-map` is the only routine that changes a strategy file.** Every other routine that can prove a strategy fact wrong files a card with the evidence path instead of editing. That is a one writer rule, not an approval gate: the finding is acted on, by the routine that owns the file, on the first of the month, and nothing waits on a human.
@@ -170,7 +172,9 @@ refill_block: 30
 
 `strategy/topic-map.md` carries `## Pillars`, then `## Internal link map`, then `## Retired`, then `## Corrections`. A pillar block is `### «pillar-id»: «Pillar name»` with `property`, `intent`, `why_this_business`, `clusters` (a list), `created`, `retired`.
 
-`strategy/voice.md` carries `## Samples`, `## What is true of this voice`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, `## Dash policy`, `## Corrections`. **The banned lists live here and nowhere else.** `copy.check` reads them from this one file, which is why a member who adds a banned word there sees it enforced by every routine the same afternoon. No routine restates the list in its own body.
+`strategy/voice.md` carries `## Samples`, `## How I talk`, `## What is true of this voice`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, `## Dash policy`, `## Corrections`. **The banned lists live here and nowhere else.** `copy.check` reads them from this one file, which is why a member who adds a banned word there sees it enforced by every routine the same afternoon. No routine restates the list in its own body.
+
+`## How I talk` is measured, never described. It carries four sub headings, `### Phrases I use`, `### How I open`, `### How I close`, `### Tells that are not me`, and an optional fifth, `### Shapes that are mine`. Every line under them is a phrase, an opener or a closer quoted from the member's own recordings or posts with its source file or URL and a count, built by `seo-intake-and-map` from `voice-check.mjs --profile`. `voice.check` reads the section: a phrase under `### Phrases I use` is never flagged as stock, a phrase under `### Tells that are not me` is always a tell, and a rule id under `### Shapes that are mine` is a warn rather than a tell. A rule id is listed there only where it fires in at least half of the member's recordings, or half of at least six samples, and never from written posts alone. It is the voice every rewrite in the Anti-AI Voice Check takes its words from, and no line in it is ever borrowed from another account.
 
 `strategy/CHANGELOG.md` is append only, newest at the top, one line each:
 
@@ -432,7 +436,8 @@ Read the columns as: what is written, who is the only one allowed to write it, a
 | `standards/PUBLISH-STANDARD.md` | ships, amended by draft run, publish run, refill | those three, rank review, intake |
 | `strategy/properties.md` | `seo-intake-and-map` | all eight |
 | `strategy/topic-map.md` | `seo-intake-and-map` | draft run, refill, rank review |
-| `strategy/voice.md` | `seo-intake-and-map` | `copy.check`, draft run |
+| `strategy/voice.md` | `seo-intake-and-map` | `copy.check`, `voice.check`, draft run |
+| `strategy/transcripts/` | the member | intake |
 | `strategy/CHANGELOG.md` | append only, any routine changing a strategy file | member, standup, intake |
 | `calendar/CALENDAR.md` | `seo-calendar-refill`, append only after the last block | standup, draft run, rank review, intake |
 | `content/drafts.jsonl` | draft run (`ready`, `dropped`), publish run (`consumed`) | standup, publish run, refill, intake |
@@ -477,7 +482,7 @@ Each capability below carries a route preference order. **A route is tried in or
 | `file.read` | Read a file as text | harness file read, then shell | None. The kit does not run without it |
 | `file.write` | Write a file, temp path plus rename for anything a crash could truncate | harness file write, then shell | None |
 | `file.list` | List paths under a folder | harness glob, then shell | Enumerate from the known paths in section 2 and note the degradation |
-| `shell.run` | Run a local command and read its output | harness shell | `runlog.append` and `copy.check` fall back to their in-agent routes. **A repository publish route also needs this**, for the build and the push, so a harness with no shell publishes only to surface properties |
+| `shell.run` | Run a local command and read its output | harness shell | `runlog.append`, `copy.check` and `voice.check` fall back to their in-agent routes. **A repository publish route also needs this**, for the build and the push, so a harness with no shell publishes only to surface properties |
 
 ### 3.2 Browser
 
@@ -523,6 +528,7 @@ Every capability in this table degrades the same way when the harness has no bro
 |---|---|---|---|
 | `runlog.append` | Append exactly one validated run record. Validates the shape, validates `status` against the closed list of eight, refuses secret-shaped substrings, writes UTF-8 with no byte order mark, and repairs a stray mark at the head of the file | `shell.run` on `scripts/runlog.mjs`, then a direct append performing the same validation in the agent | If neither is possible, write the record as the last line of `brief-latest.md` under a heading `UNRECORDED RUN` and stop. **`seo-publish-run` and `seo-index-sweep` do not work at all in that state**, because a run that cannot record what it published would publish it again tomorrow, and a run that cannot record an allowance would spend it again next week |
 | `copy.check` | The scripted judge for any text about to be written into an article body, a strategy file, a calendar block, or a file the member reads. Returns PASS or FAIL plus a reason class | `shell.run` on `scripts/copy-check.mjs`, then the same rule set applied in the agent, marked in the run record as `copy-check: in-agent` | Never skip it. The in-agent route is a degradation, not an exemption, and there is no third option where a body reaches a live page unchecked |
+| `voice.check` | The Anti-AI Voice Check: the second pass on an article body, which people other than the member will read. Finds the shapes readers recognise as machine written and names each one as a tell or a warn | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in the agent, marked in the run record as `voice-check: in-agent` | Never skip it. It runs after `copy.check` passes, every tell is fixed in place in the member's voice, and both run again on the rewrite |
 | `schedule.register` | Register, inspect, or change a recurring job named after a routine id | harness scheduler, then the OS scheduler through `shell.run`, then write the exact commands to `«SEO_ROOT»/schedule-commands.txt` and name that file in a card and in `blockers[]` | The kit still runs when launched by hand. Nothing about a routine's behaviour depends on which of the three registered it |
 
 **A registered job's only content is the invocation that runs one routine unattended in `«SEO_ROOT»`.** What that invocation looks like is a property of the harness, so it lives in `CAPABILITIES.md` section 9.2a as one row per harness and nowhere else. Two rules sit above every route: one job per routine, never a chained job, and one routine proved by hand before seven are registered. Commands written to `schedule-commands.txt` are written expanded, because a file the member has to translate before running is not a recovery path.
@@ -563,6 +569,16 @@ survey             y         n         y
 `strategy` skips the voice rules because `strategy/voice.md` is the file that holds the banned lists, and a checker that fails its own vocabulary file is useless. It skips the survey rule because a calendar entry legitimately names the intent it serves and the pages it has to beat, and it skips autolink because a competitor list is a list of domains.
 
 **Do not eyeball any of these. The script is the judge.** A stated preference has never been enough.
+
+**`voice.check` has exactly one interface and every call site uses it verbatim:**
+
+```
+node "«SEO_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`, and decides which shape rules apply: an article is allowed to have no "I" in it, an imperative how to step and a stack of three item lists as a warn. In this kit it is always `article`. `--selftest` confirms the script runs. `--profile <files>` counts how the member talks from their own recordings and posts, judges nothing, and is used only by `seo-intake-and-map`. Exit `0` is clean or warns only, `1` is one or more tells, `2` is bad usage.
+
+**What `voice.check` flags as a tell**: an em or en dash; a stock phrase every generated draft reaches for; a label that announces the next line instead of saying it ("Here's the honest answer."); a line a general chatbot writes for any business ("Here's your sign.", "that one friend who"); engagement bait ("Tag someone") outside a support reply, an article or a brief; a phrase listed under `### Tells that are not me`; coach-speak; consultant-memo vocabulary; a prophecy about who will win; a standalone "Not X." fragment; the "It's not X, it's Y" frame; three or more sentences in a row starting with the same drum word; three clipped fragments on one line; three or more "X, Y and Z" lists in one piece; an opener that orders the reader about or asks a rhetorical question; an abstract noun as the hook with nobody in the copy; no I, my, we or our anywhere; five or more "your" outnumbering the writer two to one; and a "Thoughts?" close. Which of these apply depends on `--kind`, and warns are read with judgment. **It reads `## How I talk` in `strategy/voice.md`, so a member is never judged against somebody else's habits**, and the rewrite it triggers is written from that member's own samples and phrases and nobody else's. **In this kit the rewrite fixes in place only**: it rewrites the flagged sentence and never a heading, the structure, keyword placement, a link, schema or a sourced fact.
 
 ---
 

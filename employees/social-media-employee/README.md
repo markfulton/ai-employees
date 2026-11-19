@@ -21,12 +21,13 @@ After that it works every weekday. It writes down what you actually shipped, dra
 
 One account, end to end.
 
-- **Voice.** Real posts of yours, quoted with their permalinks, plus your banned words, your banned openers, your banned closers, your hashtag policy, and a hard no on em dashes and en dashes. One file. Everything that writes anything reads it first.
+- **Voice.** Real posts of yours, quoted with their permalinks, how you actually talk counted from your own recordings and posts, plus your banned words, your banned openers, your banned closers, your hashtag policy, and a hard no on em dashes and en dashes. One file. Everything that writes anything reads it first.
 - **Pillars.** At most three subjects this account has standing to talk about, each with the evidence for that standing.
 - **Channels.** Which platforms, which surfaces on each, what each platform's real character arithmetic is, and which destinations you have allowed.
 - **Material.** Dated, sourced, quoted raw material captured from your own shipped work, your own site and changelog, your own saved searches, the places your audience already is, and the questions people actually asked you.
 - **The calendar.** One slot per platform per day at most, pillars rotated, seeded two weeks out and no further.
 - **Drafting.** One post per due slot, on a rotated framework, inside the platform's real limits, judged by a script before it is written to disk.
+- **The Anti-AI Voice Check.** Every draft gets a second pass for the shapes readers spot as machine written: a chant of "Your X. Your Y.", a "Not someday." fragment, a prophecy about who wins, a post with nobody in it. Each one is rewritten in your own voice, from your own phrases, and the queue file shows you the line it replaced. Drop a recording of yourself talking into `voice/transcripts/` and the rewrites sound more like you.
 - **Publishing.** Through the channel you connected, to destinations you allowed, with a receipt.
 - **Listening.** Proof each post is live, the counts attached to it, and every comment, mention, quote, reply, and message, each with a reply already drafted for you to send.
 - **Measurement.** A weekly scorecard where every figure carries the file it came from, and drafting standards rewritten from it every Friday.
@@ -213,7 +214,7 @@ Corrections go in the `## Corrections` section at the bottom of the routine, or 
 **Required.**
 
 1. **An agent harness** with file read, file write, a readable clock, and local command execution. The kit does not run without those four.
-2. **Node 18 or newer.** Used only by the three scripts inside the kit, `scripts/guard.mjs`, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. All three are dependency free. There is no install step and no package file. Each takes a `--selftest` flag, and the install runs all three on day one so you find out then rather than at 09:15 on a Tuesday.
+2. **Node 18 or newer.** Used only by the four scripts inside the kit, `scripts/guard.mjs`, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All four are dependency free. There is no install step and no package file. Each takes a `--selftest` flag, and the install runs all four on day one so you find out then rather than at 09:15 on a Tuesday.
 3. **Browser control that attaches to a browser you are already signed in to**, for the routines that read your own feeds, notifications, and analytics. This is the one people get wrong. The kit never signs in to anything, so a harness that launches a clean automated browser has handed it a browser with no session, and every read of your own account lands on a sign in wall.
 
 **Optional, and it changes what the last step does.**
@@ -295,7 +296,9 @@ A missing browser does not get its own status. It maps onto `partial` when the r
   scripts/runlog.mjs         the only sanctioned way to append a run record
   scripts/guard.mjs          the pause, window and period guards, run before any document is read
   scripts/copy-check.mjs     the scripted judge for anything about to be written
-  voice/                     voice.md (samples, banned lists, policies)
+  scripts/voice-check.mjs    the Anti-AI Voice Check, the second pass on every draft
+  voice/                     voice.md (samples, how you talk, banned lists, policies)
+                             transcripts/ (your own recordings, for the voice)
                              proof-inventory.md (what may be claimed)
   plan/                      audience.md, pillars.md, sources.md, channels.md, CHANGELOG
   calendar/                  calendar.json, CALENDAR.md (you tick it), inbox.jsonl

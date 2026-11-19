@@ -30,3 +30,4 @@ node_modules/
 *.new
 *.reconcile-tmp
 /.installed.json
+/reviews/

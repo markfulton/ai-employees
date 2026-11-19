@@ -1,5 +1,14 @@
 # Chief of Staff: release history
 
+## 1.10.0, 2026-11-19
+
+The Anti-AI Voice Check: a second pass on everything this Employee writes for somebody else to read, rewritten in your own voice.
+
+- **`cos-charter-and-fleet-audit` B4a.3** runs the check (`--kind brief`) on the lines it writes into the monthly contribution draft, the one file you may paste somewhere public. The quoted kit text is never rewritten, and an item that still carries a tell is taken out of the draft. The Chief of Staff keeps no voice file, so the check runs its neutral rules.
+- **`scripts/voice-check.mjs`, new, the same file in every kit that writes copy.** No dependencies, with its own self test. It flags the shapes people spot as machine written, which a banned word list cannot see: three sentences in a row that start with "your", a standalone "Not someday." fragment, "It's not X, it's Y", a prophecy about who will win, an opener that orders the reader about, stock phrases and the lines a general chatbot writes for any business ("Here's your sign."), engagement bait such as "Tag someone", three clipped fragments on one line, and copy with nobody in it. `--kind` (`post`, `dm`, `email`, `reply`, `script`, `article`, `brief`) decides which shapes apply, so a support reply may say "your order" five times and an article may have no "I". `--profile` counts how you actually talk from your own recordings and posts.
+- **It reads you, never anybody else.** An optional `## How I talk` section in your voice file holds your own phrases, how you open and close, the stock lines that are not you, and any shape you really do use, each quoted with its source and a count. Your phrases are never flagged, your "not me" list always is, and every rewrite takes its words from that section and your own samples.
+- `CONTRACT.md` and `CAPABILITIES.md` add the `voice.check` capability, its one interface and its in agent route. The install runs its self test.
+
 ## 1.9.0, 2026-10-02
 
 - Shared work cycle: evidence of useful delivery, scoped blockers, bounded experiments, configured handoffs and compact progress in existing briefs.

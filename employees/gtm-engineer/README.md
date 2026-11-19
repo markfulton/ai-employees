@@ -99,6 +99,8 @@ It writes and rewrites every file in its own working folder. It rewrites your IC
 
 Every one of those changes lands as one line in `strategy/CHANGELOG.md`: the date, the routine, the file, what changed, and the evidence path. That file is append only and newest first, so a month of decisions reads top to bottom in about a minute.
 
+**Every email, DM and launch asset it writes for someone else goes through the Anti-AI Voice Check.** After the copy check passes, a second check reads the draft for the patterns people recognise as machine written, rewrites only those lines in your own voice from `strategy/voice.md`, and shows you each original line beside the draft in the queue. Drop a recording or transcript of you talking about your business into `strategy/transcripts/` and the rewrites sound more like you.
+
 When something is genuinely ambiguous it makes the most defensible call, records the assumption in one line, and moves on. New assumptions appear in the next morning's brief so you can correct any of them in one line of your own.
 
 Two things stay outside all of that, because they are the first guardrail wearing different clothes: a campaign or an account setting it did not create, and anything on the far side of a send or a spend control. Those get named, never touched.
@@ -146,7 +148,7 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 1. **An agent harness that can read and write files, run a command, read the clock, and drive the browser you are signed in to.** Any of the eleven this kit is built for: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code or DeepSeek. On Claude Code that means a plan that includes it, Pro, Max, Team or Enterprise; the free plan does not. An API key works for the file routines and turns the browser lane off. The other ten run on whatever account they already run on.
 2. **The harness installed, in a shape you can schedule.** On Claude Code that is either the Claude Desktop app, which includes it and has a local scheduler of its own, or the CLI, which you pair with the operating system's scheduler. `CAPABILITIES.md` section 2 gives the same answer for each of the other ten.
 3. **Logged in, by a human, once.** On Claude Code, run `claude`, then `/login`, and confirm with `claude auth status`; on another harness, its own login check. A scheduled run that is not logged in exits in under a second and writes nothing, so the install checks this before it does anything else and the launcher writes a `failed` run record when it happens later.
-4. **Node 18 or newer.** The three scripts in `scripts/` are dependency free and need nothing installed.
+4. **Node 18 or newer.** The scripts in `scripts/` are dependency free and need nothing installed.
 5. **On Windows with Claude Code, Git for Windows.** Claude Code needs it for its shell and the Desktop app needs it for local sessions. Not WSL if you want the browser lane, because the browser bridge does not run inside WSL. Another harness has its own Windows requirements, listed on its install page.
 6. **The browser lane, if you want it:** a harness that drives a browser carrying your own logins rather than a clean automated profile. On Claude Code that is Google Chrome or Microsoft Edge, the Claude in Chrome extension, a login based session rather than an API key, and the site permissions granted in the extension before the first scheduled run; `CAPABILITIES.md` section 2 says what it is on each of the others. The routines share your browser's own login state and never sign in to anything.
 7. **A scheduler.** Your harness's own where it has one: the Claude Desktop app's local scheduled tasks, the built in cron in OpenClaw, Hermes, Cline and Qwen Code, Codex scheduled runs, the Antigravity job runner, the DeepSeek plugin. Otherwise Windows Task Scheduler with the launchers in `run/`, launchd on macOS, or cron on Linux. `CAPABILITIES.md` section 9 has the commands, and the repo's `docs/INSTALL.md` walks each one.
@@ -183,7 +185,7 @@ Corrections go in the `## Corrections` section at the bottom of the routine, or 
 **Required.**
 
 1. **An agent harness** with file read, file write, a readable clock, and local command execution. The kit does not run without those four.
-2. **Node 18 or newer.** Used only by the three scripts inside the kit, `scripts/guard.mjs`, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. All three are dependency free. There is no install step and no package file. Each takes a `--selftest` flag, and the install runs all three on day one so you find out then rather than at 08:15 on a Tuesday.
+2. **Node 18 or newer.** Used only by the four scripts inside the kit, `scripts/guard.mjs`, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All four are dependency free. There is no install step and no package file. Each takes a `--selftest` flag, and the install runs all four on day one so you find out then rather than at 08:15 on a Tuesday.
 3. **Browser control that attaches to a browser you are already signed in to**, for the routines that read your own accounts. This is the one people get wrong. The kit never signs in to anything, so a harness that launches a clean automated browser has handed it a browser with no session, and every read of your own accounts lands on a sign in wall. Ask your harness directly: does your browser control attach to the profile I am signed in to, or start a fresh one. `CAPABILITIES.md` section 1.1 is the check.
 
 **Optional, if you already have it.** The kit does not ship these and does not need them. Every row has a fallback the routine takes on its own, without stopping and without asking.
@@ -193,7 +195,7 @@ Corrections go in the `## Corrections` section at the bottom of the routine, or 
 | An image generation helper | Lead magnet, landing, and ad creative artwork | Queues the asset text with no artwork and notes which route it took. You get the copy on time with a note. Nothing waits on artwork |
 | A carousel or slide helper | Launch week visual assets | Text only |
 | A directory submission helper | Directory form filling | `gtm-launch-step-runner` does its own form fill and does not depend on one |
-| A copy review helper | A final sweep before you send | `scripts/copy-check.mjs`, which ships inside this kit and is the judge either way |
+| A copy review helper | A final sweep before you send | `scripts/copy-check.mjs` and `scripts/voice-check.mjs`, which ship inside this kit and are the judges either way |
 
 Helpers are detected by name and used when present. If you run a harness where they do not exist, nothing breaks and nothing is installed for you.
 
@@ -270,8 +272,10 @@ A missing browser does not get its own status, and no routine invents one. It ma
   scripts/runlog.mjs         the only sanctioned way to append a run record
   scripts/guard.mjs          the pause, window and period guards, run before any document is read
   scripts/copy-check.mjs     the scripted judge for anything about to be written
+  scripts/voice-check.mjs    the Anti-AI Voice Check, the second pass on copy someone else reads
   strategy/                  offer, icp, positioning, voice, utm-taxonomy,
-                             proof-inventory, CHANGELOG
+                             proof-inventory, CHANGELOG, and transcripts/,
+                             where you drop recordings of you talking
   board/                     board.json, LAUNCH-BOARD.md (you tick it), inbox.jsonl
   crm/                       contacts.csv, signals.jsonl, contacted.jsonl,
                              signals-latest.md, and any dated fallback file

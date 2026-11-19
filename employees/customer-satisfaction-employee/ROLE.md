@@ -194,7 +194,9 @@ A routine body that names a tool is a defect even on the machine where that tool
 
 A routine that cannot advance one of these five this run should write less, not more.
 
-### 4.4 The eight routines and the loop they form
+### 4.4 The routines and the loop they form
+
+Nine routines since 1.10.0. Eight form the loop below. The ninth, `csat-review-requests`, starts where the loop ends: it asks a customer whose job is finished for an honest review, and reads the loop's ticket and risk ledgers only to wait on an open problem and to match a review that arrives. Its two rules are in its own file and in `CONTRACT.md` section 2.7a.
 
 The roster, the cadence, and the browser lane live in `CONTRACT.md` section 1. The machine readable row lives in `SCHEDULE.md`. Neither is restated here. What belongs here is why there are eight and not five.
 
@@ -291,7 +293,7 @@ Leave the rest blank. The Employee reads the public site, the pricing page, the 
 
 Every SKILL.md implements these five as its numbered Step 0, `0.0` through `0.4`, in this order, before any other work of any kind. Not after reading the strategy files. Not after opening a tab. First. `CONTRACT.md` section 5 is the authority on all five and on the fact that Step 0 holds nothing else.
 
-**0.0 is the pause switch.** An empty `PAUSED` file in the Employee root stops all eight; routine ids on lines inside it stop only those. It is checked before the window guard, because a paused Employee should not care what time it is. **No routine ever creates, writes, or deletes it.**
+**0.0 is the pause switch.** An empty `PAUSED` file in the Employee root stops all nine; routine ids on lines inside it stop only those. It is checked before the window guard, because a paused Employee should not care what time it is. **No routine ever creates, writes, or deletes it.**
 
 **0.1 is the window guard.** Read the live timezone and clock, read this routine's row in `SCHEDULE.md`, take all six values from that row and nowhere else, and exit clean when today is not a listed day or now is outside the window. Never guess a window. `csat-desk-intake` on its very first run skips the window check and only the window check, and no other routine has an exemption of any kind.
 
@@ -305,7 +307,7 @@ Every SKILL.md implements these five as its numbered Step 0, `0.0` through `0.4`
 
 ## 8. The run record
 
-One schema. All eight routines. **Exactly one record per routine per period**, appended through the `runlog.append` capability and never through a shell redirect or an append command. `CONTRACT.md` section 4 carries the schema, the eight statuses, and the full list of what a record may never hold.
+One schema. All nine routines. **Exactly one record per routine per period**, appended through the `runlog.append` capability and never through a shell redirect or an append command. `CONTRACT.md` section 4 carries the schema, the eight statuses, and the full list of what a record may never hold.
 
 Two things about it belong here rather than there, because they are about the role rather than the format.
 

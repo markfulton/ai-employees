@@ -398,6 +398,14 @@ That is the interface, verbatim, and it is the only one. `--dest` is one of `pos
 
 **On a fail:** one repair pass, by deletion and restructuring, never by softening a claim into a vaguer version of the same claim. Re run. A second failure clears the reply, sets `needs_manual_reply: true`, and puts the first failure reason in the run record. The text goes nowhere: not into the queue file, not into the run record, not into a summary.
 
+**Then the second pass, the Anti-AI Voice Check**, on the replies that passed:
+
+```
+node "«SOC_ROOT»/scripts/voice-check.mjs" --file "«SOC_ROOT»/state/reply-lines.tmp.md" --kind reply --json
+```
+
+A reply that reads as generated costs more than no reply, because the person it answers is reading closely. Every `tell` is rewritten in the member's voice from `## Samples` and `## How I talk` in `voice/voice.md`, by the same rules as `soc-draft-queue` Step 6c2: only the lines a tell names, nothing borrowed from anybody else's voice, then `copy.check` and `voice.check` again. A reply that still carries a tell is cleared, `needs_manual_reply: true`, with `voice-check` as its first failure reason. Put the run's `tells found` and `tells fixed` counts in `notes`. Where `shell.run` is unavailable, apply the rules in `CONTRACT.md` under `voice.check` in the agent and mark the run record `voice-check: in-agent`.
+
 Delete `state/reply-lines.tmp.md` in this step, and on every exit path including a budget stop and a failure.
 
 ### 6d. Write the reply queue

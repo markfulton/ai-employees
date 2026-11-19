@@ -3,7 +3,7 @@
   "slug": "customer-satisfaction-employee",
   "name": "Customer Satisfaction Employee",
   "role": "Support and retention",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "standard": "1.5",
   "repository": "https://github.com/markfulton/ai-employees",
   "license": "MIT",
@@ -99,6 +99,19 @@
       ],
       "required": false,
       "readonly": true
+    },
+    {
+      "capability": "jobs.read",
+      "providers": [
+        "google-calendar",
+        "microsoft-365",
+        "hubspot",
+        "stripe",
+        "quickbooks",
+        "shopify"
+      ],
+      "required": false,
+      "readonly": true
     }
   ],
   "routines": [
@@ -160,6 +173,16 @@
       "window_end": "12:00",
       "period_key": "YYYY-MM-DD",
       "budget": "30 min",
+      "browser": "conditional"
+    },
+    {
+      "id": "csat-review-requests",
+      "days": "mon-fri",
+      "fire": "12:00",
+      "window_start": "11:45",
+      "window_end": "15:30",
+      "period_key": "YYYY-MM-DD",
+      "budget": "20 min",
       "browser": "conditional"
     },
     {
@@ -233,6 +256,7 @@
       "macros/**",
       "help/**",
       "report/**",
+      "reviews/**",
       "PAUSED",
       "schedule-commands.txt",
       "progress/**",

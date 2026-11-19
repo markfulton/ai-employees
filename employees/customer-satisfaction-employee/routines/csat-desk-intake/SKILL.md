@@ -185,13 +185,14 @@ Do not stop to ask for a different folder. Choose one: the nearest local path ou
 
 **There is a second reason this folder matters more here than in any sibling kit, and it is worth saying to the member once:** this Employee's working folder fills up with customer names, quotes, order references, and a list of accounts about to leave. It belongs on a local disk, in a folder they control, and not in a shared drive somebody else's laptop syncs.
 
-**A1.3 Confirm the two scripts.** `scripts/runlog.mjs` and `scripts/copy-check.mjs` ship with the kit. Run the self test:
+**A1.3 Confirm the three scripts.** `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs` ship with the kit. Run the self tests:
 
 ```
 node "«CSAT_ROOT»/scripts/copy-check.mjs" --selftest
+node "«CSAT_ROOT»/scripts/voice-check.mjs" --selftest
 ```
 
-If `shell.run` is unavailable, or the runtime is missing, or either script is absent, both capabilities have a second route: `runlog.append` performs the same validation inside the agent, and `copy.check` applies the same rule set inside the agent and marks the run record `copy-check: in-agent`. Take the second route and carry on. **The in agent route is a degradation, never an exemption, and the check is never skipped.**
+If `shell.run` is unavailable, or the runtime is missing, or any script is absent, every one of these capabilities has a second route: `runlog.append` performs the same validation inside the agent, `copy.check` applies the same rule set inside the agent and marks the run record `copy-check: in-agent`, and `voice.check` applies the rules in `CAPABILITIES.md` section 6 inside the agent and marks the run record `voice-check: in-agent`. Take the second route and carry on. **The in agent route is a degradation, never an exemption, and the check is never skipped.**
 
 Put one line in the report naming what the member would gain by installing the runtime `CAPABILITIES.md` names. One line, once, not a warning repeated every month.
 
@@ -207,6 +208,7 @@ Create every path in `CONTRACT.md` section 2 that does not exist. Create nothing
 «CSAT_ROOT»/
   strategy/     product.md  channels.md  tone.md  policy-limits.md
                 proof-inventory.md  themes.md  CHANGELOG.md
+                transcripts/, empty, the member's drop folder
   tickets/      tickets.jsonl, empty
   desk/         desk.json is NOT created here. inbox.jsonl, empty
   queue/        empty
@@ -378,11 +380,62 @@ Write them in this order. The two judges depend on the first two.
 
 ### 1. `strategy/tone.md`
 
-`## Samples`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Apology policy`, `## Sign off`, `## Hashtag policy`, `## Dash policy`.
+`## Samples`, `## How I talk`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Apology policy`, `## Sign off`, `## Hashtag policy`, `## Dash policy`.
+
+`## How I talk` is written by Step A7.1a below, after `## Samples`, and it is the section the Anti-AI Voice Check rewrites from.
 
 The shipped banned lists live in this file and nowhere else in the kit. `copy.check` reads them from here. No routine restates them in its own body, including this one. Hashtag policy defaults to `none`. Dash policy is no dashes of any kind, including inside a code comment.
 
 **`## Apology policy` is specific to this Employee and it is worth writing carefully.** It records how far the member is willing to go: whether a reply may say sorry at all, whether it may admit the product was at fault, and whether it may accept responsibility for a consequence. Default it to: apologise for the experience, state what happened factually, and **never accept liability for a loss the member has not agreed to accept.** Record that default as an assumption so they can widen or narrow it in one line.
+
+### 1a. `## How I talk`, from the member's own words
+
+`## Samples` shows the reply desk what a finished reply looks like. `## How I talk` tells it which words, openers and closers are this person's, which is what the Anti-AI Voice Check rewrites from in `csat-reply-desk`, `csat-deflection-desk` and `csat-review-requests`. **It is counted, never described.** No adjectives, no "warm but professional", nothing a model could have written about anybody. Every line is a quote with a source and a count.
+
+**What to read, in this order, read only:**
+
+1. **Every file in `strategy/transcripts/`.** The member drops their own recordings here: call or meeting captions (`.vtt`), subtitle files (`.srt`), transcripts (`.txt`, `.md`), and replies they wrote to customers themselves. **Speech is the best evidence there is**, because nobody writes their speech with a model. Where the folder is empty, say once in the report, in one plain sentence, that dropping one recording of them talking to a customer, or a handful of replies they wrote themselves, into that folder makes every reply sound more like them.
+2. **The posts you quoted under `## Samples`**, meaning their own support pages and any public reply of theirs, written to a scratch file `state/voice-samples.tmp.md`, deleted in this step.
+
+**Count it with the script, never by eye:**
+
+```
+node "«CSAT_ROOT»/scripts/voice-check.mjs" --profile "«CSAT_ROOT»/strategy/transcripts/«file»" "«CSAT_ROOT»/state/voice-samples.tmp.md" --json
+```
+
+It returns their average sentence length, the share of short sentences and questions, how often they say I or we against you, their recurring two to four word phrases with counts, how their sentences open, the words they double for emphasis, their hedges, and which `voice.check` shapes fire on their own words.
+
+**Then write the section from that output, with judgment:**
+
+```
+## How I talk
+Counted from my own recordings and replies. Built by csat-desk-intake.
+voice.check reads this section, and every rewrite takes its words from it.
+
+### Phrases I use
+- «phrase, quoted» | «source file or URL» | «count»
+
+### How I open
+- «opening words, quoted» | «source» | «count»
+
+### How I close
+- «closing line, quoted» | «source» | «count»
+
+### Tells that are not me
+- «phrase» | «why: absent from every source read»
+
+### Shapes that are mine
+- «rule id» | «evidence: n of m sources»
+```
+
+- **`### Phrases I use`**: up to twelve recurring phrases that are theirs rather than the product's. "Your invoice" is the product; "let me check that for you" is them. Each line: the phrase in quotes, the source file or URL, and the count.
+- **`### How I open`** and **`### How I close`**: up to five each, from how they start and end a reply and a point in speech. Quoted, sourced, counted.
+- **`### Tells that are not me`**: phrases a generated support reply reaches for that appear **nowhere** in everything you read: the stock lines `voice.check` already knows ("we apologize for any inconvenience", "don't hesitate to reach out"), plus any the category reaches for. Only phrases with zero hits in their own words go here.
+- **`### Shapes that are mine`**: a `voice.check` rule id goes here only where it fires in **at least half of their recordings, or half of at least six samples**. **A shape that fires only on written text and never in their speech does not go here**, because written pages may already have been drafted by a model, and listing a model's habit as theirs would teach the check to let it through. Write the evidence on the line: `rule-of-three | 4 of 6 recordings`.
+
+Fewer than one recording and three samples and the section is thin: write what you have, put `voice: how-i-talk thin` in `assumptions[]`, and carry on. **Nothing in this section ever comes from anybody but the member**: not from a competitor's help center, not from the examples shipped in this kit, and not from the person who wrote this kit. A quoted phrase that fails `copy.check` is the member's own words and is not repaired, the same rule as `## Samples`.
+
+`progress[]` += `voice-how-i-talk`.
 
 ### 2. `strategy/proof-inventory.md`
 
@@ -718,7 +771,7 @@ List `«CSAT_ROOT»/routines/*/SKILL.md`. For each, read the YAML `name`. **That
 
 A folder whose YAML `name` and folder name differ is broken. Rename the folder to match the `name` key, record it in the changelog, and carry on.
 
-The eight ids are `csat-inbox-sweep`, `csat-desk-standup`, `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-desk-intake`, and `csat-taxonomy-refresh`. **A row or a registered job carrying any other string is a defect**, and a routine whose row is keyed on a string no folder carries fails on its first line, forever, with no error the member ever sees.
+The nine ids are `csat-inbox-sweep`, `csat-desk-standup`, `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-desk-intake`, `csat-taxonomy-refresh`, and `csat-review-requests`. On an install upgraded from a kit before 1.10.0, `csat-review-requests` has no row yet: add it from `CONTRACT.md` section 1 like any missing row and register its job. **A row or a registered job carrying any other string is a defect**, and a routine whose row is keyed on a string no folder carries fails on its first line, forever, with no error the member ever sees.
 
 ### A10.2 Reconcile rows against folders
 
@@ -811,7 +864,7 @@ Read exactly these, in this order, and stop at a quarter of your budget. Every o
 2. `desk/desk.json`. Open cards, overdue cards, cards that have been open for weeks, and the `clocks` block.
 3. `tickets/tickets.jsonl`. **Counts only**, folded on `ticket_id`, by channel, by theme, and by severity. You are not scoring the month: `csat-satisfaction-report` does that every Friday and you read its output through the run log rather than recomputing it.
 4. `risk/risk.jsonl`. Counts only, by status.
-5. All eight `state/csat-<id>.json` files. `assumptions[]` and `progress[]` are where you find out what the kit has been guessing at.
+5. All nine `state/csat-<id>.json` files. `assumptions[]` and `progress[]` are where you find out what the kit has been guessing at.
 6. `strategy/CHANGELOG.md` since your last run.
 7. `SCHEDULE.md` in full, for the drift check in B3.
 8. Your own state file: `dashboard_tabs[]`, `registered_times{}`, `capability_notes[]`, `assumptions[]`.
@@ -840,6 +893,7 @@ For every strategy file you change:
 | `strategy/channels.md` | A channel produced no tickets for a month, a new surface appeared in the sweep's run records, or a login state changed. **Never remove a channel the sweep disabled**, because a quiet forum can come back. Re-enable a disabled one and let the sweep decide again |
 | `strategy/policy-limits.md` | The published refund or cancellation page changed. **Re-crawl both every month.** The member's own `## What you will grant without asking` section is theirs and is carried across verbatim, whatever it says |
 | `strategy/tone.md` | `copy.check` failed the same rule repeatedly across the month, which means a banned list is missing an entry the drafts keep reaching for |
+| `strategy/tone.md`, `## How I talk` | A new file has appeared in `strategy/transcripts/` since the section was built, or a run record from `csat-reply-desk`, `csat-deflection-desk` or `csat-review-requests` carries `voice: samples only`, or the same `voice.check` rule fired on most drafts this month while it fires in the member's own recordings too. Rebuild the section by Step A7.1a and name the evidence path |
 | `SCHEDULE.md` | A lane collision, a routine with no row. Never a removal, never `off` |
 
 ### What you never change
@@ -976,7 +1030,7 @@ The `## Corrections` section of another routine's `SKILL.md`, **and only in Step
 
 Whole files, one writer, this routine, on the monthly pass: `state/kit-update.json`, and `improvements/contribution-draft-YYYY-MM.md` in a month that has one. Step B3a.
 
-Its own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/browser-lock.json` while it holds the mutex.
+Its own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/browser-lock.json` while it holds the mutex and `state/voice-samples.tmp.md`, deleted in Step A7.1a. Every file in `strategy/transcripts/` is the member's and is read only.
 
 ### `state/csat-desk-intake.json`
 
