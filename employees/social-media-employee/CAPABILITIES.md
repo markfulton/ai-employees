@@ -25,7 +25,7 @@ Ask it to write a file called `state/probe.txt` and read it back. If your harnes
 Ask it for the current local time and the timezone id, then check both against your own clock. Every routine's first act after the pause check is a window check, and a routine that cannot read a clock records `failed` and stops. It will never assume a timezone and it will never trust one remembered from a previous run, because you might have moved.
 
 **3. Can it run a local command?**
-Ask it to run `node --version`. You need Node 18 or newer for the two scripts inside the kit, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. Both are dependency free. There is no install step and no package file.
+Ask it to run `node --version`. You need Node 18 or newer for the scripts inside the kit, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All are dependency free. There is no install step and no package file.
 
 `shell.run` earns one more mention here than it does in most kits, because one source of material depends on it entirely: the `own-work` kind in `plan/sources.md` is the member's own repositories, build logs, and release notes on disk, and it is read with a local command and nothing else. Without a shell, the material is what you published rather than what you did, and the drafts are one step further from the work.
 
@@ -218,7 +218,7 @@ Run a local command and read its output.
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
-**Absent:** three things change and all three are survivable. `runlog.append` and `copy.check` take their in agent routes, described in section 6, and both still happen. And the `own-work` source kind reads `n/a (no shell capability)` forever, which is the largest single degradation in this kit: the material becomes what you published rather than what you built.
+**Absent:** three things change and all three are survivable. `runlog.append`, `copy.check` and `voice.check` take their in agent routes, described in section 6, and all three still happen. And the `own-work` source kind reads `n/a (no shell capability)` forever, which is the largest single degradation in this kit: the material becomes what you published rather than what you built.
 
 ---
 
@@ -702,6 +702,29 @@ node "«SOC_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [-
 `--dest` is one of `post`, `dm`, `plan`, `standards`, `plain`. `--selftest` takes no other flag and confirms the script runs, which is worth doing once on install so you find out on day one rather than at 09:15 on a Tuesday. `--cap <n>` and `--first-line-cap <n>` are optional overrides for a destination whose real limits you have measured.
 
 **The script reads two files inside the kit to do its job:** `voice/voice.md` for the banned lists, the hashtag policy, and the dash policy, and `voice/proof-inventory.md` for what may be claimed. Where either is missing it falls back to the shipped defaults and says so in its own output, so a first day with no voice file still gets a real check.
+
+### `voice.check`
+The Anti-AI Voice Check: the second pass on any copy a person other than the member will read, after `copy.check` passes.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in agent | `confirmed` |
+| OpenClaw | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Hermes | `shell.run` if present, then in agent | `unknown` |
+| OpenCode | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Grok Bot | `shell.run` on its cloud computer, then in agent | `expected` |
+| Codex | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Antigravity | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+
+**Absent the script:** the in agent route reads the rule list in `CONTRACT.md` under `voice.check`, applies it to the draft line by line, and the run record says `voice-check: in-agent`. **It is never skipped.**
+
+One interface, used verbatim at every call site:
+
+```
+node "«SOC_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`. `--selftest` confirms the script runs. `--profile <files>` is the intake routine's counting tool for the member's own recordings and posts. **The script reads one file inside the kit:** `## How I talk` in `voice/voice.md`. Where the section is missing it runs the neutral rules alone and says so in its own output.
 
 ### `schedule.register`
 Register, inspect, or change a recurring job named after a routine id.

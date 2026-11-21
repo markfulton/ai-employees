@@ -190,7 +190,7 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 1. **An agent harness that can read and write files, run a command, read the clock, and drive the browser you are signed in to.** Any of the eleven this kit is built for: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code or DeepSeek. On Claude Code that means a plan that includes it, Pro, Max, Team or Enterprise; the free plan does not. An API key works for the file routines and turns the browser lane off. The other ten run on whatever account they already run on.
 2. **The harness installed, in a shape you can schedule.** On Claude Code that is either the Claude Desktop app, which includes it and has a local scheduler of its own, or the CLI, which you pair with the operating system's scheduler. `CAPABILITIES.md` section 2 gives the same answer for each of the other ten.
 3. **Logged in, by a human, once.** On Claude Code, run `claude`, then `/login`, and confirm with `claude auth status`; on another harness, its own login check. A scheduled run that is not logged in exits in under a second and writes nothing, so the install checks this before it does anything else and the launcher writes a `failed` run record when it happens later.
-4. **Node 18 or newer.** The three scripts in `scripts/` are dependency free and need nothing installed.
+4. **Node 18 or newer.** The scripts in `scripts/` are dependency free and need nothing installed.
 5. **On Windows with Claude Code, Git for Windows.** Claude Code needs it for its shell and the Desktop app needs it for local sessions. Not WSL if you want the browser lane, because the browser bridge does not run inside WSL. Another harness has its own Windows requirements, listed on its install page.
 6. **The browser lane, if you want it:** a harness that drives a browser carrying your own logins rather than a clean automated profile. On Claude Code that is Google Chrome or Microsoft Edge, the Claude in Chrome extension, a login based session rather than an API key, and the site permissions granted in the extension before the first scheduled run; `CAPABILITIES.md` section 2 says what it is on each of the others. The routines share your browser's own login state and never sign in to anything.
 7. **A scheduler.** Your harness's own where it has one: the Claude Desktop app's local scheduled tasks, the built in cron in OpenClaw, Hermes, Cline and Qwen Code, Codex scheduled runs, the Antigravity job runner, the DeepSeek plugin. Otherwise Windows Task Scheduler with the launchers in `run/`, launchd on macOS, or cron on Linux. `CAPABILITIES.md` section 9 has the commands, and the repo's `docs/INSTALL.md` walks each one.
@@ -270,6 +270,8 @@ This kit is **v1.2.0**. The version is in `VERSION` at the root, and `CHANGELOG.
 
 Employees update one at a time. They share nothing but a scheduler, so running one at v1.0.0 and another at a later version is fine and needs no coordination.
 
+Once a month it may also leave you a short draft of the repairs it made to its own instructions that look useful to everybody running this kit, ready for you to paste into the project's issue tracker if you choose. That draft is the one file it writes for other people to read, so it goes through the Anti-AI Voice Check first: any line that reads as machine written is rewritten in plain words, and the monthly report shows you what changed.
+
 When an update lands, `CHANGELOG.md` says exactly which files changed and which are yours. The short version: everything under `strategy/`, `state/`, your ledgers, your learned `recipes/*.json`, and the `## Corrections` at the foot of every file are **yours and are never overwritten**. Everything else is ours and safe to replace. The one file holding both is a routine's `SKILL.md`, so copy your `## Corrections` block out before replacing it and paste it back after.
 
 ## When something goes wrong
@@ -304,6 +306,7 @@ No routine ever writes a secret, a credential, a quote, a person's name, or anot
   scripts/runlog.mjs         the only sanctioned way to append a run record
   scripts/guard.mjs          the pause, window and period guards, run before any document is read
   scripts/copy-check.mjs     the scripted judge for anything about to be written
+  scripts/voice-check.mjs    the Anti-AI Voice Check, on the one file others read
   charter/                   business, constraints, metric-map, fleet-map,
                              priorities, CHANGELOG
   fleet/                     fleet.json, observations.jsonl, inbox.jsonl

@@ -32,7 +32,7 @@ Ask it to read one file inside another Employee's folder, by absolute path, and 
 Ask it for the current local time and the timezone id, then check both against your own clock. Every routine's first act after the pause check is a window check, and a routine that cannot read a clock records `failed` and stops. It will never assume a timezone and it will never trust one remembered from a previous run, because you might have moved.
 
 **4. Can it run a local command?**
-Ask it to run `node --version`. You need Node 18 or newer for the two scripts inside the kit, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. Both are dependency free. There is no install step and no package file.
+Ask it to run `node --version`. You need Node 18 or newer for the scripts inside the kit, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All are dependency free. There is no install step and no package file.
 
 **And a fifth, which decides one routine rather than the kit.** Can it drive a browser that carries your own logged in sessions? The kit never logs in. It never creates an account, never types a password, never completes a captcha. It inherits a browser you are already signed in to. So a harness that launches a clean automated browser has handed it a browser with no session, and every read of a surface behind a sign in lands on a wall. The routine will do the correct thing, which is to record `blocked-login`, change nothing, and tell you. It will do that every week.
 
@@ -215,7 +215,7 @@ Run a local command and read its output.
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
-**Absent:** `runlog.append` and `copy.check` take their in agent routes instead, described in section 6. Both still happen. Neither is skipped. The run record says which route it took.
+**Absent:** `runlog.append`, `copy.check` and `voice.check` take their in agent routes instead, described in section 6. All three still happen. None is skipped. The run record says which route it took.
 
 ---
 
@@ -594,6 +594,29 @@ node "«COS_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [-
 `--selftest` takes no other flag and confirms the script runs, which is worth doing once on install so you find out on day one rather than at 07:15 on a Tuesday. There is no `--profile`, no `--destination`, and no bare positional path.
 
 **The banned word, opener, and closer lists ship inside the script.** This kit has no voice file, because nothing it writes is outbound copy: every page it produces is read by one person. If a word keeps coming through that you do not want, write one line into the `## Corrections` section of the routine that keeps producing it, and that routine amends its own instructions on its next run.
+
+### `voice.check`
+The Anti-AI Voice Check: the second pass on the one file this kit writes for somebody other than you to read, the monthly contribution draft you may paste into a public issue, after `copy.check` passes.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in agent | `confirmed` |
+| OpenClaw | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Hermes | `shell.run` if present, then in agent | `unknown` |
+| OpenCode | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Grok Bot | `shell.run` on its cloud computer, then in agent | `expected` |
+| Codex | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Antigravity | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+
+**Absent the script:** the in agent route reads the rule list in `CONTRACT.md` under `voice.check`, applies it to the lines line by line, and the run record says `voice-check: in-agent`. **It is never skipped.**
+
+One interface, used verbatim at every call site:
+
+```
+node "«COS_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`, and this kit calls only `brief`. `--selftest` confirms the script runs. `--profile` is there because one script serves every AI Employee on the machine, and this kit never calls it. **This kit has no voice file**, so the script runs its neutral rules alone and says so in its own output, which is correct here.
 
 ### `schedule.register`
 Register, inspect, or change a recurring job named after a routine id **in this kit**.

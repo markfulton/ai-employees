@@ -27,7 +27,7 @@ Ask it to write a file called `state/probe.txt` and read it back. If your harnes
 Ask it for the current local time and the timezone id, then check both against your own clock. Every routine's first act after the pause check is a window check, and a routine that cannot read a clock records `failed` and stops. It will never assume a timezone and it will never trust one remembered from a previous run, because you might have moved.
 
 **3. Can it run a local command?**
-Ask it to run `node --version`. You need Node 18 or newer for the two scripts inside the kit, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. Both are dependency free. There is no install step and no package file.
+Ask it to run `node --version`. You need Node 18 or newer for the scripts inside the kit, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All are dependency free. There is no install step and no package file.
 
 **4. Can it drive a browser that carries your own logged in sessions?**
 This is the one people get wrong, and it is the difference between a support desk that reads your inbox every morning and one that stares at a login page.
@@ -203,7 +203,7 @@ Run a local command and read its output.
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
-**Absent:** `runlog.append` and `copy.check` take their in agent routes instead, described in section 6. Both still happen. Neither is skipped. The run record says which route it took.
+**Absent:** `runlog.append`, `copy.check` and `voice.check` take their in agent routes instead, described in section 6. All three still happen. None is skipped. The run record says which route it took.
 
 ---
 
@@ -483,6 +483,7 @@ A connected source is a route the member connected once in their own harness tha
 | `billing.read` | Subscriptions, failed payments and disputes for the churn watch | The Stripe connector with a restricted, read only key; the Paddle or Chargebee connector where the member bills there | The restricted key only | `expected` |
 | `usage.read` | Whether an account is still active | The PostHog connector; the Supabase connector in its read only form | Read only | `expected` |
 | `reviews.read` | Rating movement on a listing | The Trustpilot API for the member's own business; the Expo connector for app store reviews. Every other listing stays on the browser lane | Read only | `expected` |
+| `jobs.read` | Completed jobs, orders or deliveries, with the customer's name and contact, for `csat-review-requests` (1.10.0) | The Google Calendar or Microsoft 365 connector where the member's jobs are calendar events; the HubSpot connector for a deal stage that means done; the Stripe connector with a restricted, read only key for paid invoices; the QuickBooks connector; the Shopify connector for fulfilled orders. Where none is connected, the member's own `reviews/completed.md` | Read only. The routine never writes an event, a deal, an invoice or an order | `expected` |
 | `helpcentre.read` | Whether an article for a theme already exists | Intercom articles; the Notion connector; the site's own CMS connector | Read only | `expected` |
 
 `confirmed` appears in this table only after you have watched a row work on this machine; write it into `## Corrections` with the date. **Absent:** the browser lane route in section 4 for the same read, or `n/a (no connected route)` where section 7 says the read needs your session. The probe in 1.2 answers each row in one line: present, under what name, read only or not.
@@ -624,6 +625,29 @@ node "«CSAT_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [
 
 That second rule is why every routine's repair for a metric failure is "put the bracket back" rather than "delete the number". Without it, the honest form of a dossier would fail the check forever.
 
+### `voice.check`
+The Anti-AI Voice Check: the second pass on any copy a person other than the member will read, meaning a customer reply, a macro, a help answer and a review request, after `copy.check` passes.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in agent | `confirmed` |
+| OpenClaw | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Hermes | `shell.run` if present, then in agent | `unknown` |
+| OpenCode | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Grok Bot | `shell.run` on its cloud computer, then in agent | `expected` |
+| Codex | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Antigravity | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+
+**Absent the script:** the in agent route reads the rule list in `CONTRACT.md` under `voice.check`, applies it to the draft line by line, and the run record says `voice-check: in-agent`. **It is never skipped.**
+
+One interface, used verbatim at every call site:
+
+```
+node "«CSAT_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> --voice "«CSAT_ROOT»/strategy/tone.md" [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`. `--selftest` confirms the script runs. `--profile <files>` is the intake routine's counting tool for the member's own recordings and replies. **The script reads one file inside the kit:** `## How I talk` in `strategy/tone.md`, which is why every call site passes `--voice`. Where the section is missing it runs the neutral rules alone and says so in its own output.
+
 ### `schedule.register`
 Register, inspect, or change a recurring job named after a routine id.
 
@@ -682,8 +706,9 @@ There is a straightforward answer if that is your situation, and it is the same 
 | `csat-satisfaction-report` | Full page plus the rating movement and the Friday flow replay | Full page except the listing cells. No replay, so a drifted flow goes unnoticed until a routine hits it | `partial` |
 | `csat-desk-intake` | Researches the business, probes every channel, builds and opens the dashboard | Research narrows to what `web.fetch` reaches, signed in channels are written `unconfirmed`, the dashboard still gets built and verified off disk | `ok` or `partial` |
 | `csat-taxonomy-refresh` | May re-read a truncated ticket that decides a split | Runs on ledger evidence, which is files. A verdict that turned on unreadable text stays `not enough evidence` | `ok` or `partial` |
+| `csat-review-requests` | Reads the ask link off your own listing screen and saves requests as unsent mailbox drafts where no connected route does either | Requests from `jobs.read` or `reviews/completed.md`, written to the queue file. An ask link it cannot read stays `unresolved` and gets one card | `ok` or `partial` |
 
-Seven of the eight produce their main deliverable with no browser at all. That is most of the product. **But do not buy this expecting the sweep to read your support mailbox without one, because it will not**, and I would rather you know that now than on your second Tuesday.
+Eight of the nine produce their main deliverable with no browser at all. That is most of the product. **But do not buy this expecting the sweep to read your support mailbox without one, because it will not**, and I would rather you know that now than on your second Tuesday.
 
 A missing browser does not get its own status, and no routine invents one. It maps onto `partial` when the routine had file work to do and `failed` when it did not, with the reason written out in plain words either way.
 
@@ -701,7 +726,7 @@ A routine may name an optional helper as a dependency, check whether it is prese
 
 Self repair means the same thing, and so does self reliance. When a routine needs a browser flow that has no file yet, it drives the flow once and writes what it verified into the kit's own `recipes/` folder. When a selector later drifts and that flow stops matching, it reads the live page, finds the element that now carries that role, and writes the replacement into the same file. Both are a file inside `«CSAT_ROOT»`. It is never a new helper installed somewhere global, and it is never a silent change: it goes in the run record as one line naming the flow or the step.
 
-**This Employee names no required helper at all**, and that is deliberate rather than an omission. Nothing it produces needs an image, a slide, a converter, or a publisher. The two scripts inside the kit are the only tooling it depends on, and both ship with it.
+**This Employee names no required helper at all**, and that is deliberate rather than an omission. Nothing it produces needs an image, a slide, a converter, or a publisher. The scripts inside the kit are the only tooling it depends on, and all of them ship with it.
 
 ---
 
@@ -729,6 +754,7 @@ Every weekday
   07:30  csat-desk-standup
   08:15  csat-reply-desk
   09:20  csat-churn-watch
+  12:00  csat-review-requests
 
 Wednesday adds      11:00  csat-deflection-desk
 Friday adds         16:00  csat-satisfaction-report
@@ -827,6 +853,7 @@ So readiness is proved once, by a fire the scheduler started, and it is reported
 0  16 * * 5      «RUN csat-satisfaction-report»
 0  13 1-7 * *    «RUN csat-desk-intake»
 0  14 25-31 * *  «RUN csat-taxonomy-refresh»
+0  12 * * 1-5    «RUN csat-review-requests»
 ```
 
 A crontab line is handed to a shell, so a quoted prompt with spaces in it survives as written. Two cron specifics to know: `%` is special in a crontab and has to be escaped as `\%`, and cron runs with a minimal environment, so give the command an absolute path rather than assuming your shell's `PATH`.
@@ -848,6 +875,7 @@ schtasks /Create /TN "csat-deflection-desk"      /SC WEEKLY  /D WED             
 schtasks /Create /TN "csat-satisfaction-report"  /SC WEEKLY  /D FRI                 /ST 16:00 /TR "«CSAT_ROOT»\run\csat-satisfaction-report.cmd"
 schtasks /Create /TN "csat-desk-intake"          /SC MONTHLY /MO FIRST /D MON,TUE,WED,THU,FRI /ST 13:00 /TR "«CSAT_ROOT»\run\csat-desk-intake.cmd"
 schtasks /Create /TN "csat-taxonomy-refresh"     /SC MONTHLY /MO LAST  /D MON,TUE,WED,THU,FRI /ST 14:00 /TR "«CSAT_ROOT»\run\csat-taxonomy-refresh.cmd"
+schtasks /Create /TN "csat-review-requests"      /SC WEEKLY  /D MON,TUE,WED,THU,FRI /ST 12:00 /TR "«CSAT_ROOT»\run\csat-review-requests.cmd"
 ```
 
 **Each `/TR` points at a one line file rather than at the invocation directly, and that is on purpose.** `/TR` takes a quoted string, and the invocations in 9.2a carry a quoted prompt of their own. Nesting quotes inside `/TR` is the single most common way a registered Windows task turns out to do nothing. So write one file per routine under `«CSAT_ROOT»\run\`, each holding the expanded `«RUN <routine-id>»` line and nothing else, and point the task at the file. It also gives you something you can double click to test a routine by hand.

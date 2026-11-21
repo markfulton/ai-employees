@@ -216,6 +216,7 @@ Read these, in this order, and read nothing else at runtime:
 
 - **`runlog.append` has a route.** Prefer `shell.run` on `«GTM_ROOT»/scripts/runlog.mjs`. If `shell.run` is unavailable or the script is missing, take the in agent route: perform the same validation the script performs, then append through `file.write`, and put `runlog: in-agent` in `notes`. If neither route exists, write the record you would have written as the last line of `brief-latest.md` under a heading `UNRECORDED RUN`, and stop. A run with no record is a run that gets repeated.
 - **`copy.check` has a route.** Prefer `shell.run` on `«GTM_ROOT»/scripts/copy-check.mjs`, confirmed once with `--selftest`. If it cannot run, apply the same rule set in the agent and put `copy-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption. Never skip the check.**
+- **`voice.check` has a route.** Prefer `shell.run` on `«GTM_ROOT»/scripts/voice-check.mjs`, confirmed once with `--selftest`. If it cannot run, apply the rules in `CONTRACT.md` under `voice.check` in the agent and put `voice-check: in-agent` in `notes`. It is never skipped.
 - **`board/board.json` exists and parses.** If it does not exist, the standup has not run yet. That is not a reason to build one, and it is not a reason to produce nothing: do Step 6 in full, append your researched targets to `board/inbox.jsonl` so the standup folds them tomorrow, record `status: "partial"` with the blocker `no board/board.json yet, targets queued into board/inbox.jsonl`, and finish. If it exists and will not parse, copy it to `archive/board/board-unparsable-«TODAY».json` with its path preserved, do Step 6, and carry the blocker. You are a restricted field writer on that file, so rebuilding it is the standup's job, not yours.
 
 **Every value you write or type comes out of the strategy folder.** Never from memory of a previous run, never from what you know about this market, never from the product's own website unless `strategy/proof-inventory.md` names that page as a source. If a sentence you want to write is not supported by a line in the proof inventory, the sentence does not get written.
@@ -375,6 +376,16 @@ node "«GTM_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> --
 ```
 
 `--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. That is the only interface. There is no `--profile`, no `--destination`, and no bare positional path. **Do not eyeball any of it. The script is the judge.** A FAIL means the text is not written. Name the card and the first failing rule, fix your own line, and re run. Never soften the same rule twice: after a second failure on the same rule, replace that sentence with a statement of what is missing and name it in the report.
+
+**Then the second pass, the Anti-AI Voice Check, on every piece of copy a person other than the member will read**: a 5a asset, each 5b launch batch message, and each prose value of more than one sentence you are about to type into a 5c form (a description, an about field, a maker comment). It runs on the same scratch file, after `copy.check` passes:
+
+```
+node "«GTM_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> --json
+```
+
+`--kind` is `post` for an asset or message bound for a social surface, `email` for an email, `dm` for a direct message or connection note, and `article` for a landing section or a form's prose field, where a listing is allowed to have no "I" in it. The script reads `## How I talk` in `strategy/voice.md` by itself. It does not run on a strategy file, a board card, a `verify` finding, or a short form value such as a product name, a tagline of one line, a category, or a URL. Where `shell.run` is unavailable, apply the rules in `CONTRACT.md` under `voice.check` in the agent and put `voice-check: in-agent` in `notes`.
+
+Every `tell` is rewritten in the member's voice by the same rules `gtm-outreach-queue` Step 5 sets out under "Then the second pass": read `## Samples` and `## How I talk` in `strategy/voice.md` first (where `## How I talk` does not exist yet, write from the samples alone and put `voice: samples only` in `notes`), rewrite only the lines a tell names, keep the link, its tracking convention, every name, every sourced fact and number and the one ask exactly as they are, and never import a phrase, a story, a number or a habit that is not in the member's own files, from another account or from the writer of this kit. Then run `copy.check` and `voice.check` again on the rewrite. **A piece that still carries a tell is not written**: on a 5a or 5b card, the asset or that message is dropped and named with `voice-check` as its first failure rule; on a 5c form, that field is left blank and named under `not filled:` as `(voice-check: <rule id>)`. **Nothing is staged with a tell.** Record the tells found and fixed for the run in `notes`, and on a form's queue entry in Step 9 write the `- voice check:` line and up to three `- was:` lines.
 
 ### 5a. `copy`: stage an asset in the dashboard
 
@@ -626,10 +637,14 @@ Two lines in every entry are machine parsed by the standup tomorrow morning and 
 - left for you: logo upload, the contact address
 - filled: name, tagline, description, category, pricing, website
 - not filled: «field» (no value in the strategy folder), «field» (copy-check: metric not in the proof inventory)
+- voice check: 1 tell found, 1 fixed (rule-of-three)
+- was: «the line as first drafted» (rule-of-three)
 - [ ] submitted
 
 ---
 ```
+
+**The `- voice check:` line is written on every entry that carried a prose field**, `0 tells found` included, with one `- was:` line per rewritten line, at most three, carrying the line as it was first drafted and the rule that caught it, so the member can read the before beside the after and correct `strategy/voice.md` where the rewrite missed. A `- was:` line holds text that already passed `copy.check`, and it never holds a dropped value.
 
 Run `copy.check --dest form` on the entry before you write it, the same as on the values themselves. Before appending, scan the file for an entry whose `- id:` already equals this card id. If one is there, this card is already recorded today and you do not write a second entry.
 
@@ -670,7 +685,7 @@ node "«GTM_ROOT»/scripts/runlog.mjs" --file <path to a .json file> --once
              "recipes/ (2 flow files written, 1 repaired)"],
  "blockers": ["C-018 parked, submission is paid only",
               "C-027 asked for a sign in, nothing entered"],
- "notes": "3 filled and open in tabs, 2 attempts blocked at a wall and not counted against the ceiling; 2 fields left empty for the member; cursor at C-031"}
+ "notes": "3 filled and open in tabs, 2 attempts blocked at a wall and not counted against the ceiling; 2 fields left empty for the member; voice check 3 tells found, 3 fixed; cursor at C-031"}
 ```
 
 `status` is one of the closed seven and nothing else: `ok`, `partial`, `failed`, `skipped-out-of-window`, `skipped-already-ran`, `blocked-login`, `blocked-browser-busy`. **`blocked-approval` and `blocked-machine` do not exist in this kit.** If an earlier draft of anything tells you to write one, that draft is stale.
@@ -717,6 +732,9 @@ node "«GTM_ROOT»/scripts/runlog.mjs" --file <path to a .json file> --once
 - No image capability, or no image path: finish the deliverable, name the upload for the member.
 - One target dead or paid: park it, move to the next.
 - A `copy.check` FAIL on one value: leave that field blank or drop that sentence, name the rule, keep going.
+- `voice.check` has no shell route: the in agent route from `CONTRACT.md` under `voice.check`, and `voice-check: in-agent` in `notes`.
+- `strategy/voice.md` has no `## How I talk` section: rewrite from `## Samples` alone, `voice: samples only` in `notes`. Not a failure.
+- A rewrite that still carries a tell: drop that asset or message, or leave that form field blank, with `voice-check` as its first failure rule. Never stage it.
 - A flow file step that no longer matches: repair it, replay it, keep going.
 - One source unreachable on a `verify` card: write `n/a (<reason>)` and finish the rest of the check.
 - No search capability: write the queries you would have run into the run record, and work the cards already on the board.

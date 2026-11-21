@@ -1,5 +1,15 @@
 # SEO/AEO Employee: release history
 
+## 1.11.0, 2026-11-19
+
+The Anti-AI Voice Check: a second pass on everything this Employee writes for somebody else to read, rewritten in your own voice.
+
+- **`seo-draft-run` 11a2, the second pass, fixed in place only.** The article's body prose goes through `voice-check.mjs --kind article`; only the flagged sentences are rewritten, never a heading, keyword placement, link, schema or sourced fact. The before and after lines go in `meta.json` and in a `## Voice check` section of `notes.md`, which is never published.
+- **`seo-intake-and-map` Step 7a builds `## How I talk` in `strategy/voice.md`** from your own samples and any recording you drop in the new `strategy/transcripts/` folder.
+- **`scripts/voice-check.mjs`, new, the same file in every kit that writes copy.** No dependencies, with its own self test. It flags the shapes people spot as machine written, which a banned word list cannot see: three sentences in a row that start with "your", a standalone "Not someday." fragment, "It's not X, it's Y", a prophecy about who will win, an opener that orders the reader about, stock phrases and the lines a general chatbot writes for any business ("Here's your sign."), engagement bait such as "Tag someone", three clipped fragments on one line, and copy with nobody in it. `--kind` (`post`, `dm`, `email`, `reply`, `script`, `article`, `brief`) decides which shapes apply, so a support reply may say "your order" five times and an article may have no "I". `--profile` counts how you actually talk from your own recordings and posts.
+- **It reads you, never anybody else.** An optional `## How I talk` section in your voice file holds your own phrases, how you open and close, the stock lines that are not you, and any shape you really do use, each quoted with its source and a count. Your phrases are never flagged, your "not me" list always is, and every rewrite takes its words from that section and your own samples.
+- `CONTRACT.md` and `CAPABILITIES.md` add the `voice.check` capability, its one interface and its in agent route. The install runs its self test.
+
 ## 1.10.0, 2026-10-02
 
 - Shared work cycle: evidence of useful delivery, scoped blockers, bounded experiments, configured handoffs and compact progress in existing briefs.

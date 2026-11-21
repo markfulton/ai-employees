@@ -97,7 +97,7 @@ You open more folders than any other routine in this kit. You write into none of
 | `schedule-commands.txt` | Only where `schedule.register` has no other route, written expanded and named first in the report |
 | `recipes/<flow>.json` | Only flows whose `owner` reads `cos-charter-and-fleet-audit` |
 | `state/cos-charter-and-fleet-audit.json` | Your own state, temp path plus rename |
-| `state/kit-update.json`, and `improvements/contribution-draft-YYYY-MM.md` in a month that has one | Whole files, one writer, this routine, on the monthly pass. Step B4a. Your own state file, `state/kit-update.json`, and nothing else under `state/` |
+| `state/kit-update.json`, and `improvements/contribution-draft-YYYY-MM.md` in a month that has one | Whole files, one writer, this routine, on the monthly pass. Step B4a. Your own state file, `state/kit-update.json`, and nothing else under `state/`, except `state/contribution-lines.tmp.md`, deleted in Step B4a.3 |
 | `improvements/CHANGELOG.md` | Appended, only when you amended this file |
 | `archive/**` | Files older than ninety days, moved with their paths preserved. Nothing is ever deleted |
 | `runlog.jsonl` | Exactly one record, through `runlog.append` |
@@ -261,13 +261,14 @@ Then check it. If any path segment matches, case insensitively, `OneDrive`, `Dro
 
 **Do not stop to ask for a different folder.** Choose one: the nearest local path outside every synced tree, under the member's own home directory, named after the kit. Create the tree there. Copy everything already present in the launch folder across. **Leave the original in place**, because nothing in this kit is deleted, and write one short pointer file beside it naming the new root. Record the move in `assumptions[]`, write one line into `charter/CHANGELOG.md`, and name the new path in the first line of the report.
 
-**A1.3 Confirm the two scripts.** `scripts/runlog.mjs` and `scripts/copy-check.mjs` ship with the kit. Run the self test:
+**A1.3 Confirm the three scripts.** `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs` ship with the kit. Run the self tests:
 
 ```
 node "«COS_ROOT»/scripts/copy-check.mjs" --selftest
+node "«COS_ROOT»/scripts/voice-check.mjs" --selftest
 ```
 
-If `shell.run` is unavailable, or the runtime is missing, or either script is absent, both capabilities have a second route: `runlog.append` performs the same validation inside the agent, and `copy.check` applies the same rule set inside the agent and marks the run record `copy-check: in-agent`. Take the second route and carry on. **The in agent route is a degradation, never an exemption, and you never skip the check.**
+If `shell.run` is unavailable, or the runtime is missing, or any script is absent, every one of these capabilities has a second route: `runlog.append` performs the same validation inside the agent, `copy.check` applies the same rule set inside the agent and marks the run record `copy-check: in-agent`, and `voice.check` applies the rules in `CAPABILITIES.md` section 6 inside the agent and marks the run record `voice-check: in-agent`. Take the second route and carry on. **The in agent route is a degradation, never an exemption, and you never skip the check.**
 
 Put one line in the report naming what the member would gain by installing the runtime named in `CAPABILITIES.md`. One line, once, not a warning repeated every month.
 
@@ -876,6 +877,29 @@ What changed: «one sentence, from the changelog line»
 
 **You never send it.** Not an issue, not a pull request, not a `git` command, not a form. Opening an issue publishes under the member's name, which is guardrail 1, and nothing in `RELEASES.md` releases it, because the project's issue tracker is not one of the member's channels. You read no other routine's `SKILL.md` to write the draft. The changelog line is the whole of your evidence.
 
+### B4a.3 The two judges, on the lines you wrote, before the draft is final
+
+**The contribution draft is the one file this kit writes for somebody other than the member to read.** Every other page it produces is read by one person. This one is pasted, under the member's name, into a public issue that the kit's maintainers and anybody else following the project read. So the lines you wrote in it get both judges, and the Anti-AI Voice Check is the second, because an issue that reads as machine written is an issue a maintainer skims past, and it goes out with the member's name on it.
+
+**Only your own lines are checked**: `What happened` and `What changed` for every item. The heading block is fixed text from this file and `What the kit said` is the kit's own instruction, quoted whole, which is never edited to please a checker. Write those lines alone, one item after another, to `state/contribution-lines.tmp.md`, and run:
+
+```
+node "«COS_ROOT»/scripts/copy-check.mjs" --file "«COS_ROOT»/state/contribution-lines.tmp.md" --dest plain --json
+node "«COS_ROOT»/scripts/voice-check.mjs" --file "«COS_ROOT»/state/contribution-lines.tmp.md" --kind brief --json
+```
+
+That is the interface, verbatim. `--kind brief` is a plain report of what happened, which is allowed to have no "I" in it and no rhetorical opener. **This kit has no voice file**, so the script runs its neutral rules and says so in its own output; that is correct here, and you never create a voice file to make it quieter. Exit `0` is clean or warns only. Exit `1` means one or more tells. Where `shell.run` is unavailable, apply the same rules in the agent from `CAPABILITIES.md` section 6 and put `voice-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption.**
+
+**Every `tell` is rewritten. A `warn` is read with judgment.** The rewrite is one pass, and only on the line a tell names:
+
+**Then one read by judgment, because the script is a list of patterns and a draft can dodge every one of them.** Read the draft as the member saying it out loud to someone they know, and ask three questions of every line: would it fit another business's copy with only the name swapped; is it a clever line rather than something that happened; is the member, or the person they are writing to, actually in it. A line that fails any of the three is rewritten by the same rules as a tell and counted under the rule id `judgment`. Most drafts written from real material pass this read untouched, and those stay exactly as they are.
+
+1. **Plain words, from the changelog line itself.** The source of every rewritten sentence is the trigger and the change recorded in `improvements/CHANGELOG.md`, said once, in the order it happened. A stock phrase becomes the fact it was decorating. A "Not X." fragment is cut. "It's not X, it's Y" becomes the one true statement about Y. A prediction about who the fix will help comes out.
+2. **Never import a phrase, a story, a number or a habit that is not in that changelog line**, and never anybody's voice, the member's included, because this file speaks for the kit's own repair and not for them. The redaction from B4a.2 step 5 holds: a rewrite never puts back a name, a domain, a figure or a path that was redacted.
+3. **Then run both judges again on the rewrite**, `copy.check` first, then `voice.check`.
+
+**An item whose lines still carry a tell, or now fail `copy.check`, comes out of the draft**, the same way an item that cannot be told without the member's detail comes out in B4a.2. Name it in the run record with `voice-check` as its first failure reason. Where every item comes out, write no draft, advance the cursor, and say nothing about it in the report. Lower `contribution_items` to the count that stayed. In your monthly report, beside the draft's path, write one line `- voice check: N tells found, N fixed (rule ids)`, `0 tells found` included, and under it one `- was:` line per rewritten line, at most three, so the member can read the before beside the after before they paste it. The totals go in `notes`. Delete `state/contribution-lines.tmp.md` in this step and on every exit path.
+
 ## Step B5. Close the monthly pass
 
 Update `registered_times{}` for anything you re-registered. Set `complete: true`. Write the report. Append exactly one run record.
@@ -972,6 +996,8 @@ If any of the five does not hold, the run is a failure regardless of what else i
 | An Employee's schedule file will not parse | Keep the previous rows, mark the block, name the file. Never guess a cadence | continues |
 | A charter file fails the copy check twice | Take the failing line out, replace it with a statement of what is missing, name it | continues, named in `notes` |
 | A dashboard partial fails the copy check twice | Keep it out of the build, put a one line placeholder in its place, name it | continues, named in `notes` |
+| `voice.check` has no shell route | The in agent route from `CAPABILITIES.md` section 6 on the contribution draft lines, one line in `notes`. Never skipped | continues, `voice-check: in-agent` |
+| A contribution draft item still carries a tell after one rewrite | Take the item out of the draft, `voice-check` as its first failure reason. Never write it in | continues, named in `notes` |
 | `schedule.register` has no route | Write `schedule-commands.txt`, expanded, and name it first in the report | continues |
 | Browser control rewrites the local file address | Verify off disk per A8.6 tier one and say it was not viewed. **Never stand up a local server to work around it** | continues |
 | A flow file this routine owns does not exist yet | `learn-a-recipe`, write only what you verified, one line in the record | continues |

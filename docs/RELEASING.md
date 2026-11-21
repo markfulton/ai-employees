@@ -1,10 +1,10 @@
 # Publishing this update
 
-Prepared package version: 1.9.0. SEO/AEO kit: 1.10.0. Other kits: 1.9.0. Standard: 1.5.
+Prepared package version: 1.10.0. SEO/AEO kit: 1.11.0. Social Media, GTM Engineer, Sales, Customer Satisfaction and Chief of Staff: 1.10.0. Ad Manager and Web Dev: 1.9.0. Standard: 1.5.
 
 Preparation checks completed on 2026-10-02: npm test, installer listing, whitespace check, package dry run, and strict validation of both the marketplace and plugin manifests passed. The package preview contains all eight work-cycle helpers and the GSC helper, with no operating state. npm reported 1.8.0 as the published version at that check. No publication or live scheduled model evaluation was performed.
 
-GitHub and npm are separate distribution steps. Commit and push the reviewed source first, then publish from that same clean checkout. The existing 60 routines remain the roster. Do not run npm version again for this prepared release.
+GitHub and npm are separate distribution steps. Commit and push the reviewed source first, then publish from that same clean checkout. The 61 routines are the roster. Do not run npm version again for this prepared release.
 
 From the repository root in PowerShell:
 
@@ -18,7 +18,7 @@ if ($LASTEXITCODE -ne 0) { throw "Package inspection failed" }
 npm view ai-employees version
 ```
 
-Confirm that 1.9.0 has not already been published and that the packed files contain the new per-kit work-cycle helpers and GSC measurement helper, with no member state. Validate the plugin with `claude plugin validate . --strict` on a machine with the Claude CLI. JSON/version checks in npm test are useful but do not replace the vendor validator.
+Confirm that 1.10.0 has not already been published and that the packed files contain `scripts/voice-check.mjs` in the six copy kits, with no member state. Validate the plugin with `claude plugin validate . --strict` on a machine with the Claude CLI. JSON/version checks in npm test are useful but do not replace the vendor validator.
 
 For the maintainer to publish after GitHub is current:
 

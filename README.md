@@ -82,10 +82,10 @@ New to building with AI agents? Start with [What is vibe coding](https://insight
 | <img src="https://club.reinventing.ai/img/employees/v2/thumbs/social-media-employee.webp" width="72" height="72" alt=""><br>[**Social Media Employee**](https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=table-social-media-employee#social-media-employee) | Posts drafted in your voice for each platform, a veto window, replies drafted for you | 7 |
 | <img src="https://club.reinventing.ai/img/employees/v2/thumbs/ad-manager-employee.webp" width="72" height="72" alt=""><br>[**Ad Manager Employee**](https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=table-ad-manager-employee#ad-manager-employee) | Account reads, creative sets, build sheets and the weekly change list. Money moves only when you approve | 7 |
 | <img src="https://club.reinventing.ai/img/employees/v2/thumbs/sales-employee.webp" width="72" height="72" alt=""><br>[**Sales Employee**](https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=table-sales-employee#sales-employee) | Prospect sweeps, first touches into your own drafts, follow ups that never go quiet | 7 |
-| <img src="https://club.reinventing.ai/img/employees/v2/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>[**Customer Satisfaction Employee**](https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=table-customer-satisfaction-employee#customer-satisfaction-employee) | Inbox sweep, replies drafted hardest first, churn flags with evidence | 8 |
+| <img src="https://club.reinventing.ai/img/employees/v2/thumbs/customer-satisfaction-employee.webp" width="72" height="72" alt=""><br>[**Customer Satisfaction Employee**](https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=table-customer-satisfaction-employee#customer-satisfaction-employee) | Inbox sweep, replies drafted hardest first, churn flags with evidence | 9 |
 | <img src="https://club.reinventing.ai/img/employees/v2/thumbs/chief-of-staff.webp" width="72" height="72" alt=""><br>[**Chief of Staff**](https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=table-chief-of-staff#chief-of-staff) | Reads every other employee's run log, names what quietly stopped, brings you three moves | 7 |
 
-Sixty routines. Every kit, with its full schedule and a sample of its output, is in [employees/](employees).
+Sixty one routines. Every kit, with its full schedule and a sample of its output, is in [employees/](employees).
 
 ## Install in two steps
 
@@ -131,6 +131,7 @@ Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-empl
 - **They get better at your business every run.** When a page changes, the routine fixes its own instructions and tells you in the next brief.
 - **They drive your browser and your PC the way you do.** Signed in as you, on your own machine, from techniques learned on real runs.
 - **You set how far they go.** Everything is drafted, filled and staged, and the last click is yours until you release a channel.
+- **What they write sounds like you, not like AI.** The Anti-AI Voice Check gives every post, email, DM, reply and article a second pass for the shapes people spot as machine written, and rewrites them from the phrases you actually use in your own recordings. Each draft shows you the line it replaced.
 - **One brief each morning.** One push to your phone, only when you are the blocker.
 - **They run on the agent you already use.** Claude Code and twelve others, without a routine changing by one word.
 - **You can direct any of them in chat.** Open a session in the employee's folder and tell it what to do.

@@ -96,6 +96,8 @@ You choose the pillars. You choose the clusters. You set every shipped threshold
 | `strategy/properties.md` | Whole file, scratch path plus verified rename. You are its only writer |
 | `strategy/topic-map.md` | Whole file, same way, including its `## Internal link map` section. You are its only writer |
 | `strategy/voice.md` | Whole file, same way. You are its only writer |
+| `strategy/transcripts/` | **First run only**, created as an empty folder. It is the member's drop folder and you never write a file inside it |
+| `state/voice-samples.tmp.md` | Scratch for Step 7a, deleted in that step and on every exit path |
 | `strategy/CHANGELOG.md` | Append only. One line per change, newest at the top, with the evidence path |
 | `board/inbox.jsonl` | Append only. Opening cards and monthly findings, `id` absent because the standup assigns it |
 | `SCHEDULE.md` | A row for a routine that has none, or one `fire` value changed to clear a lane collision. Nothing else, ever |
@@ -240,7 +242,7 @@ Nothing here is a judgement call.
 
 2. **`runlog.append` has a route.** Prefer `shell.run` on `«SEO_ROOT»/scripts/runlog.mjs`. If `shell.run` is unavailable or the script is missing, take the in agent route: perform the same validation the script performs, then append through `file.write`, and put `runlog: in-agent` in `notes`. **Never append a run record through a shell redirect or an append command.** Several of them prepend a byte order mark by default and that corrupts the first line of the file for every reader after it. If neither route exists, write the record you would have written as the last line of `brief-latest.md` under a heading `UNRECORDED RUN`, and stop.
 
-3. **`copy.check` has a route.** Prefer `shell.run` on `«SEO_ROOT»/scripts/copy-check.mjs`, confirmed once with `--selftest`. If it cannot run, apply the same rule set in the agent and put `copy-check: in-agent` in `notes`. The in agent route is a degradation, not an exemption. **Every strategy file you write passes this check before it is renamed into place.**
+3. **`copy.check` has a route.** Prefer `shell.run` on `«SEO_ROOT»/scripts/copy-check.mjs`, confirmed once with `--selftest`. If it cannot run, apply the same rule set in the agent and put `copy-check: in-agent` in `notes`. The in agent route is a degradation, not an exemption. **Every strategy file you write passes this check before it is renamed into place.** Confirm `«SEO_ROOT»/scripts/voice-check.mjs --selftest` in the same step: Step 7a counts the member's voice with it, and `seo-draft-run` runs the Anti-AI Voice Check with it. Where it cannot run, Step 7a writes `## How I talk` by hand counting and says so in `notes` as `voice-check: in-agent`.
 
 4. **`schedule.register` has a route, or does not.** Establish which now, not at Step 10, because it changes what Step 10 produces and it is free to find out. Prefer the harness scheduler, then the operating system scheduler through `shell.run`, then neither. Record which in `notes`.
 
@@ -463,6 +465,25 @@ Voice is the file that decides whether the member recognises their own articles,
 ## Samples
 «three to five short excerpts, verbatim, each with the URL it came from»
 
+## How I talk
+Counted from my own recordings and posts. Built by seo-intake-and-map, step 7a.
+voice.check reads this section, and every rewrite takes its words from it.
+
+### Phrases I use
+- «phrase, quoted» | «source file or URL» | «count»
+
+### How I open
+- «opening words, quoted» | «source» | «count»
+
+### How I close
+- «closing line, quoted» | «source» | «count»
+
+### Tells that are not me
+- «phrase» | «why: absent from every source read»
+
+### Shapes that are mine
+- «rule id» | «evidence: n of m sources»
+
 ## What is true of this voice
 «five to eight observations, each pointing at a sample»
 
@@ -479,6 +500,35 @@ Voice is the file that decides whether the member recognises their own articles,
 
 **Where you found nothing to read**, write the file with the four policy headings carrying the kit's shipped defaults, leave `## Samples` empty with one line saying why, and record it in `assumptions[]`. **Never fabricate a sample.** A quoted line the member never wrote, presented as their own voice, is the fastest way to lose their trust in the whole kit. Check it with `--dest strategy` and rename it into place.
 
+### 7a. Write `## How I talk`, from the member's own words
+
+`## Samples` shows the draft run what the member's writing looks like. `## How I talk` tells it which words, openers and closers are this person's, which is what the Anti-AI Voice Check in `seo-draft-run` rewrites a flagged sentence from. **It is counted, never described.** No adjectives, no "authoritative but approachable", nothing a model could have written about anybody. Every line is a quote with a source and a count.
+
+**What to read, in this order, read only:**
+
+1. **Every file in `strategy/transcripts/`.** The member drops their own recordings here: meeting or call captions (`.vtt`), subtitle files (`.srt`), podcast or video transcripts (`.txt`, `.md`). **Speech is the best evidence there is**, because nobody writes their speech with a model. Where the folder is empty, say once in the report, in one plain sentence, that dropping one recording of them talking about their business into that folder makes every article sound more like them.
+2. **A sibling Employee's `## How I talk`**, where one is installed for this same business and `CAPABILITIES.md` names a route to read it. Copy its lines verbatim with their sources and record where they came from, for the same reason Step 7 copies the banned lists: one voice per business.
+3. **The excerpts you quoted under `## Samples`**, and the full posts they came from, written to a scratch file `state/voice-samples.tmp.md`, deleted in this step.
+
+**Count it with the script, never by eye:**
+
+```
+node "«SEO_ROOT»/scripts/voice-check.mjs" --profile "«SEO_ROOT»/strategy/transcripts/«file»" "«SEO_ROOT»/state/voice-samples.tmp.md" --json
+```
+
+It returns their average sentence length, the share of short sentences and questions, how often they say I or we against you, their recurring two to four word phrases with counts, how their sentences open, the words they double for emphasis, their hedges, and which `voice.check` shapes fire on their own words.
+
+**Then write the section from that output, with judgment:**
+
+- **`### Phrases I use`**: up to twelve recurring phrases that are theirs rather than the topic's. "Domain pricing" is the topic; "the honest answer is" is them. Each line: the phrase in quotes, the source file or URL, and the count.
+- **`### How I open`** and **`### How I close`**: up to five each, from how their posts and their spoken points start and end. Quoted, sourced, counted.
+- **`### Tells that are not me`**: phrases a generated article reaches for that appear **nowhere** in everything you read: the stock lines and shapes `voice.check` already knows, plus any the category reaches for. Only phrases with zero hits in their own words go here.
+- **`### Shapes that are mine`**: a `voice.check` rule id goes here only where it fires in **at least half of their recordings, or half of at least six samples**. **A shape that fires only on their written posts and never in their speech does not go here**, because written posts may already have been drafted by a model, and listing a model's habit as theirs would teach the check to let it through. Write the evidence on the line: `rule-of-three | 4 of 6 recordings`.
+
+Fewer than one recording and three samples and the section is thin: write what you have, put `voice: how-i-talk thin` in `assumptions[]`, and carry on. **Nothing in this section ever comes from anybody but the member**: not from a competitor's article, not from the examples shipped in this kit, and not from the person who wrote this kit. A quoted phrase that fails `copy.check` is the member's own words and is not repaired, the same rule as `## Samples`.
+
+`progress[]` += `voice-how-i-talk`.
+
 ---
 
 ## Step 8. First run: create the ledgers, the folders, and the member owned files
@@ -493,6 +543,7 @@ Every file below is created **empty or with a header only**, and none of them ev
 | `board/inbox.jsonl` | Empty file | You append cards. You never read it back |
 | `calendar/CALENDAR.md` | Header, conventions, source bank heading, do not cite list heading, and **zero entries** | Its only writer is `seo-calendar-refill` |
 | `strategy/CHANGELOG.md` | Header only | Append only, newest at the top |
+| `strategy/transcripts/` | An empty folder | Never. It is the member's drop folder, and Step 7a reads it |
 | `improvements/CHANGELOG.md` | Header only | Append only, every routine |
 | `tracking/rank-latest.md` | One line saying the rank review has not run yet | Its only writer is `seo-rank-review` |
 
@@ -687,6 +738,7 @@ Before you rewrite any of the three strategy files, diff the current file agains
 - `## Working days and hours`.
 - Every line under `operator_notes` in a property block.
 - Every entry under `## Banned words`, `## Banned openers`, `## Banned closers`, `## Hashtag policy`, and `## Dash policy` in `strategy/voice.md`.
+- `## How I talk` in `strategy/voice.md`, **except** when a new file has appeared in `strategy/transcripts/` since the section was built, or a `seo-draft-run` record this month carries `voice: samples only`, or the same `voice.check` rule fired on most drafts this month while it also fires in the member's own recordings. Then rebuild the section by Step 7a, carry every member written line in it across verbatim, and write one changelog line naming the evidence path.
 - Any `why_this_business` clause or pillar name the member edited.
 - Anything under a heading the shipped schema does not name. **A heading the member added is a heading they wanted**, and dropping it because your template has no slot for it is the most annoying thing this routine could possibly do.
 

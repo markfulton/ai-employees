@@ -5,9 +5,9 @@
 
 **Role:** the support desk.
 **What it replaces:** the part-time support hire, for the parts that repeat.
-**What it is:** eight scheduled routines that run on your own machine, on your own schedule, against your own accounts.
+**What it is:** nine scheduled routines that run on your own machine, on your own schedule, against your own accounts.
 
-This is not a chat window and not a service running somewhere else. It is eight jobs your agent runs at fixed times each week, in a working folder you own, reading and writing plain files you can open.
+This is not a chat window and not a service running somewhere else. It is nine jobs your agent runs at fixed times each week, in a working folder you own, reading and writing plain files you can open.
 
 It reads every place a customer can say something about your product, grades how much each one matters and shows you the rule it used, writes the hardest replies first, tells you which paying customers are about to leave and why, writes down the answer to the question that keeps coming back, and on Friday names the one thing you could change in the product to make the most of it stop happening.
 
@@ -23,6 +23,7 @@ Your whole support surface, end to end.
 - **Severity, with its reasoning shown.** An ordered set of rules, each with a name. Every ticket records which rules fired, the exact words that fired them, the grade it beat, and why that grade was rejected.
 - **Themes.** Six to nine categories named in your customers' language, not in yours, corrected once a month against what actually happened.
 - **Replies, hardest first.** By severity, then by how long they have waited, then by money at stake. Drafts only, in a dated file, with the customer's own words above each one.
+- **The Anti-AI Voice Check.** Every reply, macro, help answer and review request gets a second read for the phrasing customers spot as machine written, and any line it catches is rewritten in your own voice, taken from your own replies and recordings. Each draft shows you what it changed.
 - **Remedies, named.** Where the honest answer is a refund, a credit, a plan change, or a cancellation, you get the exact amount, the exact screen, and the line in your own policy that covers it. You grant it.
 - **Churn watch.** Nine trip wires. Every flag is a one page dossier: what fired, the evidence for each, that customer's whole history with you in their own words, and one thing you could do today with its cost written next to it.
 - **Deflection.** A reusable macro and a help article draft for every question that keeps coming back, and a weekly check on whether the last ones actually made that question stop.
@@ -32,7 +33,7 @@ Your whole support surface, end to end.
 
 ---
 
-## The eight routines
+## The nine routines
 
 Every routine has an id. The id is the folder name under `routines/`, the `name` key in that folder's `SKILL.md`, and the name of the scheduled job. All three are the same string, always.
 
@@ -46,6 +47,7 @@ Every routine has an id. The id is the folder name under `routines/`, the `name`
 | `csat-satisfaction-report` | Fridays | 16:00 | Scores the week with a source beside every number and names the one product change that would remove the most tickets. |
 | `csat-desk-intake` | First weekday of the month | 13:00 | First run: researches your business, writes the strategy folder, seeds the board, builds the dashboard, registers the schedule. Monthly: re-reads the evidence and applies what changed. |
 | `csat-taxonomy-refresh` | Last weekday of the month | 14:00 | Re-tests every theme and every severity rule against a month of real outcomes and rewrites them where the evidence disagrees. |
+| `csat-review-requests` | Weekdays | 12:00 | Asks every customer whose job finished in the last two weeks for an honest review on your own listing, once per job, and waits on anyone with an open problem until it is solved. Held unless you release it. |
 
 Three things about that table worth knowing before you change it.
 
@@ -164,7 +166,7 @@ Ten things. The install checks the ones it can, and it stops in plain words on t
 1. **An agent harness that can read and write files, run a command, read the clock, and drive the browser you are signed in to.** Any of the eleven this kit is built for: Claude Code, OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code or DeepSeek. On Claude Code that means a plan that includes it, Pro, Max, Team or Enterprise; the free plan does not. An API key works for the file routines and turns the browser lane off. The other ten run on whatever account they already run on.
 2. **The harness installed, in a shape you can schedule.** On Claude Code that is either the Claude Desktop app, which includes it and has a local scheduler of its own, or the CLI, which you pair with the operating system's scheduler. `CAPABILITIES.md` section 2 gives the same answer for each of the other ten.
 3. **Logged in, by a human, once.** On Claude Code, run `claude`, then `/login`, and confirm with `claude auth status`; on another harness, its own login check. A scheduled run that is not logged in exits in under a second and writes nothing, so the install checks this before it does anything else and the launcher writes a `failed` run record when it happens later.
-4. **Node 18 or newer.** The three scripts in `scripts/` are dependency free and need nothing installed.
+4. **Node 18 or newer.** The scripts in `scripts/` are dependency free and need nothing installed.
 5. **On Windows with Claude Code, Git for Windows.** Claude Code needs it for its shell and the Desktop app needs it for local sessions. Not WSL if you want the browser lane, because the browser bridge does not run inside WSL. Another harness has its own Windows requirements, listed on its install page.
 6. **The browser lane, if you want it:** a harness that drives a browser carrying your own logins rather than a clean automated profile. On Claude Code that is Google Chrome or Microsoft Edge, the Claude in Chrome extension, a login based session rather than an API key, and the site permissions granted in the extension before the first scheduled run; `CAPABILITIES.md` section 2 says what it is on each of the others. The routines share your browser's own login state and never sign in to anything.
 7. **A scheduler.** Your harness's own where it has one: the Claude Desktop app's local scheduled tasks, the built in cron in OpenClaw, Hermes, Cline and Qwen Code, Codex scheduled runs, the Antigravity job runner, the DeepSeek plugin. Otherwise Windows Task Scheduler with the launchers in `run/`, launchd on macOS, or cron on Linux. `CAPABILITIES.md` section 9 has the commands, and the repo's `docs/INSTALL.md` walks each one.
@@ -201,7 +203,7 @@ Corrections go in the `## Corrections` section at the bottom of the routine, or 
 **Required.**
 
 1. **An agent harness** with file read, file write, a readable clock, and local command execution. The kit does not run without those four.
-2. **Node 18 or newer.** Used only by the three scripts inside the kit, `scripts/guard.mjs`, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. All three are dependency free. There is no install step and no package file. Each takes a `--selftest` flag, and the install runs all three on day one so you find out then rather than at 08:15 on a Tuesday.
+2. **Node 18 or newer.** Used only by the four scripts inside the kit, `scripts/guard.mjs`, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All four are dependency free. There is no install step and no package file. Each takes a `--selftest` flag, and the install runs all four on day one so you find out then rather than at 08:15 on a Tuesday.
 3. **Browser control that attaches to a browser you are already signed in to.** This is the one people get wrong, and in this kit it is the difference between reading your support mailbox and not. Ask your harness directly: does your browser control attach to the profile I am signed in to, or start a fresh one. `CAPABILITIES.md` section 1.1 is the check.
 
 **Optional.** Nothing. This Employee names no optional helper, because nothing it produces needs an image, a slide, a converter, or a publisher.
@@ -218,7 +220,7 @@ It reads the contract, then investigates: your site, your pricing page, your ref
 
 Then it tells you in a short list what it concluded, and asks only about the handful of things a crawl genuinely could not settle. It does not wait for those answers.
 
-It writes the strategy folder, creates the ledgers, seeds the board, builds `dashboard/index.html` and opens it, and registers eight scheduled jobs. Then it runs the sweep, the standup, and the reply desk once each, by hand, in front of you.
+It writes the strategy folder, creates the ledgers, seeds the board, builds `dashboard/index.html` and opens it, and registers nine scheduled jobs. Then it runs the sweep, the standup, and the reply desk once each, by hand, in front of you.
 
 **Then it stops once, and only once.** It shows you two things.
 
@@ -264,8 +266,9 @@ There is a straightforward answer if that is your situation. Paste the tickets y
 | `csat-satisfaction-report` | Full page plus your rating movement and the Friday flow replay | Full page except the listing cells. No replay, so a drifted flow goes unnoticed |
 | `csat-desk-intake` | Researches your business, probes every channel, builds and opens the dashboard | Research narrows to what it can fetch. Signed in channels are written as unconfirmed. The dashboard still gets built |
 | `csat-taxonomy-refresh` | May re-read a truncated ticket that decides a split | Runs on ledger evidence, which is files |
+| `csat-review-requests` | Reads your listing's review link and saves requests as drafts in your mailbox, where there is no connected route | Requests from a connected calendar, CRM or invoices, or from your own list, written to a queue file you send from |
 
-Seven of the eight produce their main deliverable with no browser at all. That is most of the product, not a consolation prize. **But do not buy this expecting it to read your support mailbox without one, because it will not**, and it is better to know that now than on your second Tuesday.
+Eight of the nine produce their main deliverable with no browser at all. That is most of the product, not a consolation prize. **But do not buy this expecting it to read your support mailbox without one, because it will not**, and it is better to know that now than on your second Tuesday.
 
 A missing browser does not get its own status. It maps onto `partial` when the routine had file work to do and `failed` when it did not, with the reason written out in plain words either way.
 
@@ -281,12 +284,15 @@ A missing browser does not get its own status. It maps onto `partial` when the r
   ROLE.md                    the role charter
   README.md                  this file
   INSTALL-PROMPT.md          the setup prompt
-  routines/csat-<id>/SKILL.md  the eight routines
+  routines/csat-<id>/SKILL.md  the nine routines
   scripts/runlog.mjs         the only sanctioned way to append a run record
   scripts/guard.mjs          the pause, window and period guards, run before any document is read
   scripts/copy-check.mjs     the scripted judge for anything about to be written
+  scripts/voice-check.mjs    the Anti-AI Voice Check, the second read on every reply
   strategy/                  product, channels, tone, policy-limits, themes,
                              proof-inventory, CHANGELOG
+  strategy/transcripts/      yours: drop in recordings or replies you wrote,
+                             and the replies sound more like you
   tickets/                   tickets.jsonl, the digest, and any dated fallback file
   desk/                      desk.json, DESK-BOARD.md (you tick it), inbox.jsonl
   queue/                     YYYY-MM-DD-reply.md and -community.md

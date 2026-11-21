@@ -25,7 +25,7 @@ Ask it to write a file called `state/probe.txt` and read it back. If your harnes
 Ask it for the current local time and the timezone id, then check both against your own clock. Every routine's first act is a window check, and a routine that cannot read a clock records `failed` and stops. It will never assume a timezone and it will never trust one remembered from a previous run, because you might have moved.
 
 **3. Can it run a local command?**
-Ask it to run `node --version`. You need Node 18 or newer for the two scripts inside the kit, `scripts/runlog.mjs` and `scripts/copy-check.mjs`. Both are dependency free. There is no install step and no package file.
+Ask it to run `node --version`. You need Node 18 or newer for the scripts inside the kit, `scripts/runlog.mjs`, `scripts/copy-check.mjs` and `scripts/voice-check.mjs`. All are dependency free. There is no install step and no package file.
 
 **4. Can it drive a browser that carries your own logged in sessions?**
 This is the one people get wrong, and it is the difference between a browser routine that works and one that stares at a login page every morning.
@@ -201,7 +201,7 @@ Run a local command and read its output.
 | Codex | Its shell, inside the sandbox | `expected` |
 | Antigravity | Its shell | `expected` |
 
-**Absent:** `runlog.append` and `copy.check` take their in agent routes instead, described in section 6. Both still happen. Neither is skipped. The run record says which route it took.
+**Absent:** `runlog.append`, `copy.check` and `voice.check` take their in agent routes instead, described in section 6. All three still happen. None is skipped. The run record says which route it took.
 
 ---
 
@@ -605,7 +605,7 @@ On a harness with no fetch of its own, `shell.run` with a fetch command is the s
 
 ## 6. Kit capabilities
 
-Four. These are the kit's own, and two of them ship as scripts inside it.
+Five. These are the kit's own, and three of them ship as scripts inside it.
 
 ### `runlog.append`
 Append exactly one validated run record to `runlog.jsonl`.
@@ -648,6 +648,29 @@ node "«GTM_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [-
 ```
 
 `--dest` is one of `email`, `dm`, `form`, `strategy`, `dashboard`, `plain`. `--selftest` takes no other flag and confirms the script runs, which is worth doing once on install so you find out on day one rather than at 08:15 on a Tuesday.
+
+### `voice.check`
+The Anti-AI Voice Check: the second pass on any copy a person other than the member will read, after `copy.check` passes. In this kit that is every outreach email and DM, and every launch asset, launch message and listing description.
+
+| Harness | Route | Confidence |
+|---|---|---|
+| Claude Code | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in agent | `confirmed` |
+| OpenClaw | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Hermes | `shell.run` if present, then in agent | `unknown` |
+| OpenCode | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Grok Bot | `shell.run` on its cloud computer, then in agent | `expected` |
+| Codex | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+| Antigravity | `shell.run` on `scripts/voice-check.mjs`, then in agent | `expected` |
+
+**Absent the script:** the in agent route reads the rule list in `CONTRACT.md` under `voice.check`, applies it to the draft line by line, and the run record says `voice-check: in-agent`. **It is never skipped.**
+
+One interface, used verbatim at every call site:
+
+```
+node "«GTM_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`. `--selftest` confirms the script runs. `--profile <files>` is the intake routine's counting tool for the member's own recordings and copy. **The script reads one file inside the kit:** `## How I talk` in `strategy/voice.md`. Where the section is missing it runs the neutral rules alone and says so in its own output.
 
 ### `schedule.register`
 Register, inspect, or change a recurring job named after a routine id.

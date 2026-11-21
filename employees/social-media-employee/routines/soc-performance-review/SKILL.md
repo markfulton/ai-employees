@@ -497,6 +497,10 @@ Then, in this order and nothing else:
 |---|---|---|---|
 | framework | `<key>` | `<key>` | `posts/metrics.jsonl` |
 
+## Voice check
+- `<n>` tells found in this window's drafts, `<n>` fixed, `<n>` drafts dropped, top rule `<rule id>`, source `posts/posts.jsonl` and the `soc-draft-queue` run records
+- Where one rule tops this cut three weeks running, one line in `Needs you`: the drafts keep reaching for that shape, and the member can add the phrase to `### Tells that are not me` in `voice/voice.md`
+
 ## Moved
 - <metric>, `<from>` to `<to>`, source `<path>`
 

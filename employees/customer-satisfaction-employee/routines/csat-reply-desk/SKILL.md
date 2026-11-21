@@ -75,6 +75,7 @@ Two guardrails apply here, and `CONTRACT.md` section 7 is their source: the firs
 - **Personal data stays inside `«CSAT_ROOT»`.** Names, addresses, order numbers, account ids, quotes, and draft text live in the queue files and the ledgers. They never go into a run record, a log line, a git repo, or a shared folder.
 - **No em dash and no en dash** in anything you write, including the queue files, your notes, and any code comment. `copy.check` is the judge, not your eye.
 - **The tone rules live in `strategy/tone.md` and nowhere else.** Read them there every run. This file does not restate them, because a list written down twice is a list that will disagree with itself.
+- **No reply is queued with an AI tell.** Every draft that passes `copy.check` goes through `voice.check`, the Anti-AI Voice Check in Step 5f, and every tell is rewritten in the member's own voice from `strategy/tone.md`. The rewrite never borrows anybody else's voice.
 
 ---
 
@@ -188,7 +189,7 @@ Where a member owned field is absent, use the shipped default, write one line in
 
 - `strategy/proof-inventory.md`. Both headings. If the file does not exist, every draft you write today contains zero numbers, which is legal and is not a failure. Record one line in `notes` naming the file and `csat-desk-intake` as the routine that creates it, then carry on drafting.
 - `strategy/product.md` for what the product actually does today, what it does not do, the pricing shape, and the refund policy as the member has published it. **This is the file that decides whether a sentence is a fact or a promise.**
-- `strategy/tone.md` for the samples, the banned words, the banned openers, the banned closers, the sign off, and the dash policy. This is where those lists live.
+- `strategy/tone.md` for the samples, how the member talks under `## How I talk`, the banned words, the banned openers, the banned closers, the sign off, and the dash policy. This is where those lists live.
 - `strategy/policy-limits.md` for what the member is willing to grant and up to what amount, and for the response target. Step 6 is built on it.
 - `strategy/themes.md` for the theme definitions and the severity rules, so you can read the severity on a ticket and explain it back to the member in the entry.
 - `strategy/channels.md` for which channel each ticket came from and whether the surface is public.
@@ -354,6 +355,34 @@ Overwrite that temp file for the next candidate and **delete it on every exit pa
 
 Every dropped draft is named in the run record with **its first failure reason only**, and its ticket keeps its `new` or `stale` status so tomorrow's run picks it up again. The dropped text goes nowhere: not into a report, not into the run record, not into a summary.
 
+### 5f. The second pass: the Anti-AI Voice Check
+
+A reply can pass every rule in `copy.check` and still read as machine written, and the customer reading it is reading closely, often for the second or third time. They recognise a **shape** before they read a word: "We apologize for any inconvenience", "Don't hesitate to reach out", three sentences in a row that start the same way, a standalone "Not X." fragment, "It's not X, it's Y". `copy.check` judges words. This pass judges shape, and then rewrites the shape **in the member's own voice**. It runs on every draft that passed 5d and 5e, private and public alike, before anything lands. **No reply is queued with a tell.**
+
+Run it on the same temp file:
+
+```
+node "«CSAT_ROOT»/scripts/voice-check.mjs" --file "«CSAT_ROOT»/state/draft-candidate.tmp.md" --kind reply --voice "«CSAT_ROOT»/strategy/tone.md" --json
+```
+
+That is the interface, verbatim. `--kind` is always `reply` in this routine, for the private queue and the community queue alike, and it already allows the stack of "your" that a reply about somebody's order needs. `--voice` points the script at `strategy/tone.md`, because this kit keeps the voice there. The script reads `## How I talk` in that file by itself: a phrase listed under `### Phrases I use` is never flagged, a phrase under `### Tells that are not me` always is, and a rule id under `### Shapes that are mine` drops from a tell to a warn because the member's own recordings show it. Exit `0` is clean or warns only. Exit `1` means one or more tells. Where `shell.run` is unavailable, apply the same rules in the agent from `CAPABILITIES.md` section 6 and put `voice-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption.**
+
+**Every `tell` is rewritten. A `warn` is read with judgment** and stays where the line is concrete and true and sounds like the samples.
+
+**Then one read by judgment, because the script is a list of patterns and a draft can dodge every one of them.** Read the draft as the member saying it out loud to someone they know, and ask three questions of every line: would it fit another business's copy with only the name swapped; is it a clever line rather than something that happened; is the member, or the person they are writing to, actually in it. A line that fails any of the three is rewritten by the same rules as a tell and counted under the rule id `judgment`. Most drafts written from real material pass this read untouched, and those stay exactly as they are.
+
+**The rewrite, one pass, in the member's voice and nobody else's:**
+
+1. **Read `## Samples` and `## How I talk` in `strategy/tone.md` again before you write a word.** The rewrite takes its phrases, its openers, its closers and its sentence length from those two headings. Where `## How I talk` does not exist yet, the samples alone are the voice, and you put `voice: samples only` in `notes` so `csat-desk-intake` builds the section on its next pass.
+2. **Rewrite only the lines a tell names.** Keep every line that already sounds like the member. Keep the customer's name, the ticket and order references, every link, every numbered step, the sign off, every fact sourced from `strategy/product.md` or the proof inventory, and the one thing the customer is asked to do, exactly as they are.
+3. **Fix the shape, not the vocabulary.** A stock apology becomes the one plain sentence of apology that `## Apology policy` allows, said the way the samples say it. A "reach out" close becomes the actual route the customer takes next. A "Not X." fragment is cut and the positive fact is stated once. A prophecy or a reassurance about the future comes out, because Step 5b already allows only what will actually happen next.
+4. **Never import a phrase, a story, a number or a habit that is not in this member's own files.** Not from another business, not from a general sense of how good support sounds, and never from the writer of this kit. A promise, a fix or a date that is not in `strategy/product.md` is still banned by the rules above, however natural it sounds.
+5. **Then run both judges again on the rewrite**, `copy.check` first, then `voice.check`, because a rewrite is a new body and it has to pass again. Re count the field cap in 5c.
+
+A rewrite that still carries a tell, or that now fails `copy.check`, **drops the draft**, named in the run record with `voice-check` as its first failure reason, and its ticket keeps its `new` or `stale` status so tomorrow's run picks it up again, the same rule as 5e. One pass, never a softer version of the same claim.
+
+**Keep the count.** For each queued draft record the tells on the first scan, the tells gone on the rewrite, and the rule ids that fired. They go on the queue entry in Step 8, and the run totals go in `notes`. A clean first scan is `0` and `0`, which is a good result and is written down like any other.
+
 ---
 
 ## Step 6. When the right answer is money
@@ -487,6 +516,9 @@ Append entries **one at a time, the instant each one is finished**. Do not hold 
 - screen: the billing screen for this account, the Credits tab
 - policy: strategy/policy-limits.md allows a one month credit without asking
 - grant this first, then send the reply below
+- voice check: 2 tells found, 2 fixed (stock-phrase, not-fragment)
+- was: «the line as first drafted» (stock-phrase)
+- was: «the line as first drafted» (not-fragment)
 - [ ] sent
 
 «subject, where the channel has one»
@@ -497,6 +529,8 @@ Append entries **one at a time, the instant each one is finished**. Do not hold 
 ```
 
 **Two lines are machine parsed and neither is ever reformatted: `- ticket:` and `- [ ] sent`.** Everything else in the entry is for the member to read, and you may add a line where it helps them: `- prior:` on a re-draft, `- note:` where you left a marker or skipped an enrichment, `- helpdesk: drafted` once Step 9 has verified a private draft in the helpdesk, and `- card:` naming an existing remedy card this entry belongs to.
+
+**The `- voice check:` line is written on every entry**, `0 tells found` included, in the private queue and the community queue alike. Under it, one `- was:` line per rewritten line, at most three, carrying the line as it was first drafted and the rule that caught it, so the member can read the before beside the after and correct `strategy/tone.md` where the rewrite missed. A `- was:` line holds text that already passed `copy.check`, and it never holds a dropped draft.
 
 **There is exactly one checkbox per entry, and it means sent.** There is deliberately no `granted` checkbox: the grant is tracked by its own `member-action` card on the desk board, where the standup can see it, and a second box in the queue file would give the standup two things to parse and the member two places to tick.
 
@@ -590,7 +624,7 @@ Then append **exactly one** record through `runlog.append`. Never through a shel
  "status":"ok",
  "outputs":["queue/2026-03-04-reply.md (5 drafts)","queue/2026-03-04-community.md (3 drafts)","tickets/tickets.jsonl (+8 drafted)","desk/inbox.jsonl (+2 remedy cards)"],
  "blockers":[],
- "notes":"worked 1 critical, 3 high, 4 normal; 2 remedies named, 1 above the recorded limit; macro billing-confusion reused, 1 macro skipped as drifted; 1 draft dropped by copy-check, unsourced number; helpdesk draft mode off"}
+ "notes":"worked 1 critical, 3 high, 4 normal; 2 remedies named, 1 above the recorded limit; macro billing-confusion reused, 1 macro skipped as drifted; voice check 4 tells found, 4 fixed, top rule stock-phrase; 1 draft dropped by copy-check, unsourced number; helpdesk draft mode off"}
 ```
 
 Every field is required. `outputs` and `blockers` are always arrays, empty rather than absent. Paths are relative to `«CSAT_ROOT»` and carry a count in brackets. `notes` is one line. After the call, read the last line of `runlog.jsonl` and confirm it parses. Where the shell mangled the inline argument, write the record to `state/run-record.tmp.json`, pass it by file, confirm again, and delete the temp file. Never leave a half written line behind.
@@ -658,6 +692,9 @@ The status vocabulary is closed at eight values. There is no ninth for you to in
 | A refusal, a wall, or a captcha | `retry`, class two. Never retried, never routed around |
 | `helpdesk_draft_mode` absent or false | Skip Step 9 silently. This is the shipped default |
 | `copy.check` has no shell route | The in agent route, and `copy-check: in-agent` in `notes` |
+| `voice.check` has no shell route | The in agent route from `CAPABILITIES.md` section 6, and `voice-check: in-agent` in `notes` |
+| `strategy/tone.md` has no `## How I talk` section | Rewrite from `## Samples` alone, `voice: samples only` in `notes`. Not a failure |
+| A rewrite still carries a tell | Drop the draft, `voice-check` as its first failure reason, the ticket stays eligible for tomorrow. Never queue it |
 | `strategy/proof-inventory.md` missing | Every draft today carries zero numbers. One line in `notes`. Not a failure |
 | `strategy/tone.md` missing | Use plain, direct, first person prose, record one assumption, and say so in `notes`. Never invent a house voice and never adopt a corporate one |
 

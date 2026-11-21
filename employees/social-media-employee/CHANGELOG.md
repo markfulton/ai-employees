@@ -1,5 +1,17 @@
 # Social Media Employee: release history
 
+## 1.10.0, 2026-11-19
+
+The Anti-AI Voice Check: a second pass on everything this Employee writes for somebody else to read, rewritten in your own voice.
+
+- **`soc-draft-queue` Step 6c2, the second pass.** Every draft that passes `copy-check.mjs` goes through `voice-check.mjs`, every tell is rewritten in your voice from `voice/voice.md`, both checks run again, and a draft that still carries a tell is dropped. No draft is queued with a tell. Each queue entry shows `- voice check: N tells found, N fixed` and up to three `- was:` lines, the line as first drafted beside the line you read, and the ledger line records `tells_found`, `tells_fixed` and `tell_rules`.
+- **`soc-intake-and-voice` Step A5.3 builds `## How I talk`** from every recording you drop in the new `voice/transcripts/` folder (caption files, call or podcast transcripts), the captions of your own public videos, and the posts quoted under `## Samples`. A shape goes under `### Shapes that are mine` only when it shows up in at least half of your recordings, never from written posts alone. The monthly pass rebuilds the section when a new recording arrives.
+- `soc-engagement-sweep` runs the same pass on suggested replies (`--kind reply`), and the Friday scorecard gains a `## Voice check` line: tells found, fixed and dropped, and the rule the drafts reach for most.
+- **If you are updating:** your `voice/voice.md` is unchanged. The check runs on its neutral rules until the next monthly pass, or until you drop a recording in `voice/transcripts/` and ask for the section to be built.
+- **`scripts/voice-check.mjs`, new, the same file in every kit that writes copy.** No dependencies, with its own self test. It flags the shapes people spot as machine written, which a banned word list cannot see: three sentences in a row that start with "your", a standalone "Not someday." fragment, "It's not X, it's Y", a prophecy about who will win, an opener that orders the reader about, stock phrases and the lines a general chatbot writes for any business ("Here's your sign."), engagement bait such as "Tag someone", three clipped fragments on one line, and copy with nobody in it. `--kind` (`post`, `dm`, `email`, `reply`, `script`, `article`, `brief`) decides which shapes apply, so a support reply may say "your order" five times and an article may have no "I". `--profile` counts how you actually talk from your own recordings and posts.
+- **It reads you, never anybody else.** An optional `## How I talk` section in your voice file holds your own phrases, how you open and close, the stock lines that are not you, and any shape you really do use, each quoted with its source and a count. Your phrases are never flagged, your "not me" list always is, and every rewrite takes its words from that section and your own samples.
+- `CONTRACT.md` and `CAPABILITIES.md` add the `voice.check` capability, its one interface and its in agent route. The install runs its self test.
+
 ## 1.9.0, 2026-10-02
 
 - Shared work cycle: evidence of useful delivery, scoped blockers, bounded experiments, configured handoffs and compact progress in existing briefs.

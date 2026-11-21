@@ -46,6 +46,13 @@
       "fallback": "Turn a recurring supported theme into a help-content improvement, response draft or minimal product-fix handoff. Preserve customer privacy.",
       "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
     },
+    "csat-review-requests": {
+      "kind": "produce",
+      "expected_when": "A completed job inside the ask window has an eligible customer with a contact route, or a held customer's problem resolved inside the hold limit. A day with no eligible customer is quiet.",
+      "acceptance": "Each eligible customer has one request in the dated queue file that passed copy.check, names the job in the member's words, carries the member's own listing link, and offers nothing for the review.",
+      "fallback": "Resolve an unresolved ask link or a missing completed work source with one verify card, and reconcile the member's ticks and new reviews against the ledger. Never ask anyone outside the eligibility rules.",
+      "recovery": "Refresh source facts and continue unfinished useful work in the current eligible period."
+    },
     "csat-satisfaction-report": {
       "kind": "monitor",
       "expected_when": "A due observation or investigation requires fresh evidence; an unchanged successful check may be quiet.",

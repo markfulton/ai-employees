@@ -35,6 +35,7 @@ Then run the guard before the work: `node scripts/guard.mjs`. It checks the day,
 | `csat-reply-desk` | `routines/csat-reply-desk/SKILL.md` |
 | `csat-satisfaction-report` | `routines/csat-satisfaction-report/SKILL.md` |
 | `csat-taxonomy-refresh` | `routines/csat-taxonomy-refresh/SKILL.md` |
+| `csat-review-requests` | `routines/csat-review-requests/SKILL.md` |
 
 ## What this Employee will never do
 

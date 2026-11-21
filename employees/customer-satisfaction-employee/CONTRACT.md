@@ -14,11 +14,11 @@ There is a fourth thing that is specific to this Employee and it shapes every pa
 
 ---
 
-## 1. The eight routines
+## 1. The nine routines
 
 The id is the folder name is the YAML `name` key. All three are the same string, always, with no exception and no alias. A routine whose folder name and `name` key differ is broken and must be renamed before anything else is done to it.
 
-Every id carries the `csat-` prefix so the eight namespace cleanly alongside other AI Employees in a shared scheduler. **They are scheduled routines, not on-demand skills, and they never belong in a global skills directory:** registering them there loads all eight into every session the member opens and lets one be invoked outside its window, where it does nothing but record `skipped-out-of-window` and exit.
+Every id carries the `csat-` prefix so the nine namespace cleanly alongside other AI Employees in a shared scheduler. **They are scheduled routines, not on-demand skills, and they never belong in a global skills directory:** registering them there loads all nine into every session the member opens and lets one be invoked outside its window, where it does nothing but record `skipped-out-of-window` and exit.
 
 | id | display name | cadence | shipped fire time | browser lane | its one job |
 |---|---|---|---|---|---|
@@ -30,8 +30,9 @@ Every id carries the `csat-` prefix so the eight namespace cleanly alongside oth
 | `csat-satisfaction-report` | Satisfaction report | Fridays | 16:00 | conditional | Score the week from the ledgers with a source beside every number, read the rating movement off the listing screens, replay the browser flows, and name the one product change that would have removed the most tickets. |
 | `csat-desk-intake` | Desk intake and dashboard | First weekday of the month | 13:00 | light | First run: research the business, write the strategy folder, create the ledgers, seed the cards, build the dashboard, register the schedule, and put the first triage reasoning in front of the member. Monthly: re-read the evidence, apply what changed, rebuild, and reconcile every registered job. |
 | `csat-taxonomy-refresh` | Taxonomy refresh | Last weekday of the month | 14:00 | light | Re-test every theme and every severity rule against a month of real ticket evidence and rewrite `strategy/themes.md` wherever the evidence disagrees with the assumption. |
+| `csat-review-requests` | Review requests | Weekdays | 12:00 | conditional | Ask every customer whose job, order or delivery finished inside the ask window for an honest review on the member's own listing, once per job and never inside the cooldown, holding anyone with an open ticket or an open flag until it resolves, and stage each request one click from sent. |
 
-**Two of the eight are not optional and they are not optional for different reasons.**
+**Two of the nine are not optional and they are not optional for different reasons.**
 
 `csat-inbox-sweep` is the only routine that captures a ticket. Everything downstream reads what it wrote: the reply desk drafts from its lines, the churn watch computes every wire but two off them, the deflection desk counts themes on them, and the Friday report folds every number out of them. A morning it does not run is a morning nobody downstream can do anything, and the tickets that arrived that morning are not recoverable later, because nothing else was watching.
 
@@ -116,7 +117,7 @@ These exist so the member stays the operator of this Employee rather than its au
 
 | Path | Writer | Readers | What it is |
 |---|---|---|---|
-| `PAUSED` | **member only** | every routine, at Step 0.0 | Empty file stops all eight. Naming routine ids on separate lines stops only those. Delete it to resume. No routine creates, writes, or deletes it, because a routine that could clear its own pause could not be stopped |
+| `PAUSED` | **member only** | every routine, at Step 0.0 | Empty file stops all nine. Naming routine ids on separate lines stops only those. Delete it to resume. No routine creates, writes, or deletes it, because a routine that could clear its own pause could not be stopped |
 | `routines/csat-<id>/SKILL.md` | that routine only | that routine | A routine rewrites its own standing instructions when it learns something worth keeping. Section 8.3. No routine ever writes another's, with the single dictated exception in 2.1 |
 | `improvements/CHANGELOG.md` | every routine, append only | `csat-desk-standup` for the brief, the member, `csat-desk-intake` for section 8.4 | One dated line per amendment, carrying the full replaced text. **This is the undo.** A member who dislikes a change reverts it from here without the original kit |
 | `## Corrections` | member | every routine, at the top of every run | The last section of every file in this kit. A line there outranks the file it sits in |
@@ -129,10 +130,10 @@ These ship with the kit. No routine rewrites them. Each ends with a `## Correcti
 
 | Path | Writer | Read by |
 |---|---|---|
-| `CONTRACT.md` | member | all eight, first, every run |
-| `ROLE.md` | member | all eight |
-| `CAPABILITIES.md` | member | all eight |
-| `SCHEDULE.md` | member, plus `csat-desk-intake` for row additions and lane collisions | all eight, Step 0.1 |
+| `CONTRACT.md` | member | all nine, first, every run |
+| `ROLE.md` | member | all nine |
+| `CAPABILITIES.md` | member | all nine |
+| `SCHEDULE.md` | member, plus `csat-desk-intake` for row additions and lane collisions | all nine, Step 0.1 |
 | `README.md` | member | nobody at runtime |
 | `INSTALL-PROMPT.md` | member | the installing agent, once |
 | `routines/csat-<id>/SKILL.md` | member (the `## Corrections` section) | its own routine |
@@ -147,16 +148,18 @@ These ship with the kit. No routine rewrites them. Each ends with a `## Correcti
 |---|---|---|
 | `scripts/runlog.mjs` | ships with the kit | the `runlog.append` capability |
 | `scripts/copy-check.mjs` | ships with the kit | the `copy.check` capability |
+| `scripts/voice-check.mjs` | ships with the kit, identical in every kit that writes copy | the `voice.check` capability |
 
-Both are dependency free and take one interface, defined in section 3. Neither is optional and neither may be described in the present tense by any file until it exists on disk.
+All three are dependency free and take one interface each, defined in section 3. None is optional and none may be described in the present tense by any file until it exists on disk.
 
 ### 2.3 Strategy
 
 | Path | Writer | Read by |
 |---|---|---|
 | `strategy/product.md` | `csat-desk-intake` | every routine except `csat-desk-standup`, which reads no strategy file but `policy-limits.md` |
-| `strategy/channels.md` | `csat-desk-intake` writes it whole. `csat-inbox-sweep` is a restricted writer, see below | `csat-inbox-sweep`, `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-taxonomy-refresh` |
-| `strategy/tone.md` | `csat-desk-intake` | `copy.check`, `csat-reply-desk`, `csat-deflection-desk` |
+| `strategy/channels.md` | `csat-desk-intake` writes it whole. `csat-inbox-sweep` is a restricted writer, see below | `csat-inbox-sweep`, `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-taxonomy-refresh`, `csat-review-requests` |
+| `strategy/tone.md` | `csat-desk-intake` | `copy.check`, `voice.check`, `csat-reply-desk`, `csat-deflection-desk`, `csat-review-requests` |
+| `strategy/transcripts/` | the member, who drops in their own recordings, transcripts and replies they wrote themselves. No routine writes it | `csat-desk-intake` |
 | `strategy/policy-limits.md` | `csat-desk-intake` | `csat-reply-desk`, `csat-churn-watch`, `csat-desk-standup`, `csat-deflection-desk` |
 | `strategy/themes.md` | `csat-desk-intake` creates it on the first run only. `csat-taxonomy-refresh` owns it from then on | `csat-inbox-sweep`, `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, and `csat-desk-intake` on its monthly pass, which reads it and never writes it again |
 | `strategy/proof-inventory.md` | split, see below | `copy.check`, and every routine that writes a claim |
@@ -176,7 +179,9 @@ Two of those headings do more work than the rest and they are the reason this fi
 
 Where a URL could not be confirmed, the field holds the bare token `unresolved` and never a guillemet marker, because `copy.check` fails an unresolved guillemet and the whole file would be rejected. The sweep resolves that token itself on its next run and logs a changelog line.
 
-`strategy/tone.md`: `## Samples`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Apology policy`, `## Sign off`, `## Hashtag policy`, `## Dash policy`. The shipped banned lists live in this file and nowhere else. Every routine that needs them reads this file. **No routine restates the list in its own body**, because a list written down twice is a list that will disagree with itself.
+`strategy/tone.md`: `## Samples`, `## How I talk`, `## Banned words`, `## Banned openers`, `## Banned closers`, `## Apology policy`, `## Sign off`, `## Hashtag policy`, `## Dash policy`. The shipped banned lists live in this file and nowhere else. Every routine that needs them reads this file. **No routine restates the list in its own body**, because a list written down twice is a list that will disagree with itself.
+
+`## How I talk` is measured, never described. It carries four sub headings, `### Phrases I use`, `### How I open`, `### How I close`, `### Tells that are not me`, and an optional fifth, `### Shapes that are mine`. Every line under them is a phrase, an opener or a closer quoted from the member's own recordings, transcripts or replies with its source file or URL and a count, built by `csat-desk-intake` from `voice-check.mjs --profile`. `voice.check` reads the section: a phrase under `### Phrases I use` is never flagged as stock, a phrase under `### Tells that are not me` is always a tell, and a rule id under `### Shapes that are mine` is a warn rather than a tell. A rule id is listed there only where it fires in at least half of the member's recordings, or half of at least six samples, and never from written text alone. It is the voice every rewrite in the Anti-AI Voice Check takes its words from, and no line in it is ever borrowed from another business or another account.
 
 **`## Apology policy` is specific to this Employee and it is the heading to write carefully.** It records how far the member is willing to go: whether a reply may say sorry at all, whether it may admit the product was at fault, and whether it may accept responsibility for a consequence. The shipped default is to apologise for the experience, state what happened factually, and **never accept liability for a loss the member has not agreed to accept.**
 
@@ -222,7 +227,7 @@ YYYY-MM-DD | <routine-id> | <file changed> | <what changed, one clause> | <evide
 |---|---|---|
 | `desk/desk.json` | `csat-desk-standup`, whole, every morning | `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-taxonomy-refresh`, `csat-desk-intake`, the dashboard build |
 | `desk/DESK-BOARD.md` | `csat-desk-standup` re-renders it each morning | the member ticks it. `csat-desk-standup` reads the ticks back |
-| `desk/inbox.jsonl` | append only: `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-desk-intake`, `csat-taxonomy-refresh`, the member | `csat-desk-standup` only, as its consumer. An appender may read its own lines back to deduplicate before it adds one |
+| `desk/inbox.jsonl` | append only: `csat-reply-desk`, `csat-churn-watch`, `csat-deflection-desk`, `csat-satisfaction-report`, `csat-desk-intake`, `csat-taxonomy-refresh`, `csat-review-requests`, the member | `csat-desk-standup` only, as its consumer. An appender may read its own lines back to deduplicate before it adds one |
 
 **`csat-inbox-sweep` and `csat-desk-standup` are not appenders to the inbox.** The sweep captures tickets and raises no cards, because a card its evidence justifies is raised by the churn watch, the deflection desk, or the Friday report, all three of which read its ledger to do it. The standup assigns the ids, so an appender would be writing into a file it also folds.
 
@@ -311,7 +316,7 @@ The member's free text is preserved verbatim across every re-render: no reflow, 
 
 | Path | Writer | Read by |
 |---|---|---|
-| `tickets/tickets.jsonl` | append only. `csat-inbox-sweep` writes `new` and `stale`. `csat-reply-desk` writes `drafted`. `csat-desk-standup` writes `replied`. The member writes `resolved` and `dropped` | all eight |
+| `tickets/tickets.jsonl` | append only. `csat-inbox-sweep` writes `new` and `stale`. `csat-reply-desk` writes `drafted`. `csat-desk-standup` writes `replied`. The member writes `resolved` and `dropped` | all nine |
 | `tickets/tickets-latest.md` | `csat-inbox-sweep`, overwritten each run | the member, `csat-desk-standup` for its head counts |
 | `tickets/fallback-YYYY-MM-DD.md` | `csat-inbox-sweep`, only when a ledger write failed its verification | the member, and named in the run record |
 | `tickets/tickets-quarantine-YYYY-MM-DD.log` | append only, any routine that reads the ledger | the member, and named in the run record |
@@ -365,6 +370,7 @@ The member's free text is preserved verbatim across every re-render: no reflow, 
 |---|---|---|
 | `queue/YYYY-MM-DD-reply.md` | `csat-reply-desk` | the member, `csat-desk-standup` (ticks), `csat-churn-watch`, `csat-deflection-desk`, `csat-taxonomy-refresh`, `csat-satisfaction-report` (entry counts only) |
 | `queue/YYYY-MM-DD-community.md` | `csat-reply-desk` | the same set |
+| `queue/YYYY-MM-DD-reviews.md` | `csat-review-requests` | the member, `csat-review-requests` (ticks, on its next run). No other routine reads it, and `csat-desk-standup` does not turn its ticks into ticket lines, because a review request is not a ticket |
 
 **Two lines in every entry are machine parsed and neither is ever reformatted, rewritten, or removed: the `- ticket:` line and the `- [ ] sent` line.**
 
@@ -438,6 +444,18 @@ A retention percentage is the easiest number in this kit to produce and the leas
 
 **Every claim in a dossier carries its source in square brackets:** a ledger path, or the screen it was read off and the date. A line with no source does not go in the file. **The customer's own quote is evidence and is never edited to pass a check**, because a quote you tidied is a quote that no longer proves anything.
 
+### 2.7a Reviews (1.10.0)
+
+| Path | Writer | Read by |
+|---|---|---|
+| `reviews/setup.md` | `csat-review-requests`, whole | `csat-review-requests`, the member |
+| `reviews/requests.jsonl` | append only. `csat-review-requests` writes `drafted`, `held`, `sent`, `reviewed`, `expired` and `missed`. The member writes `opted-out` | `csat-review-requests`, the member |
+| `reviews/completed.md` | **member only.** Created once by `csat-review-requests` with a heading and one commented example line, then never written by any routine | `csat-review-requests` |
+| `reviews/do-not-ask.md` | **member only.** Created once the same way | `csat-review-requests` |
+| `reviews/requests-quarantine-YYYY-MM-DD.log` | append only, `csat-review-requests` | the member, and named in the run record |
+
+**The two rules `routines/csat-review-requests/SKILL.md` opens with bind the whole folder:** every eligible customer is asked, never a selection by how satisfied they seem (an open ticket or an open flag delays a request and never cancels it), and no request ever offers anything for a review or suggests what it should say. No correction, release or page text relaxes either. A request is a send, so it is held under section 7 unless `RELEASES.md` names the channel `Review requests`, and a text message request is never sent by a routine at all. Names and addresses in this folder stay out of run records, receipts, cards and the brief.
+
 ### 2.8 Macros, help, report, dashboard, recipes, state
 
 | Path | Writer | Read by |
@@ -451,9 +469,9 @@ A retention percentage is the easiest number in this kit to produce and the leas
 | `csat-latest.md` | `csat-desk-standup`, overwritten, uncapped | the member's other agents and sibling Employees |
 | `dashboard/build.mjs`, `dashboard/src/**` | `csat-desk-intake` | the build |
 | `dashboard/index.html` | derived artifact, regenerated by `build.mjs`. **Never hand edited** | the member, in a browser |
-| `recipes/BROWSER-RECIPES.md` | ships with the kit. Edited by any routine that learns something true of any site at the page level | all eight |
+| `recipes/BROWSER-RECIPES.md` | ships with the kit. Edited by any routine that learns something true of any site at the page level | all nine |
 | `recipes/<flow>.json` | the routine named in the recipe's own `owner` field, created by `learn-a-recipe` on first use and kept true by `repair-a-recipe` | that routine, plus `csat-satisfaction-report` for the Friday replay |
-| `state/csat-<id>.json` | its own routine, one file each, eight files | `csat-desk-standup`, `csat-satisfaction-report`, `csat-desk-intake` |
+| `state/csat-<id>.json` | its own routine, one file each, nine files | `csat-desk-standup`, `csat-satisfaction-report`, `csat-desk-intake` |
 | `state/browser-lock.json` | any routine holding the browser. Section 6 | any routine wanting the browser, plus `csat-desk-standup` as a read-only diagnostic |
 | `state/pushes.jsonl` | append only, any routine that sends or suppresses a push | every routine, before sending one |
 | `state/<name>.tmp.<ext>` | the routine that creates it, for one step | that same routine, in that same step. Deleted before the step ends |
@@ -461,7 +479,7 @@ A retention percentage is the easiest number in this kit to produce and the leas
 | `state/kit-update.json` | `csat-desk-intake`, whole, on its monthly pass. Section 8.4 | `csat-desk-standup`, which puts it in one brief per check. The Chief of Staff Employee, read only, where one is installed |
 | `improvements/contribution-draft-YYYY-MM.md` | `csat-desk-intake`, whole, only in a month where a repair passed the test in section 8.4 | member. Named in the brief. No routine reads it back and no routine sends it |
 | `run/<routine-id>` | `csat-desk-intake`, one single line launcher per routine, only where the scheduler needs the invocation in a file rather than inline | the operating system's scheduler, and the member testing a routine by hand |
-| `runlog.jsonl` | append only, all eight, through the `runlog.append` capability | `csat-desk-standup`, `csat-satisfaction-report`, `csat-churn-watch`, `csat-deflection-desk`, `csat-taxonomy-refresh`, `csat-desk-intake` |
+| `runlog.jsonl` | append only, all nine, through the `runlog.append` capability | `csat-desk-standup`, `csat-satisfaction-report`, `csat-churn-watch`, `csat-deflection-desk`, `csat-taxonomy-refresh`, `csat-desk-intake` |
 | `archive/**` | any routine moving something older than thirty days | nobody at runtime. It exists so nothing is deleted |
 
 **The one exception to the single writer on `brief-latest.md`.** A routine that finds `runlog.append` has no route at all writes the record it would have written as the last line of `brief-latest.md` under a heading `UNRECORDED RUN`, and stops. That is an append under its own heading, never a rewrite, and it exists because a run with no record anywhere is a run that gets repeated.
@@ -528,7 +546,7 @@ Six flows are named by the shipped routines, one per routine that needs one, plu
 
 `progress[]` is appended the moment each step completes, so a budget stop resumes instead of restarting. `assumptions[]` is where the Employee records a call it made on ambiguity, one short string each, and `csat-desk-standup` surfaces new ones in the brief. Beyond these, each routine adds only the cursors and the tunable blocks it needs, and **every one of them is carried forward whenever the file is rewritten.** Cursors advance past completed work only. A cursor that skips a failure loses the failure forever.
 
-**Scratch files under `state/` carry one naming shape and one lifetime.** A routine that needs to hand a string to `copy.check` or to `runlog.append` by file writes it to `state/<name>.tmp.<ext>` and deletes it in the same step that wrote it. The `.tmp.` segment is what tells every other reader, and the archive sweep, that the file is not a record of anything. Seven exist in the shipped routines: `state/sweep-lines.tmp.md`, `state/draft-candidate.tmp.md`, `state/dossier.tmp.md`, `state/macro-candidate.tmp.md`, `state/report-candidate.tmp.md`, `state/themes-candidate.tmp.md`, and `state/run-record.tmp.json`.
+**Scratch files under `state/` carry one naming shape and one lifetime.** A routine that needs to hand a string to `copy.check` or to `runlog.append` by file writes it to `state/<name>.tmp.<ext>` and deletes it in the same step that wrote it. The `.tmp.` segment is what tells every other reader, and the archive sweep, that the file is not a record of anything. Nine exist in the shipped routines: `state/sweep-lines.tmp.md`, `state/draft-candidate.tmp.md`, `state/dossier.tmp.md`, `state/macro-candidate.tmp.md`, `state/report-candidate.tmp.md`, `state/themes-candidate.tmp.md`, `state/voice-candidate.tmp.md`, `state/voice-samples.tmp.md`, and `state/run-record.tmp.json`.
 
 ### 2.9 The whole data flow, at a glance
 
@@ -536,17 +554,18 @@ Read the columns as: what is written, who is the only one allowed to write it, a
 
 | File | Writer or appenders | Readers |
 |---|---|---|
-| `SCHEDULE.md` | member, plus `csat-desk-intake` for rows and lane collisions | all eight |
+| `SCHEDULE.md` | member, plus `csat-desk-intake` for rows and lane collisions | all nine |
 | `strategy/product.md` | `csat-desk-intake` | all but the standup |
-| `strategy/channels.md` | `csat-desk-intake` (whole), `csat-inbox-sweep` (restricted, 2.3) | sweep, reply desk, churn watch, deflection desk, report, taxonomy |
-| `strategy/tone.md` | `csat-desk-intake` | `copy.check`, reply desk, deflection desk |
+| `strategy/channels.md` | `csat-desk-intake` (whole), `csat-inbox-sweep` (restricted, 2.3) | sweep, reply desk, churn watch, deflection desk, report, taxonomy, review requests |
+| `strategy/tone.md` | `csat-desk-intake` | `copy.check`, `voice.check`, reply desk, deflection desk, review requests |
+| `strategy/transcripts/` | the member | `csat-desk-intake` |
 | `strategy/policy-limits.md` | `csat-desk-intake` | reply desk, churn watch, standup, deflection desk |
 | `strategy/themes.md` | `csat-taxonomy-refresh` (created once by `csat-desk-intake`). The member alone writes a date under `## Severity rules confirmed`, and the taxonomy refresh may only clear it | sweep, reply desk, churn watch, deflection desk, report |
 | `strategy/proof-inventory.md` | member (`## Member claims`), `csat-satisfaction-report` (`## Agent sourced`) | `copy.check`, every routine that writes a claim |
 | `strategy/CHANGELOG.md` | append only: intake, sweep, deflection desk, report, taxonomy | standup, intake, taxonomy, member |
-| `desk/inbox.jsonl` | append only: reply desk, churn watch, deflection desk, report, intake, taxonomy, member | `csat-desk-standup` |
+| `desk/inbox.jsonl` | append only: reply desk, churn watch, deflection desk, report, intake, taxonomy, review requests, member | `csat-desk-standup` |
 | `desk/desk.json`, `desk/DESK-BOARD.md` | `csat-desk-standup` | member ticks the board, standup reads it back, five routines read the JSON |
-| `tickets/tickets.jsonl` | sweep (`new`, `stale`), reply desk (`drafted`), standup (`replied`), member (`resolved`, `dropped`) | all eight |
+| `tickets/tickets.jsonl` | sweep (`new`, `stale`), reply desk (`drafted`), standup (`replied`), member (`resolved`, `dropped`) | all nine |
 | `tickets/tickets-latest.md` | `csat-inbox-sweep` | member, standup |
 | `queue/*-reply.md`, `queue/*-community.md` | `csat-reply-desk` | member, standup, churn watch, deflection desk, taxonomy, report |
 | `risk/risk.jsonl` | churn watch (`at-risk`, `cleared`), member (`saved`, `lost`) | standup, reply desk, report, taxonomy, churn watch |
@@ -556,18 +575,18 @@ Read the columns as: what is written, who is the only one allowed to write it, a
 | `report/satisfaction-*.md` | `csat-satisfaction-report` | member, standup by path only |
 | `brief-latest.md`, `briefs/*.md`, `csat-latest.md` | `csat-desk-standup` | member, sibling Employees |
 | `dashboard/**` | `csat-desk-intake` | member, in a browser |
-| `recipes/BROWSER-RECIPES.md` | ships, edited by any routine that learns a page-level technique | all eight |
+| `recipes/BROWSER-RECIPES.md` | ships, edited by any routine that learns a page-level technique | all nine |
 | `recipes/<flow>.json` | the routine named in `owner` | that routine, plus report for the Friday replay |
 | `state/csat-<id>.json` | its own routine | standup, report, intake |
 | `state/browser-lock.json` | whoever holds the browser | whoever wants it, plus standup as a diagnostic |
 | `state/pushes.jsonl` | append only, whoever pushes | every routine, before pushing |
 | `state/kit-update.json` | intake, monthly | standup, and the Chief of Staff Employee where installed |
 | `improvements/contribution-draft-*.md` | intake, in a month that has one | member |
-| `runlog.jsonl` | append only, all eight | standup, report, churn watch, deflection desk, taxonomy, intake |
+| `runlog.jsonl` | append only, all nine | standup, report, churn watch, deflection desk, taxonomy, intake |
 
 **The closed loop, stated once.** The sweep captures a real customer's real words with a grade and the rule that produced it. The reply desk answers the hardest first and, where the honest answer is money, names the remedy and files a card only a hand can close. The member sends and ticks. The standup turns the tick into a `replied` date, which is the only thing that makes a clock computable. The churn watch reads the same ledger and flags the accounts about to leave, with the evidence attached. The deflection desk turns the questions that keep coming back into an answer that only has to be written once, and measures whether it worked. The Friday report scores it all and names the one product change that would remove the most of it. The taxonomy refresh reads a month of outcomes and rewrites the rules that graded them wrongly.
 
-Break any one link and the loop stops producing numbers. Every one of the eight exists because it is a link.
+Break any one link and the loop stops producing numbers. Every one of the eight routines in this loop exists because it is a link. `csat-review-requests` sits outside it: it reads the ticket and risk ledgers to hold a request and to match a review, and nothing in the loop depends on it.
 
 **And one link runs the other way, which is the part that makes this Employee worth more in month six than in week one.** The deflection desk and the product change are the only two things in this kit that make next month smaller than this month. Everything else answers tickets. Those two remove them.
 
@@ -589,7 +608,7 @@ Each capability below carries a route preference order. **A route is tried in or
 | `file.read` | Read a file as text | harness file read, then shell | None. The kit does not run without it |
 | `file.write` | Write a file, temp path plus rename for anything a crash could truncate | harness file write, then shell | None |
 | `file.list` | List paths under a folder | harness glob, then shell | Enumerate from the known paths in section 2 and note the degradation |
-| `shell.run` | Run a local command and read its output | harness shell | `runlog.append` and `copy.check` fall back to their in-agent routes below |
+| `shell.run` | Run a local command and read its output | harness shell | `runlog.append`, `copy.check` and `voice.check` fall back to their in-agent routes below |
 
 ### 3.2 Browser
 
@@ -633,6 +652,7 @@ Every capability in this table degrades the same way when the harness has no bro
 |---|---|---|---|
 | `runlog.append` | Append exactly one validated run record. Validates the shape, validates `status` against the closed list of eight, refuses secret-shaped, draft-shaped, and customer-shaped substrings, writes UTF-8 with no byte order mark, and repairs a stray mark at the head of the file | `shell.run` on `scripts/runlog.mjs`, then a direct append performing the same validation in the agent | If neither is possible, write the record as the last line of `brief-latest.md` under a heading `UNRECORDED RUN` and stop. A run with no record is a run that will be repeated |
 | `copy.check` | The scripted judge for any text about to be written into a queue file, a strategy file, a dossier, a macro, a help draft, a digest, a report, or a dashboard partial. Returns PASS or FAIL plus a reason class | `shell.run` on `scripts/copy-check.mjs`, then the same rule set applied in the agent, marked in the run record as `copy-check: in-agent` | Never skip it. The in-agent route is a degradation, not an exemption |
+| `voice.check` | The Anti-AI Voice Check: the second pass on any copy a person other than the member will read, meaning a reply, a macro, a help answer and a review request. Finds the shapes readers recognise as machine written and names each one as a tell or a warn | `shell.run` on `scripts/voice-check.mjs`, then the same rules applied in the agent, marked in the run record as `voice-check: in-agent` | Never skip it. It runs after `copy.check` passes, every tell is rewritten in the member's voice, and both run again on the rewrite |
 | `schedule.register` | Register, inspect, or change a recurring job named after a routine id | harness scheduler, then the OS scheduler through `shell.run`, then write the exact commands to `«CSAT_ROOT»/schedule-commands.txt` and name that file in the brief | The kit still runs when launched by hand. Nothing about a routine's behaviour depends on which of the three registered it |
 
 **A registered job's only content is the invocation that runs one routine unattended in `«CSAT_ROOT»`.** What that invocation looks like is a property of the harness, so it lives in `CAPABILITIES.md` section 9.2a as one row per harness and nowhere else. Two rules sit above every route: one job per routine, never a chained job, and one routine proved by hand before eight are registered. Commands written to `schedule-commands.txt` are written expanded, because a file the member has to translate before running is not a recovery path.
@@ -659,13 +679,23 @@ node "«CSAT_ROOT»/scripts/copy-check.mjs" --file <path> --dest <destination> [
 
 Do not eyeball any of these. The script is the judge. A stated preference has never been enough.
 
+**`voice.check` has exactly one interface and every call site uses it verbatim:**
+
+```
+node "«CSAT_ROOT»/scripts/voice-check.mjs" --file <path> --kind <kind> --voice "«CSAT_ROOT»/strategy/tone.md" [--json]
+```
+
+`--kind` is one of `post`, `dm`, `email`, `reply`, `script`, `article`, `brief`, and decides which shape rules apply: a reply about somebody's order is allowed a stack of "your", an article is allowed to have no "I" in it. In this kit a customer reply and a macro body are `reply`, a help answer is `article`, and a review request is `email` or `dm` to match its route. `--voice` is always given, because this kit keeps the voice in `strategy/tone.md` and the script otherwise looks for a file named `voice.md`. `--selftest` confirms the script runs. `--profile <files>` counts how the member talks from their own recordings and replies, judges nothing, and is used only by `csat-desk-intake`. Exit `0` is clean or warns only, `1` is one or more tells, `2` is bad usage.
+
+**What `voice.check` flags as a tell**: an em or en dash; a stock phrase every generated draft reaches for, including the support stock lines "we apologize for any inconvenience", "don't hesitate to", "feel free to reach out" and "I hope this email finds you"; a label that announces the next line instead of saying it ("Here's the honest answer."); a line a general chatbot writes for any business ("Here's your sign.", "that one friend who"); engagement bait ("Tag someone") outside a support reply, an article or a brief; a phrase listed under `### Tells that are not me`; coach-speak; consultant-memo vocabulary; a prophecy about who will win; a standalone "Not X." fragment; the "It's not X, it's Y" frame; three or more sentences in a row starting with the same drum word; three clipped fragments on one line; three or more "X, Y and Z" lists in one piece; an opener that orders the reader about or asks a rhetorical question; an abstract noun as the hook with nobody in the copy; no I, my, we or our anywhere; five or more "your" outnumbering the writer two to one; and a "Thoughts?" close. Which of these apply depends on `--kind`, and warns are read with judgment. **It reads `## How I talk` in `strategy/tone.md`, so a member is never judged against somebody else's habits**, and the rewrite it triggers is written from that member's own samples and phrases and nobody else's.
+
 **Two things are never edited to please the checker.** The customer's own verbatim, wherever it is quoted, and the member's own free text on the board. Where a quote itself would fail, it is quoted anyway and the class is noted in one line at the foot of the file. **Evidence is not copy**, and a quote you tidied is a quote that no longer proves anything.
 
 ---
 
 ## 4. The run record
 
-One schema. All eight routines. Exactly one record per routine per period, appended through `runlog.append` and never through a shell redirect, an append cmdlet, or a hand-rolled write, because those prepend a byte order mark by default and that corrupts the first line of the file for every reader after it. Readers still tolerate a leading mark by stripping code point U+FEFF from the head of the file before parsing.
+One schema. All nine routines. Exactly one record per routine per period, appended through `runlog.append` and never through a shell redirect, an append cmdlet, or a hand-rolled write, because those prepend a byte order mark by default and that corrupts the first line of the file for every reader after it. Readers still tolerate a leading mark by stripping code point U+FEFF from the head of the file before parsing.
 
 ```json
 {"routine":"csat-reply-desk","period":"2026-03-04",
@@ -748,7 +778,7 @@ If any of the four does not hold, the run is a failure regardless of what else i
 
 Every SKILL.md implements these five as its numbered Step 0, in this order, before any other work of any kind. Not after reading the strategy files, not after opening a tab. First.
 
-**The shape is fixed and it is the same in all eight.** Step 0 has exactly five numbered items, `0.0` through `0.4`, and it has nothing else in it. A preflight belongs in Step 1, where every routine already puts it. A routine that carries a sixth item, or that renumbers these five, has drifted and is repaired by moving the extra item out, never by dropping one of the five.
+**The shape is fixed and it is the same in all nine.** Step 0 has exactly five numbered items, `0.0` through `0.4`, and it has nothing else in it. A preflight belongs in Step 1, where every routine already puts it. A routine that carries a sixth item, or that renumbers these five, has drifted and is repaired by moving the extra item out, never by dropping one of the five.
 
 ### 0.0: the pause switch
 
@@ -764,7 +794,7 @@ If «CSAT_ROOT»/PAUSED exists:
     otherwise continue: this routine was not named
 ```
 
-One empty file at `«CSAT_ROOT»/PAUSED` stops all eight. The same file holding `csat-reply-desk` on a line stops only that one and leaves the rest running. Deleting the file resumes everything, with no re-registration and nothing to reconfigure, because the scheduled jobs were never touched.
+One empty file at `«CSAT_ROOT»/PAUSED` stops all nine. The same file holding `csat-reply-desk` on a line stops only that one and leaves the rest running. Deleting the file resumes everything, with no re-registration and nothing to reconfigure, because the scheduled jobs were never touched.
 
 **This is the member's file and no routine ever writes it, creates it, or deletes it.** A routine that removed its own pause would be a routine that cannot be stopped. It is checked before the window guard because a paused Employee should not care what time it is.
 
@@ -1129,7 +1159,7 @@ Drafts are ready. The queue is full, however urgent the tickets in it are. A cus
 
 ## Appendix A: the id set, stated once
 
-Eight ids, eight folders, eight YAML `name` keys, eight `SCHEDULE.md` rows, eight registered jobs. All the same strings.
+Nine ids, nine folders, nine YAML `name` keys, nine `SCHEDULE.md` rows, nine registered jobs. All the same strings.
 
 ```
 csat-inbox-sweep
@@ -1140,6 +1170,7 @@ csat-deflection-desk
 csat-satisfaction-report
 csat-desk-intake
 csat-taxonomy-refresh
+csat-review-requests
 ```
 
 **A row, a registered job, or a reference anywhere in this kit carrying any other string is a defect**, and a routine whose row is keyed on a string no folder carries fails on its first line, forever, with no error the member ever sees.

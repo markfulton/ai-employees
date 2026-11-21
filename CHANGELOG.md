@@ -2,6 +2,16 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## 1.10.0, 2026-11-19
+
+The Anti-AI Voice Check. Every Employee that writes for somebody else to read now gives each draft a second pass for the shapes people spot as machine written, and rewrites them in your own voice.
+
+- **`scripts/voice-check.mjs`, one shared file in six kits** (Social Media, GTM Engineer, Sales, Customer Satisfaction, SEO/AEO, Chief of Staff), authored once in `shared/voice-check/` and kept identical by the drift check. It flags what a banned word list cannot see: three sentences in a row that start with "your", a standalone "Not someday." fragment, "It's not X, it's Y", a prophecy about who will win, an opener that orders the reader about, stock phrases and the lines a general chatbot writes for any business ("Here's your sign."), engagement bait such as "Tag someone", three clipped fragments on one line, copy with nobody in it. `--kind` sets which shapes apply to a post, a DM, an email, a support reply, a script, an article or a brief.
+- **Your voice, counted from your own words.** `voice-check.mjs --profile` reads your own recordings (caption files, call or podcast transcripts) and posts, and the intake routines write a `## How I talk` section into your voice file: your phrases, how you open and close, the stock lines that are not you, and a shape only where it shows up in at least half of your recordings. Your phrases are never flagged, your "not me" list always is, and every rewrite takes its words from there and from your own samples, never from anybody else's.
+- **Where it runs:** Social Media drafts and replies, GTM outreach and launch copy, Sales first touches and follow ups, Customer Satisfaction replies, review requests and help answers, SEO article prose (fixed in place only), and the Chief of Staff's contribution draft. Each draft entry shows how many tells were found and fixed, with the line each rewrite replaced. A draft that still carries a tell is never staged.
+- Customer Satisfaction 1.10.0 also adds a ninth routine, `csat-review-requests`, which asks every customer whose job finished for an honest review, held unless released. The roster is 61 routines.
+- Social Media, GTM Engineer, Sales, Customer Satisfaction and Chief of Staff move to 1.10.0; SEO/AEO to 1.11.0. Ad Manager and Web Dev are unchanged at 1.9.0. Kit changelogs: [Social](employees/social-media-employee/CHANGELOG.md), [GTM](employees/gtm-engineer/CHANGELOG.md), [Sales](employees/sales-employee/CHANGELOG.md), [Customer Satisfaction](employees/customer-satisfaction-employee/CHANGELOG.md), [SEO/AEO](employees/seo-employee/CHANGELOG.md), [Chief of Staff](employees/chief-of-staff/CHANGELOG.md).
+
 ## 1.9.0, 2026-10-02
 
 Prepared for release. GitHub publication and npm publication are separate maintainer steps.

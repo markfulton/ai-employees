@@ -70,6 +70,7 @@ The one exception is a `research` card owned by you whose `definition_of_done` n
 | `recipes/BROWSER-RECIPES.md` | When a page teaches you something true of any site |
 | `improvements/CHANGELOG.md` | Append only. One line per amendment, carrying the full replaced text |
 | `state/seo-draft-run.json` | Your own state, yours alone |
+| `state/voice-candidate.tmp.md` | Scratch for the Anti-AI Voice Check in Step 11a2, deleted in that step and on every exit path |
 | `runlog.jsonl` | Exactly one record per period, through `runlog.append` |
 | This file | Its body and its `## Corrections`, when you learn something about this routine |
 
@@ -199,7 +200,7 @@ This routine's lane is `conditional`. Whether this run needs a browser at all de
 
 2. **`runlog.append` has a route.** Prefer `shell.run` on `«SEO_ROOT»/scripts/runlog.mjs`. If `shell.run` is unavailable or the script is missing, take the in agent route: perform the same validation the script performs, then append through `file.write`, and put `runlog: in-agent` in `notes`. **Never append a run record through a shell redirect or an append command**: several of them prepend a byte order mark by default and that corrupts the first line of the file for every reader after it. If neither route exists, write the record you would have written as the last line of `brief-latest.md` under a heading `UNRECORDED RUN`, and stop. A run with no record is a run that gets repeated.
 
-3. **`copy.check` has a route.** Prefer `shell.run` on `«SEO_ROOT»/scripts/copy-check.mjs`, confirmed once with `--selftest`. If it cannot run, apply the same rule set in the agent and put `copy-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption. Never skip the check**, and never mark a draft `ready` that has not passed it.
+3. **`copy.check` has a route.** Prefer `shell.run` on `«SEO_ROOT»/scripts/copy-check.mjs`, confirmed once with `--selftest`. If it cannot run, apply the same rule set in the agent and put `copy-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption. Never skip the check**, and never mark a draft `ready` that has not passed it. **`voice.check` the same way:** `shell.run` on `«SEO_ROOT»/scripts/voice-check.mjs`, confirmed once with `--selftest`, otherwise the rules in `CAPABILITIES.md` section 6 applied in the agent, with `voice-check: in-agent` in `notes`. Never skipped either.
 
 4. **`standards/PUBLISH-STANDARD.md` exists and parses.** If it does not, this kit is incomplete: record `status: "failed"` with the blocker `"standards/PUBLISH-STANDARD.md is missing"`, write nothing, and exit. **Do not improvise the standard from memory.** A draft written to a research and authority standard nobody can read is a draft nobody can audit, and it is the exact failure the standard exists to prevent.
 
@@ -215,7 +216,7 @@ Then read, in this order, and read nothing else at runtime:
 2. `«SEO_ROOT»/standards/PUBLISH-STANDARD.md`, in full
 3. `«SEO_ROOT»/strategy/properties.md`, for the card's property: its editorial conventions, its hero specification, its internal link conventions, and its judgement window
 4. `«SEO_ROOT»/strategy/topic-map.md`, for the pillar the card's cluster hangs off and the posts already covering it
-5. `«SEO_ROOT»/strategy/voice.md`, for the register, the banned words, the banned openers and closers, and the dash policy
+5. `«SEO_ROOT»/strategy/voice.md`, for the register, the samples, `## How I talk`, the banned words, the banned openers and closers, and the dash policy
 6. `«SEO_ROOT»/recipes/BROWSER-RECIPES.md`
 7. This file's own `## Corrections`
 8. `«SEO_ROOT»/board/board.json` and `«SEO_ROOT»/brief-latest.md`
@@ -500,6 +501,36 @@ A FAIL means the draft is not ready. Fix your own line and re-run. The failures 
 
 **After a second failure on the same rule, replace that sentence with a plain statement of what is missing and name it in the run record.** Never soften a rule into passing, and never mark ready a draft that failed.
 
+### 11a2. The second pass: the Anti-AI Voice Check, fixed in place only
+
+An article can pass every rule in `copy.check` and still read as machine written, and a reader who arrives from a search and recognises the shape leaves before the answer. The shapes are the ones every generated article reaches for: "In today's fast paced world", "It's worth noting", "Let's dive in", "It's not X, it's Y", a standalone "Not X." fragment, three sentences in a row that start the same way, three "X, Y and Z" lists stacked in one piece. `copy.check` judges words. This pass judges shape. It runs on every body that passed 11a, before the `ready` line is written. **No draft is marked ready with a tell.**
+
+**This pass fixes in place and does nothing else.** It rewrites only the flagged sentences inside the draft. It never restructures the article, never reorders a section, never adds or removes a section, and never touches a heading, the title, the description, the slug, the frontmatter or registry fields, keyword placement, an internal or authority link or its anchor, the FAQ questions, schema, alt text, or a sourced fact or statistic. The structure the specification and the standard built is what ranks, and a voice pass that moves it is a voice pass that costs the page its position.
+
+Write the prose of `body.md` alone, meaning its paragraphs and list items without the headings, the frontmatter, the FAQ question lines or any schema block, to `state/voice-candidate.tmp.md`, so a heading can never be flagged and so never rewritten. Then run:
+
+```
+node "«SEO_ROOT»/scripts/voice-check.mjs" --file "«SEO_ROOT»/state/voice-candidate.tmp.md" --kind article --json
+```
+
+That is the interface, verbatim. `--kind` is always `article` in this routine, which allows an article to have no "I" in it, allows an imperative how to step, and makes a stack of three item lists a warn rather than a tell. The script reads `## How I talk` in `strategy/voice.md` by itself: a phrase under `### Phrases I use` is never flagged, a phrase under `### Tells that are not me` always is, and a rule id under `### Shapes that are mine` drops from a tell to a warn because the member's own recordings show it. Exit `0` is clean or warns only. Exit `1` means one or more tells. Where `shell.run` is unavailable, apply the same rules in the agent from `CAPABILITIES.md` section 6 and put `voice-check: in-agent` in `notes`. **The in agent route is a degradation, not an exemption.**
+
+**Every `tell` is rewritten. A `warn` is read with judgment** and stays where the sentence is concrete, true and does its job in the argument.
+
+**Then one read by judgment, because the script is a list of patterns and a draft can dodge every one of them.** Read the draft as the member saying it out loud to someone they know, and ask three questions of every line: would it fit another business's copy with only the name swapped; is it a clever line rather than something that happened; is the member, or the person they are writing to, actually in it. A line that fails any of the three is rewritten by the same rules as a tell and counted under the rule id `judgment`. Most drafts written from real material pass this read untouched, and those stay exactly as they are.
+
+**The rewrite, one pass, sentence by sentence, in the member's voice and nobody else's:**
+
+1. **Read `## Samples` and `## How I talk` in `strategy/voice.md` again before you write a word.** The rewrite takes its phrases and its sentence length from there, inside the register the property's editorial conventions set. Where `## How I talk` does not exist yet, the samples alone are the voice, and you put `voice: samples only` in `notes` so `seo-intake-and-map` builds the section on its next monthly pass.
+2. **Rewrite only the sentence a tell names, in its place in `body.md`.** The sentence before it and the sentence after it stay exactly as they are. Every number, every named source, every link, every keyword occurrence and every anchor inside that sentence survives the rewrite word for word.
+3. **Fix the shape, not the facts.** A stock opener becomes the direct answer it was delaying. A "Not X." fragment is cut and the positive fact is stated once. "It's not X, it's Y" becomes the one true statement about Y. A prophecy becomes what the sources show, attributed. A drumbeat of three sentences opening on the same word becomes one sentence.
+4. **Never import a phrase, a story, a number or a habit that is not in this member's own files or in the sources you fetched this run**, and never anybody else's voice, including the voice of the pages you read in Step 5. A sentence copied in tone from a competitor is a competitor's voice.
+5. **Then run both judges again on the rewritten body**, `copy.check` on `body.md` with `--dest article` first, then `voice.check` on the refreshed prose, because a rewrite is a new sentence and the survey rule and the metric rule have to pass again.
+
+**A sentence that still carries a tell after the one rewrite** is deleted where the paragraph still answers its heading without it. Where deleting it would take a sourced fact, a link or the answer itself with it, **the draft is not ready**: append a `dropped` line with the reason `voice-check, «rule id»`, leave the folder on disk and the card `next`, and name it in the run record with `voice-check` as its first failure reason. The same discipline as 11a: never soften a rule into passing, and never mark ready a draft that failed.
+
+**Keep the count, where the member reads it.** Add `voice_check`, `tells_found`, `tells_fixed` and `tell_rules` to `meta.json`. At the foot of `notes.md`, which is never published, add a heading `## Voice check` with the line `- voice check: N tells found, N fixed (rule ids)`, `0 tells found` included, and under it one `- was:` line per rewritten sentence, at most three, carrying the sentence as it was first drafted and the rule that caught it, so the member can read the before beside the after and correct `strategy/voice.md` where the rewrite missed. The run totals go in `notes`. Delete `state/voice-candidate.tmp.md` in this step and on every exit path.
+
 ### 11b. The `ready` line, written the instant the folder is complete
 
 Append one line to `content/drafts.jsonl`, UTF-8, no byte order mark, newline terminated:
@@ -510,6 +541,7 @@ Append one line to `content/drafts.jsonl`, UTF-8, no byte order mark, newline te
  "folder":"drafts/domain-pricing-compared/",
  "hero":"drafts/domain-pricing-compared/hero.webp","hero_encoded_chars":21840,
  "authority_links":2,"internal_links":3,
+ "voice_check":"pass","tells_found":2,"tells_fixed":2,
  "status":"ready","by":"seo-draft-run","at":"2026-03-04"}
 ```
 
@@ -564,7 +596,7 @@ Then release the browser mutex if you hold it, in this same block, and append ex
  "status":"ok",
  "outputs":["drafts/domain-pricing-compared/ (4 files)","content/drafts.jsonl (+1 ready)","board/board.json (C-021 drafted)","board/inbox.jsonl (+1 technical)"],
  "blockers":[],
- "notes":"C-021 new-post on «property»; 5 sources read, 1 refused a fetch and was read in a browser; 3 authority links verified, 1 swapped; hero regenerated once, 21840 encoded chars"}
+ "notes":"C-021 new-post on «property»; 5 sources read, 1 refused a fetch and was read in a browser; 3 authority links verified, 1 swapped; voice check 2 tells found, 2 fixed in place, top rule stock-phrase; hero regenerated once, 21840 encoded chars"}
 ```
 
 `status` is one of the closed eight and nothing else: `ok`, `partial`, `failed`, `skipped-paused`, `skipped-out-of-window`, `skipped-already-ran`, `blocked-login`, `blocked-browser-busy`. **No ninth exists and this routine does not invent one.** There is no status meaning waiting for approval, because nothing in this kit waits for an approval that is not a send, a spend, or a key.
@@ -633,6 +665,9 @@ Where a number does not exist, the legal vocabulary is `n/a (<reason>)`, `not tr
 | A hero will not compress under the ceiling after one attempt | Drop it, `hero: null`, one line in the record | `ok` |
 | `copy.check` FAILs twice on the same rule | Replace that sentence with a statement of what is missing, name it | `ok` |
 | `copy.check` has no shell route | In agent route, `copy-check: in-agent` in `notes`. Never skipped | `ok` |
+| `voice.check` has no shell route | In agent route from `CAPABILITIES.md` section 6, `voice-check: in-agent` in `notes`. Never skipped | `ok` |
+| `strategy/voice.md` has no `## How I talk` section | Rewrite from `## Samples` alone, `voice: samples only` in `notes`. Not a failure | `ok` |
+| A sentence still carries a tell after one rewrite and cannot be deleted without losing a fact, a link or the answer | `dropped` line, reason `voice-check`, card stays `next`. Never mark it ready | `partial` |
 | A flow file step no longer matches | `repair-a-recipe`, replay the step, one line in the record | `ok` |
 | A `content/drafts.jsonl` line will not parse | Copy it to `content/drafts-quarantine-YYYY-MM-DD.log` with its line number, rebuild your index from the rest | `ok` |
 | The same card has failed three times | Diagnose it, try one alternate route, park it with the diagnosis if that also fails | `ok` |
