@@ -2,6 +2,13 @@
 
 The repo version tracks the kits. Each employee carries its own `CHANGELOG.md` with the detail, and this file links them.
 
+## 1.11.0, 2026-11-22
+
+Prepared for release. npm publication is a separate maintainer step.
+
+- **The Sales Employee prepares you for every booked call.** When someone books, the next drafting run writes a packet before any cold message: a call brief with an outline built from your offer, prompts for calling now, texts for when nobody answers, a same day offer read from your own calendar, a yes and a no branch, and a confirmation email unsent in your Drafts. The morning brief names every packet nobody has started. Nothing is called, texted or sent by the Employee, and the calendar is never edited. New: `playbooks/booked-calls/`, `strategy/booked-calls.md`, `crm/bookings.jsonl`, `scripts/booked-call-check.mjs`. See the [kit changelog](employees/sales-employee/CHANGELOG.md).
+- Sales moves to 1.11.0. Every other kit is unchanged. The roster stays at 61 routines.
+
 ## 1.10.0, 2026-11-19
 
 The Anti-AI Voice Check. Every Employee that writes for somebody else to read now gives each draft a second pass for the shapes people spot as machine written, and rewrites them in your own voice.

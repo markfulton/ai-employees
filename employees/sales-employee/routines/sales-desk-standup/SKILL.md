@@ -66,6 +66,8 @@ Read nothing that is not on the first table. Write nothing that is not on the se
 | `pipeline/PIPELINE.md` | The member's ticks, and the member's own indented free text |
 | `pipeline/inbox.jsonl` | Cards filed since your cursor. You are its only reader |
 | `queue/*-first-touch.md`, `queue/*-followup.md` | The `- [ ] sent` boxes, read only |
+| `queue/*-booked-calls.md`, `queue/*-booked-calls-afternoon.md` | The five boxes on each booked call packet, read only, for the brief. Never turned into a ledger line |
+| `crm/bookings.jsonl` | Folded on `booking_id`, so the brief can name a packet nobody has started and a booking that was cancelled |
 | `crm/contacted.jsonl` | Folded on `(contact_id, campaign, step)`, so a tick becomes the right row |
 | `crm/prospects.jsonl` | Folded on `prospect_id`, to know whether the drafting routines have anything to draw from today |
 | `crm/contacts.csv` | Both sides of the marker line, to resolve a `- id:` to a real person |
@@ -74,7 +76,7 @@ Read nothing that is not on the first table. Write nothing that is not on the se
 | `strategy/CHANGELOG.md` | Every line dated after your last run, so a strategy change reaches the member |
 | `improvements/CHANGELOG.md` | Every line dated since your last brief, for `## What changed about me` |
 | `review/review-YYYY-Www.md`, most recent | Its path and its week, to name in the brief. Never its numbers |
-| `state/sales-<id>.json`, all seven | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used`, and the two `mailbox_drafted[]` arrays |
+| `state/sales-<id>.json`, all seven | `last_period`, `progress[]`, `assumptions[]`, `budget_minutes_used`, the two `mailbox_drafted[]` arrays, and the two `booked_drafted[]` arrays |
 | `state/pushes.jsonl` | Open and closed blocker keys, so a blocker already pushed is not pushed twice |
 | `state/browser-lock.json` | Read only, and only to spot a browser routine that died. See the browser section |
 | `state/kit-update.json` | What `sales-desk-setup` found on its monthly check of the kit itself. See the extra duty at the foot of this file |
@@ -104,6 +106,7 @@ Read nothing that is not on the first table. Write nothing that is not on the se
 - **`strategy/CHANGELOG.md`.** You read it. You would append to it only if you had changed a strategy file, and you never change one.
 - **`SCHEDULE.md`, except `window_start` and `window_end` on your own row.** Those two you may edit when you conclude your window is wrong, recording both values in `improvements/CHANGELOG.md`. Everything else on every row, and every row's `fire` time, belongs to `sales-desk-setup` or to the member.
 - **`review/manual.md`, `review/review-*.md`, and the member's own free text inside `pipeline/PIPELINE.md`.** The first two are not yours. The third you preserve rather than avoid.
+- **`crm/bookings.jsonl`.** You fold it. `staged` and `dropped` belong to the two drafting routines, `replied` and `cancelled` to `sales-followup-sweep`. Whether a call is past is derived from its `call_on`, never written.
 - **Any queue file.** You read the boxes. You never tidy one, never untick one, never re-queue from one, never reformat a line, and never archive one whose entries you have not accounted for.
 - **The member's mailbox, in any form.** You do not open it, do not read it, do not count its drafts by looking. The number you report comes from folding two state files against the contacted ledger, and Step 8.2 is the whole method.
 - **Any other routine's `state/sales-<id>.json`.**
@@ -500,6 +503,7 @@ up to the capacity number of lines, one per ready card, each naming how it close
 
 ## Waiting on you
 the veto line, first, every single morning
+the booked call lines, 8.2a, straight after it
 one line per queue file with unticked entries
 one line per member-action card that is ready
 one line per new assumption you recorded
@@ -539,6 +543,22 @@ Write it as one line under `Waiting on you`, naming the ledger path so it passes
 - crm/contacted.jsonl, 6 drafts composed and still queued: read them in your Drafts folder before you send. Nothing has been sent by this kit.
 ```
 
+### 8.2a Booked calls, straight after the veto line
+
+Someone who booked a call is the most time sensitive thing in the member's morning, so the booked call lines come directly under the veto line and above everything else in `Waiting on you`. Fold `crm/bookings.jsonl` on `booking_id` and read the five boxes on every packet named by a `staged` line. Then write, in order of `call_on`, soonest first:
+
+1. **One line per packet whose call is today or later and none of whose five boxes is ticked**, naming the queue file, the entry heading, the person's first name, and the call date. Never a phone number, an address, or a form answer: those are in the packet.
+2. **One line per booking whose fold is `cancelled` and whose `call_on` is today or later**, saying not to send that packet, and to delete its confirmation draft in Drafts by hand where its head says `- mailbox: drafted`.
+3. **One line counting the confirmation emails still in Drafts**: entries in both `booked_drafted[]` arrays whose packet's `- [ ] email sent` box is not ticked and whose call is today or later, named against `crm/bookings.jsonl`.
+
+```
+- queue/2026-03-05-booked-calls.md B-01, Riley, call on 2026-03-06: nothing ticked yet. Reach them today
+- queue/2026-03-04-booked-calls-afternoon.md B-02, Morgan: cancelled on the calendar. Do not send it, and delete its draft in your Drafts
+- crm/bookings.jsonl, 1 confirmation email composed and not ticked as sent: it is in your Drafts folder
+```
+
+A packet with any box ticked has been started and gets no line: the member is working it. **No booked calls at all writes no line**, because the lane may be off and that is not a gap. These lines are never trimmed, the same as the veto line. Where `strategy/booked-calls.md` turned the lane off, put nothing in the brief and one line in `sales-latest.md`.
+
 **Where either state file is missing, or `mailbox_drafted[]` is absent**, the line reads `n/a (mailbox draft record not found)` and still appears. **Never write the number you expected and never omit the line.** A morning with no drafts writes `crm/contacted.jsonl, no drafts composed and still queued`, which is a true and useful sentence.
 
 ### 8.3 The rules that keep it short and true
@@ -565,7 +585,7 @@ Every other open blocker collapses into one compact row naming the count and the
 
 **Report the pause.** If `«SALES_ROOT»/PAUSED` existed since your last run and is now gone, put one line at the top of the brief naming the dates covered, taken from `paused_since`, so a member who paused and forgot reads an explained gap rather than a hole in their ledgers.
 
-**Trimming, when the brief would run past thirty lines**, in this order and no other: first the compact blocker row, then the strategy change lines, then the assumption lines, then `Today` lines beyond the capacity number. End any trimmed section with one line reading `... more in sales-latest.md`. **Never trim the veto line, a full blocker line, a member-action card line, or an unticked queue file line.** Those four are the reason the file exists.
+**Trimming, when the brief would run past thirty lines**, in this order and no other: first the compact blocker row, then the strategy change lines, then the assumption lines, then `Today` lines beyond the capacity number. End any trimmed section with one line reading `... more in sales-latest.md`. **Never trim the veto line, a booked call line, a full blocker line, a member-action card line, or an unticked queue file line.** Those five are the reason the file exists.
 
 ### 8.4 The check, and the trap inside it
 
@@ -598,6 +618,7 @@ Overwritten, uncapped, machine facing. You are its only writer. Everything that 
 - The reconciliation counts: boxes read, `sent` rows appended, pipeline ticks applied in each direction, cards reopened for a missing artifact, inbox lines folded, cards deduplicated, cards blocked on an unrecognised type.
 - The `sent_on` convention, stated in one line, every run.
 - The veto set in full: every `mailbox_drafted[]` entry still folding to `queued`, by routine, with its date. **Contact ids only, never a name and never an address.**
+- The booked call set: every `staged`, `replied` and `cancelled` booking whose call is today or later, by `booking_id` and queue entry key, with which of its five boxes are ticked. **Booking ids only, never a name, an address or a phone number.**
 - Every cursor position at the end of the run.
 - Malformed line counts per file with their line numbers, and the quarantine path where there is one.
 - Every blocker you neutralised in Step 7, with the substitution made and the `runlog.jsonl` line the original sits on.

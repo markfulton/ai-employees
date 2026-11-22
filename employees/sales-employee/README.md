@@ -24,6 +24,7 @@ One offer, end to end.
 - **The buyer definition.** At most three segments, each with a role, an industry, a company shape, a pain, where those people appear, a verified search URL, and the sources that actually produced.
 - **First touch drafting.** One message per qualified person who has never been written to, in a framework the evidence on their row can honestly support, into a queue file and into your own mailbox. Drafts only.
 - **The follow up sequence.** Replies read and recorded first. Then the touches that are due, at your interval, up to your cap, one campaign per person forever.
+- **Booked calls, the moment they land.** Someone books a call and the next drafting run puts a packet in front of you before any cold message: who booked and what they wrote, an outline for the call, what to say if you call now, the texts for when nobody answers, a same day offer, and a confirmation email waiting in your Drafts. You call, you text, you send.
 - **Reply handling, up to the boundary.** Every reply becomes a card you have to answer. A reply asking for a meeting becomes a meeting card. The words stay in your mailbox where they already are.
 - **The pipeline.** Cards with dependencies, a stage, and a definition of done, plus the one field that decides who may close each one.
 - **Measurement.** A weekly review where every number carries the path of the file it was counted in, one thing to kill, and one thing to scale, both filed as cards.
@@ -38,8 +39,8 @@ Every routine has an id. The id is the folder name under `routines/`, the `name`
 |---|---|---|---|
 | `sales-prospect-sweep` | Weekdays | 06:45 | Reads the sources one segment names, captures the contactable people behind them, scores every row against your named tests, and writes each row with the evidence that qualified it. |
 | `sales-desk-standup` | Weekdays | 07:30 | Reconciles yesterday's ticks into the pipeline and the contact ledger, folds new cards in, re-renders the pipeline, and writes your morning brief. |
-| `sales-first-touch-drafts` | Weekdays | 08:15 | Drafts a first touch for every qualified person who has never been written to, into a dated queue file and into your own mailbox as an unsent draft. |
-| `sales-followup-sweep` | Weekdays | 13:30 | Reads the replies on the threads the ledger says you sent, records them, then drafts the follow ups that are due. In that order, always. |
+| `sales-first-touch-drafts` | Weekdays | 08:15 | Stages a call packet for every new booking first. Then drafts a first touch for every qualified person who has never been written to, into a dated queue file and into your own mailbox as an unsent draft. |
+| `sales-followup-sweep` | Weekdays | 13:30 | Reads the replies on the threads the ledger says you sent and records them, stages packets for the calls booked since the morning, then drafts the follow ups that are due. In that order, always. |
 | `sales-pipeline-review` | Fridays | 16:00 | Scores the week from the ledgers with a source path beside every number, replays the browser flows, and files one kill and one scale as cards. |
 | `sales-desk-setup` | First weekday of the month | 11:00 | First run: researches your business, writes the strategy folder, seeds the pipeline, registers the schedule. Monthly: re-reads the evidence and applies what changed. |
 | `sales-qualification-refresh` | Last weekday of the month | 11:30 | Re-tests every qualification test and every segment against a month of real evidence, and rewrites both files where the evidence disagrees with the assumption. |
@@ -63,6 +64,26 @@ Each of the seven exists because it is a link in one chain.
 The sweep captures a contactable person with a named test and a quoted reason. The drafting routine turns that into a queue entry and an unsent draft. You send and tick the box. The standup turns your tick into a send date, which is the only thing that makes a reply rate computable at all. The follow up sweep reads the reply, records it, and files the card that turns a reply into a meeting you have to book. The Friday review reads the rates and files a kill and a scale as new cards. The standup folds those into the pipeline on Monday. The month end refresh reads a month of that evidence and rewrites the targeting the sweep is aiming at.
 
 Break one link and the chain stops producing numbers. That is why there are seven and not four.
+
+---
+
+## When someone books a call
+
+A person who just booked a call with you still remembers why. The sooner you reach them, the more of them pick up, the more show up, and the better the call goes. So when a booking lands, the Employee prepares you to move first, and it does that before it drafts a single cold message.
+
+**Where it reads bookings.** You name the source once in `strategy/booked-calls.md`: the calendar your bookings land on, or the confirmation emails your booking tool sends. Setup fills it in from your own booking page and asks you only for what it cannot see, which is usually the link to the short video you want people to watch before the call.
+
+**What you find the morning after someone books.** The first touch run picks up every booking made since the afternoon run, so shortly after your brief a new file appears, `queue/<today>-booked-calls.md`, with the confirmation emails already in your Drafts. A booking made before the afternoon run is picked up the same day, in `queue/<today>-booked-calls-afternoon.md`. Any packet still untouched the next morning goes to the top of your brief, straight under the line about drafts. One packet per booking:
+
+- **The call brief.** Who booked, when they booked, the call time in your time and in theirs, everything they wrote on the booking form, the three questions with any the form already answered marked, and an outline for the call built from your own offer, in case they say yes to talking now.
+- **Call now.** Short prompts for a call while their interest is fresh: say hello, check the invite arrived, offer to talk right now. If they cannot, ask three quick questions and whether they have seen your video.
+- **Texts, if they do not answer.** One message per line, ending on a simple question about their business. Then the follow ups for when they reply: the video, and two open times today read from your own calendar, or keeping the booked time.
+- **Yes and no.** A short confirmation if they take a time today, with a reminder to move the event yourself, and a friendly note with the video link if they keep the booked time.
+- **A confirmation email**, already sitting unsent in your Drafts.
+
+Every box in the packet is yours to tick: called, texts sent, email sent, moved to today, kept the booked time. The standup reads them the next morning and stops reminding you once you have started. A booking that gets cancelled on your calendar shows in the brief as one line telling you not to send that packet.
+
+**It never calls, texts, emails, or touches your calendar.** It never looks a person up to fill a gap in their booking, and it never offers a time it did not read from your own calendar. A line about having worked with businesses like theirs appears only when your proof inventory says so. The full method is in `playbooks/booked-calls/PLAYBOOK.md`, and every setting is a line you can change in `strategy/booked-calls.md`.
 
 ---
 
@@ -279,13 +300,16 @@ There is a straightforward answer if that is your situation. Paste your own lead
   scripts/guard.mjs          the pause, window and period guards, run before any document is read
   scripts/copy-check.mjs     the scripted judge for anything about to be written
   scripts/voice-check.mjs    the Anti-AI Voice Check, the second pass on every draft
+  scripts/booked-call-check.mjs  the shape check on every booked call packet
+  playbooks/booked-calls/    the booked call method and the templates each packet is built from
   strategy/                  offer, voice, message-library, accounts, buyer,
-                             qualification, proof-inventory, CHANGELOG, and
+                             qualification, proof-inventory, booked-calls, CHANGELOG, and
                              transcripts/, where you drop recordings of you talking
   pipeline/                  pipeline.json, PIPELINE.md (you tick it), inbox.jsonl
-  crm/                       contacts.csv, prospects.jsonl, contacted.jsonl,
+  crm/                       contacts.csv, prospects.jsonl, contacted.jsonl, bookings.jsonl,
                              qualified-latest.md, and any dated fallback file
-  queue/                     YYYY-MM-DD-first-touch.md, -followup.md
+  queue/                     YYYY-MM-DD-first-touch.md, -followup.md, -booked-calls.md,
+                             -booked-calls-afternoon.md
   review/                    manual.md (yours, never overwritten) and the weekly files
   recipes/                   BROWSER-RECIPES.md, plus one JSON file per site flow,
                              each written by the routine that uses it on the first
@@ -331,7 +355,7 @@ If you disagree with something it taught itself, write one line in that routine'
 
 ## Version and updates
 
-This kit is **v1.2.0**. The version is in `VERSION` at the root, and `CHANGELOG.md` beside it lists what each release changed.
+The version this kit ships as is in `VERSION` at the root, and `CHANGELOG.md` beside it lists what each release changed.
 
 Employees update one at a time. They share nothing but a scheduler, so running one at v1.0.0 and another at a later version is fine and needs no coordination.
 

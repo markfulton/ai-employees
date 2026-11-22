@@ -405,6 +405,7 @@ Offer these in one compact block. State the working answer you already have next
 | Anyone or any company that is off limits | Personal, and often contractual | Nothing is excluded. The member adds a `no-outreach` tag to a row in `crm/contacts.csv` at any time |
 | Voice samples they are happy to sound like | Their own taste | The copy already on their own site becomes the sample set, cited with URLs. That is genuinely their voice |
 | Which other AI Employees are installed | It is their roster, and you also detect it in Step A7 | What the detection found, and nothing else |
+| Whether people book calls with them, where those bookings land, and the link to the short video they want people to watch before a call | A booking page can be public while the calendar it writes to and the video are not | The booking page you found on their site, `source: calendar` where `calendar.read` resolves and `source: mailbox` where only `mail.read` does, and `video_url: n/a (not set)`, each recorded as an assumption. No booking page found: `source: none`, which keeps the lane off |
 
 Three rules govern this step and they are what keep it from becoming an interview:
 
@@ -494,6 +495,8 @@ Write between four and seven frameworks, built from what the research found: the
 - **At least one follow up framework**, whose `shape:` line names the follow up step. `sales-followup-sweep` selects only from those.
 
 **A6.7 `strategy/accounts.md`.** `## Mailbox`, `## Other accounts`, `## Read screens`. Human readable names only, per A4.6.
+
+**A6.8 `strategy/booked-calls.md`.** The member's settings for the booked call lane, in the shape of `playbooks/booked-calls/templates/config.md`, every heading present. Fill it from Step A4 and Step A5: the booking page you found on their own site, the source that resolves on this machine, the sender name and business name from `strategy/offer.md`, and the video link only where the member gave one or their own site shows the video they send before a call. A value research could not settle is written `n/a (not set)`. **Every value in this file becomes the member's the moment it is written**, and B2.1 carries each one across. Where no booking page exists, write `source: none`: the lane stays off and nothing in the kit treats that as missing.
 
 ### Then run the judge over every file before the phase is done
 
@@ -677,6 +680,7 @@ For every strategy file you change:
 | `strategy/voice.md`, `## How I talk` | A new file has appeared in `strategy/transcripts/` since the section was last built, or `sales-first-touch-drafts` or `sales-followup-sweep` notes carry `voice: samples only`, or the same `voice.check` rule fired on most drafts this month while it fires in the member's own recordings too. Rebuild the section by Step A6.1a and name the evidence path |
 | `strategy/message-library.md` | A framework has been dropped by the copy check repeatedly, or `skeletonLog[]` in both drafting routines shows the library is too small to rotate. **Never remove the `short-note` entry and never remove the last follow up framework.** Both are depended on by id |
 | `strategy/accounts.md` | A drafting routine reported a mailbox account mismatch more than once. **Re-crawl or re-ask for the name. Never guess it** |
+| `strategy/booked-calls.md` | **Only when the file does not exist**, which is the case on every install upgraded from a kit before 1.11.0. Write it by A6.8 from what you can read today, `source: none` where no booking page is found, and name it once in the report so the member knows the lane is there. **Once it exists you never write it again**: every line in it is the member's |
 | `SCHEDULE.md` | A lane collision inside this kit or against a sibling kit, a routine with no row, or a row sharing a fire minute. **Never a removal, never `off`, never a budget, never a period key** |
 
 ### What you never change
@@ -700,6 +704,7 @@ This is the rule that a monthly rewrite breaks first, and the breakage is silent
 | Every member owned field in every `state/sales-<id>.json`: `daily_target`, `touch_cap`, `follow_up_interval_days`, `queued_ttl_days`, `caps`, `field_caps` | The seven state files, which you never write at all |
 | `days`, `budget`, and `key` on every existing `SCHEDULE.md` row | `SCHEDULE.md` |
 | A `no-outreach` tag on any row in `crm/contacts.csv`, and every row above the marker | `crm/contacts.csv`, which you never write at all |
+| Every line in `strategy/booked-calls.md` | `strategy/booked-calls.md`, which you write only when it does not exist |
 | Every `## Corrections` section in every file | Everywhere |
 
 **Four of those you never write, so carrying them across means not touching the file.** The two you do write into are the schedule table and the strategy folder, and both are covered by reading before writing.
@@ -845,6 +850,8 @@ Every field is required. `outputs` and `blockers` are always arrays, empty rathe
 ### Writes
 
 Whole files, one writer, this routine: `strategy/offer.md`, `strategy/voice.md`, `strategy/message-library.md`, `strategy/accounts.md`, and `strategy/buyer.md` plus `strategy/qualification.md` **on the first run only**.
+
+Created only when absent, and the member's from then on: `strategy/booked-calls.md`, Step A6.8 and the B2 table.
 
 Created once and never written again: `crm/contacts.csv`, `review/manual.md`, `improvements/CHANGELOG.md`, and the two headings of `strategy/proof-inventory.md`.
 

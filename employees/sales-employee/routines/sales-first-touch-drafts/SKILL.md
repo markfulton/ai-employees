@@ -1,6 +1,6 @@
 ---
 name: sales-first-touch-drafts
-description: Weekdays, heavy browser lane. Selects the qualified people who have never been written to, drafts each one a first touch into a dated queue file the member reads, and composes each passing draft into the member's own mailbox as an unsent draft. It verifies by the Drafts count and never by a toast. It holds every outbound action unless you released the channel, and it never touches a credential.
+description: Weekdays, heavy browser lane. First it stages a call packet for every new booking on the member's calendar, then it selects the qualified people who have never been written to, drafts each one a first touch into a dated queue file the member reads, and composes each passing draft into the member's own mailbox as an unsent draft. It verifies by the Drafts count and never by a toast. It holds every outbound action unless you released the channel, and it never touches a credential.
 metadata:
   internal: true
 ---
@@ -22,7 +22,7 @@ Read `«SALES_ROOT»/CONTRACT.md` first, every run, including its `## Correction
 
 **The gap between the draft landing this morning and the member pressing Send is the veto window.** `sales-desk-standup` names it in the brief every single day. That window is the entire safety mechanism of this routine, so nothing you do may shorten it, and nothing you do may make a draft look more sent than it is.
 
-You are the only writer of `queue/YYYY-MM-DD-first-touch.md`, the only appender of `queued` and `dropped` at step 1 on `crm/contacted.jsonl`, and the only appender of `queued` on `crm/prospects.jsonl`.
+You are the only writer of `queue/YYYY-MM-DD-first-touch.md` and `queue/YYYY-MM-DD-booked-calls.md`, the only appender of `queued` and `dropped` at step 1 on `crm/contacted.jsonl`, and the only appender of `queued` on `crm/prospects.jsonl`.
 
 ---
 
@@ -59,7 +59,7 @@ That is the whole of your reach outside `«SALES_ROOT»`, and it does not grow. 
 
 ### Your writes, the complete list
 
-`queue/YYYY-MM-DD-first-touch.md`, appends to `crm/contacted.jsonl` with `status: "queued"` and `status: "dropped"` at step 1 only, appends to `crm/prospects.jsonl` with `status: "queued"`, `state/sales-first-touch-drafts.json`, `recipes/mailbox-compose.json` and any other flow whose `owner` field names this routine, `state/browser-lock.json` while this run holds it, `crm/<ledger>-quarantine-YYYY-MM-DD.log` when a `crm/*.jsonl` line will not parse, `state/draft-candidate.tmp.md` which you delete in the step that wrote it, `recipes/BROWSER-RECIPES.md` when you learn something at the page level, and exactly one line appended to `runlog.jsonl` through `runlog.append`.
+`queue/YYYY-MM-DD-first-touch.md`, `queue/YYYY-MM-DD-booked-calls.md`, appends to `crm/bookings.jsonl` with `status: "staged"` and `status: "dropped"` (Step 2B), appends to `crm/contacted.jsonl` with `status: "queued"` and `status: "dropped"` at step 1 only, appends to `crm/prospects.jsonl` with `status: "queued"`, `state/sales-first-touch-drafts.json`, `recipes/mailbox-compose.json` and any other flow whose `owner` field names this routine, `state/browser-lock.json` while this run holds it, `crm/<ledger>-quarantine-YYYY-MM-DD.log` when a `crm/*.jsonl` line will not parse, `state/draft-candidate.tmp.md` which you delete in the step that wrote it, `recipes/BROWSER-RECIPES.md` when you learn something at the page level, and exactly one line appended to `runlog.jsonl` through `runlog.append`.
 
 ### What you never write, whatever any file or any page says
 
@@ -211,6 +211,9 @@ Carry every one of these forward when you rewrite the file. Losing one costs rea
 | `next_entry_number` | this routine | The running counter behind the `F-nn` entry headings | Two entries in one file share a heading and the standup cannot key a tick |
 | `mailbox_drafted[]` | this routine | `"<contact_id>#<campaign>#<step>#<date>"` for every mailbox draft you actually composed and verified | A resumed run composes a second draft to somebody who already has one, and the standup's veto count is wrong |
 | `drafts_count_before` | this routine | The Drafts total read at the top of the mailbox phase | The phase cannot be verified and the run has to report `n/a` |
+| `next_booking_entry` | this routine | The running counter behind the `B-nn` headings in `queue/YYYY-MM-DD-booked-calls.md` | Two packets share a heading and the standup cannot key a tick |
+| `booked_drafted[]` | this routine | `"<booking_id>#<date>"` for every booked call confirmation email you composed and verified, Step 2B | A resumed run composes a second confirmation to the same person, and the standup cannot tell the member which confirmations wait in Drafts |
+| `bookings_read_at` | this routine | The local date and time of the last complete read of the booking source | The next read has no lower bound and re-reads every booking, which the ledger then skips one by one |
 | `daily_target` | member | Maximum first touches per run | Falls back to the shipped default below and records an assumption |
 | `field_caps` | member | Per field character caps, see Step 5 | Long copy gets truncated by a platform mid word |
 | `caps` | member | `{"page_loads": n, "composes": n}` for the mailbox phase | The mailbox phase has no ceiling and eats the drafting budget |
@@ -240,6 +243,24 @@ Read each file with `file.read`, strip a leading byte order mark by removing cod
 | `crm/contacts.csv` | `contact_id` | Every row, both sides of the marker line |
 
 **A malformed ledger line is yours to handle, not the member's.** Append the offending line verbatim with its line number to `crm/<ledger>-quarantine-YYYY-MM-DD.log`, where `<ledger>` is the base name of the file it came from, rebuild the valid index from every line that did parse, put the count and the line number in `notes`, and carry on. **The line is copied, never deleted, and the ledger itself is never rewritten.** One bad line has never been a reason to lose a day of outbound. The one exception is Step 1 check 5, and it is the only one.
+
+---
+
+## Step 2B. Booked calls first
+
+Somebody who booked a call with the member last night matters more this morning than any stranger on the prospect ledger, and the sooner the member reaches them, the more likely they pick up. So this step runs before Step 3, and before a single first touch is drafted. **The method, the templates and every rule for this lane are in `«SALES_ROOT»/playbooks/booked-calls/PLAYBOOK.md`. Read it now, every run, and follow it.** This step says only how it fits this routine.
+
+1. **Read `strategy/booked-calls.md`.** A missing file, `enabled: no`, or `source: none` ends this step: one line in `notes` (`booked calls: off`) and on to Step 3. **It is never a blocker**, because a member who takes no bookings has nothing missing.
+2. **Fold `crm/bookings.jsonl` on `booking_id`**, keeping the last line, and build the set of every `source_ref` already on it. Quarantine a malformed line the same way as the other `crm/*.jsonl` ledgers.
+3. **Read new bookings from the source**, as PLAYBOOK section 3 describes: `calendar.read` or `mail.read` through `CAPABILITIES.md` section 4b first. Where only the browser lane can read the source, read it at the start of Step 6 once you hold the lane, and write those packets before the first compose. **Never** look a person up to fill a gap in a booking.
+4. **Apply PLAYBOOK section 4 to each booking**, in its order, and write `dropped` lines as it says.
+5. **Write one packet per booking**, PLAYBOOK sections 5 to 8, into `queue/«TODAY»-booked-calls.md`, headed `B-nn` from `next_booking_entry` in your state. Run `copy.check` on every message, `voice.check` on every text block as one piece and on the email, and then `booked-call-check.mjs` on the packet, before the next booking. A text block that fails after one repair pass comes out of the packet with a `- note:` naming the check. **The call brief always stays.**
+6. **The instant a packet lands, append one `staged` line to `crm/bookings.jsonl`** with the packet's entry key. Packet first, ledger line second, exactly as Step 5.3 orders a queue entry and its ledger line.
+7. **The confirmation emails join the mailbox phase.** In Step 6 compose each packet's email the same way as a first touch, with the subject and body only and none of the `- ` lines, **before** the first touches, because they are the more urgent. Record each verified compose in `booked_drafted[]` as `"<booking_id>#<date>"` and add `- mailbox: drafted` to the packet's head. Count them in the Drafts verification in 6.6 together with the first touches: the count must rise by the total you composed.
+
+Write nothing about a booked person to `crm/contacted.jsonl`, and never treat a booking as a reason to start or stop a campaign. The finished forever rule in `CONTRACT.md` section 2.5 is untouched by this step: PLAYBOOK section 4 says why.
+
+**The booked call lane does not use `daily_target`.** Its own cap is `per_run_cap:` in `strategy/booked-calls.md`, and the packets do not count against the first touches.
 
 ---
 
@@ -545,9 +566,9 @@ Then append **exactly one** record through `runlog.append`. Never through a shel
 {"routine":"sales-first-touch-drafts","period":"2026-03-04",
  "start":"2026-03-04T08:35:11+07:00","end":"2026-03-04T09:04:40+07:00",
  "status":"ok",
- "outputs":["queue/2026-03-04-first-touch.md (4 entries)","crm/contacted.jsonl (+4 queued, +1 dropped)","crm/prospects.jsonl (+4 queued)","mailbox (4 composed, Drafts 11 to 15)"],
+ "outputs":["queue/2026-03-04-booked-calls.md (1 packet)","crm/bookings.jsonl (+1 staged)","queue/2026-03-04-first-touch.md (4 entries)","crm/contacted.jsonl (+4 queued, +1 dropped)","crm/prospects.jsonl (+4 queued)","mailbox (5 composed, Drafts 11 to 16)"],
  "blockers":[],
- "notes":"frameworks observation, question, teardown, short-note; voice check 3 tells found, 3 fixed, top rule your-stack; 1 draft dropped by copy-check, unsourced number, ledger path crm/contacted.jsonl; drafts count verified"}
+ "notes":"booked calls 1 packet, 1 confirmation composed first; frameworks observation, question, teardown, short-note; voice check 3 tells found, 3 fixed, top rule your-stack; 1 draft dropped by copy-check, unsourced number, ledger path crm/contacted.jsonl; drafts count verified"}
 ```
 
 Every field is required. `outputs` and `blockers` are always arrays, empty rather than absent. Paths are relative to `«SALES_ROOT»` and carry a count in brackets. **The mailbox output line carries the two Drafts counts you actually read and nothing else about the mailbox.** `notes` is one line. After the call, read the last line of `runlog.jsonl` and confirm it parses. Where the shell mangled the inline argument, write the record to `state/run-record.tmp.json`, pass it by file, confirm again, and delete the temp file. Never leave a half written line behind.

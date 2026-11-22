@@ -143,8 +143,9 @@ A routine that concludes its `fire` time or its `days` value is wrong **changes 
 | `scripts/runlog.mjs` | ships with the kit | the `runlog.append` capability |
 | `scripts/copy-check.mjs` | ships with the kit | the `copy.check` capability |
 | `scripts/voice-check.mjs` | ships with the kit, identical in every kit that writes copy | the `voice.check` capability |
+| `scripts/booked-call-check.mjs` | ships with the kit | the two drafting routines, on every booked call packet, `playbooks/booked-calls/PLAYBOOK.md` section 5 |
 
-All three are dependency free and take one interface, defined in section 3.4. None is optional and neither may be described in the present tense by any file until it exists on disk.
+All four are dependency free and take one interface, defined in section 3.4. None is optional and neither may be described in the present tense by any file until it exists on disk.
 
 ### 2.3 Strategy
 
@@ -155,6 +156,7 @@ All three are dependency free and take one interface, defined in section 3.4. No
 | `strategy/transcripts/` | the member, who drops in their own recordings and transcripts; `sales-desk-setup` adds only the captions of the member's own public videos and never edits a file it did not write | `sales-desk-setup` |
 | `strategy/message-library.md` | `sales-desk-setup` | both drafting routines, `sales-qualification-refresh` |
 | `strategy/accounts.md` | `sales-desk-setup` | both drafting routines |
+| `strategy/booked-calls.md` | the member. `sales-desk-setup` creates it on the first run, or on a monthly pass that finds it missing, and never writes it again | both drafting routines, `sales-desk-standup` |
 | `strategy/buyer.md` | `sales-desk-setup` creates it on the first run only. `sales-qualification-refresh` owns it from the second month | `sales-prospect-sweep`, both drafting routines, `sales-pipeline-review`, `sales-desk-setup` |
 | `strategy/qualification.md` | same split, same reason | `sales-prospect-sweep`, `sales-first-touch-drafts`, `sales-pipeline-review`, `sales-desk-setup` |
 | `strategy/proof-inventory.md` | split, see below | `copy.check`, and every routine that writes a claim |
@@ -288,6 +290,7 @@ A card with an `artifact` renders that path in the last column instead of its `d
 | `crm/prospects.jsonl` | append only. `sales-prospect-sweep` writes `qualified`, `disqualified`, `expired`. `sales-first-touch-drafts` writes `queued`. The member writes `dismissed` | `sales-desk-standup`, `sales-followup-sweep`, `sales-pipeline-review`, `sales-qualification-refresh` |
 | `crm/contacted.jsonl` | append only. Four appenders, see below | all seven |
 | `crm/qualified-latest.md` | `sales-prospect-sweep`, overwritten each run | member, `sales-desk-standup`, `sales-qualification-refresh` |
+| `crm/bookings.jsonl` | append only. `sales-first-touch-drafts` writes `staged`, `dropped`. `sales-followup-sweep` writes `staged`, `dropped`, `replied`, `cancelled`. The member writes any | both drafting routines, `sales-desk-standup` |
 | `crm/fallback-YYYY-MM-DD.md` | `sales-prospect-sweep`, only when a CSV write failed its verification | member, and named in the run record |
 | `crm/<ledger>-quarantine-YYYY-MM-DD.log` | append only, any of the seven, when a line in a `crm/*.jsonl` it reads will not parse | member, and named in the run record |
 
@@ -362,6 +365,12 @@ The four appenders and the statuses each one owns:
 
 **A contact carrying any of `replied`, `booked`, `won`, `lost`, or `do_not_contact` on any row, in any campaign, is finished forever** and is never touched again by anything in this kit. That check runs before every other one.
 
+**The booked call lane is not a campaign, and this rule governs campaigns.** A person who booked a call with the member asked for that conversation. The two drafting routines stage a call packet for them from `crm/bookings.jsonl` under `playbooks/booked-calls/PLAYBOOK.md`, write nothing about them to this ledger, and never start, continue or end a campaign because of a booking. A person carrying `do_not_contact` still gets a call brief, because they booked the call, and no message: PLAYBOOK section 4 check 3.
+
+#### 2.5a `crm/bookings.jsonl`
+
+One line per state change of a booking the kit read, folded on `booking_id` keeping the last line, append only. The schema, the four statuses (`staged`, `dropped`, `replied`, `cancelled`) and the appenders are in `playbooks/booked-calls/PLAYBOOK.md` section 9, and that file is their single source. **The `source_ref` set on this ledger is the dedupe record**, built from the file and never from a state field. Names, addresses and phone numbers on it are personal data: they stay inside `«SALES_ROOT»` and never reach a run record, a log line or a card title beyond a first name. The quarantine path above covers it like the other `crm/*.jsonl` ledgers.
+
 **One campaign per person, forever.** Before drafting anything, build `alreadyHave` from every `contact_id` in `crm/contacted.jsonl` under any campaign with any status. Anyone in that set is off limits for every other campaign. Build it from the ledger, never from a state file, and update it during the run so a later row cannot re-add an earlier hit.
 
 ### 2.6 Queue
@@ -370,8 +379,10 @@ The four appenders and the statuses each one owns:
 |---|---|---|
 | `queue/YYYY-MM-DD-first-touch.md` | `sales-first-touch-drafts` | member, `sales-desk-standup` (ticks) |
 | `queue/YYYY-MM-DD-followup.md` | `sales-followup-sweep` | member, `sales-desk-standup` (ticks) |
+| `queue/YYYY-MM-DD-booked-calls.md` | `sales-first-touch-drafts` | member, `sales-desk-standup` (boxes, for the brief only) |
+| `queue/YYYY-MM-DD-booked-calls-afternoon.md` | `sales-followup-sweep` | member, `sales-desk-standup` (boxes, for the brief only) |
 
-Both files use one entry shape. **Two lines in it are machine-parsed and must never be reformatted, rewritten, or removed:** the `- id:` line and the `- [ ] sent` line. Entry headings are `F-nn` in a first touch file and `U-nn` in a follow up file.
+The two booked call files use the packet shape in `playbooks/booked-calls/PLAYBOOK.md` section 8, headed `B-nn`, with the `- booking:` line and five tick lines machine read. Their boxes never become a line on `crm/contacted.jsonl`. The first touch and follow up files use one entry shape. **Two lines in it are machine-parsed and must never be reformatted, rewritten, or removed:** the `- id:` line and the `- [ ] sent` line. Entry headings are `F-nn` in a first touch file and `U-nn` in a follow up file.
 
 ```
 # First touch queue, 2026-03-04
@@ -527,6 +538,8 @@ Read the columns as: what is written, who is the only one allowed to write it, a
 | `crm/prospects.jsonl` | sweep (`qualified`, `disqualified`, `expired`), first touch (`queued`), member (`dismissed`) | standup, followup sweep, review, refresh |
 | `crm/contacted.jsonl` | first touch, followup sweep, standup (`sent`), member (outcomes) | all seven |
 | `crm/qualified-latest.md` | `sales-prospect-sweep` | member, standup, refresh |
+| `crm/bookings.jsonl` | first touch (`staged`, `dropped`), followup sweep (`staged`, `dropped`, `replied`, `cancelled`), member | drafting routines, standup |
+| `strategy/booked-calls.md` | member, created by setup when absent | drafting routines, standup |
 | `crm/fallback-*.md` | `sales-prospect-sweep`, only on a failed CSV write | member, named in the run record |
 | `crm/<ledger>-quarantine-*.log` | append only, any of the seven, for a `crm/*.jsonl` line | member, named in the run record |
 | `queue/*-first-touch.md` | `sales-first-touch-drafts` | member, standup |

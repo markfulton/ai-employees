@@ -12,5 +12,8 @@ The dates are the first week of March 2026, a baseline week: the first prospects
 | `crm/contacts.csv` | The contact ledger: the header, one row Sam imported above the marker, one row the sweep appended below it. |
 | `crm/prospects.jsonl` | Two prospect rows with the tests each one passed and the verbatim evidence. |
 | `queue/2026-03-05-first-touch.md` | One drafted first touch in the queue entry shape. It also sits unsent in the mailbox's Drafts. The box is unticked. |
+| `queue/2026-03-05-booked-calls.md` | The packet for a call Riley booked on Wednesday evening: the call brief, the call now prompts, the texts, the same day offer, both branches and the confirmation email, which also sits unsent in Drafts. No box ticked yet. The packet lands with the first touch run, which fires after the morning brief, so this brief does not carry it. If no box is ticked by the next morning, the 2026-03-06 brief opens Waiting on you, under the veto line, with: `queue/2026-03-05-booked-calls.md B-01, Riley, call on 2026-03-06: nothing ticked yet. Reach them today`. |
+| `crm/bookings.jsonl` | Two bookings read that morning: Riley's, `staged`, and one whose call time had already passed, `dropped`. |
+| `strategy/booked-calls.md` | Sam's booked call settings: the calendar, the pre call video, the sender name, texts and the same day offer on. |
 
 The real files land in the kit root, not here. This folder exists so you can see the shape before you install.

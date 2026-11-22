@@ -1,5 +1,19 @@
 # Sales Employee: release history
 
+## 1.11.0, 2026-11-22
+
+Booked calls. When someone books a call with you, the Employee prepares you to reach them quickly, before it drafts a single cold message.
+
+- **`playbooks/booked-calls/PLAYBOOK.md`, new**, with six templates under `playbooks/booked-calls/templates/`. The method for the hours after a booking: call while interest is fresh and offer to talk now; if they cannot, three quick questions and a check on the pre call video; if nobody answers, short texts ending on a question about their business, then the video, then two open times today or keeping the booked time; a yes branch and a no branch. Every packet also carries a call brief with an outline for the call built from your own `strategy/offer.md`, and a confirmation email.
+- **`sales-first-touch-drafts` Step 2B** reads new bookings from the source you name, writes one packet per booking to `queue/YYYY-MM-DD-booked-calls.md`, and composes the confirmation emails into Drafts before the first touches.
+- **`sales-followup-sweep` Step 3B** catches the bookings made since the morning (`queue/YYYY-MM-DD-booked-calls-afternoon.md`), reads replies to a confirmation and files a card for each, and marks a booking that disappeared from the calendar as cancelled.
+- **`sales-desk-standup` 8.2a** puts one line per untouched packet, per cancelled booking, and the count of confirmation drafts straight under the veto line in the brief.
+- **`sales-desk-setup` A6.8** writes `strategy/booked-calls.md` (booking source, the pre call video link, sender name, texts on or off, the same day offer on or off, caps) from your own booking page, and on the monthly pass creates it on an install upgraded from an earlier kit. Every line in it is yours afterwards.
+- **`crm/bookings.jsonl`, new**, append only, four statuses: `staged`, `dropped`, `replied`, `cancelled`. Nothing about a booked person goes to `crm/contacted.jsonl`, and the finished forever rule for campaigns is unchanged.
+- **`scripts/booked-call-check.mjs`, new**, with its own self test: the shape of a packet, a message over the length of one text, an unfilled field, a link in the first texts, a video line with no video configured, settings the packet ignores.
+- The lane never calls, texts, emails or edits a calendar, never looks a person up, never offers a time it did not read from your calendar, and stays staged even where `RELEASES.md` releases email, unless a row names `booked-call confirmation`.
+- `CONTRACT.md` 2.2, 2.3, 2.5, 2.5a, 2.6 and 2.8, `ROLE.md`, `CAPABILITIES.md` 4b (`calendar.read`), `SCHEDULE.md` roster lines, `employee.json` (`playbooks/**` is kit), README and examples.
+
 ## 1.10.0, 2026-11-19
 
 The Anti-AI Voice Check: a second pass on everything this Employee writes for somebody else to read, rewritten in your own voice.
