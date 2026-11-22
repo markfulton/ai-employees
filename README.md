@@ -49,13 +49,13 @@
 <table>
 <tr><td align="center" width="900">
 
-<p><b>Free live session. Saturday, November 14, 10 AM Eastern, on Zoom.</b></p>
+<p><b>Watch the replay: Two New Premium AI Employees, Live Release.</b></p>
 
-<p>Two New Premium AI Employees: Live Release. The replay goes to everyone who registers.</p>
+<p>The live session has ended. The full replay plays inside the Agent Ops Club with a free account.</p>
 
-<p><a href="https://club.reinventing.ai/events/final-countdown-lifetime-last-call?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov14-session"><b>Save a free seat</b></a></p>
+<p><a href="https://club.reinventing.ai/register?next=%2Fmembers%2Fsessions&utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=session-replay"><b>Watch the replay</b></a></p>
 
-<p><sub>The eight AI Employees stay free and MIT. The club has Free, Pro and Lifetime plans. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nov15-pricing">Plans</a>.</sub></p>
+<p><sub>The eight AI Employees stay free and MIT. The club has Free, Pro and Lifetime plans. <a href="https://club.reinventing.ai/pricing?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=readme-pricing">Plans</a>.</sub></p>
 
 </td></tr>
 </table>
