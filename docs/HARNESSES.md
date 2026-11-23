@@ -28,6 +28,21 @@ Two rules hold on every harness. **Routines are scheduled jobs, not skills**: po
 
 Every kit's `CAPABILITIES.md` section 4b names the connections that read its accounts without a browser, with the read only form of each route. The column above is how each harness adds one. A kit never installs a connection; the install prompt checks for each and names the absent ones in its handover.
 
+## Adding the hire skill to your agent
+
+The `hire` skill copies one kit into a folder you choose, runs its self tests and hands you the install prompt. It registers no schedule and sends nothing. Each line below adds it from this repository; pick the one for your agent.
+
+| Agent | One line |
+|---|---|
+| Claude Code | `/plugin marketplace add markfulton/ai-employees`, then `/plugin install ai-employees@ai-employees` |
+| Any agent the skills CLI knows (Claude Code, Codex, Cursor, Antigravity, OpenClaw, OpenCode, Hermes and more) | `npx skills add markfulton/ai-employees` |
+| Hermes | `hermes plugins install markfulton/ai-employees`, or the skill alone with `hermes skills tap add markfulton/ai-employees` |
+| Codex | `codex plugin marketplace add markfulton/ai-employees`, then install AI Employees from the Plugins view in the app |
+| Antigravity | Download the repository (Code, Download ZIP), extract it, then `agy plugin install <that folder>` |
+| Cursor | Download the repository into `~/.cursor/plugins/local/ai-employees`, then run Developer: Reload Window |
+
+The repository root carries one portable `plugin.json` in the [Agent Plugins](https://agent-plugins.org) format, which Codex, Cursor, Hermes and Antigravity all read, and `skills/hire` is found from it. Routines are never added this way. They stay in the kit folder and run from the scheduler, as the rules at the top of this page say.
+
 ## What the invocation has to get right, on every harness
 
 1. **The working directory is the kit folder.** Every path in a routine is relative to it.

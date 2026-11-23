@@ -54,7 +54,7 @@ Use the first route that works:
    ```
 
    It copies the kit from the bundled files with no network, refuses a synced or non empty folder, writes `.installed.json` (the record that lets a later upgrade tell the user's edits from ours), runs every kit script's self tests, checks the login, and prints the install prompt with the path filled in.
-2. **The published installer.** Inside the plugin route 1 always works, so this is for the skill used on its own. Tell the user it will fetch the `ai-employees` package from npm and wait for a yes, then run `npx ai-employees hire <slug> --to "<folder>"`. Same behaviour, fetched from npm.
+2. **The published installer.** Inside the plugin route 1 always works, so this is for the skill used on its own. Tell the user it will fetch the `ai-employees` package from npm and wait for a yes, then run `npx ai-employees@1.11.0 hire <slug> --to "<folder>"`. The version is pinned to this plugin's own release, so the npm copy matches the bundled one. Same behaviour, fetched from npm.
 3. **Only if neither can run:** tell the user you need to download `https://github.com/markfulton/ai-employees/archive/refs/heads/main.zip` and wait for a yes. Then extract only `employees/<slug>/` into the folder, and tell the user that this route writes no `.installed.json`, so an upgrade later will treat every file as edited by them.
 
 Never rename anything inside the kit. A routine's folder name, its YAML `name` and the name of its scheduled job are the same string, and a rename breaks the install.

@@ -1,0 +1,21 @@
+{
+  "name": "ai-employees",
+  "owner": {
+    "name": "Mark Fulton",
+    "url": "https://github.com/markfulton"
+  },
+  "plugins": [
+    {
+      "name": "ai-employees",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

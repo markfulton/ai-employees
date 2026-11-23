@@ -1,12 +1,19 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.png">
-    <img alt="AI Employees" src="assets/logo-light.png" width="480" height="114">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-animated-dark.svg">
+    <img alt="AI Employees" src="assets/logo-animated-light.svg" width="480" height="114">
   </picture>
 </p>
 
 <h3 align="center">Eight open source AI Employees. Each one runs a whole business role.</h3>
 <p align="center">60 scheduled routines. Your own machine. The AI agent you already use.</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/tagline-dark.svg">
+    <img alt="Runs on Claude Code and 12 other agents. Stars on GitHub and npm installs a month." src="assets/tagline-light.svg" width="600" height="44">
+  </picture>
+</p>
 
 <p align="center">
   <a href="https://club.reinventing.ai/ai-employees?utm_source=github&utm_medium=readme&utm_campaign=ai-employees&utm_content=nav-employees"><strong>The eight AI Employees</strong></a>
@@ -110,7 +117,7 @@ Then say "hire the GTM Engineer into D:\AgentOps\gtm-engineer", or run `/ai-empl
 
 **What the plugin runs.** The `hire` skill runs one command, `node installer/cli.mjs hire <employee> --to <folder>`, from the installer bundled in the plugin. It copies one kit from the plugin into the folder you choose, writes `.installed.json` there, runs every kit script with `--selftest` under Node, and runs `claude auth status` to see whether you are signed in. On that path it makes no network request, collects no data and sends no telemetry. The installer downloads a kit from `github.com/markfulton/ai-employees` only when it has no bundled copy, which never happens inside the plugin or the npm package, since both carry the kits. Used without the plugin, the skill asks before it fetches anything from npm or GitHub. It registers no schedule, sends nothing and never reads or enters a credential. A hired employee is a separate step that runs in its own folder, and [docs/GUARDRAILS.md](docs/GUARDRAILS.md) says what it may and may not do.
 
-**Not on Claude Code?** The same two steps work on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots. [docs/HARNESSES.md](docs/HARNESSES.md) has the command for each.
+**Not on Claude Code?** The same two steps work on OpenClaw, Hermes, OpenCode, Grok Bot, Codex, Antigravity, Pi, Cline, Qwen Code, DeepSeek, Muse and Dots. To add the `hire` skill to any of them in one line, use `npx skills add markfulton/ai-employees`. Codex, Cursor, Hermes and Antigravity can also install this repository as a plugin. [docs/HARNESSES.md](docs/HARNESSES.md) has the command for each.
 
 <table>
 <tr><td align="center" width="900">
